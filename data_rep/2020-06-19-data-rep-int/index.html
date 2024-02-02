@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2426182848439341"
+     crossorigin="anonymous"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33RJLY0818"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33RJLY0818');
+</script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Integers, or whole number from elemental mathematics, are the most common andfundamental numbers used in the computers. It’s represented asfixed-point numbers, contrast to floating-point numbers in th">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Data Representation - Integer">
+<meta property="og:url" content="https://www.vvbuys.com/data_rep/2020-06-19-data-rep-int/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="Integers, or whole number from elemental mathematics, are the most common andfundamental numbers used in the computers. It’s represented asfixed-point numbers, contrast to floating-point numbers in th">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-02T01:05:07.544Z">
+<meta property="article:modified_time" content="2024-02-02T01:05:07.544Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="C">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/data_rep/2020-06-19-data-rep-int/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/data_rep/2020-06-19-data-rep-int/","path":"data_rep/2020-06-19-data-rep-int/","title":"Data Representation - Integer"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Data Representation - Integer | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Prerequisite-printf-Recap"><span class="nav-number">1.</span> <span class="nav-text">Prerequisite - printf Recap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Format-Specifier"><span class="nav-number">1.1.</span> <span class="nav-text">Format Specifier</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inttypes-h-from-C99"><span class="nav-number">1.2.</span> <span class="nav-text">inttypes.h from C99</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Unsigned-Integers"><span class="nav-number">2.</span> <span class="nav-text">Unsigned Integers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Signed-Integers"><span class="nav-number">3.</span> <span class="nav-text">Signed Integers</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sign-magnitude-%E5%8E%9F%E7%A0%81"><span class="nav-number">3.1.</span> <span class="nav-text">Sign magnitude 原码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ones%E2%80%99-complement-%E5%8F%8D%E7%A0%81"><span class="nav-number">3.2.</span> <span class="nav-text">Ones’ complement 反码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Twos%E2%80%99-complement-%E8%A1%A5%E7%A0%81"><span class="nav-number">3.3.</span> <span class="nav-text">Twos’ complement 补码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Offset-binary-%E7%A7%BB%E7%A0%81"><span class="nav-number">3.4.</span> <span class="nav-text">Offset binary 移码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Type-Conversion-Printf"><span class="nav-number">4.</span> <span class="nav-text">Type Conversion &amp; Printf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Char-ASCII"><span class="nav-number">5.</span> <span class="nav-text">Char &amp; ASCII</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">6.</span> <span class="nav-text">References</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/data_rep/2020-06-19-data-rep-int/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Data Representation - Integer | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Data Representation - Integer
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:05:07" itemprop="dateCreated datePublished" datetime="2024-02-02T01:05:07+00:00">2024-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>Integers, or <em>whole number</em> from elemental mathematics, are the most common and<br>fundamental numbers used in the computers. It’s represented as<br><em>fixed-point numbers</em>, contrast to <em>floating-point numbers</em> in the machine.<br>Today we are going to learn a whole bunch of way to encode it.</p>
+<p>There are mainly two properties to make a integer representation different:</p>
+<ol>
+<li><p><strong>Size, of the number of bits used</strong>.<br>usually the power of 2. e.g. 8-bit, 16-bit, 32-bit, 64-bit.</p>
+</li>
+<li><p><strong>Signed or unsigned</strong>.<br>there are also multiple schemas to encode a signed integers.</p>
+</li>
+</ol>
+<p>We are also gonna use the below terminologies throughout the post:</p>
+<ul>
+<li><em>MSB</em>: Most Significant Bit</li>
+<li><em>LSB</em>: Least Significant Bit</li>
+</ul>
+<h2 id="Prerequisite-printf-Recap"><a href="#Prerequisite-printf-Recap" class="headerlink" title="Prerequisite - printf Recap"></a>Prerequisite - <code>printf</code> Recap</h2><p>We will quickly recap the integers subset of usages of <code>printf</code>.<br>Basically, we used <em>format specifier</em> to interpolate values into strings:</p>
+<h3 id="Format-Specifier"><a href="#Format-Specifier" class="headerlink" title="Format Specifier"></a><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/cstdio/printf/">Format Specifier</a></h3><blockquote>
+<p><code>%[flags][width][.precision][length]specifier</code></p>
+</blockquote>
+<ul>
+<li><code>specifier</code><ul>
+<li><code>d</code>, <code>i</code> : signed decimal</li>
+<li><code>u</code> : unsigned decimal</li>
+<li><code>c</code> : char</li>
+<li><code>p</code>: pointer addr</li>
+<li><code>x</code> &#x2F; <code>X</code> : lower&#x2F;upper unsigned hex</li>
+</ul>
+</li>
+<li><code>length</code><ul>
+<li><code>l</code> : long (at least 32)</li>
+<li><code>ll</code> : long long (at least 64)</li>
+<li><code>h</code> : short (usually 16)</li>
+<li><code>hh</code> : short short (usually 8)</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span>  </span>&#123;</span><br><span class="line">  cout &lt;&lt; <span class="string">&quot;Size of int = &quot;</span>&lt;&lt; <span class="built_in">sizeof</span>(<span class="type">int</span>) &lt;&lt; endl;</span><br><span class="line">  cout &lt;&lt; <span class="string">&quot;Size of long = &quot;</span> &lt;&lt; <span class="built_in">sizeof</span>(<span class="type">long</span>) &lt;&lt; endl;</span><br><span class="line">  cout &lt;&lt; <span class="string">&quot;Size of long long = &quot;</span> &lt;&lt; <span class="built_in">sizeof</span>(<span class="type">long</span> <span class="type">long</span>);</span><br><span class="line">&#125;</span><br><span class="line">Output in <span class="number">32</span> bit gcc compiler: <span class="number">4</span> <span class="number">4</span> <span class="number">8</span></span><br><span class="line">Output in <span class="number">64</span> bit gcc compiler: <span class="number">4</span> <span class="number">8</span> <span class="number">8</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="inttypes-h-from-C99"><a href="#inttypes-h-from-C99" class="headerlink" title="inttypes.h from C99"></a><a target="_blank" rel="noopener" href="http://www.qnx.com/developers/docs/6.5.0/index.jsp?topic=/com.qnx.doc.dinkum_en_c99/inttypes.html"><code>inttypes.h</code> from C99</a></h3><p>Also in <a target="_blank" rel="noopener" href="https://en.cppreference.com/w/c/types/integer">cppreference.com</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// signed int (d or i)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PRId8     <span class="string">&quot;hhd&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PRId16    <span class="string">&quot;hd&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PRId32    <span class="string">&quot;ld&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PRId64    <span class="string">&quot;lld&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// unsigned int (u)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PRIu8     <span class="string">&quot;hhd&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PRIu16    <span class="string">&quot;hd&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PRIu32    <span class="string">&quot;ld&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PRIu64    <span class="string">&quot;lld&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// unsigned hex</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PRIx8     <span class="string">&quot;hhu&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PRIx16    <span class="string">&quot;hu&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PRIx32    <span class="string">&quot;lu&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PRIx64    <span class="string">&quot;llu&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// uintptr_t (64 bit machine word len)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PRIxPTR   <span class="string">&quot;llx&quot;</span></span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Unsigned-Integers"><a href="#Unsigned-Integers" class="headerlink" title="Unsigned Integers"></a>Unsigned Integers</h2><p>The conversion between unsigned integers and binaries are trivial.<br>Here, we can represent 8 bits (i.e. a <em>byte</em>) as a <em>hex pair</em>, e.g.<br><code>255 == 0xff == 0b11111111</code>.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdint.h&gt;</span>    <span class="comment">// uintN_t</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;inttypes.h&gt;</span>  <span class="comment">// PRI macros</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">uint8_t</span> u8 = <span class="number">255</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;0x%02&quot;</span> PRIx8 <span class="string">&quot;\n&quot;</span>, u8); <span class="comment">// 0xff</span></span><br><span class="line"><span class="built_in">printf</span>(  <span class="string">&quot;%&quot;</span>   PRId8 <span class="string">&quot;\n&quot;</span>, u8); <span class="comment">// 255</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Signed-Integers"><a href="#Signed-Integers" class="headerlink" title="Signed Integers"></a>Signed Integers</h2><p>Signed integers are more complicated. We need to cut those bits to halves<br>to represent both positive and negative integers somehow.</p>
+<p>There are four well-known schemas to encode it, according to<br><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Signed_number_representations">signed number representation of wikipedia</a>.</p>
+<h3 id="Sign-magnitude-原码"><a href="#Sign-magnitude-原码" class="headerlink" title="Sign magnitude 原码"></a>Sign magnitude 原码</h3><p>It’s also called <em>“sign and magnitude”</em>. From the name we can see how straightforward it is:<br>it’s basically put one bit (often the <em>MSB</em>) as the <em>sign bit</em> to represent <em>sign</em> and the remaining bits indicating<br>the magnitude (or absolute value), e.g.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  binary   | sign-magn |  <span class="type">unsigned</span></span><br><span class="line">-----------|-----------|------------</span><br><span class="line"><span class="number">0</span> <span class="number">000</span> <span class="number">0000</span> |    +<span class="number">0</span>     |     <span class="number">0</span></span><br><span class="line"><span class="number">0</span> <span class="number">111</span> <span class="number">1111</span> |    <span class="number">127</span>    |    <span class="number">127</span></span><br><span class="line">...</span><br><span class="line"><span class="number">1</span> <span class="number">000</span> <span class="number">0000</span> |    <span class="number">-0</span>     |    <span class="number">128</span></span><br><span class="line"><span class="number">1</span> <span class="number">111</span> <span class="number">1111</span> |   <span class="number">-127</span>    |    <span class="number">255</span></span><br></pre></td></tr></table></figure>
+
+<p>It was used in early computer (IBM 7090) and now mainly used in the<br><em>significand</em> part in floating-point number</p>
+<p>Pros:</p>
+<ul>
+<li>simple and nature for human</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li>2 way to represent zeros (<code>+0</code> and <code>-0</code>)</li>
+<li>not as good for machine<ul>
+<li>add&#x2F;sub&#x2F;cmp require knowing the sign<ul>
+<li>complicate CPU ALU design; potentially more cycles</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Ones’-complement-反码"><a href="#Ones’-complement-反码" class="headerlink" title="Ones’ complement 反码"></a><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Ones%27_complement">Ones’ complement</a> 反码</h3><p>It form a negative integers by applying a <em>bitwise NOT</em><br>i.e. <em>complement</em> of its positive counterparts.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">  binary   |  <span class="number">1</span>s comp  |  <span class="type">unsigned</span></span><br><span class="line">-----------|-----------|------------</span><br><span class="line"><span class="number">0000</span> <span class="number">0000</span>  |     <span class="number">0</span>     |     <span class="number">0</span></span><br><span class="line"><span class="number">0000</span> <span class="number">0001</span>  |     <span class="number">1</span>     |     <span class="number">1</span></span><br><span class="line">...</span><br><span class="line"><span class="number">0111</span> <span class="number">1111</span>  |    <span class="number">127</span>    |    <span class="number">127</span></span><br><span class="line"><span class="number">1000</span> <span class="number">0000</span>  |   <span class="number">-127</span>    |    <span class="number">128</span></span><br><span class="line">...</span><br><span class="line"><span class="number">1111</span> <span class="number">1110</span>  |    <span class="number">-1</span>     |    <span class="number">254</span></span><br><span class="line"><span class="number">1111</span> <span class="number">1111</span>  |    <span class="number">-0</span>     |    <span class="number">255</span></span><br></pre></td></tr></table></figure>
+
+<p>N.B. <em>MSB</em> can still be signified by MSB.</p>
+<p>It’s referred to as <em>ones’</em> complement because the negative can be formed<br>by subtracting the positive <strong>from</strong> <em>ones</em>: <code>1111 1111 (-0)</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  <span class="number">1111</span> <span class="number">1111</span>       <span class="number">-0</span></span><br><span class="line">- <span class="number">0111</span> <span class="number">1111</span>       <span class="number">127</span></span><br><span class="line">---------------------</span><br><span class="line">  <span class="number">1000</span> <span class="number">0000</span>      <span class="number">-127</span></span><br></pre></td></tr></table></figure>
+
+<p>The benefits of the complement nature is that adding becomes simple,<br>except we need to do an <em>end-around carry</em> to add resulting carry<br>back to get the correct result.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  <span class="number">0111</span> <span class="number">1111</span>       <span class="number">127</span></span><br><span class="line">+ <span class="number">1000</span> <span class="number">0001</span>      <span class="number">-126</span></span><br><span class="line">---------------------</span><br><span class="line"><span class="number">1</span> <span class="number">0000</span> <span class="number">0000</span>        <span class="number">0</span></span><br><span class="line">          <span class="number">1</span>       +<span class="number">1</span>     &lt;- add carry <span class="string">&quot;1&quot;</span> back</span><br><span class="line">---------------------</span><br><span class="line">  <span class="number">0000</span> <span class="number">0001</span>        <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>Pros:</p>
+<ul>
+<li>Arithmetics on machien are fast.</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li>still 2 zeros!</li>
+</ul>
+<h3 id="Twos’-complement-补码"><a href="#Twos’-complement-补码" class="headerlink" title="Twos’ complement 补码"></a><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Two%27s_complement">Twos’ complement</a> 补码</h3><p>Most of the current architecture adopted this, including x86, MIPS, ARM, etc.<br>It differed with one’s complement by one.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  binary   |  <span class="number">2</span>s comp  |  <span class="type">unsigned</span></span><br><span class="line">-----------|-----------|------------</span><br><span class="line"><span class="number">0000</span> <span class="number">0000</span>  |     <span class="number">0</span>     |     <span class="number">0</span></span><br><span class="line"><span class="number">0000</span> <span class="number">0001</span>  |     <span class="number">1</span>     |     <span class="number">1</span></span><br><span class="line">...</span><br><span class="line"><span class="number">0111</span> <span class="number">1111</span>  |    <span class="number">127</span>    |    <span class="number">127</span></span><br><span class="line"><span class="number">1000</span> <span class="number">0000</span>  |   <span class="number">-128</span>    |    <span class="number">128</span></span><br><span class="line"><span class="number">1000</span> <span class="number">0001</span>  |   <span class="number">-127</span>    |    <span class="number">129</span></span><br><span class="line">...</span><br><span class="line"><span class="number">1111</span> <span class="number">1110</span>  |    <span class="number">-2</span>     |    <span class="number">254</span></span><br><span class="line"><span class="number">1111</span> <span class="number">1111</span>  |    <span class="number">-1</span>     |    <span class="number">255</span></span><br></pre></td></tr></table></figure>
+
+<p>N.B. <em>MSB</em> can still be signified by MSB.</p>
+<p>It’s referred to as <em>twos’</em> complement because the negative can be formed<br>by subtracting the positive <strong>from</strong> <code>2 ** N</code> (congruent to <code>0000 0000 (+0)</code>),<br>where <code>N</code> is the number of bits.</p>
+<p>E.g., for a <code>uint8_t</code>, the <em>sum</em> of any number and it’s twos’ complement would<br>be <code>256 (1 0000 0000)</code>:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> <span class="number">0000</span> <span class="number">0000</span>       <span class="number">256</span>  = <span class="number">2</span> ** <span class="number">8</span></span><br><span class="line">- <span class="number">0111</span> <span class="number">1111</span>       <span class="number">127</span></span><br><span class="line">---------------------</span><br><span class="line">  <span class="number">1000</span> <span class="number">0001</span>      <span class="number">-127</span></span><br></pre></td></tr></table></figure>
+
+<p>Becuase of this, arithmetics becomes really easier, for any number <code>x</code> e.g. <code>127</code><br>we can get its twos’ complement by:</p>
+<ol>
+<li><code>~x =&gt; 1000 0000</code> bitwise NOT (like ones’ complement)</li>
+<li><code>+1 =&gt; 1000 0001</code> add 1 (the one differed from ones’ complement)</li>
+</ol>
+<p>Cons:</p>
+<ul>
+<li>bad named?</li>
+</ul>
+<p>Pros:</p>
+<ul>
+<li>fast machine arithmatics.</li>
+<li>only 1 zeros!</li>
+<li>the minimal negative is <code>-128</code></li>
+</ul>
+<h3 id="Offset-binary-移码"><a href="#Offset-binary-移码" class="headerlink" title="Offset binary 移码"></a><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Offset_binary">Offset binary</a> 移码</h3><p>It’s also called <em>excess-K</em> (偏移 K) or <em>biased representation</em>, where <code>K</code> is<br>the <em>biasing value</em> (the new <code>0</code>), e.g. in <em>excess-128</em>:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">  binary   |  K = <span class="number">128</span>  |  <span class="type">unsigned</span></span><br><span class="line">-----------|-----------|------------</span><br><span class="line"><span class="number">0000</span> <span class="number">0000</span>  |   <span class="number">-128</span>(-K)|     <span class="number">0</span></span><br><span class="line"><span class="number">0000</span> <span class="number">0001</span>  |   <span class="number">-127</span>    |     <span class="number">1</span></span><br><span class="line">...</span><br><span class="line"><span class="number">0111</span> <span class="number">1111</span>  |    <span class="number">-1</span>     |    <span class="number">127</span></span><br><span class="line"><span class="number">1000</span> <span class="number">0000</span>  |     <span class="number">0</span>     |    <span class="number">128</span>  (K)</span><br><span class="line"><span class="number">1000</span> <span class="number">0001</span>  |     <span class="number">1</span>     |    <span class="number">129</span></span><br><span class="line">...</span><br><span class="line"><span class="number">1111</span> <span class="number">1111</span>  |    <span class="number">127</span>    |    <span class="number">255</span></span><br></pre></td></tr></table></figure>
+
+<p>It’s now mainly used for the <em>exponent</em> part of floating-point number.</p>
+<h2 id="Type-Conversion-Printf"><a href="#Type-Conversion-Printf" class="headerlink" title="Type Conversion &amp; Printf"></a>Type Conversion &amp; <code>Printf</code></h2><p>This might be a little bit off topic, but I want to note down what I observed<br>from experimenting. Basically, <code>printf</code> would not perform an implicit type<br>conversion but merely <em>interpret</em> the bits arrangement of your arguments as you<br>told it.</p>
+<ul>
+<li><em>UB!</em> stands for <em>undefined behaviors</em></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">uint8_t</span> u8 = <span class="number">0b10000000</span>; <span class="comment">// 128</span></span><br><span class="line"> <span class="type">int8_t</span> s8 = <span class="number">0b10000000</span>; <span class="comment">// -128</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%&quot;</span>PRIu8 <span class="string">&quot;\n&quot;</span>, u8);          <span class="comment">// 128</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%&quot;</span>PRId8 <span class="string">&quot;\n&quot;</span>, u8);          <span class="comment">// 128 (UB! but somehow it&#x27;s got right)</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%&quot;</span>PRId8 <span class="string">&quot;\n&quot;</span>, (<span class="type">int8_t</span>)u8);  <span class="comment">// -128</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%&quot;</span>PRId8 <span class="string">&quot;\n&quot;</span>, s8);          <span class="comment">// -128</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%&quot;</span>PRIu8 <span class="string">&quot;\n&quot;</span>, s8);          <span class="comment">// 4294967168 (UB!)</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%&quot;</span>PRId8 <span class="string">&quot;\n&quot;</span>, (<span class="type">uint8_t</span>)s8); <span class="comment">// 128</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%&quot;</span>PRIxPTR <span class="string">&quot;\n&quot;</span>, s8);             <span class="comment">// ffffff80</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%&quot;</span>PRIxPTR <span class="string">&quot;\n&quot;</span>, (<span class="type">uintptr_t</span>)s8);  <span class="comment">// ffffffffffffff80</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Char-ASCII"><a href="#Char-ASCII" class="headerlink" title="Char &amp; ASCII"></a>Char &amp; <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/ASCII">ASCII</a></h2><p>Traditionally, <code>char</code> is represented in the computer as 8 bits as well. And<br>really, ASCII is only defined between <code>0</code> and <code>127</code> and require 7 bits.<br>(8-bit Extended ASCII is not quite well popularized and supported.)</p>
+<p>It’s more complicated in extension such as <em>Unicode</em> nowadays, but we’ll ignore<br>it for future posts dedicated for char and string representation.</p>
+<p>So how is a <code>char</code> different with a <em>byte</em>?</p>
+<p>Well, the answer is whether a <code>char</code> is a <code>signed char</code> (backed by <code>int8_t</code>)<br>or a <code>unsigned char</code> (backed by <code>uint8_t</code>) is… <em>implementaton-defined</em>.<br>And most systems made it <em>signed</em> since most types (e.g. <code>int</code>) were signed<br>by default.</p>
+<p>N.B. <code>int</code> is standard-defined to be equivalent to <code>signed int</code>. This is<br>not the case of <code>char</code>.</p>
+<p>That’s why you often see such <code>typedef</code> such as:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">unsigned</span> <span class="type">char</span> Byte_t;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">uint8_t</span> <span class="type">byte_t</span>;</span><br></pre></td></tr></table></figure>
+
+<p>to emphysize the nature of byte should be just plain, unsigned, bits.</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Integer_(computer_science)">https://en.wikipedia.org/wiki/Integer_(computer_science)</a></li>
+<li><a target="_blank" rel="noopener" href="https://www3.ntu.edu.sg/home/ehchua/programming/java/datarepresentation.html">https://www3.ntu.edu.sg/home/ehchua/programming/java/datarepresentation.html</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag"># 基础</a>
+              <a href="/tags/C/" rel="tag"># C</a>
+              <a href="/tags/C/" rel="tag"># C++</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/data_rep/2020-06-21-data-rep-float/" rel="prev" title="Data Representation - Floating Point Numbers">
+                  <i class="fa fa-angle-left"></i> Data Representation - Floating Point Numbers
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/read_sf_plf/2019-03-18-sf-plf-18-use-auto/" rel="next" title="「SF-PLF」18 UseAuto">
+                  「SF-PLF」18 UseAuto <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

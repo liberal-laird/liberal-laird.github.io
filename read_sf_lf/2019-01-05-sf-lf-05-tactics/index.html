@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2426182848439341"
+     crossorigin="anonymous"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33RJLY0818"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33RJLY0818');
+</script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="apply exactly the same as some hypothesis can be used to finish a proof (shorter than rewrite then reflexivity)  It also works with conditional hypotheses: 12345678n, m, o, p : nateq1 : n &#x3D; meq2 : for">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「SF-LC」5 Tactics">
+<meta property="og:url" content="https://www.vvbuys.com/read_sf_lf/2019-01-05-sf-lf-05-tactics/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="apply exactly the same as some hypothesis can be used to finish a proof (shorter than rewrite then reflexivity)  It also works with conditional hypotheses: 12345678n, m, o, p : nateq1 : n &#x3D; meq2 : for">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-02T01:05:07.544Z">
+<meta property="article:modified_time" content="2024-02-02T01:05:07.544Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="LF (逻辑基础)">
+<meta property="article:tag" content="SF (软件基础)">
+<meta property="article:tag" content="Coq">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/read_sf_lf/2019-01-05-sf-lf-05-tactics/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/read_sf_lf/2019-01-05-sf-lf-05-tactics/","path":"read_sf_lf/2019-01-05-sf-lf-05-tactics/","title":"「SF-LC」5 Tactics"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>「SF-LC」5 Tactics | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#apply"><span class="nav-number">1.</span> <span class="nav-text">apply</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#injection-and-discrinimate"><span class="nav-number">2.</span> <span class="nav-text">injection and discrinimate</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Side-Note-on-Terminologys-of-Function"><span class="nav-number">2.1.</span> <span class="nav-text">Side Note on Terminologys of Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Total-vs-Partial"><span class="nav-number">2.2.</span> <span class="nav-text">Total vs Partial</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conclusion-the-road-from-Relation-to-Function"><span class="nav-number">2.3.</span> <span class="nav-text">Conclusion - the road from Relation to Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Original-notes-on-Injective-surjective-Bijective"><span class="nav-number">2.4.</span> <span class="nav-text">Original notes on Injective, surjective, Bijective</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#injectivitiy-and-disjointness-or-inversion"><span class="nav-number">2.5.</span> <span class="nav-text">injectivitiy and disjointness, or inversion.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#injection"><span class="nav-number">2.6.</span> <span class="nav-text">injection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#disjoint"><span class="nav-number">2.7.</span> <span class="nav-text">disjoint</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inversion"><span class="nav-number">2.8.</span> <span class="nav-text">inversion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Converse-of-injectivity"><span class="nav-number">2.9.</span> <span class="nav-text">Converse of injectivity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Slide-Q-A-1"><span class="nav-number">2.10.</span> <span class="nav-text">Slide Q&amp;A 1</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-Tactics-in-Hypotheses"><span class="nav-number">3.</span> <span class="nav-text">Using Tactics in Hypotheses</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Reasoning-Backwards-and-Reasoning-Forward-from-Coq-Intensive-2"><span class="nav-number">3.1.</span> <span class="nav-text">Reasoning Backwards and Reasoning Forward (from Coq Intensive 2)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#in"><span class="nav-number">3.2.</span> <span class="nav-text">in</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#applying-in-hypothesis-and-in-conclusion"><span class="nav-number">3.3.</span> <span class="nav-text">applying in hypothesis and in conclusion</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Varying-the-Induction-Hypothesis"><span class="nav-number">4.</span> <span class="nav-text">Varying the Induction Hypothesis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#How-to-keep-m-generic-universal"><span class="nav-number">4.1.</span> <span class="nav-text">How to keep m generic (universal)?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Notes-on-generalize-dependent"><span class="nav-number">4.2.</span> <span class="nav-text">Notes on generalize dependent</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Unfolding-Definitions"><span class="nav-number">5.</span> <span class="nav-text">Unfolding Definitions.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-destruct-on-Compound-Expressions"><span class="nav-number">6.</span> <span class="nav-text">Using destruct on Compound Expressions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Micro-Sermon-Mindless-proof-hacking"><span class="nav-number">7.</span> <span class="nav-text">Micro Sermon - Mindless proof-hacking</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/read_sf_lf/2019-01-05-sf-lf-05-tactics/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="「SF-LC」5 Tactics | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「SF-LC」5 Tactics
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:05:07" itemprop="dateCreated datePublished" datetime="2024-02-02T01:05:07+00:00">2024-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="apply"><a href="#apply" class="headerlink" title="apply"></a><code>apply</code></h2><ul>
+<li><em>exactly</em> the same as some hypothesis</li>
+<li>can be used to <strong>finish</strong> a proof (shorter than <code>rewrite</code> then <code>reflexivity</code>)</li>
+</ul>
+<p>It also works with <em>conditional</em> hypotheses:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">n, m, o, p : nat</span><br><span class="line">eq1 : n = m</span><br><span class="line">eq2 : <span class="keyword">forall</span> q r : nat, q = r -&gt; [q; o] = [r; p]</span><br><span class="line">============================</span><br><span class="line">[n; o] = [m; p]</span><br><span class="line"></span><br><span class="line"><span class="built_in">apply</span> eq2.</span><br><span class="line">n = m</span><br></pre></td></tr></table></figure>
+
+<p>It works by working backwards.<br>It will try to <em>pattern match</em> the universally quantified <code>q r</code>. (i.e. universal var)<br>We match the <em>conclusion</em> and generates the <em>hypothesis</em> as a <em>subgoal</em>.</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> trans_eq : <span class="keyword">forall</span> (X:<span class="keyword">Type</span>) (n m o : X), n = m -&gt; m = o -&gt; n = o.</span><br><span class="line"></span><br><span class="line"><span class="keyword">Example</span> trans_eq_example&#x27; : <span class="keyword">forall</span> (a b c d e f : nat),</span><br><span class="line">     [a;b] = [c;d] -&gt; [c;d] = [e;f] -&gt; [a;b] = [e;f].</span><br><span class="line"><span class="keyword">Proof</span>. </span><br><span class="line">  <span class="built_in">intros</span> a b c d e f eq1 eq2.</span><br><span class="line">  <span class="built_in">apply</span> trans_eq. <span class="comment">(* Error: Unable to find an instance for the variable m. *)</span></span><br></pre></td></tr></table></figure>
+
+<p>The <em>unification algo</em> won’t happy since:</p>
+<ul>
+<li>it can find instance for <code>n = o</code> from <code>[a;b] = [e;f]</code> (matching both conclusion)</li>
+<li>but what should be <code>m</code>? It could be anything as long as <code>n = m</code> and <code>m = o</code> holds.</li>
+</ul>
+<p>So we need to tell Coq explicitly which value should be picked for <code>m</code>:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">apply</span> trans_eq <span class="built_in">with</span> (m:=[c;d]).   <span class="comment">(* &lt;- supplying extra info, [m:=] can be ommited *)</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Prof Mtf: As a PL person, you should feel this is a little bit awkward since now function argument name must be remembered. (but it’s just local and should be able to do any alpha-conversion).<br>named argument is more like a record.</p>
+</blockquote>
+<p>In Coq Intensive 2 (2018), someone proposed the below which works:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Example</span> trans_eq_example&#x27;&#x27; : <span class="keyword">forall</span> (a b c d e f : nat),</span><br><span class="line">  [a;b] = [c;d] -&gt; [c;d] = [e;f] -&gt; [a;b] = [e;f]. </span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span> a b c d e f.</span><br><span class="line">  <span class="built_in">apply</span> trans_eq.          <span class="comment">(* Coq was able to match three at all at this time...hmm *)</span></span><br><span class="line"><span class="keyword">Qed</span>.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="injection-and-discrinimate"><a href="#injection-and-discrinimate" class="headerlink" title="injection and discrinimate"></a><code>injection</code> and <code>discrinimate</code></h2><h3 id="Side-Note-on-Terminologys-of-Function"><a href="#Side-Note-on-Terminologys-of-Function" class="headerlink" title="Side Note on Terminologys of Function"></a>Side Note on Terminologys of Function</h3><pre><code>                     relation
+</code></pre>
+<blockquote>
+<p>function is defined as <em>a special kind of binary relation</em>.<br>it requires <code>xRy1 ∧ xRy2 → y1 = y2</code>  called “functional” or “univalent”, “right-unique”, or “deterministic”<br>and also <code>∀x ∈ X, ∃y ∈ Y s.t. xRy</code>   called “left-total”</p>
+</blockquote>
+<pre><code>                x       ↦      f(x)
+              input     ↦     output
+            argument    ↦     value
+
+                X       ↦       Y
+             domain 域  ↦  co-domain 陪域      
+       what can go into ↦  what possibly come out
+
+              A ⊆ X     ↦  f(A) = &#123;f(x) | x ∈ A&#125;
+                        ↦     image
+                        ↦  what actually come out
+
+f⁻¹(B)=&#123;x ∈ X|f(x) ∈ B&#125; ↦     B ⊆ Y
+             preimage   ↦
+
+            when A = X  ↦       Y
+                        ↦     range  
+                           image of domain
+</code></pre>
+<p>Besides subset, the notation of <code>image</code> and <code>pre-image</code> can be applied to <em>element</em> as well.<br>However, by definition:</p>
+<ul>
+<li>the image    of an element <code>x</code> of domain    ↦  always single element of codomain (singleton set)</li>
+<li>the preimage of an element <code>y</code> of codomain  ↦  may be empty, or one, or many!<ul>
+<li><code>&lt;= 1 ↦ 1</code> : injective   (left-unique)</li>
+<li><code>&gt;= 1 ↦ 1</code> : surjective  (right-total)</li>
+<li><code>   1 ↦ 1</code> : bijective</li>
+</ul>
+</li>
+</ul>
+<p>Noted that the definition of “function” doesn’t require “right-total”ity) until we have <code>surjective</code>.</p>
+<p>graph &#x3D; <code>[(x, f(x))]</code>, these points form a “curve”, 真的是图像</p>
+<h3 id="Total-vs-Partial"><a href="#Total-vs-Partial" class="headerlink" title="Total vs Partial"></a>Total vs Partial</h3><p>For math, we seldon use partial function since we can simply “define a perfect domain for that”.<br>But in Type Theory, Category Theory, we usually consider the <em>domain</em> <code>X</code> and the <em>domain of definition</em> <code>X&#39;</code>.</p>
+<p>Besides, <code>f(x)</code> can be <code>undefined</code>. (not “left-total”, might not have “right”)</p>
+<h3 id="Conclusion-the-road-from-Relation-to-Function"><a href="#Conclusion-the-road-from-Relation-to-Function" class="headerlink" title="Conclusion - the road from Relation to Function"></a>Conclusion - the road from Relation to Function</h3><pre><code>            bi-relation 
+                 | + right-unique 
+          partial function
+                 | + left-total   
+          (total) function
+ + left-unique /   \ + right-total
+      injection     surjection
+               \   /
+             bijection
+</code></pre>
+<h3 id="Original-notes-on-Injective-surjective-Bijective"><a href="#Original-notes-on-Injective-surjective-Bijective" class="headerlink" title="Original notes on Injective, surjective, Bijective"></a>Original notes on <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Function">Injective, surjective, Bijective</a></h3><p>All talk about the propeties of <em>preimage</em>!</p>
+<ul>
+<li>Injective:  <code>&lt;= 1 ↦ 1</code> or <code>0, 1 ↦ 1</code> (distinctness) </li>
+<li>Surjective: <code>&gt;= 1 ↦ 1</code> (at least 1 in the domain)</li>
+<li>Bijective:  <code>   1 ↦ 1</code> (intersection of Inj and Surj, so only <code>1</code> preimage, <em>one-to-one correspondence</em>)</li>
+</ul>
+<h3 id="injectivitiy-and-disjointness-or-inversion"><a href="#injectivitiy-and-disjointness-or-inversion" class="headerlink" title="injectivitiy and disjointness, or inversion."></a><em>injectivitiy</em> and <em>disjointness</em>, or <code>inversion</code>.</h3><p>Recall the definition of <code>nat</code>:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> nat : <span class="keyword">Type</span> :=</span><br><span class="line">| <span class="type">O</span> : nat</span><br><span class="line">| <span class="type">S</span> : nat → nat.</span><br></pre></td></tr></table></figure>
+
+<p>Besides there are two forms of <code>nat</code> (for <code>destruct</code> and <code>induction</code>), there are more facts:</p>
+<ol>
+<li>The constructor <code>S</code> is <em>injective</em> (distinct), i.e <code>S n = S m -&gt; n = m</code>.</li>
+<li>The constructors <code>O</code> and <code>S</code> are <em>disjoint</em>, i.e. <code>forall n, O != S n </code>.</li>
+</ol>
+<h3 id="injection"><a href="#injection" class="headerlink" title="injection"></a><code>injection</code></h3><ul>
+<li>can be used to prove the <em>preimages</em> are the same.</li>
+<li><code>injection</code> leave things in conclusion rather than hypo. with <code>as</code> would be in hypo.</li>
+</ul>
+<h3 id="disjoint"><a href="#disjoint" class="headerlink" title="disjoint"></a><code>disjoint</code></h3><ul>
+<li><em>principle of explosion</em> (a logical principle)<ul>
+<li>asserts a contraditory hypothesis entails anything. (even false things)</li>
+<li><em>vacously true</em></li>
+</ul>
+</li>
+<li><code>false = true</code> is contraditory because they are distinct constructors.</li>
+</ul>
+<h3 id="inversion"><a href="#inversion" class="headerlink" title="inversion"></a><code>inversion</code></h3><ul>
+<li>the big hammer: inversion of the definition.</li>
+<li>combining <code>injection</code> and <code>disjoint</code> and even some more <code>rewrite</code>.<ul>
+<li>IMH, which one to use depends on <em>semantics</em></li>
+</ul>
+</li>
+</ul>
+<p>from Coq Intensive (not sure why it’s not the case in book version).</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> S_injective_inv : <span class="keyword">forall</span> (n m : nat),</span><br><span class="line">  S n = S m -&gt; n = m.</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span> n m H. <span class="built_in">inversion</span> H. <span class="built_in">reflexivity</span>. <span class="keyword">Qed</span>. </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">Theorem</span> inversion_ex1 : <span class="keyword">forall</span> (n m : nat),</span><br><span class="line">  [n] = [m] -&gt; n = m.</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span> n m H. <span class="built_in">inversion</span> H. <span class="built_in">reflexivity</span>. <span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Side question: could Coq derive equality function for inductive type?<br>A: nope. Equality for some inductive types are <em>undecidable</em>.</p>
+</blockquote>
+<h3 id="Converse-of-injectivity"><a href="#Converse-of-injectivity" class="headerlink" title="Converse of injectivity"></a>Converse of injectivity</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> <span class="built_in">f_equal</span> : ∀(A B : <span class="keyword">Type</span>) (f: A → B) (x y: A),</span><br><span class="line">  x = y → f x = f y.</span><br><span class="line"><span class="keyword">Proof</span>. </span><br><span class="line">  <span class="built_in">intros</span> A B f x y eq. </span><br><span class="line">  <span class="built_in">rewrite</span> eq. <span class="built_in">reflexivity</span>. <span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="Slide-Q-A-1"><a href="#Slide-Q-A-1" class="headerlink" title="Slide Q&amp;A 1"></a>Slide Q&amp;A 1</h3><ol>
+<li>The tactic fails because tho <code>negb</code> is injective but <code>injection</code> only workks on constructors.</li>
+</ol>
+<h2 id="Using-Tactics-in-Hypotheses"><a href="#Using-Tactics-in-Hypotheses" class="headerlink" title="Using Tactics in Hypotheses"></a>Using Tactics in Hypotheses</h2><h3 id="Reasoning-Backwards-and-Reasoning-Forward-from-Coq-Intensive-2"><a href="#Reasoning-Backwards-and-Reasoning-Forward-from-Coq-Intensive-2" class="headerlink" title="Reasoning Backwards and Reasoning Forward (from Coq Intensive 2)"></a>Reasoning Backwards and Reasoning Forward (from Coq Intensive 2)</h3><p>Style of reasoning</p>
+<ul>
+<li>Backwards: start with <em>goal</em>, applying tactics <code>simpl/destruct/induction</code>, generate <em>subgoals</em>, until proved.<ul>
+<li>iteratively reasons about what would imply the goal, until premises or previously proven theorems are reached.</li>
+</ul>
+</li>
+<li>Forwards:  start with <em>hypo</em>, applying tactics, iteratively draws conclusions, until the goal is reached.</li>
+</ul>
+<p>Backwards reasoning is dominated stratgy of theroem prover (and execution of prolog). But not natural in informal proof.</p>
+<blockquote>
+<p>True forward reasoning derives fact, but in Coq it’s like hypo deriving hypo, very imperative.</p>
+</blockquote>
+<h3 id="in"><a href="#in" class="headerlink" title="in"></a><code>in</code></h3><blockquote>
+<p>most tactics also have a variant that performs a similar operation on a statement in the context.</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">simpl</span> <span class="built_in">in</span> H.</span><br><span class="line"><span class="built_in">simpl</span> <span class="built_in">in</span> *. <span class="comment">(* in all hypo and goal *)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">symmetry</span> <span class="built_in">in</span> H.</span><br><span class="line"><span class="built_in">apply</span> L <span class="built_in">in</span> H.</span><br></pre></td></tr></table></figure>
+
+<h3 id="applying-in-hypothesis-and-in-conclusion"><a href="#applying-in-hypothesis-and-in-conclusion" class="headerlink" title="applying in hypothesis and in conclusion"></a><code>apply</code>ing in hypothesis and in conclusion</h3><p><code>apply</code>ing in hypo is very different with <code>apply</code>ing in conclusion.</p>
+<blockquote>
+<p>it’s not we unify the ultimate conclusion and generate premises as new goal, but trying to find a hypothesis to match and left the residual conclusion as new hypothesis.</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> silly3&#x27;&#x27; : <span class="keyword">forall</span> (n : nat),</span><br><span class="line">  (true = (n =? <span class="number">5</span>) -&gt; true = ((S (S n)) =? <span class="number">7</span>)) -&gt;</span><br><span class="line">  true = (n =? <span class="number">5</span>)  -&gt;</span><br><span class="line">  true = ((S (S n)) =? <span class="number">7</span>).</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span> n eq H.</span><br><span class="line">  <span class="built_in">apply</span> eq <span class="built_in">in</span> H.  <span class="comment">(* or *)</span>  <span class="built_in">apply</span> eq. <span class="comment">(* would be different *)</span></span><br><span class="line">  <span class="built_in">apply</span> H.  <span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
+
+<p>Also if we add one more premises <code>true = true -&gt;</code>,<br>the subgoal generated by <code>apply</code> would be in reversed order: </p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> silly3&#x27;&#x27; : <span class="keyword">forall</span> (n : nat),</span><br><span class="line">  (true = true -&gt; true = (n =? <span class="number">5</span>) -&gt; true = ((S (S n)) =? <span class="number">7</span>)) -&gt;</span><br><span class="line">  true = (n =? <span class="number">5</span>)  -&gt;</span><br><span class="line">  true = ((S (S n)) =? <span class="number">7</span>).</span><br><span class="line"><span class="keyword">Proof</span>.</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Again: “proof engineering”: proof can be done in so many different ways and in different orders.</p>
+</blockquote>
+<h2 id="Varying-the-Induction-Hypothesis"><a href="#Varying-the-Induction-Hypothesis" class="headerlink" title="Varying the Induction Hypothesis"></a>Varying the Induction Hypothesis</h2><p>Sometimes it’s important to control the exact form of the induction hypothesis!!</p>
+<p>Considering:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> double_injective: ∀n m,</span><br><span class="line">        <span class="built_in">double</span> n = <span class="built_in">double</span> m → n = m.</span><br></pre></td></tr></table></figure>
+
+<p>if we begin with <code>intros n m. induction n.</code><br>then we get stuck in the inductive case of <code>n</code>, where the induction hypothesis <code>IHn&#39;</code> generated is:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">IHn&#x27; : <span class="built_in">double</span> n&#x27; = <span class="built_in">double</span> m -&gt; n&#x27; = m</span><br><span class="line">IHn&#x27; : <span class="built_in">double</span> n&#x27; = <span class="built_in">double</span> (S m&#x27;) -&gt; n&#x27; = S m&#x27;  <span class="comment">(* m = S m&#x27; *)</span></span><br></pre></td></tr></table></figure>
+
+<p>This is not what we want!! </p>
+<p>To prove <code>double_injective</code>, we hope <code>IHn&#39;</code> can give us <code>double n&#39; = double m&#39; -&gt; n&#39; = m&#39;</code> (i.e. the <code>P(n-1)</code> case).</p>
+<p>The problem is <code>intros</code> implies <em>for these particular <code>n</code> and <code>m</code></em>. (not more <code>forall</code> but <em>const</em>).  And when we <code>intros n m. induction n</code>, we are trying to prove a statement involving <em>every</em> n but just a <em>single</em> m…</p>
+<h3 id="How-to-keep-m-generic-universal"><a href="#How-to-keep-m-generic-universal" class="headerlink" title="How to keep m generic (universal)?"></a><em>How to keep <code>m</code> generic (universal)?</em></h3><p>By either <code>induction n</code> before <code>intros m</code> or using <code>generalize dependent m</code>, we can have:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IHn&#x27; : <span class="keyword">forall</span> m : nat, <span class="built_in">double</span> n&#x27; = <span class="built_in">double</span> m -&gt; n&#x27; = m</span><br></pre></td></tr></table></figure>
+<p>where the <code>m</code> here is still universally quantified, so we can instaniate <code>m</code> with <code>m&#39;</code> by <code>apply</code>ing it with <code>double n&#39; = double m&#39;</code> to yield <code>n&#39; = m&#39;</code> or vice versa. (recall conditional statements can be <code>apply</code>ed in 2 ways.)</p>
+<h3 id="Notes-on-generalize-dependent"><a href="#Notes-on-generalize-dependent" class="headerlink" title="Notes on generalize dependent"></a>Notes on <code>generalize dependent</code></h3><p>Usually used when the argument order is conflict with instantiate (<code>intros</code>) order.</p>
+<blockquote>
+<p>? <em>reflection</em>: turing a computational result into a propositional result </p>
+</blockquote>
+<h2 id="Unfolding-Definitions"><a href="#Unfolding-Definitions" class="headerlink" title="Unfolding Definitions."></a>Unfolding Definitions.</h2><blockquote>
+<p>tactics like <code>simpl</code>, <code>reflexivity</code>, and <code>apply</code> will often unfold the definitions of functions automatically.<br>However, this automatic unfolding is somewhat <em>conservative</em>. </p>
+</blockquote>
+<p><code>simpl.</code> only do unfolding when it can furthur simplify after unfolding. But sometimes you might want to explicitly <code>unfold</code> then do furthur works on that.</p>
+<h2 id="Using-destruct-on-Compound-Expressions"><a href="#Using-destruct-on-Compound-Expressions" class="headerlink" title="Using destruct on Compound Expressions"></a>Using <code>destruct</code> on Compound Expressions</h2><p>destruct the whole arbitrary expression.</p>
+<p><code>destruct</code> by default throw away the whole expression after it, which might leave you into a stuck state.<br>So explicitly saying <code>eqn:Name</code> would help with that!</p>
+<h2 id="Micro-Sermon-Mindless-proof-hacking"><a href="#Micro-Sermon-Mindless-proof-hacking" class="headerlink" title="Micro Sermon - Mindless proof-hacking"></a>Micro Sermon - Mindless proof-hacking</h2><p>From Coq Intensive…</p>
+<ul>
+<li>a lot of fun </li>
+<li>…w&#x2F;o thinking at all</li>
+<li>terrible temptation</li>
+<li>you shouldn’t always resist…</li>
+</ul>
+<p>But after 5 mins…you should step back and try to think</p>
+<p>A typical coq user</p>
+<ul>
+<li>sitting and does not have their brain engaged all the time…</li>
+<li>at some point…(get stuck)<ul>
+<li>oh I have to reengage brain..</li>
+</ul>
+</li>
+</ul>
+<p>what is this really saying…</p>
+<p>One way: good old paper and pencil</p>
+<p>5 mins is good time!</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/LF-%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80/" rel="tag"># LF (逻辑基础)</a>
+              <a href="/tags/SF-%E8%BD%AF%E4%BB%B6%E5%9F%BA%E7%A1%80/" rel="tag"># SF (软件基础)</a>
+              <a href="/tags/Coq/" rel="tag"># Coq</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/read_sf_lf/2019-01-06-sf-lf-06-logic/" rel="prev" title="「SF-LC」6 Logic">
+                  <i class="fa fa-angle-left"></i> 「SF-LC」6 Logic
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/read_sf_lf/2019-01-04-sf-lf-04-poly/" rel="next" title="「SF-LC」4 Poly">
+                  「SF-LC」4 Poly <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2426182848439341"
+     crossorigin="anonymous"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33RJLY0818"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33RJLY0818');
+</script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="issues on coqc module linkingSome module (e.g.Map) not foundeither maunally make map.vo or proof general can solve that. Behavioral Equivalence 行为等价 How to define the correctness of program transforma">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「SF-PLF」1 Equiv">
+<meta property="og:url" content="https://www.vvbuys.com/read_sf_plf/2019-03-01-sf-plf-01-equiv/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="issues on coqc module linkingSome module (e.g.Map) not foundeither maunally make map.vo or proof general can solve that. Behavioral Equivalence 行为等价 How to define the correctness of program transforma">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-02T01:05:07.548Z">
+<meta property="article:modified_time" content="2024-02-02T01:05:07.548Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="SF (软件基础)">
+<meta property="article:tag" content="Coq">
+<meta property="article:tag" content="PLF (编程语言基础)">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/read_sf_plf/2019-03-01-sf-plf-01-equiv/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/read_sf_plf/2019-03-01-sf-plf-01-equiv/","path":"read_sf_plf/2019-03-01-sf-plf-01-equiv/","title":"「SF-PLF」1 Equiv"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>「SF-PLF」1 Equiv | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#issues-on-coqc-module-linking"><span class="nav-number">1.</span> <span class="nav-text">issues on coqc module linking</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Behavioral-Equivalence-%E8%A1%8C%E4%B8%BA%E7%AD%89%E4%BB%B7"><span class="nav-number"></span> <span class="nav-text">Behavioral Equivalence 行为等价</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Definitions"><span class="nav-number">1.</span> <span class="nav-text">Definitions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-1-Simple-but-demonstrated"><span class="nav-number">2.</span> <span class="nav-text">Example 1 - Simple (but demonstrated)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-2-WHILE-true-non-terminating"><span class="nav-number">3.</span> <span class="nav-text">Example 2 - WHILE true non-terminating</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-3-Loop-Unrolling"><span class="nav-number">4.</span> <span class="nav-text">Example 3 - Loop Unrolling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-4-Use-of-extenionality-%E5%A4%96%E5%BB%B6%E6%80%A7"><span class="nav-number">5.</span> <span class="nav-text">Example 4 - Use of extenionality 外延性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Properties-of-Behavioral-Equivalence-%E8%A1%8C%E4%B8%BA%E7%AD%89%E4%BB%B7%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="nav-number"></span> <span class="nav-text">Properties of Behavioral Equivalence 行为等价的性质</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AD%89%E4%BB%B7%E5%85%B3%E7%B3%BB-Equivalence"><span class="nav-number">1.</span> <span class="nav-text">等价关系 (Equivalence)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8C%E4%BD%99%E5%85%B3%E7%B3%BB%EF%BC%88Congruence%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">同余关系（Congruence）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-Using-Congruence"><span class="nav-number">3.</span> <span class="nav-text">Example - Using Congruence</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Program-Transformations-%E7%A8%8B%E5%BA%8F%E5%8F%98%E6%8D%A2"><span class="nav-number"></span> <span class="nav-text">Program Transformations 程序变换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Constant-Folding-%E5%B8%B8%E9%87%8F%E6%8A%98%E5%8F%A0"><span class="nav-number">1.</span> <span class="nav-text">Constant Folding 常量折叠</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Soundness-of-Constant-Folding"><span class="nav-number">2.</span> <span class="nav-text">Soundness of Constant Folding</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#aexp"><span class="nav-number">2.1.</span> <span class="nav-text">aexp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bexp"><span class="nav-number">2.2.</span> <span class="nav-text">bexp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cmd"><span class="nav-number">2.3.</span> <span class="nav-text">cmd</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Soundness-of-0-n"><span class="nav-number">3.</span> <span class="nav-text">Soundness of (0 + n)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Proving-Inequivalence-%E8%AF%81%E6%98%8E%E7%A8%8B%E5%BA%8F%E4%B8%8D%E7%AD%89%E4%BB%B7"><span class="nav-number"></span> <span class="nav-text">Proving Inequivalence 证明程序不等价</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Extended-Exercise-Nondeterministic-Imp"><span class="nav-number"></span> <span class="nav-text">Extended Exercise: Nondeterministic Imp </span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Small-Step"><span class="nav-number"></span> <span class="nav-text">Small-Step</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#deterministic"><span class="nav-number"></span> <span class="nav-text">deterministic</span></a></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/read_sf_plf/2019-03-01-sf-plf-01-equiv/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="「SF-PLF」1 Equiv | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「SF-PLF」1 Equiv
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:05:07" itemprop="dateCreated datePublished" datetime="2024-02-02T01:05:07+00:00">2024-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="issues-on-coqc-module-linking"><a href="#issues-on-coqc-module-linking" class="headerlink" title="issues on coqc module linking"></a>issues on <code>coqc</code> module linking</h3><p>Some module (e.g.<code>Map</code>) not found<br>either maunally <code>make map.vo</code> or proof general can solve that.</p>
+<h2 id="Behavioral-Equivalence-行为等价"><a href="#Behavioral-Equivalence-行为等价" class="headerlink" title="Behavioral Equivalence 行为等价"></a>Behavioral Equivalence 行为等价</h2><blockquote>
+<p>How to define <em>the correctness of program transformation</em>, e.g. <code>optimize_0plus</code> ?</p>
+</blockquote>
+<ul>
+<li>in the setting w&#x2F;o var (imp w&#x2F;o var and state) : yield a program the evals to same number as original.</li>
+<li>in the setting w&#x2F; var (full imp w&#x2F; assignment) : we need to consider the role of var and state.</li>
+</ul>
+<h3 id="Definitions"><a href="#Definitions" class="headerlink" title="Definitions"></a>Definitions</h3><blockquote>
+<p>Two <code>aexps</code> or <code>bexps</code> are <em>behaviorally equivalent</em> if they evaluate to the same result <strong>in every state</strong>.</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> aequiv (a1 a2 : aexp) : <span class="keyword">Prop</span> :=</span><br><span class="line">  ∀(st : state), aeval st a1 = aeval st a2.</span><br><span class="line"><span class="keyword">Definition</span> bequiv (b1 b2 : bexp) : <span class="keyword">Prop</span> :=</span><br><span class="line">  ∀(st : state), beval st b1 = beval st b2.</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>For commands, We can’t simply say … if they evaluate to the same ending state<br><strong>some commands don’t terminate in any final state at all!</strong></p>
+</blockquote>
+<p>So to define, they either or…</p>
+<ol>
+<li>both diverge 都发散</li>
+<li>both terminate in the same final state 都在同一个状态停机</li>
+</ol>
+<p>A compact way is </p>
+<blockquote>
+<p>“if the first one terminates in a particular state then so does the second, and vice versa.”</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> cequiv (c1 c2 : com) : <span class="keyword">Prop</span> :=</span><br><span class="line">  ∀(st st&#x27; : state),</span><br><span class="line">    (st =[ c1 ]⇒ st&#x27;) ↔ (st =[ c2 ]⇒ st&#x27;). </span><br></pre></td></tr></table></figure>
+
+<h3 id="Example-1-Simple-but-demonstrated"><a href="#Example-1-Simple-but-demonstrated" class="headerlink" title="Example 1 - Simple (but demonstrated)"></a>Example 1 - Simple (but demonstrated)</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> skip_left : <span class="keyword">forall</span> c,</span><br><span class="line">  cequiv (SKIP;; c) c.</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span> c st st&#x27;. <span class="built_in">split</span>; <span class="built_in">intros</span> H.</span><br><span class="line">  - <span class="comment">(* -&gt; *)</span>         </span><br><span class="line">    <span class="built_in">inversion</span> H; <span class="built_in">subst</span>.  <span class="comment">(* inverse E_Seq   *)</span></span><br><span class="line">    <span class="built_in">inversion</span> H2. <span class="built_in">subst</span>. <span class="comment">(* inverse E_Skip  *)</span></span><br><span class="line">    <span class="built_in">assumption</span>.</span><br><span class="line">  - <span class="comment">(* &lt;- *)</span>             <span class="comment">(* reversely *)</span></span><br><span class="line">    <span class="built_in">apply</span> E_Seq <span class="built_in">with</span> st. <span class="comment">(* apply E_Seq *)</span></span><br><span class="line">    <span class="built_in">apply</span> E_Skip.        <span class="comment">(* apply E_Skip *)</span></span><br><span class="line">    <span class="built_in">assumption</span>.</span><br><span class="line"><span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
+
+<p>Noticed that the <code>inversion</code> is like use the <em>inverse function</em> of constructors.</p>
+<h3 id="Example-2-WHILE-true-non-terminating"><a href="#Example-2-WHILE-true-non-terminating" class="headerlink" title="Example 2 - WHILE true non-terminating"></a>Example 2 - WHILE true non-terminating</h3><p>one interesting theorem is that we can prove <code>WHILE &lt;things ⇓ true&gt;</code> is not terminating.<br>and is equivalent to <em>any other non-terminating program</em>, e.g. <code>WHILE BTrue DO SKIP END</code>: (因为我们的「等价」只要求同「发散」即可)</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> WHILE_true : ∀b c,</span><br><span class="line">  bequiv b true →</span><br><span class="line">  cequiv</span><br><span class="line">    (WHILE b DO c END)</span><br><span class="line">    (WHILE true DO SKIP END).</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="Example-3-Loop-Unrolling"><a href="#Example-3-Loop-Unrolling" class="headerlink" title="Example 3 - Loop Unrolling"></a>Example 3 - Loop Unrolling</h3><blockquote>
+<p><em>any number of copies of the body</em> can be “unrolled” without changing meaning</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> loop_unrolling : ∀b c,</span><br><span class="line">  cequiv</span><br><span class="line">    (WHILE b DO c END)         </span><br><span class="line">    (TEST b THEN (c ;; WHILE b DO c END) ELSE SKIP FI).    <span class="comment">(** 展开一层 **)</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="Example-4-Use-of-extenionality-外延性"><a href="#Example-4-Use-of-extenionality-外延性" class="headerlink" title="Example 4 - Use of extenionality 外延性"></a>Example 4 - Use of extenionality 外延性</h3><p><code>x !-&gt; m x ; x</code> is same map with <code>m</code> by extenionality!</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> identity_assignment : ∀x,</span><br><span class="line">  cequiv (x ::= x) SKIP.</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="Properties-of-Behavioral-Equivalence-行为等价的性质"><a href="#Properties-of-Behavioral-Equivalence-行为等价的性质" class="headerlink" title="Properties of Behavioral Equivalence 行为等价的性质"></a>Properties of Behavioral Equivalence 行为等价的性质</h2><h3 id="等价关系-Equivalence"><a href="#等价关系-Equivalence" class="headerlink" title="等价关系 (Equivalence)"></a>等价关系 (Equivalence)</h3><blockquote>
+<p>自反性（reflexive）、对称性（symmetric）和传递性 （transitive）</p>
+</blockquote>
+<h3 id="同余关系（Congruence）"><a href="#同余关系（Congruence）" class="headerlink" title="同余关系（Congruence）"></a>同余关系（Congruence）</h3><blockquote>
+<p>That is, the equivalence of two subprograms implies the equivalence of the larger programs in which they are <em>embedded</em><br>如果两个子程序等价，那么当二者所在的更大的程序中_只有二者不同_时， 这两个更大的程序也等价</p>
+</blockquote>
+<pre><code>          aequiv a1 a1&#39;
+  -----------------------------
+  cequiv (x ::= a1) (x ::= a1&#39;)
+
+          cequiv c1 c1&#39;
+          cequiv c2 c2&#39;
+     --------------------------
+     cequiv (c1;;c2) (c1&#39;;;c2&#39;)
+</code></pre>
+<blockquote>
+<p>这个术语应该是来自抽象代数 : 能在运算下保持的等价关系<br>…in the sense that algebraic operations done with equivalent elements will yield equivalent elements.<br><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Congruence_relation">Congruence relation</a></p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> CAss_congruence : ∀x a1 a1&#x27;,     <span class="comment">(** cequiv 是集合 commands 上的等价关系 **)</span></span><br><span class="line">  aequiv a1 a1&#x27; →</span><br><span class="line">  cequiv (CAss x a1) (CAss x a1&#x27;).       <span class="comment">(** 在 `CAss` 这个 operation 下保持等价 =&gt; 同余 **)</span></span><br><span class="line">  cequiv (x ::= a1) (x ::= a1&#x27;).         <span class="comment">(** 或，在 `::=` 这个 command 下保持等价 =&gt; 同余 **)</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在 commands 上等价但不同余的关系?</p>
+</blockquote>
+<p>I guess…”both terminating” relation?<br>which is equivalence relation on commands, but the equivalence would not be maintained after, say <code>C_WHILE</code> operation.</p>
+<h3 id="Example-Using-Congruence"><a href="#Example-Using-Congruence" class="headerlink" title="Example - Using Congruence"></a>Example - Using Congruence</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Example</span> congruence_example:</span><br><span class="line">  cequiv</span><br><span class="line">    <span class="comment">(* 程序 1： *)</span></span><br><span class="line">    (X ::= <span class="number">0</span>;;</span><br><span class="line">     TEST X = <span class="number">0</span></span><br><span class="line">     THEN</span><br><span class="line">       Y ::= <span class="number">0</span></span><br><span class="line">     ELSE</span><br><span class="line">       Y ::= <span class="number">42</span></span><br><span class="line">     FI)</span><br><span class="line">    <span class="comment">(* 程序 2： *)</span></span><br><span class="line">    (X ::= <span class="number">0</span>;;</span><br><span class="line">     TEST X = <span class="number">0</span></span><br><span class="line">     THEN</span><br><span class="line">       Y ::= X - X <span class="comment">(* &lt;--- 这里不同 *)</span></span><br><span class="line">     ELSE</span><br><span class="line">       Y ::= <span class="number">42</span></span><br><span class="line">     FI).</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">apply</span> CSeq_congruence.</span><br><span class="line">  - <span class="built_in">apply</span> refl_cequiv.</span><br><span class="line">  - <span class="built_in">apply</span> CIf_congruence.</span><br><span class="line">    + <span class="built_in">apply</span> refl_bequiv.</span><br><span class="line">    + <span class="built_in">apply</span> CAss_congruence.     <span class="comment">(** &lt;--- 化简到只需要证明 aequiv 0 (X - X) **)</span> </span><br><span class="line">      <span class="built_in">unfold</span> aequiv. <span class="built_in">simpl</span>.</span><br><span class="line">      * <span class="built_in">symmetry</span>. <span class="built_in">apply</span> minus_diag.</span><br><span class="line">    + <span class="built_in">apply</span> refl_cequiv.</span><br><span class="line"><span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="Program-Transformations-程序变换"><a href="#Program-Transformations-程序变换" class="headerlink" title="Program Transformations 程序变换"></a>Program Transformations 程序变换</h2><blockquote>
+<p>A program transformation is <em>sound</em> if it preserves the behavior of the original program.<br>如果一个程序变换保留了其原始行为，那么它就是_可靠_的</p>
+</blockquote>
+<p>我们可以定义在不同集合 <code>aexp, bexp, com</code> 上的 sound 关系：<br>(有趣的是，<code>Inductive</code> 定义的非 <code>Prop</code> 的 <code>Type</code>, 确实就是 <code>Set</code>, 这是一种 PL 和数学的 Correspondence)</p>
+<ul>
+<li>当我们的 datatype 是 constructor 时 &#x3D;&gt; 不交并</li>
+<li>当我们的 datatype 有 recursive   时 &#x3D;&gt; 集合的递归定义</li>
+</ul>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> atrans_sound (atrans : aexp → aexp) : <span class="keyword">Prop</span> :=</span><br><span class="line">  ∀(a : aexp), aequiv a (atrans a).</span><br><span class="line"><span class="keyword">Definition</span> btrans_sound (btrans : bexp → bexp) : <span class="keyword">Prop</span> :=</span><br><span class="line">  ∀(b : bexp), bequiv b (btrans b).</span><br><span class="line"><span class="keyword">Definition</span> ctrans_sound (ctrans : com → com) : <span class="keyword">Prop</span> :=</span><br><span class="line">  ∀(c : com), cequiv c (ctrans c).</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="Constant-Folding-常量折叠"><a href="#Constant-Folding-常量折叠" class="headerlink" title="Constant Folding 常量折叠"></a>Constant Folding 常量折叠</h3><blockquote>
+<p>An expression is <em>constant</em> when it contains no variable references.<br>不引用变量的表达式为_常量_</p>
+</blockquote>
+<blockquote>
+<p>Constant folding is an <em>optimization</em> that finds constant expressions and replaces them by their values.<br>常量折叠是一种找到常量表达式并把它们替换为其值的优化方法。</p>
+</blockquote>
+<h3 id="Soundness-of-Constant-Folding"><a href="#Soundness-of-Constant-Folding" class="headerlink" title="Soundness of Constant Folding"></a>Soundness of Constant Folding</h3><h4 id="aexp"><a href="#aexp" class="headerlink" title="aexp"></a><code>aexp</code></h4><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> fold_constants_aexp_sound :</span><br><span class="line">  atrans_sound fold_constants_aexp.</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">unfold</span> atrans_sound. <span class="built_in">intros</span> a. <span class="built_in">unfold</span> aequiv. <span class="built_in">intros</span> st.</span><br><span class="line">  </span><br><span class="line"><span class="comment">(** 这个时候的状态：**)</span></span><br><span class="line"></span><br><span class="line">  a : aexp</span><br><span class="line">  st : state</span><br><span class="line">  ============================</span><br><span class="line">  aeval st a = aeval st (fold_constants_aexp a)</span><br><span class="line">  </span><br></pre></td></tr></table></figure>
+
+<h4 id="bexp"><a href="#bexp" class="headerlink" title="bexp"></a><code>bexp</code></h4><p>证明 <code>btrans_sound fold_constants_bexp.</code> 要难一些，因为其中还用到了 <code>fold_constants_aexp</code>, 所以我们需要一些技巧</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">(** 如果不记住而是直接 destruct 的话，这部分信息就丢失了 **)</span></span><br><span class="line">    <span class="built_in">remember</span> (fold_constants_aexp a1) <span class="built_in">as</span> a1&#x27; eqn:Heqa1&#x27;.</span><br><span class="line">    <span class="built_in">remember</span> (fold_constants_aexp a2) <span class="built_in">as</span> a2&#x27; eqn:Heqa2&#x27;.</span><br><span class="line"></span><br><span class="line"><span class="comment">(** 保留了这部分信息的目的是，使用 aexp 的可靠性定理来建立 aexp 与 值 的关系 **)</span></span><br><span class="line">    <span class="built_in">replace</span> (aeval st a1) <span class="built_in">with</span> (aeval st a1&#x27;) <span class="built_in">by</span></span><br><span class="line">       (<span class="built_in">subst</span> a1&#x27;; <span class="built_in">rewrite</span> &lt;- fold_constants_aexp_sound; <span class="built_in">reflexivity</span>).</span><br><span class="line">    <span class="built_in">replace</span> (aeval st a2) <span class="built_in">with</span> (aeval st a2&#x27;) <span class="built_in">by</span></span><br><span class="line">       (<span class="built_in">subst</span> a2&#x27;; <span class="built_in">rewrite</span> &lt;- fold_constants_aexp_sound; <span class="built_in">reflexivity</span>).</span><br><span class="line"></span><br><span class="line"><span class="comment">(** 最后才分类讨论 **)</span></span><br><span class="line">    <span class="built_in">destruct</span> a1&#x27;; <span class="built_in">destruct</span> a2&#x27;; <span class="built_in">try</span> <span class="built_in">reflexivity</span>.</span><br></pre></td></tr></table></figure>
+
+<h4 id="cmd"><a href="#cmd" class="headerlink" title="cmd"></a><code>cmd</code></h4><p>主要技巧在于配合使用 <code>Congruence</code> 与 <code>IH</code> 解决大部分 case，然后分类讨论 <code>fold_constants_bexp</code> 用 <code>sound</code> 做替换解决剩余 case.</p>
+<h3 id="Soundness-of-0-n"><a href="#Soundness-of-0-n" class="headerlink" title="Soundness of (0 + n)"></a>Soundness of (0 + n)</h3><p>类似，但是接下来我们就可以证明先 <code> fold_constants</code> 再 <code>optimize_0plus</code> 也是 sound 的.<br>这里我更 general 得证明了 <code>ctrans</code> 关系的传递性：</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> trans_ctrans_sound : <span class="keyword">forall</span> tr1 tr2,</span><br><span class="line">  ctrans_sound tr1 -&gt; </span><br><span class="line">  ctrans_sound tr2 -&gt; </span><br><span class="line">  ctrans_sound (<span class="keyword">fun</span> c =&gt; tr2 (tr1 c)).</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<h2 id="Proving-Inequivalence-证明程序不等价"><a href="#Proving-Inequivalence-证明程序不等价" class="headerlink" title="Proving Inequivalence 证明程序不等价"></a>Proving Inequivalence 证明程序不等价</h2><p>在这个例子中，<code>subst_aexp</code> 是 sound 得，被称为 <em>Constant Propagation</em> (常量传播)</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">(**    [X := 42 + 53](Y + X)  =&gt;  Y + (42 + 53)    **)</span></span><br><span class="line"><span class="keyword">Example</span> subst_aexp_ex :</span><br><span class="line">  subst_aexp X (<span class="number">42</span> + <span class="number">53</span>) (Y + X)%imp = (Y + (<span class="number">42</span> + <span class="number">53</span>))%imp.</span><br><span class="line"><span class="keyword">Proof</span>. <span class="built_in">reflexivity</span>. <span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
+
+<p>所以我们断言这么做是 always sound 得： </p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> subst_equiv_property := ∀x1 x2 a1 a2,</span><br><span class="line">  cequiv (x1 ::= a1;; x2 ::= a2)</span><br><span class="line">         (x1 ::= a1;; x2 ::= subst_aexp x1 a1 a2).</span><br></pre></td></tr></table></figure>
+
+<p>然而如果 <code>a1</code> 不是常量，副作用很容易让这个转换 unsound<br>那么怎么证明 <code>¬subst_equiv_property</code> (即该性质不成立)? 举一个反例就好</p>
+<p>Informal proof</p>
+<ul>
+<li>provide a witness</li>
+</ul>
+<p>Formal</p>
+<ul>
+<li>give counterexamples via <code>remember</code>, then show <code>⊥</code>.</li>
+</ul>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">(** 给出一组反例，使用性质证明他们 cequiv **)</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">remember</span> (X ::= X + <span class="number">1</span>;;</span><br><span class="line">            Y ::= X)%imp     <span class="built_in">as</span> c1.</span><br><span class="line">  <span class="built_in">remember</span> (X ::= X + <span class="number">1</span>;;</span><br><span class="line">            Y ::= X + <span class="number">1</span>)%imp <span class="built_in">as</span> c2.</span><br><span class="line">  <span class="built_in">assert</span> (cequiv c1 c2) <span class="built_in">by</span> (<span class="built_in">subst</span>; <span class="built_in">apply</span> Contra).</span><br><span class="line">  </span><br><span class="line"><span class="comment">(* =&gt; *)</span>  Heqc1 : c1 = (X ::= X + <span class="number">1</span>;; Y ::= X)%imp</span><br><span class="line">          Heqc2 : c2 = (X ::= X + <span class="number">1</span>;; Y ::= X + <span class="number">1</span>)%imp</span><br><span class="line">          H : cequiv c1 c2</span><br><span class="line">          ============================</span><br><span class="line">          False</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment">(** 给出他们将 eval 出不同的 heap **)</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">remember</span> (Y !-&gt; <span class="number">1</span> ; X !-&gt; <span class="number">1</span>) <span class="built_in">as</span> st1.</span><br><span class="line">  <span class="built_in">remember</span> (Y !-&gt; <span class="number">2</span> ; X !-&gt; <span class="number">1</span>) <span class="built_in">as</span> st2.</span><br><span class="line">  <span class="built_in">assert</span> (H1 : empty_st =[ c1 ]=&gt; st1);</span><br><span class="line">  <span class="built_in">assert</span> (H2 : empty_st =[ c2 ]=&gt; st2);</span><br><span class="line"></span><br><span class="line">  <span class="built_in">apply</span> H <span class="built_in">in</span> H1. <span class="comment">(** 使用 H : cequiv c1 c2 , 我们得到 **)</span></span><br><span class="line">  </span><br><span class="line"><span class="comment">(* =&gt; *)</span>  H1 : empty_st =[ c2 ]=&gt; st1</span><br><span class="line">          H2 : empty_st =[ c2 ]=&gt; st2</span><br><span class="line">          ============================</span><br><span class="line">          False</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">(** 利用 ceval 的 deterministic **)</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">assert</span> (Hcontra : st1 = st2)</span><br><span class="line">    <span class="built_in">by</span> (<span class="built_in">apply</span> (ceval_deterministic c2 empty_st); <span class="built_in">assumption</span>).</span><br><span class="line">    </span><br><span class="line"><span class="comment">(* =&gt; *)</span>  Hcontra : st1 = st2</span><br><span class="line">          ============================</span><br><span class="line">          False</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"><span class="comment">(** st1, st2 are map, which are actually function! </span></span><br><span class="line"><span class="comment">    这时我们可以反用 functional extenionality，直接 apply Y 然后 discrinminate **)</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">assert</span> (Hcontra&#x27; : st1 Y = st2 Y)</span><br><span class="line">    <span class="built_in">by</span> (<span class="built_in">rewrite</span> Hcontra; <span class="built_in">reflexivity</span>).</span><br><span class="line">  <span class="built_in">subst</span>. <span class="built_in">inversion</span> Hcontra&#x27;.  <span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h2 id="Extended-Exercise-Nondeterministic-Imp"><a href="#Extended-Exercise-Nondeterministic-Imp" class="headerlink" title="Extended Exercise: Nondeterministic Imp "></a>Extended Exercise: Nondeterministic Imp </h2><blockquote>
+<p>HAVOC roughly corresponds to an <em>uninitialized variable</em> in a low-level language like C.<br>After the HAVOC, the variable holds a fixed but arbitrary number.</p>
+</blockquote>
+<p>我们增加一个 <code>HAVOC X</code> 语句（大灾难），会为 X 随机赋一个值…类似于「未初始化变量」</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> com : <span class="keyword">Type</span> :=</span><br><span class="line">  ...</span><br><span class="line">  | <span class="type">CHavoc</span> : string → com. <span class="comment">(* &lt;--- 新增 *)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;&#x27;HAVOC&#x27; l&quot;</span> :=</span><br><span class="line">  (CHavoc l) (<span class="built_in">at</span> level <span class="number">60</span>) : imp_scope.</span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="keyword">Inductive</span> ceval : com -&gt; state -&gt; state -&gt; <span class="keyword">Prop</span> :=</span><br><span class="line">  ...</span><br><span class="line">  | <span class="type">E_Havoc</span> : <span class="keyword">forall</span> st (n : nat) x,</span><br><span class="line">      st =[ HAVOC x ]=&gt; (x !-&gt; n)        <span class="comment">(** can eval to arbitraty heap **)</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<hr>
+<h1 id="Small-Step"><a href="#Small-Step" class="headerlink" title="Small-Step"></a>Small-Step</h1><h2 id="deterministic"><a href="#deterministic" class="headerlink" title="deterministic"></a>deterministic</h2><p>also the def of partial function?</p>
+<p><code>solve_by_inverts</code></p>
+<p>in LTac. (used to generate proof)<br>LTac doesn’t have <em>termination check</em>. (might not be able to find…)</p>
+<p><code>match</code> is back-tracking point.</p>
+<p>number passing in &#x3D; depth of the iteration&#x2F;recursion</p>
+<hr>
+<p><code>ST_Plus2</code> need <code>value v1</code>. not redundant with <code>ST_Plus1</code><br>we might have things not <code>value</code> but cannot take step as well.</p>
+<hr>
+<p>Strong Progress</p>
+<p>Normal form</p>
+<p>&#x3D; no relation related to (so cannot step to)</p>
+<p>vs Value…</p>
+<p><code>destruct (apply t)</code>.<br>can we do that?</p>
+<hr>
+<p>Slide Q&amp;A.</p>
+<p>value_not_sae_as normal_form</p>
+<p>e.g (1+2) + 7<br>e.g. 3 + 7</p>
+<hr>
+<p>One-step</p>
+<ul>
+<li>plus</li>
+<li>left  + 0</li>
+<li>right + 0</li>
+</ul>
+<p>Inf-step -&gt; Inf terms</p>
+<p>go from 3 to <code>3+0</code></p>
+<hr>
+<p>Stuck</p>
+<p>No StepR</p>
+<p>0 term can step into</p>
+<hr>
+<p>Multi-Step Reduction <code>-&gt;*</code></p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> multi &#123;X : <span class="keyword">Type</span>&#125; (R : relation X) : relation X :=</span><br><span class="line">  | <span class="type">multi_refl</span> : ∀(x : X), multi R x x</span><br><span class="line">  | <span class="type">multi_step</span> : ∀(x y z : X),</span><br><span class="line">                    R x y →</span><br><span class="line">                    multi R y z →</span><br><span class="line">                    multi R x z.</span><br></pre></td></tr></table></figure>
+
+
+<p>can be either defined as a “head + tail” style (or “tail + head” style), or “refl + trans” style (as in <code>Rel.v</code>).</p>
+<p>the <code>trans</code> relation are underteministic  in terms of the transtive relation using. (you can throw infinitely many <code>trans</code> constructors in)</p>
+<blockquote>
+<p>having multiple form so we can jump back and forth to pick one easier for proof.</p>
+</blockquote>
+<hr>
+<p>PLT PM lang</p>
+<p>multiple smallstep relation can be markded deepner state.qjw<br>er state.</p>
+<hr>
+<p>IMP</p>
+<p><code>astep</code> no need for &#96;value&#96;&#96;</p>
+<p>for <code>If</code>, in PLT we have 2 rules for T&#x2F;F.<br>here we can compute…</p>
+<hr>
+<p>Par w&#x2F;o Concurrency is deterministic<br>(not vice versa)</p>
+<p>suddenly <code>/ -&gt;* /</code> tuple</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/SF-%E8%BD%AF%E4%BB%B6%E5%9F%BA%E7%A1%80/" rel="tag"># SF (软件基础)</a>
+              <a href="/tags/Coq/" rel="tag"># Coq</a>
+              <a href="/tags/PLF-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" rel="tag"># PLF (编程语言基础)</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/read_sf_plf/2019-03-05-sf-plf-05-smallstep/" rel="prev" title="「SF-PLF」5 Smallstep">
+                  <i class="fa fa-angle-left"></i> 「SF-PLF」5 Smallstep
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/read_sf_lf/2019-01-16-sf-lf-16-auto/" rel="next" title="「SF-LC」16 Auto">
+                  「SF-LC」16 Auto <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

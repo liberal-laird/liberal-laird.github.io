@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2426182848439341"
+     crossorigin="anonymous"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33RJLY0818"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33RJLY0818');
+</script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="The has_type relation is good but doesn’t give us a executable algorithm – 不是一个算法but it’s syntax directed, just one typing rule for one term (unique typing) – translate into function!  Comparing Type">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「SF-PLF」11. TypeChecking">
+<meta property="og:url" content="https://www.vvbuys.com/read_sf_plf/2019-03-11-sf-plf-11-typechecking/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="The has_type relation is good but doesn’t give us a executable algorithm – 不是一个算法but it’s syntax directed, just one typing rule for one term (unique typing) – translate into function!  Comparing Type">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-02T01:05:07.548Z">
+<meta property="article:modified_time" content="2024-02-02T01:05:07.548Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="SF (软件基础)">
+<meta property="article:tag" content="Coq">
+<meta property="article:tag" content="PLF (编程语言基础)">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/read_sf_plf/2019-03-11-sf-plf-11-typechecking/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/read_sf_plf/2019-03-11-sf-plf-11-typechecking/","path":"read_sf_plf/2019-03-11-sf-plf-11-typechecking/","title":"「SF-PLF」11. TypeChecking"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>「SF-PLF」11. TypeChecking | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Comparing-Types"><span class="nav-number">1.</span> <span class="nav-text">Comparing Types</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-Typechecker"><span class="nav-number">2.</span> <span class="nav-text">The Typechecker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Digression-Improving-the-Notation"><span class="nav-number">3.</span> <span class="nav-text">Digression: Improving the Notation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Properties"><span class="nav-number">4.</span> <span class="nav-text">Properties</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exercise"><span class="nav-number">5.</span> <span class="nav-text">Exercise</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Extra-Exercise-Prof-Mtf"><span class="nav-number">6.</span> <span class="nav-text">Extra Exercise (Prof.Mtf)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#step-vs-stepf"><span class="nav-number">6.1.</span> <span class="nav-text">step vs. stepf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Soundness"><span class="nav-number">6.2.</span> <span class="nav-text">Soundness</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Completeness"><span class="nav-number">6.3.</span> <span class="nav-text">Completeness</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Extra-Mentioned"><span class="nav-number">7.</span> <span class="nav-text">Extra (Mentioned)</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/read_sf_plf/2019-03-11-sf-plf-11-typechecking/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="「SF-PLF」11. TypeChecking | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「SF-PLF」11. TypeChecking
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:05:07" itemprop="dateCreated datePublished" datetime="2024-02-02T01:05:07+00:00">2024-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>The <code>has_type</code> relation is good but doesn’t give us a <em>executable algorithm</em> – 不是一个算法<br>but it’s <em>syntax directed</em>, just one typing rule for one term (unique typing) – translate into function!</p>
+</blockquote>
+<h2 id="Comparing-Types"><a href="#Comparing-Types" class="headerlink" title="Comparing Types"></a>Comparing Types</h2><p>首先我们需要 check equality for types.<br>这里非常简单，如果是 SystemF 会麻烦很多，对 <code>∀</code> 要做 local nameless 或者 alpha renaming:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Fixpoint</span> eqb_ty (T1 T2:ty) : bool :=</span><br><span class="line">  <span class="keyword">match</span> T1,T2 <span class="built_in">with</span></span><br><span class="line">  | <span class="type">Bool</span>, Bool ⇒</span><br><span class="line">      true</span><br><span class="line">  | <span class="type">Arrow</span> T11 T12, Arrow T21 T22 ⇒</span><br><span class="line">      andb (eqb_ty T11 T21) (eqb_ty T12 T22)</span><br><span class="line">  | <span class="type">_</span>,<span class="keyword">_</span> ⇒</span><br><span class="line">      false</span><br><span class="line">  <span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+
+<p>然后我们需要一个 refl 和一个 reflection，准确得说：「define equality by computation」，反方向用 refl 即可易证</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Lemma</span> eqb_ty_refl : ∀T1,</span><br><span class="line">  eqb_ty T1 T1 = true.</span><br><span class="line"></span><br><span class="line"><span class="keyword">Lemma</span> eqb_ty__eq : ∀T1 T2,</span><br><span class="line">  eqb_ty T1 T2 = true → T1 = T2.</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="The-Typechecker"><a href="#The-Typechecker" class="headerlink" title="The Typechecker"></a>The Typechecker</h2><p>直接 syntax directed，不过麻烦的是需要 pattern matching <code>option</code>…</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Fixpoint</span> type_check (Gamma : context) (t : tm) : option ty :=</span><br><span class="line">  <span class="keyword">match</span> t <span class="built_in">with</span></span><br><span class="line">  | <span class="type">var</span> x =&gt;</span><br><span class="line">      Gamma x</span><br><span class="line">  | <span class="type">abs</span> x T11 t12 =&gt;</span><br><span class="line">      <span class="keyword">match</span> type_check (update Gamma x T11) t12 <span class="built_in">with</span>     <span class="comment">(** &lt;-- 对应 t12 的 rule **)</span></span><br><span class="line">      | <span class="type">Some</span> T12 =&gt; Some (Arrow T11 T12)                 </span><br><span class="line">      | <span class="type">_</span> =&gt; None</span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line">  | <span class="type">app</span> t1 t2 =&gt;</span><br><span class="line">      <span class="keyword">match</span> type_check Gamma t1, type_check Gamma t2 <span class="built_in">with</span></span><br><span class="line">      | <span class="type">Some</span> (Arrow T11 T12),Some T2 =&gt;</span><br><span class="line">          <span class="keyword">if</span> eqb_ty T11 T2 <span class="keyword">then</span> Some T12 <span class="keyword">else</span> None       <span class="comment">(** eqb_ty 见下文 **)</span></span><br><span class="line">      | <span class="type">_</span>,<span class="keyword">_</span> =&gt; None</span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line">  ...</span><br></pre></td></tr></table></figure>
+
+<p>在课堂时提到关于 <code>eqb_ty</code> 的一个细节（我以前也经常犯，在 ML&#x2F;Haskell 中……）：<br>我们能不能在 pattern matching 里支持「用同一个 binding 来 imply 说他们两需要 be equal」？</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">(** instead of this **)</span></span><br><span class="line">| <span class="type">Some</span> (Arrow T11 T12),Some T2 =&gt; <span class="keyword">if</span> eqb_ty T11 T2 <span class="keyword">then</span> ...</span><br><span class="line"></span><br><span class="line"><span class="comment">(** can we do this? **)</span></span><br><span class="line">| <span class="type">Some</span> (Arrow T   T&#x27; ),Some T  =&gt; ...</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>the answer is <strong>NO</strong> because this demands a <em>decidable equality</em>.<br>我好奇的是，用 typeclass 是不是就可以 bake in 这个功能了？尤其是在 Coq function 还是 total 的情况下</p>
+</blockquote>
+<h2 id="Digression-Improving-the-Notation"><a href="#Digression-Improving-the-Notation" class="headerlink" title="Digression: Improving the Notation"></a>Digression: Improving the Notation</h2><p>这里我们可以自己定义一个 Haskell <code>do</code> notation 风格的 <em>monadic</em> notation:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Notation</span> <span class="string">&quot; x &lt;- e1 ;; e2&quot;</span> := (<span class="keyword">match</span> e1 <span class="built_in">with</span></span><br><span class="line">                              | <span class="type">Some</span> x ⇒ e2</span><br><span class="line">                              | <span class="type">None</span> ⇒ None</span><br><span class="line">                              <span class="keyword">end</span>)</span><br><span class="line">         (<span class="built_in">right</span> associativity, <span class="built_in">at</span> level <span class="number">60</span>).</span><br><span class="line"></span><br><span class="line"><span class="keyword">Notation</span> <span class="string">&quot; &#x27;return&#x27; e &quot;</span></span><br><span class="line">  := (Some e) (<span class="built_in">at</span> level <span class="number">60</span>).</span><br><span class="line"></span><br><span class="line"><span class="keyword">Notation</span> <span class="string">&quot; &#x27;fail&#x27; &quot;</span></span><br><span class="line">  := None.</span><br></pre></td></tr></table></figure>
+
+<p>好看一些吧反正：</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Fixpoint</span> type_check (Gamma : context) (t : tm) : option ty :=</span><br><span class="line">  <span class="keyword">match</span> t <span class="built_in">with</span></span><br><span class="line">  | <span class="type">var</span> x ⇒</span><br><span class="line">      Gamma x </span><br><span class="line">  | <span class="type">abs</span> x T11 t12 ⇒</span><br><span class="line">      T12 &lt;- type_check (update Gamma x T11) t12 ;;</span><br><span class="line">      <span class="keyword">return</span> (Arrow T11 T12)</span><br><span class="line">  | <span class="type">app</span> t1 t2 ⇒</span><br><span class="line">      T1 &lt;- type_check Gamma t1 ;;</span><br><span class="line">      T2 &lt;- type_check Gamma t2 ;;</span><br><span class="line">      <span class="keyword">match</span> T1 <span class="built_in">with</span> </span><br><span class="line">      | <span class="type">Arrow</span> T11 T12 ⇒ <span class="keyword">if</span> eqb_ty T11 T2 <span class="keyword">then</span> <span class="keyword">return</span> T12 <span class="keyword">else</span> <span class="built_in">fail</span></span><br><span class="line">      | <span class="type">_</span> ⇒ <span class="built_in">fail</span></span><br><span class="line">      <span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Properties"><a href="#Properties" class="headerlink" title="Properties"></a>Properties</h2><p>最后我们需要验证一下算法的正确性：<br>这里的 soundness 和 completess 都是围绕 “typechecking function ~ typing relation inference rule” 这组关系来说的：</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> type_checking_sound : ∀Gamma t T,</span><br><span class="line">  type_check Gamma t = Some T → has_type Gamma t T.</span><br><span class="line"></span><br><span class="line"><span class="keyword">Theorem</span> type_checking_complete : ∀Gamma t T,</span><br><span class="line">  has_type Gamma t T → type_check Gamma t = Some T.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Exercise"><a href="#Exercise" class="headerlink" title="Exercise"></a>Exercise</h2><p>给 <code>MoreStlc.v</code> 里的 StlcE 写 typechecker, 然后 prove soundness &#x2F; completeness （过程中用了非常 mega 的 tactics）</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">(** 还不能这么写 **)</span></span><br><span class="line">| <span class="type">fst</span> p =&gt;</span><br><span class="line">    (Prod T1 T2) &lt;- type_check Gamma p ;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">(** 要这样……感觉是 notation 的缘故？并且要提供 fallback case 才能通过 exhaustive check 是真的 **)</span></span><br><span class="line">| <span class="type">fst</span> p =&gt;</span><br><span class="line">    Tp &lt;- type_check Gamma p ;;</span><br><span class="line">    <span class="keyword">match</span> Tp <span class="built_in">with</span></span><br><span class="line">    | <span class="type">(Prod</span> T1 T2) =&gt; T1</span><br><span class="line">    | <span class="type">_</span> =&gt; <span class="built_in">fail</span></span><br><span class="line">    <span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Extra-Exercise-Prof-Mtf"><a href="#Extra-Exercise-Prof-Mtf" class="headerlink" title="Extra Exercise (Prof.Mtf)"></a>Extra Exercise (Prof.Mtf)</h2><blockquote>
+<p>I believe this part of exercise was added by Prof. Fluet (not found in SF website version)</p>
+</blockquote>
+<p>给 <code>MoreStlc.v</code> 的 operational semantics 写 Interpreter (<code>stepf</code>), 然后 prove soundness &#x2F; completeness… </p>
+<h3 id="step-vs-stepf"><a href="#step-vs-stepf" class="headerlink" title="step vs. stepf"></a><code>step</code> vs. <code>stepf</code></h3><p>首先我们定义了 <code>value</code> 关系的函数版本 <code>valuef</code>，<br>然后我们定义 <code>step</code> 关系的函数版本 <code>stepf</code>:</p>
+<p>以 pure STLC 为例：</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> step : tm -&gt; tm -&gt; <span class="keyword">Prop</span> :=</span><br><span class="line">  | <span class="type">ST_AppAbs</span> : <span class="keyword">forall</span> x T11 t12 v2,</span><br><span class="line">         value v2 -&gt;</span><br><span class="line">         (app (abs x T11 t12) v2) --&gt; [x:=v2]t12</span><br><span class="line">  | <span class="type">ST_App1</span> : <span class="keyword">forall</span> t1 t1&#x27; t2,</span><br><span class="line">         t1 --&gt; t1&#x27; -&gt;</span><br><span class="line">         (app t1 t2) --&gt; (app t1&#x27; t2)</span><br><span class="line">  | <span class="type">ST_App2</span> : <span class="keyword">forall</span> v1 t2 t2&#x27;,</span><br><span class="line">         value v1 -&gt;</span><br><span class="line">         t2 --&gt; t2&#x27; -&gt;</span><br><span class="line">         (app v1 t2) --&gt; (app v1 t2&#x27;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Fixpoint</span> stepf (t : tm) : option tm :=</span><br><span class="line">  <span class="keyword">match</span> t <span class="built_in">with</span></span><br><span class="line">  | <span class="type">var</span> x        =&gt; None <span class="comment">(* We only define step for closed terms *)</span></span><br><span class="line">  | <span class="type">abs</span> x1 T1 t2 =&gt; None <span class="comment">(* Abstraction is a value *)</span></span><br><span class="line">  | <span class="type">app</span> t1 t2    =&gt;</span><br><span class="line">    <span class="keyword">match</span> stepf t1, stepf t2, t1 <span class="built_in">with</span></span><br><span class="line">    | <span class="type">Some</span> t1&#x27;, <span class="keyword">_</span>       , <span class="keyword">_</span>           =&gt;                     Some (app t1&#x27; t2)</span><br><span class="line">    | <span class="type">None</span>    , Some t2&#x27;, <span class="keyword">_</span>           =&gt; <span class="built_in">assert</span> (valuef t1) (Some (app t1 t2&#x27;)) <span class="comment">(* otherwise [t1]      is a normal form *)</span></span><br><span class="line">    | <span class="type">None</span>    , None    , abs x T t11 =&gt; <span class="built_in">assert</span> (valuef t2) (Some ([x:=t2]t11)) <span class="comment">(* otherwise [t1], [t2] are normal forms *)</span></span><br><span class="line">    | <span class="type">_</span>       , <span class="keyword">_</span>       , <span class="keyword">_</span>           =&gt;                     None</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">Definition</span> <span class="built_in">assert</span> (b : bool) (a : option tm) : option tm := <span class="keyword">if</span> b <span class="keyword">then</span> a <span class="keyword">else</span> None.</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>对于关系，一直就是 implicitly applied 的，在可用时即使用。<br>对于函数，我们需要手动指定 match 的顺序</p>
+</li>
+<li><p><code>stepf t1 =&gt; None</code> 只代表这是一个 <code>normal form</code>，但不一定就是 <code>value</code>，还有可能是 stuck 了，所以我们需要额外的 <code>assert</code>ion. (失败时返回异常)<br><strong>dynamics</strong> 本身与 <strong>statics</strong> 是正交的，在 <code>typecheck</code> 之后我们可以有 <code>progress</code>，但是现在还没有</p>
+</li>
+</ol>
+<h3 id="Soundness"><a href="#Soundness" class="headerlink" title="Soundness"></a>Soundness</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> sound_stepf : <span class="keyword">forall</span> t t&#x27;,</span><br><span class="line">    stepf t = Some t&#x27;  -&gt;  t --&gt; t&#x27;.</span><br></pre></td></tr></table></figure>
+
+<p>证明用了一个 given 的非常夸张的 automation…</p>
+<p>不过帮助我找到了 <code>stepf</code> 和 <code>step</code> 的多处 inconsistency: </p>
+<ul>
+<li>3 次做 <code>subst</code> 时依赖的 <code>valuef</code> 不能省</li>
+<li><code>valuef pair</code> 该怎么写才合适？<br>最后把 <code>step</code> 中的 <code>value p -&gt;</code> 改成了 <code>value v1 -&gt; value v2 -&gt;</code>，<br>因为 <code>valuef (pair v1 v2)</code> 出来的 <code>valuef v1 &amp;&amp; valuef v2</code> 比较麻烦。<br>但底线是：<strong>两者必须 consistent！</strong> 这时就能感受到 Formal Methods 的严谨了。</li>
+</ul>
+<h3 id="Completeness"><a href="#Completeness" class="headerlink" title="Completeness"></a>Completeness</h3><p>发现了 pair 实现漏了 2 个 case……然后才发现了 <code>Soundness</code> 自动化中的 <code>valuef pair</code> 问题</p>
+<h2 id="Extra-Mentioned"><a href="#Extra-Mentioned" class="headerlink" title="Extra (Mentioned)"></a>Extra (Mentioned)</h2><hr>
+<p><a target="_blank" rel="noopener" href="https://lispcast.com/church-vs-curry-types/">Church Style vs. Curry Style</a><br><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Rice%27s_theorem">Rice’s Theorem</a></p>
+<p>CakeML </p>
+<ul>
+<li>prove correctness of ML lang compiler</li>
+<li>latest paper on verifying GC</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/SF-%E8%BD%AF%E4%BB%B6%E5%9F%BA%E7%A1%80/" rel="tag"># SF (软件基础)</a>
+              <a href="/tags/Coq/" rel="tag"># Coq</a>
+              <a href="/tags/PLF-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" rel="tag"># PLF (编程语言基础)</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/read_sf_plf/2019-03-12-sf-plf-12-records/" rel="prev" title="「SF-PLF」12 Records">
+                  <i class="fa fa-angle-left"></i> 「SF-PLF」12 Records
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/read_sf_plf/2019-03-10-sf-plf-10-subtyping/" rel="next" title="「SF-PLF」10 Sub">
+                  「SF-PLF」10 Sub <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2426182848439341"
+     crossorigin="anonymous"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33RJLY0818"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33RJLY0818');
+</script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="“Algorithms are the computational content of proofs.” —Robert Harper  So the book material is designed to be gradually reveal the facts that   Programming and proving in Coq are two sides of the same">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「SF-LC」9 ProofObjects">
+<meta property="og:url" content="https://www.vvbuys.com/read_sf_lf/2019-01-09-sf-lf-09-proof-object/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="“Algorithms are the computational content of proofs.” —Robert Harper  So the book material is designed to be gradually reveal the facts that   Programming and proving in Coq are two sides of the same">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-02T01:05:07.544Z">
+<meta property="article:modified_time" content="2024-02-02T01:05:07.544Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="LF (逻辑基础)">
+<meta property="article:tag" content="SF (软件基础)">
+<meta property="article:tag" content="Coq">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/read_sf_lf/2019-01-09-sf-lf-09-proof-object/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/read_sf_lf/2019-01-09-sf-lf-09-proof-object/","path":"read_sf_lf/2019-01-09-sf-lf-09-proof-object/","title":"「SF-LC」9 ProofObjects"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>「SF-LC」9 ProofObjects | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Curry-Howard-Correspondence"><span class="nav-number">1.</span> <span class="nav-text">Curry-Howard Correspondence</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Proof-Objects"><span class="nav-number">2.</span> <span class="nav-text">Proof Objects</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Proof-Scripts"><span class="nav-number">3.</span> <span class="nav-text">Proof Scripts</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Quantifiers-Implications-Functions"><span class="nav-number">4.</span> <span class="nav-text">Quantifiers, Implications, Functions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%86%92-is-degenerated-%E2%88%80-Pi"><span class="nav-number">4.1.</span> <span class="nav-text">→ is degenerated ∀ (Pi)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q-A-Slide-15"><span class="nav-number">5.</span> <span class="nav-text">Q&amp;A - Slide 15</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Programming-with-Tactics"><span class="nav-number">6.</span> <span class="nav-text">Programming with Tactics.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Logical-Connectives-as-Inductive-Types"><span class="nav-number">7.</span> <span class="nav-text">Logical Connectives as Inductive Types</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Conjunctions"><span class="nav-number">7.1.</span> <span class="nav-text">Conjunctions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Disjunction"><span class="nav-number">7.2.</span> <span class="nav-text">Disjunction</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q-A-Slide-22-24"><span class="nav-number">8.</span> <span class="nav-text">Q&amp;A - Slide 22 + 24</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Coq-Magics-%E2%80%9CImplicit%E2%80%9D-Implicit-and-Overloading"><span class="nav-number">8.1.</span> <span class="nav-text">Coq Magics, “Implicit” Implicit and Overloading??</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Existential-Quantification"><span class="nav-number">8.2.</span> <span class="nav-text">Existential Quantification</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#True-and-False"><span class="nav-number">8.3.</span> <span class="nav-text">True and False</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Equality"><span class="nav-number">9.</span> <span class="nav-text">Equality</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Slide-Q-A"><span class="nav-number">10.</span> <span class="nav-text">Slide Q &amp; A</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Inversion-Again"><span class="nav-number">10.1.</span> <span class="nav-text">Inversion, Again</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q"><span class="nav-number">10.2.</span> <span class="nav-text">Q</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/read_sf_lf/2019-01-09-sf-lf-09-proof-object/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="「SF-LC」9 ProofObjects | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「SF-LC」9 ProofObjects
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:05:07" itemprop="dateCreated datePublished" datetime="2024-02-02T01:05:07+00:00">2024-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>“Algorithms are the computational content of proofs.” —Robert Harper</p>
+</blockquote>
+<p>So the book material is designed to be gradually reveal the facts that </p>
+<blockquote>
+<p>Programming and proving in Coq are two sides of the same coin. </p>
+</blockquote>
+<p>e.g.</p>
+<ul>
+<li><code>Inductive</code> is useds for both data types and propositions.</li>
+<li><code>-&gt;</code> is used for both type of functions and logical implication.</li>
+</ul>
+<p>The fundamental idea of Coq is that:</p>
+<blockquote>
+<p><em>provability</em> in Coq is represented by <em>concrete evidence</em>. When we construct the proof of a basic proposition, we are actually <em>building a tree of evidence</em>, which can be thought of as a data structure.</p>
+</blockquote>
+<p>e.g.</p>
+<ul>
+<li>implication like <code>A → B</code>, its proof will be an <em>evidence transformer</em>: a recipe for converting evidence for A into evidence for B.</li>
+</ul>
+<blockquote>
+<p>Proving manipulates evidence, much as programs manipuate data.</p>
+</blockquote>
+<h2 id="Curry-Howard-Correspondence"><a href="#Curry-Howard-Correspondence" class="headerlink" title="Curry-Howard Correspondence"></a>Curry-Howard Correspondence</h2><blockquote>
+<p>deep connection between the world of logic and the world of computation:</p>
+</blockquote>
+<pre><code>propositions             ~  types
+proofs / evidence        ~  terms / data values 
+</code></pre>
+<p><code>ev_0 : even 0</code></p>
+<ul>
+<li><code>ev_0</code> <strong>has type</strong>                             <code>even 0</code></li>
+<li><code>ev_0</code> <strong>is a proof of</strong> &#x2F; <strong>is evidence for</strong>  <code>even 0</code></li>
+</ul>
+<p><code>ev_SS : ∀n, even n -&gt; even (S (S n))</code></p>
+<ul>
+<li>takes a nat <code>n</code> and evidence for <code>even n</code> and yields evidence for <code>even (S (S n))</code>.</li>
+</ul>
+<p>This is <em>Props as Types</em>.</p>
+<h2 id="Proof-Objects"><a href="#Proof-Objects" class="headerlink" title="Proof Objects"></a>Proof Objects</h2><p>Proofs are data! We can see the <em>proof object</em> that results from this <em>proof script</em>.</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Print</span> ev_4.</span><br><span class="line"><span class="comment">(* ===&gt; ev_4 = ev_SS 2 (ev_SS 0 ev_0) </span></span><br><span class="line"><span class="comment">             : even 4  *)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">Check</span> (ev_SS <span class="number">2</span> (ev_SS <span class="number">0</span> ev_0)).     <span class="comment">(* concrete derivation tree, we r explicitly say the number tho *)</span></span><br><span class="line"><span class="comment">(* ===&gt; even 4 *)</span></span><br></pre></td></tr></table></figure>
+
+<p>These two ways are the same in principle!</p>
+<h2 id="Proof-Scripts"><a href="#Proof-Scripts" class="headerlink" title="Proof Scripts"></a>Proof Scripts</h2><p><code>Show Proof.</code>  will show the <em>partially constructed</em> proof terms &#x2F; objects.<br><code>?Goal</code> is the <em>unification variable</em>. (the hold we need to fill in to complete the proof)</p>
+<p>more complicated in branching cases<br>one hole more subgoal</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> ev_4&#x27;&#x27; : even <span class="number">4.</span>   <span class="comment">(*  match? (even 4) *)</span></span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="keyword">Show</span> <span class="keyword">Proof</span>.              <span class="comment">(*  ?Goal  *)</span></span><br><span class="line">  <span class="built_in">apply</span> ev_SS.</span><br><span class="line">  <span class="keyword">Show</span> <span class="keyword">Proof</span>.              <span class="comment">(*  (ev_SS 2 ?Goal)  *)</span></span><br><span class="line">  <span class="built_in">apply</span> ev_SS.</span><br><span class="line">  <span class="keyword">Show</span> <span class="keyword">Proof</span>.              <span class="comment">(*  (ev_SS 2 (ev_SS 0 ?Goal))  *)</span></span><br><span class="line">  <span class="built_in">apply</span> ev_0. </span><br><span class="line">  <span class="keyword">Show</span> <span class="keyword">Proof</span>.              <span class="comment">(*  ?Goal (ev_SS 2 (ev_SS 0 ev_0))  *)</span></span><br><span class="line"><span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Tactic proofs are useful and convenient, but they are not essential:<br>in principle, we can always construct the required evidence by hand</p>
+</blockquote>
+<p>Agda doesn’t have tactics built-in. (but also Interactive)</p>
+<h2 id="Quantifiers-Implications-Functions"><a href="#Quantifiers-Implications-Functions" class="headerlink" title="Quantifiers, Implications, Functions"></a>Quantifiers, Implications, Functions</h2><p>In Coq’s <em>computational universe</em> (where data structures and programs live), to give <code>-&gt;</code>:</p>
+<ul>
+<li>constructors (introduced by <code>Indutive</code>)</li>
+<li>functions</li>
+</ul>
+<p>in Coq’s <em>logical universe</em> (where we carry out proofs), to give implication:</p>
+<ul>
+<li>constructors</li>
+<li>functions!</li>
+</ul>
+<p>So instead of writing proof scripts e.g._</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> ev_plus4 : ∀n, even n → even (<span class="number">4</span> + n).</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span> n H. <span class="built_in">simpl</span>.</span><br><span class="line">  <span class="built_in">apply</span> ev_SS.</span><br><span class="line">  <span class="built_in">apply</span> ev_SS.</span><br><span class="line">  <span class="built_in">apply</span> H.</span><br><span class="line"><span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
+
+<p>we can give proof object, which is a <em>function</em> here, directly!</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> ev_plus4&#x27; : ∀n, even n → even (<span class="number">4</span> + n) :=    <span class="comment">(* ∀ is syntax for Pi? *)</span></span><br><span class="line">  <span class="keyword">fun</span> (n : nat)    ⇒ </span><br><span class="line">  <span class="keyword">fun</span> (H : even n) ⇒</span><br><span class="line">    ev_SS (S (S n)) (ev_SS n H).</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">Definition</span> ev_plus4&#x27;&#x27; (n : nat) (H : even n)           <span class="comment">(* tricky: implicitly `Pi` when `n` get mentioned?  *)</span></span><br><span class="line">                    : even (<span class="number">4</span> + n) :=</span><br><span class="line">  ev_SS (S (S n)) (ev_SS n H).</span><br></pre></td></tr></table></figure>
+
+<p>two interesting facts:</p>
+<ol>
+<li><code>intros x</code> corresponds to <code>λx.</code> (or <code>Pi x.</code>??)</li>
+<li><code>apply</code> corresponds to…not quite function application… but more like <em>filling the hole</em>.</li>
+<li><code>even n</code> mentions the <em>value</em> of 1st argument <code>n</code>. i.e. <em>dependent type</em>!</li>
+</ol>
+<p>Recall Ari’s question in “applying theorem as function” e.g. <code>plus_comm</code><br>why we can apply value in type-level fun.<br>becuz of dependent type.</p>
+<p>Now we call them <code>dependent type function</code></p>
+<h3 id="→-is-degenerated-∀-Pi"><a href="#→-is-degenerated-∀-Pi" class="headerlink" title="→ is degenerated ∀ (Pi)"></a><code>→</code> is degenerated <code>∀</code> (<code>Pi</code>)</h3><blockquote>
+<p>Notice that both implication (<code>→</code>) and quantification (<code>∀</code>) correspond to functions on evidence.<br>In fact, they are really the same thing: <code>→</code> is just a shorthand for a degenerate use of <code>∀</code> where there is no dependency, i.e., no need to give a name to the type on the left-hand side of the arrow:</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  ∀(x:nat), nat </span><br><span class="line">= ∀(<span class="keyword">_</span>:nat), nat </span><br><span class="line">= nat → nat</span><br><span class="line"></span><br><span class="line">  ∀n, ∀(E : even n), even (n + <span class="number">2</span>).</span><br><span class="line">= ∀n, ∀(<span class="keyword">_</span> : even n), even (n + <span class="number">2</span>).</span><br><span class="line">= ∀n, even n → even (n + <span class="number">2</span>).</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>In general, <code>P → Q</code> is just syntactic sugar for <code>∀ (_:P), Q</code>.</p>
+</blockquote>
+<p>TaPL also mention this fact for <code>Pi</code>.</p>
+<h2 id="Q-A-Slide-15"><a href="#Q-A-Slide-15" class="headerlink" title="Q&amp;A - Slide 15"></a>Q&amp;A - Slide 15</h2><ol>
+<li><code>∀ n, even n → even (4 + n)</code>. (<code>2 + n = S (S n)</code>)</li>
+</ol>
+<h2 id="Programming-with-Tactics"><a href="#Programming-with-Tactics" class="headerlink" title="Programming with Tactics."></a>Programming with Tactics.</h2><p>If we can build proofs by giving explicit terms rather than executing tactic scripts,<br>you may be wondering whether we can <em>build programs using tactics</em>? Yes!</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> add1 : nat → nat.</span><br><span class="line">  <span class="built_in">intro</span> n.</span><br><span class="line">  <span class="keyword">Show</span> <span class="keyword">Proof</span>.      </span><br><span class="line"><span class="comment">(** </span></span><br><span class="line"><span class="comment">the goal (proof state):</span></span><br><span class="line"><span class="comment">    </span></span><br><span class="line"><span class="comment">    n : nat</span></span><br><span class="line"><span class="comment">    =======</span></span><br><span class="line"><span class="comment">    nat</span></span><br><span class="line"><span class="comment">    </span></span><br><span class="line"><span class="comment">the response:</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    (fun n : nat =&gt; ?Goal) </span></span><br><span class="line"><span class="comment">    </span></span><br><span class="line"><span class="comment">What is really interesting here, is that the premies [n:nat] is actually the arguments!</span></span><br><span class="line"><span class="comment">again, the process of applying tactics is _partial application_</span></span><br><span class="line"><span class="comment">**)</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">apply</span> S.</span><br><span class="line">  <span class="keyword">Show</span> <span class="keyword">Proof</span>.      </span><br><span class="line"><span class="comment">(** </span></span><br><span class="line"><span class="comment">    (fun n : nat =&gt; S ?Goal) </span></span><br><span class="line"><span class="comment">**)</span></span><br><span class="line">  <span class="built_in">apply</span> n. </span><br><span class="line"><span class="keyword">Defined</span>.</span><br><span class="line"></span><br><span class="line"><span class="keyword">Print</span> add1.</span><br><span class="line"><span class="comment">(* ==&gt; add1 = fun n : nat =&gt; S n</span></span><br><span class="line"><span class="comment">            : nat -&gt; nat *)</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Notice that we terminate the Definition with a <code>.</code> rather than with <code>:=</code> followed by a term.<br>This tells Coq to enter <em>proof scripting mode</em> (w&#x2F;o <code>Proof.</code>, which did nothing)</p>
+</blockquote>
+<blockquote>
+<p>Also, we terminate the proof with <code>Defined</code> rather than <code>Qed</code>; this makes the definition <em>transparent</em> so that it can be used in computation like a normally-defined function<br>(<code>Qed</code>-defined objects are <em>opaque</em> during computation.).</p>
+</blockquote>
+<p><code>Qed</code> make things <code>unfold</code>able,<br>thus <code>add 1</code> ends with <code>Qed</code> is not computable…<br>(becuz of not even <code>unfold</code>able thus computation engine won’t deal with it)</p>
+<blockquote>
+<p>Prof.Mtf: meaning “we don’t care about the details of Proof”</p>
+</blockquote>
+<p>see as well <a target="_blank" rel="noopener" href="https://wiki.haskell.org/Smart_constructors">Smart Constructor</a></p>
+<blockquote>
+<p>This feature is mainly useful for writing functions with dependent types</p>
+</blockquote>
+<p>In Coq      - you do as much as ML&#x2F;Haskell when you can…?<br>Unlike Agda - you program intensively in dependent type…?</p>
+<p>When Extracting to OCaml…Coq did a lot of <code>Object.magic</code> for coercion to bypass OCaml type system. (Coq has maken sure the type safety.)</p>
+<h2 id="Logical-Connectives-as-Inductive-Types"><a href="#Logical-Connectives-as-Inductive-Types" class="headerlink" title="Logical Connectives as Inductive Types"></a>Logical Connectives as Inductive Types</h2><blockquote>
+<p>Inductive definitions are powerful enough to express most of the connectives we have seen so far.<br>Indeed, only universal quantification (with implication as a special case) is built into Coq;<br>all the others are defined inductively.<br>Wow…</p>
+</blockquote>
+<blockquote>
+<p>CoqI: What’s Coq logic? Forall + Inductive type (+ coinduction), that’s it.</p>
+</blockquote>
+<h3 id="Conjunctions"><a href="#Conjunctions" class="headerlink" title="Conjunctions"></a>Conjunctions</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> and (P Q : <span class="keyword">Prop</span>) : <span class="keyword">Prop</span> :=</span><br><span class="line">| <span class="type">conj</span> : P → Q → and P Q.</span><br><span class="line"></span><br><span class="line"><span class="keyword">Print</span> prod.</span><br><span class="line"><span class="comment">(* ===&gt;</span></span><br><span class="line"><span class="comment">   Inductive prod (X Y : Type) : Type :=</span></span><br><span class="line"><span class="comment">   | pair : X -&gt; Y -&gt; X * Y. *)</span></span><br></pre></td></tr></table></figure>
+
+<p>similar to <code>prod</code> (product) type… more connections happening here.</p>
+<blockquote>
+<p>This similarity should clarify why <code>destruct</code> and <code>intros</code> patterns can be used on a conjunctive hypothesis. </p>
+</blockquote>
+<blockquote>
+<p>Similarly, the <code>split</code> tactic actually works for any inductively defined proposition with exactly one constructor<br>(so here, <code>apply conj</code>, which will match the conclusion and generate two subgoal from assumptions )</p>
+</blockquote>
+<p>A <em>very direct</em> proof:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> and_comm&#x27;_aux P Q (H : P ∧ Q) : Q ∧ P :=</span><br><span class="line">  <span class="keyword">match</span> H <span class="built_in">with</span></span><br><span class="line">  | <span class="type">conj</span> HP HQ ⇒ conj HQ HP</span><br><span class="line">  <span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Disjunction"><a href="#Disjunction" class="headerlink" title="Disjunction"></a>Disjunction</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> or (P Q : <span class="keyword">Prop</span>) : <span class="keyword">Prop</span> :=</span><br><span class="line">| <span class="type">or_introl</span> : P → or P Q</span><br><span class="line">| <span class="type">or_intror</span> : Q → or P Q.</span><br></pre></td></tr></table></figure>
+
+<p>this explains why <code>destruct</code> works but <code>split</code> not..</p>
+<h2 id="Q-A-Slide-22-24"><a href="#Q-A-Slide-22-24" class="headerlink" title="Q&amp;A - Slide 22 + 24"></a>Q&amp;A - Slide 22 + 24</h2><p>Both Question asked about what’s the type of some expression</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fun</span> P Q R (H1: and P Q) (H2: and Q R) ⇒</span><br><span class="line">    <span class="keyword">match</span> (H1,H2) <span class="built_in">with</span></span><br><span class="line">    | <span class="type">(conj</span> <span class="keyword">_</span> <span class="keyword">_</span> HP <span class="keyword">_</span>, conj <span class="keyword">_</span> <span class="keyword">_</span> <span class="keyword">_</span> HR) ⇒ conj P R HP HR</span><br><span class="line">    <span class="keyword">end</span>.</span><br><span class="line"></span><br><span class="line"><span class="keyword">fun</span> P Q H ⇒</span><br><span class="line">    <span class="keyword">match</span> H <span class="built_in">with</span></span><br><span class="line">    | <span class="type">or_introl</span> HP ⇒ or_intror Q P HP</span><br><span class="line">    | <span class="type">or_intror</span> HQ ⇒ or_introl Q P HQ</span><br><span class="line">    <span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+<p>But if you simply <code>Check</code> on them, you will get errors saying:<br><code>Error: The constructor conj (in type and) expects 2 arguments.</code> or<br><code>Error: The constructor or_introl (in type or) expects 2 arguments.</code>.</p>
+<h3 id="Coq-Magics-“Implicit”-Implicit-and-Overloading"><a href="#Coq-Magics-“Implicit”-Implicit-and-Overloading" class="headerlink" title="Coq Magics, “Implicit” Implicit and Overloading??"></a>Coq Magics, “Implicit” Implicit and Overloading??</h3><p>So what’s the problem?<br>Well, Coq did some magics…</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Print</span> and.</span><br><span class="line"><span class="comment">(* ===&gt; *)</span></span><br><span class="line"><span class="keyword">Inductive</span> and (A B : <span class="keyword">Prop</span>) : <span class="keyword">Prop</span> :=  conj : A -&gt; B -&gt; A /\ B</span><br><span class="line">For conj: <span class="keyword">Arguments</span> A, B are implicit</span><br></pre></td></tr></table></figure>
+
+<p>constructor <code>conj</code> has implicit type arg w&#x2F;o using <code>&#123;&#125;</code> in <code>and</code> …</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> or (A B : <span class="keyword">Prop</span>) : <span class="keyword">Prop</span> :=</span><br><span class="line">    or_introl : A -&gt; A \/ B | <span class="type">or_intror</span> : B -&gt; A \/ B</span><br><span class="line"></span><br><span class="line">For or_introl, when applied to no more than <span class="number">1</span> argument:</span><br><span class="line">  <span class="keyword">Arguments</span> A, B are implicit</span><br><span class="line">For or_introl, when applied to <span class="number">2</span> arguments:</span><br><span class="line">  Argument A is implicit</span><br><span class="line">For or_intror, when applied to no more than <span class="number">1</span> argument:</span><br><span class="line">  <span class="keyword">Arguments</span> A, B are implicit</span><br><span class="line">For or_intror, when applied to <span class="number">2</span> arguments:</span><br><span class="line">  Argument B is implicit</span><br></pre></td></tr></table></figure>
+
+<p>this is even more bizarre…<br>constructor <code>or_introl</code> (and <code>or_intror</code>) are <em>overloaded</em>!! (WTF)</p>
+<p>And the questions’re still given as if they’re inside the modules we defined our plain version of <code>and</code> &amp; <code>or</code> (w&#x2F;o any magics), thus we need <code>_</code> in the positions we instantiate <code>and</code> &amp; <code>or</code> so Coq will infer.</p>
+<h3 id="Existential-Quantification"><a href="#Existential-Quantification" class="headerlink" title="Existential Quantification"></a>Existential Quantification</h3><blockquote>
+<p>To give evidence for an existential quantifier, we package a witness <code>x</code> together with a proof that <code>x</code> satisfies the property <code>P</code>:</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> ex &#123;A : <span class="keyword">Type</span>&#125; (P : A → <span class="keyword">Prop</span>) : <span class="keyword">Prop</span> :=</span><br><span class="line">| <span class="type">ex_intro</span> : ∀x : A, P x → ex P.</span><br><span class="line"></span><br><span class="line"><span class="keyword">Check</span> ex.                    <span class="comment">(* ===&gt; *)</span> : (?A -&gt; <span class="keyword">Prop</span>) -&gt; <span class="keyword">Prop</span> </span><br><span class="line"><span class="keyword">Check</span> even.                  <span class="comment">(* ===&gt; *)</span> : nat -&gt; <span class="keyword">Prop</span>  <span class="comment">(* ?A := nat  *)</span></span><br><span class="line"><span class="keyword">Check</span> ex even.               <span class="comment">(* ===&gt; *)</span> : <span class="keyword">Prop</span> </span><br><span class="line"><span class="keyword">Check</span> ex (<span class="keyword">fun</span> n =&gt; even n)   <span class="comment">(* ===&gt; *)</span> : <span class="keyword">Prop</span>     <span class="comment">(* same *)</span></span><br></pre></td></tr></table></figure>
+
+<p>one interesting fact is, <em>outside</em> of our module, the built-in Coq behaves differently (<em>magically</em>):</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Check</span> ev.                    <span class="comment">(* ===&gt; *)</span> : ∀ (A : <span class="keyword">Type</span>), (A -&gt; <span class="keyword">Prop</span>) -&gt; <span class="keyword">Prop</span></span><br><span class="line"><span class="keyword">Check</span> even.                  <span class="comment">(* ===&gt; *)</span> : nat -&gt; <span class="keyword">Prop</span>  <span class="comment">(* A := nat  *)</span></span><br><span class="line"><span class="keyword">Check</span> ex (<span class="keyword">fun</span> n =&gt; even n)   <span class="comment">(* ===&gt; *)</span> : ∃ (n : nat) , even n : <span class="keyword">Prop</span>  <span class="comment">(* WAT !? *)</span></span><br></pre></td></tr></table></figure>
+
+<p>A example of explicit proof object (that inhabit this type):</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> some_nat_is_even : ∃n, even n :=</span><br><span class="line">  ex_intro even <span class="number">4</span> (ev_SS <span class="number">2</span> (ev_SS <span class="number">0</span> ev_0)).</span><br></pre></td></tr></table></figure>
+
+<p>the <code>ex_intro</code> take <code>even</code> first then <code>4</code>…not sure why the order becomes this… </p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Check</span> (ex_intro).            <span class="comment">(* ===&gt; *)</span> : <span class="keyword">forall</span> (P : ?A -&gt; <span class="keyword">Prop</span>) (x : ?A), P x -&gt; ex P</span><br></pre></td></tr></table></figure>
+
+<p>To prove <code>ex P</code>, given a witness <code>x</code> and a proof of <code>P x</code>. This desugar to <code>∃ x, P x</code></p>
+<ul>
+<li>the <code>P</code> here, is getting applied when we define prop <code>∃ x, P x</code>.</li>
+<li>but the <code>x</code> is not mentioned in type constructor…so it’s a <em>existential type</em>.<ul>
+<li>I don’t know why languages (including Haskell) use <code>forall</code> for <em>existential</em> tho.</li>
+</ul>
+</li>
+</ul>
+<p><code>exists</code> tactic &#x3D; applying <code>ex_intro</code></p>
+<h3 id="True-and-False"><a href="#True-and-False" class="headerlink" title="True and False"></a>True and False</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> True : <span class="keyword">Prop</span> :=</span><br><span class="line">  | <span class="type">I</span> : True.</span><br><span class="line"></span><br><span class="line"><span class="comment">(* with 0 constructors, no way of presenting evidence for False *)</span></span><br><span class="line"><span class="keyword">Inductive</span> False : <span class="keyword">Prop</span> := .</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Equality"><a href="#Equality" class="headerlink" title="Equality"></a>Equality</h2><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> eq &#123;X:<span class="keyword">Type</span>&#125; : X → X → <span class="keyword">Prop</span> :=</span><br><span class="line">| <span class="type">eq_refl</span> : ∀x, eq x x.</span><br><span class="line"></span><br><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;x == y&quot;</span> := (eq x y)</span><br><span class="line">                    (<span class="built_in">at</span> level <span class="number">70</span>, no associativity)</span><br><span class="line">                    : type_scope.</span><br></pre></td></tr></table></figure>
+
+
+<blockquote>
+<p>given a set <code>X</code>, it defines a <em>family</em> of propositions “x is equal to y,”, <em>indexed by</em> pairs of values (x and y) from <code>X</code>.</p>
+</blockquote>
+<blockquote>
+<p>Can we also use it to construct evidence that <code>1 + 1 = 2</code>?<br>Yes, we can. Indeed, it is the very same piece of evidence!</p>
+</blockquote>
+<blockquote>
+<p>The reason is that Coq treats as “the same” any two terms that are convertible according to a simple set of computation rules.</p>
+</blockquote>
+<p>nothing in the unification engine but we relies on the <em>reduction engine</em>.</p>
+<blockquote>
+<p>Q: how much is it willing to do?<br>Mtf: just run them! (since Coq is total!)</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Lemma</span> four: <span class="number">2</span> + <span class="number">2</span> == <span class="number">1</span> + <span class="number">3.</span></span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">apply</span> eq_refl.</span><br><span class="line"><span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
+
+<p>The <code>reflexivity</code> tactic is essentially just shorthand for <code>apply eq_refl</code>.</p>
+<h2 id="Slide-Q-A"><a href="#Slide-Q-A" class="headerlink" title="Slide Q &amp; A"></a>Slide Q &amp; A</h2><ul>
+<li>(4) has to be applicable thing, i.e. lambda, or “property” in the notion!</li>
+</ul>
+<p>In terms of provability of <code>reflexivity</code></p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">fun</span> n =&gt; S (S n)) = (<span class="keyword">fun</span> n =&gt; <span class="number">2</span> + n)          <span class="comment">(* reflexivity *)</span></span><br><span class="line">(<span class="keyword">fun</span> n =&gt; S (S n)) = (<span class="keyword">fun</span> n =&gt; n + <span class="number">2</span>)          <span class="comment">(* rewrite add_com *)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Inversion-Again"><a href="#Inversion-Again" class="headerlink" title="Inversion, Again"></a>Inversion, Again</h3><blockquote>
+<p>We’ve seen inversion used with both equality hypotheses and hypotheses about inductively defined propositions. Now that we’ve seen that these are actually the same thing</p>
+</blockquote>
+<p>In general, the <code>inversion</code> tactic…</p>
+<ol>
+<li>take hypo <code>H</code> whose type <code>P</code> is inductively defined</li>
+<li>for each constructor <code>C</code> in <code>P</code><ol>
+<li>generate new subgoal (assume <code>H</code> was built with <code>C</code>)</li>
+<li>add the arguments (i.e. evidences of premises) of <code>C</code> as extra hypo (to the context of subgoal)</li>
+<li>(apply <code>constructor</code> theorem), match the conclusion of <code>C</code>, calculates a set of equalities (some extra restrictions)</li>
+<li>adds these equalities</li>
+<li>if there is contradiction, <code>discriminate</code>, solve subgoal.</li>
+</ol>
+</li>
+</ol>
+<h3 id="Q"><a href="#Q" class="headerlink" title="Q"></a>Q</h3><blockquote>
+<p>Q: Can we write <code>+</code> in a communitive way?<br>A: I don’t believe so.</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Ground_truth">Ground truth</a></p>
+<ul>
+<li>provided by direct observation (instead of inference)</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Ground_expression#Ground_terms">Ground term</a> </p>
+<ul>
+<li>that does not contain any free variables.</li>
+</ul>
+<p>Groundness</p>
+<ul>
+<li>根基性?</li>
+</ul>
+<blockquote>
+<p>Weird <code>Axiomness</code> might break the soundness of generated code in OCaml…</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/LF-%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80/" rel="tag"># LF (逻辑基础)</a>
+              <a href="/tags/SF-%E8%BD%AF%E4%BB%B6%E5%9F%BA%E7%A1%80/" rel="tag"># SF (软件基础)</a>
+              <a href="/tags/Coq/" rel="tag"># Coq</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/read_sf_lf/2019-01-10-sf-lf-10-ind-principle/" rel="prev" title="「SF-LC」10 IndPrinciples">
+                  <i class="fa fa-angle-left"></i> 「SF-LC」10 IndPrinciples
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/read_sf_lf/2019-01-08-sf-lf-08-map/" rel="next" title="「SF-LC」8 Maps">
+                  「SF-LC」8 Maps <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

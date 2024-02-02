@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2426182848439341"
+     crossorigin="anonymous"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33RJLY0818"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33RJLY0818');
+</script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="[TOC] ​	   本文总结作者学习的Web服务器项目（WebServer），分析其中的网络通信模块的作用及相关知识点。 一、socket的作用​		 ​		TCP&#x2F;IP协议是在操作系统的内核中实现的，因此操作系统需要实现一组系统调用，使得应用程序能够在用户空间访问这些协议提供的服务。实现这组系统调用的API（Application Programming Interface，应用程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「项目复现」Web服务器编程之网络通信模块">
+<meta property="og:url" content="https://www.vvbuys.com/2022-05-14-%E3%80%90%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%8E%B0%E3%80%91Web%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%96%E7%A8%8B%E4%B9%8B%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E6%A8%A1%E5%9D%97/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="[TOC] ​	   本文总结作者学习的Web服务器项目（WebServer），分析其中的网络通信模块的作用及相关知识点。 一、socket的作用​		 ​		TCP&#x2F;IP协议是在操作系统的内核中实现的，因此操作系统需要实现一组系统调用，使得应用程序能够在用户空间访问这些协议提供的服务。实现这组系统调用的API（Application Programming Interface，应用程序">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="c:\Users\dell\AppData\Roaming\Typora\typora-user-images\image-20220514231421272.png">
+<meta property="article:published_time" content="2022-05-13T00:00:00.000Z">
+<meta property="article:modified_time" content="2024-02-02T01:00:55.435Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="项目复现">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:\Users\dell\AppData\Roaming\Typora\typora-user-images\image-20220514231421272.png">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/2022-05-14-%E3%80%90%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%8E%B0%E3%80%91Web%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%96%E7%A8%8B%E4%B9%8B%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E6%A8%A1%E5%9D%97/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/2022-05-14-%E3%80%90%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%8E%B0%E3%80%91Web%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%96%E7%A8%8B%E4%B9%8B%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E6%A8%A1%E5%9D%97/","path":"2022-05-14-【项目复现】Web服务器编程之网络通信模块/","title":"「项目复现」Web服务器编程之网络通信模块"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>「项目复现」Web服务器编程之网络通信模块 | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81socket%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">一、socket的作用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81socket%E7%9A%84%E7%94%A8%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">二、socket的用法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E7%94%A8%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">1、服务端的用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E5%88%9B%E5%BB%BAsocket%EF%BC%9ACreateSocket-%E5%87%BD%E6%95%B0"><span class="nav-number">2.1.1.</span> <span class="nav-text">（1）创建socket：CreateSocket()函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E7%BB%91%E5%AE%9Asocket%EF%BC%9Abind%EF%BC%88%EF%BC%89%E5%87%BD%E6%95%B0"><span class="nav-number">2.1.2.</span> <span class="nav-text">（2）绑定socket：bind（）函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E7%9B%91%E5%90%ACsocket"><span class="nav-number">2.1.3.</span> <span class="nav-text">（3）监听socket</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%9A%84%E7%94%A8%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">2、客户端的用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E5%88%9B%E5%BB%BAsocket"><span class="nav-number">2.2.1.</span> <span class="nav-text">（1）创建socket</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E5%8F%91%E8%B5%B7%E8%BF%9E%E6%8E%A5"><span class="nav-number">2.2.2.</span> <span class="nav-text">（2）发起连接</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81socket%E7%9A%84%E5%B0%81%E8%A3%85"><span class="nav-number">3.</span> <span class="nav-text">三、socket的封装</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2022-05-14-%E3%80%90%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%8E%B0%E3%80%91Web%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%96%E7%A8%8B%E4%B9%8B%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E6%A8%A1%E5%9D%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="「项目复现」Web服务器编程之网络通信模块 | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「项目复现」Web服务器编程之网络通信模块
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-05-13 00:00:00" itemprop="dateCreated datePublished" datetime="2022-05-13T00:00:00+00:00">2022-05-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-02-02 01:00:55" itemprop="dateModified" datetime="2024-02-02T01:00:55+00:00">2024-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>[TOC]</p>
+<p>​	   本文总结作者学习的Web服务器项目（WebServer），分析其中的<strong>网络通信模块</strong>的作用及<strong>相关知识点</strong>。</p>
+<h1 id="一、socket的作用"><a href="#一、socket的作用" class="headerlink" title="一、socket的作用"></a>一、socket的作用</h1><p>​		</p>
+<p>​		TCP&#x2F;IP协议是在操作系统的内核中实现的，因此操作系统需要实现一组系统调用，使得应用程序能够在用户空间访问这些协议提供的服务。实现这组系统调用的API（Application Programming Interface，应用程序编程接口）就是socket和XTI。</p>
+<p>​		socket函数库主要提供如下两点功能：</p>
+<p>​		一是实现应用程序数据的send和read。send是将应用程序数据从用户缓冲区中复制到TCP&#x2F;UDP内核发送缓冲区，以交付内核来发送数据，read是从内核TCP&#x2F;UDP接收缓冲区中复制数据到用户缓冲区，以读取数据；</p>
+<p>​		二是精细地控制协议栈的通信行为。应用程序可以通过它们来修改内核中各层协议的某些头部信息或其他数据结构，从而精细地控制底层通信的行为。比如可以通过setsockopt函数来设置IP数据报在网络上的存活时间。</p>
+<h1 id="二、socket的用法"><a href="#二、socket的用法" class="headerlink" title="二、socket的用法"></a>二、socket的用法</h1><h2 id="1、服务端的用法"><a href="#1、服务端的用法" class="headerlink" title="1、服务端的用法"></a>1、服务端的用法</h2><h3 id="（1）创建socket：CreateSocket-函数"><a href="#（1）创建socket：CreateSocket-函数" class="headerlink" title="（1）创建socket：CreateSocket()函数"></a>（1）创建socket：CreateSocket()函数</h3><p>作用：创建一个监听套接字</p>
+<p><strong>1、函数参数：</strong>无</p>
+<p><strong>2、返回值</strong></p>
+<p>该函数创建套接字成功则返回一个套接字，失败则返回-1并设置errno。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;sys/tpyes.h&gt;</span> </span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;sys/socket.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PF_INET 2</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SOCK_STREAM SOCK_STREAM</span></span><br><span class="line"><span class="type">int</span> m_listenfd;</span><br><span class="line"><span class="comment">//创建socket</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">CreateSocket</span><span class="params">()</span></span>&#123;[</span><br><span class="line">    <span class="comment">//创建一个监听套接字</span></span><br><span class="line">    m_listenfd = <span class="built_in">socket</span>(PF_INET, SOCK_STREAM, <span class="number">0</span>); </span><br><span class="line">    <span class="keyword">if</span>(m_listenfd == <span class="number">-1</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot; 创建socket出错: %s(errno:%d)\n&quot;</span> ,<span class="built_in">strerror</span>(errno),errno);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;创建socket成功\n&quot;</span>); </span><br><span class="line">        <span class="keyword">return</span> m_listenfd;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="（2）绑定socket：bind（）函数"><a href="#（2）绑定socket：bind（）函数" class="headerlink" title="（2）绑定socket：bind（）函数"></a>（2）绑定socket：bind（）函数</h3><p>作用：把一个地址族中的特定socket地址（IP地址+端口号）赋给socket，通常用于服务端程序。</p>
+<p>在 Linux 下使用 &lt;sys&#x2F;socket.h&gt; 头文件中 socket() 函数来创建套接字，原型为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int socket(int af, int type, int protocol);</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>af 为地址族（Address Family），也就是 IP 地址类型，常用的有 AF_INET和AF_INET6 。AF 是“Address Family”的简写，INET是“Inetnet”的简写。AF_INET 表示 IPv4 地址，例如 127.0.0.1；AF_INET6 表示 IPv6 地址，例如 1030::C9B4:FF12:48AA:1A2B。</li>
+</ol>
+<p> <strong>struct sockaddr_in结构体</strong>用来处理网络通信的地址。</p>
+<p><img src="C:\Users\dell\AppData\Roaming\Typora\typora-user-images\image-20220514231421272.png" alt="image-20220514231421272"> </p>
+<p><strong>端口</strong>：</p>
+<p><strong>socket地址：</strong>IP地址+端口号   211.211.1.2:3600</p>
+<p><strong>socket关闭的2种方式：</strong></p>
+<p>有close 和shutdown两种API，</p>
+<p>close —– 在多进程的情况下，关闭本进程的socket，但这只是socket的引用计数减1，用这个socket的其它进程还能用这个链接，能读或写这个socket，直到所有的进程都进行了close，才真正关闭这个套接字，但当它<strong>真正执行关闭的时候是完全关闭，既不处理发送也不处理接收数据</strong>。</p>
+<p>shutdown – 即便在多进程的情况下面，也是直接进行关闭的，关闭了socket 文件描述符，其他进程的也会被关闭，但他关闭的时候只关闭一半，即发送数据通道关闭，接收数据还是可以的<strong>。如果对写操作被关闭的socket执行写操作会触发写就绪(EPOLLOUT)事件，同时触发一个SIGPIPE信号。</strong></p>
+<p><strong>1、函数参数</strong></p>
+<p>int port：端口号</p>
+<p>int m_listenfd：套接字</p>
+<p><strong>2、返回值</strong></p>
+<p>该函数绑定socket地址成功则返回true，失败则返回false并设置errno。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;sys/tpyes.h&gt;</span> </span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;sys/socket.h&gt;</span> </span></span><br><span class="line"><span class="comment">//绑定socket地址</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">bind</span><span class="params">(<span class="type">int</span> port,<span class="type">int</span> m_listenfd)</span></span>&#123;</span><br><span class="line">    <span class="comment">//(一)检查端口号是否合法</span></span><br><span class="line">    <span class="keyword">if</span>(port&gt; <span class="number">65535</span> || port&lt; <span class="number">1024</span>) &#123; </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot; Port:%d不符合要求!&quot;</span>，port);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//(二)创建一个IPv4的socket地址</span></span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">sockaddr_in</span> address<span class="comment">//socket地址</span></span><br><span class="line">    <span class="built_in">bzero</span>(&amp;address, <span class="built_in">sizeof</span>(address));<span class="comment">//将该地址清空为0</span></span><br><span class="line">    address.sin__family= AF_INET:<span class="comment">//设置IPv4的地址族</span></span><br><span class="line">    <span class="comment">//inet_ pton(AF_ INET,ip,&amp;address.sin_ addr);//手动设置IP地址</span></span><br><span class="line">    address.sin_addr.s_addr = <span class="built_in">htonl</span>(INADDR_ ANY);<span class="comment">// 自动获取本机的IP地址并且设置</span></span><br><span class="line">    address.sin_port = <span class="built_in">htons</span>(port);<span class="comment">//端口号 </span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//(三)绑定socket地址</span></span><br><span class="line">    <span class="type">int</span> flag= <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">setsockopt</span>(m_listenfd, SOL_SOCKET, SO_REUSEADDR, &amp;flag, <span class="built_in">sizeof</span>(flag));<span class="comment">//允许重用本地地址和端口</span></span><br><span class="line">    <span class="type">int</span> ret = <span class="built_in">bind</span>(m_listenfd, (<span class="keyword">struct</span> sockaddr *)&amp;address, <span class="built_in">sizeof</span>(address));<span class="comment">//绑定socket地址（IP地址+端口号）</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//(四)判断是否绑定成功</span></span><br><span class="line">    <span class="keyword">if</span>(ret==<span class="number">-1</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot; 绑定socket出错: ]%s(errno:%d)\n&#x27; ,strerror(errno),errno);</span></span><br><span class="line"><span class="string">        return false;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    else &#123;</span></span><br><span class="line"><span class="string">        printf(&quot;</span>绑定socket成功\n<span class="string">&quot;);</span></span><br><span class="line"><span class="string">        return true;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="（3）监听socket"><a href="#（3）监听socket" class="headerlink" title="（3）监听socket"></a>（3）监听socket</h3><p><strong>1、函数参数</strong></p>
+<p>int backlog</p>
+<p>int m_listenfd：套接字</p>
+<p><strong>2、返回值</strong></p>
+<p>该函数监听socket成功则返回true，失败则返回false并设置errno。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//监听socket</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">Listen</span><span class="params">(<span class="type">int</span> backlog,<span class="type">int</span> m_listenfd)</span></span>&#123;</span><br><span class="line">    <span class="comment">//开启监听</span></span><br><span class="line">    <span class="type">int</span> ret = <span class="built_in">listen</span>(m_listenfd, backlog); </span><br><span class="line">    <span class="keyword">if</span>(ret==<span class="number">-1</span>)&#123;</span><br><span class="line">       <span class="built_in">printf</span>(<span class="string">&quot; 监听socket出错: %s(errno:%d)\n&quot;</span>,<span class="built_in">strerror</span>(errno),errno);</span><br><span class="line">       <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">&quot; 监听socket成功\n&quot;</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2、客户端的用法"><a href="#2、客户端的用法" class="headerlink" title="2、客户端的用法"></a>2、客户端的用法</h2><h3 id="（1）创建socket"><a href="#（1）创建socket" class="headerlink" title="（1）创建socket"></a>（1）创建socket</h3><h3 id="（2）发起连接"><a href="#（2）发起连接" class="headerlink" title="（2）发起连接"></a>（2）发起连接</h3><h1 id="三、socket的封装"><a href="#三、socket的封装" class="headerlink" title="三、socket的封装"></a>三、socket的封装</h1><p>服务器的socket类</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%8E%B0/" rel="tag"># 项目复现</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022-05-03-%E3%80%90%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0%E3%80%91Linux%E9%AB%98%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E4%B9%8BMakeFile/" rel="prev" title="「技术笔记」Linux高并发编程之MakeFile">
+                  <i class="fa fa-angle-left"></i> 「技术笔记」Linux高并发编程之MakeFile
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022-05-13-%E3%80%90%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%8E%B0%E3%80%91Web%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%96%E7%A8%8B%E4%B9%8B%E7%AE%80%E6%98%93%E6%97%A5%E5%BF%97%E6%A8%A1%E5%9D%97/" rel="next" title="「项目复现」Web服务器编程之简易日志模块">
+                  「项目复现」Web服务器编程之简易日志模块 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

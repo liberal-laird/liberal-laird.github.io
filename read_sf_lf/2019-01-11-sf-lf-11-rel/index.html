@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2426182848439341"
+     crossorigin="anonymous"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33RJLY0818"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33RJLY0818');
+</script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="relation 与injective&#x2F;surjective&#x2F;bijective function 等相关的知识在 5. Tactics 里，为了避免每次都要 grep 我在这里写一下。  RelationsRecalling Relationfrom FCT&#x2F;TAPL&#x2F;Wiki…  a possible connection between the co">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「SF-LC」11 Rel">
+<meta property="og:url" content="https://www.vvbuys.com/read_sf_lf/2019-01-11-sf-lf-11-rel/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="relation 与injective&#x2F;surjective&#x2F;bijective function 等相关的知识在 5. Tactics 里，为了避免每次都要 grep 我在这里写一下。  RelationsRecalling Relationfrom FCT&#x2F;TAPL&#x2F;Wiki…  a possible connection between the co">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-02T01:05:07.544Z">
+<meta property="article:modified_time" content="2024-02-02T01:05:07.544Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="LF (逻辑基础)">
+<meta property="article:tag" content="SF (软件基础)">
+<meta property="article:tag" content="Coq">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/read_sf_lf/2019-01-11-sf-lf-11-rel/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/read_sf_lf/2019-01-11-sf-lf-11-rel/","path":"read_sf_lf/2019-01-11-sf-lf-11-rel/","title":"「SF-LC」11 Rel"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>「SF-LC」11 Rel | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Relations"><span class="nav-number">1.</span> <span class="nav-text">Relations</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Recalling-Relation"><span class="nav-number">1.1.</span> <span class="nav-text">Recalling Relation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Unary-1-place-relation-is-Predicate-or-Property"><span class="nav-number">1.1.1.</span> <span class="nav-text">Unary&#x2F;1-place relation is Predicate or Property!</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Binary-Relation-2-place-relation"><span class="nav-number">1.1.2.</span> <span class="nav-text">Binary Relation&#x2F;2-place relation</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Homogeneous-Relation-%E5%90%8C%E7%B1%BB%EF%BC%88%E7%9A%84%EF%BC%89%E5%85%B3%E7%B3%BB"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">Homogeneous Relation 同类（的）关系</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Back-to-Coq"><span class="nav-number">1.2.</span> <span class="nav-text">Back to Coq</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-Properties"><span class="nav-number">2.</span> <span class="nav-text">Basic Properties</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Partial-Function"><span class="nav-number">2.1.</span> <span class="nav-text">Partial Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reflexive"><span class="nav-number">2.2.</span> <span class="nav-text">Reflexive</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Transitive"><span class="nav-number">2.3.</span> <span class="nav-text">Transitive</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Symmetric-Antisymmetric"><span class="nav-number">2.4.</span> <span class="nav-text">Symmetric &amp; Antisymmetric</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Antisymmetric-vs-Asymmetric-vs-Non-symmetric-%E5%8F%8D%E5%AF%B9%E7%A7%B0-vs-%E9%9D%9E%E5%AF%B9%E7%A7%B0-vs-%E4%B8%8D-%E5%AF%B9%E7%A7%B0"><span class="nav-number">2.4.1.</span> <span class="nav-text">Antisymmetric vs Asymmetric vs Non-symmetric (反对称 vs. 非对称 vs. 不-对称)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Equivalence"><span class="nav-number">2.5.</span> <span class="nav-text">Equivalence</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Partial-Orders"><span class="nav-number">2.6.</span> <span class="nav-text">Partial Orders</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Preorders"><span class="nav-number">2.7.</span> <span class="nav-text">Preorders</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reflexive-Transitive-Closure"><span class="nav-number">3.</span> <span class="nav-text">Reflexive, Transitive Closure</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Reflexive-Closure"><span class="nav-number">3.1.</span> <span class="nav-text">Reflexive Closure</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Transitive-Closure"><span class="nav-number">3.2.</span> <span class="nav-text">Transitive Closure</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reflexive-Transitive-Closure-1"><span class="nav-number">3.3.</span> <span class="nav-text">Reflexive, Transitive Closure</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Why-is-it-useful"><span class="nav-number">3.4.</span> <span class="nav-text">Why is it useful?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Back-to-Coq-1"><span class="nav-number">3.5.</span> <span class="nav-text">Back to Coq</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/read_sf_lf/2019-01-11-sf-lf-11-rel/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="「SF-LC」11 Rel | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「SF-LC」11 Rel
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:05:07" itemprop="dateCreated datePublished" datetime="2024-02-02T01:05:07+00:00">2024-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>relation 与injective&#x2F;surjective&#x2F;bijective function 等相关的知识在 <code>5. Tactics</code> 里，为了避免每次都要 <code>grep</code> 我在这里写一下。</p>
+</blockquote>
+<h2 id="Relations"><a href="#Relations" class="headerlink" title="Relations"></a>Relations</h2><h3 id="Recalling-Relation"><a href="#Recalling-Relation" class="headerlink" title="Recalling Relation"></a>Recalling <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Finitary_relation">Relation</a></h3><p>from FCT&#x2F;TAPL&#x2F;Wiki…</p>
+<blockquote>
+<p>a possible connection between the components of a k-tuple.</p>
+</blockquote>
+<p>I have been long confused with <em>Unary Relations vs. Binary Relation on the Same Set (homogeneous relation)</em><br>I thought they were same…but turns out they are totally different!</p>
+<h4 id="Unary-1-place-relation-is-Predicate-or-Property"><a href="#Unary-1-place-relation-is-Predicate-or-Property" class="headerlink" title="Unary&#x2F;1-place relation is Predicate or Property!"></a>Unary&#x2F;1-place relation is <strong>Predicate</strong> or <strong>Property</strong>!</h4><p>Either defined via set <code>X ⊆ P</code> or <code>x ∈ P</code>,<br>or defined via function <code>P : X -&gt; Bool</code> or <code>P : X -&gt; &#123;⊥, ⊤&#125;</code>.<br>(usually used in Math. Logic)</p>
+<p>Property &#x3D; Indicator Fn &#x3D; characteristic Fn &#x3D; Boolean Predicate Fn &#x3D; Predicate</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Property_(mathematics)">https://en.wikipedia.org/wiki/Property_(mathematics)</a></li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Indicator_function">https://en.wikipedia.org/wiki/Indicator_function</a></li>
+</ul>
+<h4 id="Binary-Relation-2-place-relation"><a href="#Binary-Relation-2-place-relation" class="headerlink" title="Binary Relation&#x2F;2-place relation"></a><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Binary_relation">Binary Relation&#x2F;2-place relation</a></h4><p>Defined via two sets : <code>R ⊆ X × Y</code> or <code>x, y ∈ R</code> or <code>xRy</code>.  (where <code>x ∈ X, y ∈ Y</code>.)<br>or via function <code>R: X × Y -&gt; Bool</code>.</p>
+<h5 id="Homogeneous-Relation-同类（的）关系"><a href="#Homogeneous-Relation-同类（的）关系" class="headerlink" title="Homogeneous Relation 同类（的）关系"></a><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Binary_relation#Homogeneous_relation">Homogeneous Relation 同类（的）关系</a></h5><p>Specifically! when <code>X = Y</code>, is called a <em>homogeneous relation</em>: </p>
+<p>Noticed that we are still concerning relations of <strong>2 elements</strong>!!, but they are from the same Set!<br>(while 1-place relation concerning only 1 element.)</p>
+<pre><code>R ⊆ X × X
+xRy where x ∈ X, y ∈ X
+</code></pre>
+<p>it’s written&#x2F;spoken <em>Binary</em> relation <strong>on&#x2F;over</strong> Set <code>X</code>.<br>Properties e.g. <em>reflexive, symmetric, transitive</em>, are all properties of “Homogeneous Relation”!</p>
+<h3 id="Back-to-Coq"><a href="#Back-to-Coq" class="headerlink" title="Back to Coq"></a>Back to Coq</h3><p>“relation” is a general idea. but in Coq standard lib it means “binary relation on <em>a</em> set X”</p>
+<blockquote>
+<p>Coq <code>identifier</code> relation will always refer to a binary relation between some set and itself.</p>
+</blockquote>
+<p>it’s defined as <em>a family of Prop parameterized by two elements of <code>X</code></em>:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> relation (X: <span class="keyword">Type</span>) := X → X → <span class="keyword">Prop</span>.</span><br><span class="line"></span><br><span class="line"><span class="keyword">Check</span> le : nat -&gt; nat -&gt; <span class="keyword">Prop</span>.</span><br><span class="line"><span class="keyword">Check</span> le : relation nat.</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h2 id="Basic-Properties"><a href="#Basic-Properties" class="headerlink" title="Basic Properties"></a>Basic Properties</h2><blockquote>
+<p>ways to classifying relations.<br>so theorems can be proved generically about certain sorts of relations</p>
+</blockquote>
+<p>It’s pretty fun to see all mathematical things defined in Coq!<br>(much more constructive)</p>
+<h3 id="Partial-Function"><a href="#Partial-Function" class="headerlink" title="Partial Function"></a><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Partial_function">Partial Function</a></h3><blockquote>
+<p>function is defined as <em>a special kind of binary relation</em>. </p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> partial_function &#123;X: <span class="keyword">Type</span>&#125; (R: relation X) :=</span><br><span class="line">  ∀x y1 y2 : X, R x y1 → R x y2 → y1 = y2.</span><br></pre></td></tr></table></figure>
+
+<p>meaning that foreach input <code>x ∈ X</code>, there is a <em>unique</em> <code>y ∈ Y</code> corresponded.</p>
+<p>But this only establish a <em>partial function</em>.<br>because it doesn’t say anything about <em>totality</em>,<br>to define <em>total function</em>, we require <code>f</code> map every <code>x ∈ X</code>. </p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Connex_relation">Total “Relation”</a></p>
+<p>  ∀x ∀y (x ∈ X ∧ y ∈ X) ⇒ (xRy ∨ yRx).</p>
+</li>
+</ul>
+<p>totally different with <em>total function</em> but ask the binary relation holds between every pair.</p>
+<h3 id="Reflexive"><a href="#Reflexive" class="headerlink" title="Reflexive"></a>Reflexive</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> transitive &#123;X: <span class="keyword">Type</span>&#125; (R: relation X) :=</span><br><span class="line">  ∀a b c : X, (R a b) → (R b c) → (R a c).</span><br></pre></td></tr></table></figure>
+
+<h3 id="Transitive"><a href="#Transitive" class="headerlink" title="Transitive"></a>Transitive</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> transitive &#123;X: <span class="keyword">Type</span>&#125; (R: relation X) :=</span><br><span class="line">  ∀a b c : X, (R a b) → (R b c) → (R a c).</span><br></pre></td></tr></table></figure>
+
+<h3 id="Symmetric-Antisymmetric"><a href="#Symmetric-Antisymmetric" class="headerlink" title="Symmetric &amp; Antisymmetric"></a>Symmetric &amp; Antisymmetric</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> symmetric &#123;X: <span class="keyword">Type</span>&#125; (R: relation X) :=</span><br><span class="line">  ∀a b : X, (R a b) → (R b a).</span><br><span class="line">  </span><br><span class="line"><span class="keyword">Definition</span> antisymmetric &#123;X: <span class="keyword">Type</span>&#125; (R: relation X) :=</span><br><span class="line">  ∀a b : X, (R a b) → (R b a) → a = b.</span><br></pre></td></tr></table></figure>
+
+<h4 id="Antisymmetric-vs-Asymmetric-vs-Non-symmetric-反对称-vs-非对称-vs-不-对称"><a href="#Antisymmetric-vs-Asymmetric-vs-Non-symmetric-反对称-vs-非对称-vs-不-对称" class="headerlink" title="Antisymmetric vs Asymmetric vs Non-symmetric (反对称 vs. 非对称 vs. 不-对称)"></a>Antisymmetric vs Asymmetric vs Non-symmetric (反对称 vs. 非对称 vs. 不-对称)</h4><p>A relation is <strong>asymmetric</strong> if and only if it is both antisymmetric and irreflexive<br>e.g. <code>&lt;=</code> is neither symmetric nor asymmetric, but it’s antisymmetric…<br>反对称: 可以自反 (只能 reflexive 时对称) <code>&lt;=</code><br>非对称: 不能自反 <code>&lt;</code><br>不对称: 不是对称 </p>
+<h3 id="Equivalence"><a href="#Equivalence" class="headerlink" title="Equivalence"></a>Equivalence</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> equivalence &#123;X:<span class="keyword">Type</span>&#125; (R: relation X) :=</span><br><span class="line">  (reflexive R) ∧ (symmetric R) ∧ (transitive R).</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="Partial-Orders"><a href="#Partial-Orders" class="headerlink" title="Partial Orders"></a>Partial Orders</h3><p>A partial order under which <em>every pair</em> of elements is <em>comparable</em> is called a <strong>total order</strong> or <strong>linear order</strong><br>In the Coq standard library it’s called just <code>order</code> for short:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> order &#123;X:<span class="keyword">Type</span>&#125; (R: relation X) :=</span><br><span class="line">  (reflexive R) ∧ (antisymmetric R) ∧ (transitive R).</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="Preorders"><a href="#Preorders" class="headerlink" title="Preorders"></a>Preorders</h3><p>a.k.a quasiorder</p>
+<p>The <em>subtyping</em> relations are usually preorders.</p>
+<blockquote>
+<p>(TAPL p185) because of the record permutation rule…there are many pairs of distinct types where each is a subtype of the other.</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> preorder &#123;X:<span class="keyword">Type</span>&#125; (R: relation X) :=</span><br><span class="line">  (reflexive R) ∧ (transitive R).</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="Reflexive-Transitive-Closure"><a href="#Reflexive-Transitive-Closure" class="headerlink" title="Reflexive, Transitive Closure"></a>Reflexive, Transitive Closure</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Closure_(mathematics)#Binary_relation_closures">Closure</a><br>Closure can be considered as <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Binary_relation#Operations_on_binary_relations">Operations on bin-rel</a></p>
+</blockquote>
+<p>As properties such as <em>reflexive, transitive</em>,<br>the <strong>blah blah Closure</strong> are only talking about “homogeneous relations” i.e., Relation on a SINGLE set.</p>
+<h3 id="Reflexive-Closure"><a href="#Reflexive-Closure" class="headerlink" title="Reflexive Closure"></a><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Reflexive_closure">Reflexive Closure</a></h3><p>Def. smallest reflexive relation on <code>X</code> containing <code>R</code>.</p>
+<p>Operationally, as a <code>=</code> operator on a binary relation <code>R</code>:</p>
+<pre><code>R⁼ = R ∪ &#123; (x, x) | x ∈ X &#125;
+</code></pre>
+<p>and this obviously satisfy <code>R⁼ ⊇ R</code>.</p>
+<h3 id="Transitive-Closure"><a href="#Transitive-Closure" class="headerlink" title="Transitive Closure"></a><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Transitive_closure">Transitive Closure</a></h3><p>Def. smallest transitive relation on <code>X</code> containing <code>R</code>.</p>
+<p>Operationally, as a <code>+</code> operator on a binary relation <code>R</code>:</p>
+<pre><code>R+ = R ∪ &#123; (x1,xn) | n &gt; 1 ∧ (x1,x2), ..., (xn-1,xn) ∈ R &#125;
+</code></pre>
+<p>We can also constructively and inductively definition using <code>R^i</code> where <code>i = i-transitivity away</code>.</p>
+<h3 id="Reflexive-Transitive-Closure-1"><a href="#Reflexive-Transitive-Closure-1" class="headerlink" title="Reflexive, Transitive Closure"></a>Reflexive, Transitive Closure</h3><pre><code>R* = R⁼ ∪ R+
+</code></pre>
+<h3 id="Why-is-it-useful"><a href="#Why-is-it-useful" class="headerlink" title="Why is it useful?"></a>Why is it useful?</h3><blockquote>
+<p>The idea is that <em>a relation is extended</em> s.t.<br><em>the derived relation has the (reflexsive and) transitive property.</em> – Prof. Arthur</p>
+</blockquote>
+<blockquote>
+<p>e.g.<br>the “descendant” relation is the transitive closure of the “child” relation,<br>the “derives-star (⇒⋆)” relation is the reflexive-transitive closure of the “derives (⇒)” relation.<br>the “ε-closure” relation is the reflexive-transitive closure of the “ε-transition” relation.<br>the “Kleene-star (Σ⋆)” relation is the reflexive-transitive closure of the “concatentation” relation.</p>
+</blockquote>
+<p>Another way is to think them as “set closed under some operation”.</p>
+<h3 id="Back-to-Coq-1"><a href="#Back-to-Coq-1" class="headerlink" title="Back to Coq"></a>Back to Coq</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> clos_refl_trans &#123;A: <span class="keyword">Type</span>&#125; (R: relation A) : relation A :=</span><br><span class="line">  | <span class="type">rt_step</span> x y (H : R x y) : clos_refl_trans R x y        <span class="comment">(** original relation **)</span></span><br><span class="line">  | <span class="type">rt_refl</span> x : clos_refl_trans R x x                      <span class="comment">(** reflexive  xRx              **)</span></span><br><span class="line">  | <span class="type">rt_trans</span> x y z                                         <span class="comment">(** transitive xRy ∧ yRz → xRz  **)</span></span><br><span class="line">        (Hxy : clos_refl_trans R x y)</span><br><span class="line">        (Hyz : clos_refl_trans R y z) :</span><br><span class="line">        clos_refl_trans R x z.</span><br></pre></td></tr></table></figure>
+
+<p>The above version will generate 2 IHs in <code>rt_trans</code> case. (since the proof tree has 2 branches).</p>
+<p>Here is a better “linked-list”-ish one. (we will exclusively use this style)</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> clos_refl_trans_1n &#123;A : <span class="keyword">Type</span>&#125; (R : relation A) (x : A) : A → <span class="keyword">Prop</span> :=</span><br><span class="line">  | <span class="type">rt1n_refl</span> : clos_refl_trans_1n R x x</span><br><span class="line">  | <span class="type">rt1n_trans</span> (y z : A)</span><br><span class="line">      (Hxy   : R x y) </span><br><span class="line">      (Hrest : clos_refl_trans_1n R y z) :</span><br><span class="line">      clos_refl_trans_1n R x z.</span><br></pre></td></tr></table></figure>
+
+<p>In later chapter, we will define a decorator <code>multi</code> that can take any binary relation on a set and return its closure relation:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> multi (X : <span class="keyword">Type</span>) (R : relation X) : relation X :=</span><br><span class="line">  | <span class="type">multi_refl</span> : <span class="keyword">forall</span> x     : X,                         multi R x x</span><br><span class="line">  | <span class="type">multi_step</span> : <span class="keyword">forall</span> x y z : X, R x y -&gt; multi R y z -&gt; multi R x z</span><br></pre></td></tr></table></figure>
+
+<p>We name it <code>step</code>, standing for <em>doing one step of this relation</em>, and then we still have the rest (sub-structure) satisfied the closure relation.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/LF-%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80/" rel="tag"># LF (逻辑基础)</a>
+              <a href="/tags/SF-%E8%BD%AF%E4%BB%B6%E5%9F%BA%E7%A1%80/" rel="tag"># SF (软件基础)</a>
+              <a href="/tags/Coq/" rel="tag"># Coq</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/read_sf_lf/2019-01-12-sf-lf-12-imp/" rel="prev" title="「SF-LC」12 Imp">
+                  <i class="fa fa-angle-left"></i> 「SF-LC」12 Imp
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/read_sf_lf/2019-01-10-sf-lf-10-ind-principle/" rel="next" title="「SF-LC」10 IndPrinciples">
+                  「SF-LC」10 IndPrinciples <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

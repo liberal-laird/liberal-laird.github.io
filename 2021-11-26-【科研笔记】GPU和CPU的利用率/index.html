@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2426182848439341"
+     crossorigin="anonymous"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33RJLY0818"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33RJLY0818');
+</script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="​		本博客是记录作者部署优化本地深度学习项目的经验。在深度学习项目中，我们最常见的提速方式是使用GPU，但是GPU使用了后可能会发现GPU利用率和CPU利用率很低，这很可能是我们项目中batch size和num_workers的参数设置没有充分发挥GPU和CPU的性能。（直接上更好硬件的方式不在此笔记考虑范围） 一、CPU和GPU做什么？​	CPU是计算机的中央处理器，这一点相信不必多言。在深">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「科研笔记」GPU和CPU的利用率">
+<meta property="og:url" content="https://www.vvbuys.com/2021-11-26-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91GPU%E5%92%8CCPU%E7%9A%84%E5%88%A9%E7%94%A8%E7%8E%87/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="​		本博客是记录作者部署优化本地深度学习项目的经验。在深度学习项目中，我们最常见的提速方式是使用GPU，但是GPU使用了后可能会发现GPU利用率和CPU利用率很低，这很可能是我们项目中batch size和num_workers的参数设置没有充分发挥GPU和CPU的性能。（直接上更好硬件的方式不在此笔记考虑范围） 一、CPU和GPU做什么？​	CPU是计算机的中央处理器，这一点相信不必多言。在深">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.vvbuys.com/img-post/%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0/2021-11-26-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91GPU%E5%92%8CCPU%E7%9A%84%E5%88%A9%E7%94%A8%E7%8E%87/GPU%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8%E7%8E%87.png">
+<meta property="og:image" content="https://www.vvbuys.com/img-post/%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0/2021-11-26-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91GPU%E5%92%8CCPU%E7%9A%84%E5%88%A9%E7%94%A8%E7%8E%87/GPU%E5%88%A9%E7%94%A8%E7%8E%87.png">
+<meta property="og:image" content="https://www.vvbuys.com/img-post/%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0/2021-11-26-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91GPU%E5%92%8CCPU%E7%9A%84%E5%88%A9%E7%94%A8%E7%8E%87/CPU%E5%88%A9%E7%94%A8%E7%8E%87.png">
+<meta property="article:published_time" content="2021-11-26T00:00:00.000Z">
+<meta property="article:modified_time" content="2024-02-02T01:00:55.431Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="图像生成">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.vvbuys.com/img-post/%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0/2021-11-26-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91GPU%E5%92%8CCPU%E7%9A%84%E5%88%A9%E7%94%A8%E7%8E%87/GPU%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8%E7%8E%87.png">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/2021-11-26-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91GPU%E5%92%8CCPU%E7%9A%84%E5%88%A9%E7%94%A8%E7%8E%87/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/2021-11-26-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91GPU%E5%92%8CCPU%E7%9A%84%E5%88%A9%E7%94%A8%E7%8E%87/","path":"2021-11-26-【科研笔记】GPU和CPU的利用率/","title":"「科研笔记」GPU和CPU的利用率"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>「科研笔记」GPU和CPU的利用率 | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81CPU%E5%92%8CGPU%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">一、CPU和GPU做什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%AE%B0%E5%BD%95%E9%A1%B9%E7%9B%AE%E6%8C%87%E6%A0%87"><span class="nav-number">2.</span> <span class="nav-text">二、记录项目指标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%BC%98%E5%8C%96%E9%A1%B9%E7%9B%AE%E5%8F%82%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">三、优化项目参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E4%BC%98%E5%8C%96batch-size"><span class="nav-number">3.1.</span> <span class="nav-text">1、优化batch_size</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81GPU%E5%88%A9%E7%94%A8%E7%8E%87"><span class="nav-number">3.2.</span> <span class="nav-text">2、GPU利用率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E4%BC%98%E5%8C%96num-workers"><span class="nav-number">3.3.</span> <span class="nav-text">3、优化num_workers</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2021-11-26-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91GPU%E5%92%8CCPU%E7%9A%84%E5%88%A9%E7%94%A8%E7%8E%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="「科研笔记」GPU和CPU的利用率 | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「科研笔记」GPU和CPU的利用率
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-11-26 00:00:00" itemprop="dateCreated datePublished" datetime="2021-11-26T00:00:00+00:00">2021-11-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-02-02 01:00:55" itemprop="dateModified" datetime="2024-02-02T01:00:55+00:00">2024-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>​		本博客是记录作者部署优化本地<code>深度学习项目</code>的经验。在深度学习项目中，我们最常见的提速方式是使用GPU，但是GPU使用了后可能会发现<code>GPU利用率</code>和<code>CPU利用率</code>很低，这很可能是我们项目中<code>batch size</code>和<code>num_workers</code>的参数设置没有充分发挥<code>GPU</code>和<code>CPU</code>的性能。（直接上更好硬件的方式不在此笔记考虑范围）</p>
+<h2 id="一、CPU和GPU做什么？"><a href="#一、CPU和GPU做什么？" class="headerlink" title="一、CPU和GPU做什么？"></a>一、CPU和GPU做什么？</h2><p>​	CPU是计算机的<code>中央处理器</code>，这一点相信不必多言。在深度学习项目中，CPU主要负责从磁盘中读取数据集数据、显示或者保存实验数据到磁盘。</p>
+<p>​	GPU是计算机的<code>图形处理器</code>，平常主要负责<code>图形渲染</code>。在深度学习项目中，GPU主要负责深度学习框架中的张量（tensor）计算，主要工作基本是前向传播和反向传播部分。</p>
+<h2 id="二、记录项目指标"><a href="#二、记录项目指标" class="headerlink" title="二、记录项目指标"></a>二、记录项目指标</h2><p>为了方便我们了解此时影响深度学习项目的主要因素，我们可以在训练中统计以下三个阶段的用时：</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>主要操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数据加载</td>
+<td>获取输入数据和目标数据，并且转换为GPU类型</td>
+</tr>
+<tr>
+<td>前向传播</td>
+<td>model.forward()</td>
+</tr>
+<tr>
+<td>反向传播</td>
+<td>计算loss，loss.backward()，优化器的step()</td>
+</tr>
+</tbody></table>
+<h2 id="三、优化项目参数"><a href="#三、优化项目参数" class="headerlink" title="三、优化项目参数"></a>三、优化项目参数</h2><p>本次我们主要调节batch_size和num_workers两个参数，使用Pytorch平台(tensorflow平台类似)，相关API如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">torch.utils.data.DataLoader(image_datasets[x],</span><br><span class="line">                            batch_size=batch_size, </span><br><span class="line">                            shuffle=<span class="literal">True</span>,</span><br><span class="line">                            num_workers=<span class="number">8</span>,</span><br><span class="line">                            pin_memory=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>注意：pin_memory参数根据你的机器CPU内存情况，选择是否打开。</p>
+<p>pin_memory参数为False时，数据从CPU传入到缓存RAM里面，再给传输到GPU上；</p>
+<p>pin_memory参数为True时，数据从CPU直接映射到GPU的相关内存块上。</p>
+<p>如果调节batch size和num_workers后，CPU内存依旧剩余较多，可以设置其为True来省掉一点数据传输时间。</p>
+<h3 id="1、优化batch-size"><a href="#1、优化batch-size" class="headerlink" title="1、优化batch_size"></a>1、优化batch_size</h3><p>​		batch_size一般要设置为2的整数倍，最好是4的整数倍，如4，8，12，16，32，128、256</p>
+<p>当然如果GPU内存特别小，那可能只能设为1。</p>
+<p>​		在GPU训练时，影响batch_size的优化的主要因素是GPU内存占用率（Memory-Usage）。</p>
+<p>​		在命令行输入nvidia-smi或者打开任务管理器的性能页面，可以查看到GPU内存占用率情况，当模型的结构固定时，这个值一般也是一个相对平稳的值：</p>
+<p>![](&#x2F;img-post&#x2F;科研笔记&#x2F;2021-11-26-【科研笔记】GPU和CPU的利用率&#x2F;GPU内存占用率.png)</p>
+<p><img src="/../img-post/%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0/2021-11-26-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91GPU%E5%92%8CCPU%E7%9A%84%E5%88%A9%E7%94%A8%E7%8E%87/GPU%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8%E7%8E%87.png"></p>
+<p>​		我们要尽可能地提升batch_size大小，确保GPU内存占用率达到90%以上。</p>
+<h3 id="2、GPU利用率"><a href="#2、GPU利用率" class="headerlink" title="2、GPU利用率"></a>2、GPU利用率</h3><p>​		上面我们调整完batch_size，GPU内存占用率达到90%以上后，但是GPU利用率（Volatile GPU-Util）依旧非常低，这个参数一般是反复跳动的，突然升高然后降低。</p>
+<p>![](&#x2F;img-post&#x2F;科研笔记&#x2F;2021-11-26-【科研笔记】GPU和CPU的利用率&#x2F;GPU利用率.png)</p>
+<p><img src="/../img-post/%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0/2021-11-26-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91GPU%E5%92%8CCPU%E7%9A%84%E5%88%A9%E7%94%A8%E7%8E%87/GPU%E5%88%A9%E7%94%A8%E7%8E%87.png"></p>
+<p>​		这个时候说明我们的主要瓶颈在CPU的数据吞吐量，即GPU会非常快计算完CPU传输进去的数据，主要时间花在CPU的处理数据和传输数据上。</p>
+<p>​		这个时候我们就要利用CPU的多线程来提高CPU的效率</p>
+<h3 id="3、优化num-workers"><a href="#3、优化num-workers" class="headerlink" title="3、优化num_workers"></a>3、优化num_workers</h3><p>​		除了换更好的内存条或者CPU外，我们基本只能调节num_workers参数。注意，这个参数不一定是越大越好，首先我们要查看CPU的线程数，这规定了num_workers的最大值。</p>
+<p>![](&#x2F;img-post&#x2F;科研笔记&#x2F;2021-11-26-【科研笔记】GPU和CPU的利用率&#x2F;CPU利用率.png)</p>
+<p><img src="/../img-post/%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0/2021-11-26-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91GPU%E5%92%8CCPU%E7%9A%84%E5%88%A9%E7%94%A8%E7%8E%87/CPU%E5%88%A9%E7%94%A8%E7%8E%87.png"></p>
+<p>​		num_workers一般是8、12等，具体要结合机器的硬件性能。我们不断调高num_workers的数量，然后查看CPU占用率和数据加载时间，尽可能使用最少的CPU占用率来减少更多的数据加载时间。</p>
+<p>​		假如我们在8-12之间数据加载时间变化不大，但是CPU占用率提高很大，则建议选用8，这由于提升机器的整体性能。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%9B%BE%E5%83%8F%E7%94%9F%E6%88%90/" rel="tag"># 图像生成</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021-11-22-%E3%80%90%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB%E3%80%91Res2Net%EF%BC%9A%E4%B8%80%E7%A7%8D%E6%96%B0%E7%9A%84%E5%A4%9A%E5%B0%BA%E5%BA%A6%E9%AA%A8%E5%B9%B2%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84/" rel="prev" title="「论文分享」Res2Net：一种新的多尺度骨干网络结构">
+                  <i class="fa fa-angle-left"></i> 「论文分享」Res2Net：一种新的多尺度骨干网络结构
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022-03-18-%E3%80%90%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB%E3%80%91%E7%94%A8%E4%BA%8E%E5%9B%BE%E5%83%8F%E5%85%89%E6%BA%90%E6%93%8D%E4%BD%9C%E7%9A%84%E6%B7%B1%E5%BA%A6%E9%87%8D%E5%85%89%E7%85%A7%E7%BD%91%E7%BB%9C/" rel="next" title="「论文分享」用于图像光源操作的深度重光照网络">
+                  「论文分享」用于图像光源操作的深度重光照网络 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

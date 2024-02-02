@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2426182848439341"
+     crossorigin="anonymous"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33RJLY0818"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33RJLY0818');
+</script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="参考链接：  哈尔小波变换的原理及其实现(Haar) (360doc.com)  csdn博客：Python 离散小波变换（DWT） pywt库 基础概念：  变换：不管是压缩、滤波还是图像处理，本质都是变换，就是基。例如傅里叶变换就是将信号用该空间的基的线性组合进行表示 •  正交： 如果两个向量的内积为0，它们就是正交的；如果一个向量序列相互对偶正交，并且长度为1，它们就是正交归一化的。  哈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「科研笔记」离散小波变换">
+<meta property="og:url" content="https://www.vvbuys.com/2021-10-19-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91%E7%A6%BB%E6%95%A3%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="参考链接：  哈尔小波变换的原理及其实现(Haar) (360doc.com)  csdn博客：Python 离散小波变换（DWT） pywt库 基础概念：  变换：不管是压缩、滤波还是图像处理，本质都是变换，就是基。例如傅里叶变换就是将信号用该空间的基的线性组合进行表示 •  正交： 如果两个向量的内积为0，它们就是正交的；如果一个向量序列相互对偶正交，并且长度为1，它们就是正交归一化的。  哈">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.vvbuys.com/img-post/%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0/2021-10-19-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91%E7%A6%BB%E6%95%A3%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2/table1.png">
+<meta property="og:image" content="https://www.vvbuys.com/img-post/%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0/2021-10-19-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91%E7%A6%BB%E6%95%A3%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2/matrix1.png">
+<meta property="og:image" content="https://www.vvbuys.com/img-post/%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0/2021-10-19-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91%E7%A6%BB%E6%95%A3%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2/matrix2.png">
+<meta property="og:image" content="https://www.vvbuys.com/img-post/%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0/2021-10-19-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91%E7%A6%BB%E6%95%A3%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2/matrix3.png">
+<meta property="og:image" content="https://www.vvbuys.com/img-post/%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0/2021-10-19-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91%E7%A6%BB%E6%95%A3%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2/matrix4.png">
+<meta property="og:image" content="https://www.vvbuys.com/img-post/%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0/2021-10-19-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91%E7%A6%BB%E6%95%A3%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2/image1.png">
+<meta property="og:image" content="https://www.vvbuys.com/img-post/%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0/2021-10-19-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91%E7%A6%BB%E6%95%A3%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2/image2.png">
+<meta property="article:published_time" content="2021-10-19T00:00:00.000Z">
+<meta property="article:modified_time" content="2024-02-02T01:00:55.427Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="科研笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.vvbuys.com/img-post/%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0/2021-10-19-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91%E7%A6%BB%E6%95%A3%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2/table1.png">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/2021-10-19-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91%E7%A6%BB%E6%95%A3%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/2021-10-19-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91%E7%A6%BB%E6%95%A3%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2/","path":"2021-10-19-【科研笔记】离散小波变换/","title":"「科研笔记」离散小波变换"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>「科研笔记」离散小波变换 | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E7%BB%B4%E5%93%88%E5%B0%94%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2"><span class="nav-number">1.</span> <span class="nav-text">一维哈尔小波变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%E5%93%88%E5%B0%94%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2"><span class="nav-number">2.</span> <span class="nav-text">二维哈尔小波变换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8A%E9%9D%A2%E8%A7%A3%E9%87%8A%E7%9A%84%E5%9B%BE%E7%A4%BA%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">上面解释的图示：</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2021-10-19-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91%E7%A6%BB%E6%95%A3%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="「科研笔记」离散小波变换 | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「科研笔记」离散小波变换
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-10-19 00:00:00" itemprop="dateCreated datePublished" datetime="2021-10-19T00:00:00+00:00">2021-10-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-02-02 01:00:55" itemprop="dateModified" datetime="2024-02-02T01:00:55+00:00">2024-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><strong>参考链接：</strong></p>
+<p> <a target="_blank" rel="noopener" href="http://www.360doc.com/content/13/0925/12/10724725_316957631.shtml">哈尔小波变换的原理及其实现(Haar) (360doc.com)</a> </p>
+<p>csdn博客：Python 离散小波变换（DWT） pywt库</p>
+<p><strong>基础概念：</strong></p>
+<p> <strong>变换</strong>：不管是压缩、滤波还是图像处理，本质都是变换，就是基。例如傅里叶变换就是将信号用该空间的基的线性组合进行表示 • </p>
+<p><strong>正交：</strong> 如果两个向量的内积为0，它们就是正交的；如果一个向量序列相互对偶正交，并且长度为1，它们就是正交归一化的。 </p>
+<p>哈尔小波变换是，小波变换中最简单的一种变换，也是最早提出的小波变换。</p>
+<h2 id="一维哈尔小波变换"><a href="#一维哈尔小波变换" class="headerlink" title="一维哈尔小波变换"></a>一维哈尔小波变换</h2><table>
+<thead>
+<tr>
+<th>例：求只有4个像素[9 7 3 5]的图像的小波变换系数。 计算步骤如下：</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1、<strong>求均值</strong>(averaging)。计算相邻像素对的平均值，得到一幅分辨率比较低的新图像，新的图像的分辨率是原来的1&#x2F;2，相应的像素值为：[8 4]</td>
+</tr>
+<tr>
+<td>2、<strong>求差值</strong>(differencing)。上面的均值存储了图像的整体信息，但很多细节被丢掉了。所以要记录图像的细节信息，这样在重构时能够恢复图像的全部信息。方法是使用这个像素对的差值除以2，结果为[8 4 1 -1]<br/>以上两步形成第一次分解的结果[8 4 1 -1]，包含了图像的整体信息和细节信息。</td>
+</tr>
+<tr>
+<td>接下来重复1、2步，将整体信息再次分解，得到二级分解结果[6,2,1,-1]</td>
+</tr>
+</tbody></table>
+<p>![](&#x2F;img-post&#x2F;科研笔记&#x2F;2021-10-19-【科研笔记】离散小波变换&#x2F;table1.png)</p>
+<p><img src="/../img-post/%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0/2021-10-19-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91%E7%A6%BB%E6%95%A3%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2/table1.png"></p>
+<p>从这个例子中我们可以看到：<br>① 对这个给定的变换，我们可以从所记录的数据中重构出各种分辨率的图像。例如，在分辨率为1的图像基础上重构出分辨率为2的图像，在分辨率为2的图像基础上重构出分辨率为4的图像。<br>②变换过程中没有丢失信息，因为能够从所记录的数据中重构出原始图像。<br>③ 通过变换之后产生的细节系数的幅度值比较小，这就为图像压缩提供了一种途径，例如去掉一些微不足道的细节系数并不影响对重构图像的理解。</p>
+<p>这个过程就叫做哈尔小波变换，也称哈尔小波分解，这个概念可以推广到使用其他小波基的变换。</p>
+<h2 id="二维哈尔小波变换"><a href="#二维哈尔小波变换" class="headerlink" title="二维哈尔小波变换"></a>二维哈尔小波变换</h2><p>​        对于二维小波变换，通常一次分解形成了整体图像，水平细节，垂直细节，对角细节。首先我们按照一维小波分解的原理，按照行顺序对行进行处理，然后按照列顺序对行处理结果进行同样的处理。</p>
+<p> 经过小波变换后图像会生成低频信息和高频信息。低频信息对应于求均值，高频信息对应于求差值。<br><code>均值是局部的平均值，变化缓慢，属于低频信息，存储图片的轮廓信息，近似信息</code><br><code>差值是局部的波动值，变化较快，属于高频信息，存储图片的细节信息，局部信息，另外含有噪音</code> </p>
+<p>假设有一幅灰度图像，其中的一个图像块用矩阵A 表示：</p>
+<p>![](&#x2F;img-post&#x2F;科研笔记&#x2F;2021-10-19-【科研笔记】离散小波变换&#x2F;matrix1.png)</p>
+<p><img src="/../img-post/%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0/2021-10-19-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91%E7%A6%BB%E6%95%A3%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2/matrix1.png"></p>
+<p>​       一个图像块是一个二维矩阵，进行小波变换时可以对矩阵的每一行进行变换，然后对行变换后的每一列进行变换，最后对经过变换之后的图像矩阵进行编码。</p>
+<p>第一步：在第一行上取每一对像素的平均值，并将结果放到第一行的前四个位置，其余4个数是第一行每一对像素的第一个数和对应的平均值之差（也可以是 这个像素对的差值除以2 ，计算结果是一样的。）将结果放到第一行的最后四个位置。</p>
+<p>第二步：对第一行的前四个数使用与第一步相同的方法，得到两个平均值和两个差（系数），并依次放在第一行的前四个位置，其余四个细节系数位置不动。</p>
+<p>第三步：用与第一步和第二步相同的方法，对剩下的一对平均值求均值和差值。</p>
+<p>用求均值和差值的方法，对矩阵每一行进行计算，得到矩阵A‘。</p>
+<p>![](&#x2F;img-post&#x2F;科研笔记&#x2F;2021-10-19-【科研笔记】离散小波变换&#x2F;matrix2.png)</p>
+<p><img src="/../img-post/%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0/2021-10-19-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91%E7%A6%BB%E6%95%A3%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2/matrix2.png"></p>
+<p>每行的第一个元素是该行像素值的平均值，其余是这行的细节系数。用同样的方法，对A’的每一列进行计算，得到A’’</p>
+<p>![](&#x2F;img-post&#x2F;科研笔记&#x2F;2021-10-19-【科研笔记】离散小波变换&#x2F;matrix3.png)</p>
+<p><img src="/../img-post/%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0/2021-10-19-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91%E7%A6%BB%E6%95%A3%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2/matrix3.png"></p>
+<p>左上角的元素是整个图像块的像素值的平均值，其余是该图像块的细节系数，根据这个事实，如果从矩阵中去掉图像的某些细节系数，事实证明重构的图像质量仍然可以接受。</p>
+<p>具体做法是设置一个阈值D，应该是像素值小于等于5的细节系数就把它当做0看待。这样变换后的矩阵为A‘’‘</p>
+<p>![](&#x2F;img-post&#x2F;科研笔记&#x2F;2021-10-19-【科研笔记】离散小波变换&#x2F;matrix4.png)</p>
+<p><img src="/../img-post/%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0/2021-10-19-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91%E7%A6%BB%E6%95%A3%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2/matrix4.png"></p>
+<p>’0‘的数目增加了18个，也就是去掉了18个细节系数，这样可以提高编码的效率。</p>
+<h3 id="上面解释的图示："><a href="#上面解释的图示：" class="headerlink" title="上面解释的图示："></a>上面解释的图示：</h3><p>（来自csdn博客：）</p>
+<p> <strong>经过小波变换后图像会生成低频信息和高频信息。</strong>低频信息对应于求均值，高频信息对应于求差值。<br><code>均值是局部的平均值，变化缓慢，属于低频信息，存储图片的轮廓信息，近似信息</code><br><code>差值是局部的波动值，变化较快，属于高频信息，存储图片的细节信息，局部信息，另外含有噪音</code> </p>
+<p> 水平和竖直两个方向进行低通和高通滤波（水平和竖直先后不影响），用图像表述如下图所示： </p>
+<p>![](&#x2F;img-post&#x2F;科研笔记&#x2F;2021-10-19-【科研笔记】离散小波变换&#x2F;image1.png)</p>
+<p><img src="/../img-post/%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0/2021-10-19-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91%E7%A6%BB%E6%95%A3%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2/image1.png"></p>
+<p>其中：</p>
+<ul>
+<li>b: 原图信息</li>
+<li>h1 :水平方向的细节（高频信息），</li>
+<li>v1 表示竖直方向的细节（高频信息），</li>
+<li>c1表示对角线方向的细节（高频信息）</li>
+</ul>
+<p>![](&#x2F;img-post&#x2F;科研笔记&#x2F;2021-10-19-【科研笔记】离散小波变换&#x2F;image2.png)</p>
+<p><img src="/../img-post/%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0/2021-10-19-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91%E7%A6%BB%E6%95%A3%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2/image2.png"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0/" rel="tag"># 科研笔记</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021-10-09-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91%E5%8F%8C%E6%8C%87%E9%92%88%E6%B3%95%EF%BC%88%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88%E6%B3%95%EF%BC%89/" rel="prev" title="「算法刷题」双指针法（快慢指针法）">
+                  <i class="fa fa-angle-left"></i> 「算法刷题」双指针法（快慢指针法）
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021-10-25-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE/" rel="next" title="「算法刷题」链表相关经典题目">
+                  「算法刷题」链表相关经典题目 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

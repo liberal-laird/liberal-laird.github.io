@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2426182848439341"
+     crossorigin="anonymous"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33RJLY0818"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33RJLY0818');
+</script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="this chapter:  (change to new syntax…) function abstraction variable binding  – 变量绑定 substitution      – 替换  Overview“Base Types”, only Bool for now.   – 基类型…again, exactly following TAPL. 12345678910">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「SF-PLF」7 Stlc">
+<meta property="og:url" content="https://www.vvbuys.com/read_sf_plf/2019-03-07-sf-plf-07-STLC/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="this chapter:  (change to new syntax…) function abstraction variable binding  – 变量绑定 substitution      – 替换  Overview“Base Types”, only Bool for now.   – 基类型…again, exactly following TAPL. 12345678910">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-02T01:05:07.548Z">
+<meta property="article:modified_time" content="2024-02-02T01:05:07.548Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="SF (软件基础)">
+<meta property="article:tag" content="Coq">
+<meta property="article:tag" content="PLF (编程语言基础)">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/read_sf_plf/2019-03-07-sf-plf-07-STLC/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/read_sf_plf/2019-03-07-sf-plf-07-STLC/","path":"read_sf_plf/2019-03-07-sf-plf-07-STLC/","title":"「SF-PLF」7 Stlc"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>「SF-PLF」7 Stlc | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overview"><span class="nav-number">1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Slide-QA-1"><span class="nav-number">2.</span> <span class="nav-text">Slide QA 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Syntax"><span class="nav-number">3.</span> <span class="nav-text">Syntax</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operational-Semantics"><span class="nav-number">4.</span> <span class="nav-text">Operational Semantics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Values-%E5%80%BC"><span class="nav-number">4.1.</span> <span class="nav-text">Values 值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#STLC-Programs-%E3%80%8C%E7%A8%8B%E5%BA%8F%E3%80%8D%E7%9A%84%E6%A6%82%E5%BF%B5%E4%B9%9F%E6%98%AF%E8%A6%81%E5%AE%9A%E4%B9%89%E7%9A%84"><span class="nav-number">4.2.</span> <span class="nav-text">STLC Programs 「程序」的概念也是要定义的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Substitution-IMPORTANT-%E6%9B%BF%E6%8D%A2"><span class="nav-number">4.3.</span> <span class="nav-text">Substitution (IMPORTANT!) 替换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E6%9E%9C%E6%88%91%E4%BB%AC%E8%80%83%E8%99%91%E7%94%A8%E4%BA%8E%E6%9B%BF%E6%8D%A2%E6%8E%89%E6%9F%90%E4%B8%AA%E5%8F%98%E9%87%8F%E7%9A%84%E9%A1%B9-s-%E5%85%B6%E6%9C%AC%E8%BA%AB%E4%B9%9F%E5%90%AB%E6%9C%89%E8%87%AA%E7%94%B1%E5%8F%98%E9%87%8F%EF%BC%8C-%E9%82%A3%E4%B9%88%E5%AE%9A%E4%B9%89%E6%9B%BF%E6%8D%A2%E5%B0%86%E4%BC%9A%E5%8F%98%E5%BE%97%E5%9B%B0%E9%9A%BE%E4%B8%80%E7%82%B9%E3%80%82"><span class="nav-number">4.4.</span> <span class="nav-text">如果我们考虑用于替换掉某个变量的项 s 其本身也含有自由变量， 那么定义替换将会变得困难一点。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Slide-QA-2"><span class="nav-number">4.5.</span> <span class="nav-text">Slide QA 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reduction-%EF%BC%88beta-reduction%EF%BC%89-beta-%E5%BD%92%E7%BA%A6"><span class="nav-number">4.6.</span> <span class="nav-text">Reduction （beta-reduction） beta-归约</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Slide-QA-3"><span class="nav-number">4.7.</span> <span class="nav-text">Slide QA 3</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Typing"><span class="nav-number">5.</span> <span class="nav-text">Typing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Typing-Contexts-%E7%B1%BB%E5%9E%8B%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="nav-number">5.1.</span> <span class="nav-text">Typing Contexts 类型上下文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Typing-Relations"><span class="nav-number">5.2.</span> <span class="nav-text">Typing Relations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Typable-Deciable"><span class="nav-number">5.3.</span> <span class="nav-text">Typable &#x2F; Deciable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#show-term-is-%E2%80%9Cnot-typeable%E2%80%9D"><span class="nav-number">5.4.</span> <span class="nav-text">show term is “not typeable”</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/read_sf_plf/2019-03-07-sf-plf-07-STLC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="「SF-PLF」7 Stlc | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「SF-PLF」7 Stlc
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:05:07" itemprop="dateCreated datePublished" datetime="2024-02-02T01:05:07+00:00">2024-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>this chapter:</p>
+<ul>
+<li>(change to new syntax…)</li>
+<li>function abstraction</li>
+<li>variable binding  – 变量绑定</li>
+<li>substitution      – 替换</li>
+</ul>
+<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>“Base Types”, only <code>Bool</code> for now.   – 基类型<br>…again, exactly following TAPL.</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">t ::= </span><br><span class="line">    | <span class="type">x</span>                         variable</span><br><span class="line">    | <span class="type">\x</span>:T1.t2                  abstraction       -- haskell-ish lambda</span><br><span class="line">    | <span class="type">t1</span> t2                     application</span><br><span class="line">    | <span class="type">tru</span>                       constant true</span><br><span class="line">    | <span class="type">fls</span>                       constant false</span><br><span class="line">    | <span class="type">test</span> t1 <span class="keyword">then</span> t2 <span class="keyword">else</span> t3   conditional</span><br><span class="line"></span><br><span class="line">T ::= </span><br><span class="line">    | <span class="type">Bool</span></span><br><span class="line">    | <span class="type">T</span> → T                     arrow type</span><br><span class="line"></span><br><span class="line">-- example</span><br><span class="line">\x:Bool. \y:Bool. x</span><br><span class="line">(\x:Bool. \y:Bool. x) fls tru</span><br><span class="line">\f:Bool→Bool. f (f tru)</span><br></pre></td></tr></table></figure>
+
+<p>Some known λ-idioms:</p>
+<blockquote>
+<p>two-arg functions are higher-order one-arg fun, i.e. curried<br>no named functions yet, all “anonymous”  – 匿名函数</p>
+</blockquote>
+<h2 id="Slide-QA-1"><a href="#Slide-QA-1" class="headerlink" title="Slide QA 1"></a>Slide QA 1</h2><ol>
+<li>2</li>
+<li><code>Bool</code>, <code>fls</code></li>
+</ol>
+<h2 id="Syntax"><a href="#Syntax" class="headerlink" title="Syntax"></a>Syntax</h2><p>Formalize syntax.<br>things are, as usual, in the <code>Type</code> level, so we can “check” them w&#x2F; dependent type.</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> ty : <span class="keyword">Type</span> :=</span><br><span class="line">  | <span class="type">Bool</span> : ty</span><br><span class="line">  | <span class="type">Arrow</span> : ty → ty → ty.</span><br><span class="line"></span><br><span class="line"><span class="keyword">Inductive</span> tm : <span class="keyword">Type</span> :=</span><br><span class="line">  | <span class="type">var</span> : string → tm</span><br><span class="line">  | <span class="type">app</span> : tm → tm → tm</span><br><span class="line">  | <span class="type">abs</span> : string → ty → tm → tm</span><br><span class="line">  | <span class="type">tru</span> : tm</span><br><span class="line">  | <span class="type">fls</span> : tm</span><br><span class="line">  | <span class="type">test</span> : tm → tm → tm → tm.</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Noted that, <code>\x:T.t</code> (formally, <code>abs x T t</code>), the argument type is explicitly annotated (not inferred.)</p>
+</blockquote>
+<p>另外，这里介绍了一个小 trick: 用 <code>Notation</code> (更接近 宏 ) 而非 <code>Defintion</code> 使得我们可以使用 <code>auto</code>…</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">(** idB = \x:Bool. x **)</span></span><br><span class="line"><span class="keyword">Notation</span> idB := (abs x Bool (var x)).</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<h2 id="Operational-Semantics"><a href="#Operational-Semantics" class="headerlink" title="Operational Semantics"></a>Operational Semantics</h2><h3 id="Values-值"><a href="#Values-值" class="headerlink" title="Values 值"></a>Values 值</h3><ul>
+<li><code>tru</code> and <code>fls</code> are values</li>
+<li>what about function?<ol>
+<li><code>\x:T. t</code> is value iff <code>t</code> value. – Coq </li>
+<li><code>\x:T. t</code> is always value         – most FP lang, either CBV or CBN</li>
+</ol>
+</li>
+</ul>
+<p>Coq 这么做挺奇怪的，不过对 Coq 来说: </p>
+<blockquote>
+<p>terms can be considered equiv up to the computation VM (在其项化简可以做到的范围内都算相等)<br>this rich the notion of Coq’s value (所以 Coq 的值的概念是比一般要大的)</p>
+</blockquote>
+<p>Three ways to construct <code>value</code> (unary relation &#x3D; predicate)</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> value : tm → <span class="keyword">Prop</span> :=</span><br><span class="line">  | <span class="type">v_abs</span> : ∀x T t, value (abs x T t)</span><br><span class="line">  | <span class="type">v_tru</span> : value tru</span><br><span class="line">  | <span class="type">v_fls</span> : value fls.</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="STLC-Programs-「程序」的概念也是要定义的"><a href="#STLC-Programs-「程序」的概念也是要定义的" class="headerlink" title="STLC Programs 「程序」的概念也是要定义的"></a>STLC Programs 「程序」的概念也是要定义的</h3><ul>
+<li><em>closed</em>    &#x3D; term not refer any undefined var &#x3D; <strong>complete program</strong></li>
+<li><em>open term</em> &#x3D; term with <em>free variable</em></li>
+</ul>
+<blockquote>
+<p>Having made the choice not to reduce under abstractions, we don’t need to worry about whether variables are values, since we’ll always be reducing programs “from the outside in,” and that means the step relation will always be working with closed terms.</p>
+</blockquote>
+<p>if we could reduce under abstraction and variables are values… What’s the implication here? 始终不懂…</p>
+<h3 id="Substitution-IMPORTANT-替换"><a href="#Substitution-IMPORTANT-替换" class="headerlink" title="Substitution (IMPORTANT!) 替换"></a>Substitution (IMPORTANT!) 替换</h3><blockquote>
+<p><code>[x:=s]t</code> and pronounced “substitute s for x in t.”</p>
+</blockquote>
+<pre><code>(\x:Bool. test x then tru else x) fls   ==&gt;    test fls then tru else fls
+</code></pre>
+<p>Important <em>capture</em> example:</p>
+<pre><code>[x:=tru] (\x:Bool. x)  ==&gt;  \x:Bool. x     -- x is bound, we need α-conversion here
+                       !=&gt;  \x:Bool. tru
+</code></pre>
+<p>Informal definition…</p>
+<pre><code>[x:=s]x               = s
+[x:=s]y               = y                     if x ≠ y
+[x:=s](\x:T11. t12)   = \x:T11. t12
+[x:=s](\y:T11. t12)   = \y:T11. [x:=s]t12     if x ≠ y
+[x:=s](t1 t2)         = ([x:=s]t1) ([x:=s]t2)
+...
+</code></pre>
+<p>and formally:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Reserved</span> <span class="keyword">Notation</span> <span class="string">&quot;&#x27;[&#x27; x &#x27;:=&#x27; s &#x27;]&#x27; t&quot;</span> (<span class="built_in">at</span> level <span class="number">20</span>).</span><br><span class="line"><span class="keyword">Fixpoint</span> <span class="built_in">subst</span> (x : string) (s : tm) (t : tm) : tm :=</span><br><span class="line">  <span class="keyword">match</span> t <span class="built_in">with</span></span><br><span class="line">  | <span class="type">var</span> x&#x27; ⇒ <span class="keyword">if</span> eqb_string x x&#x27; <span class="keyword">then</span> s <span class="keyword">else</span> t    <span class="comment">(* &lt;-- computational eqb_string *)</span></span><br><span class="line">  | <span class="type">abs</span> x&#x27; T t1 ⇒ abs x&#x27; T (<span class="keyword">if</span> eqb_string x x&#x27; <span class="keyword">then</span> t1 <span class="keyword">else</span> ([x:=s] t1))</span><br><span class="line">  | <span class="type">app</span> t1 t2 ⇒ app ([x:=s] t1) ([x:=s] t2)</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Computable <code>Fixpoint</code> means <em>meta-function</em>! (in metalanguage, Coq here)</p>
+</blockquote>
+<h3 id="如果我们考虑用于替换掉某个变量的项-s-其本身也含有自由变量，-那么定义替换将会变得困难一点。"><a href="#如果我们考虑用于替换掉某个变量的项-s-其本身也含有自由变量，-那么定义替换将会变得困难一点。" class="headerlink" title="如果我们考虑用于替换掉某个变量的项 s 其本身也含有自由变量， 那么定义替换将会变得困难一点。"></a>如果我们考虑用于替换掉某个变量的项 s 其本身也含有自由变量， 那么定义替换将会变得困难一点。</h3><p>Is <code>if x ≠ y</code> for function abstraction one sufficient?  – 在 PLT 中我们采取了更严格的定义</p>
+<blockquote>
+<p>Only safe if we only consider <code>s</code> is closed term. </p>
+</blockquote>
+<p>Prof.Mtf:</p>
+<blockquote>
+<p>here…it’s not really “<em>defining</em> on closed terms”. Technically, you can still write open terms.<br>if we want, we could define the real <code>closed_term</code>…more works to prove things tho.</p>
+</blockquote>
+<p>Prof.Mtf:</p>
+<blockquote>
+<p>In some more rigorous setting…we might define <code>well_typed_term</code><br>and the definition itself is the proof of <code>Preservation</code>! </p>
+</blockquote>
+<h3 id="Slide-QA-2"><a href="#Slide-QA-2" class="headerlink" title="Slide QA 2"></a>Slide QA 2</h3><ol>
+<li>(3)</li>
+</ol>
+<h3 id="Reduction-（beta-reduction）-beta-归约"><a href="#Reduction-（beta-reduction）-beta-归约" class="headerlink" title="Reduction （beta-reduction） beta-归约"></a>Reduction （beta-reduction） beta-归约</h3><p>Should be familar</p>
+<pre><code>                value v2
+      ----------------------------                   (ST_AppAbs)   until value, i.e. function  (β-reduction)
+      (\x:T.t12) v2 --&gt; [x:=v2]t12
+
+                t1 --&gt; t1&#39;
+            ----------------                           (ST_App1)   reduce lhs, Function side
+            t1 t2 --&gt; t1&#39; t2
+
+                value v1
+                t2 --&gt; t2&#39;
+            ----------------                           (ST_App2)   reduce rhs, Arg side 
+            v1 t2 --&gt; v1 t2&#39;
+</code></pre>
+<p>Formally,<br>(I was expecting they invents some new syntax for this one…so we only have AST)</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Reserved</span> <span class="keyword">Notation</span> <span class="string">&quot;t1 &#x27;--&gt;&#x27; t2&quot;</span> (<span class="built_in">at</span> level <span class="number">40</span>).</span><br><span class="line"><span class="keyword">Inductive</span> step : tm → tm → <span class="keyword">Prop</span> :=</span><br><span class="line">  | <span class="type">ST_AppAbs</span> : ∀x T t12 v2,</span><br><span class="line">         value v2 →</span><br><span class="line">         (app (abs x T t12) v2) --&gt; [x:=v2]t12</span><br><span class="line">  | <span class="type">ST_App1</span> : ∀t1 t1&#x27; t2,</span><br><span class="line">         t1 --&gt; t1&#x27; →</span><br><span class="line">         app t1 t2 --&gt; app t1&#x27; t2</span><br><span class="line">  | <span class="type">ST_App2</span> : ∀v1 t2 t2&#x27;,</span><br><span class="line">         value v1 →</span><br><span class="line">         t2 --&gt; t2&#x27; →</span><br><span class="line">         app v1 t2 --&gt; app v1 t2&#x27;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="Slide-QA-3"><a href="#Slide-QA-3" class="headerlink" title="Slide QA 3"></a>Slide QA 3</h3><ol>
+<li>(1)  <code>idBB idB -&gt; idB</code></li>
+<li>(1)  <code>idBB (idBB idB) -&gt; idB</code></li>
+<li>if () ill-typed <code>idBB (notB tru) -&gt; idBB fls ....</code><ul>
+<li>we don’t type check in step</li>
+</ul>
+</li>
+<li>(3)  <code>idB fls</code></li>
+<li>NOT…ill-typed one &amp; open term</li>
+</ol>
+<h2 id="Typing"><a href="#Typing" class="headerlink" title="Typing"></a>Typing</h2><h3 id="Typing-Contexts-类型上下文"><a href="#Typing-Contexts-类型上下文" class="headerlink" title="Typing Contexts 类型上下文"></a>Typing Contexts 类型上下文</h3><p>we need something like environment but for Types.</p>
+<blockquote>
+<p>three-place typing judgment, informally written   – 三元类型断言</p>
+</blockquote>
+<pre><code>Gamma ⊢ t ∈ T
+</code></pre>
+<blockquote>
+<p>“under the assumptions in Gamma, the term t has the type T.”</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> context := partial_map ty.</span><br><span class="line">(X ⊢&gt; T11, Gamma) </span><br></pre></td></tr></table></figure>
+
+<p>Why <code>partial_map</code> here?<br>IMP can use <code>total_map</code> because it gave default value for undefined var.</p>
+<h3 id="Typing-Relations"><a href="#Typing-Relations" class="headerlink" title="Typing Relations"></a>Typing Relations</h3><pre><code>                          Gamma x = T
+                        ----------------                            (T_Var)   look up
+                        Gamma |- x \in T
+
+               (x |-&gt; T11 ; Gamma) |- t12 \in T12
+               ----------------------------------                   (T_Abs)   type check against context w/ arg
+                Gamma |- \x:T11.t12 \in T11-&gt;T12
+
+                    Gamma |- t1 \in T11-&gt;T12
+                      Gamma |- t2 \in T11
+                     ----------------------                         (T_App)
+                     Gamma |- t1 t2 \in T12
+</code></pre>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Example</span> typing_example_1 :</span><br><span class="line">  empty ⊢ abs x Bool (var x) ∈ Arrow Bool Bool.</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">apply</span> T_Abs. <span class="built_in">apply</span> T_Var. <span class="built_in">reflexivity</span>. <span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
+
+
+<p><code>example_2</code></p>
+<ul>
+<li><code>eapply</code></li>
+<li><code>A</code> ?? looks like need need another environment to look up <code>A</code>…</li>
+</ul>
+<h3 id="Typable-Deciable"><a href="#Typable-Deciable" class="headerlink" title="Typable &#x2F; Deciable"></a>Typable &#x2F; Deciable</h3><blockquote>
+<p>decidable type system &#x3D; decide term if typable or not.<br>done by type checker…</p>
+</blockquote>
+<blockquote>
+<p>can we prove…?<br><code>∀ Γ e, ∃ τ, (Γ ⊢ e : τ) ∨ ¬(Γ ⊢ e : τ)</code> – a type inference algorithm!</p>
+</blockquote>
+<blockquote>
+<p>Provability in Coq witness decidabile operations.</p>
+</blockquote>
+<h3 id="show-term-is-“not-typeable”"><a href="#show-term-is-“not-typeable”" class="headerlink" title="show term is “not typeable”"></a>show term is “not typeable”</h3><p>Keep inversion till the contradiction.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/SF-%E8%BD%AF%E4%BB%B6%E5%9F%BA%E7%A1%80/" rel="tag"># SF (软件基础)</a>
+              <a href="/tags/Coq/" rel="tag"># Coq</a>
+              <a href="/tags/PLF-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" rel="tag"># PLF (编程语言基础)</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/read_sf_plf/2019-03-08-sf-plf-08-STLC-prop/" rel="prev" title="「SF-PLF」8 StlcProp">
+                  <i class="fa fa-angle-left"></i> 「SF-PLF」8 StlcProp
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/read_sf_plf/2019-03-06-sf-plf-06-types/" rel="next" title="「SF-PLF」6 Types">
+                  「SF-PLF」6 Types <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

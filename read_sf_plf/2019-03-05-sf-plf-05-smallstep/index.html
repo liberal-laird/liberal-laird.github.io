@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2426182848439341"
+     crossorigin="anonymous"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33RJLY0818"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33RJLY0818');
+</script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Recall Big-step Pros &amp; ConsBig-step 一步到位 :  eval to its final value (plus final store)   Pros - natural (so called natural semantics), “all in one big step”Cons - not catch the essence of how prog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「SF-PLF」5 Smallstep">
+<meta property="og:url" content="https://www.vvbuys.com/read_sf_plf/2019-03-05-sf-plf-05-smallstep/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="Recall Big-step Pros &amp; ConsBig-step 一步到位 :  eval to its final value (plus final store)   Pros - natural (so called natural semantics), “all in one big step”Cons - not catch the essence of how prog">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-02T01:05:07.548Z">
+<meta property="article:modified_time" content="2024-02-02T01:05:07.548Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="SF (软件基础)">
+<meta property="article:tag" content="Coq">
+<meta property="article:tag" content="PLF (编程语言基础)">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/read_sf_plf/2019-03-05-sf-plf-05-smallstep/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/read_sf_plf/2019-03-05-sf-plf-05-smallstep/","path":"read_sf_plf/2019-03-05-sf-plf-05-smallstep/","title":"「SF-PLF」5 Smallstep"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>「SF-PLF」5 Smallstep | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Recall-Big-step-Pros-Cons"><span class="nav-number">1.</span> <span class="nav-text">Recall Big-step Pros &amp; Cons</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Big-step"><span class="nav-number">2.</span> <span class="nav-text">Big-step</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Pros-natural-so-called-natural-semantics-%E2%80%9Call-in-one-big-step%E2%80%9D"><span class="nav-number">2.1.</span> <span class="nav-text">Pros - natural (so called natural semantics), “all in one big step”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cons-not-catch-the-essence-of-how-program-behave"><span class="nav-number">2.2.</span> <span class="nav-text">Cons - not catch the essence of how program behave</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cons-not-technically-expressive-enough-to-express-exception-crash-non-termination"><span class="nav-number">2.3.</span> <span class="nav-text">Cons - not technically expressive enough to express exception &#x2F; crash &#x2F; non-termination</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Small-step"><span class="nav-number">3.</span> <span class="nav-text">Small-step</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Toy-Language"><span class="nav-number">4.</span> <span class="nav-text">A Toy Language</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Big-Step"><span class="nav-number">4.1.</span> <span class="nav-text">Big-Step</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Small-Step"><span class="nav-number">4.2.</span> <span class="nav-text">Small-Step</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Relations"><span class="nav-number">5.</span> <span class="nav-text">Relations</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Deterministic-%E7%A1%AE%E5%AE%9A%E6%80%A7"><span class="nav-number">5.1.</span> <span class="nav-text">Deterministic 确定性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ltac-solve-by-inverts-n"><span class="nav-number">5.2.</span> <span class="nav-text">Ltac solve_by_inverts n</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Values-%E5%80%BC"><span class="nav-number">5.3.</span> <span class="nav-text">Values 值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Abstract-Machine-%E6%8A%BD%E8%B1%A1%E6%9C%BA"><span class="nav-number">5.3.1.</span> <span class="nav-text">Abstract Machine 抽象机!</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Strong-Progress-and-Normal-Forms-%E5%BC%BA%E5%8F%AF%E8%BF%9B%E6%80%A7%E5%92%8C%E6%AD%A3%E8%A7%84%E5%BC%8F"><span class="nav-number">5.4.</span> <span class="nav-text">Strong Progress and Normal Forms 强可进性和正规式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Value-Normal-Form-not-always"><span class="nav-number">5.4.1.</span> <span class="nav-text">Value !&#x3D; Normal Form (not always)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Multi-Step-Reduction-%E5%A4%9A%E6%AD%A5%E8%A7%84%E7%BA%A6"><span class="nav-number">6.</span> <span class="nav-text">Multi-Step Reduction --&gt;* 多步规约</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Normal-Forms-Again"><span class="nav-number">6.1.</span> <span class="nav-text">Normal Forms Again</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Normalizing-%E6%80%BB%E6%98%AF%E5%8F%AF%E6%AD%A3%E8%A7%84%E5%8C%96%E5%BE%97-%E2%80%93-%E2%80%9CEvaluating-to-completion%E2%80%9D"><span class="nav-number">6.2.</span> <span class="nav-text">Normalizing 总是可正规化得  – “Evaluating to completion”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Equivalence-of-Big-Step-and-Small-Step"><span class="nav-number">6.3.</span> <span class="nav-text">Equivalence of Big-Step and Small-Step</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Additional-Combined-Language"><span class="nav-number">7.</span> <span class="nav-text">Additional: Combined Language</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Small-Step-IMP"><span class="nav-number">8.</span> <span class="nav-text">Small-Step IMP </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#aexp-bexp"><span class="nav-number">8.1.</span> <span class="nav-text">aexp, bexp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#a-b"><span class="nav-number">8.2.</span> <span class="nav-text">--&gt;a, --&gt;b</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cmd"><span class="nav-number">8.3.</span> <span class="nav-text">cmd, --&gt;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Concurrent-IMP"><span class="nav-number">9.</span> <span class="nav-text">Concurrent IMP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Small-Step-Stack-Machine-%E5%B0%8F%E6%AD%A5%E6%A0%88%E6%9C%BA"><span class="nav-number">10.</span> <span class="nav-text">A Small-Step Stack Machine  小步栈机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Compiler-Correctness"><span class="nav-number">10.1.</span> <span class="nav-text">Compiler Correctness</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Aside-A-normalize-Tactic"><span class="nav-number">11.</span> <span class="nav-text">Aside: A normalize Tactic</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/read_sf_plf/2019-03-05-sf-plf-05-smallstep/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="「SF-PLF」5 Smallstep | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「SF-PLF」5 Smallstep
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:05:07" itemprop="dateCreated datePublished" datetime="2024-02-02T01:05:07+00:00">2024-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Recall-Big-step-Pros-Cons"><a href="#Recall-Big-step-Pros-Cons" class="headerlink" title="Recall Big-step Pros &amp; Cons"></a>Recall Big-step Pros &amp; Cons</h2><h2 id="Big-step"><a href="#Big-step" class="headerlink" title="Big-step"></a>Big-step</h2><blockquote>
+<p>一步到位 :  <em>eval to its final value (plus final store)</em> </p>
+</blockquote>
+<h3 id="Pros-natural-so-called-natural-semantics-“all-in-one-big-step”"><a href="#Pros-natural-so-called-natural-semantics-“all-in-one-big-step”" class="headerlink" title="Pros - natural (so called natural semantics), “all in one big step”"></a>Pros - natural (so called <em>natural semantics</em>), “all in one big step”</h3><h3 id="Cons-not-catch-the-essence-of-how-program-behave"><a href="#Cons-not-catch-the-essence-of-how-program-behave" class="headerlink" title="Cons - not catch the essence of how program behave"></a>Cons - not catch the <em>essence of how program behave</em></h3><blockquote>
+<p>大步语义只是一个 <code>程序 ↦ 结果</code> 这样的 pair 集合，而「如何一步步处理」才是程序「执行」的本质</p>
+</blockquote>
+<p>not just input state get mapped to output state.<br>but also <em>intermediate state</em> (which could be observed by <em>concurrent</em> code!)</p>
+<h3 id="Cons-not-technically-expressive-enough-to-express-exception-crash-non-termination"><a href="#Cons-not-technically-expressive-enough-to-express-exception-crash-non-termination" class="headerlink" title="Cons - not technically expressive enough to express exception &#x2F; crash &#x2F; non-termination"></a>Cons - not technically expressive enough to express <em>exception &#x2F; crash &#x2F; non-termination</em></h3><blockquote>
+<p>比如说，大步语义无法区分「不停机」与「卡住」<br>two quite different reasons of “fail to map a given state to any ending state”</p>
+</blockquote>
+<ol>
+<li>不停机 nontermination - we want to allow this (infinite loop is the price paid for usability)</li>
+<li>卡住 getting stuck &#x2F; undefiend behaviour 未定义行为  - we want to prevent (wrong)</li>
+</ol>
+<ul>
+<li><code>WHILE_true_nonterm</code> 仅仅表达了「程序不能再 take step」，无法与「卡住」区分</li>
+<li><code>WHILE_true</code> 更是直接让任何「无限循环」的程序都「等价」了…而忽略了中间状态和 effect (作用)</li>
+</ul>
+<blockquote>
+<p>we need <em>a way of presenting semantics that distinguish</em> nontermination from erroneous “stuck states”</p>
+</blockquote>
+<h2 id="Small-step"><a href="#Small-step" class="headerlink" title="Small-step"></a>Small-step</h2><blockquote>
+<p>更精细化 :  a <em>finer-grained</em> way of defining and reasoning about program behaviors.<br>原子步骤 :  <em>“atomic steps”</em> of computation are performed. </p>
+</blockquote>
+<h2 id="A-Toy-Language"><a href="#A-Toy-Language" class="headerlink" title="A Toy Language"></a>A Toy Language</h2><p>Only Constant and Plus</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> tm : <span class="keyword">Type</span> :=</span><br><span class="line">  | <span class="type">C</span> : nat → tm <span class="comment">(* Constant *)</span></span><br><span class="line">  | <span class="type">P</span> : tm → tm → tm. <span class="comment">(* Plus *)</span></span><br></pre></td></tr></table></figure>
+<h3 id="Big-Step"><a href="#Big-Step" class="headerlink" title="Big-Step"></a>Big-Step</h3><p><code>==&gt;</code> is really <code>⇓</code></p>
+<pre><code>            ---------        (E_Const)
+            C n ==&gt; n
+
+            t1 ==&gt; n1
+            t2 ==&gt; n2
+        -------------------  (E_Plus)
+        P t1 t2 ==&gt; n1 + n2
+</code></pre>
+<h3 id="Small-Step"><a href="#Small-Step" class="headerlink" title="Small-Step"></a>Small-Step</h3><blockquote>
+<p>single reduction step<br>find leftmost redex</p>
+</blockquote>
+<pre><code>  -------------------------------   (ST_PlusConstConst)
+  P (C n1) (C n2) --&gt; C (n1 + n2)
+
+          t1 --&gt; t1&#39;
+      --------------------          (ST_Plus1)
+      P t1 t2 --&gt; P t1&#39; t2
+
+          t2 --&gt; t2&#39;
+  ----------------------------      (ST_Plus2)
+  P (C n1) t2 --&gt; P (C n1) t2&#39;
+</code></pre>
+<h2 id="Relations"><a href="#Relations" class="headerlink" title="Relations"></a>Relations</h2><blockquote>
+<p>Check notes of <code>rel</code> and <code>tactics</code> for more details about bi-relation.</p>
+</blockquote>
+<h3 id="Deterministic-确定性"><a href="#Deterministic-确定性" class="headerlink" title="Deterministic 确定性"></a>Deterministic 确定性</h3><blockquote>
+<p>a.k.a Partial Function.<br>in terms of its <em>right uniqueness</em> under mathematical context, not its emphasise on <em>partial</em> under programming context)</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> deterministic &#123;X : <span class="keyword">Type</span>&#125; (R : relation X) :=</span><br><span class="line">  ∀x y1 y2 : X, R x y1 → R x y2 → y1 = y2.</span><br></pre></td></tr></table></figure>
+
+<p><code>deterministic step</code> can be proved by induction on derivation <code>x --&gt; y1</code> </p>
+<ul>
+<li>use <code>generalize dependent y2</code>!</li>
+<li>in informal proof, we usually just take <code>∀ y2</code> by default.</li>
+</ul>
+<h3 id="Ltac-solve-by-inverts-n"><a href="#Ltac-solve-by-inverts-n" class="headerlink" title="Ltac solve_by_inverts n"></a><code>Ltac solve_by_inverts n</code></h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Ltac</span> solve_by_inverts n :=</span><br><span class="line">  <span class="keyword">match</span> goal <span class="built_in">with</span> | <span class="type">H</span> : ?T ⊢ <span class="keyword">_</span> ⇒</span><br><span class="line">  <span class="keyword">match</span> type of T <span class="built_in">with</span> <span class="keyword">Prop</span> ⇒</span><br><span class="line">    <span class="built_in">solve</span> [</span><br><span class="line">      <span class="built_in">inversion</span> H;</span><br><span class="line">      <span class="keyword">match</span> n <span class="built_in">with</span> S (S (?n&#x27;)) ⇒ <span class="built_in">subst</span>; solve_by_inverts (S n&#x27;) <span class="keyword">end</span> ]</span><br><span class="line">  <span class="keyword">end</span> <span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="Values-值"><a href="#Values-值" class="headerlink" title="Values 值"></a>Values 值</h3><h4 id="Abstract-Machine-抽象机"><a href="#Abstract-Machine-抽象机" class="headerlink" title="Abstract Machine 抽象机!"></a>Abstract Machine 抽象机!</h4><blockquote>
+<p>think of the <code>--&gt;</code> relation as defining an <em>abstract machine</em>:</p>
+</blockquote>
+<ul>
+<li>term &#x3D; <em>state</em> of machine 项 &#x3D; 机器状态</li>
+<li>step &#x3D; atomic unit of computation (think as assembly opcode &#x2F; CPU instructrion)</li>
+<li><em>halting state</em> &#x3D; no more computation. 停机状态</li>
+</ul>
+<blockquote>
+<p>execute a term <code>t</code>:</p>
+</blockquote>
+<ul>
+<li>starting state &#x3D; <code>t</code></li>
+<li>repeatedly use <code>--&gt;</code> </li>
+<li>when halt, <em>read out</em> the <em>final state</em> as result of execution</li>
+</ul>
+<blockquote>
+<p>Intutively, we call such (final state) terms <em>values</em>.<br>Okay so the point is…this language is simple enough (no stuck state).<br>and in this lang, value can only be <code>C</code>onst:</p>
+</blockquote>
+<blockquote>
+<p>在这个语言中，我们「规定」只有 <code>C</code>onst 是「值」:</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> value : tm → <span class="keyword">Prop</span> :=</span><br><span class="line">  | <span class="type">v_const</span> : ∀n, value (C n).</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>and we can write <code>ST_Plus2</code> more elegant:<br>well…in this lang, not really, since only one form of value to write out.<br>in cases we have multiple form of value, by doing this we don’t have to write out any cases.</p>
+</blockquote>
+<pre><code>         value v1
+        t2 --&gt; t2&#39;
+    --------------------  (ST_Plus2)
+    P v1 t2 --&gt; P v1 t2&#39;
+</code></pre>
+<h3 id="Strong-Progress-and-Normal-Forms-强可进性和正规式"><a href="#Strong-Progress-and-Normal-Forms-强可进性和正规式" class="headerlink" title="Strong Progress and Normal Forms 强可进性和正规式"></a>Strong Progress and Normal Forms 强可进性和正规式</h3><blockquote>
+<p><em>strong progress</em>: every term either is a value or can “make progress”</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> strong_progress : ∀t,</span><br><span class="line">  value t ∨ (∃t&#x27;, t --&gt; t&#x27;).</span><br></pre></td></tr></table></figure>
+
+
+<blockquote>
+<p>terms that cannot make progress.<br>for an arbitrary relation <code>R</code> over an arbitrary set <code>X</code></p>
+</blockquote>
+<blockquote>
+<p><em>normal form</em>: term that cannot make progress (take a step)<br>其实我个人比较喜欢理解为「常态」或「无能量稳定态」</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> normal_form &#123;X : <span class="keyword">Type</span>&#125; (R : relation X) (t : X) : <span class="keyword">Prop</span> :=</span><br><span class="line">  ¬∃t&#x27;, R t t&#x27;.</span><br></pre></td></tr></table></figure>
+
+
+<blockquote>
+<p>theorem: <em>in this language</em>, normal forms and values are actually the same thing. </p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Lemma</span> value_is_nf : v, value v → normal_form step v.</span><br><span class="line"><span class="keyword">Lemma</span> nf_is_value : ∀t, normal_form step t → value t.</span><br><span class="line"><span class="keyword">Corollary</span> nf_same_as_value : ∀t, normal_form step t ↔ value t.</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="Value-Normal-Form-not-always"><a href="#Value-Normal-Form-not-always" class="headerlink" title="Value !&#x3D; Normal Form (not always)"></a>Value !&#x3D; Normal Form (not always)</h4><blockquote>
+<p>value       is a <em>syntactic</em> concept : it is defined by looking at the form of a term<br>normal form is a <em>semantic</em>  one     : it is defined by looking at how the term steps.</p>
+</blockquote>
+<blockquote>
+<p>E.g. we can defined term that can take a step as “value”:<br>添加一个不是 normal form 的 value</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> value : tm → <span class="keyword">Prop</span> :=</span><br><span class="line">  | <span class="type">v_const</span> : ∀n, value (C n)</span><br><span class="line">  | <span class="type">v_funny</span> : ∀t1 n2, value (P t1 (C n2)). <span class="comment">(* &lt;--- it can actually progress! *)</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>或者更改 <code>step</code> 让 value 不是 normal form…</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> step : tm -&gt; tm -&gt; <span class="keyword">Prop</span> :=</span><br><span class="line">  | <span class="type">ST_Funny</span> : <span class="keyword">forall</span> n,   </span><br><span class="line">      C n --&gt; P (C n) (C <span class="number">0</span>)                <span class="comment">(* &lt;--- or a weird  *)</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+<h2 id="Multi-Step-Reduction-多步规约"><a href="#Multi-Step-Reduction-多步规约" class="headerlink" title="Multi-Step Reduction --&gt;* 多步规约"></a>Multi-Step Reduction <code>--&gt;*</code> 多步规约</h2><blockquote>
+<p>relation <code>multi R</code>: <em>multi-step closure of R</em><br>same as <code>clos_refl_trans_1n</code> in <code>Rel</code> chapter.</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> multi &#123;X : <span class="keyword">Type</span>&#125; (R : relation X) : relation X :=</span><br><span class="line">  | <span class="type">multi_refl</span> : ∀(x : X), multi R x x</span><br><span class="line">  | <span class="type">multi_step</span> : ∀(x y z : X),</span><br><span class="line">                    R x y →</span><br><span class="line">                    multi R y z →</span><br><span class="line">                    multi R x z.</span><br></pre></td></tr></table></figure>
+
+<p>以上是一种方便的定义，而以下则给了我们两个 helper 定理：</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> multi_R : ∀(X : <span class="keyword">Type</span>) (R : relation X) (x y : X),</span><br><span class="line">    R x y → </span><br><span class="line">    multi R x y.</span><br><span class="line"></span><br><span class="line"><span class="keyword">Theorem</span> multi_trans : ∀(X : <span class="keyword">Type</span>) (R : relation X) (x y z : X),</span><br><span class="line">    multi R x y →</span><br><span class="line">    multi R y z →</span><br><span class="line">    multi R x z.</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="Normal-Forms-Again"><a href="#Normal-Forms-Again" class="headerlink" title="Normal Forms Again"></a>Normal Forms Again</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> step_normal_form := normal_form step.  <span class="comment">(** 这个是一个「性质」 Property : _ -&gt; Prop , 从 polymorphic 的 [normal_form] 以 [step] 实例化而来 **)</span> </span><br><span class="line"><span class="keyword">Definition</span> normal_form_of (t t&#x27; : tm) :=          <span class="comment">(** 是两个项之间的（i.e. 定义在 [tm] 集合上的) 二元关系, 即 t&#x27; 是 t 的正规式 **)</span></span><br><span class="line">  (t --&gt;* t&#x27; ∧ step_normal_form t&#x27;).</span><br><span class="line">  </span><br><span class="line"><span class="keyword">Theorem</span> normal_forms_unique:                      <span class="comment">(** single-step reduction is deterministic 可以推出 normal form is unique for a given term **)</span></span><br><span class="line">  deterministic normal_form_of.</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="Normalizing-总是可正规化得-–-“Evaluating-to-completion”"><a href="#Normalizing-总是可正规化得-–-“Evaluating-to-completion”" class="headerlink" title="Normalizing 总是可正规化得  – “Evaluating to completion”"></a>Normalizing 总是可正规化得  – “Evaluating to completion”</h3><blockquote>
+<p>something stronger is true for this language (though not for all languages)<br>reduction of <em>any</em> term <code>t</code> will eventually reach a normal form (我们知道 STLC 也有这个特性)</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> normalizing &#123;X : <span class="keyword">Type</span>&#125; (R : relation X) :=</span><br><span class="line">  ∀t, ∃t&#x27;,</span><br><span class="line">    (multi R) t t&#x27; ∧ normal_form R t&#x27;.</span><br></pre></td></tr></table></figure>
+
+<p>To prove this, we need lemma showing some <em>congruence</em> of <code>--&gt;*</code>:<br>同余关系，不过这次是定义在 <code>--&gt;*</code> 这个关系上，again，同余指的是「关系对于结构上的操作保持」</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Lemma</span> multistep_congr_1 : ∀t1 t1&#x27; t2,</span><br><span class="line">     t1 --&gt;* t1&#x27; → </span><br><span class="line">     P t1 t2 --&gt;* P t1&#x27; t2.</span><br><span class="line"></span><br><span class="line"><span class="keyword">Lemma</span> multistep_congr_2 : ∀t1 t2 t2&#x27;,</span><br><span class="line">     value t1 →</span><br><span class="line">     t2 --&gt;* t2&#x27; →</span><br><span class="line">     P t1 t2 --&gt;* P t1 t2&#x27;.</span><br></pre></td></tr></table></figure>
+
+<p>Then we can prove…</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> step_normalizing :</span><br><span class="line">  normalizing step.</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Equivalence-of-Big-Step-and-Small-Step"><a href="#Equivalence-of-Big-Step-and-Small-Step" class="headerlink" title="Equivalence of Big-Step and Small-Step"></a>Equivalence of Big-Step and Small-Step</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> eval__multistep : ∀t n,</span><br><span class="line">  t ==&gt; n → t --&gt;* C n.</span><br><span class="line"></span><br><span class="line"><span class="keyword">Theorem</span> multistep__eval : ∀t t&#x27;,</span><br><span class="line">  normal_form_of t t&#x27; → ∃n, t&#x27; = C n ∧ t ==&gt; n.    <span class="comment">(* might be better to say value here? *)</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<h2 id="Additional-Combined-Language"><a href="#Additional-Combined-Language" class="headerlink" title="Additional: Combined Language"></a>Additional: Combined Language</h2><p>What if we combined the lang <code>Arith</code> and lang <code>Boolean</code>?<br>Would <code>step_deterministic</code> and <code>strong_progress</code> still holds?</p>
+<p>Intuition:</p>
+<ul>
+<li><code>step_deterministic</code> should still hold</li>
+<li>but <code>strong_progress</code> would definitely not!!<ul>
+<li>now we mixed two <em>types</em> so we will have stuck terms e.g. <code>test 5</code> or <code>tru + 4</code>.</li>
+<li>we will need type check and then we would be able to prove <code>progress</code> (which require well-typeness)</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> strong_progress :</span><br><span class="line">  (<span class="keyword">forall</span> t, value t \/ (<span class="built_in">exists</span> t&#x27;, t --&gt; t&#x27;)) \/</span><br><span class="line">  ~ (<span class="keyword">forall</span> t, value t \/ (<span class="built_in">exists</span> t&#x27;, t --&gt; t&#x27;)).</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">right</span>. <span class="built_in">intros</span> Hcontra.</span><br><span class="line">  <span class="built_in">remember</span> (P tru fls) <span class="built_in">as</span> stuck.   <span class="comment">(** 类似 disprove equiv = 举一个反例就好 **)</span></span><br><span class="line">  <span class="built_in">specialize</span> (Hcontra stuck).</span><br><span class="line">  <span class="built_in">destruct</span> Hcontra <span class="built_in">as</span> [Hcvalue | <span class="type">Hcprogress</span>]; <span class="built_in">subst</span>.</span><br><span class="line">  - <span class="built_in">inversion</span> Hcvalue; <span class="built_in">inversion</span> H.</span><br><span class="line">  - <span class="built_in">destruct</span> Hcprogress. <span class="built_in">inversion</span> H. <span class="built_in">inversion</span> H3. <span class="built_in">inversion</span> H4.</span><br><span class="line"><span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="Small-Step-IMP"><a href="#Small-Step-IMP" class="headerlink" title="Small-Step IMP "></a>Small-Step IMP </h2><p>又到了老朋友 IMP……还好没练习……简单看一下</p>
+<p>首先对于定义小步语义，我们需要定义 <code>value</code> 和 <code>--&gt;</code> (step)</p>
+<h3 id="aexp-bexp"><a href="#aexp-bexp" class="headerlink" title="aexp, bexp"></a><code>aexp</code>, <code>bexp</code></h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> aval : aexp → <span class="keyword">Prop</span> :=</span><br><span class="line">  | <span class="type">av_num</span> : ∀n, aval (ANum n).</span><br></pre></td></tr></table></figure>
+
+<p><code>bexp</code> 不需要 <code>value</code> 因为在这个语言里 <code>BTrue</code> 和 <code>BFalse</code> 的 step 总是 disjointed 得，所以并没有任何复用 <code>value</code> predicate 的时候</p>
+<h3 id="a-b"><a href="#a-b" class="headerlink" title="--&gt;a, --&gt;b"></a><code>--&gt;a</code>, <code>--&gt;b</code></h3><p>这里，我们先为 <code>aexp</code>, <code>bexp</code> 定义了它们各自的小步语义，</p>
+<blockquote>
+<p>但是，其实 from PLT we know, 我们其实也可以直接复用 <code>aexp</code>, <code>bexp</code> 的大步语义！</p>
+<ol>
+<li>大步语义要短得多</li>
+<li><code>aexp</code>, <code>bexp</code> 其实并不会出</li>
+</ol>
+<ul>
+<li>「不停机」: 没有 jump 等控制流结构</li>
+<li>「异常」&#x2F;「卡住」: 我们在 meta-language 的 AST 里就区分了 <code>aexp</code> 和 <code>bexp</code>，相当于主动约束了类型，所以不会出现 <code>5 || 3</code> 这样 type error 的 AST</li>
+</ul>
+</blockquote>
+<h3 id="cmd"><a href="#cmd" class="headerlink" title="cmd, --&gt;"></a><code>cmd</code>, <code>--&gt;</code></h3><blockquote>
+<p>我们把 <code>SKIP</code> 当作一个「命令值（command value）」 i.e. 一个已经到达 normal form 的命令。</p>
+<ul>
+<li>赋值命令归约到 <code>SKIP</code> （和一个新的 state）。</li>
+<li>顺序命令等待其左侧子命令归约到 <code>SKIP</code>，然后丢弃它，并继续对右侧子命令归约。</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>对 <code>WHILE</code> 命令的归约是把 <code>WHILE</code> 命令变换为条件语句，其后紧跟同一个 <code>WHILE</code> 命令。</p>
+</blockquote>
+<blockquote>
+<p>这些都与 PLT 是一致的</p>
+</blockquote>
+<h2 id="Concurrent-IMP"><a href="#Concurrent-IMP" class="headerlink" title="Concurrent IMP"></a>Concurrent IMP</h2><p>为了展示 小步语义 的能力，let’s enrich IMP with concurrency.</p>
+<ul>
+<li>unpredictable scheduling (subcommands may be <em>interleaved</em>)</li>
+<li><em>share same memory</em></li>
+</ul>
+<p>It’s slightly confusing here to use <code>Par</code> (meaning <em>in parallel</em>)<br>I mean, concurrency <em>could</em> be in parallel but it doesn’t have to…</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> com : <span class="keyword">Type</span> :=</span><br><span class="line">  | <span class="type">CPar</span> : com → com → com. <span class="comment">(* &lt;--- NEW *)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">Inductive</span> cstep : (com * state) → (com * state) → <span class="keyword">Prop</span> :=</span><br><span class="line">  <span class="comment">(* New part: *)</span></span><br><span class="line">  | <span class="type">CS_Par1</span> : ∀st c1 c1&#x27; c2 st&#x27;,</span><br><span class="line">      c1 / st --&gt; c1&#x27; / st&#x27; →</span><br><span class="line">      (PAR c1 WITH c2 END) / st --&gt; (PAR c1&#x27; WITH c2 END) / st&#x27;</span><br><span class="line">  | <span class="type">CS_Par2</span> : ∀st c1 c2 c2&#x27; st&#x27;,</span><br><span class="line">      c2 / st --&gt; c2&#x27; / st&#x27; →</span><br><span class="line">      (PAR c1 WITH c2 END) / st --&gt; (PAR c1 WITH c2&#x27; END) / st&#x27;</span><br><span class="line">  | <span class="type">CS_ParDone</span> : ∀st,</span><br><span class="line">      (PAR SKIP WITH SKIP END) / st --&gt; SKIP / st</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+<h2 id="A-Small-Step-Stack-Machine-小步栈机"><a href="#A-Small-Step-Stack-Machine-小步栈机" class="headerlink" title="A Small-Step Stack Machine  小步栈机"></a>A Small-Step Stack Machine  小步栈机</h2><p>啊哈！IMP 章节 Stack Machine，我们之前仅仅定义了 <code>Fixpoint s_execute</code> 和 <code>Fixpoint s_compile</code>，这里给出其小步语义</p>
+<blockquote>
+<p>对于本身就与「小步语义」在精神上更统一的「抽象机」，我怀疑其语义都应该是足够「小」的（即大小步将是一致的？)</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> stack := list nat.</span><br><span class="line"><span class="keyword">Definition</span> prog  := list sinstr.</span><br><span class="line"></span><br><span class="line"><span class="keyword">Inductive</span> stack_step : state -&gt; prog * stack -&gt; prog * stack -&gt; <span class="keyword">Prop</span> :=</span><br><span class="line">  | <span class="type">SS_Push</span> : <span class="keyword">forall</span> st stk n p&#x27;,</span><br><span class="line">    stack_step st (SPush n :: p&#x27;, stk)      (p&#x27;, n :: stk)</span><br><span class="line">  | <span class="type">SS_Load</span> : <span class="keyword">forall</span> st stk i p&#x27;,</span><br><span class="line">    stack_step st (SLoad i :: p&#x27;, stk)      (p&#x27;, st i :: stk)</span><br><span class="line">  | <span class="type">SS_Plus</span> : <span class="keyword">forall</span> st stk n m p&#x27;,</span><br><span class="line">    stack_step st (SPlus :: p&#x27;, n::m::stk)  (p&#x27;, (m+n)::stk)</span><br><span class="line">  | <span class="type">SS_Minus</span> : <span class="keyword">forall</span> st stk n m p&#x27;,</span><br><span class="line">    stack_step st (SMinus :: p&#x27;, n::m::stk) (p&#x27;, (m-n)::stk)</span><br><span class="line">  | <span class="type">SS_Mult</span> : <span class="keyword">forall</span> st stk n m p&#x27;,</span><br><span class="line">    stack_step st (SMult :: p&#x27;, n::m::stk)  (p&#x27;, (m*n)::stk).</span><br><span class="line">    </span><br><span class="line"><span class="comment">(** closure of stack_step **)</span></span><br><span class="line"><span class="keyword">Definition</span> stack_multistep st := multi (stack_step st).</span><br></pre></td></tr></table></figure>
+
+<h3 id="Compiler-Correctness"><a href="#Compiler-Correctness" class="headerlink" title="Compiler Correctness"></a>Compiler Correctness</h3><blockquote>
+<p>「编译器的正确性」&#x3D; the notion of <em>semantics preservation</em> (in terms of observable behaviours)<br>  S  &#x3D; <code>e</code><br>  C  &#x3D; <code>s_compile e</code><br>B(S) &#x3D; <code>aeval st e</code><br>B(C) &#x3D; functional <code>s_execute</code><br>     | relational <code>stack_multistep</code> </p>
+</blockquote>
+<p>之前我们证明过 <em>functional&#x2F;computational</em> <code>Fixpoint</code> 的性质</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> s_compile_correct : <span class="keyword">forall</span> (st : state) (e : aexp),</span><br><span class="line">  s_execute st [] (s_compile e) = [ aeval st e ].</span><br><span class="line"></span><br><span class="line"><span class="comment">(** 重要的是这个更一般的「描述了 prog 如何与 stack 交互」的定理 **)</span></span><br><span class="line"><span class="keyword">Theorem</span> s_execute_theorem : <span class="keyword">forall</span> (st : state) (e : aexp) (stack : list nat) (prog : list sinstr),</span><br><span class="line">    s_execute st                  stack  (s_compile e ++ prog) </span><br><span class="line">  = s_execute st ((aeval st e) :: stack)                 prog.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>现在则是证明 <em>relational</em> <code>Inductive</code> 的性质，同样我们需要一个更一般的定理（然后原命题作为推论）</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> stack_step_theorem : <span class="keyword">forall</span> (st : state) (e : aexp) (stack : list nat) (prog : list sinstr),</span><br><span class="line">  stack_multistep st</span><br><span class="line">                  ((s_compile e ++ prog),                 stack) </span><br><span class="line">                  (                prog , (aeval st e) :: stack).      <span class="comment">(** 这里 prog 和 stack 的交互本质上和上面是一样的 **)</span></span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">unfold</span> stack_multistep.</span><br><span class="line">  <span class="built_in">induction</span> e; <span class="built_in">intros</span>; <span class="built_in">simpl</span> <span class="built_in">in</span> *;        <span class="comment">(** 证明 induction on aexp，然后利用 transivitiy、constructor 与 IH 即可，非常快 **)</span></span><br><span class="line">    <span class="built_in">try</span> (<span class="built_in">apply</span> multi_R; <span class="built_in">constructor</span>);</span><br><span class="line">    <span class="built_in">try</span> (</span><br><span class="line">        <span class="built_in">repeat</span> (<span class="built_in">rewrite</span> &lt;- app_assoc);</span><br><span class="line">        <span class="built_in">eapply</span> multi_trans; <span class="built_in">try</span> <span class="built_in">apply</span> IHe1;</span><br><span class="line">        <span class="built_in">eapply</span> multi_trans; <span class="built_in">try</span> <span class="built_in">apply</span> IHe2;</span><br><span class="line">        <span class="built_in">eapply</span> multi_R; <span class="built_in">constructor</span></span><br><span class="line">      ).</span><br><span class="line">      </span><br><span class="line"><span class="keyword">Definition</span> compiler_is_correct_statement : <span class="keyword">Prop</span> := <span class="keyword">forall</span> (st : state) (e : aexp),</span><br><span class="line">  stack_multistep st (s_compile e, []) ([], [aeval st e]).</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<h2 id="Aside-A-normalize-Tactic"><a href="#Aside-A-normalize-Tactic" class="headerlink" title="Aside: A normalize Tactic"></a>Aside: A <code>normalize</code> Tactic</h2><p>Even with <code>eapply</code> and <code>auto</code>…manual normalization is tedious:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Example</span> step_example1&#x27; :</span><br><span class="line">  (P (C <span class="number">3</span>) (P (C <span class="number">3</span>) (C <span class="number">4</span>)))</span><br><span class="line">  --&gt;* (C <span class="number">10</span>).</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">eapply</span> multi_step. <span class="built_in">auto</span>. <span class="built_in">simpl</span>.</span><br><span class="line">  <span class="built_in">eapply</span> multi_step. <span class="built_in">auto</span>. <span class="built_in">simpl</span>.</span><br><span class="line">  <span class="built_in">apply</span> multi_refl.</span><br><span class="line"><span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
+
+<p>We could write custom <code>Tactic Notation</code>…(i.e. tactic macros)</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Tactic</span> <span class="keyword">Notation</span> <span class="string">&quot;print_goal&quot;</span> :=</span><br><span class="line">  <span class="keyword">match</span> goal <span class="built_in">with</span> ⊢ ?x ⇒ <span class="built_in">idtac</span> x <span class="keyword">end</span>.</span><br><span class="line">  </span><br><span class="line"><span class="keyword">Tactic</span> <span class="keyword">Notation</span> <span class="string">&quot;normalize&quot;</span> :=</span><br><span class="line">  <span class="built_in">repeat</span> (print_goal; <span class="built_in">eapply</span> multi_step ;</span><br><span class="line">            [ (<span class="built_in">eauto</span> <span class="number">10</span>; <span class="built_in">fail</span>) | <span class="type">(instantiate</span>; <span class="built_in">simpl</span>)]);</span><br><span class="line">  <span class="built_in">apply</span> multi_refl.</span><br></pre></td></tr></table></figure>
+
+<p><code>instantiate</code> seems here for intros <code>∃</code>?</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Example</span> step_example1&#x27;&#x27;&#x27; : <span class="built_in">exists</span> e&#x27;,</span><br><span class="line">  (P (C <span class="number">3</span>) (P (C <span class="number">3</span>) (C <span class="number">4</span>)))</span><br><span class="line">  --&gt;* e&#x27;.</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">eapply</span> ex_intro. normalize.</span><br><span class="line"><span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
+
+<p>But what surprise me is that we can <code>eapply ex_intro</code>, which leave the <code>∃</code> as a hole <code>?ex</code> (unification variable).</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/SF-%E8%BD%AF%E4%BB%B6%E5%9F%BA%E7%A1%80/" rel="tag"># SF (软件基础)</a>
+              <a href="/tags/Coq/" rel="tag"># Coq</a>
+              <a href="/tags/PLF-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" rel="tag"># PLF (编程语言基础)</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/read_sf_plf/2019-03-06-sf-plf-06-types/" rel="prev" title="「SF-PLF」6 Types">
+                  <i class="fa fa-angle-left"></i> 「SF-PLF」6 Types
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/read_sf_plf/2019-03-01-sf-plf-01-equiv/" rel="next" title="「SF-PLF」1 Equiv">
+                  「SF-PLF」1 Equiv <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

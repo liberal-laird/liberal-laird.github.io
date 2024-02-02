@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2426182848439341"
+     crossorigin="anonymous"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33RJLY0818"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33RJLY0818');
+</script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="[TOC] ​	   本文总结作者学习的Web服务器项目（WebServer），分析其中的主要模块的作用及相关知识点。一个WebServer是一个运行在linux系统上的C++编码的服务器程序，其需要处理来自浏览器程序（客户端）的各种HTTP请求，并对其请求作出HTTP响应。 ​		从上述图中可以看出其中共有7个模块：日志系统模块、监听套接字模块、IO复用模型epoll模块、线程池模块、数据库连接">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「项目复现」Web服务器编程之简易日志模块">
+<meta property="og:url" content="https://www.vvbuys.com/2022-05-13-%E3%80%90%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%8E%B0%E3%80%91Web%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%96%E7%A8%8B%E4%B9%8B%E7%AE%80%E6%98%93%E6%97%A5%E5%BF%97%E6%A8%A1%E5%9D%97/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="[TOC] ​	   本文总结作者学习的Web服务器项目（WebServer），分析其中的主要模块的作用及相关知识点。一个WebServer是一个运行在linux系统上的C++编码的服务器程序，其需要处理来自浏览器程序（客户端）的各种HTTP请求，并对其请求作出HTTP响应。 ​		从上述图中可以看出其中共有7个模块：日志系统模块、监听套接字模块、IO复用模型epoll模块、线程池模块、数据库连接">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-05-13T00:00:00.000Z">
+<meta property="article:modified_time" content="2024-02-02T01:00:55.435Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="项目复现">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/2022-05-13-%E3%80%90%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%8E%B0%E3%80%91Web%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%96%E7%A8%8B%E4%B9%8B%E7%AE%80%E6%98%93%E6%97%A5%E5%BF%97%E6%A8%A1%E5%9D%97/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/2022-05-13-%E3%80%90%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%8E%B0%E3%80%91Web%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%96%E7%A8%8B%E4%B9%8B%E7%AE%80%E6%98%93%E6%97%A5%E5%BF%97%E6%A8%A1%E5%9D%97/","path":"2022-05-13-【项目复现】Web服务器编程之简易日志模块/","title":"「项目复现」Web服务器编程之简易日志模块"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>「项目复现」Web服务器编程之简易日志模块 | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%97%A5%E5%BF%97%E6%A8%A1%E5%9D%97%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">一、日志模块的作用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E5%AF%B9%E4%BA%8E%E7%A8%8B%E5%BA%8F%E6%9D%A5%E8%AE%B2"><span class="nav-number">1.1.</span> <span class="nav-text">1、对于程序来讲</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E5%AF%B9%E7%A8%8B%E5%BA%8F%E5%91%98%E6%9D%A5%E8%AE%B2"><span class="nav-number">1.2.</span> <span class="nav-text">2、对程序员来讲</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%97%A5%E5%BF%97%E6%A8%A1%E5%9D%97%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text">二、日志模块的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E8%AE%BE%E7%BD%AE%E4%B8%BA%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.1.</span> <span class="nav-text">1、设置为单例模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA"><span class="nav-number">2.2.</span> <span class="nav-text">2、格式化输出</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%881%EF%BC%89C-%E7%9A%84%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E5%88%97%E8%A1%A8"><span class="nav-number">2.2.1.</span> <span class="nav-text">（1）C++的函数的可变参数列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%882%EF%BC%89C-%E7%9A%84vprintf-%E5%87%BD%E6%95%B0"><span class="nav-number">2.2.2.</span> <span class="nav-text">（2）C++的vprintf()函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E5%AE%8F%E5%92%8C%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E5%AE%8F"><span class="nav-number">2.2.3.</span> <span class="nav-text">（3）宏和可变参数宏</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E6%97%A5%E5%BF%97%E7%AD%89%E7%BA%A7"><span class="nav-number">2.3.</span> <span class="nav-text">3、日志等级</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%881%EF%BC%89C-%E4%B8%AD%E7%9A%84enum%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">2.3.1.</span> <span class="nav-text">（1）C++中的enum的使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E6%97%A5%E5%BF%97%E8%BE%93%E5%87%BA%E5%B9%B3%E5%8F%B0"><span class="nav-number">2.4.</span> <span class="nav-text">3、日志输出平台</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%881%EF%BC%89C-%E7%9A%84%E5%86%99%E5%85%A5%E6%96%87%E4%BB%B6"><span class="nav-number">2.4.1.</span> <span class="nav-text">（1）C++的写入文件</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2022-05-13-%E3%80%90%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%8E%B0%E3%80%91Web%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%96%E7%A8%8B%E4%B9%8B%E7%AE%80%E6%98%93%E6%97%A5%E5%BF%97%E6%A8%A1%E5%9D%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="「项目复现」Web服务器编程之简易日志模块 | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「项目复现」Web服务器编程之简易日志模块
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-05-13 00:00:00" itemprop="dateCreated datePublished" datetime="2022-05-13T00:00:00+00:00">2022-05-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-02-02 01:00:55" itemprop="dateModified" datetime="2024-02-02T01:00:55+00:00">2024-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>[TOC]</p>
+<p>​	   本文总结作者学习的Web服务器项目（WebServer），分析其中的<strong>主要模块</strong>的作用及<strong>相关知识点</strong>。一个WebServer是一个运行在<strong>linux系统</strong>上的C++编码的<strong>服务器程序</strong>，其需要处理来自<strong>浏览器程序</strong>（客户端）的各种HTTP请求，并对其请求作出HTTP响应。</p>
+<p>​		从上述图中可以看出其中共有7个模块：日志系统模块、监听套接字模块、IO复用模型epoll模块、线程池模块、数据库连接池模块、HTTP连接模</p>
+<h2 id="一、日志模块的作用"><a href="#一、日志模块的作用" class="headerlink" title="一、日志模块的作用"></a>一、日志模块的作用</h2><h3 id="1、对于程序来讲"><a href="#1、对于程序来讲" class="headerlink" title="1、对于程序来讲"></a>1、对于程序来讲</h3><p>​		日志模块用来程序执行的过程，帮助开发人员了解程序的运行情况，以便快速维护和调试。</p>
+<h3 id="2、对程序员来讲"><a href="#2、对程序员来讲" class="headerlink" title="2、对程序员来讲"></a>2、对程序员来讲</h3><p>​		日志模块提供几个输出日志信息的接口（API）,该接口的输入参数可能有：日志等级、日志输出平台。</p>
+<p>日志等级：info、debug、warning、error。可以标记日志信息的重要程度，控制不同等级的日志信息的输出</p>
+<p>日志输出平台：文件、控制台</p>
+<h2 id="二、日志模块的实现"><a href="#二、日志模块的实现" class="headerlink" title="二、日志模块的实现"></a>二、日志模块的实现</h2><h3 id="1、设置为单例模式"><a href="#1、设置为单例模式" class="headerlink" title="1、设置为单例模式"></a>1、设置为单例模式</h3><p>​      为什么要将日志模块的输出类设置为单例模式：日志模块需要在程序的任何地方被调用，且最好只有一个对象</p>
+<h3 id="2、格式化输出"><a href="#2、格式化输出" class="headerlink" title="2、格式化输出"></a>2、格式化输出</h3><p>日志输出本质上是对printf()函数的封装。</p>
+<p>日志输出信息一般格式：日志等级+时间戳+格式化输出信息</p>
+<p>C++的日志模块如何实现格式化输出？</p>
+<h4 id="（1）C-的函数的可变参数列表"><a href="#（1）C-的函数的可变参数列表" class="headerlink" title="（1）C++的函数的可变参数列表"></a>（1）C++的函数的可变参数列表</h4><p> C++允许定义形参个数和类型不确定的函数，不确定的形参可以使用可变参数列表。 </p>
+<h4 id="（2）C-的vprintf-函数"><a href="#（2）C-的vprintf-函数" class="headerlink" title="（2）C++的vprintf()函数"></a>（2）C++的vprintf()函数</h4><p>vprintf(format,args);</p>
+<p>vprintf()作用和printf()相同, 参数format 格式也相同。</p>
+<p><code>printf</code> 底层就是调用 <code>vprintf</code> 函数来将内容输出到控制台的，常规情况下，输出到控制台，多数情况下使用 <code>printf</code> 函数即可。当你需要自己写一个自定义 <a target="_blank" rel="noopener" href="https://www.codersrc.com/archives/7464.html"><code>printf</code> 函数</a>时候才需要 <a target="_blank" rel="noopener" href="https://www.codersrc.com/archives/9537.html"><code>vprintf</code> 函数</a></p>
+<p><code>vprintf</code> 函数一般和 <a target="_blank" rel="noopener" href="https://www.codersrc.com/archives/9517.html"><code>va_start</code></a> &#x2F; <a target="_blank" rel="noopener" href="https://www.codersrc.com/archives/9528.html"><code>va_end</code></a> 配套使用；</p>
+<h4 id="（3）宏和可变参数宏"><a href="#（3）宏和可变参数宏" class="headerlink" title="（3）宏和可变参数宏"></a>（3）宏和可变参数宏</h4><p>为了更加方便地调用日志类的输出函数，我们需要将其经常定义为宏。</p>
+<p>在C++中经常使用#define来定义宏：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> N 1 <span class="comment">// 不带参数的宏</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> AREA(x) x*x <span class="comment">// 带参数的宏</span></span></span><br></pre></td></tr></table></figure>
+
+<p>宏在调用时进行宏替换，宏替换发生在静态编译期，是简单的文本替换，例如</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a=<span class="built_in">AREA</span>(<span class="number">2</span>+<span class="number">2</span>);<span class="comment">//a=8，不等于16，AREA(2+2)等价于2+2*2+2</span></span><br></pre></td></tr></table></figure>
+
+<p>带参数的宏也经常被叫做宏函数，但是宏函数不是真正的函数，其发生在静态编译期，是简单的文本替换。</p>
+<p>由于输出函数可能使用了可变参数列表，这时我们就要使用可变参数宏<code>__VA_ARGS__</code></p>
+<p>可变参数宏的定义如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> DEBUG(format,...) printf(format,__VA_ARGS__)</span></span><br></pre></td></tr></table></figure>
+
+<p> 其中，<code>...</code>代表一个可以变化的参数表。使用保留名 <strong>VA_ARGS</strong> 把参数传递给宏。例如： </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 调用宏，因为DEBUG()是可变参数宏，所以传递不同个数的参数</span></span><br><span class="line"><span class="built_in">DEBUG</span>(<span class="string">&quot;X = %d\n&quot;</span>, X);</span><br><span class="line"><span class="comment">// 处理器会把宏的调用替换成：</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;X = %d\n&quot;</span>, X);</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、日志等级"><a href="#3、日志等级" class="headerlink" title="3、日志等级"></a>3、日志等级</h3><h4 id="（1）C-中的enum的使用"><a href="#（1）C-中的enum的使用" class="headerlink" title="（1）C++中的enum的使用"></a>（1）C++中的enum的使用</h4><p> 枚举类型(enumeration)是 C++ 中的一种派生数据类型，它是由用户定义的若干枚举常量的集合。 </p>
+<p> <strong>应用举例：</strong> </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">color_set1</span> &#123;RED, BLUE, WHITE, BLACK&#125;; <span class="comment">// 定义枚举类型color_set1</span></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">week</span> &#123;Sun, Mon, Tue, Wed, Thu, Fri, Sat&#125;; <span class="comment">// 定义枚举类型week</span></span><br></pre></td></tr></table></figure>
+
+<p>枚举常量代表该枚举类型的变量可能取的值，编译系统为每个枚举常量指定一个整数值，默认状态下，这个整数就是所列举元素的序号，序号从0开始。 可以在定义枚举类型时为部分或全部枚举常量指定整数值，在指定值之前的枚举常量仍按默认方式取值，而指定值之后的枚举常量按依次加1的原则取值。 各枚举常量的值可以重复。例如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">fruit_set</span> &#123;apple, orange, banana=<span class="number">1</span>, peach, grape&#125;</span><br><span class="line"><span class="comment">//枚举常量apple=0,orange=1, banana=1,peach=2,grape=3。</span></span><br><span class="line"><span class="keyword">enum</span> week &#123;Sun=<span class="number">7</span>, Mon=<span class="number">1</span>, Tue, Wed, Thu, Fri, Sat&#125;;</span><br><span class="line"><span class="comment">//枚举常量Sun,Mon,Tue,Wed,Thu,Fri,Sat的值分别为7、1、2、3、4、5、6。</span></span><br></pre></td></tr></table></figure>
+
+<p>枚举常量只能以标识符形式表示，而不能是整型、字符型等文字常量。例如，以下定义非法：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">letter_set</span> &#123;<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;d&#x27;</span>,<span class="string">&#x27;F&#x27;</span>,<span class="string">&#x27;s&#x27;</span>,<span class="string">&#x27;T&#x27;</span>&#125;; <span class="comment">//枚举常量不能是字符常量</span></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">year_set</span>&#123;<span class="number">2000</span>,<span class="number">2001</span>,<span class="number">2002</span>,<span class="number">2003</span>,<span class="number">2004</span>,<span class="number">2005</span>&#125;; <span class="comment">//枚举常量不能是整型常量</span></span><br></pre></td></tr></table></figure>
+
+<p>可改为以下形式则定义合法：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">letter_set</span> &#123;a, d, F, s, T&#125;;</span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">year_set</span>&#123;y2000, y2001, y2002, y2003, y2004, y2005&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>枚举类型的使用：</strong></p>
+<p>定义枚举类型之后，就可以定义该枚举类型的变量，如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">color_set1 color1, color2;</span><br></pre></td></tr></table></figure>
+
+<p>亦可类型与变量同时定义（甚至类型名可省），格式如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">enum &#123;Sun,Mon,Tue,Wed,Thu,Fri,Sat&#125; weekday1, weekday2;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、日志输出平台"><a href="#3、日志输出平台" class="headerlink" title="3、日志输出平台"></a>3、日志输出平台</h3><h4 id="（1）C-的写入文件"><a href="#（1）C-的写入文件" class="headerlink" title="（1）C++的写入文件"></a>（1）C++的写入文件</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;fstream&gt;</span></span></span><br><span class="line">ofstream outfile;</span><br><span class="line">outfile.<span class="built_in">open</span>(<span class="string">&quot;./log.txt&quot;</span>,ios::out|ios::app);</span><br><span class="line">outfile&lt;&lt;<span class="string">&quot;待写入的内容&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%8E%B0/" rel="tag"># 项目复现</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022-05-14-%E3%80%90%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%8E%B0%E3%80%91Web%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%96%E7%A8%8B%E4%B9%8B%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E6%A8%A1%E5%9D%97/" rel="prev" title="「项目复现」Web服务器编程之网络通信模块">
+                  <i class="fa fa-angle-left"></i> 「项目复现」Web服务器编程之网络通信模块
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022-06-18-%E3%80%90%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%8E%B0%E3%80%91Web%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%AB%98%E6%80%A7%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="next" title="「项目复现」Web轻量级高性能服务器">
+                  「项目复现」Web轻量级高性能服务器 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

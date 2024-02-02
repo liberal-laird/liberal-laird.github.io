@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2426182848439341"
+     crossorigin="anonymous"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33RJLY0818"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33RJLY0818');
+</script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="​		《Deep Relighting Networks for Image Light Source Manipulation》是发表在ECCV 2020上的一篇论文。这里是原文链接和原文代码 摘要​       操纵给定图像的光源的现有的方法通常需要额外的信息，如场景的几何结构，这可能不适用于大多数图像。在本文中，我们用公式表示单图像重照明任务，并提出了一种新的深度重照明网络（DRN），该网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「论文分享」DRN:用于图像光源操纵的深度重光照网络">
+<meta property="og:url" content="https://www.vvbuys.com/2021-11-04-%E3%80%90%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB%E3%80%91DRN%EF%BC%9A%E7%94%A8%E4%BA%8E%E5%9B%BE%E5%83%8F%E5%85%89%E6%BA%90%E6%93%8D%E7%BA%B5%E7%9A%84%E6%B7%B1%E5%BA%A6%E9%87%8D%E5%85%89%E7%85%A7%E7%BD%91%E7%BB%9C/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="​		《Deep Relighting Networks for Image Light Source Manipulation》是发表在ECCV 2020上的一篇论文。这里是原文链接和原文代码 摘要​       操纵给定图像的光源的现有的方法通常需要额外的信息，如场景的几何结构，这可能不适用于大多数图像。在本文中，我们用公式表示单图像重照明任务，并提出了一种新的深度重照明网络（DRN），该网络">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="c:\Users\WJ\AppData\Roaming\Typora\typora-user-images\image-20211104233058382.png">
+<meta property="og:image" content="c:\Users\WJ\AppData\Roaming\Typora\typora-user-images\image-20211104234138291.png">
+<meta property="og:image" content="c:\Users\WJ\AppData\Roaming\Typora\typora-user-images\image-20211105180808841.png">
+<meta property="article:published_time" content="2021-11-04T00:00:00.000Z">
+<meta property="article:modified_time" content="2024-02-02T01:00:55.431Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="论文分享">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:\Users\WJ\AppData\Roaming\Typora\typora-user-images\image-20211104233058382.png">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/2021-11-04-%E3%80%90%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB%E3%80%91DRN%EF%BC%9A%E7%94%A8%E4%BA%8E%E5%9B%BE%E5%83%8F%E5%85%89%E6%BA%90%E6%93%8D%E7%BA%B5%E7%9A%84%E6%B7%B1%E5%BA%A6%E9%87%8D%E5%85%89%E7%85%A7%E7%BD%91%E7%BB%9C/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/2021-11-04-%E3%80%90%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB%E3%80%91DRN%EF%BC%9A%E7%94%A8%E4%BA%8E%E5%9B%BE%E5%83%8F%E5%85%89%E6%BA%90%E6%93%8D%E7%BA%B5%E7%9A%84%E6%B7%B1%E5%BA%A6%E9%87%8D%E5%85%89%E7%85%A7%E7%BD%91%E7%BB%9C/","path":"2021-11-04-【论文分享】DRN：用于图像光源操纵的深度重光照网络/","title":"「论文分享」DRN:用于图像光源操纵的深度重光照网络"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>「论文分享」DRN:用于图像光源操纵的深度重光照网络 | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%AE%80%E4%BB%8B"><span class="nav-number">2.</span> <span class="nav-text">一、简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%9B%B8%E5%85%B3%E5%B7%A5%E4%BD%9C"><span class="nav-number">2.1.</span> <span class="nav-text">二、相关工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Back-Projection-BP-theory"><span class="nav-number">2.2.</span> <span class="nav-text">Back-Projection (BP) theory</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Adversarial-Learning"><span class="nav-number">2.3.</span> <span class="nav-text">Adversarial Learning</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">三、方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Assumption-of-Relighting"><span class="nav-number">3.0.1.</span> <span class="nav-text">3.1 Assumption of Relighting</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2021-11-04-%E3%80%90%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB%E3%80%91DRN%EF%BC%9A%E7%94%A8%E4%BA%8E%E5%9B%BE%E5%83%8F%E5%85%89%E6%BA%90%E6%93%8D%E7%BA%B5%E7%9A%84%E6%B7%B1%E5%BA%A6%E9%87%8D%E5%85%89%E7%85%A7%E7%BD%91%E7%BB%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="「论文分享」DRN:用于图像光源操纵的深度重光照网络 | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「论文分享」DRN:用于图像光源操纵的深度重光照网络
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-11-04 00:00:00" itemprop="dateCreated datePublished" datetime="2021-11-04T00:00:00+00:00">2021-11-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-02-02 01:00:55" itemprop="dateModified" datetime="2024-02-02T01:00:55+00:00">2024-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>​		《Deep Relighting Networks for Image Light Source Manipulation》是发表在ECCV 2020上的一篇论文。这里是<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2008.08298"><strong>原文链接</strong></a>和<a target="_blank" rel="noopener" href="https://github.com/WangLiwen1994/DeepRelight"><strong>原文代码</strong></a></p>
+<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>​       操纵给定图像的光源的现有的方法通常需要额外的信息，如场景的几何结构，这可能不适用于大多数图像<strong>。在本文中，我们用公式表示单图像重照明任务，并提出了一种新的深度重照明网络（DRN）</strong>，该网络由三部分组成：</p>
+<p>1）场景重建，其目的是通过深度自动编码网络显示主要场景结构，</p>
+<p>2）阴影先验估计，通过对抗性学习，从新的灯光方向预先确定灯光效果，</p>
+<p>3）重新渲染，将主要结构与重建的阴影视图结合起来，形成目标光源下所需的估计图像。</p>
+<p>​         实验结果表明，该方法在定性和定量上都优于其他方法。具体而言，提出的DRN在2020年ECCV大会的“AIM2020-任何对一重新照明挑战”中实现了最佳峰值信噪比。</p>
+<h1 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h1><p>​         图像是这个信息时代流行的信息载体，直观易懂。 显示设备的快速发展刺激了人们对高质量画面的需求。 图像的视觉外观与照明高度相关，这在摄影和电影摄影等各种应用中至关重要。 不适当的照明通常会导致各种视觉退化问题，例如不想要的阴影和扭曲的颜色。 然而，光源（如太阳光）难以控制，或者有时无法改变（对于捕获的图像），因此很难生成令人满意的图像。 在拍摄的图像上产生想要的光源效果的方法已经是非常引人关注的高科技方法，因为它可以修改拍摄图像的光照。</p>
+<p>​       已经提出了一些方法，旨在减轻由不适当照明引起的退化。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>论文</th>
+<th>主要内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>直方图均衡化 histogram equalization (HE)</td>
+<td>[37]《Contrast limited adaptive histogram equalization based enhancement for real time video system》</td>
+<td>重新排列强度以服从均匀分布，这可以增加对低对比度区域的识别。 它操纵全局光条件，平衡了整个图像的照明。</td>
+</tr>
+<tr>
+<td>高动态范围 (HDR) 领域中的方法</td>
+<td>[3] 《Recovering high dynamic range radiance  maps from photographs》、[36]《Deep high dynamic range imaging 》</td>
+<td>通过增加低对比度区域的动态范围来提高图像质量。HDR 方法可以看作是局部对比度的细化，但缺乏对全局光的调整。</td>
+</tr>
+<tr>
+<td>基于 Retinex 的方法</td>
+<td>[29]《Retinex processing for auto-matic image enhancement》、[35]《Deep retinex decomposition for low -light enhancement》</td>
+<td>将图像分离为光照和反射率的组合，其中反射存储场景的固有内容，在不同的照明条件下无法改变。 通过细化光照，可以提高图像的视觉质量。</td>
+</tr>
+<tr>
+<td>低光图像增强方法</td>
+<td>[15]《 Enlightengan: Deep light enhancement without paired supervision》【32】《Lightening network for low-light image enhancement》</td>
+<td>改善黑暗环境的可见度，以照亮整个画面。</td>
+</tr>
+<tr>
+<td>阴影去除</td>
+<td>【13】《Direction-aware spatial context features for shadow detection》、【18】《Shadow removal via shadow image decomposition》</td>
+<td>旨在消除光源造成的阴影效果，但不能模拟目标光源的阴影。</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>​        调整光源为基于照明的图像增强提供了一种灵活而自然的方式。 尽管已经进行了大量的研究来改进照明，但从操纵光源的角度进行研究的效果较小。 也就是说，通过控制光源来改变光照效果还处于设想阶段。 重新照明领域的文献主要关注特定应用，</p>
+<p>例如</p>
+<table>
+<thead>
+<tr>
+<th>人像重新照明</th>
+<th>人像重新照明相关论文</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>人像重新照明：这些方法需要在一般场景中无法实现的先验信息（如面部标志、几何先验）。</td>
+<td>【26】《Learning physics-guided face relighting under directional light》【31】《Single image portrait relighting》【40】《Deep single-image portrait relighting》</td>
+</tr>
+</tbody></table>
+<p>​        卷积神经网络（CNN）最近因其强大的学习能力而备受关注。 它可以在强大的计算资源的支持下消化大量的训练数据并 提取有识别力的表征 。CNN 在各种任务中显示出显着的优势，例如</p>
+<p>图像分类 [17,30]、语义分割 [27,38]、超分辨率 [8,23]、位置识别 [1,19] 等。 由于浅层的参数往往面临梯度消失和爆炸的风险，因此难以训练。残差学习 《 Deep residual learning for image recognition》 通过在每个处理块之间添加shortcut连接来减轻优化难度。 在归一化层的帮助下，梯度可以稳定地从深层流向浅层，极大地提高了深度网络的训练效率。 更深的结构通常意味着更多可训练的参数，因此可以带来更强大的学习能力，这使得可以处理更具挑战性的任务，例如单幅图像重新照明。</p>
+<p>​        本文中的图像重光照方法侧重于使用强大的深度 CNN 架构来操纵光源的位置和色温。 它不仅可以调整主色调，还可以重新投射给定图像的阴影。 如图 1 所示，我们专注于特定的“any-to-one”重新照明任务，其输入:在任意光源（任意方向或色温，见图 1（a））下的凸显，目标是 估计特定光源下的图像（方向：E，色温：4500K，见图1（b））。 所提出的方法可以推广到其他与光相关的任务。 </p>
+<p><img src="C:\Users\WJ\AppData\Roaming\Typora\typora-user-images\image-20211104233058382.png" alt="image-20211104233058382"></p>
+<p>本文方法的创新点：</p>
+<p>  1、我们不是将输入图像直接映射到目标光照条件，而是将重新照明任务分为三个部分：场景重建、光照效果估计和重新渲染过程。</p>
+<p>   2、 为了保留下采样和上采样过程的更多信息，我们将反投影理论插入到自动编码器结构中，这有利于场景重建和光照效果估计。</p>
+<p>   3、 光照效果难以衡量，增加了训练难度。 我们使用对抗性学习策略：新的阴影区域鉴别器，为训练过程提供指导。</p>
+<h2 id="二、相关工作"><a href="#二、相关工作" class="headerlink" title="二、相关工作"></a>二、相关工作</h2><h2 id="Back-Projection-BP-theory"><a href="#Back-Projection-BP-theory" class="headerlink" title="Back-Projection (BP) theory"></a><strong>Back-Projection (BP) theory</strong></h2><table>
+<thead>
+<tr>
+<th>相关工作</th>
+<th>相关论文</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>关于低光图像增强的工作 [32]</td>
+<td>Lightening network for low-light image enhancement</td>
+</tr>
+<tr>
+<td>BP理论在单图像超分辨率领域很流行[9,20,21]。基于 BP 的方法不是直接学习从输入到目标的映射，而是迭代地消化残差并改进估计。 它更加关注学习过程中出现的弱点（即残差），这显着提高了深度 CNN 架构的效率。</td>
+<td>【9】《Deep back-projection networks for super-resolution》、【20】《 Hierarchical back projection network for image super-resolution》、【21】《Image super-resolution via attention based back projection networks》。</td>
+</tr>
+</tbody></table>
+<p>​        关于低光图像增强的工作 [32] 将 BP 理论扩展到光域传输任务。 它假设低光 (LL) 和正常光 (NL) 图像分别位于 LL 和 NL 域。 首先，一个lightening算子从 LL 输入预测 NL 估计。 然后，darkening算子将 NL 估计映射回 LL 域（LL 估计）。 在 LL 域中，可以找到 LL 输入和 LL 估计之间的差异（LL 残差），这表明两个转移算子（变亮和变暗lightening and darkening）的弱点。 之后，LL 残差通过另一个lightening算子映射回 NL 域（NL 残差）。  NL 残差然后细化 NL 估计以获得更好的输出。 从数学上讲，enlightening过程可以写为：</p>
+<p><img src="C:\Users\WJ\AppData\Roaming\Typora\typora-user-images\image-20211104234138291.png" alt="image-20211104234138291"></p>
+<p>​         其中 L 和 ˆN ∈ RH×W×3 分别表示 LL 输入图像和 NL 估计。  H、W 和 3分别代表高度、宽度和 RGB 通道。 符号 L1 和 L2 是两个lightening算子，分别照亮 LL 图像和 LL 残差。 符号 D 是将 NL 估计映射到 LL 域的Darkening算子。两个加权系数 λ1 和 λ2 ∈ R 用于平衡残差计算和最终细化。</p>
+<h2 id="Adversarial-Learning"><a href="#Adversarial-Learning" class="headerlink" title="Adversarial Learning"></a><strong>Adversarial Learning</strong></h2><p>​        将图像转换为相应的输出图像通常形成为像素级回归任务，其损失函数（如 L1 或 L2 范数损失）表示所有像素的平均误差。 这种损失函数忽略了像素之间的相互关系，容易扭曲感知结构，导致输出模糊。 大量的研究工作已经完成了图像之间感知相似性的定量测量，如结构相似性（SSIM）[34]《Image quality assessment: from error visibility to structural similarity》、学习感知图像块相似性（LPIPS）[39]《The unreasonable effffectiveness of deep features as a perceptual metric》、Gram矩阵[6]《A neural algorithm of artistic style》等。 然而，感知评估基本上因不同的视觉任务而异，难以制定。</p>
+<p>​       生成对抗网络 (GAN) [7,14,25] 【7】《Generative adversarial nets》【14】《Image-to-image translation with conditional adversarial networks》【25】《 Conditional generative adversarial nets》提供了一种新颖的解决方案，将感知测量嵌入到对抗学习的过程中。 每个 GAN 由一个生成器和一个鉴别器组成。鉴别器旨在在目标图像中找到潜在的感知结构，然后指导生成器的训练。 随后，生成器提供次优估计，作为鉴别器训练过程的负样本。 对于分组的负和正（目标图像）样本，判别器执行二元分类任务，测量两类样本之间的潜在感知差异。 整个训练过程是</p>
+<p><img src="C:\Users\WJ\AppData\Roaming\Typora\typora-user-images\image-20211105180808841.png" alt="image-20211105180808841"></p>
+<p>​       其中 D 和 G 分别表示鉴别器和生成器。 项 X 和 Y 分别代表输入和目标图像。 在训练过程中，生成器和判别器进行两人的极小极大博弈。 鉴别器学习区分估计图像 G(X) 和目标图像 Y。生成器旨在最小化估计 G(X) 和目标图像 Y 之间的差异。训练过程遵循对抗性学习策略， 越来越多地学习和使用目标图像内的潜在分布。 最后，训练将达到动态平衡，其中生成器产生的估计具有与真实目标图像相似的潜在感知结构。</p>
+<h1 id="三、方法"><a href="#三、方法" class="headerlink" title="三、方法"></a>三、方法</h1><p>​         如图 2 所示，所提出的深度重新照明网络 (DRN) 由三部分组成：场景重建、阴影先验估计和重新渲染器。 首先，输入图像在场景重建网络（见第 3.2 节）中处理以去除照明的影响，这从输入图像中提取固有结构。 同时，另一个分支（阴影先验估计，见3.3节）侧重于光照效果的变化，根据目标光源重新投射阴影。 接下来，重新渲染器部分（参见第 3.4 节）感知光照效果并在结构信息的支持下重新绘制图像。 场景重建和阴影先验估计网络都具有类似的深度自动编码器结构，这是一种Pix2Pix网络增强的变体。三个组件的细节展示如下：</p>
+<h3 id="3-1-Assumption-of-Relighting"><a href="#3-1-Assumption-of-Relighting" class="headerlink" title="3.1 Assumption of Relighting"></a>3.1 Assumption of Relighting</h3>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/" rel="tag"># 论文分享</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021-11-04-%E3%80%90%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB%E3%80%91s3net%EF%BC%9A%E6%B7%B1%E5%BA%A6%E5%BC%95%E5%AF%BC%E5%9B%BE%E5%83%8F%E9%87%8D%E7%85%A7%E6%98%8E%E7%9A%84%E5%8D%95%E6%B5%81%E7%BB%93%E6%9E%84/" rel="prev" title="「论文分享」S3net：深度引导图像重照明的单流结构">
+                  <i class="fa fa-angle-left"></i> 「论文分享」S3net：深度引导图像重照明的单流结构
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021-11-05-%E3%80%90%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%8E%B0%E3%80%91S3net%E7%9A%84%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E5%AE%9E%E7%8E%B0/" rel="next" title="「项目复现」S3net的损失函数实现">
+                  「项目复现」S3net的损失函数实现 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2426182848439341"
+     crossorigin="anonymous"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33RJLY0818"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33RJLY0818');
+</script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="These series of notes combined   My notes on reading Software Foundation and (if any) watching on Coq intensive. Gotchas from my independent studies and discussion within Prof.Fluet‘s class.    The .">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「SF-LC」1 Basics">
+<meta property="og:url" content="https://www.vvbuys.com/read_sf_lf/2019-01-01-sf-lf-01-basics/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="These series of notes combined   My notes on reading Software Foundation and (if any) watching on Coq intensive. Gotchas from my independent studies and discussion within Prof.Fluet‘s class.    The .">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-02T01:05:07.544Z">
+<meta property="article:modified_time" content="2024-02-02T01:05:07.544Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="LF (逻辑基础)">
+<meta property="article:tag" content="SF (软件基础)">
+<meta property="article:tag" content="Coq">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/read_sf_lf/2019-01-01-sf-lf-01-basics/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/read_sf_lf/2019-01-01-sf-lf-01-basics/","path":"read_sf_lf/2019-01-01-sf-lf-01-basics/","title":"「SF-LC」1 Basics"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>「SF-LC」1 Basics | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-and-Functions"><span class="nav-number">1.</span> <span class="nav-text">Data and Functions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Custom-Notation"><span class="nav-number">1.1.</span> <span class="nav-text">Custom Notation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Data-Constructor-with-arguments"><span class="nav-number">1.2.</span> <span class="nav-text">Data Constructor with arguments</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Syntax-for-arguments-having-the-same-type"><span class="nav-number">1.3.</span> <span class="nav-text">Syntax for arguments having the same type</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fixpoint-and-Structrual-Recursion"><span class="nav-number">2.</span> <span class="nav-text">Fixpoint and Structrual Recursion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Proof-by-Case-Analysis"><span class="nav-number">3.</span> <span class="nav-text">Proof by Case Analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-small-caveat-on-intro"><span class="nav-number">3.1.</span> <span class="nav-text">A small caveat on intro</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qed"><span class="nav-number">4.</span> <span class="nav-text">Qed</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/read_sf_lf/2019-01-01-sf-lf-01-basics/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="「SF-LC」1 Basics | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「SF-LC」1 Basics
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:05:07" itemprop="dateCreated datePublished" datetime="2024-02-02T01:05:07+00:00">2024-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>These series of notes combined </p>
+<ul>
+<li>My notes on reading <em>Software Foundation</em> and (if any) watching on <em>Coq intensive</em>.</li>
+<li>Gotchas from my independent studies and discussion within <em>Prof.Fluet</em>‘s class.</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>The <code>.v</code> code is a gorgeous example of <em>literal programming</em> and the compiled <code>.html</code> website is full-fledged.<br>So this note is intended to be NOT self-contained and only focus on things I found essential or interesting.</p>
+</blockquote>
+<blockquote>
+<p>This note is intended to be very personal and potentially mix English with Chinese (You can Lol)<br>So yeah. Don’t expect it to be well organized and well written.<br>I posted it on blog mainly for my own references purpose.</p>
+</blockquote>
+<blockquote>
+<p>The quotes could either come from the book or saying from someone (even including me). </p>
+</blockquote>
+<h2 id="Data-and-Functions"><a href="#Data-and-Functions" class="headerlink" title="Data and Functions"></a>Data and Functions</h2><h3 id="Custom-Notation"><a href="#Custom-Notation" class="headerlink" title="Custom Notation"></a>Custom Notation</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;x &amp;&amp; y&quot;</span> := (andb x y).</span><br><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;x || y&quot;</span> := (orb x y).</span><br></pre></td></tr></table></figure>
+
+<p>can go pretty far with unicode char…</p>
+<p>making things <em>infix</em></p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;x + y&quot;</span> := (plus x y)</span><br><span class="line">                      (<span class="built_in">at</span> level <span class="number">50</span>, <span class="built_in">left</span> associativity)</span><br><span class="line">                      : nat_scope.</span><br><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;x - y&quot;</span> := (minus x y)</span><br><span class="line">                      (<span class="built_in">at</span> level <span class="number">50</span>, <span class="built_in">left</span> associativity)</span><br><span class="line">                      : nat_scope.</span><br><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;x * y&quot;</span> := (mult x y)</span><br><span class="line">                      (<span class="built_in">at</span> level <span class="number">40</span>, <span class="built_in">left</span> associativity)</span><br><span class="line">                      : nat_scope.</span><br></pre></td></tr></table></figure>
+
+<p>why <code>40</code> <code>50</code>? Making sure there are still <em>rooms</em> for priority in between…</p>
+<blockquote>
+<p>no known PL using real number for priority though</p>
+</blockquote>
+<h3 id="Data-Constructor-with-arguments"><a href="#Data-Constructor-with-arguments" class="headerlink" title="Data Constructor with arguments"></a>Data Constructor with arguments</h3><p>there are 2 ways to define them:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> color : <span class="keyword">Type</span> :=</span><br><span class="line">  | <span class="type">black</span></span><br><span class="line">  | <span class="type">white</span></span><br><span class="line">  | <span class="type">primary</span> (p : rgb).      <span class="comment">(* ADT, need to name arg, useful in proof *)</span></span><br><span class="line">  | <span class="type">primary</span> : rgb -&gt; color. <span class="comment">(* GADT style, dependent type *)</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Syntax-for-arguments-having-the-same-type"><a href="#Syntax-for-arguments-having-the-same-type" class="headerlink" title="Syntax for arguments having the same type"></a>Syntax for arguments having the same type</h3><blockquote>
+<p>As a notational convenience, if two or more arguments have the same type, they can be written together</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> nybble : <span class="keyword">Type</span> :=</span><br><span class="line">  | <span class="type">bits</span> (b0 b1 b2 b3 : bit).</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Fixpoint</span> mult (n m : nat)         : nat := </span><br><span class="line"><span class="keyword">Fixpoint</span> plus (n : nat) (m : nat) : nat := </span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Fixpoint-and-Structrual-Recursion"><a href="#Fixpoint-and-Structrual-Recursion" class="headerlink" title="Fixpoint and Structrual Recursion"></a><code>Fixpoint</code> and Structrual Recursion</h2><blockquote>
+<p>This requirement is a fundamental feature of Coq’s design: In particular, it guarantees that every function that can be defined in Coq will terminate on all inputs.</p>
+</blockquote>
+<p>However, Coq’s “decreasing analysis” is not very sophisticated. E.g.</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Fixpoint</span> evenb (n:nat) : bool :=</span><br><span class="line">  <span class="keyword">match</span> n <span class="built_in">with</span></span><br><span class="line">  | <span class="type">O</span>        =&gt; true</span><br><span class="line">  | <span class="type">S</span> O      =&gt; false</span><br><span class="line">  | <span class="type">n</span>        =&gt; evenb (pred (pred n))</span><br><span class="line">  <span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+
+<p>will result in a error that basically complains <em>“this structure is not shrinking”</em>.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Error:</span><br><span class="line">Recursive definition of evenb is ill-formed.</span><br><span class="line"></span><br><span class="line">evenb : nat -&gt; bool</span><br><span class="line">n : nat</span><br><span class="line">n0 : nat</span><br><span class="line">n1 : nat</span><br><span class="line"></span><br><span class="line">Recursive call to evenb has principal argument equal to</span><br><span class="line">&quot;Nat.pred (Nat.pred n)&quot; instead of one of the following variables: &quot;n0&quot; &quot;n1&quot;.</span><br><span class="line"></span><br><span class="line">Recursive definition is:</span><br><span class="line">&quot;fun n : nat =&gt;</span><br><span class="line"> match n with</span><br><span class="line"> | 0 =&gt; true</span><br><span class="line"> | 1 =&gt; false</span><br><span class="line"> | S (S _) =&gt; evenb (Nat.pred (Nat.pred n))</span><br><span class="line"> end&quot;.</span><br></pre></td></tr></table></figure>
+
+<p>N.B. the <code>n0</code> and <code>n1</code> are sub-terms of <code>n</code> where <code>n = S (S _)</code>.</p>
+<p>So we have to make the sub-structure explicit to indicate the structure is obviously shrinking:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Fixpoint</span> evenb (n:nat) : bool :=</span><br><span class="line">  <span class="keyword">match</span> n <span class="built_in">with</span></span><br><span class="line">  | <span class="type">O</span>        =&gt; true</span><br><span class="line">  | <span class="type">S</span> O      =&gt; false</span><br><span class="line">  | <span class="type">S</span> (S n&#x27;) =&gt; evenb n&#x27;</span><br><span class="line">  <span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+
+<p>Now Coq will know this <code>Fixpoint</code> is performing a structural recursion over the 1st recursion and it guarantees to be terminated since the structure is decreasing:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">evenb is defined</span><br><span class="line">evenb is recursively defined (decreasing on 1st argument)</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Proof-by-Case-Analysis"><a href="#Proof-by-Case-Analysis" class="headerlink" title="Proof by Case Analysis"></a>Proof by Case Analysis</h2><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> plus_1_neq_0_firsttry : ∀n : nat,</span><br><span class="line">  (n + <span class="number">1</span>) =? <span class="number">0</span> = false.</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span> n.</span><br><span class="line">  <span class="built_in">simpl</span>. <span class="comment">(* does nothing! *)</span></span><br><span class="line"><span class="keyword">Abort</span>.</span><br></pre></td></tr></table></figure>
+
+<p><code>simpl.</code> does nothing since both <code>+</code> and <code>=?</code> have 2 cases.</p>
+<p>so we have to <code>destruct</code> <code>n</code> as 2 cases: nullary <code>O</code> and unary <code>S n&#39;</code>.</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">intros</span> n. <span class="built_in">destruct</span> n <span class="built_in">as</span> [ <span class="comment">(* O *)</span> | <span class="type">(* S</span> *) n&#x27;] eqn:E.</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>the <em>intro pattern</em> <code>as [ |n&#39;]</code> name new bindings.</li>
+<li><code>eqn:E</code> annonate the destructed <code>eqn</code> (equation?) as <code>E</code> in the premises of proofs. It could be elided if not explicitly used, but useful to keep for the sake of documentation as well.</li>
+</ul>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">subgoal <span class="number">1</span></span><br><span class="line"></span><br><span class="line">  n : nat</span><br><span class="line">  E : n = <span class="number">0</span>                          <span class="comment">(* case 1, n is [O] a.k.a. [0] *)</span></span><br><span class="line">  ============================</span><br><span class="line">  (<span class="number">0</span> + <span class="number">1</span> =? <span class="number">0</span>) = false</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">subgoal <span class="number">2</span></span><br><span class="line"></span><br><span class="line">  n, n&#x27; : nat</span><br><span class="line">  E : n = S n&#x27;                       <span class="comment">(* case 2, n is [S n&#x27;] *)</span></span><br><span class="line">  ============================</span><br><span class="line">  (S n&#x27; + <span class="number">1</span> =? <span class="number">0</span>) = false</span><br></pre></td></tr></table></figure>
+
+<p>If there is no need to specify any names, we could omit <code>as</code> clause or simply write <code>as [|]</code> or <code>as []</code>.<br>In fact. Any <code>as</code> clause could be ommited and Coq will fill in random var name auto-magically.</p>
+<h3 id="A-small-caveat-on-intro"><a href="#A-small-caveat-on-intro" class="headerlink" title="A small caveat on intro"></a>A small caveat on <code>intro</code></h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">intros</span> x y. <span class="built_in">destruct</span> y <span class="built_in">as</span> [ | <span class="type">y</span> ] eqn:E.</span><br></pre></td></tr></table></figure>
+
+<p>By doing this, name <code>y</code> is shadowed. It’d usually better to use, say <code>y&#39;</code> for this purpose.</p>
+<h2 id="Qed"><a href="#Qed" class="headerlink" title="Qed"></a><code>Qed</code></h2><p>standing for Latin words <em>“Quod Erat Demonstrandum”</em>…meaning “that which was to be demonstrated”.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/LF-%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80/" rel="tag"># LF (逻辑基础)</a>
+              <a href="/tags/SF-%E8%BD%AF%E4%BB%B6%E5%9F%BA%E7%A1%80/" rel="tag"># SF (软件基础)</a>
+              <a href="/tags/Coq/" rel="tag"># Coq</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/read_sf_lf/2019-01-02-sf-lf-02-induction/" rel="prev" title="「SF-LC」2 Induction">
+                  <i class="fa fa-angle-left"></i> 「SF-LC」2 Induction
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/hidden/2020-05-05-pl-chart/" rel="next" title="My Programming Languages Spectrum">
+                  My Programming Languages Spectrum <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

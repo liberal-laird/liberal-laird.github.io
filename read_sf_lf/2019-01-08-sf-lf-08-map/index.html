@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2426182848439341"
+     crossorigin="anonymous"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33RJLY0818"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33RJLY0818');
+</script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="useful as env  Map &#x3D;&#x3D; Dictionary  building data structure. use of reflection to streamline proofs.  Two flavors of maps:  total   maps, return default when lookup fails partial maps, return">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「SF-LC」8 Maps">
+<meta property="og:url" content="https://www.vvbuys.com/read_sf_lf/2019-01-08-sf-lf-08-map/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="useful as env  Map &#x3D;&#x3D; Dictionary  building data structure. use of reflection to streamline proofs.  Two flavors of maps:  total   maps, return default when lookup fails partial maps, return">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-02T01:05:07.544Z">
+<meta property="article:modified_time" content="2024-02-02T01:05:07.544Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="LF (逻辑基础)">
+<meta property="article:tag" content="SF (软件基础)">
+<meta property="article:tag" content="Coq">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/read_sf_lf/2019-01-08-sf-lf-08-map/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/read_sf_lf/2019-01-08-sf-lf-08-map/","path":"read_sf_lf/2019-01-08-sf-lf-08-map/","title":"「SF-LC」8 Maps"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>「SF-LC」8 Maps | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#The-Coq-Standard-Lib"><span class="nav-number">1.</span> <span class="nav-text">The Coq Standard Lib</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Identifiers"><span class="nav-number">2.</span> <span class="nav-text">Identifiers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Total-Maps"><span class="nav-number">3.</span> <span class="nav-text">Total Maps</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#My-Reviews-on-API-style-of-ML"><span class="nav-number">3.1.</span> <span class="nav-text">My Reviews on API style of ML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lightweight-Meta-Programming-in-Coq-Notation"><span class="nav-number">3.2.</span> <span class="nav-text">Lightweight Meta-Programming in Coq - Notation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Partial-Maps"><span class="nav-number">4.</span> <span class="nav-text">Partial Maps</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Maps-are-functions"><span class="nav-number">5.</span> <span class="nav-text">Maps are functions</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/read_sf_lf/2019-01-08-sf-lf-08-map/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="「SF-LC」8 Maps | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「SF-LC」8 Maps
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:05:07" itemprop="dateCreated datePublished" datetime="2024-02-02T01:05:07+00:00">2024-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>useful as env</p>
+</blockquote>
+<p>Map &#x3D;&#x3D; Dictionary</p>
+<ul>
+<li>building data structure.</li>
+<li>use of reflection to streamline proofs.</li>
+</ul>
+<p>Two flavors of maps:</p>
+<ol>
+<li><em>total</em>   maps, return <em>default</em> when lookup fails</li>
+<li><em>partial</em> maps, return <code>option</code> to indicate success&#x2F;failure, using <code>None</code> as the default.</li>
+</ol>
+<h2 id="The-Coq-Standard-Lib"><a href="#The-Coq-Standard-Lib" class="headerlink" title="The Coq Standard Lib"></a>The Coq Standard Lib</h2><p>From now on, importing from std lib. (but should not notice much difference)</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">From</span> Coq <span class="keyword">Require</span> <span class="keyword">Import</span> Arith.Arith.</span><br><span class="line"><span class="keyword">From</span> Coq <span class="keyword">Require</span> <span class="keyword">Import</span> Bool.Bool.</span><br><span class="line"><span class="keyword">Require</span> <span class="keyword">Export</span> Coq.Strings.String.</span><br><span class="line"><span class="keyword">From</span> Coq <span class="keyword">Require</span> <span class="keyword">Import</span> Logic.FunctionalExtensionality.</span><br><span class="line"><span class="keyword">From</span> Coq <span class="keyword">Require</span> <span class="keyword">Import</span> Lists.List.</span><br><span class="line"><span class="keyword">Import</span> ListNotations.</span><br></pre></td></tr></table></figure>
+
+<p>TODO: what’s the differences above?<br>Answered in Coq Intensive:</p>
+<ul>
+<li><code>Require</code> give access but need to use qualified name</li>
+<li><code>Import</code>  no need to use qualified name</li>
+<li><code>Export</code>  module importing me no need to use qualified name as well</li>
+</ul>
+<p><code>String</code> in Coq is <code>list</code> of <code>Char</code> and <code>Char</code> is record of 8 <code>Bool</code>…</p>
+<h2 id="Identifiers"><a href="#Identifiers" class="headerlink" title="Identifiers"></a>Identifiers</h2><blockquote>
+<p>we need a type for the <em>keys</em> that we use to index into our maps.</p>
+</blockquote>
+<p>In <code>Lists.v</code> (Partial Maps):</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> id : <span class="keyword">Type</span> := </span><br><span class="line">  | <span class="type">Id</span> (n : nat).</span><br></pre></td></tr></table></figure>
+
+<p>From now on we will use the <code>string</code> from Coq’s std lib:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> eqb_string (x y : string) : bool :=</span><br><span class="line">  <span class="keyword">if</span> string_dec x y <span class="keyword">then</span> true <span class="keyword">else</span> false.</span><br><span class="line"></span><br><span class="line"><span class="keyword">Check</span> string_dec: <span class="comment">(* ===&gt; *)</span></span><br><span class="line">     : <span class="keyword">forall</span> s1 s2 : string, &#123;s1 = s2&#125; + &#123;s1 &lt;&gt; s2&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The equality check fn for <code>string</code> from stdlib is <code>string_des</code>, which returns a <code>sumbool</code> type, i.e. <code>&#123;x=y&#125; + &#123;x≠y&#125;</code>.</p>
+<blockquote>
+<p>which can be thought of as an <strong>“evidence-carrying boolean”</strong>.<br>Formally, an element of <code>sumbool</code> is either or</p>
+<ul>
+<li>a proof that two things are equal</li>
+<li>a proof that they are unequal,<br>together with a tag indicating which.</li>
+</ul>
+</blockquote>
+<p>Some properties:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">(* reflexive relation *)</span></span><br><span class="line"><span class="keyword">Theorem</span> eqb_string_refl : ∀s : string, true = eqb_string s s.</span><br><span class="line"></span><br><span class="line"><span class="comment">(* functional extensionality *)</span></span><br><span class="line"><span class="keyword">Theorem</span> eqb_string_true_iff : ∀x y : string, eqb_string x y = true ↔ x = y.</span><br><span class="line"><span class="keyword">Theorem</span> eqb_string_false_iff : ∀x y : string, eqb_string x y = false ↔ x ≠ y.</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Total-Maps"><a href="#Total-Maps" class="headerlink" title="Total Maps"></a>Total Maps</h2><blockquote>
+<p>use <em>functions</em>, rather than lists of key-value pairs, to build maps.<br>The advantage of this representation is that it offers a more <em>extensional</em> view of maps. 外延性</p>
+</blockquote>
+<blockquote>
+<p>(where two maps that respond to queries in the same way will be represented as literally the same thing rather than just “equivalent” data structures. This, in turn, simplifies proofs that use maps.)</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> total_map (A : <span class="keyword">Type</span>) := string -&gt; A.</span><br><span class="line"></span><br><span class="line"><span class="comment">(* empty take a default value *)</span></span><br><span class="line"><span class="keyword">Definition</span> t_empty &#123;A : <span class="keyword">Type</span>&#125; (v : A) : total_map A :=</span><br><span class="line">  (<span class="keyword">fun</span> <span class="keyword">_</span> =&gt; v).</span><br><span class="line"></span><br><span class="line"><span class="comment">(* update take a key value pair *)</span></span><br><span class="line"><span class="keyword">Definition</span> t_update &#123;A : <span class="keyword">Type</span>&#125; (m : total_map A)</span><br><span class="line">                    (x : string) (v : A) <span class="comment">(* : total_map A *)</span> :=</span><br><span class="line">  <span class="keyword">fun</span> x&#x27; =&gt; <span class="keyword">if</span> eqb_string x x&#x27; <span class="keyword">then</span> v <span class="keyword">else</span> m x&#x27;.</span><br></pre></td></tr></table></figure>
+
+<p>Where is the data stored? <em>Closure</em>!</p>
+<h3 id="My-Reviews-on-API-style-of-ML"><a href="#My-Reviews-on-API-style-of-ML" class="headerlink" title="My Reviews on API style of ML"></a>My Reviews on API style of ML</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> examplemap :=</span><br><span class="line">  t_update (t_update (t_empty false) <span class="string">&quot;foo&quot;</span> true)</span><br><span class="line">           <span class="string">&quot;bar&quot;</span> true.</span><br></pre></td></tr></table></figure>
+
+<p>since <code>t_update</code> is defined as so called “t-first” style.<br>Reason&#x2F;BuckleScript and OCaml stdlib uses this style as well:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> examplemap = </span><br><span class="line">  <span class="title function_">t_empty</span>(<span class="literal">false</span>)</span><br><span class="line">  |. <span class="title function_">t_update</span>(<span class="string">&quot;foo&quot;</span>, <span class="literal">true</span>)         <span class="comment">/* fast pipe */</span></span><br><span class="line">  |. <span class="title function_">t_update</span>(<span class="string">&quot;bar&quot;</span>, <span class="literal">true</span>) </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> add : key -&gt; <span class="symbol">&#x27;a</span> -&gt; <span class="symbol">&#x27;a</span> t -&gt; <span class="symbol">&#x27;a</span> t</span><br><span class="line"><span class="keyword">let</span> examplemap = </span><br><span class="line">  <span class="type">Map</span>.empty </span><br><span class="line">  |&gt; <span class="type">Map</span>.add <span class="string">&quot;foo&quot;</span> <span class="literal">true</span></span><br><span class="line">  |&gt; <span class="type">Map</span>.add <span class="string">&quot;bar&quot;</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>Or, In Jane Street “named-argument” style<br>e.g. <a target="_blank" rel="noopener" href="https://v1.realworldocaml.org/v1/en/html/maps-and-hash-tables.html">Real World OCaml</a></p>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> examplemap = </span><br><span class="line">  <span class="type">Map</span>.empty</span><br><span class="line">  |&gt; <span class="type">Map</span>.add ~key:<span class="string">&quot;foo&quot;</span> ~data:<span class="literal">true</span></span><br><span class="line">  |&gt; <span class="type">Map</span>.add ~key:<span class="string">&quot;bar&quot;</span> ~data:<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Lightweight-Meta-Programming-in-Coq-Notation"><a href="#Lightweight-Meta-Programming-in-Coq-Notation" class="headerlink" title="Lightweight Meta-Programming in Coq - Notation"></a>Lightweight Meta-Programming in Coq - Notation</h3><p>In Coq, we can leverage some meta programming:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;&#x27;_&#x27; &#x27;!-&gt;&#x27; v&quot;</span> := (t_empty v)</span><br><span class="line">  (<span class="built_in">at</span> level <span class="number">100</span>, <span class="built_in">right</span> associativity).</span><br><span class="line"></span><br><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;x &#x27;!-&gt;&#x27; v &#x27;;&#x27; m&quot;</span> := (t_update m x v)</span><br><span class="line">  (<span class="built_in">at</span> level <span class="number">100</span>, v <span class="built_in">at</span> next level, <span class="built_in">right</span> associativity).</span><br><span class="line"></span><br><span class="line"><span class="keyword">Definition</span> examplemap&#x27; :=</span><br><span class="line">  ( <span class="string">&quot;bar&quot;</span> !-&gt; true;</span><br><span class="line">    <span class="string">&quot;foo&quot;</span> !-&gt; true;</span><br><span class="line">    <span class="keyword">_</span>     !-&gt; false</span><br><span class="line">  ).</span><br></pre></td></tr></table></figure>
+
+<p>Noticed that the “Map building” is in a <em>reversed</em> order…</p>
+<blockquote>
+<p>Note that we don’t need to define a find operation because it is just function application!</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Example</span> update_example2 : examplemap&#x27; <span class="string">&quot;foo&quot;</span> = true.</span><br><span class="line"><span class="keyword">Example</span> update_example4 : examplemap&#x27; <span class="string">&quot;bar&quot;</span> = true.</span><br><span class="line"><span class="keyword">Example</span> update_example1 : examplemap&#x27; <span class="string">&quot;baz&quot;</span> = false. <span class="comment">(* default *)</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="Partial-Maps"><a href="#Partial-Maps" class="headerlink" title="Partial Maps"></a>Partial Maps</h2><blockquote>
+<p>we define partial maps on top of total maps.<br>A partial map with elements of type <code>A</code> is simply a total map with elements of type <code>option A</code> and default element <code>None</code>.</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> partial_map (A : <span class="keyword">Type</span>) := total_map (option A).</span><br><span class="line"></span><br><span class="line"><span class="keyword">Definition</span> empty &#123;A : <span class="keyword">Type</span>&#125; : partial_map A :=</span><br><span class="line">  t_empty None.</span><br><span class="line"></span><br><span class="line"><span class="keyword">Definition</span> update &#123;A : <span class="keyword">Type</span>&#125; (m : partial_map A)</span><br><span class="line">           (x : string) (v : A) :=</span><br><span class="line">  (x !-&gt; Some v ; m).</span><br><span class="line">  </span><br><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;x &#x27;⊢&gt;&#x27; v &#x27;;&#x27; m&quot;</span> := (update m x v)</span><br><span class="line">  (<span class="built_in">at</span> level <span class="number">100</span>, v <span class="built_in">at</span> next level, <span class="built_in">right</span> associativity).</span><br><span class="line"></span><br><span class="line"><span class="comment">(** hide the empty case. Since it&#x27;s always [None] **)</span></span><br><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;x &#x27;⊢&gt;&#x27; v&quot;</span> := (update empty x v)</span><br><span class="line">  (<span class="built_in">at</span> level <span class="number">100</span>).</span><br><span class="line">  </span><br><span class="line"><span class="comment">(** so nice **)</span></span><br><span class="line"><span class="keyword">Example</span> examplepmap :=</span><br><span class="line">  (<span class="string">&quot;Church&quot;</span> ⊢&gt; true ; </span><br><span class="line">   <span class="string">&quot;Turing&quot;</span> ⊢&gt; false).</span><br></pre></td></tr></table></figure>
+
+<p>we use the “standard” map operator <code>↦</code> for partial map since maps in CS are usually partial.</p>
+<hr>
+<h2 id="Maps-are-functions"><a href="#Maps-are-functions" class="headerlink" title="Maps are functions"></a><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Map_(mathematics)#Maps_as_functions">Maps are functions</a></h2><blockquote>
+<p>In many branches of mathematics, the term map is used to mean a function.<br><em>partial map</em> &#x3D; <em>partial function</em>,<br><em>total   map</em> &#x3D; <em>total   function</em>.</p>
+</blockquote>
+<blockquote>
+<p>In category theory, “map” is often used as a synonym for morphism or arrow.</p>
+</blockquote>
+<blockquote>
+<p>In formal logic, “map” is sometimes used for a functional symbol.</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/LF-%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80/" rel="tag"># LF (逻辑基础)</a>
+              <a href="/tags/SF-%E8%BD%AF%E4%BB%B6%E5%9F%BA%E7%A1%80/" rel="tag"># SF (软件基础)</a>
+              <a href="/tags/Coq/" rel="tag"># Coq</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/read_sf_lf/2019-01-09-sf-lf-09-proof-object/" rel="prev" title="「SF-LC」9 ProofObjects">
+                  <i class="fa fa-angle-left"></i> 「SF-LC」9 ProofObjects
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/read_sf_lf/2019-01-07-sf-lf-07-indprop/" rel="next" title="「SF-LC」7 Ind Prop">
+                  「SF-LC」7 Ind Prop <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

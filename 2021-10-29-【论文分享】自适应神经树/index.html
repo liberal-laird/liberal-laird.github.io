@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2426182848439341"
+     crossorigin="anonymous"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33RJLY0818"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33RJLY0818');
+</script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="​		《Adaptive Neural Trees》是来自英国伦敦的Ryutaro Tanno等人发表在ICML 2019（CCF推荐的A类会议）上的一篇论文，这里是原文链接和原文代码。 摘要​		深层神经网络和决策树在很大程度上依赖于不同的范式；通常，前者使用 预先指定的体系结构进行表征学习，而后者通过使用数据驱动的体系结构学习预先指定的特征的层次结构来实现。本文通过自适应神经树（ANTs）将这">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「论文分享」自适应神经树">
+<meta property="og:url" content="https://www.vvbuys.com/2021-10-29-%E3%80%90%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB%E3%80%91%E8%87%AA%E9%80%82%E5%BA%94%E7%A5%9E%E7%BB%8F%E6%A0%91/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="​		《Adaptive Neural Trees》是来自英国伦敦的Ryutaro Tanno等人发表在ICML 2019（CCF推荐的A类会议）上的一篇论文，这里是原文链接和原文代码。 摘要​		深层神经网络和决策树在很大程度上依赖于不同的范式；通常，前者使用 预先指定的体系结构进行表征学习，而后者通过使用数据驱动的体系结构学习预先指定的特征的层次结构来实现。本文通过自适应神经树（ANTs）将这">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.vvbuys.com/img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-10-29-%E8%87%AA%E9%80%82%E5%BA%94%E7%A5%9E%E7%BB%8F%E6%A0%91/ANT%E7%9A%84%E6%94%B9%E8%BF%9B.png">
+<meta property="og:image" content="https://www.vvbuys.com/img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-10-29-%E8%87%AA%E9%80%82%E5%BA%94%E7%A5%9E%E7%BB%8F%E6%A0%91/ANT%E6%A0%91%E7%9A%84%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="https://www.vvbuys.com/img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-10-29-%E8%87%AA%E9%80%82%E5%BA%94%E7%A5%9E%E7%BB%8F%E6%A0%91/%E5%85%A8%E9%A2%84%E6%B5%8B%E5%88%86%E5%B8%83%E5%85%AC%E5%BC%8F.png">
+<meta property="og:image" content="https://www.vvbuys.com/img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-10-29-%E8%87%AA%E9%80%82%E5%BA%94%E7%A5%9E%E7%BB%8F%E6%A0%91/%E6%9F%90%E6%9D%A1%E8%B7%AF%E5%BE%84%E7%9A%84%E6%A6%82%E7%8E%87.png">
+<meta property="og:image" content="https://www.vvbuys.com/img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-10-29-%E8%87%AA%E9%80%82%E5%BA%94%E7%A5%9E%E7%BB%8F%E6%A0%91/ANT%E7%9A%84%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0.png">
+<meta property="og:image" content="https://www.vvbuys.com/img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-10-29-%E8%87%AA%E9%80%82%E5%BA%94%E7%A5%9E%E7%BB%8F%E6%A0%91/ANT%E7%9A%84%E7%94%9F%E9%95%BF%E9%98%B6%E6%AE%B5.png">
+<meta property="og:image" content="https://www.vvbuys.com/img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-10-29-%E8%87%AA%E9%80%82%E5%BA%94%E7%A5%9E%E7%BB%8F%E6%A0%91/%E5%AE%9E%E9%AA%8C%E8%AE%BE%E7%BD%AE.png">
+<meta property="og:image" content="https://www.vvbuys.com/img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-10-29-%E8%87%AA%E9%80%82%E5%BA%94%E7%A5%9E%E7%BB%8F%E6%A0%91/ANT%E7%9A%84%E6%B6%88%E8%9E%8D%E5%AE%9E%E9%AA%8C.png">
+<meta property="og:image" content="https://www.vvbuys.com/img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-10-29-%E8%87%AA%E9%80%82%E5%BA%94%E7%A5%9E%E7%BB%8F%E6%A0%91/ANT%E7%9A%84SARCOS%E5%9B%9E%E5%BD%92%E5%AE%9E%E9%AA%8C.png">
+<meta property="og:image" content="https://www.vvbuys.com/img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-10-29-%E8%87%AA%E9%80%82%E5%BA%94%E7%A5%9E%E7%BB%8F%E6%A0%91/ANT%E7%9A%84MNIST%E5%AE%9E%E9%AA%8C.png">
+<meta property="og:image" content="https://www.vvbuys.com/img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-10-29-%E8%87%AA%E9%80%82%E5%BA%94%E7%A5%9E%E7%BB%8F%E6%A0%91/ANT%E7%9A%84CIFAR-10%E5%AE%9E%E9%AA%8C.png">
+<meta property="og:image" content="https://www.vvbuys.com/img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-10-29-%E8%87%AA%E9%80%82%E5%BA%94%E7%A5%9E%E7%BB%8F%E6%A0%91/ANT%E7%9A%84%E5%8F%AF%E8%A7%A3%E9%87%8A%E6%80%A7.png">
+<meta property="og:image" content="https://www.vvbuys.com/img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-10-29-%E8%87%AA%E9%80%82%E5%BA%94%E7%A5%9E%E7%BB%8F%E6%A0%91/ANT%E7%9A%84%E7%BB%86%E5%8C%96%E9%98%B6%E6%AE%B5%E7%9A%84%E5%BD%B1%E5%93%8D.png">
+<meta property="og:image" content="https://www.vvbuys.com/img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-10-29-%E8%87%AA%E9%80%82%E5%BA%94%E7%A5%9E%E7%BB%8F%E6%A0%91/ANT%E7%9A%84%E8%87%AA%E9%80%82%E5%BA%94%E6%A8%A1%E5%9E%8B%E5%A4%8D%E6%9D%82%E6%80%A7.png">
+<meta property="article:published_time" content="2021-10-29T00:00:00.000Z">
+<meta property="article:modified_time" content="2024-02-02T01:00:55.431Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="论文分享">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.vvbuys.com/img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-10-29-%E8%87%AA%E9%80%82%E5%BA%94%E7%A5%9E%E7%BB%8F%E6%A0%91/ANT%E7%9A%84%E6%94%B9%E8%BF%9B.png">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/2021-10-29-%E3%80%90%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB%E3%80%91%E8%87%AA%E9%80%82%E5%BA%94%E7%A5%9E%E7%BB%8F%E6%A0%91/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/2021-10-29-%E3%80%90%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB%E3%80%91%E8%87%AA%E9%80%82%E5%BA%94%E7%A5%9E%E7%BB%8F%E6%A0%91/","path":"2021-10-29-【论文分享】自适应神经树/","title":"「论文分享」自适应神经树"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>「论文分享」自适应神经树 | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1%E3%80%81%E7%AE%80%E4%BB%8B"><span class="nav-number">2.</span> <span class="nav-text">1、简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2%E3%80%81%E7%9B%B8%E5%85%B3%E5%B7%A5%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">2、相关工作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3%E3%80%81%E8%87%AA%E9%80%82%E5%BA%94%E7%A5%9E%E7%BB%8F%E6%A0%91"><span class="nav-number">4.</span> <span class="nav-text">3、自适应神经树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E6%8B%93%E6%89%91%E7%BB%93%E6%9E%84-mathbb-T"><span class="nav-number">4.1.</span> <span class="nav-text">（1）拓扑结构$\mathbb{T}$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E6%93%8D%E4%BD%9C%E9%9B%86-mathbb-O"><span class="nav-number">4.2.</span> <span class="nav-text">（2）操作集$\mathbb{O}$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E6%A6%82%E7%8E%87%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.3.</span> <span class="nav-text">（3）概率模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-%E5%8F%B6%E5%AD%90%E5%88%86%E9%85%8D%E6%A6%82%E7%8E%87-pi-l-theta-psi-%E7%9A%84%E8%AE%A1%E7%AE%97"><span class="nav-number">4.3.1.</span> <span class="nav-text">A  叶子分配概率$\pi_{l}^{\theta, \psi} $的计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-%E5%8F%B6%E5%AD%90%E9%A2%84%E6%B5%8B%E6%A6%82%E7%8E%87-p-l-phi-psi-%E7%9A%84%E8%AE%A1%E7%AE%97"><span class="nav-number">4.3.2.</span> <span class="nav-text">B  叶子预测概率$p_{l}^{\phi, \psi}$的计算</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%BC%884%EF%BC%89%E6%8E%A8%E7%90%86%E6%96%B9%E6%A1%88"><span class="nav-number">4.4.</span> <span class="nav-text">（4）推理方案</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4%E3%80%81%E4%BC%98%E5%8C%96"><span class="nav-number">5.</span> <span class="nav-text">4、优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E7%94%9F%E9%95%BF%E9%98%B6%E6%AE%B5"><span class="nav-number">5.1.</span> <span class="nav-text">（1）生长阶段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E7%BB%86%E5%8C%96%E9%98%B6%E6%AE%B5"><span class="nav-number">5.2.</span> <span class="nav-text">（2）细化阶段</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5%E3%80%81%E5%AE%9E%E9%AA%8C"><span class="nav-number">6.</span> <span class="nav-text">5、实验</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E5%AE%9E%E9%AA%8C%E8%AE%BE%E7%BD%AE"><span class="nav-number">6.1.</span> <span class="nav-text">（1）实验设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E6%B6%88%E8%9E%8D%E5%AE%9E%E9%AA%8C"><span class="nav-number">6.2.</span> <span class="nav-text">（2）消融实验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%BC%883%EF%BC%89SARCOS%E5%A4%9A%E5%85%83%E5%9B%9E%E5%BD%92%E5%AE%9E%E9%AA%8C%E7%9A%84%E6%80%A7%E8%83%BD%E5%AF%B9%E6%AF%94"><span class="nav-number">6.3.</span> <span class="nav-text">（3）SARCOS多元回归实验的性能对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%BC%884%EF%BC%89MNIST%E6%95%B0%E5%AD%97%E5%88%86%E7%B1%BB%E5%AE%9E%E9%AA%8C%E7%9A%84%E6%80%A7%E8%83%BD%E5%AF%B9%E6%AF%94"><span class="nav-number">6.4.</span> <span class="nav-text">（4）MNIST数字分类实验的性能对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%BC%885%EF%BC%89CIFAR-10%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB%E5%AE%9E%E9%AA%8C%E7%9A%84%E6%80%A7%E8%83%BD%E5%AF%B9%E6%AF%94"><span class="nav-number">6.5.</span> <span class="nav-text">（5）CIFAR-10图像分类实验的性能对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%BC%886%EF%BC%89%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%8F%AF%E8%A7%A3%E9%87%8A%E6%80%A7"><span class="nav-number">6.6.</span> <span class="nav-text">（6）模型的可解释性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%BC%887%EF%BC%89%E7%BB%86%E5%8C%96%E9%98%B6%E6%AE%B5%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="nav-number">6.7.</span> <span class="nav-text">（7）细化阶段的影响</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%BC%888%EF%BC%89%E8%87%AA%E9%80%82%E5%BA%94%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%A4%8D%E6%9D%82%E6%80%A7"><span class="nav-number">6.8.</span> <span class="nav-text">（8）自适应模型的复杂性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6%E3%80%81%E6%80%BB%E7%BB%93"><span class="nav-number">7.</span> <span class="nav-text">6、总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2021-10-29-%E3%80%90%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB%E3%80%91%E8%87%AA%E9%80%82%E5%BA%94%E7%A5%9E%E7%BB%8F%E6%A0%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="「论文分享」自适应神经树 | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「论文分享」自适应神经树
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-10-29 00:00:00" itemprop="dateCreated datePublished" datetime="2021-10-29T00:00:00+00:00">2021-10-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-02-02 01:00:55" itemprop="dateModified" datetime="2024-02-02T01:00:55+00:00">2024-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>​		《Adaptive Neural Trees》是来自英国伦敦的Ryutaro Tanno等人发表在ICML 2019（CCF推荐的A类会议）上的一篇论文，这里是<a target="_blank" rel="noopener" href="http://proceedings.mlr.press/v97/tanno19a/tanno19a.pdf">原文链接</a>和<a target="_blank" rel="noopener" href="https://github.com/rtanno21609/AdaptiveNeuralTrees">原文代码</a>。</p>
+<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>​		深层神经网络和决策树在很大程度上依赖于不同的范式；通常，前者使用 预先指定的体系结构进行表征学习，而后者通过使用数据驱动的体系结构学习预先指定的特征的层次结构来实现。本文通过自适应神经树（ANTs）将这两种方法结合起来，该算法将表征学习融入决策树的<strong>边缘</strong>（edges）、<strong>路由函数</strong>（routing functions）和<strong>叶节点</strong>（leaf nodes），以及基于反向传播的训练算法，该算法从原始模块（例如卷积层）自适应地增长体系结构。本文证明，ANTs不仅在实现分类和再分类数据集上具有竞争性能，而且具备如下好处：</p>
+<p>（i）通过条件计算进行轻量级推理；</p>
+<p>（ii）对任务有用的特征进行更高层次的分离，例如学习有意义的类关联，如分离自然和人造对象；</p>
+<p>（iii）使体系结构适应训练数据集大小和复杂性的机制。</p>
+<h1 id="1、简介"><a href="#1、简介" class="headerlink" title="1、简介"></a>1、简介</h1><p>​		神经网络（NNs）和决策树（DTs）都是强大的机器学习模型，在学术和商业应用中都取得了成功。然而，这两种方法通常具有相互排斥的优点和局限性。</p>
+<table>
+<thead>
+<tr>
+<th><strong>模型</strong></th>
+<th><strong>优点</strong></th>
+<th><strong>局限性</strong></th>
+<th><strong>常见改进思路</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>神经网络（NN）</td>
+<td>自动学习数据的分层表示，减少了对数据特征工程的需求；使用随机优化法进行训练，可以扩展到大型数据集；在现代硬件加持下可以在众多问题中取得前所未有的精度。</td>
+<td>体系结构通常需要针对特定任务或数据集进行设计或修改；大型模型具备重量级推理，计算量很大</td>
+<td>知识蒸馏、迁移学习</td>
+</tr>
+<tr>
+<td>决策树（DT）</td>
+<td>自动学习分层数据集群和如何分割输入空间，具备高度可解释性；体系结构可以根据训练数据进行优化；轻量级推理</td>
+<td>需要手动设计好的数据特征，路径函数表达能力不如神经网络，无法直接使用神经网络的优化方法，</td>
+<td>增加决策树数量的方法，如随机森林等</td>
+</tr>
+</tbody></table>
+<p>​		该文的工作的目标是结合NNs和DTs，以获得这两种方法的互补优势。</p>
+<p>![](&#x2F;img-post&#x2F;论文分享&#x2F;2021-10-29-自适应神经树&#x2F;ANT的改进.png)</p>
+<p><img src="/../img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-10-29-%E8%87%AA%E9%80%82%E5%BA%94%E7%A5%9E%E7%BB%8F%E6%A0%91/ANT%E7%9A%84%E6%94%B9%E8%BF%9B.png"></p>
+<p>​		根据该文介绍，ANTs从DTs和NNs继承了以下理想特性：</p>
+<p>​	（1）表征学习：由于ANTs的每个根到叶路径都是一个神经网络，因此可通过基于梯度的优化进行端到端的特征学习。</p>
+<p>​	（2）架构学习：通过逐渐增长的ANTs，架构适应数据集的可用性和复杂性，增长过程可以看作是对模型类具有硬约束的体系结构搜索。</p>
+<p>​	（3）轻量级推理：在推理时，ANTs进行条件计算，在每个样本的基础上选择树上的单个根到叶路径，只激活模型参数的一个子集。</p>
+<p>​		该文通过基于如下三个数据集的实验验证了ANTs在回归任务和分类任务的高性能表现：</p>
+<table>
+<thead>
+<tr>
+<th><strong>数据集</strong></th>
+<th><strong>作者年份</strong></th>
+<th><strong>论文题目</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MNIST分类数据集</td>
+<td>LeCun等人，1998年</td>
+<td>《Gradient-based learning applied to document recognition》</td>
+</tr>
+<tr>
+<td>CIFAR-10分类数据集</td>
+<td>Krizhevsky和Hinton，2009年</td>
+<td>《Learning multiple layers of features from tiny images》</td>
+</tr>
+<tr>
+<td>SARCOS多元回归数据集</td>
+<td>Vijayakumar和Schaal，2000年</td>
+<td>《Locally weighted projection regression: An o(n) algorithm for incremental real time learning in high dimensional space》</td>
+</tr>
+</tbody></table>
+<p>​		实验结果显示，在SARCOS多元回归数据集上性能最好的方法都是基于树的，ANTs的在均方误差（MSE）指标上最小；ANT在图像分类方面远远优于最先进的深度随机森林RF（Zhou&amp;Feng，2017）和GBT（Ponomareva等人，2017）方法，其结构在MNIST上的准确率超过99%，在CIFAR-10上的准确率超过90%。</p>
+<h1 id="2、相关工作"><a href="#2、相关工作" class="headerlink" title="2、相关工作"></a>2、相关工作</h1><p>​		决策树是机器学习中的一种预测模型，常应用于数据挖掘中。模糊决策树是传统决策树的一个扩充和完善，使决策树可以处理不确定性。</p>
+<p>软决策树是模糊决策树中的一类，通过结合树的生长和修剪来确定软决策树的结构，并对树进行了修正来提高它的泛化能力。软决策树的决策准则是一个范围区间，而非一个特定的数值。相比较于标准决策树，软决策树的分类结果更准确。</p>
+<p>​		决策树和神经网络结合的相关工作：</p>
+<table>
+<thead>
+<tr>
+<th><strong>作者年份</strong></th>
+<th><strong>论文题目</strong></th>
+<th><strong>主要贡献</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Jordan和Jacobs，1994</td>
+<td>Hierarchical mixtures of experts and the em algorithm</td>
+<td>提出了一种树结构的监督学习体系结构：分层混合专家（HME），其模型的学习被视为一个最大似然问题，然后使用一种期望最大化（EM）算法来调整结构的参数。该模型中树的分割不是硬决策（hard decision），而是由软概率（soft probabilistic）决定的，但是其树结构是固定的，路由器是简单的线性分类器。</td>
+</tr>
+<tr>
+<td>Suarez和Lutsko ,1999</td>
+<td>Globally optimal fuzzy decision  trees for classification and regression</td>
+<td>提出了一种新颖的模糊决策树，其通过在CART决策树的骨架上叠加模糊结构将决策树转换为一种强大的函数逼近，并可以使用一种自动生成方法来处理分类和回归问题。</td>
+</tr>
+<tr>
+<td>Irsoy等人，2012</td>
+<td>Soft decision trees</td>
+<td>提出了一种新的决策树结构，其既具备HME的软决策，又可以在需要时添加新节点，并使用梯度下降学习参数。</td>
+</tr>
+<tr>
+<td>Irsoy等人，2014</td>
+<td>Budding trees</td>
+<td>提出了一种萌芽树BT，其中一个节点既可以是叶子，也可以是内部决策节点。每个花蕾节点从一个叶节点开始，然后可以生长子节点，但随后，如果必要，可以修剪其子节点。</td>
+</tr>
+<tr>
+<td>Laptev和Buhmann, 2014.</td>
+<td>Convolutional decision trees for feature learning and segmentation</td>
+<td>提出了一种通用的分割算法ConvDT，在构建多元决策树的同时，将信息量最大、可解释性最强的特征提取为卷积核。该算法的训练速度比常规CNN快几个数量级，并在基准数据集的处理质量方面达到了最先进的水平。</td>
+</tr>
+<tr>
+<td>Rota Bulo和Kontschieder, 2014</td>
+<td>Neural decision forests for semantic image labelling</td>
+<td>提出了神经决策森林NDT，用于分割语义图像；该文章通过引入随机多层感知器（rMLP）作为新的分割节点来弥补这一差距，该节点可以学习非线性、数据特定的表示，并通过为新出现的子节点找到最佳预测来利用它们。</td>
+</tr>
+<tr>
+<td>Kontschieder等人，2015</td>
+<td>Deep neural decision forests</td>
+<td>提出了一种新的深度决策森林NDF，通过端到端的方式对分类树进行训练，将分类树与深度卷积网络中已知的表示学习功能统一起来。</td>
+</tr>
+<tr>
+<td>Leon和Denoyer, 2016</td>
+<td>Policy-gradient methods for decision trees.</td>
+<td>提出了一种新的强化决策树（RDT），主要思想是将分类问题视为一个序贯决策过程，通过直接求解全局（可导）目标函数，而不使用基于启发式的贪婪技术来学习分类策略；</td>
+</tr>
+<tr>
+<td>Ioannou等人，2016</td>
+<td>Decision forests, convolutional networks and the models</td>
+<td>将决策森林和卷积神经网络结合在一起，提出了条件网络（CNet）。</td>
+</tr>
+<tr>
+<td>Frosst和Hinton，2017</td>
+<td>Distilling a neural network into a soft decision tree</td>
+<td>使用软决策树来从一个训练好的神经网络中提取知识，从而尝试解释神经网络的分类决策，其结果证明，这种软决策树比直接从训练数据中学习的软决策树具有更好的泛化能力。</td>
+</tr>
+<tr>
+<td>Xiao ,2017</td>
+<td>Neual decision tree towards fully functioned neural graph</td>
+<td>提出了一种神经决策树的变体NDT，其在反向传播过程中，可以近似地计算出特定条件变量的梯度，从而生成一个功能完备的神经网络图。</td>
+</tr>
+</tbody></table>
+<h1 id="3、自适应神经树"><a href="#3、自适应神经树" class="headerlink" title="3、自适应神经树"></a>3、自适应神经树</h1><p>​		ANT使用了自己的一套术语来定义其结构，其结构基本统一了许多现有的树结构模型。</p>
+<p>​		首先ANT的学习仍然是一种监督学习，其训练数据简记为一组N个标记过的样本：$\left(\mathbf{x}^{(1)}, \mathbf{y}^{(1)}\right), \ldots,\left(\mathbf{x}^{(N)}, \mathbf{y}^{(N)}\right) \in \mathcal{X} \times \mathcal{Y}$，ANT的目标是从中学习一个条件分布 $p(\mathbf{y} \mid \mathbf{x})$。</p>
+<p>​		该文将ANT定义为一个二元组 $(\mathbb{T}, \mathbb{O})$,其中$\mathbb{T}$表示模型的拓扑结构（本质是一个有限图结构），$\mathbb{O}$表示其拓扑结构上进行的操作集（本质是一系列非线性函数）。</p>
+<h2 id="（1）拓扑结构-mathbb-T"><a href="#（1）拓扑结构-mathbb-T" class="headerlink" title="（1）拓扑结构$\mathbb{T}$"></a>（1）拓扑结构$\mathbb{T}$</h2><p>拓扑结构$\mathbb{T}$定义为$\mathbb{T}:&#x3D;{\mathcal{N}, \mathcal{E}}$，其中$\mathcal{N} $是所有节点的集合，$\mathcal{E}$是所有节点边的集合，</p>
+<p>ANT的拓扑结构也是基于二叉树的图结构，除了顶部根节点外，每个节点都是一个父节点的子节点。</p>
+<table>
+<thead>
+<tr>
+<th>种类</th>
+<th>符号表示</th>
+<th>定义和其他标准树对比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>内部节点</td>
+<td>$j\in \mathcal{N}_{\text {int }}$</td>
+<td>基本相同，每个内部节点$j\in \mathcal{N}_{\text {int }}$正好有两个子节点，由$\operatorname{left}(j)$和$\operatorname{right}(j)$表示。</td>
+</tr>
+<tr>
+<td>叶子节点</td>
+<td>$l \in \mathcal{N}_{\text {leaf }}$</td>
+<td>基本相同，没有子节点的节点叫做叶节点$\mathcal{N}_{\text {leaf }}$</td>
+</tr>
+<tr>
+<td>边</td>
+<td>$e \in \mathcal{E}$</td>
+<td>略有不同，$\mathcal{E}$包含输入数据$\mathbf{x}$到根节点的边。</td>
+</tr>
+</tbody></table>
+<h2 id="（2）操作集-mathbb-O"><a href="#（2）操作集-mathbb-O" class="headerlink" title="（2）操作集$\mathbb{O}$"></a>（2）操作集$\mathbb{O}$</h2><p>操作集$\mathbb{O}$定义为一个三元组$\mathbb{O}&#x3D;(\mathcal{R}, \mathcal{T}, \mathcal{S})$，其所有操作都由三个可微模块构建：</p>
+<table>
+<thead>
+<tr>
+<th>可微模块</th>
+<th>模块特点</th>
+<th>内部计算</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>路由器（Routers，$\mathcal{R}$）</td>
+<td>每个内部节点$j\in \mathcal{N}_{\text {int }}$对应一个路由器模块，其负责将来自传入边的样本发送到左子节点或右子节点。</td>
+<td>$r_{j}^{\theta}: \mathcal{X}<em>{j} \rightarrow[0,1] \in \mathcal{R} $、 由$\theta$参数化，其中$\mathcal{X}</em>{j}$表示节点j处的输入，对于每个$\mathbf{x}<em>{j} \in \mathcal{X}</em>{j}$，输入$r_{j}^{\boldsymbol{\theta}}$（可以是一个小的CNN），得到输出值$r_{j}^{\boldsymbol{\theta}}\left(\mathbf{x}<em>{j}\right)$求若干个$r</em>{j}^{\boldsymbol{\theta}}\left(\mathbf{x}_{j}\right)$的均值，然后构建一个伯努利分布，从分步中采样一个一个0或1的决策（左分支为1，右分支为0）</td>
+</tr>
+<tr>
+<td>转换器（Transformers，$\mathcal{T}$）</td>
+<td>每条边$e \in \mathcal{E}$对应一或多个转换器模块,每个转换器负责将前一个模块的样本转换为下一个模块的样本。</td>
+<td>每个转换器$t_{e}^{\psi} \in \mathcal{T}$是一个非线性函数，由$\psi$参数化。其形式可以是一个卷积层和ReLU。和标准的决策树不同，其每条边允许通过添加更多转换器来“增长”。</td>
+</tr>
+<tr>
+<td>求解器（Solvers，$\mathcal{S}$）</td>
+<td>每个叶节点$l \in \mathcal{N}_{\text {leaf }}$对应一个求解器模块，其负责将输入数据转换为一个条件分布$p(\mathbf{y} \mid \mathbf{x})$的近似值。</td>
+<td>$s_{l}^{\phi}: \mathcal{X}<em>{l} \rightarrow \mathcal{Y} \in \mathcal{S}$、 参数化为$\phi$，对于分类任务，$s^{\phi}$可以定义为特征空间$\mathcal{X}</em>{l}$上的线性分类器，该分类器输出类的分布。</td>
+</tr>
+</tbody></table>
+<p>整个ANT树的结构由下图所示：</p>
+<p>![](&#x2F;img-post&#x2F;论文分享&#x2F;2021-10-29-自适应神经树&#x2F;ANT树的结构.png)</p>
+<p><img src="/../img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-10-29-%E8%87%AA%E9%80%82%E5%BA%94%E7%A5%9E%E7%BB%8F%E6%A0%91/ANT%E6%A0%91%E7%9A%84%E7%BB%93%E6%9E%84.png"></p>
+<p>在上图中，黑色圆圈表示边上的转换器，白色圆圈表示内部节点上的路由器，灰色圆圈表示叶子节点上的求解器。</p>
+<p>以红色阴影路径为例，其计算如下</p>
+<p>输入$\mathbf{x}$经历一系列转换器和路由器之后：$\mathbf{x} \rightarrow \mathbf{x}<em>{0}^{\psi}:&#x3D;   t</em>{0}^{\psi}(\mathbf{x}) \rightarrow \mathbf{x}<em>{1}^{\psi}:&#x3D;t</em>{1}^{\psi}\left(\mathbf{x}<em>{0}^{\psi}\right) \rightarrow \mathbf{x}</em>{4}^{\psi}:&#x3D;t_{4}^{\psi}\left(\mathbf{x}_{1}^{\psi}\right) $，</p>
+<p>经过求解器模块产生预测分布：$p_{4}^{\phi, \dot{\psi}}(\mathbf{y}):&#x3D;s_{4}^{\phi}\left(\mathbf{x}_{4}^{\psi}\right)$。</p>
+<p>选择这条路径的概率：$\pi_{2}^{\psi, \theta}(\mathbf{x}):&#x3D;   r_{0}^{\boldsymbol{\theta}}\left(\mathbf{x}<em>{0}^{\boldsymbol{\psi}}\right) \cdot\left(1-r</em>{1}^{\boldsymbol{\theta}}\left(\mathbf{x}_{1}^{\boldsymbol{\psi}}\right)\right)$。</p>
+<h2 id="（3）概率模型"><a href="#（3）概率模型" class="headerlink" title="（3）概率模型"></a>（3）概率模型</h2><p>假设我们有L个叶节点，参数$ \Theta&#x3D;(\boldsymbol{\theta}, \boldsymbol{\psi}, \boldsymbol{\phi})$，其中$\boldsymbol{\theta}, \boldsymbol{\psi}, \boldsymbol{\phi}$分别表示树中路由器、转换器和解算器模块的参数，则完整的概率分布预测计算由叶子分配概率$\pi_{l}^{\theta, \psi} $和叶子预测概率$p_{l}^{\phi, \psi}$组成：</p>
+<p>![](&#x2F;img-post&#x2F;论文分享&#x2F;2021-10-29-自适应神经树&#x2F;全预测分布公式.png)</p>
+<p><img src="/../img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-10-29-%E8%87%AA%E9%80%82%E5%BA%94%E7%A5%9E%E7%BB%8F%E6%A0%91/%E5%85%A8%E9%A2%84%E6%B5%8B%E5%88%86%E5%B8%83%E5%85%AC%E5%BC%8F.png"></p>
+<p>其中$\mathbf{z} \in{0,1}^{L}$是一个L维的二元潜在变量，并且满足$\sum_{l&#x3D;1}^{L} z_{l}&#x3D;1$，其用来描述叶节点的选择（例如，$z_{l}&#x3D;1$表示使用叶节点L）。</p>
+<h3 id="A-叶子分配概率-pi-l-theta-psi-的计算"><a href="#A-叶子分配概率-pi-l-theta-psi-的计算" class="headerlink" title="A  叶子分配概率$\pi_{l}^{\theta, \psi} $的计算"></a>A  叶子分配概率$\pi_{l}^{\theta, \psi} $的计算</h3><p>$\pi_{l}^{\theta, \psi}(\mathbf{x}):&#x3D;p\left(z_{l}&#x3D;1 \mid \mathbf{x}, \boldsymbol{\psi}, \boldsymbol{\theta}\right)$量化了x被分配给叶l的概率，其由从根节点到叶节点$l$的唯一路径$P_{1}$上所有路由器模块的决策概率的乘积给出：</p>
+<p>![](&#x2F;img-post&#x2F;论文分享&#x2F;2021-10-29-自适应神经树&#x2F;某条路径的概率.png)</p>
+<p><img src="/../img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-10-29-%E8%87%AA%E9%80%82%E5%BA%94%E7%A5%9E%E7%BB%8F%E6%A0%91/%E6%9F%90%E6%9D%A1%E8%B7%AF%E5%BE%84%E7%9A%84%E6%A6%82%E7%8E%87.png"></p>
+<p>其中$l \swarrow j$是表示叶子结点$l$是否在内部节点$j$的左子树中，$\mathbf{x}_{j}^{\psi}$是$\mathbf{x}$在节点$j$下的特征表示。</p>
+<p>假设$\mathcal{T}<em>{j}&#x3D;\left{t</em>{e_{1}}^{\psi}, \ldots, t_{e_{n}}^{\psi}\right}$表示从根节点到节点j的路径上的n个转换器模块的有序集，特征向量$\mathbf{x}_{j}^{\psi}$计算如下：</p>
+<p>$\mathbf{x}<em>{j}^{\psi}:&#x3D;\left(t</em>{e_{n}}^{\psi} \circ \ldots \circ t_{e_{2}}^{\psi} \circ t_{e_{1}}^{\psi}\right)(\mathbf{x})$</p>
+<h3 id="B-叶子预测概率-p-l-phi-psi-的计算"><a href="#B-叶子预测概率-p-l-phi-psi-的计算" class="headerlink" title="B  叶子预测概率$p_{l}^{\phi, \psi}$的计算"></a>B  叶子预测概率$p_{l}^{\phi, \psi}$的计算</h3><p>叶子预测概率$p_{l}^{\phi, \psi}$的计算如下：</p>
+<p>$p_{l}^{\phi, \boldsymbol{\psi}}(\mathbf{y}):&#x3D;p\left(\mathbf{y} \mid \mathbf{x}, z_{l}&#x3D;1, \boldsymbol{\phi}, \boldsymbol{\psi}\right)$</p>
+<p>其预测了一个叶子节点l上的求解器$s_{l}^{\phi}\left(\mathbf{x}_{\text {parent }(l)}^{\psi}\right) $在目标$\mathbf{y}$上的近似值</p>
+<h2 id="（4）推理方案"><a href="#（4）推理方案" class="headerlink" title="（4）推理方案"></a>（4）推理方案</h2><p>该文在准确率和计算力的权衡上考虑了两个推理方案，分别是多路径推理和和单路径推理。</p>
+<table>
+<thead>
+<tr>
+<th>推理方案</th>
+<th>预测分布的计算方式</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>多路径推理</td>
+<td>使用完整地概率预测分布，其需要平均所有叶节点上的分布，包括计算树的所有节点和边上的所有操作，</td>
+<td>对于大型ANT来说是必要的</td>
+</tr>
+<tr>
+<td>单路径推理</td>
+<td>使用其中一条特殊路径的预测分布，该特殊路径通过贪婪地在路由器的最高置信度方向遍历树的决策而得到</td>
+<td>将计算限制在一条路径上，从而实现更节省内存和时间的推理</td>
+</tr>
+</tbody></table>
+<h1 id="4、优化"><a href="#4、优化" class="headerlink" title="4、优化"></a>4、优化</h1><p>ANT的训练分两个阶段进行：</p>
+<p>1）生长阶段，局部优化学习模型架构；</p>
+<p>2）细化阶段，全局优化调整模型参数。</p>
+<p>其损失函数使用负对数似然（NLL）：</p>
+<p>![](&#x2F;img-post&#x2F;论文分享&#x2F;2021-10-29-自适应神经树&#x2F;ANT的损失函数.png)</p>
+<p><img src="/../img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-10-29-%E8%87%AA%E9%80%82%E5%BA%94%E7%A5%9E%E7%BB%8F%E6%A0%91/ANT%E7%9A%84%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0.png"></p>
+<p>由于ANT的所有组件模块都是可微的，所以该方法可以使用基于梯度的优化。</p>
+<h2 id="（1）生长阶段"><a href="#（1）生长阶段" class="headerlink" title="（1）生长阶段"></a>（1）生长阶段</h2><p>生长阶段的目的是局部优化模型的结构。</p>
+<p>其方法是首先按广度优先顺序选择一个叶节点，对于选择的每个叶节点都可以使用如下3类评估：</p>
+<p>![](&#x2F;img-post&#x2F;论文分享&#x2F;2021-10-29-自适应神经树&#x2F;ANT的生长阶段.png)</p>
+<p><img src="/../img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-10-29-%E8%87%AA%E9%80%82%E5%BA%94%E7%A5%9E%E7%BB%8F%E6%A0%91/ANT%E7%9A%84%E7%94%9F%E9%95%BF%E9%98%B6%E6%AE%B5.png"></p>
+<p>固定计算图的前一部分，局部优化新添加的（1）和（2）操作，然后计算各自损失值，如果损失值得到减少，则选择该类型的操作否则保留原来的模型。</p>
+<h2 id="（2）细化阶段"><a href="#（2）细化阶段" class="headerlink" title="（2）细化阶段"></a>（2）细化阶段</h2><p>生长阶段确定了模型的拓扑结构后，然后继续执行全局优化来优化模型的整体参数。</p>
+<h1 id="5、实验"><a href="#5、实验" class="headerlink" title="5、实验"></a>5、实验</h1><h2 id="（1）实验设置"><a href="#（1）实验设置" class="headerlink" title="（1）实验设置"></a>（1）实验设置</h2><p>![](&#x2F;img-post&#x2F;论文分享&#x2F;2021-10-29-自适应神经树&#x2F;实验设置.png)</p>
+<p><img src="/../img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-10-29-%E8%87%AA%E9%80%82%E5%BA%94%E7%A5%9E%E7%BB%8F%E6%A0%91/%E5%AE%9E%E9%AA%8C%E8%AE%BE%E7%BD%AE.png"></p>
+<h2 id="（2）消融实验"><a href="#（2）消融实验" class="headerlink" title="（2）消融实验"></a>（2）消融实验</h2><p>![](&#x2F;img-post&#x2F;论文分享&#x2F;2021-10-29-自适应神经树&#x2F;ANT的消融实验.png)</p>
+<p><img src="/../img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-10-29-%E8%87%AA%E9%80%82%E5%BA%94%E7%A5%9E%E7%BB%8F%E6%A0%91/ANT%E7%9A%84%E6%B6%88%E8%9E%8D%E5%AE%9E%E9%AA%8C.png"></p>
+<h2 id="（3）SARCOS多元回归实验的性能对比"><a href="#（3）SARCOS多元回归实验的性能对比" class="headerlink" title="（3）SARCOS多元回归实验的性能对比"></a>（3）SARCOS多元回归实验的性能对比</h2><p>![](&#x2F;img-post&#x2F;论文分享&#x2F;2021-10-29-自适应神经树&#x2F;ANT的SARCOS回归实验.png)</p>
+<p><img src="/../img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-10-29-%E8%87%AA%E9%80%82%E5%BA%94%E7%A5%9E%E7%BB%8F%E6%A0%91/ANT%E7%9A%84SARCOS%E5%9B%9E%E5%BD%92%E5%AE%9E%E9%AA%8C.png"></p>
+<h2 id="（4）MNIST数字分类实验的性能对比"><a href="#（4）MNIST数字分类实验的性能对比" class="headerlink" title="（4）MNIST数字分类实验的性能对比"></a>（4）MNIST数字分类实验的性能对比</h2><p>![](&#x2F;img-post&#x2F;论文分享&#x2F;2021-10-29-自适应神经树&#x2F;ANT的MNIST实验.png)</p>
+<p><img src="/../img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-10-29-%E8%87%AA%E9%80%82%E5%BA%94%E7%A5%9E%E7%BB%8F%E6%A0%91/ANT%E7%9A%84MNIST%E5%AE%9E%E9%AA%8C.png"></p>
+<h2 id="（5）CIFAR-10图像分类实验的性能对比"><a href="#（5）CIFAR-10图像分类实验的性能对比" class="headerlink" title="（5）CIFAR-10图像分类实验的性能对比"></a>（5）CIFAR-10图像分类实验的性能对比</h2><p>![](&#x2F;img-post&#x2F;论文分享&#x2F;2021-10-29-自适应神经树&#x2F;ANT的CIFAR-10实验.png)</p>
+<p><img src="/../img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-10-29-%E8%87%AA%E9%80%82%E5%BA%94%E7%A5%9E%E7%BB%8F%E6%A0%91/ANT%E7%9A%84CIFAR-10%E5%AE%9E%E9%AA%8C.png"></p>
+<h2 id="（6）模型的可解释性"><a href="#（6）模型的可解释性" class="headerlink" title="（6）模型的可解释性"></a>（6）模型的可解释性</h2><p>![](&#x2F;img-post&#x2F;论文分享&#x2F;2021-10-29-自适应神经树&#x2F;ANT的可解释性.png)</p>
+<p><img src="/../img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-10-29-%E8%87%AA%E9%80%82%E5%BA%94%E7%A5%9E%E7%BB%8F%E6%A0%91/ANT%E7%9A%84%E5%8F%AF%E8%A7%A3%E9%87%8A%E6%80%A7.png"></p>
+<h2 id="（7）细化阶段的影响"><a href="#（7）细化阶段的影响" class="headerlink" title="（7）细化阶段的影响"></a>（7）细化阶段的影响</h2><p>![](&#x2F;img-post&#x2F;论文分享&#x2F;2021-10-29-自适应神经树&#x2F;ANT的细化阶段的影响.png)</p>
+<p><img src="/../img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-10-29-%E8%87%AA%E9%80%82%E5%BA%94%E7%A5%9E%E7%BB%8F%E6%A0%91/ANT%E7%9A%84%E7%BB%86%E5%8C%96%E9%98%B6%E6%AE%B5%E7%9A%84%E5%BD%B1%E5%93%8D.png"></p>
+<h2 id="（8）自适应模型的复杂性"><a href="#（8）自适应模型的复杂性" class="headerlink" title="（8）自适应模型的复杂性"></a>（8）自适应模型的复杂性</h2><p>![](&#x2F;img-post&#x2F;论文分享&#x2F;2021-10-29-自适应神经树&#x2F;ANT的自适应模型复杂性.png)</p>
+<p><img src="/../img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-10-29-%E8%87%AA%E9%80%82%E5%BA%94%E7%A5%9E%E7%BB%8F%E6%A0%91/ANT%E7%9A%84%E8%87%AA%E9%80%82%E5%BA%94%E6%A8%A1%E5%9E%8B%E5%A4%8D%E6%9D%82%E6%80%A7.png"></p>
+<h1 id="6、总结"><a href="#6、总结" class="headerlink" title="6、总结"></a>6、总结</h1><p>​		本文引入了自适应神经树（ANTs），将决策树（DTs）的体系结构学习、条件计算和层次聚类与深层神经网络（DNN）的层次表示学习和梯度下降优化相结合，结合本文提出的训练算法来渐进式增长和优化ANTs的参数和结构。<br>​       实验证明ANTs在回归（SARCOS数据集）和分类（MNIST和CIFAR10数据集）方面的优势，同时仍然实现了高性能。</p>
+<p>​		ANT模型和shortcut connections的结合可能使ANT在图像分类上的性能进一步提升。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/" rel="tag"># 论文分享</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021-10-28-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91c++%E4%B8%AD%E6%A0%88%E3%80%81%E9%98%9F%E5%88%97%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" rel="prev" title="「算法刷题」c++中栈、队列和字符串的基本操作">
+                  <i class="fa fa-angle-left"></i> 「算法刷题」c++中栈、队列和字符串的基本操作
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021-10-29-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E7%9A%84%E7%9B%B8%E5%85%B3%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE/" rel="next" title="「算法刷题」贪心算法的相关经典题目">
+                  「算法刷题」贪心算法的相关经典题目 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

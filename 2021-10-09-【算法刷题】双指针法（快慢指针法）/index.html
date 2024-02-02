@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2426182848439341"
+     crossorigin="anonymous"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33RJLY0818"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33RJLY0818');
+</script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="一、顺序结构中的双指针法顺序结构：这里主要指的是数组或字符串。 （1）普通数组slow指向   当前所需元素数组的下一个空位。返回值为slow时，slow就代表目标数组的长度。    题目简述 关键点 解题思路 力扣题目 相关链接    删除数组中的某类元素 同向移动，快慢指针同时出发； slow：指向当前所需元素数组的下一个空位。fast：遍历数组。     如果快指针遇到目标值则快指针直接跳过">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「算法刷题」双指针法（快慢指针法）">
+<meta property="og:url" content="https://www.vvbuys.com/2021-10-09-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91%E5%8F%8C%E6%8C%87%E9%92%88%E6%B3%95%EF%BC%88%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88%E6%B3%95%EF%BC%89/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="一、顺序结构中的双指针法顺序结构：这里主要指的是数组或字符串。 （1）普通数组slow指向   当前所需元素数组的下一个空位。返回值为slow时，slow就代表目标数组的长度。    题目简述 关键点 解题思路 力扣题目 相关链接    删除数组中的某类元素 同向移动，快慢指针同时出发； slow：指向当前所需元素数组的下一个空位。fast：遍历数组。     如果快指针遇到目标值则快指针直接跳过">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-10-09T00:00:00.000Z">
+<meta property="article:modified_time" content="2024-02-02T01:00:55.427Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="算法刷题">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/2021-10-09-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91%E5%8F%8C%E6%8C%87%E9%92%88%E6%B3%95%EF%BC%88%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88%E6%B3%95%EF%BC%89/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/2021-10-09-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91%E5%8F%8C%E6%8C%87%E9%92%88%E6%B3%95%EF%BC%88%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88%E6%B3%95%EF%BC%89/","path":"2021-10-09-【算法刷题】双指针法（快慢指针法）/","title":"「算法刷题」双指针法（快慢指针法）"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>「算法刷题」双指针法（快慢指针法） | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E9%A1%BA%E5%BA%8F%E7%BB%93%E6%9E%84%E4%B8%AD%E7%9A%84%E5%8F%8C%E6%8C%87%E9%92%88%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">一、顺序结构中的双指针法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E6%99%AE%E9%80%9A%E6%95%B0%E7%BB%84"><span class="nav-number">1.0.1.</span> <span class="nav-text">（1）普通数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84"><span class="nav-number">1.0.2.</span> <span class="nav-text">（2）有序数组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#169-%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0%EF%BC%88%E4%B8%AD%E7%AD%89%E9%9A%BE%E5%BA%A6%EF%BC%89"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">169 多数元素（中等难度）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E6%8E%92%E5%BA%8F%E6%B3%95"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">1、排序法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E6%91%A9%E5%B0%94%E6%8A%95%E7%A5%A8%E6%B3%95%E6%80%9D%E8%B7%AF"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">2、摩尔投票法思路</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%9D%9E%E9%A1%BA%E5%BA%8F%E7%BB%93%E6%9E%84%E4%B8%AD%E7%9A%84%E5%8F%8C%E6%8C%87%E9%92%88%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">二、非顺序结构中的双指针法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E9%93%BE%E8%A1%A8"><span class="nav-number">2.1.</span> <span class="nav-text">1、链表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E9%93%BE%E8%A1%A8%E7%9A%84%E5%88%A0%E9%99%A4%E6%93%8D%E4%BD%9C"><span class="nav-number">2.1.1.</span> <span class="nav-text">（1）链表的删除操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#19-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACn%E4%B8%AA%E7%BB%93%E7%82%B9"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">19.删除链表的倒数第n个结点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E9%93%BE%E8%A1%A8%E7%9A%84%E5%8F%8D%E8%BD%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">2.1.2.</span> <span class="nav-text">（2）链表的反转操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.3.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#-1"><span class="nav-number">2.1.4.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#206%E3%80%81%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8"><span class="nav-number">2.1.5.</span> <span class="nav-text">206、反转链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#234%E3%80%81%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8"><span class="nav-number">2.1.6.</span> <span class="nav-text">234、回文链表</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2021-10-09-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91%E5%8F%8C%E6%8C%87%E9%92%88%E6%B3%95%EF%BC%88%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88%E6%B3%95%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="「算法刷题」双指针法（快慢指针法） | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「算法刷题」双指针法（快慢指针法）
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-10-09 00:00:00" itemprop="dateCreated datePublished" datetime="2021-10-09T00:00:00+00:00">2021-10-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-02-02 01:00:55" itemprop="dateModified" datetime="2024-02-02T01:00:55+00:00">2024-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="一、顺序结构中的双指针法"><a href="#一、顺序结构中的双指针法" class="headerlink" title="一、顺序结构中的双指针法"></a>一、顺序结构中的双指针法</h1><p>顺序结构：这里主要指的是数组或字符串。</p>
+<h3 id="（1）普通数组"><a href="#（1）普通数组" class="headerlink" title="（1）普通数组"></a>（1）普通数组</h3><p>slow指向   当前所需元素数组的下一个空位。返回值为slow时，slow就代表目标数组的长度。</p>
+<table>
+<thead>
+<tr>
+<th><strong>题目简述</strong></th>
+<th><strong>关键点</strong></th>
+<th><strong>解题思路</strong></th>
+<th><strong>力扣题目</strong></th>
+<th align="center"><strong>相关链接</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>删除数组中的某类元素</td>
+<td>同向移动，快慢指针同时出发；</td>
+<td>slow：指向当前所需元素数组的下一个空位。fast：遍历数组。     如果快指针遇到目标值则快指针直接跳过它一步，慢指针不动，<strong>如果快指针没有遇到目标值则将自己手中的数交给慢指针</strong>，然后各自前进一步。</td>
+<td>27 移除元素（简单难度）</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-element/">https://leetcode-cn.com/problems/remove-element/</a></td>
+</tr>
+<tr>
+<td>移动数组中的某类元素到开头或者末尾</td>
+<td>同向移动，快慢指针同时出发；</td>
+<td>如果快指针遇到目标值则快指针直接跳过它一步，慢指针不动，如果快指针没有遇到目标值则将自己手中的数和慢指针交换，然后各自前进一步。</td>
+<td>283 移动零（简单难度）</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/move-zeroes/">https://leetcode-cn.com/problems/move-zeroes/</a></td>
+</tr>
+</tbody></table>
+<h3 id="（2）有序数组"><a href="#（2）有序数组" class="headerlink" title="（2）有序数组"></a>（2）有序数组</h3><p>无序数组可以直接使用sort()函数排序后变成有序数组。sort(nums.begin(),nums.end())</p>
+<table>
+<thead>
+<tr>
+<th><strong>题目简述</strong></th>
+<th><strong>关键点</strong></th>
+<th><strong>解题思路</strong></th>
+<th><strong>力扣题目</strong></th>
+<th><strong>相关链接</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>删除<strong>有序数组</strong>中的重复元素</td>
+<td>同向移动，快指针先行一步，每次不断比较两个指针上的数是否相同。</td>
+<td><strong>一个指针（fast）从头到尾遍历，另一个（slow）始终指示当前没有重复的元素数组的下一个空位置；</strong>相同则快指针直接跳过去多行一步，不相同则快指针将手中的数交给慢指针，然后快慢指针同时前进一步；（这时慢指针指的是当前没有重复元素的最后一个*：注意返回值是slow+1。）</td>
+<td>26 删除排序数组中的重复项（简单难度）</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/">https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/</a></td>
+</tr>
+<tr>
+<td>求有序数组中的众数（可能不止一个）</td>
+<td>同向移动，快指针先行一步，每次不断比较两个指针上的数是否相同。</td>
+<td>相同则频率计时器+1，不相同则频率计时器设为0；每次检查频率计时器是否超过最大计数，超过则记录当前快指针上的数为众数。vector数组排序：sort(nums.begin(),nums.end())</td>
+<td><strong>169 多数元素（中等难度）</strong></td>
+<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/majority-element/">https://leetcode-cn.com/problems/majority-element/</a></td>
+</tr>
+<tr>
+<td>将有序数组中每个元素平方后再排序</td>
+<td>反向移动，左指针和右指针同时出发，每次比较左指针和右指针手上的数的平方；</td>
+<td>如果左指针手中数的平方更大则移动起始指针，如果末尾指针手中的数更大则移动末尾指针；当起始指针大于末尾指针时循环结束。（有序数组平方数组平方的最大值就在数组的两端，所以排序需要不断比较数组两端的数）</td>
+<td>977 有序数组的平方（简单难度）</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/squares-of-a-sorted-array/">https://leetcode-cn.com/problems/squares-of-a-sorted-array/</a></td>
+</tr>
+</tbody></table>
+<h4 id="169-多数元素（中等难度）"><a href="#169-多数元素（中等难度）" class="headerlink" title="169 多数元素（中等难度）"></a>169 多数元素（中等难度）</h4><h4 id="1、排序法"><a href="#1、排序法" class="headerlink" title="1、排序法"></a>1、排序法</h4><p>​       <strong>众数是指在数组中出现次数大于<code>⌊ n/2 ⌋</code> 的元素</strong>。 先将nums排序， ，然后返回中间元素的值即可（众数的个数大于一半，排好序的<code>nums</code>中间元素一定是众数） 。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">majorityElement</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">sort</span>(nums.<span class="built_in">begin</span>(),nums.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">return</span> nums[nums.<span class="built_in">size</span>()/<span class="number">2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2、摩尔投票法思路"><a href="#2、摩尔投票法思路" class="headerlink" title="2、摩尔投票法思路"></a>2、摩尔投票法思路</h4><p>候选人(cand_num)初始化为nums[0]，票数count初始化为1。<br>当遇到与cand_num相同的数，则票数count &#x3D; count + 1，否则票数count &#x3D; count - 1。<br>当票数count为0时，更换候选人，并将票数count重置为1。<br>遍历完数组后，cand_num即为最终答案。</p>
+<p>为何这行得通呢？<br>投票法是遇到相同的则票数 + 1，遇到不同的则票数 - 1。<br>且“多数元素”的个数&gt; ⌊ n&#x2F;2 ⌋，其余元素的个数总和&lt;&#x3D; ⌊ n&#x2F;2 ⌋。<br>因此“多数元素”的个数 - 其余元素的个数总和 的结果 肯定 &gt;&#x3D; 1。<br>这就相当于每个“多数元素”和其他元素 两两相互抵消，抵消到最后肯定还剩余至少1个“多数元素”。</p>
+<p>无论数组是1 2 1 2 1，亦或是1 2 2 1 1，总能得到正确的候选人。</p>
+<p>作者：gfu<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/majority-element/solution/3chong-fang-fa-by-gfu-2/">https://leetcode-cn.com/problems/majority-element/solution/3chong-fang-fa-by-gfu-2/</a><br>来源：力扣（LeetCode）</p>
+<p>代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">majorityElement</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> cand=nums[<span class="number">0</span>],count=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;nums.<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(cand==nums[i])&#123;</span><br><span class="line">                count++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(--count==<span class="number">0</span>)&#123;</span><br><span class="line">                cand=nums[i];</span><br><span class="line">                count=<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cand;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="二、非顺序结构中的双指针法"><a href="#二、非顺序结构中的双指针法" class="headerlink" title="二、非顺序结构中的双指针法"></a>二、非顺序结构中的双指针法</h1><p>这里的非顺序结构主要指的是：链表或二叉树。</p>
+<h2 id="1、链表"><a href="#1、链表" class="headerlink" title="1、链表"></a>1、链表</h2><p>链表删除某个元素的模板：</p>
+<p>1、创建头结点和当前结点</p>
+<p>2、删除结点</p>
+<p>3、还原真实头结点，返回。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">ListNode* removeElements(ListNode* head, int val) &#123;</span><br><span class="line">        //新建虚拟头结点</span><br><span class="line">        ListNode * myHead = new ListNode(0);</span><br><span class="line">        myHead-&gt;next=head;</span><br><span class="line">        //循环检查链表的当前节点的下一节点</span><br><span class="line">        ListNode* cur=myHead;//当前节点（一定不为空）</span><br><span class="line">        while (cur-&gt;next != NULL) &#123;</span><br><span class="line">            if(cur-&gt;next-&gt;val == val) &#123;</span><br><span class="line">                cur-&gt;next = cur-&gt;next-&gt;next;//删除下一节点</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                cur = cur-&gt;next;//更新当前节点为下一节点</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //还原真实头结点</span><br><span class="line">        head = myHead-&gt;next;</span><br><span class="line">        return head;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="（1）链表的删除操作"><a href="#（1）链表的删除操作" class="headerlink" title="（1）链表的删除操作"></a>（1）链表的删除操作</h3><p>有序链表中删除一个节点cur需要其<strong>前一个节点</strong>pre-&gt;next&#x3D;cur-&gt;next; 所以其天生需要节点的先后关系。</p>
+<p>所以在执行删除操作时，一般就需要(头结点)</p>
+<table>
+<thead>
+<tr>
+<th><strong>题目简述</strong></th>
+<th><strong>关键点</strong></th>
+<th><strong>解题思路</strong></th>
+<th><strong>力扣题目</strong></th>
+<th><strong>相关链接</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>删除链表中的某类元素（简单难度）</td>
+<td>虚拟头结点；链表的循环操作和节点的删除操作</td>
+<td>同向移动，快指针从头结点先行一步，每次判断快指针是否符合删除条件，若符合则删除快指针并且重新为快指针赋值；否则则快指针和慢指针都前进一步。</td>
+<td>203 移除链表元素（简单难度）</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-linked-list-elements/">https://leetcode-cn.com/problems/remove-linked-list-elements/</a></td>
+</tr>
+<tr>
+<td>删除链表的倒数第N个节点（中等难度）</td>
+<td>快指针先走N步之后进行判断</td>
+<td>同向出发，快指针从头结点先行N步，如果此时快指针不存在则直接返回，若存在则快指针和慢指针（从头结点）同时出发，当快指针不存在时删除慢指针之后的一个节点。</td>
+<td>19 删除链表的倒数第N个节点（中等难度）</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/">https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/</a></td>
+</tr>
+</tbody></table>
+<h4 id="19-删除链表的倒数第n个结点"><a href="#19-删除链表的倒数第n个结点" class="headerlink" title="19.删除链表的倒数第n个结点"></a>19.删除链表的倒数第n个结点</h4><p>（1）假设链表长度为m+n。</p>
+<p>fast、slow开始指向虚拟头结点。</p>
+<p>1、fast先走n步</p>
+<p>2、fast和slow同时走，直到fast指向链表的最后一个。</p>
+<p>​     则slow走了m步。</p>
+<p>（2）链表的删除操作，需要得到目标结点的前一个结点。</p>
+<p>所以</p>
+<p>1、fast先走n+1步。</p>
+<p>2、fast和slow同时走，直到fast指向链表的最后一个的下一个位置：NULL。</p>
+<p>​     则slow走了m-1步，在倒数第n个结点前。</p>
+<h3 id="（2）链表的反转操作"><a href="#（2）链表的反转操作" class="headerlink" title="（2）链表的反转操作"></a>（2）链表的反转操作</h3><h3 id=""><a href="#" class="headerlink" title=""></a></h3><table>
+<thead>
+<tr>
+<th><strong>题目简述</strong></th>
+<th><strong>关键点</strong></th>
+<th><strong>解题思路</strong></th>
+<th><strong>力扣题目</strong></th>
+<th><strong>相关链接</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>将一个链表全部反转过来</td>
+<td>相邻节点之间的反转操作</td>
+<td>同向移动，快指针从头结点先行一步；每次移动快节点和慢节点都进行一次反向</td>
+<td>206 反转链表（简单难度）</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/reverse-linked-list/">https://leetcode-cn.com/problems/reverse-linked-list/</a></td>
+</tr>
+<tr>
+<td>将一个链表中的[left,right]区域反转过来</td>
+<td></td>
+<td>慢指针从虚拟头结点出发找到第left个节点，然后快指针从慢指针的后一个节点出发，共同前进找到第right个节点</td>
+<td>92 反转链表II（中等难度）</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/reverse-linked-list-ii/">https://leetcode-cn.com/problems/reverse-linked-list-ii/</a></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>根据快慢指针找到中点；反转后半段；比较前后两端节点值</td>
+<td>234 回文链表（简单难度）</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/palindrome-linked-list/">https://leetcode-cn.com/problems/palindrome-linked-list/</a></td>
+</tr>
+</tbody></table>
+<h3 id="-1"><a href="#-1" class="headerlink" title=""></a></h3><h3 id="206、反转链表"><a href="#206、反转链表" class="headerlink" title="206、反转链表"></a>206、反转链表</h3><p>1、保存后面链表</p>
+<p>2、断开指针</p>
+<p>3、重新规划pre、cur</p>
+<h3 id="234、回文链表"><a href="#234、回文链表" class="headerlink" title="234、回文链表"></a>234、回文链表</h3><p>1、慢指针走一步，快指针走两步</p>
+<p>2、pre记录慢指针的前一个，用来分割链表，如果链表长度为奇数，则后半部分多一个结点。</p>
+<p>3、将后半部分反转，得cur2，前半部分为cur1.</p>
+<p>4、按照cur1的长度，比较cur1和cur2的节点数值。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isPalindrome</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        ListNode* slow=head;</span><br><span class="line">        ListNode* fast=head;</span><br><span class="line">        ListNode* pre=head;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//慢指针走一步，快指针走两步</span></span><br><span class="line">        <span class="keyword">while</span>(fast &amp;&amp; fast-&gt;next)&#123;</span><br><span class="line">            pre=slow;</span><br><span class="line">            slow=slow-&gt;next;</span><br><span class="line">            fast=fast-&gt;next-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//pre断开链表</span></span><br><span class="line">        pre-&gt;next=<span class="literal">NULL</span>;</span><br><span class="line">        ListNode* cur1=head;</span><br><span class="line">        <span class="comment">//反转cur2</span></span><br><span class="line">        ListNode* cur2=<span class="built_in">reverselist</span>(slow);</span><br><span class="line">        <span class="comment">//按照cur1的长度，比较cur1，cur2</span></span><br><span class="line">        <span class="keyword">while</span>(cur1)&#123;</span><br><span class="line">            <span class="keyword">if</span>(cur1-&gt;val!=cur2-&gt;val)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            cur1=cur1-&gt;next;</span><br><span class="line">            cur2=cur2-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverselist</span><span class="params">(ListNode* head)</span></span>&#123;</span><br><span class="line">        ListNode* cur=head;</span><br><span class="line">        ListNode* temp=head;</span><br><span class="line">        ListNode* pre=<span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">while</span>(cur)&#123;</span><br><span class="line">            <span class="comment">//保存后面链表</span></span><br><span class="line">            temp=cur-&gt;next;</span><br><span class="line">            <span class="comment">//断开原链表</span></span><br><span class="line">            cur-&gt;next=pre;</span><br><span class="line">            <span class="comment">//重新规划pre，cur</span></span><br><span class="line">            pre=cur;</span><br><span class="line">            cur=temp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> pre;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/" rel="tag"># 算法刷题</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021-09-27-%E3%80%90%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0%E3%80%91%E5%B0%81%E8%A3%85%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%AD%E5%AD%A6%E4%B9%A0%E7%8E%87%E7%9A%84%E8%B0%83%E6%95%B4/" rel="prev" title="「技术笔记」封装深度学习中的学习率的调整工具">
+                  <i class="fa fa-angle-left"></i> 「技术笔记」封装深度学习中的学习率的调整工具
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021-10-19-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91%E7%A6%BB%E6%95%A3%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2/" rel="next" title="「科研笔记」离散小波变换">
+                  「科研笔记」离散小波变换 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

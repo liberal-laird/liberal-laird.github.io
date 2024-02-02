@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2426182848439341"
+     crossorigin="anonymous"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33RJLY0818"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33RJLY0818');
+</script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="123456Z ::&#x3D; X;;Y ::&#x3D; 1;;WHILE ~(Z &#x3D; 0) DO  Y ::&#x3D; Y * Z;;  Z ::&#x3D; Z - 1END  A weird convention through out all IMP is:  a-: arith  b-: bool c-: command  Arithmetic and Boolean ExpressionAbstract Syntax1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「SF-LC」12 Imp">
+<meta property="og:url" content="https://www.vvbuys.com/read_sf_lf/2019-01-12-sf-lf-12-imp/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="123456Z ::&#x3D; X;;Y ::&#x3D; 1;;WHILE ~(Z &#x3D; 0) DO  Y ::&#x3D; Y * Z;;  Z ::&#x3D; Z - 1END  A weird convention through out all IMP is:  a-: arith  b-: bool c-: command  Arithmetic and Boolean ExpressionAbstract Syntax1">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-02T01:05:07.544Z">
+<meta property="article:modified_time" content="2024-02-02T01:05:07.544Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="LF (逻辑基础)">
+<meta property="article:tag" content="SF (软件基础)">
+<meta property="article:tag" content="Coq">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/read_sf_lf/2019-01-12-sf-lf-12-imp/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/read_sf_lf/2019-01-12-sf-lf-12-imp/","path":"read_sf_lf/2019-01-12-sf-lf-12-imp/","title":"「SF-LC」12 Imp"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>「SF-LC」12 Imp | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Arithmetic-and-Boolean-Expression"><span class="nav-number">1.</span> <span class="nav-text">Arithmetic and Boolean Expression</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract-Syntax"><span class="nav-number">1.1.</span> <span class="nav-text">Abstract Syntax</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Evaluation"><span class="nav-number">1.2.</span> <span class="nav-text">Evaluation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Coq-Automation"><span class="nav-number">2.</span> <span class="nav-text">Coq Automation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Tacticals"><span class="nav-number">2.1.</span> <span class="nav-text">Tacticals</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#try-T-and-tacticals"><span class="nav-number">2.1.1.</span> <span class="nav-text">try T and ; tacticals</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#T-T1-T2-Tn-tacticals"><span class="nav-number">2.1.2.</span> <span class="nav-text">T; [T1 | T2 | ... | Tn] tacticals</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#repeat-tacticals"><span class="nav-number">2.1.3.</span> <span class="nav-text">repeat tacticals</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Defining-New-Tactic-Notations"><span class="nav-number">2.2.</span> <span class="nav-text">Defining New Tactic Notations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-omega-Tactic"><span class="nav-number">2.3.</span> <span class="nav-text">The omega Tactic</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Few-More-Handy-Tactics"><span class="nav-number">2.4.</span> <span class="nav-text">A Few More Handy Tactics</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Evaluation-as-a-Relation"><span class="nav-number">3.</span> <span class="nav-text">Evaluation as a Relation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Computational-vs-Relational-Definitions-INTERESTING"><span class="nav-number">3.1.</span> <span class="nav-text">Computational vs. Relational Definitions INTERESTING</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#case-1-safe-division"><span class="nav-number">3.1.1.</span> <span class="nav-text">case 1 - safe division</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#case-2-non-determinism"><span class="nav-number">3.1.2.</span> <span class="nav-text">case 2 - non-determinism</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Expressions-with-Variables"><span class="nav-number">4.</span> <span class="nav-text">Expressions with Variables</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#State-Environment-%E7%8E%AF%E5%A2%83"><span class="nav-number">4.1.</span> <span class="nav-text">State (Environment) 环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Syntax"><span class="nav-number">4.2.</span> <span class="nav-text">Syntax</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Notations-Coercisons-%E2%80%93-%E2%80%9Cmeta-programming%E2%80%9D-and-AST-quasi-quotation"><span class="nav-number">4.3.</span> <span class="nav-text">Notations &amp; Coercisons – “meta-programming” and AST quasi-quotation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Quasi-quotation"><span class="nav-number">4.3.1.</span> <span class="nav-text">Quasi-quotation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Coq%E2%80%99s-Notation-Scope-Coercision-built-in-Quasi-quotation"><span class="nav-number">4.3.2.</span> <span class="nav-text">Coq’s Notation Scope + Coercision &#x3D;&#x3D; built-in Quasi-quotation</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Evaluation-w-State-Environment"><span class="nav-number">4.4.</span> <span class="nav-text">Evaluation w&#x2F; State (Environment)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Commands-Statement"><span class="nav-number">5.</span> <span class="nav-text">Commands (Statement)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Unset-Notations"><span class="nav-number">5.1.</span> <span class="nav-text">Unset Notations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-Locate-command"><span class="nav-number">5.2.</span> <span class="nav-text">The Locate command</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Evaluating-Commands"><span class="nav-number">6.</span> <span class="nav-text">Evaluating Commands</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Evaluation-as-function-FAIL"><span class="nav-number">6.1.</span> <span class="nav-text">Evaluation as function (FAIL)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-Indexed-Evaluator-SUCC"><span class="nav-number">6.1.1.</span> <span class="nav-text">Step-Indexed Evaluator (SUCC)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Evaluation-as-Relation-SUCC"><span class="nav-number">6.2.</span> <span class="nav-text">Evaluation as Relation (SUCC)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Determinism-of-Evaluation"><span class="nav-number">6.3.</span> <span class="nav-text">Determinism of Evaluation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reasoning-About-Imp-Programs"><span class="nav-number">7.</span> <span class="nav-text">Reasoning About Imp Programs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Case-plus2-spec"><span class="nav-number">7.1.</span> <span class="nav-text">Case plus2_spec</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Case-no-whiles-terminating"><span class="nav-number">7.2.</span> <span class="nav-text">Case no_whiles_terminating</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Additional-Exerciese"><span class="nav-number">8.</span> <span class="nav-text">Additional Exerciese</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Stack-Compiler"><span class="nav-number">8.1.</span> <span class="nav-text">Stack Compiler</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Correct-Proof"><span class="nav-number">8.2.</span> <span class="nav-text">Correct Proof</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IMP-Break-Continue"><span class="nav-number">8.3.</span> <span class="nav-text">IMP Break&#x2F;Continue</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Slide-Q-A"><span class="nav-number">9.</span> <span class="nav-text">Slide Q &amp; A</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Auto"><span class="nav-number">9.1.</span> <span class="nav-text">Auto</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/read_sf_lf/2019-01-12-sf-lf-12-imp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="「SF-LC」12 Imp | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「SF-LC」12 Imp
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:05:07" itemprop="dateCreated datePublished" datetime="2024-02-02T01:05:07+00:00">2024-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><figure class="highlight pascal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Z ::= X;;</span><br><span class="line">Y ::= <span class="number">1</span>;;</span><br><span class="line"><span class="keyword">WHILE</span> ~(Z = <span class="number">0</span>) <span class="keyword">DO</span></span><br><span class="line">  Y ::= Y * Z;;</span><br><span class="line">  Z ::= Z - <span class="number">1</span></span><br><span class="line"><span class="keyword">END</span></span><br></pre></td></tr></table></figure>
+
+<p>A weird convention through out all IMP is:</p>
+<ul>
+<li><code>a-</code>: arith </li>
+<li><code>b-</code>: bool</li>
+<li><code>c-</code>: command</li>
+</ul>
+<h2 id="Arithmetic-and-Boolean-Expression"><a href="#Arithmetic-and-Boolean-Expression" class="headerlink" title="Arithmetic and Boolean Expression"></a>Arithmetic and Boolean Expression</h2><h3 id="Abstract-Syntax"><a href="#Abstract-Syntax" class="headerlink" title="Abstract Syntax"></a>Abstract Syntax</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">a ::=</span><br><span class="line">    | <span class="type">nat</span></span><br><span class="line">    | <span class="type">a</span> + a</span><br><span class="line">    | <span class="type">a</span> - a</span><br><span class="line">    | <span class="type">a</span> * a</span><br><span class="line">b ::= </span><br><span class="line">    | <span class="type">true</span></span><br><span class="line">    | <span class="type">false</span></span><br><span class="line">    | <span class="type">a</span> = a</span><br><span class="line">    | <span class="type">a</span> ≤ a</span><br><span class="line">    | <span class="type">¬b</span></span><br><span class="line">    | <span class="type">b</span> &amp;&amp; b</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> aexp : <span class="keyword">Type</span> :=</span><br><span class="line">  | <span class="type">ANum</span> (n : nat)</span><br><span class="line">  | <span class="type">APlus</span> (a1 a2 : aexp)</span><br><span class="line">  | <span class="type">AMinus</span> (a1 a2 : aexp)</span><br><span class="line">  | <span class="type">AMult</span> (a1 a2 : aexp).</span><br><span class="line"><span class="keyword">Inductive</span> bexp : <span class="keyword">Type</span> :=</span><br><span class="line">  | <span class="type">BTrue</span></span><br><span class="line">  | <span class="type">BFalse</span></span><br><span class="line">  | <span class="type">BEq</span> (a1 a2 : aexp)</span><br><span class="line">  | <span class="type">BLe</span> (a1 a2 : aexp)</span><br><span class="line">  | <span class="type">BNot</span> (b : bexp)</span><br><span class="line">  | <span class="type">BAnd</span> (b1 b2 : bexp).</span><br></pre></td></tr></table></figure>
+
+<h3 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h3><p>TODO: is this considered as “denotational semantics”?</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Fixpoint</span> aeval (a : aexp) : nat :=</span><br><span class="line">  <span class="keyword">match</span> a <span class="built_in">with</span></span><br><span class="line">  | <span class="type">ANum</span> n ⇒ n</span><br><span class="line">  | <span class="type">APlus</span> a1 a2 ⇒ (aeval a1) + (aeval a2)</span><br><span class="line">  | <span class="type">AMinus</span> a1 a2 ⇒ (aeval a1) - (aeval a2)</span><br><span class="line">  | <span class="type">AMult</span> a1 a2 ⇒ (aeval a1) * (aeval a2)</span><br><span class="line">  <span class="keyword">end</span>.</span><br><span class="line"><span class="keyword">Fixpoint</span> beval (b : bexp) : bool :=</span><br><span class="line">  <span class="keyword">match</span> b <span class="built_in">with</span></span><br><span class="line">  | <span class="type">BTrue</span> ⇒ true</span><br><span class="line">  | <span class="type">BFalse</span> ⇒ false</span><br><span class="line">  | <span class="type">BEq</span> a1 a2 ⇒ (aeval a1) =? (aeval a2)</span><br><span class="line">  | <span class="type">BLe</span> a1 a2 ⇒ (aeval a1) &lt;=? (aeval a2)</span><br><span class="line">  | <span class="type">BNot</span> b1 ⇒ negb (beval b1)</span><br><span class="line">  | <span class="type">BAnd</span> b1 b2 ⇒ andb (beval b1) (beval b2)</span><br><span class="line">  <span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+
+<p>Supposed we have a <code>Fixpoint optimize_0plus (a:aexp) : aexp</code></p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> optimize_0plus_sound: ∀a,</span><br><span class="line">  aeval (optimize_0plus a) = aeval a.</span><br></pre></td></tr></table></figure>
+
+<p>During the proof, many cases of <code>destruct aexp</code> are similar!<br>Recursive cases such as <code>APlus, AMinus, AMult</code> all require duplicated <code>IH</code> application.</p>
+<blockquote>
+<p>From Coq Intensive:<br>when we <code>simpl</code> on <code>APlus</code> case. it’s not “simplified” but give us a pattern matching.<br>That’s a hint that we need to furthur case analysis by <code>destruct n</code> as <code>0</code> case or <code>_</code> case.</p>
+</blockquote>
+<h2 id="Coq-Automation"><a href="#Coq-Automation" class="headerlink" title="Coq Automation"></a>Coq Automation</h2><h3 id="Tacticals"><a href="#Tacticals" class="headerlink" title="Tacticals"></a>Tacticals</h3><blockquote>
+<p>“higher-order tactics”.</p>
+</blockquote>
+<h4 id="try-T-and-tacticals"><a href="#try-T-and-tacticals" class="headerlink" title="try T and ; tacticals"></a><code>try T</code> and <code>;</code> tacticals</h4><blockquote>
+<p>if <code>T</code> fail, <code>try T</code> successfully does nothing at all</p>
+</blockquote>
+<blockquote>
+<p><code>T;T&#39;</code> : performs <code>T&#39;</code> on each subgoal generated by <code>T</code>.</p>
+</blockquote>
+<p>Super blindly but useful: (only leave the “interesting” one.)</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">induction</span> a;</span><br><span class="line">    <span class="comment">(* Most cases follow directly by the IH... *)</span></span><br><span class="line">    <span class="built_in">try</span> (<span class="built_in">simpl</span>; <span class="built_in">rewrite</span> IHa1; <span class="built_in">rewrite</span> IHa2; <span class="built_in">reflexivity</span>).</span><br><span class="line">    <span class="comment">(* ... or are immediate by definition *)</span></span><br><span class="line">    <span class="built_in">try</span> <span class="built_in">reflexivity</span>.</span><br></pre></td></tr></table></figure>
+
+<p><code>.</code> is the atomic<br><code>;</code> cannot be stepped into…</p>
+<h4 id="T-T1-T2-Tn-tacticals"><a href="#T-T1-T2-Tn-tacticals" class="headerlink" title="T; [T1 | T2 | ... | Tn] tacticals"></a><code>T; [T1 | T2 | ... | Tn]</code> tacticals</h4><blockquote>
+<p>general form or <code>;</code><br><code>T;T&#39;</code> is shorthand for: <code>T; [T&#39; | T&#39; | ... | T&#39;]</code>.</p>
+</blockquote>
+<h4 id="repeat-tacticals"><a href="#repeat-tacticals" class="headerlink" title="repeat tacticals"></a><code>repeat</code> tacticals</h4><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> In10 : In <span class="number">10</span> [<span class="number">1</span>;<span class="number">2</span>;<span class="number">3</span>;<span class="number">4</span>;<span class="number">5</span>;<span class="number">6</span>;<span class="number">7</span>;<span class="number">8</span>;<span class="number">9</span>;<span class="number">10</span>].</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">repeat</span> (<span class="built_in">try</span> (<span class="built_in">left</span>; <span class="built_in">reflexivity</span>); <span class="built_in">right</span>). <span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>stop when it fails</li>
+<li>always succeeds, then loop forever! e.g. <code>repeat simpl</code></li>
+</ul>
+<blockquote>
+<p>This does not affect Coq’s logical consistency,<br>construction process diverges means we have failed to construct a proof, not that we have constructed a wrong one.</p>
+</blockquote>
+<h3 id="Defining-New-Tactic-Notations"><a href="#Defining-New-Tactic-Notations" class="headerlink" title="Defining New Tactic Notations"></a>Defining New Tactic Notations</h3><ul>
+<li><code>Tactic Notation</code>: syntax extension for tactics (good for simple <em>macros</em>)</li>
+</ul>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Tactic</span> <span class="keyword">Notation</span> <span class="string">&quot;simpl_and_try&quot;</span> <span class="built_in">tactic</span>(c) :=</span><br><span class="line">  <span class="built_in">simpl</span>; <span class="built_in">try</span> c.</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>Ltac</code>: scripting language for tactics (good for more sophisticated proof engineering)</li>
+<li>OCaml tactic scripting API (for wizards)</li>
+</ul>
+<h3 id="The-omega-Tactic"><a href="#The-omega-Tactic" class="headerlink" title="The omega Tactic"></a>The <code>omega</code> Tactic</h3><blockquote>
+<p><em>Presburger arithmetic</em></p>
+</blockquote>
+<ul>
+<li>arith, equality, ordering, logic connectives</li>
+<li><code>O(doubly expontential)</code></li>
+</ul>
+<h3 id="A-Few-More-Handy-Tactics"><a href="#A-Few-More-Handy-Tactics" class="headerlink" title="A Few More Handy Tactics"></a>A Few More Handy Tactics</h3><ul>
+<li><code>clear H</code></li>
+<li><code>subst x</code>, <code>subst</code></li>
+<li><code>rename ... into ...</code>  (change auto-generated name that we don’t like…)</li>
+</ul>
+<p>the below three are very useful in Coq Automation (w&#x2F; <code>try T; T&#39;</code>) </p>
+<ul>
+<li><code>assumption</code></li>
+<li><code>contradiction</code></li>
+<li><code>constructor</code>  (try to <code>apply</code> all constructors.<br>            Problem: might have multiple constructors applicable but some fail)</li>
+</ul>
+<h2 id="Evaluation-as-a-Relation"><a href="#Evaluation-as-a-Relation" class="headerlink" title="Evaluation as a Relation"></a>Evaluation as a Relation</h2><p>Defined as Binary relation on <code>aexp × nat</code>.<br>Exactly <em>Big Step &#x2F; Structural Operational Semantics</em>.</p>
+<p>More flexible than <code>Fixpoint</code> (computation, or <em>Denotational</em>).<br>…Since we can operate on <code>Inductive</code> as data I guess?<br>…and we can also <code>induction</code> on the relation.<br>…and when things getting more and more “un-computable” <em>(see below)</em>.</p>
+<blockquote>
+<p>译注：求值关系不满足对称性，因为它是有方向的。</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> aevalR : aexp → nat → <span class="keyword">Prop</span> :=</span><br><span class="line">  | <span class="type">E_ANum</span> n :</span><br><span class="line">      aevalR (ANum n) n</span><br><span class="line">  | <span class="type">E_APlus</span> (e1 e2: aexp) (n1 n2: nat) :</span><br><span class="line">      aevalR e1 n1 →</span><br><span class="line">      aevalR e2 n2 →</span><br><span class="line">      aevalR (APlus e1 e2) (n1 + n2)</span><br><span class="line">  | <span class="type">E_AMinus</span> (e1 e2: aexp) (n1 n2: nat) :</span><br><span class="line">      aevalR e1 n1 →</span><br><span class="line">      aevalR e2 n2 →</span><br><span class="line">      aevalR (AMinus e1 e2) (n1 - n2)</span><br><span class="line">  | <span class="type">E_AMult</span> (e1 e2: aexp) (n1 n2: nat) :</span><br><span class="line">      aevalR e1 n1 →</span><br><span class="line">      aevalR e2 n2 →</span><br><span class="line">      aevalR (AMult e1 e2) (n1 * n2).</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Noticed now we now define <code>inductive</code> in a mixed style:<br>some arg is before <code>:</code> (named), some are after <code>:</code> (anonymous).</p>
+</blockquote>
+<p>We could do this as well</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">| <span class="type">E_APlus</span> (e1 e2: aexp) (n1 n2: nat)</span><br><span class="line">     (H1 : aevalR e1 n1)</span><br><span class="line">     (H2 : aevalR e2 n2) :</span><br><span class="line">     aevalR (APlus e1 e2) (n1 + n2)</span><br></pre></td></tr></table></figure>
+
+<p><code>Reserved Notation</code> allow us using the notation during the definition!</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Reserved</span> <span class="keyword">Notation</span> <span class="string">&quot;e &#x27;\\&#x27; n&quot;</span> (<span class="built_in">at</span> level <span class="number">90</span>, <span class="built_in">left</span> associativity).</span><br><span class="line"></span><br><span class="line"><span class="keyword">Inductive</span> aevalR : aexp → nat → <span class="keyword">Prop</span> :=</span><br><span class="line">  | <span class="type">E_ANum</span> (n : nat) :</span><br><span class="line">      (ANum n) \\ n</span><br><span class="line">  | <span class="type">E_APlus</span> (e1 e2 : aexp) (n1 n2 : nat) :</span><br><span class="line">      (e1 \\ n1) → </span><br><span class="line">      (e2 \\ n2) → </span><br><span class="line">      (APlus e1 e2) \\ (n1 + n2)</span><br><span class="line">  | <span class="type">E_AMinus</span> (e1 e2 : aexp) (n1 n2 : nat) :</span><br><span class="line">      (e1 \\ n1) → </span><br><span class="line">      (e2 \\ n2) → </span><br><span class="line">      (AMinus e1 e2) \\ (n1 - n2)</span><br><span class="line">  | <span class="type">E_AMult</span> (e1 e2 : aexp) (n1 n2 : nat) :</span><br><span class="line">      (e1 \\ n1) → </span><br><span class="line">      (e2 \\ n2) → </span><br><span class="line">      (AMult e1 e2) \\ (n1 * n2)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">where</span> <span class="string">&quot;e &#x27;\\&#x27; n&quot;</span> := (aevalR e n) : type_scope.</span><br></pre></td></tr></table></figure>
+
+<p>I hated this infix <code>\\</code> notation…it tries to mimic <code>⇓</code> (double down arrow).</p>
+<pre><code>                           e1 \\ n1
+                           e2 \\ n2
+                     -------------------- (E_APlus)
+                     APlus e1 e2 \\ n1+n2
+</code></pre>
+<p>is actually:</p>
+<pre><code>                           e1 ⇓ n1
+                           e2 ⇓ n2
+                     -------------------- (E_APlus)
+                     APlus e1 e2 ⇓ n1+n2
+</code></pre>
+<blockquote>
+<p>Coq Intensive:<br>If you have two variables above the line. Think about if you need <code>generalize dependent</code>. </p>
+</blockquote>
+<h3 id="Computational-vs-Relational-Definitions-INTERESTING"><a href="#Computational-vs-Relational-Definitions-INTERESTING" class="headerlink" title="Computational vs. Relational Definitions INTERESTING"></a>Computational vs. Relational Definitions <em>INTERESTING</em></h3><p>In some cases, relational definition are much better than computational (a.k.a. functional).</p>
+<blockquote>
+<p>for situations, where thing beingdefined is not easy to express as a function (or not a function at all)</p>
+</blockquote>
+<h4 id="case-1-safe-division"><a href="#case-1-safe-division" class="headerlink" title="case 1 - safe division"></a>case 1 - safe division</h4><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> aexp : <span class="keyword">Type</span> :=</span><br><span class="line">| <span class="type">ADiv</span> (a1 a2 : aexp). <span class="comment">(* &lt;--- NEW *)</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>functional: how to return <code>ADiv (ANum 5) (ANum 0)</code>? probably has to be <code>option</code> (Coq is total!)</li>
+<li>relational: <code>(a1 \\ n1) → (a2 \\ n2) → (n2 &gt; 0) → (mult n2 n3 = n1) → (ADiv a1 a2) \\ n3</code>.<ul>
+<li>we can add a constraint <code>(n2 &gt; 0)</code>.</li>
+</ul>
+</li>
+</ul>
+<h4 id="case-2-non-determinism"><a href="#case-2-non-determinism" class="headerlink" title="case 2 - non-determinism"></a>case 2 - non-determinism</h4><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> aexp : <span class="keyword">Type</span> :=</span><br><span class="line">| <span class="type">AAny</span> <span class="comment">(* &lt;--- NEW *)</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>functional: not a deterministic function…</li>
+<li>relational: <code>E_Any (n : nat) : AAny \\ n</code> … just say it’s the case.</li>
+</ul>
+<p>Nonetheless, functional definition is good at:</p>
+<ol>
+<li>by definition deterministic (need proof in relational case)</li>
+<li>take advantage of Coq’s computation engine.</li>
+<li>function can be directly “extracted” from Gallina to OCaml&#x2F;Haskell</li>
+</ol>
+<p>In large Coq developments:</p>
+<ol>
+<li>given <em>both</em> styles</li>
+<li>a lemma stating they coincise (等价)</li>
+</ol>
+<h2 id="Expressions-with-Variables"><a href="#Expressions-with-Variables" class="headerlink" title="Expressions with Variables"></a>Expressions with Variables</h2><h3 id="State-Environment-环境"><a href="#State-Environment-环境" class="headerlink" title="State (Environment) 环境"></a>State (Environment) 环境</h3><blockquote>
+<p>A <em>machine state</em> (or just <em>state</em>) represents the current values of <em>all variables</em> at some point in the execution of a program.</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> state := total_map nat.</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="Syntax"><a href="#Syntax" class="headerlink" title="Syntax"></a>Syntax</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> aexp : <span class="keyword">Type</span> :=</span><br><span class="line">  | <span class="type">AId</span> (x : string) <span class="comment">(* &lt;--- NEW *)</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="Notations-Coercisons-–-“meta-programming”-and-AST-quasi-quotation"><a href="#Notations-Coercisons-–-“meta-programming”-and-AST-quasi-quotation" class="headerlink" title="Notations &amp; Coercisons – “meta-programming” and AST quasi-quotation"></a>Notations &amp; Coercisons – “meta-programming” and AST quasi-quotation</h3><h4 id="Quasi-quotation"><a href="#Quasi-quotation" class="headerlink" title="Quasi-quotation"></a>Quasi-quotation</h4><p><a target="_blank" rel="noopener" href="https://whitequark.org/blog/2014/04/16/a-guide-to-extension-points-in-ocaml/">OCaml PPX &amp; AST quasi-quotation</a></p>
+<blockquote>
+<p>quasi-quotation enables one to introduce symbols that stand for a linguistic expression in a given instance and are used as that linguistic expression in a different instance.</p>
+</blockquote>
+<p>e.g. in above OCaml example, you wrote <code>%expr 2 + 2</code> and you get <code>[%expr [%e 2] + [%e 2]]</code>.</p>
+<h4 id="Coq’s-Notation-Scope-Coercision-built-in-Quasi-quotation"><a href="#Coq’s-Notation-Scope-Coercision-built-in-Quasi-quotation" class="headerlink" title="Coq’s Notation Scope + Coercision &#x3D;&#x3D; built-in Quasi-quotation"></a>Coq’s <em>Notation Scope</em> + Coercision &#x3D;&#x3D; built-in Quasi-quotation</h4><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">(** Coercision for constructors **)</span></span><br><span class="line"><span class="keyword">Coercion</span> AId : string &gt;-&gt; aexp.</span><br><span class="line"><span class="keyword">Coercion</span> ANum : nat &gt;-&gt; aexp.</span><br><span class="line"></span><br><span class="line"><span class="comment">(** Coercision for functions **)</span></span><br><span class="line"><span class="keyword">Definition</span> bool_to_bexp (b : bool) : bexp := <span class="keyword">if</span> b <span class="keyword">then</span> BTrue <span class="keyword">else</span> BFalse.</span><br><span class="line"><span class="keyword">Coercion</span> bool_to_bexp : bool &gt;-&gt; bexp.</span><br><span class="line"></span><br><span class="line"><span class="comment">(** Scoped Notation **)</span></span><br><span class="line"><span class="keyword">Bind</span> <span class="keyword">Scope</span> imp_scope <span class="built_in">with</span> aexp.</span><br><span class="line"><span class="keyword">Bind</span> <span class="keyword">Scope</span> imp_scope <span class="built_in">with</span> bexp.</span><br><span class="line"></span><br><span class="line"><span class="comment">(** the Extension Point token **)</span></span><br><span class="line"><span class="keyword">Delimit</span> <span class="keyword">Scope</span> imp_scope <span class="built_in">with</span> imp.</span><br><span class="line"></span><br><span class="line"><span class="comment">(** now we can write... **)</span></span><br><span class="line"><span class="keyword">Definition</span> example_aexp := (<span class="number">3</span> + (X * <span class="number">2</span>))%imp : aexp.</span><br><span class="line"><span class="keyword">Definition</span> example_aexp : aexp := (<span class="number">3</span> + (X * <span class="number">2</span>))%imp. </span><br><span class="line"><span class="keyword">Definition</span> example_aexp := (<span class="number">3</span> + (X * <span class="number">2</span>))%imp.    <span class="comment">(* can be inferred *)</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="Evaluation-w-State-Environment"><a href="#Evaluation-w-State-Environment" class="headerlink" title="Evaluation w&#x2F; State (Environment)"></a>Evaluation w&#x2F; State (Environment)</h3><p>Noticed that the <code>st</code> has to be threaded all the way…</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Fixpoint</span> aeval (st : state) (a : aexp) : nat :=</span><br><span class="line">  <span class="keyword">match</span> a <span class="built_in">with</span></span><br><span class="line">  | <span class="type">AId</span> x ⇒ st x <span class="comment">(* &lt;--- NEW *)</span>              <span class="comment">(** lookup the environment **)</span></span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line"><span class="keyword">Fixpoint</span> beval (st : state) (b : bexp) : bool := ...</span><br><span class="line"></span><br><span class="line"><span class="keyword">Compute</span> (aeval (X !-&gt; <span class="number">5</span>) (<span class="number">3</span> + (X * <span class="number">2</span>))%imp). <span class="comment">(** ===&gt; 13 : nat **)</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="Commands-Statement"><a href="#Commands-Statement" class="headerlink" title="Commands (Statement)"></a>Commands (Statement)</h2><figure class="highlight bnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c ::= SKIP | x ::= a | c ;; c | TEST b THEN c ELSE c FI | WHILE b DO c END</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>we use <code>TEST</code> to avoid conflicting with the <code>if</code> and <code>IF</code> notations from the standard library.</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> com : <span class="keyword">Type</span> :=</span><br><span class="line">  | <span class="type">CSkip</span></span><br><span class="line">  | <span class="type">CAss</span> (x : string) (a : aexp)</span><br><span class="line">  | <span class="type">CSeq</span> (c1 c2 : com)</span><br><span class="line">  | <span class="type">CIf</span> (b : bexp) (c1 c2 : com)</span><br><span class="line">  | <span class="type">CWhile</span> (b : bexp) (c : com).</span><br></pre></td></tr></table></figure>
+
+<p><code>notation</code> magics:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Bind</span> <span class="keyword">Scope</span> imp_scope <span class="built_in">with</span> com.</span><br><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;&#x27;SKIP&#x27;&quot;</span> := CSkip : imp_scope.</span><br><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;x &#x27;::=&#x27; a&quot;</span> := (CAss x a) (<span class="built_in">at</span> level <span class="number">60</span>) : imp_scope.</span><br><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;c1 ;; c2&quot;</span> := (CSeq c1 c2) (<span class="built_in">at</span> level <span class="number">80</span>, <span class="built_in">right</span> associativity) : imp_scope.</span><br><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;&#x27;WHILE&#x27; b &#x27;DO&#x27; c &#x27;END&#x27;&quot;</span> := (CWhile b c) (<span class="built_in">at</span> level <span class="number">80</span>, <span class="built_in">right</span> associativity) : imp_scope.</span><br><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;&#x27;TEST&#x27; c1 &#x27;THEN&#x27; c2 &#x27;ELSE&#x27; c3 &#x27;FI&#x27;&quot;</span> := (CIf c1 c2 c3) (<span class="built_in">at</span> level <span class="number">80</span>, <span class="built_in">right</span> associativity) : imp_scope.</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="Unset-Notations"><a href="#Unset-Notations" class="headerlink" title="Unset Notations"></a>Unset Notations</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Unset</span> <span class="keyword">Printing</span> Notations.  <span class="comment">(** e1 + e2 -&gt; APlus e1 e2 **)</span></span><br><span class="line"><span class="keyword">Set</span> <span class="keyword">Printing</span> <span class="keyword">Coercions</span>.    <span class="comment">(** n -&gt; (ANum n) **)</span></span><br><span class="line"><span class="keyword">Set</span> <span class="keyword">Printing</span> <span class="keyword">All</span>.</span><br></pre></td></tr></table></figure>
+
+<h3 id="The-Locate-command"><a href="#The-Locate-command" class="headerlink" title="The Locate command"></a>The <code>Locate</code> command</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Locate</span> <span class="string">&quot;&amp;&amp;&quot;</span>.</span><br><span class="line"></span><br><span class="line"><span class="comment">(** give you two, [Print &quot;&amp;&amp;&quot;] only give you the default one **)</span></span><br><span class="line"><span class="keyword">Notation</span></span><br><span class="line"><span class="string">&quot;x &amp;&amp; y&quot;</span> := andb x y : bool_scope (default interpretation)</span><br><span class="line"><span class="string">&quot;x &amp;&amp; y&quot;</span> := BAnd x y : imp_scope</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="Evaluating-Commands"><a href="#Evaluating-Commands" class="headerlink" title="Evaluating Commands"></a>Evaluating Commands</h2><p>Noticed that to <em>use quasi-quotation in pattern matching</em>, we need</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Open</span> <span class="keyword">Scope</span> imp_scope.</span><br><span class="line">...</span><br><span class="line">  | <span class="type">x</span> ::= a1 =&gt;     <span class="comment">(**  CAss x a1  **)</span></span><br><span class="line">  | <span class="type">c1</span> ;; c2 =&gt;     <span class="comment">(**  CSeq c1 c1 **)</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">Close</span> <span class="keyword">Scope</span> imp_scope.</span><br></pre></td></tr></table></figure>
+
+
+<p>An infinite loop (the <code>%imp</code> scope is inferred)</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> loop : com :=</span><br><span class="line">  WHILE true DO</span><br><span class="line">    SKIP</span><br><span class="line">  END.</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>The fact that <code>WHILE</code> loops don’t necessarily terminate makes defining an evaluation function tricky…</p>
+</blockquote>
+<h3 id="Evaluation-as-function-FAIL"><a href="#Evaluation-as-function-FAIL" class="headerlink" title="Evaluation as function (FAIL)"></a>Evaluation as function (FAIL)</h3><p>In OCaml&#x2F;Haskell, we simply recurse, but In Coq</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">| <span class="type">WHILE</span> b DO c END =&gt; <span class="keyword">if</span> (beval st b)</span><br><span class="line">                      <span class="keyword">then</span> ceval_fun st (c ;; WHILE b DO c END)</span><br><span class="line">                      <span class="keyword">else</span> st</span><br><span class="line"><span class="comment">(** Cannot guess decreasing argument of fix **)</span></span><br></pre></td></tr></table></figure>
+
+<p>Well, if Coq allowed (potentially) non-terminating, the logic would be inconsistent:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Fixpoint</span> loop_false (n : nat) : False := loop_false n.   <span class="comment">(** False is proved! **)</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Step-Indexed-Evaluator-SUCC"><a href="#Step-Indexed-Evaluator-SUCC" class="headerlink" title="Step-Indexed Evaluator (SUCC)"></a>Step-Indexed Evaluator (SUCC)</h4><p>Chapter <code>ImpCEvalFun</code> provide some workarounds to make functional evalution works:</p>
+<ol>
+<li><em>step-indexed evaluator</em>, i.e. limit the recursion depth. (think about Depth-Limited Search). </li>
+<li>return <code>option</code> to tell if it’s a normal or abnormal termination.</li>
+<li>use <code>LETOPT...IN...</code> to reduce the “optional unwrapping” (basicaly Monadic binding <code>&gt;&gt;=</code>!)</li>
+</ol>
+<ul>
+<li>this approach of <code>let-binding</code> became so popular in ML family.</li>
+</ul>
+<h3 id="Evaluation-as-Relation-SUCC"><a href="#Evaluation-as-Relation-SUCC" class="headerlink" title="Evaluation as Relation (SUCC)"></a>Evaluation as Relation (SUCC)</h3><p>Again, we are using some fancy notation <code>st=[c]=&gt;st&#39;</code> to mimic <code>⇓</code>:<br>In both PLT and TaPL, we are almost exclusively use Small-Step, but in PLC, Big-Step were used:</p>
+<pre><code>                      beval st b1 = true
+                       st =[ c1 ]=&gt; st&#39;
+            ---------------------------------------  (E_IfTrue)
+            st =[ TEST b1 THEN c1 ELSE c2 FI ]=&gt; st&#39;
+</code></pre>
+<p>is really:</p>
+<pre><code>                        H; b1 ⇓ true
+                        H; c1 ⇓ H&#39;
+              ----------------------------------  (E_IfTrue)
+              H; TEST b1 THEN c1 ELSE c2 FI ⇓ H&#39;
+</code></pre>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Reserved</span> <span class="keyword">Notation</span> <span class="string">&quot;st &#x27;=[&#x27; c &#x27;]⇒&#x27; st&#x27;&quot;</span> (<span class="built_in">at</span> level <span class="number">40</span>).</span><br><span class="line"><span class="keyword">Inductive</span> ceval : com → state → state → <span class="keyword">Prop</span> :=</span><br><span class="line">...</span><br><span class="line">| <span class="type">E_Seq</span> : ∀c1 c2 st st&#x27; st&#x27;&#x27;,</span><br><span class="line">    st =[ c1 ]⇒ st&#x27; →</span><br><span class="line">    st&#x27; =[ c2 ]⇒ st&#x27;&#x27; →</span><br><span class="line">    st =[ c1 ;; c2 ]⇒ st&#x27;&#x27;</span><br><span class="line">| <span class="type">E_IfTrue</span> : ∀st st&#x27; b c1 c2,</span><br><span class="line">      beval st b = true →</span><br><span class="line">      st =[ c1 ]⇒ st&#x27; →</span><br><span class="line">      st =[ TEST b THEN c1 ELSE c2 FI ]⇒ st&#x27;</span><br><span class="line">...</span><br><span class="line">  <span class="keyword">where</span> <span class="string">&quot;st =[ c ]⇒ st&#x27;&quot;</span> := (ceval c st st&#x27;).</span><br></pre></td></tr></table></figure>
+
+<p>By definition evaluation as relation (<em>in <code>Type</code> level</em>),<br>we need to construct <em>proofs</em> (<em>terms</em>) to define example.</p>
+<p>…noticed that in the definition of relaiton <code>ceval</code>, we actually use the computational <code>aevel</code>, <code>beval</code>..<br>…noticed that we are using explicit <code>∀</code> style rather than constructor argument style (for IDK reason). They are the same!</p>
+<h3 id="Determinism-of-Evaluation"><a href="#Determinism-of-Evaluation" class="headerlink" title="Determinism of Evaluation"></a>Determinism of Evaluation</h3><blockquote>
+<p>Changing from a computational to a relational definition of evaluation is a good move because it frees us from the artificial requirement that evaluation should be a total function<br>求值不再必须是全函数</p>
+</blockquote>
+<blockquote>
+<p>But it also raises a question: Is the second definition of evaluation really a partial function?<br>这个定义真的是偏函数吗？（这里的重点在于 偏函数 要求 right-unique 即 deterministic）</p>
+</blockquote>
+<p>we can prove: </p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> ceval_deterministic: ∀c st st1 st2,</span><br><span class="line">     st =[ c ]⇒ st1 →</span><br><span class="line">     st =[ c ]⇒ st2 →</span><br><span class="line">     st1 = st2.</span><br><span class="line"><span class="keyword">Proof</span>. ...</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+<h2 id="Reasoning-About-Imp-Programs"><a href="#Reasoning-About-Imp-Programs" class="headerlink" title="Reasoning About Imp Programs"></a>Reasoning About Imp Programs</h2><h3 id="Case-plus2-spec"><a href="#Case-plus2-spec" class="headerlink" title="Case plus2_spec"></a>Case <code>plus2_spec</code></h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> plus2_spec : ∀st n st&#x27;,</span><br><span class="line">  st X = n →</span><br><span class="line">  st =[ plus2 ]⇒ st&#x27; →</span><br><span class="line">  st&#x27; X = n + <span class="number">2.</span></span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span> st n st&#x27; HX Heval.</span><br></pre></td></tr></table></figure>
+
+<p>this looks much better as inference rules: </p>
+<pre><code>    H(x) = n
+    H; x := x + 2 ⇓ H&#39;
+  --------------------- (plus2_spec)
+    H&#39;(x) = n + 2
+</code></pre>
+<p>By <code>inversion</code> on the Big Step eval relation, we can <em>expand</em> one step of <code>ceval</code><br>(对 derivation tree 的 expanding 过程其实就是展开我们所需的计算步骤的过程)</p>
+<pre><code>  st : string -&gt; nat
+  =================================
+  (X !-&gt; st X + 2; st) X = st X + 2
+</code></pre>
+<p>In inference rule:</p>
+<pre><code>  H : string → nat
+  ================================
+  (x ↦ H(x) + 2); H)(x) = H(x) + 2
+</code></pre>
+<h3 id="Case-no-whiles-terminating"><a href="#Case-no-whiles-terminating" class="headerlink" title="Case no_whiles_terminating"></a>Case <code>no_whiles_terminating</code></h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> no_whilesR_terminating_fail:</span><br><span class="line">   <span class="keyword">forall</span> c, no_whilesR c -&gt; <span class="keyword">forall</span> st, <span class="built_in">exists</span> st&#x27;, st =[ c ]=&gt; st&#x27;.</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span>.</span><br><span class="line">  <span class="built_in">induction</span> H; <span class="built_in">simpl</span> <span class="built_in">in</span> *. </span><br><span class="line">  - <span class="built_in">admit</span>.</span><br><span class="line">  - <span class="built_in">admit</span>.</span><br><span class="line">  - <span class="comment">(* E_Seq *)</span></span><br></pre></td></tr></table></figure>
+
+<p>If we <code>intros st</code> before <code>induction c</code>,<br>the IH would be <em>for particular <code>st</code></em> and too specific for <code>E_Seq</code><br>(It’s actually okay for <code>TEST</code> since both branch derive from the same <code>st</code>)</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">IHno_whilesR1 : <span class="built_in">exists</span> st&#x27; : state, st =[ c1 ]=&gt; st&#x27;</span><br><span class="line">IHno_whilesR2 : <span class="built_in">exists</span> st&#x27; : state, st =[ c2 ]=&gt; st&#x27;</span><br><span class="line">============================</span><br><span class="line"><span class="built_in">exists</span> st&#x27; : state, st =[ c1;; c2 ]=&gt; st&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>So we’d love to</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">generalize</span> <span class="built_in">dependent</span> st.</span><br><span class="line"><span class="built_in">induction</span> H...</span><br><span class="line">- <span class="built_in">specialize</span> (IHno_whilesR1 st).  <span class="built_in">destruct</span> IHno_whilesR1 <span class="built_in">as</span> [st&#x27; Hc1].</span><br><span class="line">  <span class="built_in">specialize</span> (IHno_whilesR2 st&#x27;). <span class="built_in">destruct</span> IHno_whilesR2 <span class="built_in">as</span> [st&#x27;&#x27; Hc2].  <span class="comment">(* specialize [IH2] with the existential of [IH1] **)</span></span><br><span class="line">  <span class="built_in">exists</span> st&#x27;&#x27;.</span><br><span class="line">  <span class="built_in">apply</span> E_Seq <span class="built_in">with</span> (st&#x27;); <span class="built_in">assumption</span>.</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<h2 id="Additional-Exerciese"><a href="#Additional-Exerciese" class="headerlink" title="Additional Exerciese"></a>Additional Exerciese</h2><h3 id="Stack-Compiler"><a href="#Stack-Compiler" class="headerlink" title="Stack Compiler"></a>Stack Compiler</h3><blockquote>
+<p>Things that evaluate arithmetic expressions using stack:</p>
+</blockquote>
+<ul>
+<li>Old HP Calculators</li>
+<li>Forth, Postscript</li>
+<li>Java Virtual Machine</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">infix:</span><br><span class="line">      (2*3)+(3*(4-2))</span><br><span class="line"></span><br><span class="line">postfix:</span><br><span class="line">      2 3 * 3 4 2 - * +</span><br><span class="line"></span><br><span class="line">stack:</span><br><span class="line">      [ ]           |    2 3 * 3 4 2 - * +</span><br><span class="line">      [2]           |    3 * 3 4 2 - * +</span><br><span class="line">      [3, 2]        |    * 3 4 2 - * +</span><br><span class="line">      [6]           |    3 4 2 - * +</span><br><span class="line">      [3, 6]        |    4 2 - * +</span><br><span class="line">      [4, 3, 6]     |    2 - * +</span><br><span class="line">      [2, 4, 3, 6]  |    - * +</span><br><span class="line">      [2, 3, 6]     |    * +</span><br><span class="line">      [6, 6]        |    +</span><br><span class="line">      [12]          |</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Goal: compiler translates <code>aexp</code> into stack machine instructions.</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> sinstr : <span class="keyword">Type</span> :=</span><br><span class="line">| <span class="type">SPush</span> (n : nat)</span><br><span class="line">| <span class="type">SLoad</span> (x : string)   <span class="comment">(* load from store (heap) *)</span></span><br><span class="line">| <span class="type">SPlus</span></span><br><span class="line">| <span class="type">SMinus</span></span><br><span class="line">| <span class="type">SMult</span>.</span><br></pre></td></tr></table></figure>
+
+<h3 id="Correct-Proof"><a href="#Correct-Proof" class="headerlink" title="Correct Proof"></a>Correct Proof</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> s_compile_correct : <span class="keyword">forall</span> (st : state) (e : aexp),</span><br><span class="line">  s_execute st [] (s_compile e) = [ aeval st e ].</span><br></pre></td></tr></table></figure>
+
+<p>To prove this, we need a <em>stronger</em> induction hypothesis (i.e. more general), so we state:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> s_execute_theorem : <span class="keyword">forall</span> (st : state) (e : aexp) (stack : list nat) (prog : list sinstr),</span><br><span class="line">  s_execute st stack (s_compile e ++ prog) = s_execute st ((aeval st e) :: stack) prog.</span><br></pre></td></tr></table></figure>
+
+<p>and go through!</p>
+<h3 id="IMP-Break-Continue"><a href="#IMP-Break-Continue" class="headerlink" title="IMP Break/Continue"></a>IMP <code>Break/Continue</code></h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> result : <span class="keyword">Type</span> :=</span><br><span class="line">  | <span class="type">SContinue</span></span><br><span class="line">  | <span class="type">SBreak</span>.</span><br></pre></td></tr></table></figure>
+
+<p>The idea is that we can add a <em>signal</em> to notify the loop!</p>
+<p>Fun to go through!</p>
+<h2 id="Slide-Q-A"><a href="#Slide-Q-A" class="headerlink" title="Slide Q &amp; A"></a>Slide Q &amp; A</h2><p><code>st =[c1;;c2] =&gt; st&#39;</code></p>
+<ul>
+<li><p>there would be intermediate thing after inversion so… we need <em>determinism</em> to prove this!</p>
+<ul>
+<li>(It won’t be even true in undetermincy)</li>
+</ul>
+</li>
+<li><p>the <code>WHILE</code> one (would diverge)</p>
+<ul>
+<li>true…how to prove?</li>
+<li>induction on derivation…!<ul>
+<li>show contradiction for all cases</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>to prove <code>¬(∃st&#39;, ...)</code>, we intro the existentials and prove the <code>False</code>.</p>
+</li>
+</ul>
+<h3 id="Auto"><a href="#Auto" class="headerlink" title="Auto"></a><code>Auto</code></h3><p><code>auto</code> includes <code>try</code></p>
+<ol>
+<li><code>Proof with auto.</code></li>
+<li><code>Set Intro Auto</code></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/LF-%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80/" rel="tag"># LF (逻辑基础)</a>
+              <a href="/tags/SF-%E8%BD%AF%E4%BB%B6%E5%9F%BA%E7%A1%80/" rel="tag"># SF (软件基础)</a>
+              <a href="/tags/Coq/" rel="tag"># Coq</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/read_sf_lf/2019-01-13-sf-lf-13-imp-parser/" rel="prev" title="「SF-LC」13 ImpParser">
+                  <i class="fa fa-angle-left"></i> 「SF-LC」13 ImpParser
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/read_sf_lf/2019-01-11-sf-lf-11-rel/" rel="next" title="「SF-LC」11 Rel">
+                  「SF-LC」11 Rel <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2426182848439341"
+     crossorigin="anonymous"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33RJLY0818"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33RJLY0818');
+</script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="In the last episode we talked about the data representation of integer, a kindof fixed-point numbers. Today we’re going to learn about floating-point numbers. Floating-point numbers are used to approx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Data Representation - Floating Point Numbers">
+<meta property="og:url" content="https://www.vvbuys.com/data_rep/2020-06-21-data-rep-float/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="In the last episode we talked about the data representation of integer, a kindof fixed-point numbers. Today we’re going to learn about floating-point numbers. Floating-point numbers are used to approx">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-02T01:05:07.544Z">
+<meta property="article:modified_time" content="2024-02-02T01:05:07.544Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="C">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/data_rep/2020-06-21-data-rep-float/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/data_rep/2020-06-21-data-rep-float/","path":"data_rep/2020-06-21-data-rep-float/","title":"Data Representation - Floating Point Numbers"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Data Representation - Floating Point Numbers | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Terminologies"><span class="nav-number">1.</span> <span class="nav-text">Terminologies</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IEEE-754-32-bits-Single-Precision-Floats-%E5%8D%95%E7%B2%BE%E5%BA%A6%E6%B5%AE%E7%82%B9%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">IEEE-754 32-bits Single-Precision Floats 单精度浮点数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Demoing-Floats-in-C-C"><span class="nav-number">3.</span> <span class="nav-text">Demoing Floats in C&#x2F;C++</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Unsafe-Cast"><span class="nav-number">3.1.</span> <span class="nav-text">C - Unsafe Cast</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Union-Trick"><span class="nav-number">3.2.</span> <span class="nav-text">C - Union Trick</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-reinterpret-cast"><span class="nav-number">3.3.</span> <span class="nav-text">C++ - reinterpret_cast</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Representation-of-Non-Numbers"><span class="nav-number">4.</span> <span class="nav-text">Representation of Non-Numbers</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#More-on-NaN"><span class="nav-number">4.1.</span> <span class="nav-text">More on NaN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Equality-of-NaNs-and-Zeros"><span class="nav-number">4.2.</span> <span class="nav-text">Equality of NaNs and Zeros.</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IEEE-754-64-bits-Double-Precision-Floats"><span class="nav-number">5.</span> <span class="nav-text">IEEE-754 64-bits Double-Precision Floats</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IEEE-754-2008-16-bits-Short-Floats"><span class="nav-number">6.</span> <span class="nav-text">IEEE-754-2008 16-bits Short Floats</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">7.</span> <span class="nav-text">References</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/data_rep/2020-06-21-data-rep-float/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Data Representation - Floating Point Numbers | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Data Representation - Floating Point Numbers
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:05:07" itemprop="dateCreated datePublished" datetime="2024-02-02T01:05:07+00:00">2024-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>In the last episode we talked about the data representation of integer, a kind<br>of fixed-point numbers. Today we’re going to learn about floating-point numbers.</p>
+<p>Floating-point numbers are used to <em>approximate</em> real numbers. Because of the<br>fact that all the stuffs in computers are, eventually, just a limited sequence<br>of bits. The representation of floating-point number had to made trade-offs<br>between <em>ranges</em> and <em>precision</em>.</p>
+<p>Due to its computational complexities, CPU also have a dedicated set of<br>instructions to accelerate on floating-point arithmetics.</p>
+<h2 id="Terminologies"><a href="#Terminologies" class="headerlink" title="Terminologies"></a>Terminologies</h2><p>The terminologies of floating-point number is coming from the<br><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Scientific_notation"><em>scientific notation</em></a>,<br>where a real number can be represented as such:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.2345 = 12345 × 10 ** -4</span><br><span class="line">         -----   --    --</span><br><span class="line">  significand^   ^base  ^exponent</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><em>significand</em>, or <em>mantissa</em>, 有效数字, 尾数</li>
+<li><em>base</em>, or <em>radix</em> 底数</li>
+<li><em>exponent</em>, 幂</li>
+</ul>
+<p>So where is the <em>floating point</em>? It’s the <code>.</code> of <code>1.2345</code>. Imaging the dot<br>can be float to the left by one to make the representation <code>.12345</code>.</p>
+<p>The dot is called <em>radix point</em>, because to us it’s seem to be a <em>decimal point</em>,<br>but it’s really a <em>binary point</em> in the computers.</p>
+<p>Now it becomes clear that, to represent a floating-point number in computers,<br>we will simply assign some bits for <em>significand</em> and some for <em>exponent</em>, and<br>potentially a bit for <em>sign</em> and that’s it.</p>
+<h2 id="IEEE-754-32-bits-Single-Precision-Floats-单精度浮点数"><a href="#IEEE-754-32-bits-Single-Precision-Floats-单精度浮点数" class="headerlink" title="IEEE-754 32-bits Single-Precision Floats 单精度浮点数"></a>IEEE-754 32-bits Single-Precision Floats 单精度浮点数</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Single-precision_floating-point_format">https://en.wikipedia.org/wiki/Single-precision_floating-point_format</a></li>
+</ul>
+<p>It was called <strong>single</strong> back to IEEE-754-1985 and now <strong>binary32</strong> in the<br>relatively new IEEE-754-2008 standard.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">       (<span class="number">8</span> bits)             (<span class="number">23</span> bits)</span><br><span class="line">sign   exponent             fraction</span><br><span class="line">  <span class="number">0</span>   <span class="number">011</span> <span class="number">1111</span> <span class="number">1</span>    <span class="number">000</span> <span class="number">0000</span> <span class="number">0000</span> <span class="number">0000</span> <span class="number">0000</span> <span class="number">0000</span></span><br><span class="line"></span><br><span class="line"> <span class="number">31</span>   <span class="number">30</span> .... <span class="number">23</span>    <span class="number">22</span> ....................... <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>The <em>sign</em> part took 1 bit to indicate the sign of the floats. (<code>0</code> for <code>+</code><br>and <code>1</code> for <code>-</code>. This is the same treatment as the <a href="2020-06-19-data-rep-int.md##sign-magnitude-%E5%8E%9F%E7%A0%81">sign magnitute</a>.</li>
+<li>The <em>exponent</em> part took 8 bits and used <a href="2020-06-19-data-rep-int.md#offset-binary-%E7%A7%BB%E7%A0%81"><em>offset-binary (biased) form</em></a> to represent a signed integer.<br>It’s a variant form since it took out the <code>-127</code> (all 0s) for zero and <code>+128</code><br>(all 1s) for non-numbers, thus it ranges only <code>[-126, 127]</code> instead of<br><code>[-127, 128]</code>. Then, it choose the zero offset of <code>127</code> in these 254 bits (like<br>using <code>128</code> in <em>excess-128</em>), a.k.a the <em>exponent bias</em> in the standard.</li>
+<li>The <em>fraction</em> part took 23 bits with an <em>implicit leading bit</em> <code>1</code> and<br>represent the actual <em>significand</em> in total precision of 24-bits.</li>
+</ul>
+<p>Don’t be confused by why it’s called <em>fraction</em> instead of <em>significand</em>!<br>It’s all because that the 23 bits in the representation is indeed, representing<br>the fraction part of the real significand in the scientific notation.</p>
+<p>The floating-point version of “scientific notation” is more like:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(leading <span class="number">1</span>)</span><br><span class="line">   <span class="number">1.</span> fraction  ×  <span class="number">2</span> ^ exponent   ×  <span class="built_in">sign</span></span><br><span class="line">      (base<span class="number">-2</span>)           (base<span class="number">-2</span>)</span><br></pre></td></tr></table></figure>
+
+<p>So what number does the above bits represent?</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">S     F   ×  E  =  R</span><br><span class="line">+  <span class="number">1.</span>(<span class="number">0</span>)  ×  <span class="number">0</span>  =  <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>Aha! It’s the real number <code>1</code>!<br>Recall that the <code>E = 0b0111 1111 = 0</code> because it used a biased representation!</p>
+<p>We will add more non-trivial examples later.</p>
+<h2 id="Demoing-Floats-in-C-C"><a href="#Demoing-Floats-in-C-C" class="headerlink" title="Demoing Floats in C&#x2F;C++"></a>Demoing Floats in C&#x2F;C++</h2><p>Writing sample code converting between binaries (in hex) and floats are not<br>as straightforward as it for integers. Luckily, there are still some hacks to<br>perform it:</p>
+<h3 id="C-Unsafe-Cast"><a href="#C-Unsafe-Cast" class="headerlink" title="C - Unsafe Cast"></a>C - Unsafe Cast</h3><p>We unsafely cast a pointer to enable reinterpretation of the same binaries.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">float</span> f1 = <span class="number">0x3f800000</span>; <span class="comment">// C doesn&#x27;t have a floating literal taking hex.</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%f \n&quot;</span>, f1);   <span class="comment">// 1065353216.000000 (???)</span></span><br><span class="line"></span><br><span class="line"><span class="type">uint32_t</span> u2 = <span class="number">0x3f800000</span>;</span><br><span class="line"><span class="type">float</span>* f2 = (<span class="type">float</span>*)&amp;u2;   <span class="comment">// unsafe cast</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%f \n&quot;</span>, *f2);      <span class="comment">// 1.000000</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="C-Union-Trick"><a href="#C-Union-Trick" class="headerlink" title="C - Union Trick"></a>C - Union Trick</h3><p>Oh I really enjoyed this one…Union in C is not only untagged union, but also<br>share the exact same chunk of memory. So we are doing the same reinterpretation,<br>but in a more structural and technically fancier way.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdint.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;inttypes.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;math.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">float</span> pi = (<span class="type">float</span>)M_PI;</span><br><span class="line"><span class="keyword">union</span> &#123;</span><br><span class="line">    <span class="type">float</span> f;</span><br><span class="line">    <span class="type">uint32_t</span> u;</span><br><span class="line">&#125; f2u = &#123; .f = pi &#125;;  <span class="comment">// we took the data as float</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span> (<span class="string">&quot;pi : %f\n   : 0x%&quot;</span> PRIx32 <span class="string">&quot;\n&quot;</span>, pi, f2u.u);  <span class="comment">// but interpret as uint32_t</span></span><br><span class="line">pi : <span class="number">3.141593</span></span><br><span class="line">   : <span class="number">0x40490fdb</span></span><br></pre></td></tr></table></figure>
+
+<p>N.B. this trick is well-known as <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Type_punning">type punning</a>:</p>
+<blockquote>
+<p>In computer science, type punning is a common term for any programming technique that subverts or circumvents the type system of a programming language in order to achieve an effect that would be difficult or impossible to achieve within the bounds of the formal language.</p>
+</blockquote>
+<h3 id="C-reinterpret-cast"><a href="#C-reinterpret-cast" class="headerlink" title="C++ - reinterpret_cast"></a>C++ - <code>reinterpret_cast</code></h3><p>C++ does provide such type punning to the standard language:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">uint32_t</span> u = <span class="number">0x40490fdb</span>;</span><br><span class="line"><span class="type">float</span> a = *<span class="built_in">reinterpret_cast</span>&lt;<span class="type">float</span>*&gt;(&amp;u);</span><br><span class="line">std::cout &lt;&lt; a;  <span class="comment">// 3.14159</span></span><br></pre></td></tr></table></figure>
+
+<p>N.B. it still need to be a conversion between pointers,<br>see <a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/language/reinterpret_cast">https://en.cppreference.com/w/cpp/language/reinterpret_cast</a>.</p>
+<p>Besides, C++ 17 does add a floating point literal that can take hex, but it<br>works in a different way, using an explicit radix point in the hex:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">float</span> f = <span class="number">0x1</span><span class="number">.2</span>p3;  <span class="comment">// 1.2 by 2^3</span></span><br><span class="line">std::cout &lt;&lt; f;     <span class="comment">// 9</span></span><br></pre></td></tr></table></figure>
+
+<p>That’s try with another direction:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdint.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;inttypes.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="type">double</span> qNan = std::numeric_limits&lt;<span class="type">double</span>&gt;::<span class="built_in">quiet_NaN</span>();</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;0x%&quot;</span> PRIx64 <span class="string">&quot;\n&quot;</span>, *<span class="built_in">reinterpret_cast</span>&lt;<span class="type">uint64_t</span>*&gt;(&amp;qNan));</span><br><span class="line">  <span class="comment">// 0x7ff8000000000000, the canonical qNaN!</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Representation-of-Non-Numbers"><a href="#Representation-of-Non-Numbers" class="headerlink" title="Representation of Non-Numbers"></a>Representation of Non-Numbers</h2><p>There are more in the IEEE-754!</p>
+<p>Real numbers doesn’t satisfy <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Closure_(mathematics)">closure property</a><br>as integers does. Notably, the set of real numbers is NOT closed under the<br>division! It could produce non-number results such as <strong>infinity</strong> (e.g. <code>1/0</code>)<br>and <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/NaN"><strong>NaN (Not-a-Number)</strong></a> (e.g. taking<br>a square root of a negative number).</p>
+<p>It would be algebraically ideal if the set of floating-point numbers can be<br>closed under all floating-point arithmetics. That would made many people’s life<br>easier. So the IEEE made it so! Non-numeber values are squeezed in.</p>
+<p>We will also include the two zeros (<code>+0</code>&#x2F;<code>-0</code>) into the comparison here,<br>since they are also special by being the only two demanding an <code>0x00</code> exponent:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">             binary                |    hex    |</span><br><span class="line">--------------------------------------------------------</span><br><span class="line"><span class="number">0</span> <span class="number">00000000</span> <span class="number">00000000000000000000000</span> = <span class="number">0000</span> <span class="number">0000</span> = +<span class="number">0</span></span><br><span class="line"><span class="number">1</span> <span class="number">00000000</span> <span class="number">00000000000000000000000</span> = <span class="number">8000</span> <span class="number">0000</span> = −<span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="number">0</span> <span class="number">11111111</span> <span class="number">00000000000000000000000</span> = <span class="number">7f</span>80 <span class="number">0000</span> = +infinity</span><br><span class="line"><span class="number">1</span> <span class="number">11111111</span> <span class="number">00000000000000000000000</span> = ff80 <span class="number">0000</span> = −infinity</span><br><span class="line"></span><br><span class="line">_ <span class="number">11111111</span> <span class="number">10000000000000000000000</span> = _fc0 <span class="number">0000</span> = <span class="built_in">qNaN</span> (canonical)</span><br><span class="line">_ <span class="number">11111111</span> <span class="number">00000000000000000000001</span> = _f80 <span class="number">0001</span> = <span class="built_in">sNaN</span> (one of them)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">      (<span class="number">8</span> bits)  (<span class="number">23</span> bits)</span><br><span class="line">sign  exponent  fraction</span><br><span class="line">  <span class="number">0</span>      <span class="number">00</span>     <span class="number">0</span> ..<span class="number">.0</span> <span class="number">0</span>  = +<span class="number">0</span></span><br><span class="line">  <span class="number">1</span>      <span class="number">00</span>     <span class="number">0</span> ..<span class="number">.0</span> <span class="number">0</span>  = <span class="number">-0</span></span><br><span class="line">  <span class="number">0</span>      FF     <span class="number">0</span> ..<span class="number">.0</span> <span class="number">0</span>  = +infinity</span><br><span class="line">  <span class="number">1</span>      FF     <span class="number">0</span> ..<span class="number">.0</span> <span class="number">0</span>  = -infinity</span><br><span class="line">  _      FF     <span class="number">1</span> ..<span class="number">.0</span> <span class="number">0</span>  = <span class="built_in">qNaN</span> (canonical)</span><br><span class="line">  _      FF     <span class="number">0</span> ..<span class="number">.0</span> <span class="number">1</span>  = <span class="built_in">sNaN</span> (one of them)</span><br></pre></td></tr></table></figure>
+
+<p>Encodings of qNaN and sNaN are not specified in IEEE 754 and implemented<br>differently on different processors. Luckily, both x86 and ARM family use the<br>“most significant bit of fraction” to indicate whether it’s quite.</p>
+<h3 id="More-on-NaN"><a href="#More-on-NaN" class="headerlink" title="More on NaN"></a>More on NaN</h3><p>If we look carefully into the IEEE 754-2008 spec, in the <em>page35, 6.2.1</em>, it<br>actually defined anything with exponent <code>FF</code> and not a infinity (i.e. with<br>all the fraction bits being <code>0</code>), a NaN!</p>
+<blockquote>
+<p>All binary NaN bit strings have all the bits of the biased exponent field E set to 1 (see 3.4). A quiet NaN bit string should be encoded with the first bit (d1) of the trailing significand field T being 1. A signaling NaN bit string should be encoded with the first bit of the trailing significand field being 0.</p>
+</blockquote>
+<p>That implies, we actually had <code>2 ** 24 - 2</code> of NaNs in a 32-bits float!<br>The <code>24</code> came from the <code>1</code> sign bit plus <code>23</code> fractions and the <code>2</code> excluded<br>were the <code>+/- inf</code>.</p>
+<p>The continuous 22 bits inside the fraction looks quite a waste, and there<br>would be even 51 bits of them in the <code>double</code>! We will see how to made them useful<br>in later episodes (spoiler: they are known as <em>NaN payload</em>).</p>
+<p>It’s also worth noting that it’s weird that the IEEE choose to use the MSB<br>instead of the sign bit for NaN quiteness&#x2F;signalness:</p>
+<blockquote>
+<p>It seems strange to me that the bit which signifies whether or not the NaN is signaling is the top bit of the mantissa rather than the sign bit; perhaps something about how floating point pipelines are implemented makes it less natural to use the sign bit to decide whether or not to raise a signal.<br>– <a target="_blank" rel="noopener" href="https://anniecherkaev.com/the-secret-life-of-nan">https://anniecherkaev.com/the-secret-life-of-nan</a></p>
+</blockquote>
+<p>I guess it might be something related to the CPU pipeline? I don’t know yet.</p>
+<h3 id="Equality-of-NaNs-and-Zeros"><a href="#Equality-of-NaNs-and-Zeros" class="headerlink" title="Equality of NaNs and Zeros."></a>Equality of NaNs and Zeros.</h3><p>The spec defined a comparison with NaNs to return an <strong>unordered result</strong>, that<br>means any comparison operation except <code>!=</code>, i.e. <code>&gt;=, &lt;=, &gt;, &lt;, =</code> between a<br>NaN and any other floating-point number would return <code>false</code>.</p>
+<p>No surprised that most (if not every) language implemented such behaviours, e.g.<br>in JavaScript:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">NaN</span> !== <span class="title class_">NaN</span>   <span class="comment">// true</span></span><br><span class="line"><span class="title class_">NaN</span> === <span class="title class_">NaN</span>   <span class="comment">// false</span></span><br><span class="line"><span class="title class_">NaN</span> &gt;  <span class="number">1</span>      <span class="comment">// false</span></span><br><span class="line"><span class="title class_">NaN</span> &lt;  <span class="number">1</span>      <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<p>Position and negative zeros, however, are defined to be equal!</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+<span class="number">0</span> === -<span class="number">0</span>  <span class="comment">// true, using the traditional JS equality</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">is</span>(+<span class="number">0</span>, -<span class="number">0</span>)  <span class="comment">// false, using the &quot;SameValue&quot; equality</span></span><br></pre></td></tr></table></figure>
+
+<p>In Cpp, we can tell them apart by looking at its sign bit:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span>   <span class="comment">// signbit</span></span></span><br><span class="line"></span><br><span class="line">cout &lt;&lt; (+<span class="number">0.0f</span> == <span class="number">-0.0f</span>);     <span class="comment">// 1</span></span><br><span class="line">cout &lt;&lt; std::<span class="built_in">signbit</span>(<span class="number">-0.0f</span>);  <span class="comment">// 1</span></span><br><span class="line">cout &lt;&lt; std::<span class="built_in">signbit</span>(+<span class="number">0.0f</span>);  <span class="comment">// 0</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<h2 id="IEEE-754-64-bits-Double-Precision-Floats"><a href="#IEEE-754-64-bits-Double-Precision-Floats" class="headerlink" title="IEEE-754 64-bits Double-Precision Floats"></a>IEEE-754 64-bits Double-Precision Floats</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format">https://en.wikipedia.org/wiki/Double-precision_floating-point_format</a></li>
+</ul>
+<p>Now, the 64-bit versions floating-point number, known as <code>double</code>, is just a<br>matter of scale:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">       (<span class="number">11</span> bits)            (<span class="number">52</span> bits)</span><br><span class="line">sign   exponent             fraction</span><br><span class="line">  <span class="number">0</span></span><br><span class="line"></span><br><span class="line"> <span class="number">63</span>   <span class="number">62</span> .... <span class="number">52</span>    <span class="number">51</span> ....................... <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="IEEE-754-2008-16-bits-Short-Floats"><a href="#IEEE-754-2008-16-bits-Short-Floats" class="headerlink" title="IEEE-754-2008 16-bits Short Floats"></a>IEEE-754-2008 16-bits Short Floats</h2><p>The 2008 edition of IEEE-754 also standardize the <code>short float</code>, which is<br>neither in C or C++ standard. Though compiler extension might include it.</p>
+<p>It looks like:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> sign bit | <span class="number">5</span> exponent bits | <span class="number">10</span> fraction bits</span><br><span class="line">S            E E E E E         M M M M M M M M M M</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Floating-point_arithmetic">https://en.wikipedia.org/wiki/Floating-point_arithmetic</a></li>
+<li><a target="_blank" rel="noopener" href="https://www3.ntu.edu.sg/home/ehchua/programming/java/datarepresentation.html">https://www3.ntu.edu.sg/home/ehchua/programming/java/datarepresentation.html</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag"># 基础</a>
+              <a href="/tags/C/" rel="tag"># C</a>
+              <a href="/tags/C/" rel="tag"># C++</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/hidden/2020-05-05-pl-chart/" rel="prev" title="My Programming Languages Spectrum">
+                  <i class="fa fa-angle-left"></i> My Programming Languages Spectrum
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/data_rep/2020-06-19-data-rep-int/" rel="next" title="Data Representation - Integer">
+                  Data Representation - Integer <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

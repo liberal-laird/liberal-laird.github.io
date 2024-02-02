@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2426182848439341"
+     crossorigin="anonymous"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33RJLY0818"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33RJLY0818');
+</script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="The critical new ideas arepolymorphism (abstracting functions over the types of the data they manipulate) andhigher-order functions (treating functions as data).   PolymorphismUntil today, We were li">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「SF-LC」4 Poly">
+<meta property="og:url" content="https://www.vvbuys.com/read_sf_lf/2019-01-04-sf-lf-04-poly/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="The critical new ideas arepolymorphism (abstracting functions over the types of the data they manipulate) andhigher-order functions (treating functions as data).   PolymorphismUntil today, We were li">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-02T01:05:07.544Z">
+<meta property="article:modified_time" content="2024-02-02T01:05:07.544Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="LF (逻辑基础)">
+<meta property="article:tag" content="SF (软件基础)">
+<meta property="article:tag" content="Coq">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/read_sf_lf/2019-01-04-sf-lf-04-poly/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/read_sf_lf/2019-01-04-sf-lf-04-poly/","path":"read_sf_lf/2019-01-04-sf-lf-04-poly/","title":"「SF-LC」4 Poly"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>「SF-LC」4 Poly | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Polymorphism"><span class="nav-number">1.</span> <span class="nav-text">Polymorphism</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Polymorphic-Type-and-Constructors"><span class="nav-number">2.</span> <span class="nav-text">Polymorphic Type and Constructors</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Q1-What%E2%80%99s-the-type-of-nil-and-cons"><span class="nav-number">2.1.</span> <span class="nav-text">Q1. What’s the type of nil and cons?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q2-What%E2%80%99s-the-type-of-list-nat-Why-not-Type-but-weird-Set"><span class="nav-number">2.2.</span> <span class="nav-text">Q2. What’s the type of list nat? Why not Type but weird Set?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Polymorphic-Functions"><span class="nav-number">3.</span> <span class="nav-text">Polymorphic Functions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Slide-QA"><span class="nav-number">4.</span> <span class="nav-text">Slide QA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Type-Argument-Inference"><span class="nav-number">5.</span> <span class="nav-text">Type Argument Inference</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Type-Argument-Synthesis"><span class="nav-number">6.</span> <span class="nav-text">Type Argument Synthesis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Implicit-Arguments"><span class="nav-number">7.</span> <span class="nav-text">Implicit Arguments</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Implicit-Arguments-Pitfalls-on-Inductive"><span class="nav-number">8.</span> <span class="nav-text">Implicit Arguments Pitfalls on Inductive</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Polymorphic-List-functions"><span class="nav-number">9.</span> <span class="nav-text">Other Polymorphic List functions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Supplying-Type-Arguments-Explicitly"><span class="nav-number">10.</span> <span class="nav-text">Supplying Type Arguments Explicitly</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List-notation"><span class="nav-number">11.</span> <span class="nav-text">List notation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Slide-Q-A-2"><span class="nav-number">12.</span> <span class="nav-text">Slide Q&amp;A 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Poly-Pair"><span class="nav-number">13.</span> <span class="nav-text">Poly Pair</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Combine-or-Zip"><span class="nav-number">14.</span> <span class="nav-text">Combine or Zip</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Poly-Option"><span class="nav-number">15.</span> <span class="nav-text">Poly Option</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Function-as-data"><span class="nav-number">16.</span> <span class="nav-text">Function as data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Higher-Order-Functions"><span class="nav-number">17.</span> <span class="nav-text">Higher-Order Functions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Filter-taking-a-predicate-on-X"><span class="nav-number">18.</span> <span class="nav-text">Filter (taking a predicate on X)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Anonymous-Functions"><span class="nav-number">19.</span> <span class="nav-text">Anonymous Functions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map"><span class="nav-number">20.</span> <span class="nav-text">Map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Slide-Q-A-3"><span class="nav-number">21.</span> <span class="nav-text">Slide Q&amp;A 3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#option-map"><span class="nav-number">22.</span> <span class="nav-text">option map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fold-Reduce"><span class="nav-number">23.</span> <span class="nav-text">Fold (Reduce)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Slide-Q-A-4"><span class="nav-number">24.</span> <span class="nav-text">Slide Q&amp;A 4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Functions-That-Construct-Functions"><span class="nav-number">25.</span> <span class="nav-text">Functions That Construct Functions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Universe-Inconsistency"><span class="nav-number">26.</span> <span class="nav-text">Universe Inconsistency</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What%E2%80%99s-happening"><span class="nav-number">26.1.</span> <span class="nav-text">What’s happening?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#https-stackoverflow-com-questions-32153710-what-does-error-universe-inconsistency-mean-in-coq"><span class="nav-number">26.2.</span> <span class="nav-text">https:&#x2F;&#x2F;stackoverflow.com&#x2F;questions&#x2F;32153710&#x2F;what-does-error-universe-inconsistency-mean-in-coq</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#From-https-coq-inria-fr-refman-addendum-universe-polymorphism-html"><span class="nav-number">26.3.</span> <span class="nav-text">From https:&#x2F;&#x2F;coq.inria.fr&#x2F;refman&#x2F;addendum&#x2F;universe-polymorphism.html</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Polymorphic-Church-Numerals-w-o-self-applying-itself"><span class="nav-number">27.</span> <span class="nav-text">Polymorphic Church Numerals w&#x2F;o self-applying itself</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Definition"><span class="nav-number">27.1.</span> <span class="nav-text">Definition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#succ"><span class="nav-number">27.2.</span> <span class="nav-text">succ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#plus"><span class="nav-number">27.3.</span> <span class="nav-text">plus</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mult"><span class="nav-number">27.4.</span> <span class="nav-text">mult</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#exp"><span class="nav-number">27.5.</span> <span class="nav-text">exp</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/read_sf_lf/2019-01-04-sf-lf-04-poly/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="「SF-LC」4 Poly | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「SF-LC」4 Poly
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:05:07" itemprop="dateCreated datePublished" datetime="2024-02-02T01:05:07+00:00">2024-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>The critical new ideas are<br>polymorphism (abstracting functions over the types of the data they manipulate) and<br>higher-order functions (treating functions as data). </p>
+</blockquote>
+<h2 id="Polymorphism"><a href="#Polymorphism" class="headerlink" title="Polymorphism"></a>Polymorphism</h2><p>Until today, We were living in the monomorphic world of Coq.<br>So if we want a list, we have to define it for each type:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> boollist : <span class="keyword">Type</span> :=</span><br><span class="line">  | <span class="type">bool_nil</span></span><br><span class="line">  | <span class="type">bool_cons</span> (b : bool) (l : boollist).</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Polymorphic-Type-and-Constructors"><a href="#Polymorphic-Type-and-Constructors" class="headerlink" title="Polymorphic Type and Constructors"></a>Polymorphic Type and Constructors</h2><p>But of course Coq supports polymorphic type.<br>So we can <em>abstract things over type</em></p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> list (X:<span class="keyword">Type</span>) : <span class="keyword">Type</span> :=</span><br><span class="line">  | <span class="type">nil</span></span><br><span class="line">  | <span class="type">cons</span> (x : X) (l : list X).</span><br><span class="line"></span><br><span class="line"><span class="keyword">Check</span> list.</span><br><span class="line"><span class="comment">(* ===&gt; list : Type -&gt; Type *)</span></span><br></pre></td></tr></table></figure>
+
+<p>Recall from PLT course, this is exacly <strong>Parametric Polymorphism</strong><br>and it’s <strong>SystemFω</strong>. the <code>list</code> here is a type-level small lambda, or <strong>type operators</strong></p>
+<p>Another things I’d love to mention is the concrete syntax of <code>list X</code>,<br>it didn’t choose the SML&#x2F;OCaml order but the Haskell order. </p>
+<h3 id="Q1-What’s-the-type-of-nil-and-cons"><a href="#Q1-What’s-the-type-of-nil-and-cons" class="headerlink" title="Q1. What’s the type of nil and cons?"></a>Q1. What’s the type of <code>nil</code> and <code>cons</code>?</h3><p>Both having <code>forall</code> type</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Check</span> nil.</span><br><span class="line"><span class="comment">(* ===&gt; nil : forall X : Type, list X *)</span></span><br><span class="line"><span class="keyword">Check</span> cons.</span><br><span class="line"><span class="comment">(* ===&gt; nil : forall X : Type, X -&gt; list X -&gt; list X *)</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="Q2-What’s-the-type-of-list-nat-Why-not-Type-but-weird-Set"><a href="#Q2-What’s-the-type-of-list-nat-Why-not-Type-but-weird-Set" class="headerlink" title="Q2. What’s the type of list nat? Why not Type but weird Set?"></a>Q2. What’s the type of <code>list nat</code>? Why not <code>Type</code> but weird <code>Set</code>?</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Check</span> nat.</span><br><span class="line"><span class="comment">(* ===&gt; nat : Set *)</span></span><br><span class="line"><span class="keyword">Check</span> list nat.</span><br><span class="line"><span class="comment">(* ===&gt; list nat : Set *)</span></span><br><span class="line"><span class="keyword">Check</span> <span class="keyword">Set</span>.</span><br><span class="line"><span class="comment">(* ===&gt; Set: Type *)</span></span><br><span class="line"><span class="keyword">Check</span> <span class="keyword">Type</span>.</span><br><span class="line"><span class="comment">(* ===&gt; Type: Type *)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Check</span> (cons nat <span class="number">2</span> (cons nat <span class="number">1</span> (nil nat))).</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Polymorphic-Functions"><a href="#Polymorphic-Functions" class="headerlink" title="Polymorphic Functions"></a>Polymorphic Functions</h2><p>we can make polymorphic versions of list-processing function:</p>
+<p>Btw, Pierce follows the TAPL convention where type is written in capital letter but not greek letter,<br>less clear in first look but better for typing in real programming.</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Fixpoint</span> <span class="built_in">repeat</span> (X : <span class="keyword">Type</span>) (x : X) (count : nat) : list X :=</span><br><span class="line">  <span class="keyword">match</span> count <span class="built_in">with</span></span><br><span class="line">  | <span class="type">0</span> ⇒ nil X</span><br><span class="line">  | <span class="type">S</span> count&#x27; ⇒ cons X x (<span class="built_in">repeat</span> X x count&#x27;)</span><br><span class="line">  <span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+
+<p>This is <em>SystemF</em>.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Check repeat.</span><br><span class="line">(* ===&gt; repeat : forall X : Type, X -&gt; nat -&gt; list X *)</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Slide-QA"><a href="#Slide-QA" class="headerlink" title="Slide QA"></a>Slide QA</h2><ol>
+<li>ill-typed</li>
+<li><code>forall X : Type, X -&gt; nat -&gt; list X</code></li>
+<li><code>list nat</code></li>
+</ol>
+<h2 id="Type-Argument-Inference"><a href="#Type-Argument-Inference" class="headerlink" title="Type Argument Inference"></a>Type Argument Inference</h2><p><code>X</code> must be a <code>Type</code> since <code>nil</code> expects an <code>Type</code> as its first argument.</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Fixpoint</span> <span class="built_in">repeat</span>&#x27; X x count : list X :=     <span class="comment">(* return type [:list X] can be omitted as well *)</span></span><br><span class="line">  <span class="keyword">match</span> count <span class="built_in">with</span></span><br><span class="line">  | <span class="type">0</span> ⇒ nil X</span><br><span class="line">  | <span class="type">S</span> count&#x27; ⇒ cons X x (<span class="built_in">repeat</span>&#x27; X x count&#x27;)</span><br><span class="line">  <span class="keyword">end</span>.</span><br><span class="line"></span><br><span class="line"><span class="keyword">Check</span> <span class="built_in">repeat</span>&#x27;.</span><br><span class="line"><span class="comment">(* ===&gt; forall X : Type, X -&gt; nat -&gt; list X *)</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Type-Argument-Synthesis"><a href="#Type-Argument-Synthesis" class="headerlink" title="Type Argument Synthesis"></a>Type Argument Synthesis</h2><p>We can write <code>_</code> (hole) in place of <code>X</code> and Coq will try to <strong>unify</strong> all local information.</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Fixpoint</span> <span class="built_in">repeat</span>&#x27;&#x27; X x count : list X :=</span><br><span class="line">  <span class="keyword">match</span> count <span class="built_in">with</span></span><br><span class="line">  | <span class="type">0</span> ⇒ nil <span class="keyword">_</span></span><br><span class="line">  | <span class="type">S</span> count&#x27; ⇒ cons <span class="keyword">_</span> x (<span class="built_in">repeat</span>&#x27;&#x27; <span class="keyword">_</span> x count&#x27;)</span><br><span class="line">  <span class="keyword">end</span>.</span><br><span class="line"></span><br><span class="line"><span class="keyword">Definition</span> list123&#x27; :=</span><br><span class="line">  cons <span class="keyword">_</span> <span class="number">1</span> (cons <span class="keyword">_</span> <span class="number">2</span> (cons <span class="keyword">_</span> <span class="number">3</span> (nil <span class="keyword">_</span>))).</span><br></pre></td></tr></table></figure>
+
+<p>Same underlying mechanisms:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">repeat</span>&#x27; X x count : list X :=</span><br><span class="line"><span class="built_in">repeat</span>&#x27; (X : <span class="keyword">_</span>) (x : <span class="keyword">_</span>) (count : <span class="keyword">_</span>) : list X :=</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Implicit-Arguments"><a href="#Implicit-Arguments" class="headerlink" title="Implicit Arguments"></a>Implicit Arguments</h2><p>Using <code>Arguments</code> directives to tell if an argument need to be implicit (i.e. omitted and always to infer) or not. </p>
+<blockquote>
+<p>Implicitly convert to <code>_</code> (synthesis) by frontend.</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Arguments</span> nil &#123;X&#125;.</span><br><span class="line"><span class="keyword">Arguments</span> cons &#123;X&#125; <span class="keyword">_</span> <span class="keyword">_</span>.       <span class="comment">(* data constructor usually don&#x27;t specify the name *)</span></span><br><span class="line"><span class="keyword">Arguments</span> <span class="built_in">repeat</span> &#123;X&#125; x count. <span class="comment">(* fun definition usually do *)</span></span><br></pre></td></tr></table></figure>
+
+<p>The even more convenient syntax is that we can declare them right in our function definition.<br>Just <em>surrounding them with curly braces</em>.</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Fixpoint</span> <span class="built_in">repeat</span>&#x27;&#x27;&#x27; &#123;X : <span class="keyword">Type</span>&#125; (x : X) (count : nat) : list X :=</span><br><span class="line">  <span class="keyword">match</span> count <span class="built_in">with</span></span><br><span class="line">  | <span class="type">0</span> ⇒ nil</span><br><span class="line">  | <span class="type">S</span> count&#x27; ⇒ cons x (<span class="built_in">repeat</span>&#x27;&#x27;&#x27; x count&#x27;)</span><br><span class="line">  <span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Implicit-Arguments-Pitfalls-on-Inductive"><a href="#Implicit-Arguments-Pitfalls-on-Inductive" class="headerlink" title="Implicit Arguments Pitfalls on Inductive"></a>Implicit Arguments Pitfalls on <code>Inductive</code></h2><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> list&#x27; &#123;X:<span class="keyword">Type</span>&#125; : <span class="keyword">Type</span> :=</span><br><span class="line">  | <span class="type">nil</span>&#x27;</span><br><span class="line">  | <span class="type">cons</span>&#x27; (x : X) (l : list&#x27;).</span><br></pre></td></tr></table></figure>
+
+<p>Doing this will make <code>X</code> implicit for even <code>list&#39;</code>, the type constructor itself… </p>
+<h2 id="Other-Polymorphic-List-functions"><a href="#Other-Polymorphic-List-functions" class="headerlink" title="Other Polymorphic List functions"></a>Other Polymorphic List functions</h2><p>No difference but add implicit type argument <code>&#123;X : Type&#125;</code>.</p>
+<h2 id="Supplying-Type-Arguments-Explicitly"><a href="#Supplying-Type-Arguments-Explicitly" class="headerlink" title="Supplying Type Arguments Explicitly"></a>Supplying Type Arguments Explicitly</h2><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Fail <span class="keyword">Definition</span> mynil := nil.</span><br><span class="line"></span><br><span class="line"><span class="keyword">Definition</span> mynil : list nat := nil.</span><br><span class="line"></span><br><span class="line"><span class="keyword">Check</span> @nil. <span class="comment">(* ===&gt; @nil : forall X : Type, list X *)</span></span><br><span class="line"><span class="keyword">Definition</span> mynil&#x27; := @nil nat.</span><br></pre></td></tr></table></figure>
+
+<p>First thought: Existential<br>Second thought: A wait to be unified Universal. (after being implicit and require inference)</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Check</span> nil.</span><br><span class="line"></span><br><span class="line">nil : </span><br><span class="line">   list ?X</span><br><span class="line"><span class="keyword">where</span> ?X : [ |<span class="type">- Type</span>]</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="List-notation"><a href="#List-notation" class="headerlink" title="List notation"></a>List notation</h2><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;x :: y&quot;</span> := (cons x y)</span><br><span class="line">                     (<span class="built_in">at</span> level <span class="number">60</span>, <span class="built_in">right</span> associativity).</span><br><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;[ ]&quot;</span> := nil.</span><br><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;[ x ; .. ; y ]&quot;</span> := (cons x .. (cons y []) ..).</span><br><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;x ++ y&quot;</span> := (app x y)</span><br><span class="line">                     (<span class="built_in">at</span> level <span class="number">60</span>, <span class="built_in">right</span> associativity).</span><br></pre></td></tr></table></figure>
+
+<p>Same with before thanks to the implicit argument</p>
+<h2 id="Slide-Q-A-2"><a href="#Slide-Q-A-2" class="headerlink" title="Slide Q&amp;A 2"></a>Slide Q&amp;A 2</h2><ol>
+<li>we use <code>;</code> not <code>,</code>!!</li>
+<li><code>list nat</code></li>
+<li>ill-typed</li>
+<li>ill-typed</li>
+<li><code>list (list nat)</code></li>
+<li><code>list (list nat)</code> (tricky in first look)</li>
+<li><code>list bool</code></li>
+<li>ill-typed</li>
+<li>ill-typed</li>
+</ol>
+<h2 id="Poly-Pair"><a href="#Poly-Pair" class="headerlink" title="Poly Pair"></a>Poly Pair</h2><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> prod (X Y : <span class="keyword">Type</span>) : <span class="keyword">Type</span> :=</span><br><span class="line">| <span class="type">pair</span> (x : X) (y : Y).</span><br><span class="line"><span class="keyword">Arguments</span> pair &#123;X&#125; &#123;Y&#125; <span class="keyword">_</span> <span class="keyword">_</span>.  <span class="comment">(* omit two type var **)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;( x , y )&quot;</span> := (pair x y).</span><br><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;X * Y&quot;</span> := (prod X Y) : type_scope.  <span class="comment">(* only be used when parsing type, avoids clashing with multiplication *)</span></span><br></pre></td></tr></table></figure>
+
+<p>Be careful of <code>(X,Y)</code> and <code>X*Y</code>. Coq pick the ML way, not haskell way.</p>
+<h2 id="Combine-or-Zip"><a href="#Combine-or-Zip" class="headerlink" title="Combine or Zip"></a><code>Combine</code> or <code>Zip</code></h2><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Fixpoint</span> combine &#123;X Y : <span class="keyword">Type</span>&#125; (lx : list X) (ly : list Y)</span><br><span class="line">           : list (X*Y) :=</span><br><span class="line">  <span class="keyword">match</span> lx, ly <span class="built_in">with</span></span><br><span class="line">  | <span class="type">[], _</span> ⇒ []</span><br><span class="line">  | <span class="type">_</span>, [] ⇒ []</span><br><span class="line">  | <span class="type">x</span> :: tx, y :: ty ⇒ (x, y) :: (combine tx ty)</span><br><span class="line">  <span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+
+<p>Guess type?</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Check</span> @combine.</span><br><span class="line">@combine</span><br><span class="line">     : <span class="keyword">forall</span> X Y : <span class="keyword">Type</span>,</span><br><span class="line">       list X -&gt; list Y -&gt; list (X * Y)</span><br><span class="line"></span><br><span class="line"><span class="comment">(* A special form of `forall`? *)</span></span><br><span class="line"><span class="keyword">Check</span> combine.</span><br><span class="line">combine</span><br><span class="line">     : list ?X -&gt; list ?Y -&gt; list (?X * ?Y)</span><br><span class="line"><span class="keyword">where</span></span><br><span class="line">?X : [ |<span class="type">- Type</span>]</span><br><span class="line">?Y : [ |<span class="type">- Type</span>]</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Poly-Option"><a href="#Poly-Option" class="headerlink" title="Poly Option"></a>Poly Option</h2><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> option (X:<span class="keyword">Type</span>) : <span class="keyword">Type</span> :=</span><br><span class="line">  | <span class="type">Some</span> (x : X)</span><br><span class="line">  | <span class="type">None</span>.</span><br><span class="line"></span><br><span class="line"><span class="keyword">Arguments</span> Some &#123;X&#125; <span class="keyword">_</span>.</span><br><span class="line"><span class="keyword">Arguments</span> None &#123;X&#125;.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">(* find nth element if exist, None otherwise *)</span></span><br><span class="line"><span class="keyword">Fixpoint</span> nth_error &#123;X : <span class="keyword">Type</span>&#125; (l : list X) (n : nat) : option X :=</span><br><span class="line">  <span class="keyword">match</span> l <span class="built_in">with</span></span><br><span class="line">  | <span class="type">[] ⇒ None</span></span><br><span class="line">  | <span class="type">a</span> :: l&#x27; ⇒ <span class="keyword">if</span> n =? O <span class="keyword">then</span> Some a <span class="keyword">else</span> nth_error l&#x27; (pred n)</span><br><span class="line">  <span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Function-as-data"><a href="#Function-as-data" class="headerlink" title="Function as data"></a>Function as data</h2><p><em>Functions as first-class citizens</em></p>
+<h2 id="Higher-Order-Functions"><a href="#Higher-Order-Functions" class="headerlink" title="Higher-Order Functions"></a>Higher-Order Functions</h2><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> doit3times &#123;X:<span class="keyword">Type</span>&#125; (f:X→X) (n:X) : X :=</span><br><span class="line">  f (f (f n)).</span><br><span class="line"></span><br><span class="line"><span class="keyword">Check</span> @doit3times.</span><br><span class="line"><span class="comment">(* ===&gt; doit3times : forall X : Type, (X -&gt; X) -&gt; X -&gt; X *)</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Filter-taking-a-predicate-on-X"><a href="#Filter-taking-a-predicate-on-X" class="headerlink" title="Filter (taking a predicate on X)"></a>Filter (taking a <em>predicate</em> on <code>X</code>)</h2><p><em>collection-oriented</em> programming style - my first time seeing this, any comments?</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Fixpoint</span> filter &#123;X:<span class="keyword">Type</span>&#125; (test: X→bool) (l:list X)</span><br><span class="line">                : (list X) :=</span><br><span class="line">  <span class="keyword">match</span> l <span class="built_in">with</span></span><br><span class="line">  | <span class="type">[] ⇒ []</span></span><br><span class="line"><span class="type">  | h</span> :: t ⇒ <span class="keyword">if</span> test h <span class="keyword">then</span> h :: (filter test t)</span><br><span class="line">                        <span class="keyword">else</span> filter test t</span><br><span class="line">  <span class="keyword">end</span>.</span><br><span class="line"></span><br><span class="line"><span class="keyword">Example</span> test_filter1: filter evenb [<span class="number">1</span>;<span class="number">2</span>;<span class="number">3</span>;<span class="number">4</span>] = [<span class="number">2</span>;<span class="number">4</span>].</span><br><span class="line"><span class="keyword">Proof</span>. <span class="built_in">reflexivity</span>. <span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Anonymous-Functions"><a href="#Anonymous-Functions" class="headerlink" title="Anonymous Functions"></a>Anonymous Functions</h2><blockquote>
+<p>It is arguably a little sad, in the example just above, to be forced to define the function length_is_1 and give it a name just to be able to pass it as an argument to filter</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Example</span> test_anon_fun&#x27;:</span><br><span class="line">  doit3times (<span class="keyword">fun</span> n ⇒ n * n) <span class="number">2</span> = <span class="number">256.</span></span><br><span class="line"><span class="keyword">Proof</span>. <span class="built_in">reflexivity</span>. <span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
+
+<p>Syntax: hybrid of OCaml <code>fun n -&gt; n</code> and SML <code>fn n =&gt; n</code>.<br>and support multi-arguments (curried)</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Compute</span> ((<span class="keyword">fun</span> x y =&gt; x + y) <span class="number">3</span> <span class="number">5</span>).</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><p>Should be familar.</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Fixpoint</span> map &#123;X Y: <span class="keyword">Type</span>&#125; (f:X→Y) (l:list X) : (list Y) :=</span><br><span class="line">  <span class="keyword">match</span> l <span class="built_in">with</span></span><br><span class="line">  | <span class="type">[] ⇒ []</span></span><br><span class="line"><span class="type">  | h</span> :: t ⇒ (f h) :: (map f t)</span><br><span class="line">  <span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Check</span> @map</span><br><span class="line"></span><br><span class="line">@map : <span class="keyword">forall</span> X Y : <span class="keyword">Type</span>, (X -&gt; Y) -&gt; list X -&gt; list Y</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Slide-Q-A-3"><a href="#Slide-Q-A-3" class="headerlink" title="Slide Q&amp;A 3"></a>Slide Q&amp;A 3</h2><ol>
+<li>as above</li>
+</ol>
+<h2 id="option-map"><a href="#option-map" class="headerlink" title="option map"></a><code>option</code> map</h2><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> option_map &#123;X Y : <span class="keyword">Type</span>&#125; (f : X → Y) (xo : option X) : option Y :=</span><br><span class="line">  <span class="keyword">match</span> xo <span class="built_in">with</span></span><br><span class="line">    | <span class="type">None</span> ⇒ None</span><br><span class="line">    | <span class="type">Some</span> x ⇒ Some (f x)</span><br><span class="line">  <span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+
+<p>Functor Map (<code>fmap</code>) !</p>
+<h2 id="Fold-Reduce"><a href="#Fold-Reduce" class="headerlink" title="Fold (Reduce)"></a>Fold (Reduce)</h2><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Fixpoint</span> <span class="built_in">fold</span> &#123;X Y: <span class="keyword">Type</span>&#125; (f: X→Y→Y) (l: list X) (b: Y) : Y :=</span><br><span class="line">  <span class="keyword">match</span> l <span class="built_in">with</span></span><br><span class="line">  | <span class="type">nil</span> ⇒ b</span><br><span class="line">  | <span class="type">h</span> :: t ⇒ f h (<span class="built_in">fold</span> f t b)</span><br><span class="line">  <span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+
+<p>Fold Right (<code>foldr</code>). Argument order same with OCaml, different with Haskell. </p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Check</span> @<span class="built_in">fold</span></span><br><span class="line"></span><br><span class="line">@<span class="built_in">fold</span></span><br><span class="line">     : <span class="keyword">forall</span> X Y : <span class="keyword">Type</span>,</span><br><span class="line">       (X -&gt; Y -&gt; Y) -&gt; list X -&gt; Y -&gt; Y</span><br></pre></td></tr></table></figure>
+
+<h2 id="Slide-Q-A-4"><a href="#Slide-Q-A-4" class="headerlink" title="Slide Q&amp;A 4"></a>Slide Q&amp;A 4</h2><ol>
+<li>as above (type can be simply readed out)</li>
+<li><code>list nat -&gt; nat -&gt; nat</code></li>
+<li>10</li>
+</ol>
+<h2 id="Functions-That-Construct-Functions"><a href="#Functions-That-Construct-Functions" class="headerlink" title="Functions That Construct Functions"></a>Functions That Construct Functions</h2><p>Should be familar.<br>Use of <em>closure</em>.</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">definition constfun &#123;X: <span class="keyword">Type</span>&#125; (x: X) : nat→X :=</span><br><span class="line">  <span class="keyword">fun</span> (k:nat) ⇒ x.</span><br><span class="line"></span><br><span class="line"><span class="keyword">Definition</span> ftrue := constfun true.</span><br><span class="line"><span class="keyword">Example</span> constfun_example1 : ftrue <span class="number">0</span> = true.</span><br><span class="line"></span><br><span class="line"><span class="keyword">Example</span> constfun_example2 : (constfun <span class="number">5</span>) <span class="number">99</span> = <span class="number">5.</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Curried</strong> and <strong>partial application</strong></p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Check</span> plus.</span><br><span class="line"><span class="comment">(* ==&gt; nat -&gt; nat -&gt; nat *)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">Check</span> plus <span class="number">3.</span></span><br><span class="line"><span class="comment">(* ==&gt; nat -&gt; nat *)</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Universe-Inconsistency"><a href="#Universe-Inconsistency" class="headerlink" title="Universe Inconsistency"></a>Universe Inconsistency</h2><p>I encounter this problem when doing church numeral exercise.</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> plus (n m : cnat) : cnat := n cnat succ m.</span><br></pre></td></tr></table></figure>
+
+<p>will result in <code>universe inconsistency</code> error.</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Set</span> <span class="keyword">Printing</span> <span class="keyword">Universes</span>. <span class="comment">(* giving more error msg *)</span></span><br><span class="line"></span><br><span class="line">In environment</span><br><span class="line">n : cnat</span><br><span class="line">m : cnat</span><br><span class="line">The term <span class="string">&quot;cnat&quot;</span> has type <span class="string">&quot;Type@&#123;Top.168+1&#125;&quot;</span> while it is expected to have type <span class="string">&quot;Type@&#123;Top.168&#125;&quot;</span></span><br><span class="line">(universe inconsistency: Cannot enforce Top<span class="number">.168</span> &lt; Top<span class="number">.168</span> because Top<span class="number">.168</span> = Top<span class="number">.168</span>).</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="What’s-happening"><a href="#What’s-happening" class="headerlink" title="What’s happening?"></a>What’s happening?</h3><blockquote>
+<p>Yes, you can define: <code>Definition plus (n m : cnat) : cnat := n cnat succ m.</code> in System F.  However, in Coq’s richer logic, you need to be a little more careful about allowing types to be instantiated at their own types, else you run into issue of inconsistency. Essentially, there is a stratification of types (by “universes”) that says that one universe cannot contain a “bigger” universe. Often, things are polymorphic in their universe (i.e., work in all universes), you run into this where you cannot instantiate the “forall X, …” that is the definition of cnat by cnat itself.<br>– Prof. Fluet</p>
+</blockquote>
+<h3 id="https-stackoverflow-com-questions-32153710-what-does-error-universe-inconsistency-mean-in-coq"><a href="#https-stackoverflow-com-questions-32153710-what-does-error-universe-inconsistency-mean-in-coq" class="headerlink" title="https://stackoverflow.com/questions/32153710/what-does-error-universe-inconsistency-mean-in-coq"></a><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/32153710/what-does-error-universe-inconsistency-mean-in-coq">https://stackoverflow.com/questions/32153710/what-does-error-universe-inconsistency-mean-in-coq</a></h3><p><code>Check Type =&gt; Type</code> is a bit of a lie, everytime it the <code>Type</code> is not that same, but <strong>a bigger one</strong>.</p>
+<blockquote>
+<p>Formally, every Type has an index associated to it, called its <em>universe level</em>.</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Set</span> <span class="keyword">Printing</span> <span class="keyword">Universes</span>. <span class="comment">(* giving more error msg *)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">Check</span> <span class="keyword">Type</span>. </span><br><span class="line"><span class="keyword">Type</span>@&#123;Top<span class="number">.1</span>&#125; : <span class="keyword">Type</span>@&#123;Top<span class="number">.1</span>+<span class="number">1</span>&#125; <span class="comment">(* &#123;Top.1&#125; |=  *)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">Check</span> <span class="keyword">Type</span>. </span><br><span class="line"><span class="keyword">Type</span>@&#123;Top<span class="number">.2</span>&#125; : <span class="keyword">Type</span>@&#123;Top<span class="number">.2</span>+<span class="number">1</span>&#125; <span class="comment">(* &#123;Top.2&#125; |=  *)</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Thus, the correct answer for that question is that <code>Type_i</code> has type <code>Type_j</code>, for any index <code>j &gt; i</code>. This is needed to ensure the consistency of Coq’s theory: <em>if there were only one Type, it would be possible to show a contradiction, similarly to how one gets a contradiction in set theory if you assume that there is a set of all sets.</em><br>Coq generates one new index variable every time you write Type, and keeps track of internal constraints</p>
+</blockquote>
+<blockquote>
+<p>The error message you saw means that <em>Coq’s constraint solver</em> for universe levels says that there can’t be a solution to the constraint system you asked for.</p>
+</blockquote>
+<blockquote>
+<p>The problem is that the <code>forall</code> in the definition of <code>nat</code> is quantified over <code>Type_i</code>, but Coq’s logic forces <code>nat</code> to be itself of type <code>Type_j</code>, with <code>j &gt; i</code>. On the other hand, the application <code>n nat</code> requires that <code>j &lt;= i</code>, resulting in a non-satisfiable set of index constraints.</p>
+</blockquote>
+<p>From my understanding, the essences are: </p>
+<ol>
+<li>reasons: Allowing self-application introduces <em>logic contradiction (paradox)</em>.</li>
+<li>understanding: The <code>forall</code> is quantified over <em>types in the previous universe</em> (the universe w&#x2F;o itself).</li>
+</ol>
+<h3 id="From-https-coq-inria-fr-refman-addendum-universe-polymorphism-html"><a href="#From-https-coq-inria-fr-refman-addendum-universe-polymorphism-html" class="headerlink" title="From https://coq.inria.fr/refman/addendum/universe-polymorphism.html"></a>From <a target="_blank" rel="noopener" href="https://coq.inria.fr/refman/addendum/universe-polymorphism.html">https://coq.inria.fr/refman/addendum/universe-polymorphism.html</a></h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> identity &#123;A : <span class="keyword">Type</span>&#125; (a : A) := a.</span><br><span class="line"></span><br><span class="line">Fail <span class="keyword">Definition</span> selfid := identity (@identity).</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">The command has indeed failed <span class="built_in">with</span> message:</span><br><span class="line">The term <span class="string">&quot;@identity&quot;</span> has type <span class="string">&quot;forall A : Type, A -&gt; A&quot;</span></span><br><span class="line">while it is expected to have type <span class="string">&quot;?A&quot;</span></span><br><span class="line">(unable to find a well-typed instantiation <span class="keyword">for</span> <span class="string">&quot;?A&quot;</span>: cannot ensure that</span><br><span class="line"><span class="string">&quot;Type@&#123;Top.1+1&#125;&quot;</span> is a subtype of <span class="string">&quot;Type@&#123;Top.1&#125;&quot;</span>).</span><br></pre></td></tr></table></figure>
+
+<p>The link also introduce some advanced&#x2F;experimental way to do <em>polymorphic universe</em></p>
+<h2 id="Polymorphic-Church-Numerals-w-o-self-applying-itself"><a href="#Polymorphic-Church-Numerals-w-o-self-applying-itself" class="headerlink" title="Polymorphic Church Numerals w&#x2F;o self-applying itself"></a>Polymorphic Church Numerals w&#x2F;o self-applying itself</h2><blockquote>
+<p>References: <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Church_encoding">https://en.wikipedia.org/wiki/Church_encoding</a></p>
+</blockquote>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>Untyped doesn’t need to declare type…<br>STLC doesn’t have enough expressive power to represent church encoding<br>System F definition: </p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> cnat := <span class="keyword">forall</span> X : <span class="keyword">Type</span>, (X -&gt; X) -&gt; X -&gt; X.</span><br></pre></td></tr></table></figure>
+
+<h3 id="succ"><a href="#succ" class="headerlink" title="succ"></a><code>succ</code></h3><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">succ</span> = \n s z -&gt; s (n s z) </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> succ (n : cnat) : cnat :=</span><br><span class="line">  <span class="keyword">fun</span> X s z =&gt; s (n X s z).</span><br></pre></td></tr></table></figure>
+
+<h3 id="plus"><a href="#plus" class="headerlink" title="plus"></a><code>plus</code></h3><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">plus</span> = \m n -&gt; m scc n</span><br><span class="line"><span class="title">plus</span> = \m n s z -&gt; m s (n s z)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> plus (n m : cnat) : cnat :=</span><br><span class="line">  n cnat succ m.                <span class="comment">(* System F *)</span></span><br><span class="line">  <span class="keyword">fun</span> X s z =&gt; n X s (m X s z). <span class="comment">(* Coq *)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">plus = </span><br><span class="line">  lambda m:CNat.</span><br><span class="line">  lambda n:CNat. ( </span><br><span class="line">    lambda X.</span><br><span class="line">    lambda s:X-&gt;X.</span><br><span class="line">    lambda z:X. </span><br><span class="line">      m [X] s (n [X] s z)</span><br><span class="line">  ) as CNat;</span><br><span class="line"></span><br><span class="line">plus = </span><br><span class="line">  lambda m:CNat.</span><br><span class="line">  lambda n:CNat. </span><br><span class="line">    m [CNat] succ&#x27; n;</span><br></pre></td></tr></table></figure>
+
+<h3 id="mult"><a href="#mult" class="headerlink" title="mult"></a><code>mult</code></h3><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">mult</span> = \m n -&gt; m (plus n) n0 </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> mult (n m : cnat) : cnat :=</span><br><span class="line">  n cnat (plus m) zero.         <span class="comment">(* SystemF *)</span></span><br><span class="line">  <span class="keyword">fun</span> X s z =&gt; (m X (n X s) z). <span class="comment">(* Coq *)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mult = </span><br><span class="line">  lambda m:CNat.</span><br><span class="line">  lambda n:CNat. </span><br><span class="line">    m [CNat] (plus n) c0;   /* partial app `plus` */</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="exp"><a href="#exp" class="headerlink" title="exp"></a><code>exp</code></h3><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">pow</span> = \m n -&gt; m (mult n) n1</span><br><span class="line"><span class="title">exp</span> = \m n -&gt; n m</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> exp (n m : cnat) : cnat :=</span><br><span class="line">  n cnat (mult m) one         <span class="comment">(* SystemF *)</span></span><br><span class="line">  <span class="keyword">fun</span> X =&gt; m (X -&gt; X) (n X).  <span class="comment">(* Coq *)</span></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/LF-%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80/" rel="tag"># LF (逻辑基础)</a>
+              <a href="/tags/SF-%E8%BD%AF%E4%BB%B6%E5%9F%BA%E7%A1%80/" rel="tag"># SF (软件基础)</a>
+              <a href="/tags/Coq/" rel="tag"># Coq</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/read_sf_lf/2019-01-05-sf-lf-05-tactics/" rel="prev" title="「SF-LC」5 Tactics">
+                  <i class="fa fa-angle-left"></i> 「SF-LC」5 Tactics
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/read_sf_lf/2019-01-03-sf-lf-03-list/" rel="next" title="「SF-LC」3 List">
+                  「SF-LC」3 List <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

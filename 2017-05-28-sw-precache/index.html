@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2426182848439341"
+     crossorigin="anonymous"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33RJLY0818"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33RJLY0818');
+</script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="SW-Precache is a great Service Worker tool from Google. It is a node module designed to be integrated into your build process and to generate a service worker for you. Though you can use sw-precache o">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How does SW-Precache works?">
+<meta property="og:url" content="https://www.vvbuys.com/2017-05-28-sw-precache/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="SW-Precache is a great Service Worker tool from Google. It is a node module designed to be integrated into your build process and to generate a service worker for you. Though you can use sw-precache o">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-02T01:05:07.540Z">
+<meta property="article:modified_time" content="2024-02-02T01:05:07.540Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="Web">
+<meta property="article:tag" content="PWA">
+<meta property="article:tag" content="En">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/2017-05-28-sw-precache/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/2017-05-28-sw-precache/","path":"2017-05-28-sw-precache/","title":"How does SW-Precache works?"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>How does SW-Precache works? | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overview"><span class="nav-number">1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Initialization"><span class="nav-number">2.</span> <span class="nav-text">Initialization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#On-Install"><span class="nav-number">3.</span> <span class="nav-text">On Install</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#On-Activate"><span class="nav-number">4.</span> <span class="nav-text">On Activate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#On-Fetch"><span class="nav-number">5.</span> <span class="nav-text">On Fetch</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Should-Respond"><span class="nav-number">5.1.</span> <span class="nav-text">Should Respond?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Navigation-Fallback"><span class="nav-number">5.2.</span> <span class="nav-text">Navigation Fallback</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Respond-from-Cache"><span class="nav-number">5.3.</span> <span class="nav-text">Respond from Cache</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cache-Management-Recap"><span class="nav-number">6.</span> <span class="nav-text">Cache Management Recap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#The-first-build"><span class="nav-number">6.1.</span> <span class="nav-text">The first build</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-second-build"><span class="nav-number">6.2.</span> <span class="nav-text">The second build</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusions"><span class="nav-number">7.</span> <span class="nav-text">Conclusions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Precaching-is-NOT-free"><span class="nav-number">7.1.</span> <span class="nav-text">Precaching is NOT free</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%9CApp-Shell%E2%80%9D"><span class="nav-number">7.2.</span> <span class="nav-text">“App Shell”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#This-is-not-the-end"><span class="nav-number">7.3.</span> <span class="nav-text">This is not the end</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2017-05-28-sw-precache/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="How does SW-Precache works? | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          How does SW-Precache works?
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:05:07" itemprop="dateCreated datePublished" datetime="2024-02-02T01:05:07+00:00">2024-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><a target="_blank" rel="noopener" href="https://github.com/GoogleChrome/sw-precache"><em>SW-Precache</em></a> <em>is a great Service Worker tool from Google. It is a node module designed to be</em> <em>integrated</em> <em>into your build process and to generate a service worker for you.</em> <em>Though</em> <em>you can use sw-precache out of the box, you might still wonder what happens under the hood. There you go, this article is written for you!</em></p>
+<blockquote>
+<p>This post was first published at <a target="_blank" rel="noopener" href="https://medium.com/@Huxpro/how-does-sw-precache-works-2d99c3d3c725">Medium</a></p>
+</blockquote>
+<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>The core files involving in sw-precache are mainly three:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">service-worker.tmpl  </span><br><span class="line">lib/  </span><br><span class="line"> ├ sw-precache.js  </span><br><span class="line"> └ functions.js</span><br></pre></td></tr></table></figure>
+
+<p><code>sw-precache.js</code> is the main entry of the module. It reads the configuration, processes parameters, populates the <code>service-worker.tmpl</code> template and writes the result into specified file. And<code>functions.js</code> is just a module containing bunch of external functions which would be all injected into the generated service worker file as helpers.</p>
+<p>Since the end effect of sw-precache is performed by the generated service worker file in the runtime, a easy way to get an idea of what happens is by checking out source code inside <code>service-worker.tmpl</code> . It’s not hard to understand the essentials and I will help you.</p>
+<h2 id="Initialization"><a href="#Initialization" class="headerlink" title="Initialization"></a>Initialization</h2><p>The generated service worker file (let’s call it <code>sw.js</code> for instance) get configuration by text interpolation when <code>sw-precache.js</code> populating <code>service-worker.tmpl</code> .</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// service-worker.tmpl  </span></span><br><span class="line"><span class="keyword">var</span> precacheConfig = &lt;%= precacheConfig %&gt;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// sw.js  </span></span><br><span class="line"><span class="keyword">var</span> precacheConfig = [  </span><br><span class="line">  [<span class="string">&quot;js/a.js&quot;</span>, <span class="string">&quot;3cb4f0&quot;</span>],   </span><br><span class="line">  [<span class="string">&quot;css/b.css&quot;</span>, <span class="string">&quot;c5a951&quot;</span>]  </span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>It’s not difficult to see that it’s a list of relative urls and MD5 hashes. In fact, one thing that <code>sw-precache.js</code> do in the build time is to calculate hash of each file that it asked to “precache” from <code>staticFileGlobs</code> parameter.</p>
+<p>In <code>sw.js</code>, <code>precacheConfig</code> would be transformed into a ES6 Map with structure <code>Map &#123;absoluteUrl =&gt; cacheKey&#125;</code> as below. Noticed that I omit the origin part (e.g. <code>http://localhost</code>) for short.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; urlToCacheKeys  </span><br><span class="line">&lt; <span class="title class_">Map</span>(<span class="number">2</span>) &#123;  </span><br><span class="line">  <span class="string">&quot;http.../js/a.js&quot;</span> =&gt; <span class="string">&quot;http.../js/a.js?_sw-precache=3cb4f0&quot;</span>,   </span><br><span class="line">  <span class="string">&quot;http.../css/b.js&quot;</span> =&gt; <span class="string">&quot;http.../css/b.css?_sw-precache=c5a951&quot;</span>  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Instead of using raw URL as the cache key, sw-precache append a <code>_sw-precache=[hash]</code> to the end of each URL when populating, updating its cache and even fetching these subresouces. Those <code>_sw-precache=[hash]</code> are what we called <strong>cache-busting parameter*</strong>. It can prevent service worker from responding and caching out-of-date responses found in browsers’ HTTP cache indefinitely.</p>
+<p>Because each build would re-calculate hashes and re-generate a new <code>sw.js</code> with new <code>precacheConfig</code> containing those new hashes, <code>sw.js</code> can now determine the version of each subresources thus decide what part of its cache needs a update. <strong>This is pretty similar with what we commonly do when realizing long-term caching with webpack or gulp-rev, to do a byte-diff ahead of runtime.</strong></p>
+<p>*: Developer can opt out this behaviour with <code>dontCacheBustUrlsMatching</code> option if they set HTTP caching headers right. More details on <a target="_blank" rel="noopener" href="https://jakearchibald.com/2016/caching-best-practices/">Jake’s Post</a>.</p>
+<h2 id="On-Install"><a href="#On-Install" class="headerlink" title="On Install"></a>On Install</h2><blockquote>
+<p>ServiceWorker gives you an install event. You can use this to get stuff ready, stuff that must be ready before you handle other events.</p>
+</blockquote>
+<p>During the <code>install</code> lifecycle, <code>sw.js</code> open the cache and get started to populate its cache. One cool thing that it does for you is its <strong>incremental update</strong> mechanism.</p>
+<p>Sw-precache would search each cache key (the values of <code>urlsToCacheKeys</code>) in the <code>cachedUrls</code>, a ES6 Set containing URLs of all requests indexed from current version of cache, and only <code>fetch</code> and <code>cache.put</code> resources couldn’t be found in cache, i.e, never be cached before, thus reuse cached resources as much as possible.</p>
+<p>If you can not fully understand it, don’t worry. We will recap it later, now let’s move on.</p>
+<h2 id="On-Activate"><a href="#On-Activate" class="headerlink" title="On Activate"></a>On Activate</h2><blockquote>
+<p>Once a new ServiceWorker has installed &amp; a previous version isn’t being used, the new one activates, and you get an <code>activate</code> event. Because the old version is out of the way, it’s a good time to handle schema migrations in IndexedDB and also delete unused caches.</p>
+</blockquote>
+<p>During activation phase, <code>sw.js</code> would compare all existing requests in the cache, named <code>existingRequests</code> (noticed that it now contains resources just cached on installation phase) with <code>setOfExpectedUrls</code>, a ES6 Set from the values of <code>urlsToCacheKeys</code>. And delete any requests not matching from cache.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// sw.js</span></span><br><span class="line">existingRequests.<span class="title function_">map</span>(<span class="keyword">function</span>(<span class="params">existingRequest</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (!setOfExpectedUrls.<span class="title function_">has</span>(existingRequest.<span class="property">url</span>)) &#123;</span><br><span class="line">    <span class="keyword">return</span> cache.<span class="title function_">delete</span>(existingRequest);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="On-Fetch"><a href="#On-Fetch" class="headerlink" title="On Fetch"></a>On Fetch</h2><p>Although the comments in source code have elaborated everything well, I wanna highlight some points during the request intercepting duration.</p>
+<h3 id="Should-Respond"><a href="#Should-Respond" class="headerlink" title="Should Respond?"></a>Should Respond?</h3><p>Firstly, we need to determine whether this request was included in our “pre-caching list”. If it was, this request should have been pre-fetched and pre-cached thus we can respond it directly from cache.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// sw.js*  </span></span><br><span class="line"><span class="keyword">var</span> url = event.<span class="property">request</span>.<span class="property">url</span>      </span><br><span class="line">shouldRespond = urlsToCacheKeys.<span class="title function_">has</span>(url);</span><br></pre></td></tr></table></figure>
+
+<p>Noticed that we are matching raw URLs (e.g. <code>http://localhost/js/a.js</code>) instead of the hashed ones. It prevent us from calculating hashes at runtime, which would have a significant cost. And since we have kept the relationship in <code>urlToCacheKeys</code> it’s easy to index the hashed one out.</p>
+<p><em>* In real cases, sw-precache would take <code>ignoreUrlParametersMatching</code> and <code>directoryIndex</code> options into consideration.</em></p>
+<h3 id="Navigation-Fallback"><a href="#Navigation-Fallback" class="headerlink" title="Navigation Fallback"></a>Navigation Fallback</h3><p>One interesting feature that sw-precache provided is <code>navigationFallback</code>(previously <code>defaultRoute</code>), which detect navigation request and respond a preset fallback HTML document when the URL of navigation request did not exist in <code>urlsToCacheKeys</code>.</p>
+<p>It is presented for SPA using History API based routing, allowing responding arbitrary URLs with one single HTML entry defined in <code>navigationFallback</code>, kinda reimplementing a Nginx rewrite in service worker*. Do noticed that service worker only intercept document (navigation request) inside its scope (and any resources referenced in those documents of course). So navigation towards outside scope would not be effected.</p>
+<p><em>* <code>navigateFallbackWhitelist</code> can be provided to limit the “rewrite” scope.</em></p>
+<h3 id="Respond-from-Cache"><a href="#Respond-from-Cache" class="headerlink" title="Respond from Cache"></a>Respond from Cache</h3><p>Finally, we get the appropriate cache key (the hashed URL) by raw URL with <code>urlsToCacheKeys</code> and invoke <code>event.respondWith()</code> to respond requests from cache directly. Done!</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// sw.js*</span></span><br><span class="line">event.<span class="title function_">respondWith</span>(</span><br><span class="line">  caches.<span class="title function_">open</span>(cacheName).<span class="title function_">then</span>(<span class="function"><span class="params">cache</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> cache.<span class="title function_">match</span>(urlsToCacheKeys.<span class="title function_">get</span>(url))</span><br><span class="line">      .<span class="title function_">then</span>(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (response) <span class="keyword">return</span> response;</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p><em>* The code was “ES6-fied” with error handling part removed.</em></p>
+<h2 id="Cache-Management-Recap"><a href="#Cache-Management-Recap" class="headerlink" title="Cache Management Recap"></a>Cache Management Recap</h2><p>That’s recap the cache management part with a full lifecycle simulation.</p>
+<h3 id="The-first-build"><a href="#The-first-build" class="headerlink" title="The first build"></a>The first build</h3><p>Supposed we are in the very first load, the <code>cachedUrls</code> would be a empty set thus all subresources listed to be pre-cached would be fetched and put into cache on SW install time.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// cachedUrls  </span></span><br><span class="line"><span class="title class_">Set</span>(<span class="number">0</span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// urlToCacheKeys  </span></span><br><span class="line"><span class="title class_">Map</span>(<span class="number">2</span>) &#123;  </span><br><span class="line">  <span class="string">&quot;http.../js/a.js&quot;</span> =&gt; <span class="string">&quot;http.../js/a.js?_sw-precache=3cb4f0&quot;</span>,   </span><br><span class="line">  <span class="string">&quot;http.../css/b.js&quot;</span> =&gt; <span class="string">&quot;http.../css/b.css?_sw-precache=c5a951&quot;</span>  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// SW Network Logs  </span></span><br><span class="line">[sw] <span class="variable constant_">GET</span> a.<span class="property">js</span>?_sw-precache=3cb4f0      </span><br><span class="line">[sw] <span class="variable constant_">GET</span> b.<span class="property">css</span>?_sw-precache=c5a951</span><br></pre></td></tr></table></figure>
+
+<p>After that, it will start to control the page immediately because the <code>sw.js</code> would call <code>clients.claim()</code> by default. It means the <code>sw.js</code> will start to intercept and try to serve future fetches from caches, so it’s good for performance.</p>
+<p>In the second load, all subresouces have been cached and will be served directly from cache. So none requests are sent from <code>sw.js</code>.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// cachedUrls  </span></span><br><span class="line"><span class="title class_">Set</span>(<span class="number">2</span>) &#123;  </span><br><span class="line">  <span class="string">&quot;http.../js/a.js? _sw-precache=3cb4f0&quot;</span>,   </span><br><span class="line">  <span class="string">&quot;http.../css/b.css? _sw-precache=c5a951&quot;</span>  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// urlToCacheKeys  </span></span><br><span class="line"><span class="title class_">Map</span>(<span class="number">2</span>) &#123;  </span><br><span class="line">  <span class="string">&quot;http.../js/a.js&quot;</span> =&gt; <span class="string">&quot;http.../js/a.js? _sw-precache=3cb4f0&quot;</span>,   </span><br><span class="line">  <span class="string">&quot;http.../css/b.js&quot;</span> =&gt; <span class="string">&quot;http.../css/b.css? _sw-precache=c5a951&quot;</span>  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// SW Network Logs  </span></span><br><span class="line"><span class="comment">// Empty</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="The-second-build"><a href="#The-second-build" class="headerlink" title="The second build"></a>The second build</h3><p>Once we create a byte-diff of our subresouces (e.g., we modify <code>a.js</code> to a new version with hash value <code>d6420f</code>) and re-run the build process, a new version of <code>sw.js</code> would be also generated.</p>
+<p>The new <code>sw.js</code> would run alongside with the existing one, and start its own installation phase.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// cachedUrls  </span></span><br><span class="line"><span class="title class_">Set</span>(<span class="number">2</span>) &#123;  </span><br><span class="line">  <span class="string">&quot;http.../js/a.js? _sw-precache=3cb4f0&quot;</span>,   </span><br><span class="line">  <span class="string">&quot;http.../css/b.css? _sw-precache=c5a951&quot;</span>  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// urlToCacheKeys  </span></span><br><span class="line"><span class="title class_">Map</span>(<span class="number">2</span>) &#123;  </span><br><span class="line">  <span class="string">&quot;http.../js/a.js&quot;</span> =&gt; <span class="string">&quot;http.../js/a.js? _sw-precache=d6420f&quot;</span>,   </span><br><span class="line">  <span class="string">&quot;http.../css/b.js&quot;</span> =&gt; <span class="string">&quot;http.../css/b.css? _sw-precache=c5a951&quot;</span>  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// SW Network Logs  </span></span><br><span class="line"> [sw] <span class="variable constant_">GET</span> a.<span class="property">js</span>?_sw-precache=d6420f</span><br></pre></td></tr></table></figure>
+
+<p>This time, <code>sw.js</code> see that there is a new version of <code>a.js</code> requested, so it fetch <code>/js/a.js?_sw-precache=d6420f</code>  and put the response into cache. In fact, we have two versions of <code>a.js</code> in cache at the same time in this moment.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// what&#x27;s in cache?</span></span><br><span class="line">http.../js/a.<span class="property">js</span>?_sw-precache=3cb4f0</span><br><span class="line">http.../js/a.<span class="property">js</span>?_sw-precache=d6420f</span><br><span class="line">http.../css/b.<span class="property">css</span>?_sw-precache=c5a951</span><br></pre></td></tr></table></figure>
+
+<p>By default, <code>sw.js</code> generated by sw-precache would call <code>self.skipWaiting</code> so it would take over the page and move onto activating phase immediately.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// existingRequests</span></span><br><span class="line">http.../js/a.<span class="property">js</span>?_sw-precache=3cb4f0</span><br><span class="line">http.../js/a.<span class="property">js</span>?_sw-precache=d6420f</span><br><span class="line">http.../css/b.<span class="property">css</span>?_sw-precache=c5a951</span><br><span class="line"></span><br><span class="line"><span class="comment">// setOfExpectedUrls</span></span><br><span class="line"><span class="title class_">Set</span>(<span class="number">2</span>) &#123;</span><br><span class="line">  <span class="string">&quot;http.../js/a.js?_sw-precache=d6420f&quot;</span>, </span><br><span class="line">  <span class="string">&quot;http.../css/b.css?_sw-precache=c5a951&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// the one deleted</span></span><br><span class="line">http.../js/a.<span class="property">js</span>?_sw-precache=3cb4f0</span><br></pre></td></tr></table></figure>
+
+<p>By comparing existing requests in the cache with set of expected ones, the old version of <code>a.js</code> would be deleted from cache. This ensure there is only one version of our site’s resources each time.</p>
+<p>That’s it! We finish the simulation successfully.</p>
+<h2 id="Conclusions"><a href="#Conclusions" class="headerlink" title="Conclusions"></a>Conclusions</h2><p>As its name implied, sw-precache is designed specifically for the needs of precaching some critical static resources. It only does one thing but does it well. I’d love to give you some opinionated suggestions but you decide whether your requirements suit it or not.</p>
+<h3 id="Precaching-is-NOT-free"><a href="#Precaching-is-NOT-free" class="headerlink" title="Precaching is NOT free"></a>Precaching is NOT free</h3><p>So don’t precached everything. Sw-precache use a <a target="_blank" rel="noopener" href="https://jakearchibald.com/2014/offline-cookbook/#on-install-as-a-dependency">“On Install — as a dependency”</a> strategy for your precache configs. A huge list of requests would delay the time service worker finishing installing and, in addition, wastes users’ bandwidth and disk space.</p>
+<p>For instance, if you wanna build a offline-capable blogs. You had better not include things like <code>&#39;posts/*.html</code> in <code>staticFileGlobs</code>. It would be a huge disaster to data-sensitive people if you have hundreds of posts. Use a Runtime Caching instead.</p>
+<h3 id="“App-Shell”"><a href="#“App-Shell”" class="headerlink" title="“App Shell”"></a>“App Shell”</h3><blockquote>
+<p>A helpful analogy is to think of your App Shell as the code and resources that would be published to an app store for a native iOS or Android application.</p>
+</blockquote>
+<p>Though I always consider that the term “App Shell” is too narrow to cover its actual usages now, It is widely used and commonly known. I personally prefer calling them <strong>“Web Installation Package”</strong> straightforward because they can be truly installed into users’ disks and our web app can boot up directly from them in any network environments. The only difference between “Web Installation Package” and iOS&#x2F;Android App is that we need strive to limit it within a reasonable size.</p>
+<p>Precaching is perfect for this kinda resources such as entry html, visual placeholders, offline pages etc., because they can be static in one version, small-sized, and most importantly, part of critical rendering path. We wanna put first meaningful paint ASAP to our user thus we precache them to eliminate HTTP roundtrip time.</p>
+<p>BTW, if you are using HTML5 Application Cache before, sw-precache is really a perfect replacement because it can cover nearly all use cases the App Cache provide.</p>
+<h3 id="This-is-not-the-end"><a href="#This-is-not-the-end" class="headerlink" title="This is not the end"></a>This is not the end</h3><p>Sw-precache is just one of awesome tools that can help you build service worker. If you are planing to add some service worker power into your website, Don’t hesitate to checkout sw-toolbox, sw-helper (a new tool Google is working on) and many more from communities.</p>
+<p>That’s all. Wish you enjoy!</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Web/" rel="tag"># Web</a>
+              <a href="/tags/PWA/" rel="tag"># PWA</a>
+              <a href="/tags/En/" rel="tag"># En</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2017-07-26-farewell-flash/" rel="prev" title="Farewell, Flash. 感谢你，但这一次是真正的永别。">
+                  <i class="fa fa-angle-left"></i> Farewell, Flash. 感谢你，但这一次是真正的永别。
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2017-04-06-html-document/" rel="next" title="如何理解 <code>document</code> 对象是 <code>HTMLDocument</code> 的实例？">
+                  如何理解 <code>document</code> 对象是 <code>HTMLDocument</code> 的实例？ <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

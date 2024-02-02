@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2426182848439341"
+     crossorigin="anonymous"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33RJLY0818"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33RJLY0818');
+</script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="​	 	  该项目是作者学习数据库技术时整理的项目，非关系型数据库Redis的核心存储引擎使用的数据结构就是跳表，该项目采用C++语言基于跳表结构设计了一个轻量级键值型存储引擎，支持插入、查询、删除、显示、导出、重加载6种基本操作。为了测试引擎效率，作者开发了一个使用和web bench相似技术的压力测试工具Stress Bench。在随机读写情况下，该引擎每秒在多个并发线程下的累计执行成功次数都">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「项目复现」基于跳表结构的KV存储引擎设计">
+<meta property="og:url" content="https://www.vvbuys.com/2022-07-09-%E3%80%90%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE%E3%80%91%E5%9F%BA%E4%BA%8E%E8%B7%B3%E8%A1%A8%E7%BB%93%E6%9E%84%E7%9A%84KV%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%E8%AE%BE%E8%AE%A1/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="​	 	  该项目是作者学习数据库技术时整理的项目，非关系型数据库Redis的核心存储引擎使用的数据结构就是跳表，该项目采用C++语言基于跳表结构设计了一个轻量级键值型存储引擎，支持插入、查询、删除、显示、导出、重加载6种基本操作。为了测试引擎效率，作者开发了一个使用和web bench相似技术的压力测试工具Stress Bench。在随机读写情况下，该引擎每秒在多个并发线程下的累计执行成功次数都">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.vvbuys.com/img-post/%E9%A1%B9%E7%9B%AE%E8%83%8C%E6%99%AF/%E3%80%90%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE%E3%80%91%E5%9F%BA%E4%BA%8E%E8%B7%B3%E8%A1%A8%E7%BB%93%E6%9E%84%E7%9A%84KV%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%E8%AE%BE%E8%AE%A1/%E8%B7%B3%E8%A1%A8%E7%9A%84%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="https://www.vvbuys.com/img-post/%E9%A1%B9%E7%9B%AE%E8%83%8C%E6%99%AF/%E3%80%90%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE%E3%80%91%E5%9F%BA%E4%BA%8E%E8%B7%B3%E8%A1%A8%E7%BB%93%E6%9E%84%E7%9A%84KV%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%E8%AE%BE%E8%AE%A1/%E8%B7%B3%E8%A1%A8%E7%9A%84%E6%8F%92%E5%85%A5%E5%8E%9F%E7%90%86.png">
+<meta property="article:published_time" content="2022-07-09T00:00:00.000Z">
+<meta property="article:modified_time" content="2024-02-02T01:00:55.435Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="项目复现">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.vvbuys.com/img-post/%E9%A1%B9%E7%9B%AE%E8%83%8C%E6%99%AF/%E3%80%90%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE%E3%80%91%E5%9F%BA%E4%BA%8E%E8%B7%B3%E8%A1%A8%E7%BB%93%E6%9E%84%E7%9A%84KV%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%E8%AE%BE%E8%AE%A1/%E8%B7%B3%E8%A1%A8%E7%9A%84%E7%BB%93%E6%9E%84.png">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/2022-07-09-%E3%80%90%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE%E3%80%91%E5%9F%BA%E4%BA%8E%E8%B7%B3%E8%A1%A8%E7%BB%93%E6%9E%84%E7%9A%84KV%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%E8%AE%BE%E8%AE%A1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/2022-07-09-%E3%80%90%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE%E3%80%91%E5%9F%BA%E4%BA%8E%E8%B7%B3%E8%A1%A8%E7%BB%93%E6%9E%84%E7%9A%84KV%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%E8%AE%BE%E8%AE%A1/","path":"2022-07-09-【学习项目】基于跳表结构的KV存储引擎设计/","title":"「项目复现」基于跳表结构的KV存储引擎设计"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>「项目复现」基于跳表结构的KV存储引擎设计 | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E6%8A%80%E6%9C%AF%E6%A0%88"><span class="nav-number">1.</span> <span class="nav-text">1、技术栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E5%AF%B9%E5%A4%96%E6%8E%A5%E5%8F%A3"><span class="nav-number">2.</span> <span class="nav-text">2、对外接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E8%B7%B3%E8%A1%A8%E5%8E%9F%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">3、跳表原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E3%80%81%E8%B7%B3%E8%A1%A8%E5%AE%9E%E7%8E%B0"><span class="nav-number">4.</span> <span class="nav-text">4、跳表实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E8%B7%B3%E8%A1%A8%E7%9A%84%E8%8A%82%E7%82%B9"><span class="nav-number">4.1.</span> <span class="nav-text">（1）跳表的节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E9%81%8D%E5%8E%86%E7%9A%84%E8%B7%B3%E8%A1%A8"><span class="nav-number">4.2.</span> <span class="nav-text">（2）遍历的跳表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E8%B7%B3%E8%A1%A8%E7%9A%84%E6%8F%92%E5%85%A5"><span class="nav-number">4.3.</span> <span class="nav-text">（3）跳表的插入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%884%EF%BC%89%E8%B7%B3%E8%A1%A8%E7%9A%84%E6%9F%A5%E8%AF%A2"><span class="nav-number">4.4.</span> <span class="nav-text">（4）跳表的查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%885%EF%BC%89%E8%B7%B3%E8%A1%A8%E7%9A%84%E5%88%A0%E9%99%A4"><span class="nav-number">4.5.</span> <span class="nav-text">（5）跳表的删除</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5%E3%80%81%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95"><span class="nav-number">5.</span> <span class="nav-text">5、压力测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E5%88%9B%E5%BB%BAN%E4%B8%AA%E5%AD%90%E8%BF%9B%E7%A8%8B"><span class="nav-number">5.1.</span> <span class="nav-text">（1）创建N个子进程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%88A%EF%BC%89fork%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">5.1.1.</span> <span class="nav-text">（A）fork的使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%88B%EF%BC%89fork%E7%9A%84%E5%BA%95%E5%B1%82"><span class="nav-number">5.1.2.</span> <span class="nav-text">（B）fork的底层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%88C%EF%BC%89%E7%88%B6%E5%AD%90%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%85%B3%E9%97%AD"><span class="nav-number">5.1.3.</span> <span class="nav-text">（C）父子进程的关闭</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%88D%EF%BC%89%E5%8C%BF%E5%90%8D%E7%AE%A1%E9%81%93%E6%8A%80%E6%9C%AF"><span class="nav-number">5.1.4.</span> <span class="nav-text">（D）匿名管道技术</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E5%AE%9A%E6%97%B6%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86"><span class="nav-number">5.2.</span> <span class="nav-text">（2）定时信号处理</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2022-07-09-%E3%80%90%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE%E3%80%91%E5%9F%BA%E4%BA%8E%E8%B7%B3%E8%A1%A8%E7%BB%93%E6%9E%84%E7%9A%84KV%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%E8%AE%BE%E8%AE%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="「项目复现」基于跳表结构的KV存储引擎设计 | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「项目复现」基于跳表结构的KV存储引擎设计
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-07-09 00:00:00" itemprop="dateCreated datePublished" datetime="2022-07-09T00:00:00+00:00">2022-07-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-02-02 01:00:55" itemprop="dateModified" datetime="2024-02-02T01:00:55+00:00">2024-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>​	 	  该项目是作者学习<strong>数据库技术</strong>时整理的项目，非关系型数据库Redis的核心存储引擎使用的数据结构就是<strong>跳表</strong>，该项目采用<strong>C++语言</strong>基于<strong>跳表结构</strong>设计了一个<strong>轻量级键值型存储引擎</strong>，支持<strong>插入</strong>、<strong>查询</strong>、<strong>删除</strong>、<strong>显示</strong>、<strong>导出</strong>、<strong>重加载</strong>6种基本操作。为了测试引擎效率，作者开发了一个使用和web bench相似技术的压力测试工具<strong>Stress Bench</strong>。在<strong>随机读写</strong>情况下，该引擎每秒在<strong>多个并发线程</strong>下的<strong>累计执行成功次数</strong>都可以保持在<strong>30000</strong>左右。</p>
+<h2 id="1、技术栈"><a href="#1、技术栈" class="headerlink" title="1、技术栈"></a>1、技术栈</h2><ul>
+<li>基于<strong>跳表结构</strong>和<strong>面向对象思想</strong>的节点类、跳表类的开发与封装；</li>
+<li>基于<strong>父子多进程</strong>和<strong>匿名管道技术</strong>的<strong>Stress Bench</strong>测试工具；</li>
+<li>使用<strong>互斥锁</strong>，防止并发插入数据时发生冲突；</li>
+<li>基于<strong>MakeFile</strong>的多文件编译方式；</li>
+</ul>
+<h2 id="2、对外接口"><a href="#2、对外接口" class="headerlink" title="2、对外接口"></a>2、对外接口</h2><ul>
+<li>insert_element(int,string)  				&#x2F;&#x2F; 插入记录</li>
+<li>srase_element(int)                              &#x2F;&#x2F; 删除记录</li>
+<li>search_element(int)                            &#x2F;&#x2F; 查询记录</li>
+<li>displayList(int)                                     &#x2F;&#x2F; 显示结构</li>
+<li>dumpFile(string)                                  &#x2F;&#x2F; 导出数据</li>
+<li>loadFile(string)                                    &#x2F;&#x2F; 加载数据</li>
+<li>size()                                                     &#x2F;&#x2F; 获取数据规模</li>
+</ul>
+<h2 id="3、跳表原理"><a href="#3、跳表原理" class="headerlink" title="3、跳表原理"></a>3、跳表原理</h2><p>跳表是在一个原始链表中添加了多级索引，通过每一级索引来进行二分搜索的数据结构，其架构如下：</p>
+<p>![](&#x2F;img-post&#x2F;项目背景&#x2F;【学习项目】基于跳表结构的KV存储引擎设计&#x2F;跳表的结构.png)</p>
+<p><img src="/../img-post/%E9%A1%B9%E7%9B%AE%E8%83%8C%E6%99%AF/%E3%80%90%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE%E3%80%91%E5%9F%BA%E4%BA%8E%E8%B7%B3%E8%A1%A8%E7%BB%93%E6%9E%84%E7%9A%84KV%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%E8%AE%BE%E8%AE%A1/%E8%B7%B3%E8%A1%A8%E7%9A%84%E7%BB%93%E6%9E%84.png" alt="img"></p>
+<p>在上述跳表中，假如查询key&#x3D;10的记录，则可以从第二级索引开始快速定位：</p>
+<ul>
+<li>遍历第二级索引，从1开始，发现7&lt;10&lt;13，7就是该层要找的索引，通过它跳到下一级索引</li>
+<li>遍历第一级索引，从7开始，发现9&lt;10&lt;13，9就是该层要找的索引，通过它跳到下一级索引</li>
+<li>遍历原始链表，从9开始，发现10&#x3D;10，10就是该层要找的最终索引</li>
+</ul>
+<p>相比于直接遍历原始链表，多级索引的存在使跳表查询效率更快，总结：</p>
+<p><strong>跳表的优点</strong>： 可以实现高效的插入、删除和查询  ，时间复杂度为O(logn). </p>
+<p><strong>跳表的缺点</strong>：需要存储多级索引，增加了额外的存储空间</p>
+<p><strong>跳表的用途</strong>：经典的以空间换时间的数据结构，常用于非关系数据库的存储引擎中</p>
+<h2 id="4、跳表实现"><a href="#4、跳表实现" class="headerlink" title="4、跳表实现"></a>4、跳表实现</h2><p>跳表的原理很好理解，在实现上比一般链表要难一点。</p>
+<h3 id="（1）跳表的节点"><a href="#（1）跳表的节点" class="headerlink" title="（1）跳表的节点"></a>（1）跳表的节点</h3><p>首先对于每个跳表的节点来讲，其肯定要保存两个方向的指针：向右和向下，可以定义如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 节点类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Node</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 构造函数</span></span><br><span class="line">    <span class="built_in">Node</span>(Node* right,Node* down,<span class="type">const</span> <span class="type">int</span> k, <span class="type">const</span> string v):<span class="built_in">right</span>(right),<span class="built_in">down</span>(down),<span class="built_in">key</span>(k),<span class="built_in">value</span>(v)&#123;&#125;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">get_key</span><span class="params">()</span> <span class="type">const</span></span>&#123;<span class="keyword">return</span> key;&#125;;</span><br><span class="line">    <span class="function">string <span class="title">get_value</span><span class="params">()</span> <span class="type">const</span></span>&#123;<span class="keyword">return</span> value;&#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">set_value</span><span class="params">(string)</span></span>&#123;<span class="keyword">this</span>-&gt;value=value;&#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Node* right;<span class="comment">// 右节点指针</span></span><br><span class="line">    Node* down;<span class="comment">// 下节点指针</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> key; <span class="comment">// 索引</span></span><br><span class="line">    string value;<span class="comment">// 数据</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="（2）遍历的跳表"><a href="#（2）遍历的跳表" class="headerlink" title="（2）遍历的跳表"></a>（2）遍历的跳表</h3><p>首先跳表有一个<strong>虚拟头结点_header</strong>（下面的“+”）指向链表的<strong>最上层索引的第一个节点</strong>：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">level 4     +--&gt;1+                                             +----&gt;100</span></span><br><span class="line"><span class="comment">                 |</span></span><br><span class="line"><span class="comment">                 |                     </span></span><br><span class="line"><span class="comment">level 3         1+--------&gt;10+----------------&gt;50+------&gt;70 </span></span><br><span class="line"><span class="comment">                 |</span></span><br><span class="line"><span class="comment">                 |                                             </span></span><br><span class="line"><span class="comment">level 2         1+------&gt; 10+------&gt; 30+------&gt;50+-------&gt;70 </span></span><br><span class="line"><span class="comment">				 |</span></span><br><span class="line"><span class="comment">                 |</span></span><br><span class="line"><span class="comment">level 1         1+--&gt;4+--&gt;10+------&gt; 30+------&gt;50+-------&gt;70 </span></span><br><span class="line"><span class="comment">				 |</span></span><br><span class="line"><span class="comment">                 |</span></span><br><span class="line"><span class="comment">level 0         1+&gt;4-&gt;9+-&gt;10+------&gt; 30+-&gt;40+-&gt;50+--&gt;60+-&gt;70 </span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<p>假如要把上述跳表的每一层的key打印出来，则可以从**_header**出发：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Node *p_header = <span class="keyword">this</span>-&gt;_header;</span><br><span class="line">Node *p= <span class="literal">nullptr</span>;<span class="comment">// 每一层的头结点</span></span><br><span class="line"><span class="type">int</span> level=<span class="keyword">this</span>-&gt;_skip_list_level;</span><br><span class="line"><span class="comment">// 从上到下搜索</span></span><br><span class="line"><span class="keyword">while</span>(p_header)&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Level &quot;</span> &lt;&lt; level &lt;&lt; <span class="string">&quot;: &quot;</span>;</span><br><span class="line">    p=p_header;<span class="comment">// 获取当前层的头结点</span></span><br><span class="line">    <span class="comment">// 从左向右查找,打印当前层</span></span><br><span class="line">    <span class="keyword">while</span>(p-&gt;right)&#123;</span><br><span class="line">       p=p-&gt;right;</span><br><span class="line">       std::cout &lt;&lt;p-&gt;<span class="built_in">get_key</span>() &lt;&lt; <span class="string">&quot;:&quot;</span> &lt;&lt; p-&gt;<span class="built_in">get_value</span>() ;</span><br><span class="line">    &#125;</span><br><span class="line">    std::cout &lt;&lt; std::endl;</span><br><span class="line">    p_header = p_header-&gt;down;<span class="comment">// 下降一层</span></span><br><span class="line">    level--;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述代码好理解</p>
+<h3 id="（3）跳表的插入"><a href="#（3）跳表的插入" class="headerlink" title="（3）跳表的插入"></a>（3）跳表的插入</h3><p>跳表的插入负责构建整个跳表，是跳表中最难的需求。跳表的插入原理如下：</p>
+<p>![](&#x2F;img-post&#x2F;项目背景&#x2F;【学习项目】基于跳表结构的KV存储引擎设计&#x2F;跳表的插入原理.png)</p>
+<p><img src="/../img-post/%E9%A1%B9%E7%9B%AE%E8%83%8C%E6%99%AF/%E3%80%90%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE%E3%80%91%E5%9F%BA%E4%BA%8E%E8%B7%B3%E8%A1%A8%E7%BB%93%E6%9E%84%E7%9A%84KV%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%E8%AE%BE%E8%AE%A1/%E8%B7%B3%E8%A1%A8%E7%9A%84%E6%8F%92%E5%85%A5%E5%8E%9F%E7%90%86.png" alt="img">在上图中，要插入一个节点16，则要在多个层都插入这个节点16，这个多个层要可能随机，保证每一层都比上一层的节点少一半。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 插入某条记录</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">SkipList::insert_element</span><span class="params">(<span class="type">const</span> <span class="type">int</span> key, <span class="type">const</span> string value)</span> </span>&#123;</span><br><span class="line">    mtx.<span class="built_in">lock</span>();</span><br><span class="line">    <span class="comment">//从上至下记录搜索路径</span></span><br><span class="line">    pathList.<span class="built_in">clear</span>();</span><br><span class="line">    Node *p = <span class="keyword">this</span>-&gt;_header;</span><br><span class="line">    <span class="comment">// 从上到下去搜索，搜索后p指向次小于key的位置，应在p后新插入</span></span><br><span class="line">    <span class="keyword">while</span>(p)&#123;</span><br><span class="line">        <span class="comment">// 从左向右查找</span></span><br><span class="line">        <span class="keyword">while</span>(p-&gt;right&amp;&amp;p-&gt;right-&gt;<span class="built_in">get_key</span>()&lt;key)p=p-&gt;right;</span><br><span class="line">        pathList.<span class="built_in">push_back</span>(p);<span class="comment">// 此时的p是最后一个小于num的节点</span></span><br><span class="line">        p = p-&gt;down;<span class="comment">// 下降一层</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果current存在,放弃插入</span></span><br><span class="line">    Node* current=pathList.<span class="built_in">back</span>()-&gt;right;</span><br><span class="line">    <span class="keyword">if</span> (current!= <span class="literal">NULL</span> &amp;&amp; current-&gt;<span class="built_in">get_key</span>() == key) &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;key: &quot;</span> &lt;&lt; key &lt;&lt; <span class="string">&quot;, exists&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        mtx.<span class="built_in">unlock</span>();</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 此时p指向最底层中插入位置前</span></span><br><span class="line">    <span class="type">bool</span>  insertUp = <span class="literal">true</span>;</span><br><span class="line">    Node* downNode = <span class="literal">NULL</span>;<span class="comment">// 下一个节点为NULL</span></span><br><span class="line">    <span class="comment">// 从下至上搜索路径回溯，50%概率</span></span><br><span class="line">    <span class="comment">// 这里实现是会保证不会超过当前的层数的，然后靠头结点去额外加层， 即每次新增一层</span></span><br><span class="line">    <span class="type">int</span> level=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (insertUp &amp;&amp; pathList.<span class="built_in">size</span>() &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        Node *insert = pathList.<span class="built_in">back</span>();</span><br><span class="line">        pathList.<span class="built_in">pop_back</span>();</span><br><span class="line">        <span class="comment">// 添加新结点</span></span><br><span class="line">        insert-&gt;right = <span class="keyword">new</span> <span class="built_in">Node</span>(insert-&gt;right,downNode,key,value); </span><br><span class="line">        <span class="comment">// 把新结点赋值为downNode</span></span><br><span class="line">        downNode = insert-&gt;right; </span><br><span class="line">        <span class="comment">// 50%概率   </span></span><br><span class="line">        insertUp = (<span class="built_in">rand</span>()&amp;<span class="number">1</span>)==<span class="number">0</span>;</span><br><span class="line">        level++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 说明pathList已经不为空，插入新的头结点，加层</span></span><br><span class="line">    <span class="keyword">if</span>(insertUp)&#123;  </span><br><span class="line">        <span class="keyword">this</span>-&gt;_header = <span class="keyword">new</span> <span class="built_in">Node</span>(<span class="keyword">new</span> <span class="built_in">Node</span>(<span class="literal">NULL</span>,downNode,key,value), <span class="keyword">this</span>-&gt;_header, <span class="number">-5</span>,<span class="built_in">to_string</span>(level)+<span class="string">&quot;head&quot;</span>);</span><br><span class="line">        <span class="keyword">this</span>-&gt;_skip_list_level++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>-&gt;_element_count ++;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Successfully inserted key:&quot;</span> &lt;&lt; key &lt;&lt; <span class="string">&quot;, value:&quot;</span> &lt;&lt; value &lt;&lt; std::endl;</span><br><span class="line">    mtx.<span class="built_in">unlock</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="（4）跳表的查询"><a href="#（4）跳表的查询" class="headerlink" title="（4）跳表的查询"></a>（4）跳表的查询</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">SkipList::search_element</span><span class="params">(<span class="type">int</span> key)</span> </span>&#123;</span><br><span class="line">mtx.<span class="built_in">lock</span>();</span><br><span class="line">Node *p = <span class="keyword">this</span>-&gt;_header;<span class="comment">// 从虚拟头结点出发</span></span><br><span class="line"><span class="keyword">while</span>(p)&#123;</span><br><span class="line">        <span class="comment">// 从左向右寻找目标区间</span></span><br><span class="line">        <span class="keyword">while</span>(p-&gt;right &amp;&amp; p-&gt;right-&gt;<span class="built_in">get_key</span>()&lt;key)p=p-&gt;right;</span><br><span class="line">        <span class="comment">// 没找到目标值，则继续往下走</span></span><br><span class="line">        <span class="keyword">if</span>(!p-&gt;right||p-&gt;right-&gt;<span class="built_in">get_key</span>()&gt;key)p=p-&gt;down;</span><br><span class="line">        <span class="comment">// 如果找到目标值</span></span><br><span class="line">        <span class="keyword">else</span>&#123;   </span><br><span class="line">            std::cout &lt;&lt; <span class="string">&quot;key: &quot;</span> &lt;&lt; key&lt;&lt; <span class="string">&quot;:&quot;</span>&lt;&lt;p-&gt;right-&gt;<span class="built_in">get_value</span>()&lt;&lt;endl;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;<span class="comment">////找到目标值，结束</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;无法找到key: &quot;</span>&lt;&lt;key&lt;&lt;endl;</span><br><span class="line">    mtx.<span class="built_in">unlock</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="（5）跳表的删除"><a href="#（5）跳表的删除" class="headerlink" title="（5）跳表的删除"></a>（5）跳表的删除</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">SkipList::erase_element</span><span class="params">(<span class="type">int</span> key)</span> </span>&#123;</span><br><span class="line">Node *p = <span class="keyword">this</span>-&gt;_header;</span><br><span class="line"><span class="type">bool</span> seen = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">while</span> (p)&#123;</span><br><span class="line">     <span class="comment">// 当前层向右找到次小的点</span></span><br><span class="line">     <span class="keyword">while</span> (p-&gt;right &amp;&amp; p-&gt;right-&gt;<span class="built_in">get_key</span>()&lt;key)p = p-&gt;right;</span><br><span class="line">     <span class="comment">// 无效点，或者 太大， 则到下一层去</span></span><br><span class="line">     <span class="keyword">if</span> (!p-&gt;right||p-&gt;right-&gt;<span class="built_in">get_key</span>()&gt;key)p=p-&gt;down;</span><br><span class="line">     <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">// 搜索到目标结点，进行删除操作，结果记录为true</span></span><br><span class="line">            <span class="comment">// 继续往下层搜索，删除一组目标结点</span></span><br><span class="line">            seen = <span class="literal">true</span>;</span><br><span class="line">            p-&gt;right = p-&gt;right-&gt;right;</span><br><span class="line">            p = p-&gt;down;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(seen) &#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;_element_count--;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;成功删除key: &quot;</span>&lt;&lt;key&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> std::cout &lt;&lt; <span class="string">&quot;无法删除key: &quot;</span>&lt;&lt;key&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> seen;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5、压力测试"><a href="#5、压力测试" class="headerlink" title="5、压力测试"></a>5、压力测试</h2><p>​        该项目包含一个作者开发的压力测试工具<strong>Stress Bench</strong>，其中文名叫做<strong>压力工作台</strong>，是借鉴了<strong>Web Bench</strong>的技术经验。该项目可以测试在规定时间t秒内n个<strong>进程</strong>同时执行某项操作的<strong>成功次数</strong>和<strong>失败次数</strong>。</p>
+<h3 id="（1）创建N个子进程"><a href="#（1）创建N个子进程" class="headerlink" title="（1）创建N个子进程"></a>（1）创建N个子进程</h3><p>​		该工具首先使用<strong>fork()<strong>创建n个子进程，</strong>子进程</strong>负责在规定时间内执行某项操作，<strong>父进程</strong>负责统计某个子进程的执行结果，<strong>父进程</strong>和<strong>子进程</strong>间通过<strong>匿名管道</strong>进行<strong>进程间通信</strong>。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">pid_t</span> pid=<span class="number">0</span>;</span><br><span class="line">FILE *f;</span><br><span class="line"><span class="comment">// 拷贝clients个进程</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;_thread_count;i++)&#123;</span><br><span class="line">    pid=fork();</span><br><span class="line">    <span class="comment">// 如果是子进程或者出错</span></span><br><span class="line">    <span class="keyword">if</span>(pid &lt;= (<span class="type">pid_t</span>) <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">sleep</span>(<span class="number">1</span>); <span class="comment">/* make childs faster */</span></span><br><span class="line">        <span class="keyword">break</span>;<span class="comment">// 退出循环</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 如果出错</span></span><br><span class="line"><span class="keyword">if</span>(pid&lt;(<span class="type">pid_t</span>)<span class="number">0</span>) <span class="built_in">perror</span>(<span class="string">&quot;fork failed.&quot;</span>); </span><br><span class="line"><span class="comment">// 子进程将要执行的代码</span></span><br><span class="line"><span class="keyword">if</span>(pid== (<span class="type">pid_t</span>) <span class="number">0</span>)&#123;</span><br><span class="line">    <span class="type">int</span> count=<span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> failed=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">this</span>-&gt;<span class="built_in">test_target_function</span>(count,failed);<span class="comment">// 子进程进行测试</span></span><br><span class="line">    <span class="comment">// 将该进程的测试结果写入匿名管道</span></span><br><span class="line">    f=<span class="built_in">fdopen</span>(_pipe[<span class="number">1</span>],<span class="string">&quot;w&quot;</span>);<span class="comment">// 打开管道的写端</span></span><br><span class="line">    <span class="keyword">if</span>(f==<span class="literal">NULL</span>) <span class="built_in">perror</span>(<span class="string">&quot;open pipe for writing failed.&quot;</span>);</span><br><span class="line">    <span class="built_in">fprintf</span>(f,<span class="string">&quot;%d %d\n&quot;</span>,count,failed);<span class="comment">//每次写入一行格式化的数据</span></span><br><span class="line">    <span class="built_in">fclose</span>(f);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 父进程执行的代码</span></span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    f=<span class="built_in">fdopen</span>(_pipe[<span class="number">0</span>],<span class="string">&quot;r&quot;</span>);<span class="comment">// 打开匿名管道的读端</span></span><br><span class="line">    <span class="keyword">if</span>(f==<span class="literal">NULL</span>) <span class="built_in">perror</span>(<span class="string">&quot;open pipe for reading failed.&quot;</span>);</span><br><span class="line">    <span class="built_in">setvbuf</span>(f,<span class="literal">NULL</span>,_IONBF,<span class="number">0</span>);</span><br><span class="line">    <span class="type">int</span> count=<span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> failed=<span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> i,j,client=_thread_count;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">         pid=<span class="built_in">fscanf</span>(f,<span class="string">&quot;%d %d&quot;</span>,&amp;i,&amp;j);<span class="comment">// 在此处阻塞</span></span><br><span class="line">         <span class="keyword">if</span>(pid&lt;<span class="number">2</span>)&#123;</span><br><span class="line">         <span class="built_in">fprintf</span>(stderr,<span class="string">&quot;Some of our childrens died.\n&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">         &#125;</span><br><span class="line">         count+=i;</span><br><span class="line">         failed+=j;</span><br><span class="line">         <span class="keyword">if</span>(--client==<span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">fclose</span>(f);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;success= %d failed= %d&quot;</span>,count,failed);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="（A）fork的使用"><a href="#（A）fork的使用" class="headerlink" title="（A）fork的使用"></a>（A）fork的使用</h4><p>​		Linux中通过<strong>fork()<strong>来创建子进程，</strong>在执行fpid&#x3D;fork()之前，只有当前的父进程在执行这段代码</strong>；在执行fpid&#x3D;fork()之后，当前的父进程和新复制出的子进程都开始并发执行之后的代码。所以为了父进程和子进程执行不同的代码，需要根据fpid的值分别处理，否则就会执行相同的代码。子进程的fork返回值是0，父进程的fork返回值&gt;0，这也是区分父进程和子进程的方法，至于其他的内容，在fork之前的东西两个进程的一样的。</p>
+<h4 id="（B）fork的底层"><a href="#（B）fork的底层" class="headerlink" title="（B）fork的底层"></a>（B）fork的底层</h4><p>​		在调用<strong>fork()<strong>时，Linux的内核程序实际上只会复制</strong>父进程</strong>的页表以及给子进程创建一个进程描述符，并不会立即开辟新的内存空间来复制一份父进程的数据，此时父进程和子进程共享同一份数据资源，只有父进程或者<strong>**子进程*<em><strong>发生写的操作时，</strong>子进程</em>*才会复制</strong>父进程<strong>的数据到一个新的内存空间，这种技术就是</strong>写时拷贝技术<strong>。但是在程序员看来，</strong>fork()<strong>就是立即克隆出了一个和</strong>父进程<strong>完全相同的子进程，只不过其底层使用了</strong>写时拷贝技术<strong>来</strong>优化**。</p>
+<h4 id="（C）父子进程的关闭"><a href="#（C）父子进程的关闭" class="headerlink" title="（C）父子进程的关闭"></a>（C）父子进程的关闭</h4><p>假如<strong>父进程</strong>先于<strong>子进程</strong>关闭，那么子进程就成为<strong>孤儿进程</strong>，被操作系统接管</p>
+<p>假如<strong>子进程</strong>先于<strong>父进程</strong>终止，而父进程又没有调用<strong>wait</strong>或<strong>waitpid函数</strong>，<strong>父进程</strong>结束后，<strong>子进程</strong>成为<strong>僵尸进程</strong>，此时<strong>子进程</strong>虽然执行完毕但是<strong>始终占有内核资源</strong>，同时也减少了系统可以创建的最大进程数。</p>
+<p>假如<strong>子进程</strong>先于<strong>父进程</strong>终止，而父进程调用了<strong>wait</strong>或<strong>waitpid函数</strong>，那么<strong>父进程</strong>会等待<strong>子进程</strong>结束后再结束，子进程不会成为<strong>僵尸进程</strong>。</p>
+<h4 id="（D）匿名管道技术"><a href="#（D）匿名管道技术" class="headerlink" title="（D）匿名管道技术"></a><strong>（D）匿名管道技术</strong></h4><p>​		这里使用的是Linux的<strong>匿名管道</strong>（因为其创建管道使用了<strong>pipe()</strong>,命名管道使用<strong>mkfifo()<strong>），</strong>匿名管道</strong>的特点如下：</p>
+<p>1、<strong>匿名管道</strong>是一种<strong>半双工通信</strong>，数据只能从写端流入读端。</p>
+<p>2、<strong>匿名管道</strong>读写的是<strong>内核程序</strong>的<strong>缓冲区</strong>的两端fd[0]和fd[1]。</p>
+<p>3、<strong>匿名管道</strong>只能用于<strong>父子进程通信</strong>。这是因为匿名管道没有标识符，其他无亲缘关系的进程无法访问到该管道，只有创建它的父进程和使用它的子进程可以访问。在进行父子进程间通信时，<strong>一定要父进程先创建管道，再创建子进程</strong>，这样子进程才能访问匿名管道。</p>
+<p>4、<strong>匿名管道</strong>默认是<strong>阻塞</strong>的，父子进程抢占式运行，<strong>如果父进程或者子进程先读</strong>，发现是空管道时就会阻塞，等待写入；某个进程写入一次后，读进程抢占到才能读入。</p>
+<p>5、<strong>匿名管道</strong>读取数据是<strong>将数据剪切</strong>，所以<strong>多个进程读匿名管道，无法拿到相同的数据</strong></p>
+<p>6、<strong>匿名管道</strong>的读写具有<strong>原子性</strong>，即读操作或写操作要么完成，要么没有开始，不存在边读边写，或者同时写</p>
+<p>7、<strong>匿名管道</strong>的读写是<strong>字节流</strong>，用户write两次写入字符串，对于管道来说两次输入的数据没有明显边界，read可以读任意字节大小，在读取时无法区分两次输入，前后两次输入粘连在一起，read的返回值是读取到数据的字节数。</p>
+<h3 id="（2）定时信号处理"><a href="#（2）定时信号处理" class="headerlink" title="（2）定时信号处理"></a>（2）定时信号处理</h3><p>​        <strong>子进程</strong>执行某项操作达到规定时间就会退出，其<strong>定时操作</strong>使用如下操作：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">StressBench::set_alarm_signal</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">sigaction</span> sa;</span><br><span class="line">    sa.sa_handler=alarm_handler;<span class="comment">// 函数指针，指向一个信号处理函数</span></span><br><span class="line">    sa.sa_flags=<span class="number">0</span>;<span class="comment">// 设置信号处理的其他相关操作</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">sigaction</span>(SIGALRM,&amp;sa,<span class="literal">NULL</span>))</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">3</span>);</span><br><span class="line">    <span class="built_in">alarm</span>(_benchtime);<span class="comment">// 定时操作</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%8E%B0/" rel="tag"># 项目复现</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022-06-18-%E3%80%90%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%8E%B0%E3%80%91Web%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%AB%98%E6%80%A7%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="prev" title="「项目复现」Web轻量级高性能服务器">
+                  <i class="fa fa-angle-left"></i> 「项目复现」Web轻量级高性能服务器
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018-10-06-vim-cn-im/" rel="next" title="Vim 与中文输入法">
+                  Vim 与中文输入法 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

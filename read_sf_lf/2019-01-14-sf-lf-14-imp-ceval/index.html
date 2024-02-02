@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2426182848439341"
+     crossorigin="anonymous"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33RJLY0818"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33RJLY0818');
+</script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Step-Indexed Evaluator…Copied from 12-imp.md:  Chapter ImpCEvalFun provide some workarounds to make functional evalution works:  step-indexed evaluator, i.e. limit the recursion depth. (think about De">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「SF-LC」14 ImpCEvalFun">
+<meta property="og:url" content="https://www.vvbuys.com/read_sf_lf/2019-01-14-sf-lf-14-imp-ceval/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="Step-Indexed Evaluator…Copied from 12-imp.md:  Chapter ImpCEvalFun provide some workarounds to make functional evalution works:  step-indexed evaluator, i.e. limit the recursion depth. (think about De">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-02T01:05:07.544Z">
+<meta property="article:modified_time" content="2024-02-02T01:05:07.544Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="LF (逻辑基础)">
+<meta property="article:tag" content="SF (软件基础)">
+<meta property="article:tag" content="Coq">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/read_sf_lf/2019-01-14-sf-lf-14-imp-ceval/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/read_sf_lf/2019-01-14-sf-lf-14-imp-ceval/","path":"read_sf_lf/2019-01-14-sf-lf-14-imp-ceval/","title":"「SF-LC」14 ImpCEvalFun"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>「SF-LC」14 ImpCEvalFun | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-Indexed-Evaluator"><span class="nav-number">1.</span> <span class="nav-text">Step-Indexed Evaluator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Relational-vs-Step-Indexed-Evaluation"><span class="nav-number">2.</span> <span class="nav-text">Relational vs. Step-Indexed Evaluation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.</span> <span class="nav-text">-&gt;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#-1"><span class="nav-number">2.2.</span> <span class="nav-text">&lt;-</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/read_sf_lf/2019-01-14-sf-lf-14-imp-ceval/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="「SF-LC」14 ImpCEvalFun | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「SF-LC」14 ImpCEvalFun
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:05:07" itemprop="dateCreated datePublished" datetime="2024-02-02T01:05:07+00:00">2024-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Step-Indexed-Evaluator"><a href="#Step-Indexed-Evaluator" class="headerlink" title="Step-Indexed Evaluator"></a>Step-Indexed Evaluator</h2><p>…Copied from <code>12-imp.md</code>:</p>
+<blockquote>
+<p>Chapter <code>ImpCEvalFun</code> provide some workarounds to make functional evalution works:</p>
+<ol>
+<li><em>step-indexed evaluator</em>, i.e. limit the recursion depth. (think about <em>Depth-Limited Search</em>). </li>
+<li>return <code>option</code> to tell if it’s a normal or abnormal termination.</li>
+<li>use <code>LETOPT...IN...</code> to reduce the “optional unwrapping” (basicaly Monadic binding <code>&gt;&gt;=</code>!)<br>this approach of <code>let-binding</code> became so popular in ML family.</li>
+</ol>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;&#x27;LETOPT&#x27; x &lt;== e1 &#x27;IN&#x27; e2&quot;</span></span><br><span class="line">   := (<span class="keyword">match</span> e1 <span class="built_in">with</span></span><br><span class="line">         | <span class="type">Some</span> x ⇒ e2</span><br><span class="line">         | <span class="type">None</span> ⇒ None</span><br><span class="line">       <span class="keyword">end</span>)</span><br><span class="line">   (<span class="built_in">right</span> associativity, <span class="built_in">at</span> level <span class="number">60</span>).</span><br><span class="line"></span><br><span class="line"><span class="keyword">Open</span> <span class="keyword">Scope</span> imp_scope.</span><br><span class="line"><span class="keyword">Fixpoint</span> ceval_step (st : state) (c : com) (i : nat)</span><br><span class="line">                    : option state :=</span><br><span class="line">  <span class="keyword">match</span> i <span class="built_in">with</span></span><br><span class="line">  | <span class="type">O</span> ⇒ None       <span class="comment">(* depth-limit hit! *)</span></span><br><span class="line">  | <span class="type">S</span> i&#x27; ⇒</span><br><span class="line">    <span class="keyword">match</span> c <span class="built_in">with</span></span><br><span class="line">      | <span class="type">SKIP</span> ⇒</span><br><span class="line">          Some st</span><br><span class="line">      | <span class="type">l</span> ::= a1 ⇒</span><br><span class="line">          Some (l !-&gt; aeval st a1 ; st)</span><br><span class="line">      | <span class="type">c1</span> ;; c2 ⇒</span><br><span class="line">          LETOPT st&#x27; &lt;== ceval_step st c1 i&#x27; IN    <span class="comment">(* option bind *)</span></span><br><span class="line">          ceval_step st&#x27; c2 i&#x27;</span><br><span class="line">      | <span class="type">TEST</span> b THEN c1 ELSE c2 FI ⇒</span><br><span class="line">          <span class="keyword">if</span> (beval st b)</span><br><span class="line">            <span class="keyword">then</span> ceval_step st c1 i&#x27;</span><br><span class="line">            <span class="keyword">else</span> ceval_step st c2 i&#x27;</span><br><span class="line">      | <span class="type">WHILE</span> b1 DO c1 END ⇒</span><br><span class="line">          <span class="keyword">if</span> (beval st b1)</span><br><span class="line">          <span class="keyword">then</span> LETOPT st&#x27; &lt;== ceval_step st c1 i&#x27; IN</span><br><span class="line">               ceval_step st&#x27; c i&#x27;</span><br><span class="line">          <span class="keyword">else</span> Some st</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span>.</span><br><span class="line"><span class="keyword">Close</span> <span class="keyword">Scope</span> imp_scope.</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Relational-vs-Step-Indexed-Evaluation"><a href="#Relational-vs-Step-Indexed-Evaluation" class="headerlink" title="Relational vs. Step-Indexed Evaluation"></a>Relational vs. Step-Indexed Evaluation</h2><p>Prove <code>ceval_step</code> is equiv to <code>ceval</code></p>
+<h3 id=""><a href="#" class="headerlink" title="-&gt;"></a>-&gt;</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> ceval_step__ceval: <span class="keyword">forall</span> c st st&#x27;,</span><br><span class="line">      (<span class="built_in">exists</span> i, ceval_step st c i = Some st&#x27;) -&gt;</span><br><span class="line">      st =[ c ]=&gt; st&#x27;.</span><br></pre></td></tr></table></figure>
+
+<p>The critical part of proof:</p>
+<ul>
+<li><code>destruct</code> for the <code>i</code>.</li>
+<li><code>induction i</code>, generalize on all <code>st st&#39; c</code>. <ol>
+<li><code>i = 0</code> case contradiction</li>
+<li><code>i = S i&#39;</code> case;<br><code>destruct c</code>. <ul>
+<li><code>destruct (ceval_step ...)</code> for the <code>option</code><ol>
+<li><code>None</code> case contradiction</li>
+<li><code>Some</code> case, use induction hypothesis…</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="-1"><a href="#-1" class="headerlink" title="&lt;-"></a>&lt;-</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> ceval__ceval_step: <span class="keyword">forall</span> c st st&#x27;,</span><br><span class="line">      st =[ c ]=&gt; st&#x27; -&gt;</span><br><span class="line">      <span class="built_in">exists</span> i, ceval_step st c i = Some st&#x27;.</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span> c st st&#x27; Hce.</span><br><span class="line">  <span class="built_in">induction</span> Hce.</span><br></pre></td></tr></table></figure>
+
+
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/LF-%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80/" rel="tag"># LF (逻辑基础)</a>
+              <a href="/tags/SF-%E8%BD%AF%E4%BB%B6%E5%9F%BA%E7%A1%80/" rel="tag"># SF (软件基础)</a>
+              <a href="/tags/Coq/" rel="tag"># Coq</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/read_sf_lf/2019-01-15-sf-lf-15-extraction/" rel="prev" title="「SF-LC」15 Extraction">
+                  <i class="fa fa-angle-left"></i> 「SF-LC」15 Extraction
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/read_sf_lf/2019-01-13-sf-lf-13-imp-parser/" rel="next" title="「SF-LC」13 ImpParser">
+                  「SF-LC」13 ImpParser <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

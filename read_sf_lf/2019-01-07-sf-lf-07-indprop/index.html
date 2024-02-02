@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2426182848439341"
+     crossorigin="anonymous"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33RJLY0818"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33RJLY0818');
+</script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Inductively Defined Propositions The 3rd way to state Evenness…Besides:  123Theorem even_bool_prop : ∀n,  evenb n &#x3D; true ↔ ∃k, n &#x3D; double k. (*bool*)                 (*prop*)  we can write an Inductiv">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「SF-LC」7 Ind Prop">
+<meta property="og:url" content="https://www.vvbuys.com/read_sf_lf/2019-01-07-sf-lf-07-indprop/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="Inductively Defined Propositions The 3rd way to state Evenness…Besides:  123Theorem even_bool_prop : ∀n,  evenb n &#x3D; true ↔ ∃k, n &#x3D; double k. (*bool*)                 (*prop*)  we can write an Inductiv">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-02T01:05:07.544Z">
+<meta property="article:modified_time" content="2024-02-02T01:05:07.544Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="LF (逻辑基础)">
+<meta property="article:tag" content="SF (软件基础)">
+<meta property="article:tag" content="Coq">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/read_sf_lf/2019-01-07-sf-lf-07-indprop/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/read_sf_lf/2019-01-07-sf-lf-07-indprop/","path":"read_sf_lf/2019-01-07-sf-lf-07-indprop/","title":"「SF-LC」7 Ind Prop"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>「SF-LC」7 Ind Prop | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Inductively-Defined-Propositions"><span class="nav-number">1.</span> <span class="nav-text">Inductively Defined Propositions </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#The-3rd-way-to-state-Evenness%E2%80%A6"><span class="nav-number">1.1.</span> <span class="nav-text">The 3rd way to state Evenness…</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Inference-rules"><span class="nav-number">1.2.</span> <span class="nav-text">Inference rules</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Inductive-Definition-of-Evenness"><span class="nav-number">1.3.</span> <span class="nav-text">Inductive Definition of Evenness</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-A-Property-of-nat-and-two-theorems-Intuitively"><span class="nav-number">1.4.</span> <span class="nav-text">1. A Property of nat and two theorems (Intuitively)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-An-%E2%80%9CIndexed%E2%80%9D-GADT-and-two-constructors-Technically"><span class="nav-number">1.5.</span> <span class="nav-text">2. An “Indexed” GADT and two constructors (Technically)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%9CConstructor-Theorems%E2%80%9D"><span class="nav-number">1.6.</span> <span class="nav-text">“Constructor Theorems”</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-Evidence-in-Proofs"><span class="nav-number">2.</span> <span class="nav-text">Using Evidence in Proofs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Inversion-on-Evidence"><span class="nav-number">2.1.</span> <span class="nav-text">Inversion on Evidence</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Induction-on-Evidence"><span class="nav-number">2.2.</span> <span class="nav-text">Induction on Evidence</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Notes-on-induction"><span class="nav-number">2.2.1.</span> <span class="nav-text">Notes on induction</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Proof-by-Mathematical-Induction-is-Deductive-Reasoning"><span class="nav-number">2.2.2.</span> <span class="nav-text">Proof by Mathematical Induction is Deductive Reasoning</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Also-Structual-Induction-is-one-kind-of-Math-Induction"><span class="nav-number">2.2.3.</span> <span class="nav-text">Also, Structual Induction is one kind of Math. Induction</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inductive-Relations"><span class="nav-number">3.</span> <span class="nav-text">Inductive Relations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Slide-Q-A-1"><span class="nav-number">4.</span> <span class="nav-text">Slide Q&amp;A - 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Slide-Q-A-2"><span class="nav-number">5.</span> <span class="nav-text">Slide Q&amp;A - 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#destruct-vs-inversion-vs-induction"><span class="nav-number">6.</span> <span class="nav-text">destruct vs. inversion vs. induction.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Case-Study-Regular-Expressions"><span class="nav-number">7.</span> <span class="nav-text">Case Study: Regular Expressions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Definition"><span class="nav-number">7.1.</span> <span class="nav-text">Definition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Matching"><span class="nav-number">7.2.</span> <span class="nav-text">Matching</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Slide-Q-A-3"><span class="nav-number">8.</span> <span class="nav-text">Slide Q&amp;A - 3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Union-and-Star"><span class="nav-number">8.1.</span> <span class="nav-text">Union and Star.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Direct-Proof"><span class="nav-number">8.2.</span> <span class="nav-text">Direct Proof</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Inversion-on-Evidence-1"><span class="nav-number">8.3.</span> <span class="nav-text">Inversion on Evidence</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Manual-Manipulation"><span class="nav-number">8.4.</span> <span class="nav-text">Manual Manipulation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Induction-on-Evidence-1"><span class="nav-number">8.5.</span> <span class="nav-text">Induction on Evidence</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-remember-tactic-Induction-on-Evidence-of-A-Specific-Case"><span class="nav-number">9.</span> <span class="nav-text">The remember tactic (Induction on Evidence of A Specific Case)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sidenotes-inversion-vs-induction-on-evidence"><span class="nav-number">9.1.</span> <span class="nav-text">Sidenotes: inversion vs. induction on evidence</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exercise-5-stars-advanced-pumping"><span class="nav-number">10.</span> <span class="nav-text">Exercise: 5 stars, advanced (pumping)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Case-Study-Improving-Reflection-%E4%BA%92%E6%98%A0"><span class="nav-number">11.</span> <span class="nav-text">Case Study: Improving Reflection (互映)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SSReflect-small-scale-reflection"><span class="nav-number">11.1.</span> <span class="nav-text">SSReflect - small-scale reflection</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Extended-Exercise-A-Verified-Regular-Expression-Matcher"><span class="nav-number">12.</span> <span class="nav-text">Extended Exercise: A Verified Regular-Expression Matcher</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Rules-Derivatives"><span class="nav-number">12.1.</span> <span class="nav-text">Rules &amp; Derivatives.</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Let%E2%80%99s-take-app-as-an-example"><span class="nav-number">12.1.1.</span> <span class="nav-text">Let’s take app as an example</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E7%AD%89%E4%BB%B7-helper"><span class="nav-number">12.1.1.1.</span> <span class="nav-text">1. 等价 helper</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-App-%E5%AF%B9%E4%BA%8E-a-s-%E7%9A%84%E5%8C%B9%E9%85%8D%E6%80%A7%E8%B4%A8"><span class="nav-number">12.1.1.2.</span> <span class="nav-text">2. App 对于 a :: s 的匹配性质</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E5%AE%9A%E4%B9%89-derivative-%E5%85%B3%E7%B3%BB"><span class="nav-number">12.1.1.3.</span> <span class="nav-text">3. 定义 derivative 关系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-%E5%AE%9E%E7%8E%B0-derive"><span class="nav-number">12.1.1.4.</span> <span class="nav-text">4. 实现 derive</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/read_sf_lf/2019-01-07-sf-lf-07-indprop/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="「SF-LC」7 Ind Prop | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「SF-LC」7 Ind Prop
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:05:07" itemprop="dateCreated datePublished" datetime="2024-02-02T01:05:07+00:00">2024-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Inductively-Defined-Propositions"><a href="#Inductively-Defined-Propositions" class="headerlink" title="Inductively Defined Propositions "></a>Inductively Defined Propositions </h2><h3 id="The-3rd-way-to-state-Evenness…"><a href="#The-3rd-way-to-state-Evenness…" class="headerlink" title="The 3rd way to state Evenness…"></a>The 3rd way to state Evenness…</h3><p>Besides: </p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> even_bool_prop : ∀n,</span><br><span class="line">  evenb n = true ↔ ∃k, n = <span class="built_in">double</span> k.</span><br><span class="line"> <span class="comment">(*bool*)</span>                 <span class="comment">(*prop*)</span></span><br></pre></td></tr></table></figure>
+
+<p>we can write an <em>Inductive definition</em> of the <code>even</code> property!</p>
+<h3 id="Inference-rules"><a href="#Inference-rules" class="headerlink" title="Inference rules"></a>Inference rules</h3><p>In CS, we often uses <em>inference rules</em> </p>
+<pre><code>                    ev n
+---- ev_0       ------------ ev_SS
+ev 0            ev (S (S n))
+</code></pre>
+<p>and <em>proof tree</em> (i.e. evidence), there could be multiple premieses to make it more tree-ish.</p>
+<pre><code>---- ev_0
+ev 0
+---- ev_SS
+ev 2
+---- ev_SS
+ev 4
+</code></pre>
+<p>So we can literally translate them into a GADT:</p>
+<h3 id="Inductive-Definition-of-Evenness"><a href="#Inductive-Definition-of-Evenness" class="headerlink" title="Inductive Definition of Evenness"></a>Inductive Definition of Evenness</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> even : nat → <span class="keyword">Prop</span> :=</span><br><span class="line">  | <span class="type">ev_0</span>  : even <span class="number">0</span></span><br><span class="line">  | <span class="type">ev_SS</span> : ∀n, even n → even (S (S n)). </span><br><span class="line"></span><br><span class="line"><span class="keyword">Check</span> even_SS.</span><br><span class="line"><span class="comment">(* ==&gt; : forall n : nat, even n -&gt; even (S (S n)) *)</span></span><br></pre></td></tr></table></figure>
+
+<p>There are two ways to understand the <code>even</code> here:</p>
+<h3 id="1-A-Property-of-nat-and-two-theorems-Intuitively"><a href="#1-A-Property-of-nat-and-two-theorems-Intuitively" class="headerlink" title="1. A Property of nat and two theorems (Intuitively)"></a>1. A Property of <code>nat</code> and two theorems (Intuitively)</h3><blockquote>
+<p>the thing we are defining is not a <code>Type</code>, but rather a function <code>nat -&gt; Prop</code> — i.e., a property of numbers. </p>
+</blockquote>
+<p>we have two ways to provide an evidence to show the <code>nat</code> is <code>even</code>, either or:</p>
+<ol>
+<li>it’s <code>0</code>, we can immediately conclude it’s <code>even</code>.</li>
+<li>for any <code>n</code>, if we can provide a evidence that <code>n</code> is <code>even</code>, then <code>S (S n)</code> is <code>even</code> as well.</li>
+</ol>
+<blockquote>
+<p>We can think of the definition of <code>even</code> as defining a Coq property <code>even : nat → Prop</code>, together with primitive theorems <code>ev_0 : even 0</code> and <code>ev_SS : ∀ n, even n → even (S (S n))</code>.</p>
+</blockquote>
+<h3 id="2-An-“Indexed”-GADT-and-two-constructors-Technically"><a href="#2-An-“Indexed”-GADT-and-two-constructors-Technically" class="headerlink" title="2. An “Indexed” GADT and two constructors (Technically)"></a>2. An “Indexed” GADT and two constructors (Technically)</h3><blockquote>
+<p>In an Inductive definition, an argument to the type constructor on the left of the colon is called a “parameter”, whereas an argument on the right is called an “index”. – “Software Foundaton”</p>
+</blockquote>
+<p>Considered a “parametrized” ADT such as the polymorphic list, </p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> list (X:<span class="keyword">Type</span>) : <span class="keyword">Type</span> :=</span><br><span class="line">  | <span class="type">nil</span></span><br><span class="line">  | <span class="type">cons</span> (x : X) (l : list X).</span><br><span class="line"></span><br><span class="line"><span class="keyword">Check</span> list. <span class="comment">(* ===&gt; list : Type -&gt; Type *)</span></span><br></pre></td></tr></table></figure>
+
+<p>where we defined type con <code>list : Type -&gt; Type</code>, by having a type var <code>X</code> in the left of the <code>:</code>.<br>the <code>X</code> is called a <em>parameter</em> and would be <em>parametrized i.e. substituted, globally</em>, in constructors.</p>
+<p>Here, we write <code>nat</code> in the right of the <code>:</code> w&#x2F;o giving it a name (to refer and to substitute),<br>which allows the <code>nat</code> taking different values in different constructors (as constraints).<br>it’s called an <em>index</em> and will form a family of type indexed by <code>nat</code> (to type check?)</p>
+<p>From this perspective, there is an alternative way to write this GADT:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> even : nat → <span class="keyword">Prop</span> :=</span><br><span class="line">| <span class="type">ev_0</span>                         : even <span class="number">0</span></span><br><span class="line">| <span class="type">ev_SS</span> (n : nat) (H : even n) : even (S (S n)).</span><br></pre></td></tr></table></figure>
+
+<p>we have two ways to construct the <code>even</code> type (<code>Prop &lt;: Type</code>), either or:</p>
+<ol>
+<li><code>ev_0</code> takes no argument, so simply instantiate <code>even</code> with <code>nat</code> 0</li>
+<li><code>ev_SS</code> takes a <code>nat</code> <code>n</code> and a <code>H</code> typed <code>even n</code>,</li>
+</ol>
+<ul>
+<li>the <em>dependency</em> between two arguments thus established! </li>
+<li>as long as the <em>constraint on same <code>n</code></em> is fullfilled, we can build type <code>even</code> with <code>S (S n)</code></li>
+</ul>
+<p>The take way is that <em>dependent type (Pi-type)</em> allow us to constriant constructors with different values.</p>
+<blockquote>
+<p><em>indexed</em> way is more general. it formed a larger type, and is only used when extra power needed.<br>every parametrized one can be represented as indexed one (it’s just that index happended to be the same)</p>
+</blockquote>
+<h3 id="“Constructor-Theorems”"><a href="#“Constructor-Theorems”" class="headerlink" title="“Constructor Theorems”"></a>“Constructor Theorems”</h3><blockquote>
+<p>Such “constructor theorems” have the same status as proven theorems. In particular, we can use Coq’s <code>apply</code> tactic with the rule names to prove <code>even</code> for particular numbers…</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> ev_4 : even <span class="number">4.</span></span><br><span class="line"><span class="keyword">Proof</span>. <span class="built_in">apply</span> ev_SS. <span class="built_in">apply</span> ev_SS. <span class="built_in">apply</span> ev_0. <span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
+
+<p>Proof States Transition:</p>
+<pre><code>even 4
+------ apply ev_SS.
+even 2
+------ apply ev_SS.
+even 0
+------ apply ev_0.
+       Qed.
+</code></pre>
+<p>I believed what <code>apply</code> do is trying to <em>backward reasoning</em>, i.e. matching the goal and leave the “evidence” need to be proved (to conclude the goal).</p>
+<p>we can write it as normal function application syntax w&#x2F;o using tactics like other Dependent-typed PL as well</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> ev_4&#x27; : even <span class="number">4.</span></span><br><span class="line"><span class="keyword">Proof</span>. <span class="built_in">apply</span> (ev_SS <span class="number">2</span> (ev_SS <span class="number">0</span> ev_0)). <span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Using-Evidence-in-Proofs"><a href="#Using-Evidence-in-Proofs" class="headerlink" title="Using Evidence in Proofs"></a>Using Evidence in Proofs</h2><blockquote>
+<p>Besides <em>constructing evidence</em> that numbers are even, we can also <em>reason</em> about such evidence.</p>
+</blockquote>
+<blockquote>
+<p>Introducing <code>even</code> with an <code>Inductive</code> declaration tells Coq that these two constructors are the <strong>only</strong> ways to build evidence that numbers are <code>even</code>. </p>
+</blockquote>
+<blockquote>
+<p>In other words, if someone gives us evidence <code>E</code> for the assertion <code>even n</code>, then we know that <code>E</code> must have one of two shapes</p>
+</blockquote>
+<blockquote>
+<p>This suggests that it should be possible to analyze a hypothesis of the form <code>even n</code> much <em>as we do inductively defined data structures</em>; in particular, it should be possible to argue by <strong>induction</strong> and <strong>case analysis</strong> on such evidence.</p>
+</blockquote>
+<p>This starts to get familiar as what we did for many calculi, ranging from Logics to PLT.<br>This is called the <strong>Inversion property</strong>.</p>
+<h3 id="Inversion-on-Evidence"><a href="#Inversion-on-Evidence" class="headerlink" title="Inversion on Evidence"></a>Inversion on Evidence</h3><p>We can prove the inersion property by ourselves:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> ev_inversion :</span><br><span class="line">  ∀(n : nat), even n →</span><br><span class="line">    (n = <span class="number">0</span>) ∨ (∃n&#x27;, n = S (S n&#x27;) ∧ even n&#x27;).</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span> n E.</span><br><span class="line">  <span class="built_in">destruct</span> E <span class="built_in">as</span> [ | <span class="type">n</span>&#x27; E&#x27;].</span><br><span class="line">  - <span class="comment">(* E = ev_0 : even 0 *)</span>                  <span class="built_in">left</span>. <span class="built_in">reflexivity</span>.</span><br><span class="line">  - <span class="comment">(* E = ev_SS n&#x27;, E&#x27; : even (S (S n&#x27;)) *)</span> <span class="built_in">right</span>. ∃n&#x27;. <span class="built_in">split</span>. <span class="built_in">reflexivity</span>. <span class="built_in">apply</span> E&#x27;.</span><br><span class="line"><span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
+
+<p>But Coq provide the <code>inversion</code> tactics that does more! (not always good tho, too automagical)</p>
+<blockquote>
+<p>The inversion tactic does quite a bit of work. When applied to equalities, as a special case, it does the work of both <code>discriminate</code> and <code>injection</code>. In addition, it carries out the <code>intros</code> and <code>rewrite</code>s</p>
+</blockquote>
+<blockquote>
+<p>Here’s how inversion works in general. Suppose the name <code>H</code> refers to an assumption <code>P</code> in the current context, <em>where <code>P</code> has been defined by an <code>Inductive</code> declaration</em>. Then, for each of the constructors of <code>P</code>, <code>inversion H</code> generates a subgoal in which <code>H</code> has been replaced by the <em>exact, specific conditions under which this constructor could have been used to prove <code>P</code></em>.<br>Some of these subgoals will be self-contradictory; inversion throws these away. The ones that are left represent the cases that must be proved to establish the original goal. For those, inversion adds all equations into the proof context that must hold of the arguments given to <code>P</code> (e.g., <code>S (S n&#39;) = n</code> in the proof of <code>evSS_ev</code>).<br>(<code>9-proof-object.md</code> has a better explaination on <code>inversion</code>)</p>
+</blockquote>
+<p><code>inversion</code> is a specific use upon <code>destruct</code> (both do case analysis on constructors), but many property need <code>induction</code>!.<br>By <code>induction (even n)</code>, we have cases and subgoals splitted, and induction hypothesis as well.</p>
+<h3 id="Induction-on-Evidence"><a href="#Induction-on-Evidence" class="headerlink" title="Induction on Evidence"></a>Induction on Evidence</h3><p>Similar to induction on inductively defined data such as <code>list</code>: </p>
+<blockquote>
+<p>To prove a property of (for any <code>X</code>)                       <code>list X</code> holds, we can use <code>induction</code> on <code>list X</code>.<br>To prove a property of <code>n</code> holds for all numbers for which <code>even n</code> holds, we can use <code>induction</code> on <code>even n</code>.</p>
+</blockquote>
+<h4 id="Notes-on-induction"><a href="#Notes-on-induction" class="headerlink" title="Notes on induction"></a>Notes on induction</h4><p><em>The principle of induction</em> is to prove <code>P(n-1) -&gt; P(n)</code> (多米诺) for some (well-founded partial order) set of <code>n</code>. </p>
+<p>Here, we are induction over “the set of numbers fullfilling the property <code>even</code>“.<br>Noticed that we r proving things over this set, meaning we already have it (i.e. a proof, or a evidence) in premises, instead of proving the <code>even</code>ness of the set.</p>
+<h4 id="Proof-by-Mathematical-Induction-is-Deductive-Reasoning"><a href="#Proof-by-Mathematical-Induction-is-Deductive-Reasoning" class="headerlink" title="Proof by Mathematical Induction is Deductive Reasoning"></a>Proof by Mathematical Induction is Deductive Reasoning</h4><blockquote>
+<p>“Proof by induction,” despite the name, is deductive. The reason is that proof by induction does not simply involve “going from many specific cases to the general case.” Instead, in order for proof by induction to work, we need a deductive proof that each specific case implies the next specific case. Mathematical induction is not philosophical induction.<br><a target="_blank" rel="noopener" href="https://math.stackexchange.com/a/1960895/528269">https://math.stackexchange.com/a/1960895/528269</a></p>
+</blockquote>
+<blockquote>
+<p>Mathematical induction is an inference rule used in formal proofs. Proofs by mathematical induction are, in fact, examples of deductive reasoning.<br>Equivalence with the well-ordering principle: The principle of mathematical induction is usually stated as an axiom of the natural numbers; see Peano axioms. However, it can be proved from the well-ordering principle. Indeed, suppose the following:<br><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Mathematical_induction">https://en.wikipedia.org/wiki/Mathematical_induction</a></p>
+</blockquote>
+<h4 id="Also-Structual-Induction-is-one-kind-of-Math-Induction"><a href="#Also-Structual-Induction-is-one-kind-of-Math-Induction" class="headerlink" title="Also, Structual Induction is one kind of Math. Induction"></a>Also, Structual Induction is one kind of Math. Induction</h4><blockquote>
+<p>和标准的数学归纳法等价于良序原理一样，结构归纳法也等价于良序原理。</p>
+</blockquote>
+<blockquote>
+<p>…A <em>well-founded</em> <em>partial order</em> is defined on the structures…<br>…Formally speaking, this then satisfies the premises of an <em>axiom of well-founded induction</em>…<br><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Structural_induction">https://en.wikipedia.org/wiki/Structural_induction</a></p>
+</blockquote>
+<p>In terms of Well-ordering and Well-founded:</p>
+<blockquote>
+<p>If the set of all structures of a certain kind admits a well-founded partial order,<br>then every nonempty subset must have a minimal element. (This is the definition of “well-founded”.)<br>如果某种整个结构的集容纳一个良基偏序， 那么每个非空子集一定都含有最小元素。（其实这也是良基的定义</p>
+</blockquote>
+<h2 id="Inductive-Relations"><a href="#Inductive-Relations" class="headerlink" title="Inductive Relations"></a>Inductive Relations</h2><p>Just as a single-argument proposition defines a <em>property</em>, 性质<br>a two-argument proposition defines a <em>relation</em>. 关系</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> le : nat → nat → <span class="keyword">Prop</span> :=</span><br><span class="line">  | <span class="type">le_n</span> n                : le n n</span><br><span class="line">  | <span class="type">le_S</span> n m (H : le n m) : le n (S m).</span><br><span class="line"></span><br><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;n ≤ m&quot;</span> := (le n m).</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>It says that there are two ways to <em>give evidence</em> that one number is less than or equal to another:</p>
+</blockquote>
+<ol>
+<li>either same number</li>
+<li>or give evidence that <code>n ≤ m</code> then we can have <code>n ≤ m + 1</code>.</li>
+</ol>
+<p>and we can use the same tactics as we did for properties.</p>
+<h2 id="Slide-Q-A-1"><a href="#Slide-Q-A-1" class="headerlink" title="Slide Q&amp;A - 1"></a>Slide Q&amp;A - 1</h2><ol>
+<li>First <code>destruct</code> <code>even n</code> into 2 cases, then <code>discriminate</code> on each.</li>
+</ol>
+<p>Another way…<br>rewriting <code>n=1</code> on <code>even n</code>. It won’t compute <code>Prop</code>, but <code>destruct</code> can do some <code>discriminate</code> behind the scene.</p>
+<h2 id="Slide-Q-A-2"><a href="#Slide-Q-A-2" class="headerlink" title="Slide Q&amp;A - 2"></a>Slide Q&amp;A - 2</h2><p><code>inversion</code> and <code>rewrite plus_comm</code> (for <code>n+2</code>)</p>
+<h2 id="destruct-vs-inversion-vs-induction"><a href="#destruct-vs-inversion-vs-induction" class="headerlink" title="destruct vs. inversion vs. induction."></a><code>destruct</code> vs. <code>inversion</code> vs. <code>induction</code>.</h2><blockquote>
+<p><code>destruct</code>, <code>inversion</code>, <code>induction</code> (on general thing)… similar&#x2F;specialized version of each…</p>
+</blockquote>
+<p>Trying to internalize this concept better: <em>When to use which?</em></p>
+<p>For any inductively defined proposition (<code>&lt;: Type</code>) in hypothesis:<br>meaning from type perspective, it’s already a “proper type” (<code>::*</code>)</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> P = C1 : P1 | <span class="type">C2</span> : A2 -&gt; P2 | <span class="type">...</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><code>destruct</code>     case analysis on inductive type</li>
+</ol>
+<ul>
+<li>simply give you each cases, i.e. each constructors.</li>
+<li>we can destruct on <code>a =? b</code> since <code>=?</code> is inductively defined.</li>
+</ul>
+<ol start="2">
+<li><code>induction</code>    use induction principle</li>
+</ol>
+<ul>
+<li>proving <code>P</code> holds for all base cases</li>
+<li>proving <code>P(n)</code> holds w&#x2F; <code>P(n-1)</code> for all inductive cases<br>(<code>destruct</code> stucks in this case because of no induction hypothesis gained from induction principle)</li>
+</ul>
+<ol start="3">
+<li><code>inversion</code>    invert the conclusion and give you all cases with premises of that case.</li>
+</ol>
+<p>For GADT, i.e. “indexed” <code>Prop</code> (property&#x2F;relation), <code>P</code> could have many shape<br><code>inversion</code> give you <code>Ax</code> for shape <code>P</code> assuming built with <code>Cx</code></p>
+<p><code>inversion</code> discards cases when shape <code>P != Px</code>.<br>(<code>destruct</code> stucks in this case because of no equation gained from inversion lemma)</p>
+<h2 id="Case-Study-Regular-Expressions"><a href="#Case-Study-Regular-Expressions" class="headerlink" title="Case Study: Regular Expressions"></a>Case Study: Regular Expressions</h2><h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p><em>Definition of RegExp in formal language can be found in FCT&#x2F;CC materials</em></p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> reg_exp &#123;T : <span class="keyword">Type</span>&#125; : <span class="keyword">Type</span> :=</span><br><span class="line">  | <span class="type">EmptySet</span>                 <span class="comment">(* ∅ *)</span></span><br><span class="line">  | <span class="type">EmptyStr</span>                 <span class="comment">(* ε *)</span></span><br><span class="line">  | <span class="type">Char</span> (t : T)</span><br><span class="line">  | <span class="type">App</span> (r1 r2 : reg_exp)    <span class="comment">(* r1r2 *)</span></span><br><span class="line">  | <span class="type">Union</span> (r1 r2 : reg_exp)  <span class="comment">(* r1 | r2 *)</span></span><br><span class="line">  | <span class="type">Star</span> (r : reg_exp).      <span class="comment">(* r*  *)</span></span><br></pre></td></tr></table></figure>
+
+
+<blockquote>
+<p>Note that this definition is <em>polymorphic</em>.<br>We depart slightly in that <em>we do not require the type <code>T</code> to be finite</em>. (difference not significant here)</p>
+</blockquote>
+<blockquote>
+<p><code>reg_exp T</code> describe <em>strings</em> with characters drawn from <code>T</code> — that is, <strong>lists of elements of <code>T</code></strong>. </p>
+</blockquote>
+<h3 id="Matching"><a href="#Matching" class="headerlink" title="Matching"></a>Matching</h3><p>The matching is somewhat similar to <em>Parser Combinator</em> in Haskell… </p>
+<p>e.g.<br><code>EmptyStr</code> matches <code>[]</code><br><code>Char x</code>   matches <code>[x]</code></p>
+<blockquote>
+<p>we definied it into an <code>Inductive</code> relation (can be displayed as <em>inference-rule</em>).<br>somewhat type-level computing !</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> exp_match &#123;T&#125; : list T → reg_exp → <span class="keyword">Prop</span> :=</span><br><span class="line">| <span class="type">MEmpty</span> : exp_match [] EmptyStr</span><br><span class="line">| <span class="type">MChar</span> x : exp_match [x] (Char x)</span><br><span class="line">| <span class="type">MApp</span> s1 re1 s2 re2</span><br><span class="line">            (H1 : exp_match s1 re1)</span><br><span class="line">            (H2 : exp_match s2 re2) :</span><br><span class="line">            exp_match (s1 ++ s2) (App re1 re2)</span><br><span class="line"><span class="comment">(** etc. **)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;s =~ re&quot;</span> := (exp_match s re) (<span class="built_in">at</span> level <span class="number">80</span>).  <span class="comment">(* the Perl notation! *)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Slide-Q-A-3"><a href="#Slide-Q-A-3" class="headerlink" title="Slide Q&amp;A - 3"></a>Slide Q&amp;A - 3</h2><p>The lack of rule for <code>EmptySet</code> (“negative rule”) give us what we want as PLT</p>
+<h3 id="Union-and-Star"><a href="#Union-and-Star" class="headerlink" title="Union and Star."></a><code>Union</code> and <code>Star</code>.</h3><blockquote>
+<p>the informal rules for <code>Union</code> and <code>Star</code> correspond to <em>two constructors</em> each.</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">| <span class="type">MUnionL</span> s1 re1 re2</span><br><span class="line">              (H1 : exp_match s1 re1) :</span><br><span class="line">              exp_match s1 (Union re1 re2)</span><br><span class="line">| <span class="type">MUnionR</span> re1 s2 re2</span><br><span class="line">              (H2 : exp_match s2 re2) :</span><br><span class="line">              exp_match s2 (Union re1 re2)</span><br><span class="line">| <span class="type">MStar0</span> re : exp_match [] (Star re)</span><br><span class="line">| <span class="type">MStarApp</span> s1 s2 re</span><br><span class="line">              (H1 : exp_match s1 re)</span><br><span class="line">              (H2 : exp_match s2 (Star re)) :</span><br><span class="line">              exp_match (s1 ++ s2) (Star re).</span><br></pre></td></tr></table></figure>
+
+<p>Thinking about their <em>NFA</em>: they both have non-deterministic branches!<br>The recursive occurrences of <code>exp_match</code> gives as <em>direct argument</em> (evidence) about which branches we goes.</p>
+<blockquote>
+<p>we need some <em>sanity check</em> since Coq simply trust what we declared…<br>that’s why there is even Quick Check for Coq.</p>
+</blockquote>
+<h3 id="Direct-Proof"><a href="#Direct-Proof" class="headerlink" title="Direct Proof"></a>Direct Proof</h3><p>In fact, <code>MApp</code> is also non-deterministic about how does <code>re1</code> and <code>re2</code> collaborate…<br>So we have to be explicit:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Example</span> reg_exp_ex2 : [<span class="number">1</span>; <span class="number">2</span>] =~ App (Char <span class="number">1</span>) (Char <span class="number">2</span>).</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">apply</span> (MApp [<span class="number">1</span>] <span class="keyword">_</span> [<span class="number">2</span>]).</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure>
+
+<h3 id="Inversion-on-Evidence-1"><a href="#Inversion-on-Evidence-1" class="headerlink" title="Inversion on Evidence"></a>Inversion on Evidence</h3><p>This, if we want to prove via <code>destruct</code>,<br>we have to write our own <em>inversion lemma</em> (like <code>ev_inversion</code> for <code>even</code>).<br>Otherwise we have no equation (which we should have) to say <code>contradiction</code>.</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Example</span> reg_exp_ex3 : ~ ([<span class="number">1</span>; <span class="number">2</span>] =~ Char <span class="number">1</span>).</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span> H. <span class="built_in">inversion</span> H.</span><br><span class="line"><span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
+
+<h3 id="Manual-Manipulation"><a href="#Manual-Manipulation" class="headerlink" title="Manual Manipulation"></a>Manual Manipulation</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Lemma</span> MStar1 :</span><br><span class="line">  <span class="keyword">forall</span> T s (re : @reg_exp T) ,</span><br><span class="line">    s =~ re -&gt;</span><br><span class="line">    s =~ Star re.</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span> T s re H.</span><br><span class="line">  <span class="built_in">rewrite</span> &lt;- (app_nil_r <span class="keyword">_</span> s).  <span class="comment">(* extra &quot;massaging&quot; to convert [s] =&gt; [s ++ []] *)</span></span><br><span class="line">  <span class="built_in">apply</span> (MStarApp s [] re).    <span class="comment">(* to the shape [MStarApp] expected thus can pattern match on *)</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">(* proving [MStarApp] requires [s1 s2 re H1 H2]. By giving [s [] re], we left two evidence *)</span></span><br><span class="line">      | <span class="type">MStarApp</span> s1 s2 re</span><br><span class="line">          (H1 : exp_match s1 re)</span><br><span class="line">          (H2 : exp_match s2 (Star re)) :</span><br><span class="line">          exp_match (s1 ++ s2) (Star re).</span><br><span class="line"></span><br><span class="line">  - <span class="built_in">apply</span> H.                   <span class="comment">(* evidence H1 *)</span></span><br><span class="line">  - <span class="built_in">apply</span> MStar0.              <span class="comment">(* evidence H2 *)</span></span><br><span class="line"><span class="keyword">Qed</span>.                           <span class="comment">(* the fun fact is that we can really think the _proof_</span></span><br><span class="line"><span class="comment">                                  as providing evidence by _partial application_. *)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Induction-on-Evidence-1"><a href="#Induction-on-Evidence-1" class="headerlink" title="Induction on Evidence"></a>Induction on Evidence</h3><blockquote>
+<p>By the recursive nature of <code>exp_match</code>, proofs will often require induction.</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">(** Recursively collecting all characters that occur in a regex **)</span></span><br><span class="line"><span class="keyword">Fixpoint</span> re_chars &#123;T&#125; (re : reg_exp) : list T :=</span><br><span class="line">  <span class="keyword">match</span> re <span class="built_in">with</span></span><br><span class="line">  | <span class="type">EmptySet</span> ⇒ []</span><br><span class="line">  | <span class="type">EmptyStr</span> ⇒ []</span><br><span class="line">  | <span class="type">Char</span> x ⇒ [x]</span><br><span class="line">  | <span class="type">App</span> re1 re2 ⇒ re_chars re1 ++ re_chars re2</span><br><span class="line">  | <span class="type">Union</span> re1 re2 ⇒ re_chars re1 ++ re_chars re2</span><br><span class="line">  | <span class="type">Star</span> re ⇒ re_chars re</span><br><span class="line">  <span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+
+<p>The proof of <code>in_re_match</code> went through by <code>inversion</code> on relation <code>s =~ re</code>. (which gives us all 7 cases.)<br>The interesting case is <code>MStarApp</code>, where the proof tree has two <em>branches</em> (of premises):</p>
+<pre><code>                  s1 =~ re    s2 =~ Star re
+                 ---------------------------            (MStarApp)
+                    s1 ++ s2 =~ Star re
+</code></pre>
+<p>So by induction on the relation (rule), we got <em>two induction hypotheses</em>!<br>That’s what we need for the proof.</p>
+<h2 id="The-remember-tactic-Induction-on-Evidence-of-A-Specific-Case"><a href="#The-remember-tactic-Induction-on-Evidence-of-A-Specific-Case" class="headerlink" title="The remember tactic (Induction on Evidence of A Specific Case)"></a>The <code>remember</code> tactic (Induction on Evidence of A Specific Case)</h2><p>One interesting&#x2F;confusing features is that <code>induction</code> over a term that’s <em>insuffciently general</em>. e.g. </p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Lemma</span> star_app: ∀T (s1 s2 : list T) (re : @reg_exp T),</span><br><span class="line">  s1 =~ Star re →</span><br><span class="line">  s2 =~ Star re →</span><br><span class="line">  s1 ++ s2 =~ Star re.</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span> T s1 s2 re H1.</span><br></pre></td></tr></table></figure>
+
+<p>Here, we know the fact that both <code>s1</code> and <code>s2</code> are matching with the form <code>Star re</code>.<br>But by <code>induction</code>. it will give us <em>all 7 cases</em> to prove, but <em>5 of them are contradictory</em>!</p>
+<p>That’s where we need <code>remember (Star re) as re&#39;</code> to get this bit of information back to <code>discriminate</code>.</p>
+<h3 id="Sidenotes-inversion-vs-induction-on-evidence"><a href="#Sidenotes-inversion-vs-induction-on-evidence" class="headerlink" title="Sidenotes: inversion vs. induction on evidence"></a>Sidenotes: <code>inversion</code> vs. <code>induction</code> on evidence</h3><p>We might attemp to use <code>inversion</code>,<br>which is best suitted for have a specific conclusion of some rule and inverts back to get its premises.</p>
+<p>But for <em>recursive cases</em> (e.g. <code>Star</code>), we always need <code>induction</code>. </p>
+<p><code>induction</code> on a specific conclusion then <code>remember + contradiction</code> is similar with how <code>inversion</code> solves contradictionary cases. (They both <code>destruct</code> the inductively defined things for sure)</p>
+<h2 id="Exercise-5-stars-advanced-pumping"><a href="#Exercise-5-stars-advanced-pumping" class="headerlink" title="Exercise: 5 stars, advanced (pumping)"></a>Exercise: 5 stars, advanced (pumping)</h2><p>FCT&#x2F;Wikipedia “proves” <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Pumping_lemma_for_regular_languages">pumping lemma for regex</a> in a non-constructive way.</p>
+<p>Here we attempts to give a constructive proof.</p>
+<h2 id="Case-Study-Improving-Reflection-互映"><a href="#Case-Study-Improving-Reflection-互映" class="headerlink" title="Case Study: Improving Reflection (互映)"></a>Case Study: Improving Reflection (互映)</h2><blockquote>
+<p>we often need to relate boolean computations to statements in <code>Prop</code></p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> reflect (P : <span class="keyword">Prop</span>) : bool → <span class="keyword">Prop</span> :=</span><br><span class="line">| <span class="type">ReflectT</span> (H : P) : reflect P true</span><br><span class="line">| <span class="type">ReflectF</span> (H : ¬P) : reflect P false.</span><br></pre></td></tr></table></figure>
+
+<p>The <em>only</em> way to construct <code>ReflectT/F</code> is by showing (a proof) of <code>P/¬P</code>,<br>meaning invertion on <code>reflect P bool</code> can give us back the evidence. </p>
+<p><code>iff_reflect</code> give us <code>eqbP</code>.</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Lemma</span> eqbP : ∀n m, reflect (n = m) (n =? m).</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span> n m. <span class="built_in">apply</span> iff_reflect. <span class="built_in">rewrite</span> eqb_eq. <span class="built_in">reflexivity</span>.</span><br><span class="line"><span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
+
+<p>This gives us a small gain in convenience: we immediately give the <code>Prop</code> from <code>bool</code>, no need to <code>rewrite</code>.</p>
+<blockquote>
+<p>Proof Engineering Hacks…</p>
+</blockquote>
+<h3 id="SSReflect-small-scale-reflection"><a href="#SSReflect-small-scale-reflection" class="headerlink" title="SSReflect - small-scale reflection"></a>SSReflect - small-scale reflection</h3><blockquote>
+<p>a Coq library<br>used to prove 4-color theorem…!<br>simplify small proof steps with boolean computations. (somewhat automation with decision procedures)</p>
+</blockquote>
+<h2 id="Extended-Exercise-A-Verified-Regular-Expression-Matcher"><a href="#Extended-Exercise-A-Verified-Regular-Expression-Matcher" class="headerlink" title="Extended Exercise: A Verified Regular-Expression Matcher"></a>Extended Exercise: A Verified Regular-Expression Matcher</h2><blockquote>
+<p>we have defined a <em>match relation</em> that can <em>prove</em> a regex matches a string.<br>but it does not give us a <em>program</em> that can <em>run</em> to determine a match automatically…</p>
+</blockquote>
+<blockquote>
+<p>we hope to translate <em>inductive rules (for constructing evidence)</em> to <em>recursive fn</em>.<br>however, since <code>reg_exp</code> is recursive, Coq won’t accept it always terminates </p>
+</blockquote>
+<p>theoritically, the regex &#x3D; DFA so it is decidable and halt.<br>technically, it only halts on finite strings but not infinite strings.<br>(and infinite strings are probably beyond the scope of halting problem?)</p>
+<blockquote>
+<p>Heavily-optimized regex matcher &#x3D; translating into <em>state machine</em> e.g. NFA&#x2F;DFA.<br>Here we took a <em>derivative</em> approach which operates purely on string.</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Require</span> <span class="keyword">Export</span> Coq.Strings.Ascii.</span><br><span class="line"><span class="keyword">Definition</span> string := list ascii.</span><br></pre></td></tr></table></figure>
+
+<p>Coq 标准库中的 ASCII 字符串也是归纳定义的，不过我们这里为了之前定义的 match relation 用 <code>list ascii</code>.</p>
+<blockquote>
+<p>to define regex matcher over <code>list X</code> i.e. polymorphic lists.<br>we need to be able to <em>test equality</em> for each <code>X</code> etc.</p>
+</blockquote>
+<h3 id="Rules-Derivatives"><a href="#Rules-Derivatives" class="headerlink" title="Rules &amp; Derivatives."></a>Rules &amp; Derivatives.</h3><p>Check paper <a href="">Regular-expression derivatives reexamined - JFP 09</a> as well.</p>
+<p><code>app</code> and <code>star</code> are the hardest ones. </p>
+<h4 id="Let’s-take-app-as-an-example"><a href="#Let’s-take-app-as-an-example" class="headerlink" title="Let’s take app as an example"></a>Let’s take <code>app</code> as an example</h4><h5 id="1-等价-helper"><a href="#1-等价-helper" class="headerlink" title="1. 等价 helper"></a>1. 等价 helper</h5><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Lemma</span> app_exists : ∀(s : string) re0 re1,</span><br><span class="line">    s =~ App re0 re1 ↔ ∃s0 s1, s = s0 ++ s1 ∧ s0 =~ re0 ∧ s1 =~ re1.</span><br></pre></td></tr></table></figure>
+
+<p>this <em>helper rules</em> is written for the sake of convenience:</p>
+<ul>
+<li>the <code>&lt;-</code> is the definition of <code>MApp</code>.</li>
+<li>the <code>-&gt;</code> is the <code>inversion s =~ App re0 re1</code>.</li>
+</ul>
+<h5 id="2-App-对于-a-s-的匹配性质"><a href="#2-App-对于-a-s-的匹配性质" class="headerlink" title="2. App 对于 a :: s 的匹配性质"></a>2. <code>App</code> 对于 <code>a :: s</code> 的匹配性质</h5><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Lemma</span> app_ne : ∀(a : ascii) s re0 re1,</span><br><span class="line">    a :: s =~ (App re0 re1) ↔</span><br><span class="line">    ([ ] =~ re0 ∧ a :: s =~ re1) ∨</span><br><span class="line">    ∃s0 s1, s = s0 ++ s1 ∧ a :: s0 =~ re0 ∧ s1 =~ re1.</span><br></pre></td></tr></table></figure>
+<p>the second rule is more interesting. It states the <em>property</em> of <code>app</code>:</p>
+<blockquote>
+<p>App re0 re1 匹配 a::s 当且仅当  (re0 匹配空字符串 且 a::s 匹配 re1)  或  (s&#x3D;s0++s1，其中 a::s0 匹配 re0 且 s1 匹配 re1)。</p>
+</blockquote>
+<p>这两条对后来的证明很有帮助，<code>app_exists</code> 反演出来的 existential 刚好用在 <code>app_ne</code> 中.</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/jiangsy/SoftwareFoundation/blob/47543ce8b004cd25d0e1769f7444d57f0e26594d/IndProp.v">https://github.com/jiangsy/SoftwareFoundation/blob/47543ce8b004cd25d0e1769f7444d57f0e26594d/IndProp.v</a></p>
+</blockquote>
+<h5 id="3-定义-derivative-关系"><a href="#3-定义-derivative-关系" class="headerlink" title="3. 定义 derivative 关系"></a>3. 定义 derivative 关系</h5><p>the relation <em><code>re&#39;</code> is a derivative of <code>re</code> on <code>a</code></em> is defind as follows:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> is_der re (a : ascii) re&#x27; :=</span><br><span class="line">  ∀s, a :: s =~ re ↔ s =~ re&#x27;.</span><br></pre></td></tr></table></figure>
+
+<h5 id="4-实现-derive"><a href="#4-实现-derive" class="headerlink" title="4. 实现 derive"></a>4. 实现 derive</h5><p>Now we can impl <code>derive</code> by follwing <code>2</code>, the property.<br>In paper we have:</p>
+<pre><code>∂ₐ(r · s) = ∂ₐr · s + ν(r) · ∂ₐs       -- subscriprt &quot;a&quot; meaning &quot;respective to a&quot; 
+
+where 
+  ν(r) = nullable(r) ? ε : ∅ 
+</code></pre>
+<p>In our Coq implementation, <code>nullable(r) == match_eps(r)</code>, </p>
+<p>Since we know that<br><code>∀r, ∅ · r = ∅</code>,<br><code>∀r, ε · r = r</code>,<br>we can be more straightforward by expanding out <code>v(r)</code>:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Fixpoint</span> derive (a : ascii) (re : @reg_exp ascii) : @reg_exp ascii :=</span><br><span class="line">...</span><br><span class="line"> | <span class="type">App</span> r1 r2 =&gt; <span class="keyword">if</span> match_eps r1                            <span class="comment">(** nullable(r) ? **)</span></span><br><span class="line">      <span class="keyword">then</span> Union (App (derive a r1) r2) (derive a r2)      <span class="comment">(**  ∂ₐr · s + ∂ₐs **)</span></span><br><span class="line">      <span class="keyword">else</span> App (derive a r1) r2                            <span class="comment">(**  ∂ₐr · s       **)</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/LF-%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80/" rel="tag"># LF (逻辑基础)</a>
+              <a href="/tags/SF-%E8%BD%AF%E4%BB%B6%E5%9F%BA%E7%A1%80/" rel="tag"># SF (软件基础)</a>
+              <a href="/tags/Coq/" rel="tag"># Coq</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/read_sf_lf/2019-01-08-sf-lf-08-map/" rel="prev" title="「SF-LC」8 Maps">
+                  <i class="fa fa-angle-left"></i> 「SF-LC」8 Maps
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/read_sf_lf/2019-01-06-sf-lf-06-logic/" rel="next" title="「SF-LC」6 Logic">
+                  「SF-LC」6 Logic <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

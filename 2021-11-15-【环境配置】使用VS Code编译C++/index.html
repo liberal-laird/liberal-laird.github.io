@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2426182848439341"
+     crossorigin="anonymous"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33RJLY0818"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33RJLY0818');
+</script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="VS Code是一款微软出的轻量级文本编辑器，支持各大主流操作系统和非常多的主题和图标，它本身只是一款文本编辑器，所有的功能都以插件扩展的形式存在，想用什么功能就安装对应的扩展即可，非常方便。 一、安装MinGW编译器MinGW 的全称是：Minimalist GNU on Windows 。它实际上是将经典的开源 C语言 编译器 GCC 移植到了 Windows 平台下，并且包含了 Win32A">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「环境配置」使用VSCode编译C++">
+<meta property="og:url" content="https://www.vvbuys.com/2021-11-15-%E3%80%90%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E3%80%91%E4%BD%BF%E7%94%A8VS%20Code%E7%BC%96%E8%AF%91C++/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="VS Code是一款微软出的轻量级文本编辑器，支持各大主流操作系统和非常多的主题和图标，它本身只是一款文本编辑器，所有的功能都以插件扩展的形式存在，想用什么功能就安装对应的扩展即可，非常方便。 一、安装MinGW编译器MinGW 的全称是：Minimalist GNU on Windows 。它实际上是将经典的开源 C语言 编译器 GCC 移植到了 Windows 平台下，并且包含了 Win32A">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-11-15T00:00:00.000Z">
+<meta property="article:modified_time" content="2024-02-02T01:00:55.431Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="环境配置">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/2021-11-15-%E3%80%90%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E3%80%91%E4%BD%BF%E7%94%A8VS%20Code%E7%BC%96%E8%AF%91C++/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/2021-11-15-%E3%80%90%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E3%80%91%E4%BD%BF%E7%94%A8VS%20Code%E7%BC%96%E8%AF%91C++/","path":"2021-11-15-【环境配置】使用VS Code编译C++/","title":"「环境配置」使用VSCode编译C++"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>「环境配置」使用VSCode编译C++ | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85MinGW%E7%BC%96%E8%AF%91%E5%99%A8"><span class="nav-number">1.</span> <span class="nav-text">一、安装MinGW编译器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85%E5%8C%85"><span class="nav-number">1.1.</span> <span class="nav-text">1、下载安装包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E5%AE%89%E8%A3%85%E5%AE%89%E8%A3%85%E5%8C%85"><span class="nav-number">1.2.</span> <span class="nav-text">2、安装安装包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E9%85%8D%E7%BD%AE%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F"><span class="nav-number">1.3.</span> <span class="nav-text">3、配置系统变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E3%80%81%E6%B5%8B%E8%AF%95gcc"><span class="nav-number">1.4.</span> <span class="nav-text">4、测试gcc</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%85%8D%E7%BD%AEVS-Code%E7%9A%84%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83"><span class="nav-number">2.</span> <span class="nav-text">二、配置VS Code的编译环境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6VS-Code"><span class="nav-number">2.1.</span> <span class="nav-text">1、安装软件VS Code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6C-C"><span class="nav-number">2.2.</span> <span class="nav-text">2、安装插件C&#x2F;C++</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E9%85%8D%E7%BD%AE%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7"><span class="nav-number">2.3.</span> <span class="nav-text">3、配置编译工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E3%80%81%E7%BC%96%E8%AF%91%E7%A8%8B%E5%BA%8F"><span class="nav-number">2.4.</span> <span class="nav-text">4、编译程序</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2021-11-15-%E3%80%90%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E3%80%91%E4%BD%BF%E7%94%A8VS%20Code%E7%BC%96%E8%AF%91C++/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="「环境配置」使用VSCode编译C++ | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「环境配置」使用VSCode编译C++
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-11-15 00:00:00" itemprop="dateCreated datePublished" datetime="2021-11-15T00:00:00+00:00">2021-11-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-02-02 01:00:55" itemprop="dateModified" datetime="2024-02-02T01:00:55+00:00">2024-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>VS Code是一款微软出的轻量级文本编辑器，支持各大主流操作系统和非常多的主题和图标，它本身只是一款文本编辑器，所有的功能都以插件扩展的形式存在，想用什么功能就安装对应的扩展即可，非常方便。</p>
+<h1 id="一、安装MinGW编译器"><a href="#一、安装MinGW编译器" class="headerlink" title="一、安装MinGW编译器"></a>一、安装MinGW编译器</h1><p>MinGW 的全称是：Minimalist GNU on Windows 。它实际上是将经典的开源 C语言 编译器 GCC 移植到了 Windows 平台下，并且包含了 Win32API 。可以认为MinGW 就是 GCC 的 Windows 版本 。</p>
+<h2 id="1、下载安装包"><a href="#1、下载安装包" class="headerlink" title="1、下载安装包"></a>1、下载安装包</h2><p>MinGW-w64 的代码和可执行文件被托管存储在 SourceForge 上。MinGW-w64 为了适应各种操作系统，其组件会存在各种不同的版本。我们直接下载 MinGW-w64 的安装程序，它会按照我们的需要，自动下载适合的组件。</p>
+<p>到<a target="_blank" rel="noopener" href="https://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/">MinGW-w64 </a>直接联网下载，通过链接获取mingw-w64-install.exe:</p>
+<p>![](&#x2F;img-post&#x2F;环境配置&#x2F;2021-10-11-使用VS Code编译C++&#x2F;下载安装包.png)</p>
+<p>![](..&#x2F;&#x2F;img-post&#x2F;环境配置&#x2F;2021-10-11-使用VS Code编译C++&#x2F;下载安装包.png)</p>
+<h2 id="2、安装安装包"><a href="#2、安装安装包" class="headerlink" title="2、安装安装包"></a>2、安装安装包</h2><p>运行mingw-w64-install.exe，根据提示继续，进入设置页面，如下：</p>
+<p>![](&#x2F;img-post&#x2F;环境配置&#x2F;2021-10-11-使用VS Code编译C++&#x2F;设置页面.png)</p>
+<p>![](..&#x2F;&#x2F;img-post&#x2F;环境配置&#x2F;2021-10-11-使用VS Code编译C++&#x2F;设置页面.png)</p>
+<blockquote>
+<p>Version 指的是 gcc 的版本，如果没有特殊的需求，一般选择最高的版本号即可。</p>
+<p>Architecture 是指电脑系统是 32位 还是 64位，根据你的电脑系统做出对应选择，64位选择x86_64，32位选择 i686即可。</p>
+<p>Threads是选择操作系统接口协议类型，如果你只需要开发 Windows 程序，选择 win32 ，而开发 Linux、Unix、Mac OS 等其他操作系统下的程序，则需要选择 posix 。</p>
+<p>Exception是指异常处理模型，seh 性能比较好，但不支持 32位。 sjlj 稳定性好，支持 32位。</p>
+<p>Build revision选择默认即可。</p>
+</blockquote>
+<p>接下来就是选择安装路径，可以自定义，注意不要路径中不要有任何中文字符和空格：</p>
+<p>![](&#x2F;img-post&#x2F;环境配置&#x2F;2021-10-11-使用VS Code编译C++&#x2F;设置路径.png)</p>
+<p>![](..&#x2F;&#x2F;img-post&#x2F;环境配置&#x2F;2021-10-11-使用VS Code编译C++&#x2F;设置路径.png)</p>
+<h2 id="3、配置系统变量"><a href="#3、配置系统变量" class="headerlink" title="3、配置系统变量"></a>3、配置系统变量</h2><p>安装完成后找到安装文件中gcc.exe程序：</p>
+<p>![](&#x2F;img-post&#x2F;环境配置&#x2F;2021-10-11-使用VS Code编译C++&#x2F;配置变量.png)</p>
+<p>![](..&#x2F;&#x2F;img-post&#x2F;环境配置&#x2F;2021-10-11-使用VS Code编译C++&#x2F;配置变量.png)</p>
+<p>最后打开系统变量设置页面加入该路径即可：</p>
+<p>操作：右键点击“此电脑”，在弹出的菜单中点击红框中的“属性”项；点击“高级系统设置”链接，将打开“系统属性”窗口；点击“环境变量”按钮，打开“环境变量”窗口。</p>
+<h2 id="4、测试gcc"><a href="#4、测试gcc" class="headerlink" title="4、测试gcc"></a>4、测试gcc</h2><p>打开命令提示符窗口，输入“gcc -v” 并按回车键（Enter），如果成功显示 MinGW-w64 的组件列表说明前面的系统变量设置成功：</p>
+<p>![](&#x2F;img-post&#x2F;环境配置&#x2F;2021-10-11-使用VS Code编译C++&#x2F;验证gcc.png)</p>
+<p>![](..&#x2F;&#x2F;img-post&#x2F;环境配置&#x2F;2021-10-11-使用VS Code编译C++&#x2F;验证gcc.png)</p>
+<h1 id="二、配置VS-Code的编译环境"><a href="#二、配置VS-Code的编译环境" class="headerlink" title="二、配置VS Code的编译环境"></a>二、配置VS Code的编译环境</h1><h2 id="1、安装软件VS-Code"><a href="#1、安装软件VS-Code" class="headerlink" title="1、安装软件VS Code"></a>1、安装软件VS Code</h2><p>首先，需要安装 <code>Visual Studio Code</code> 软件。下载网址：<a href="https://link.zhihu.com/?target=https://code.visualstudio.com/">Visual Studio Code</a>。</p>
+<p>按照安装文件的要求，完成安装即可。</p>
+<h2 id="2、安装插件C-C"><a href="#2、安装插件C-C" class="headerlink" title="2、安装插件C&#x2F;C++"></a>2、安装插件C&#x2F;C++</h2><p>打开 <code>VS Code</code>，选择左侧栏的<code>扩展选项</code>，搜索插件<code>C/C++</code>，点击安装即可。</p>
+<p>![](&#x2F;img-post&#x2F;环境配置&#x2F;2021-10-11-使用VS Code编译C++&#x2F;插件C++.png)</p>
+<p>![](..&#x2F;&#x2F;img-post&#x2F;环境配置&#x2F;2021-10-11-使用VS Code编译C++&#x2F;插件C++.png)</p>
+<h2 id="3、配置编译工具"><a href="#3、配置编译工具" class="headerlink" title="3、配置编译工具"></a>3、配置编译工具</h2><p>经历上述步骤，已经可以正常编写<code>LaTeX</code>了。然而，为了更加适合我们的中文环境，可以修改<code> VS Code</code> 对应的配置文件。</p>
+<p>点击<code>help/show all commands</code>（Ctrl+Shift+P），输入 <code>C/C++</code>，选择“Edit Configurations(UI)”进入配置：</p>
+<p>![](&#x2F;img-post&#x2F;环境配置&#x2F;2021-10-11-使用VS Code编译C++&#x2F;配置编译器.png)</p>
+<p>![](..&#x2F;&#x2F;img-post&#x2F;环境配置&#x2F;2021-10-11-使用VS Code编译C++&#x2F;配置编译器.png)</p>
+<p>如果是编译c++程序则使用g++.exe,如果是编译c程序则使用gcc.exe：</p>
+<p>![](&#x2F;img-post&#x2F;环境配置&#x2F;2021-10-11-使用VS Code编译C++&#x2F;修改编译器.png)</p>
+<p>![](..&#x2F;&#x2F;img-post&#x2F;环境配置&#x2F;2021-10-11-使用VS Code编译C++&#x2F;修改编译器.png)</p>
+<p>最后生成<code> c_cpp_properties.json</code>。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;configurations&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Win32&quot;</span>,</span><br><span class="line">            <span class="string">&quot;includePath&quot;</span>: [</span><br><span class="line">                <span class="string">&quot;$&#123;workspaceFolder&#125;/**&quot;</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="string">&quot;defines&quot;</span>: [</span><br><span class="line">                <span class="string">&quot;_DEBUG&quot;</span>,</span><br><span class="line">                <span class="string">&quot;UNICODE&quot;</span>,</span><br><span class="line">                <span class="string">&quot;_UNICODE&quot;</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="string">&quot;windowsSdkVersion&quot;</span>: <span class="string">&quot;10.0.17763.0&quot;</span>,</span><br><span class="line">            <span class="string">&quot;compilerPath&quot;</span>: <span class="string">&quot;D:\\mingw-64\\mingw64\\bin\\g++.exe&quot;</span>,</span><br><span class="line">            <span class="string">&quot;cStandard&quot;</span>: <span class="string">&quot;c17&quot;</span>,</span><br><span class="line">            <span class="string">&quot;cppStandard&quot;</span>: <span class="string">&quot;c++17&quot;</span>,</span><br><span class="line">            <span class="string">&quot;intelliSenseMode&quot;</span>: <span class="string">&quot;gcc-x64&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;version&quot;</span>: <span class="number">4</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>继续生成tasks.json：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="comment">// See https://go.microsoft.com/fwlink/?LinkId=733558 </span></span><br><span class="line">    <span class="comment">// for the documentation about the tasks.json format</span></span><br><span class="line">    <span class="string">&quot;version&quot;</span>: <span class="string">&quot;2.0.0&quot;</span>,</span><br><span class="line">    <span class="string">&quot;tasks&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">&quot;type&quot;</span>: <span class="string">&quot;shell&quot;</span>,</span><br><span class="line">            <span class="string">&quot;label&quot;</span>: <span class="string">&quot;g++.exe build active file&quot;</span>,<span class="comment">//任务的名字，就是刚才在命令面板中选择的时候所看到的，可以自己设置</span></span><br><span class="line">            <span class="string">&quot;command&quot;</span>: <span class="string">&quot;D:/mingw-64/mingw64/bin/g++.exe&quot;</span>,</span><br><span class="line">            <span class="string">&quot;args&quot;</span>: [<span class="comment">//编译时候的参数</span></span><br><span class="line">                <span class="string">&quot;-g&quot;</span>,<span class="comment">//添加gdb调试选项</span></span><br><span class="line">                <span class="string">&quot;$&#123;file&#125;&quot;</span>,</span><br><span class="line">                <span class="string">&quot;-o&quot;</span>,<span class="comment">//指定生成可执行文件的名称</span></span><br><span class="line">                <span class="string">&quot;$&#123;fileDirname&#125;\\$&#123;fileBasenameNoExtension&#125;.exe&quot;</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="string">&quot;options&quot;</span>: &#123;</span><br><span class="line">                <span class="string">&quot;cwd&quot;</span>: <span class="string">&quot;D:/mingw-64/mingw64/bin&quot;</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="string">&quot;problemMatcher&quot;</span>: [</span><br><span class="line">                <span class="string">&quot;$gcc&quot;</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="string">&quot;group&quot;</span>: &#123;</span><br><span class="line">                <span class="string">&quot;kind&quot;</span>: <span class="string">&quot;build&quot;</span>,</span><br><span class="line">                <span class="string">&quot;isDefault&quot;</span>: <span class="literal">true</span><span class="comment">//表示快捷键Ctrl+Shift+B可以运行该任务</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="string">&quot;presentation&quot;</span>: &#123; </span><br><span class="line">                <span class="string">&quot;panel&quot;</span>: <span class="string">&quot;new&quot;</span> <span class="comment">//默认为“shared“表示共享，改成new之后每个进程创建新的端口</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>继续生成launch.json：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 使用 IntelliSense 了解相关属性。 </span></span><br><span class="line">    <span class="comment">// 悬停以查看现有属性的描述。</span></span><br><span class="line">    <span class="comment">// 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387</span></span><br><span class="line">    <span class="string">&quot;version&quot;</span>: <span class="string">&quot;0.2.0&quot;</span>,</span><br><span class="line">    <span class="string">&quot;configurations&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">&quot;name&quot;</span>: <span class="string">&quot;(gdb) Launch&quot;</span>,</span><br><span class="line">            <span class="string">&quot;preLaunchTask&quot;</span>: <span class="string">&quot;g++.exe build active file&quot;</span>,<span class="comment">//调试前执行的任务，就是之前配置的tasks.json中的label字段</span></span><br><span class="line">            <span class="string">&quot;type&quot;</span>: <span class="string">&quot;cppdbg&quot;</span>,<span class="comment">//配置类型，只能为cppdbg</span></span><br><span class="line">            <span class="string">&quot;request&quot;</span>: <span class="string">&quot;launch&quot;</span>,<span class="comment">//请求配置类型，可以为launch（启动）或attach（附加）</span></span><br><span class="line">            <span class="string">&quot;program&quot;</span>: <span class="string">&quot;$&#123;fileDirname&#125;\\$&#123;fileBasenameNoExtension&#125;.exe&quot;</span>,<span class="comment">//调试程序的路径名称</span></span><br><span class="line">            <span class="string">&quot;args&quot;</span>: [],<span class="comment">//调试传递参数</span></span><br><span class="line">            <span class="string">&quot;stopAtEntry&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="string">&quot;cwd&quot;</span>: <span class="string">&quot;$&#123;workspaceFolder&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;environment&quot;</span>: [],</span><br><span class="line">            <span class="string">&quot;externalConsole&quot;</span>: <span class="literal">true</span>,<span class="comment">//true显示外置的控制台窗口，false显示内置终端</span></span><br><span class="line">            <span class="string">&quot;MIMode&quot;</span>: <span class="string">&quot;gdb&quot;</span>,</span><br><span class="line">            <span class="string">&quot;miDebuggerPath&quot;</span>: <span class="string">&quot;D:\\mingw-64\\mingw64\\bin\\gdb.exe&quot;</span>,</span><br><span class="line">            <span class="string">&quot;setupCommands&quot;</span>: [</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Enable pretty-printing for gdb&quot;</span>,</span><br><span class="line">                    <span class="string">&quot;text&quot;</span>: <span class="string">&quot;-enable-pretty-printing&quot;</span>,</span><br><span class="line">                    <span class="string">&quot;ignoreFailures&quot;</span>: <span class="literal">true</span></span><br><span class="line">                &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4、编译程序"><a href="#4、编译程序" class="headerlink" title="4、编译程序"></a>4、编译程序</h2><p>按F5调试程序并且生成.exe程序，如果exe文件出现闪退（在Windows系统中比较常见），可以在代码中添加暂停语句：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;hello world!&quot;</span>&lt;&lt;endl;</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在终端继续输入执行exe程序即可。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" rel="tag"># 环境配置</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021-11-15-%E3%80%90%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E3%80%91%E5%9C%A8VS%20Code%E4%B8%AD%E9%85%8D%E7%BD%AELeetCode/" rel="prev" title="「环境配置」在VS Code中配置LeetCode">
+                  <i class="fa fa-angle-left"></i> 「环境配置」在VS Code中配置LeetCode
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021-11-17-%E3%80%90%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%8E%B0%E3%80%91S3net%E7%9A%84%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E5%AE%9E%E7%8E%B0/" rel="next" title="「项目复现」S3net的网络结构实现">
+                  「项目复现」S3net的网络结构实现 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

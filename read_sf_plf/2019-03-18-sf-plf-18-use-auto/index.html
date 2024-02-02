@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2426182848439341"
+     crossorigin="anonymous"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33RJLY0818"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33RJLY0818');
+</script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Basic Features of Proof SearchStrength of Proof Search four proof-search tactics: auto, eauto, iauto and jauto.   How Proof Search WorksSearch DepthBacktrackingAdding HintsIntegration of Automation in">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「SF-PLF」18 UseAuto">
+<meta property="og:url" content="https://www.vvbuys.com/read_sf_plf/2019-03-18-sf-plf-18-use-auto/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="Basic Features of Proof SearchStrength of Proof Search four proof-search tactics: auto, eauto, iauto and jauto.   How Proof Search WorksSearch DepthBacktrackingAdding HintsIntegration of Automation in">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-02T01:05:07.548Z">
+<meta property="article:modified_time" content="2024-02-02T01:05:07.548Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="SF (软件基础)">
+<meta property="article:tag" content="Coq">
+<meta property="article:tag" content="PLF (编程语言基础)">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/read_sf_plf/2019-03-18-sf-plf-18-use-auto/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/read_sf_plf/2019-03-18-sf-plf-18-use-auto/","path":"read_sf_plf/2019-03-18-sf-plf-18-use-auto/","title":"「SF-PLF」18 UseAuto"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>「SF-PLF」18 UseAuto | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-Features-of-Proof-Search"><span class="nav-number">1.</span> <span class="nav-text">Basic Features of Proof Search</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Strength-of-Proof-Search"><span class="nav-number">1.1.</span> <span class="nav-text">Strength of Proof Search</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-Proof-Search-Works"><span class="nav-number">2.</span> <span class="nav-text">How Proof Search Works</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Search-Depth"><span class="nav-number">2.1.</span> <span class="nav-text">Search Depth</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Backtracking"><span class="nav-number">2.2.</span> <span class="nav-text">Backtracking</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Adding-Hints"><span class="nav-number">2.3.</span> <span class="nav-text">Adding Hints</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Integration-of-Automation-in-Tactics"><span class="nav-number">2.4.</span> <span class="nav-text">Integration of Automation in Tactics</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Example-Proofs"><span class="nav-number">3.</span> <span class="nav-text">Example Proofs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Advanced-Topics-in-Proof-Search"><span class="nav-number">4.</span> <span class="nav-text">Advanced Topics in Proof Search</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.1.</span> <span class="nav-text"></span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Decision-Procedures"><span class="nav-number">5.</span> <span class="nav-text">Decision Procedures</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Omega"><span class="nav-number">5.1.</span> <span class="nav-text">Omega</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ring"><span class="nav-number">5.2.</span> <span class="nav-text">Ring</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Congurence"><span class="nav-number">5.3.</span> <span class="nav-text">Congurence</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/read_sf_plf/2019-03-18-sf-plf-18-use-auto/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="「SF-PLF」18 UseAuto | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「SF-PLF」18 UseAuto
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:05:07" itemprop="dateCreated datePublished" datetime="2024-02-02T01:05:07+00:00">2024-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Basic-Features-of-Proof-Search"><a href="#Basic-Features-of-Proof-Search" class="headerlink" title="Basic Features of Proof Search"></a>Basic Features of Proof Search</h2><h3 id="Strength-of-Proof-Search"><a href="#Strength-of-Proof-Search" class="headerlink" title="Strength of Proof Search"></a>Strength of Proof Search</h3><blockquote>
+<p>four proof-search tactics: <code>auto</code>, <code>eauto</code>, <code>iauto</code> and <code>jauto</code>.</p>
+</blockquote>
+<hr>
+<h2 id="How-Proof-Search-Works"><a href="#How-Proof-Search-Works" class="headerlink" title="How Proof Search Works"></a>How Proof Search Works</h2><h3 id="Search-Depth"><a href="#Search-Depth" class="headerlink" title="Search Depth"></a>Search Depth</h3><h3 id="Backtracking"><a href="#Backtracking" class="headerlink" title="Backtracking"></a>Backtracking</h3><h3 id="Adding-Hints"><a href="#Adding-Hints" class="headerlink" title="Adding Hints"></a>Adding Hints</h3><h3 id="Integration-of-Automation-in-Tactics"><a href="#Integration-of-Automation-in-Tactics" class="headerlink" title="Integration of Automation in Tactics"></a>Integration of Automation in Tactics</h3><hr>
+<h2 id="Example-Proofs"><a href="#Example-Proofs" class="headerlink" title="Example Proofs"></a>Example Proofs</h2><hr>
+<h2 id="Advanced-Topics-in-Proof-Search"><a href="#Advanced-Topics-in-Proof-Search" class="headerlink" title="Advanced Topics in Proof Search"></a>Advanced Topics in Proof Search</h2><h3 id=""><a href="#" class="headerlink" title=""></a></h3><hr>
+<h2 id="Decision-Procedures"><a href="#Decision-Procedures" class="headerlink" title="Decision Procedures"></a>Decision Procedures</h2><h3 id="Omega"><a href="#Omega" class="headerlink" title="Omega"></a>Omega</h3><h3 id="Ring"><a href="#Ring" class="headerlink" title="Ring"></a>Ring</h3><h3 id="Congurence"><a href="#Congurence" class="headerlink" title="Congurence"></a>Congurence</h3>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/SF-%E8%BD%AF%E4%BB%B6%E5%9F%BA%E7%A1%80/" rel="tag"># SF (软件基础)</a>
+              <a href="/tags/Coq/" rel="tag"># Coq</a>
+              <a href="/tags/PLF-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" rel="tag"># PLF (编程语言基础)</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/data_rep/2020-06-19-data-rep-int/" rel="prev" title="Data Representation - Integer">
+                  <i class="fa fa-angle-left"></i> Data Representation - Integer
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/read_sf_plf/2019-03-17-sf-plf-17-use-tactics/" rel="next" title="「SF-PLF」17 UseTactics">
+                  「SF-PLF」17 UseTactics <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

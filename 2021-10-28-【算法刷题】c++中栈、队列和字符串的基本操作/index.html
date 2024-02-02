@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2426182848439341"
+     crossorigin="anonymous"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33RJLY0818"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33RJLY0818');
+</script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="c++ string的详细用法string a&#x3D;”123”; 1.在字符串末尾添加一个字符a.push_back(‘3’); &#x2F;&#x2F;结果为 a&#x3D;”1233”; 2.在字符串末尾删除一个字符a.pop_back(); &#x2F;&#x2F;结果为 a&#x3D;”12”; 3.assign()1234567891011121314151617181920212">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「算法刷题」c++中栈、队列和字符串的基本操作">
+<meta property="og:url" content="https://www.vvbuys.com/2021-10-28-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91c++%E4%B8%AD%E6%A0%88%E3%80%81%E9%98%9F%E5%88%97%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="c++ string的详细用法string a&#x3D;”123”; 1.在字符串末尾添加一个字符a.push_back(‘3’); &#x2F;&#x2F;结果为 a&#x3D;”1233”; 2.在字符串末尾删除一个字符a.pop_back(); &#x2F;&#x2F;结果为 a&#x3D;”12”; 3.assign()1234567891011121314151617181920212">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="c:\Users\WJ\AppData\Roaming\Typora\typora-user-images\image-20211027221030901.png">
+<meta property="og:image" content="c:\Users\WJ\AppData\Roaming\Typora\typora-user-images\image-20211027221100703.png">
+<meta property="article:published_time" content="2021-10-28T00:00:00.000Z">
+<meta property="article:modified_time" content="2024-02-02T01:00:55.427Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="算法刷题">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:\Users\WJ\AppData\Roaming\Typora\typora-user-images\image-20211027221030901.png">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/2021-10-28-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91c++%E4%B8%AD%E6%A0%88%E3%80%81%E9%98%9F%E5%88%97%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/2021-10-28-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91c++%E4%B8%AD%E6%A0%88%E3%80%81%E9%98%9F%E5%88%97%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/","path":"2021-10-28-【算法刷题】c++中栈、队列和字符串的基本操作/","title":"「算法刷题」c++中栈、队列和字符串的基本操作"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>「算法刷题」c++中栈、队列和字符串的基本操作 | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#c-string%E7%9A%84%E8%AF%A6%E7%BB%86%E7%94%A8%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">c++ string的详细用法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%9C%A8%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9C%AB%E5%B0%BE%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6"><span class="nav-number">1.1.</span> <span class="nav-text">1.在字符串末尾添加一个字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%9C%A8%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9C%AB%E5%B0%BE%E5%88%A0%E9%99%A4%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6"><span class="nav-number">1.2.</span> <span class="nav-text">2.在字符串末尾删除一个字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-assign"><span class="nav-number">1.3.</span> <span class="nav-text">3.assign()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-append"><span class="nav-number">1.4.</span> <span class="nav-text">4.append()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-at"><span class="nav-number">1.5.</span> <span class="nav-text">4.at()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-front-%E4%B8%8Eback"><span class="nav-number">1.6.</span> <span class="nav-text">5 front()与back()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-compare"><span class="nav-number">1.7.</span> <span class="nav-text">6.compare()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-copy"><span class="nav-number">1.8.</span> <span class="nav-text">7.copy()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-data-%E4%B8%8Ec-str-copy-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.9.</span> <span class="nav-text">8.data()与c_str() copy()的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9%E3%80%81erase%EF%BC%88%EF%BC%89"><span class="nav-number">1.10.</span> <span class="nav-text">9、erase（）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#c-%E6%A0%88%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">c++ 栈的基本操作：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#c-queue-%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">c++ queue 的基本操作</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2021-10-28-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91c++%E4%B8%AD%E6%A0%88%E3%80%81%E9%98%9F%E5%88%97%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="「算法刷题」c++中栈、队列和字符串的基本操作 | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「算法刷题」c++中栈、队列和字符串的基本操作
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-10-28 00:00:00" itemprop="dateCreated datePublished" datetime="2021-10-28T00:00:00+00:00">2021-10-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-02-02 01:00:55" itemprop="dateModified" datetime="2024-02-02T01:00:55+00:00">2024-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="c-string的详细用法"><a href="#c-string的详细用法" class="headerlink" title="c++ string的详细用法"></a>c++ string的详细用法</h1><p>string a&#x3D;”123”;</p>
+<h2 id="1-在字符串末尾添加一个字符"><a href="#1-在字符串末尾添加一个字符" class="headerlink" title="1.在字符串末尾添加一个字符"></a>1.在字符串末尾添加一个字符</h2><p>a.push_back(‘3’); &#x2F;&#x2F;结果为 a&#x3D;”1233”;</p>
+<h2 id="2-在字符串末尾删除一个字符"><a href="#2-在字符串末尾删除一个字符" class="headerlink" title="2.在字符串末尾删除一个字符"></a>2.在字符串末尾删除一个字符</h2><p>a.pop_back(); &#x2F;&#x2F;结果为 a&#x3D;”12”;</p>
+<h2 id="3-assign"><a href="#3-assign" class="headerlink" title="3.assign()"></a>3.assign()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">//字符串变量</span><br><span class="line">string a=&quot;123&quot;;</span><br><span class="line">string b=&quot;456&quot;;</span><br><span class="line"></span><br><span class="line">1.字符串直接赋值</span><br><span class="line">a.assign(b); //等于a=b赋值，结果为 a=&quot;456&quot;</span><br><span class="line">a.assign(&quot;789&quot;);//结果为 a=&quot;789&quot;</span><br><span class="line"></span><br><span class="line">2.一个字符串的子串赋值给另一个字符串</span><br><span class="line">a.assign(b,begin,len);</span><br><span class="line">//从字符串b的第(begin)个字符开始向后数(len)个字符(包括begin)的字符串赋值给字符串a</span><br><span class="line"></span><br><span class="line">例：</span><br><span class="line">a.assign(b,0,1); //结果为 a=&quot;4&quot;</span><br><span class="line">a.assign(b,1,1); //结果为 a=&quot;5&quot;</span><br><span class="line">a.assign(b,0,2); //结果为 a=&quot;45&quot;;</span><br><span class="line">a.assign(b,1,2); //结果为 a=&quot;56&quot;;</span><br><span class="line">a.assign(&quot;123456&quot;,1,3); //结果为 a=&quot;234&quot;;</span><br><span class="line">/*说明</span><br><span class="line"> *如果第三个参数大于字符串本身的长度，则赋值到该字符串末尾</span><br><span class="line"> *如：a.assign(b,1,4); 结果为 a=&quot;56&quot;;</span><br><span class="line"> *如果第二个参数大于字符串本身长度则赋值为空</span><br><span class="line"> *如：a.assign(b,3,4); 结果为 a=&quot;&quot;;</span><br><span class="line"> *第二个参数最大不能超过字符串长度加一，否则程序会运行错误。因为string字符串后面会有一个&quot;\n&quot;符号，这个符号虽然不算在字符串长度里面，但是会占一个字符的空间。所以超过字符串长度加一后会出现std::out_of_range的错误。</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">3.从字符串的某一个字符串开始到结束赋值给另一个字符串</span><br><span class="line">a.assign(b,begin);</span><br><span class="line">//从字符串b的第begin字符串开始到字符串结束赋值给字符串a</span><br><span class="line"></span><br><span class="line">a.assign(b,0); //结果为 a=&quot;456&quot;;</span><br><span class="line">a.assign(b,1); //结果为 a=&quot;56&quot;;</span><br><span class="line">a.assign(b,4); //error 这样会运行错误（同2） vs2019</span><br><span class="line"></span><br><span class="line">4.从字符串开始到字符串的某一个字符赋值给另一个字符串</span><br><span class="line">a.assign(&quot;123456&quot;,2);//结果为 a=&quot;12&quot;</span><br><span class="line">string c=&quot;123456&quot;;</span><br><span class="line">a.assign(c,2);       //结果为 a=&quot;3456&quot;</span><br><span class="line">//根据vs2019运行情况来看，如过第一个参数是字符串常量则按从头到第n个字符赋值，如果第一个参数是字符串变量的话，则从第n个字符开始到字符串结尾赋值（不知道其他编译会是怎么样的,vs2019是调用不同的重载函数）</span><br><span class="line"></span><br><span class="line">5.用相同的n个字符给字符串赋值</span><br><span class="line">a.assign(10,&#x27;b&#x27;); //结果为 a=&quot;bbbbbbbbbb&quot;;</span><br><span class="line">a.assign(5,&#x27;c&#x27;);  //结果为 a=&quot;ccccc&quot;;</span><br><span class="line"></span><br><span class="line">6.template&lt;class inputIterator&gt; string&amp; assign(inputIterator first,inputIterator last);</span><br><span class="line">//使用这个函数需要引入#include&lt;iterator&gt;头文件 </span><br><span class="line">a.assign(istream_iterator&lt;char&gt;(cin), istream_iterator&lt;char&gt;());</span><br><span class="line">//键盘输入123abcd</span><br><span class="line">//结果为 a=&quot;123abcd&quot;;</span><br><span class="line">/*注意</span><br><span class="line"> *该函数不接收空格换行等符号，最后（windows系统）按ctrl+z结束输入</span><br><span class="line"> *如输入以下符号（既有空格也有换行）</span><br><span class="line"> 123abc    ABC  哈哈 !@#$</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> defg)(-=&lt;&gt;-+/*</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> 123654</span><br><span class="line"> 最后结果为 a=&quot;123abcABC哈哈!@#$defg)(-=&lt;&gt;-+/*123654&quot;;</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">7.使用迭代器赋值</span><br><span class="line">a.assign(b.begin()+1,b.end()); //结果为 a=&quot;67&quot;;</span><br><span class="line">a.assign(a.begin(),a.end());   //结果为 a=&quot;123&quot;;</span><br><span class="line"></span><br><span class="line">## 4.append()</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-append"><a href="#4-append" class="headerlink" title="4.append()"></a>4.append()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">string a=&quot;1234&quot;;</span><br><span class="line">string b=&quot;5678&quot;;</span><br><span class="line"></span><br><span class="line">1.把两个string字符串相连接</span><br><span class="line">a.append(b); //结果为 a=&quot;12345678&quot;;</span><br><span class="line">a.append(&quot;56789&quot;);//结果 a=&quot;123456789&quot;;</span><br><span class="line"></span><br><span class="line">2.从string字符串b的某一个字符开始到结束连接在string字符串a后面</span><br><span class="line">a.append(b,1);//结果为 a=&quot;1234678&quot;;</span><br><span class="line">a.append(b,0);//结果为 a=&quot;12345678&quot;;</span><br><span class="line">a.append(b,3);//结果为 a=&quot;12348&quot;;</span><br><span class="line">//注意第二个参数不能大于字符串b的长度加一，否则会出错，至于为什么请看我的上一篇assign函数的用法</span><br><span class="line"></span><br><span class="line">3.从字符串b的某一个字符开始到结束连接在string字符串a后面</span><br><span class="line">a.append(&quot;5678&quot;,1);//结果为 a=&quot;12345&quot;;</span><br><span class="line">a.append(&quot;5678&quot;,2);//结果为 a=&quot;123456&quot;;</span><br><span class="line">a.append(&quot;5678&quot;,0);//结果为 a=&quot;1234&quot;;</span><br><span class="line">// 注意2，3的区别</span><br><span class="line"></span><br><span class="line">4.把string的子串连接到另一个string后面</span><br><span class="line">a.append(&quot;5678&quot;,0,1);</span><br><span class="line">a.append(b,0,1); //结果为 a=&quot;12345&quot;;</span><br><span class="line">a,append(&quot;5678&quot;,1,3);</span><br><span class="line">a,append(b,1,3); //结果为 a=&quot;1234678&quot;;</span><br><span class="line"></span><br><span class="line">5.在string字符串后面添加n个字符</span><br><span class="line">a.append(10,&#x27;&gt;&#x27;); //结果为 a=&quot;1234&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&quot;;</span><br><span class="line"></span><br><span class="line">6.template&lt;class inputIterator&gt; string&amp; append(inputIterator first,inputIterator last);</span><br><span class="line">//需要引入头文件#include&lt;iterator&gt;</span><br><span class="line">a.append(istream_iterator&lt;char&gt;(cin),istream_iterator&lt;char&gt;());</span><br><span class="line">//从键盘输入abcd</span><br><span class="line">//结果为 a=&quot;1234abcd&quot;;</span><br><span class="line">/**注意</span><br><span class="line"> *该函数不接收空格换行等符号，最后（windows系统）按ctrl+z结束输入</span><br><span class="line"> *如输入以下符号（既有空格也有换行）</span><br><span class="line">  @#￥%………</span><br><span class="line"></span><br><span class="line">  按时到场  sdf   456</span><br><span class="line"></span><br><span class="line">  asd</span><br><span class="line"> 最后结果为 a=&quot;1234@#￥%……按时到场sdf456asd&quot;;</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">7.使用迭代器使string字符串相连接</span><br><span class="line">a.append(b.begin()+1,b.end());//结果为 a=&quot;1234678&quot;;</span><br><span class="line">a.append(a.begin(),a.end());  //结果为 a=&quot;12341234&quot;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-at"><a href="#4-at" class="headerlink" title="4.at()"></a>4.at()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">string a=&quot;abcd&quot;;</span><br><span class="line"></span><br><span class="line">1.获取string字符串某一个字符</span><br><span class="line">auto s=a.at(1); //结果为 s=&#x27;b&#x27;;</span><br><span class="line">for (unsigned int i=0;i&lt;a.size();i++)</span><br><span class="line">&#123;</span><br><span class="line">	cout &lt;&lt; a.at(i) &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line">/* 结果为</span><br><span class="line"> a</span><br><span class="line"> b</span><br><span class="line"> c</span><br><span class="line"> d</span><br><span class="line"> */ </span><br><span class="line"> //等同于a[i],但是at()会有下标检查，如果超出则抛出out_of_range</span><br><span class="line"></span><br><span class="line">2.修改string字符串某一个字符</span><br><span class="line">a.at(2)=&#x27;1&#x27;; //结果为 a=&quot;ab1d&quot;;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="5-front-与back"><a href="#5-front-与back" class="headerlink" title="5 front()与back()"></a>5 front()与back()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">string a=&quot;abcd&quot;;</span><br><span class="line"></span><br><span class="line">1.获取字符串最后一个字符</span><br><span class="line">auto b=a.back(); //结果为 b=&#x27;d&#x27;;</span><br><span class="line"></span><br><span class="line">2.修改字符串最后一个字符</span><br><span class="line">a.back()=&#x27;!&#x27;; //结果为 a=&quot;abc!&quot;;</span><br><span class="line"></span><br><span class="line">3.获取字符串第一个字符</span><br><span class="line">auto b=a.front(); //结果为 b=&#x27;a&#x27;;</span><br><span class="line"></span><br><span class="line">4.修改字符串第一个字符</span><br><span class="line">a.front()=&#x27;!&#x27;; //结果为 a=&quot;!bcd&quot;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="6-compare"><a href="#6-compare" class="headerlink" title="6.compare()"></a>6.compare()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">string a=&quot;abcd&quot;;</span><br><span class="line">string b=&quot;efgh&quot;;</span><br><span class="line">string c=&quot;1fgh&quot;;</span><br><span class="line">string d=&quot;fgh&quot;;</span><br><span class="line">string e=&quot;123efg&quot;;</span><br><span class="line"></span><br><span class="line">比较两个字符串的ASCII码，&gt;0返回1，&lt;0返回-1，相同，返回0</span><br><span class="line">ASCII码比较是字符串的字符从前往后比较，如果之前的比较完成则后面的字符无需比较</span><br><span class="line"></span><br><span class="line">1.直接比较两个字符串</span><br><span class="line">auto number = a.compare(b); //结果为 number=-1;</span><br><span class="line">auto number = b.compare(a); //结果为 number=1;</span><br><span class="line">auto number = b.compare(b); //结果为 number=0;</span><br><span class="line">auto number = a.compare(c); //结果为 number=1;</span><br><span class="line">auto number = a.compare(&quot;abc&quot;); //结果为 number=1;</span><br><span class="line"></span><br><span class="line">2.一个字符串的子串与另一个字符串比较</span><br><span class="line">auto number = b.compare(1,3,d); //结果为 number=0;</span><br><span class="line">//字符串b从下标为1的字符开始的三个字符与字符串d比较，显然都是fgh,所以相等，返回0</span><br><span class="line">auto number = b.compare(1,3,c); //结果为 number=1;</span><br><span class="line">auto number = b.compare(1,3,&quot;fgh&quot;); //结果为 number=0;</span><br><span class="line"></span><br><span class="line">3.一个字符串的子串与另一个字符串的子串比较</span><br><span class="line">auto number = b.compare(1,3,c,1,3); //结果为 number= 0;</span><br><span class="line">//字符串b从下标为1的地方开始的后3个字符是fgh，字符串c从下标为1的字符开始的后三个字符是fgh,所以相等</span><br><span class="line">auto number = b.compare(0,3,e,3,3); //结果为 number=0;</span><br><span class="line">//字符串b从下标为0的地方开始的后3个字符是efg，字符串e从下标为3的字符开始的后三个字符是efg,所以相等</span><br><span class="line">auto number = b.compare(0,4,&quot;1234efgh&quot;,4,4); //结果为 number=0;</span><br><span class="line">//字符串b从下标为0的地方开始的后四个字符是efgh，字符串&quot;1234efgh&quot;从下标为4的字符开始的后4个字符是efgh,所以相等</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="7-copy"><a href="#7-copy" class="headerlink" title="7.copy()"></a>7.copy()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">char *str = new char[64];</span><br><span class="line">string a=&quot;12345abcdefg6789&quot;;</span><br><span class="line"></span><br><span class="line">str[a.copy(str,7,5)]=&#x27;\0&#x27;;</span><br><span class="line">// 结果为 str=&quot;abcdefg&quot;;</span><br><span class="line"></span><br><span class="line">str[a.copy(str,7)]=&#x27;\0&#x27;;</span><br><span class="line">// 结果为 str=&quot;12345ab&quot;;</span><br><span class="line"></span><br><span class="line">delete[]str;</span><br><span class="line"></span><br><span class="line">/*注意</span><br><span class="line"> *copy的第2，3个参数不能大于字符串str所能容纳的最长字符串长度</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-data-与c-str-copy-的区别"><a href="#8-data-与c-str-copy-的区别" class="headerlink" title="8.data()与c_str() copy()的区别"></a>8.data()与c_str() copy()的区别</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">string a=&quot;123456&quot;;</span><br><span class="line"></span><br><span class="line">1.c_str(),data()可以生成一个const char* 的指针，可以指向一个空字符终止的地址。</span><br><span class="line"></span><br><span class="line">const char* str=nullptr;</span><br><span class="line">str=a.c_str(); //结果为 str=&quot;123456&quot;;</span><br><span class="line">str=a.data(); //结果为 str=&quot;123456&quot;;</span><br><span class="line"></span><br><span class="line">但是如果改变string a的值,str的值随之改变</span><br><span class="line">a=&quot;abcedf&quot;;</span><br><span class="line">cout&lt;&lt;str&lt;&lt;endl; //结果为 str=&quot;abcdef&quot;;</span><br><span class="line"></span><br><span class="line">2.如果不想让其指针指向的值改变可以使用copy()函数(如果不知道copy()函数如何使用，请看我的上一篇copy()的使用方法)</span><br><span class="line">char* str = new char[64];</span><br><span class="line">str[a.copy(str, a.size(), 0)]=&#x27;\0&#x27;;</span><br><span class="line">cout &lt;&lt; str &lt;&lt; endl; //结果为 str=&quot;123456&quot;;</span><br><span class="line"></span><br><span class="line">//改变string a的值</span><br><span class="line">a=&quot;abcd&quot;;</span><br><span class="line">cout&lt;&lt; str &lt;&lt;endl; //结果为 str=&quot;123456&quot;;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="9、erase（）"><a href="#9、erase（）" class="headerlink" title="9、erase（）"></a>9、erase（）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">string a=&quot;123456789&quot;;</span><br><span class="line"></span><br><span class="line">1.删除所有字符</span><br><span class="line">a.erase(); //结果为 a=&quot;&quot;;</span><br><span class="line"></span><br><span class="line">2.从字符串的某一个位置开始删除</span><br><span class="line">a.erase(n) //从字符串的第n个字符开始删除</span><br><span class="line">a.erase(3); //结果为 a=&quot;123&quot;;</span><br><span class="line">a.erase(5); //结果为 a=&quot;12345&quot;;</span><br><span class="line">a.erase(0); //等同于a.erase() a=&quot;&quot;;</span><br><span class="line"></span><br><span class="line">3.从字符串的某一个位置开始，向后删除m个字符</span><br><span class="line">a.erase(n,m); //从字符的第n个字符开始删除m个字符</span><br><span class="line">a.erase(2,3); //结果为 a=&quot;126789&quot;;</span><br><span class="line">a.erase(4,1); //结果为 a=&quot;12346789&quot;;</span><br><span class="line"></span><br><span class="line">4.删除迭代器位置处的字符，并返回下一个字符的迭代器</span><br><span class="line">auot iter=a.erase(a.begin()+1); //结果为 a=&quot;13456789&quot;;</span><br><span class="line">cout&lt;&lt;*iter&lt;&lt;endl; //结果为 *iter=3</span><br><span class="line"></span><br><span class="line">5.删除迭代器所指向的区间,并返回下一个字符的迭代器</span><br><span class="line">auto iter=a.erase(a.begin()+1,a.end()-2);//结果为 a=&quot;189&quot;;</span><br><span class="line">cout&lt;&lt;*iter&lt;,endl; //结果为 *iter=8;</span><br><span class="line"></span><br><span class="line">6.删除字符时常常与find()函数配合使用(find()函数的用法会在以后写出)</span><br><span class="line">a.erase(a.find(&quot;56&quot;),2); //结果为 a=&quot;1234789&quot;;</span><br><span class="line"> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="c-栈的基本操作："><a href="#c-栈的基本操作：" class="headerlink" title="c++ 栈的基本操作："></a>c++ 栈的基本操作：</h1><p>​    一种可以实现“先进后出（后进先出）”的存储结构</p>
+<p>s.empty();         &#x2F;&#x2F;如果栈为空则返回true, 否则返回false;<br>s.size();          &#x2F;&#x2F;返回栈中元素的个数<br>s.top();           &#x2F;&#x2F;返回栈顶元素, 但不删除该元素<br>s.pop();           &#x2F;&#x2F;弹出&#x2F;删除栈顶元素, 但不返回其值<br>s.push();          &#x2F;&#x2F;将元素压入栈顶</p>
+<p> 在压栈的过程中，栈顶的位置一直在”向上“移动，而栈底是固定不变的。 </p>
+<p><img src="C:\Users\WJ\AppData\Roaming\Typora\typora-user-images\image-20211027221030901.png" alt="image-20211027221030901"></p>
+<p> 如果我们要把栈中的元素弹出来： 先入后出</p>
+<p><img src="C:\Users\WJ\AppData\Roaming\Typora\typora-user-images\image-20211027221100703.png" alt="image-20211027221100703"></p>
+<h1 id="c-queue-的基本操作"><a href="#c-queue-的基本操作" class="headerlink" title="c++ queue 的基本操作"></a>c++ queue 的基本操作</h1><p>入队，如例：q.push(x); 将x 接到队列的末端。<br>出队，如例：q.pop(); 弹出队列的第一个元素，注意，并不会返回被弹出元素的值。<br>访问队首元素，如例：q.front()，即最早被压入队列的元素。<br>访问队尾元素，如例：q.back()，即最后被压入队列的元素。<br>判断队列空，如例：q.empty()，当队列空时，返回true。<br>访问队列中的元素个数，如例：q.size() </p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/" rel="tag"># 算法刷题</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021-10-27-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91904%E6%B0%B4%E6%9E%9C%E6%88%90%E7%AF%AE/" rel="prev" title="「算法刷题」904水果成篮">
+                  <i class="fa fa-angle-left"></i> 「算法刷题」904水果成篮
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021-10-29-%E3%80%90%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB%E3%80%91%E8%87%AA%E9%80%82%E5%BA%94%E7%A5%9E%E7%BB%8F%E6%A0%91/" rel="next" title="「论文分享」自适应神经树">
+                  「论文分享」自适应神经树 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

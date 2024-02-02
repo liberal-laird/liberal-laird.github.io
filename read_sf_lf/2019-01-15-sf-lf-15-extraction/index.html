@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2426182848439341"
+     crossorigin="anonymous"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33RJLY0818"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33RJLY0818');
+</script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Basic Extraction OCaml   (most mature) Haskell (mostly works) Scheme  (a bit out of date)  1Extraction &quot;imp1.ml&quot; ceval_step.  When Coq processes this command: 12The file imp1.ml has been cre">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「SF-LC」15 Extraction">
+<meta property="og:url" content="https://www.vvbuys.com/read_sf_lf/2019-01-15-sf-lf-15-extraction/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="Basic Extraction OCaml   (most mature) Haskell (mostly works) Scheme  (a bit out of date)  1Extraction &quot;imp1.ml&quot; ceval_step.  When Coq processes this command: 12The file imp1.ml has been cre">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-02T01:05:07.544Z">
+<meta property="article:modified_time" content="2024-02-02T01:05:07.544Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="LF (逻辑基础)">
+<meta property="article:tag" content="SF (软件基础)">
+<meta property="article:tag" content="Coq">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/read_sf_lf/2019-01-15-sf-lf-15-extraction/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/read_sf_lf/2019-01-15-sf-lf-15-extraction/","path":"read_sf_lf/2019-01-15-sf-lf-15-extraction/","title":"「SF-LC」15 Extraction"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>「SF-LC」15 Extraction | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-Extraction"><span class="nav-number">1.</span> <span class="nav-text">Basic Extraction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Controlling-Extraction-of-Specific-Types"><span class="nav-number">2.</span> <span class="nav-text">Controlling Extraction of Specific Types</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Recursor-%E7%9A%84%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E7%8E%B0-a-%E2%80%9Cencoding%E2%80%9D-of-case-expression-and-sum-type"><span class="nav-number">2.1.</span> <span class="nav-text">Recursor 的理论与实现 - a “encoding” of case expression and sum type</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/read_sf_lf/2019-01-15-sf-lf-15-extraction/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="「SF-LC」15 Extraction | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「SF-LC」15 Extraction
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:05:07" itemprop="dateCreated datePublished" datetime="2024-02-02T01:05:07+00:00">2024-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Basic-Extraction"><a href="#Basic-Extraction" class="headerlink" title="Basic Extraction"></a>Basic Extraction</h2><ul>
+<li>OCaml   (most mature)</li>
+<li>Haskell (mostly works)</li>
+<li>Scheme  (a bit out of date)</li>
+</ul>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Extraction</span> <span class="string">&quot;imp1.ml&quot;</span> ceval_step.</span><br></pre></td></tr></table></figure>
+
+<p>When Coq processes this command:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">The file imp1.ml has been created by extraction.</span><br><span class="line">The file imp1.mli has been created by extraction.</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Controlling-Extraction-of-Specific-Types"><a href="#Controlling-Extraction-of-Specific-Types" class="headerlink" title="Controlling Extraction of Specific Types"></a>Controlling Extraction of Specific Types</h2><p>如果不做任何处理的话…生成的 <code>ml</code> 里的 <code>nat</code> 则都会是 Church Numeral…</p>
+<blockquote>
+<p>We can tell Coq how to extract certain <code>Inductive</code> definitions to specific OCaml types.<br>we must say:</p>
+<ol>
+<li>how the Coq type itself should be represented in OCaml</li>
+<li>how each constructor should be translated</li>
+</ol>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Extract</span> <span class="keyword">Inductive</span> bool ⇒ <span class="string">&quot;bool&quot;</span> [ <span class="string">&quot;true&quot;</span> <span class="string">&quot;false&quot;</span> ].</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>also, for non-enumeration types (where the constructors take arguments),<br>we give an OCaml expression that can be used as a <em>“recursor”</em> over elements of the type. (Think Church numerals.)</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Extract</span> <span class="keyword">Inductive</span> nat ⇒ <span class="string">&quot;int&quot;</span></span><br><span class="line">  [ <span class="string">&quot;0&quot;</span> <span class="string">&quot;(fun x → x + 1)&quot;</span> ]</span><br><span class="line">  <span class="string">&quot;(fun zero succ n →</span></span><br><span class="line"><span class="string">      if n=0 then zero () else succ (n-1))&quot;</span>.</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Extract</span> <span class="keyword">Constant</span> plus ⇒ <span class="string">&quot;( + )&quot;</span>.</span><br><span class="line"><span class="keyword">Extract</span> <span class="keyword">Constant</span> mult ⇒ <span class="string">&quot;( * )&quot;</span>.</span><br><span class="line"><span class="keyword">Extract</span> <span class="keyword">Constant</span> eqb ⇒ <span class="string">&quot;( = )&quot;</span>.</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：保证提取结果的合理性是你的责任。</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Extract</span> <span class="keyword">Constant</span> minus ⇒ <span class="string">&quot;( - )&quot;</span>.</span><br></pre></td></tr></table></figure>
+
+<p>比如这么做很诱人……但是我们 Coq 的定义里 <code>0 - 1 = 0</code>, OCaml 的 <code>int</code> 则会有负数…</p>
+<h3 id="Recursor-的理论与实现-a-“encoding”-of-case-expression-and-sum-type"><a href="#Recursor-的理论与实现-a-“encoding”-of-case-expression-and-sum-type" class="headerlink" title="Recursor 的理论与实现 - a “encoding” of case expression and sum type"></a>Recursor 的理论与实现 - a “encoding” of case expression and sum type</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Fixpoint</span> ceval_step (st : state) (c : com) (i : nat)</span><br><span class="line">                    : option state :=</span><br><span class="line">  <span class="keyword">match</span> i <span class="built_in">with</span></span><br><span class="line">  | <span class="type">O</span> =&gt; None</span><br><span class="line">  | <span class="type">S</span> i&#x27; =&gt;</span><br><span class="line">    <span class="keyword">match</span> c <span class="built_in">with</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="keyword">rec</span> ceval_step st c = <span class="keyword">function</span></span><br><span class="line">  | <span class="type">O</span> -&gt; <span class="type">None</span></span><br><span class="line">  | <span class="type">S</span> i&#x27; -&gt;</span><br><span class="line">    (<span class="keyword">match</span> c <span class="keyword">with</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="keyword">rec</span> ceval_step st c i =</span><br><span class="line">  (<span class="keyword">fun</span> zero succ n -&gt; <span class="keyword">if</span> n=<span class="number">0</span> <span class="keyword">then</span> zero <span class="literal">()</span> <span class="keyword">else</span> succ (n-<span class="number">1</span>))</span><br><span class="line">    (<span class="keyword">fun</span> _ -&gt; <span class="type">None</span>)     <span class="comment">(* zero *)</span></span><br><span class="line">    (<span class="keyword">fun</span> i&#x27; -&gt;          <span class="comment">(* succ *)</span></span><br><span class="line">    <span class="keyword">match</span> c <span class="keyword">with</span></span><br></pre></td></tr></table></figure>
+
+<p>注意我们是如何使用 “recursor” 来替代 <code>case</code>, <code>match</code>, pattern matching 得。</p>
+<p>recall <em>sum type</em> 在 PLT 中的语法与语义：</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">T ::= </span><br><span class="line">  T + T</span><br><span class="line"></span><br><span class="line">e ::=</span><br><span class="line">  <span class="built_in">case</span> e of</span><br><span class="line">    | <span class="type">L</span>(e) =&gt; e</span><br><span class="line">    | <span class="type">R</span>(e) =&gt; e</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">                 e → e&#x27; </span><br><span class="line">             ------------- (work inside constructor)</span><br><span class="line">             C(e) -&gt; C(e&#x27;)</span><br><span class="line"></span><br><span class="line">                 e → e&#x27; </span><br><span class="line">     -------------------------------   (work on the expr match against)</span><br><span class="line">     case e of ... →  case e&#x27; of ...</span><br><span class="line"></span><br><span class="line">-----------------------------------------------  (match Left constructor, substitute)</span><br><span class="line">case L(v) of L(x) =&gt; e1 | R(y) =&gt; e2 → e1 [v/x]</span><br><span class="line"></span><br><span class="line">-----------------------------------------------  (match Right constructor, substitute)</span><br><span class="line">case R(v) of L(x) =&gt; e1 | R(y) =&gt; e2 → e1 [v/x]</span><br></pre></td></tr></table></figure>
+
+<p>可以发现 <code>case</code> 表达式可以理解为一种特殊的 application，会将其 argument 根据某种 tag （这里为构造函数） apply 到对应的 case body 上，<br>每个 case body 都是和 lambda abstraction 同构的一种 binder：</p>
+<pre><code> L(x) =&gt; e1     ===   λx.e1
+ R(x) =&gt; e2     ===   λx.e2 
+
+ case v e1|e2   ===   (λx.e1|e2) v      -- `e1` or `e2` depends on the _tag_ wrapped on `v`
+</code></pre>
+<p>这个角度也解释了 Haskell&#x2F;SML 在申明函数时直接对参数写 pattern match 的理论合理性.</p>
+<p>根据经验几乎所有的 <em>binding</em> 都可以被 desugar 成函数（即 lambda expression).<br>难点在于我们如何 re-implement 这个 <em>tag</em> 的 <em>switch</em> 机制?</p>
+<p>对于 <code>Inductive nat</code> 翻译到 OCaml <code>int</code> 时，这个机制可以用 <code>v =? 0</code> 来判断，因此我们的 <em>recursor</em> 实现为</p>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fun</span> zero succ                <span class="comment">(* partial application  *)</span></span><br><span class="line">  n -&gt; <span class="keyword">if</span> n=<span class="number">0</span>                <span class="comment">(* 判断 tag ... *)</span></span><br><span class="line">       <span class="keyword">then</span> zero <span class="literal">()</span>          <span class="comment">(* 0   case =&gt;  (λx.e1) v *)</span></span><br><span class="line">       <span class="keyword">else</span> succ (n-<span class="number">1</span>)       <span class="comment">(* S n case =&gt;  (λx.e2) v *)</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/LF-%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80/" rel="tag"># LF (逻辑基础)</a>
+              <a href="/tags/SF-%E8%BD%AF%E4%BB%B6%E5%9F%BA%E7%A1%80/" rel="tag"># SF (软件基础)</a>
+              <a href="/tags/Coq/" rel="tag"># Coq</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019-09-03-vim-from-finder/" rel="prev" title="把「终端下的 Vim」作为 macOS Finder 的打开方式">
+                  <i class="fa fa-angle-left"></i> 把「终端下的 Vim」作为 macOS Finder 的打开方式
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/read_sf_lf/2019-01-14-sf-lf-14-imp-ceval/" rel="next" title="「SF-LC」14 ImpCEvalFun">
+                  「SF-LC」14 ImpCEvalFun <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

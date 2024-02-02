@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2426182848439341"
+     crossorigin="anonymous"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33RJLY0818"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33RJLY0818');
+</script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="LeetCode题目 相关题目类型 相关链接    232 用栈实现队列（简单难度） 232. 用栈实现队列 - 力扣（LeetCode） (leetcode-cn.com)   在push数据的时候，只要数据放进输入栈就好，但在pop的时候，操作就复杂一些，输出栈如果为空，就把进栈数据全部导入进来（注意是全部导入），再从出栈弹出数据，如果输出栈不为空，则直接从输出栈弹出数据就可以了。 最后">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「算法刷题」栈和队列的相关经典题目">
+<meta property="og:url" content="https://www.vvbuys.com/2021-10-28-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97%E7%9A%84%E7%9B%B8%E5%85%B3%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="LeetCode题目 相关题目类型 相关链接    232 用栈实现队列（简单难度） 232. 用栈实现队列 - 力扣（LeetCode） (leetcode-cn.com)   在push数据的时候，只要数据放进输入栈就好，但在pop的时候，操作就复杂一些，输出栈如果为空，就把进栈数据全部导入进来（注意是全部导入），再从出栈弹出数据，如果输出栈不为空，则直接从输出栈弹出数据就可以了。 最后">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="c:\Users\WJ\AppData\Roaming\Typora\typora-user-images\image-20211028151300438.png">
+<meta property="og:image" content="c:\Users\WJ\AppData\Roaming\Typora\typora-user-images\image-20211028151315983.png">
+<meta property="og:image" content="c:\Users\WJ\AppData\Roaming\Typora\typora-user-images\image-20211028151337388.png">
+<meta property="article:published_time" content="2021-10-27T00:00:00.000Z">
+<meta property="article:modified_time" content="2024-02-02T01:00:55.427Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="算法刷题">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:\Users\WJ\AppData\Roaming\Typora\typora-user-images\image-20211028151300438.png">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/2021-10-28-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97%E7%9A%84%E7%9B%B8%E5%85%B3%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/2021-10-28-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97%E7%9A%84%E7%9B%B8%E5%85%B3%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE/","path":"2021-10-28-【算法刷题】栈和队列的相关经典题目/","title":"「算法刷题」栈和队列的相关经典题目"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>「算法刷题」栈和队列的相关经典题目 | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2021-10-28-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97%E7%9A%84%E7%9B%B8%E5%85%B3%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="「算法刷题」栈和队列的相关经典题目 | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「算法刷题」栈和队列的相关经典题目
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-10-27 00:00:00" itemprop="dateCreated datePublished" datetime="2021-10-27T00:00:00+00:00">2021-10-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-02-02 01:00:55" itemprop="dateModified" datetime="2024-02-02T01:00:55+00:00">2024-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><table>
+<thead>
+<tr>
+<th><strong>LeetCode题目</strong></th>
+<th><strong>相关题目类型</strong></th>
+<th><strong>相关链接</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>232</td>
+<td>用栈实现队列（简单难度）</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/implement-queue-using-stacks/">232. 用栈实现队列 - 力扣（LeetCode） (leetcode-cn.com)</a></td>
+</tr>
+</tbody></table>
+<p>在push数据的时候，只要数据放进输入栈就好，<strong>但在pop的时候，操作就复杂一些，输出栈如果为空，就把进栈数据全部导入进来（注意是全部导入）</strong>，再从出栈弹出数据，如果输出栈不为空，则直接从输出栈弹出数据就可以了。</p>
+<p>最后如何判断队列为空呢？<strong>如果进栈和出栈都为空的话，说明模拟的队列为空了。</strong></p>
+<p>在代码实现的时候，会发现pop() 和 peek()两个函数功能类似，代码实现上也是类似的，可以思考一下如何把代码抽象一下。</p>
+<p>输入栈的元素出栈再放到输出栈中，这样输出栈的输出顺序和队列顺序一样了（手画一下）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyQueue</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    stack&lt;<span class="type">int</span>&gt;sck1;</span><br><span class="line">    stack&lt;<span class="type">int</span>&gt;sck2;</span><br><span class="line">    <span class="built_in">MyQueue</span>() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">push</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">        sck1.<span class="built_in">push</span>(x);</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 把输入栈sck1中的元素放到输出栈sck2，清空sck1</span></span><br><span class="line">        <span class="comment">// 这样stk2的出栈顺序和输入的元素入stk1的顺序是一样的了</span></span><br><span class="line">        <span class="keyword">while</span>(!sck1.<span class="built_in">empty</span>())&#123;</span><br><span class="line">            <span class="type">int</span> num=sck1.<span class="built_in">top</span>();<span class="comment">// 获取栈顶元素，但不删除</span></span><br><span class="line">            sck1.<span class="built_in">pop</span>();<span class="comment">// 删除栈顶元素，但不返回</span></span><br><span class="line">            sck2.<span class="built_in">push</span>(num); <span class="comment">// 将元素压入栈顶</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> val=sck2.<span class="built_in">top</span>();<span class="comment">// 返回栈顶元素</span></span><br><span class="line">        sck2.<span class="built_in">pop</span>();<span class="comment">// 删除栈顶元素</span></span><br><span class="line">        <span class="comment">// 清空输出栈sck2</span></span><br><span class="line">        <span class="keyword">while</span>(!sck2.<span class="built_in">empty</span>())&#123;</span><br><span class="line">            sck1.<span class="built_in">push</span>(sck2.<span class="built_in">top</span>());</span><br><span class="line">            sck2.<span class="built_in">pop</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> val;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 返回队列开头的元素</span></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">peek</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 清空sck1，元素放入到sck2</span></span><br><span class="line">        <span class="keyword">while</span>(!sck1.<span class="built_in">empty</span>())&#123;</span><br><span class="line">            sck2.<span class="built_in">push</span>(sck1.<span class="built_in">top</span>());</span><br><span class="line">            sck1.<span class="built_in">pop</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//得到“队列”开头的元素</span></span><br><span class="line">        <span class="type">int</span> val=sck2.<span class="built_in">top</span>();</span><br><span class="line">        <span class="comment">// 清空sck2，元素放入到sck1</span></span><br><span class="line">        <span class="keyword">while</span>(!sck2.<span class="built_in">empty</span>())&#123;</span><br><span class="line">            sck1.<span class="built_in">push</span>(sck2.<span class="built_in">top</span>());</span><br><span class="line">            sck2.<span class="built_in">pop</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> val;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">empty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(sck1.<span class="built_in">empty</span>())&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MyQueue object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * MyQueue* obj = new MyQueue();</span></span><br><span class="line"><span class="comment"> * obj-&gt;push(x);</span></span><br><span class="line"><span class="comment"> * int param_2 = obj-&gt;pop();</span></span><br><span class="line"><span class="comment"> * int param_3 = obj-&gt;peek();</span></span><br><span class="line"><span class="comment"> * bool param_4 = obj-&gt;empty();</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1><table>
+<thead>
+<tr>
+<th><strong>LeetCode题目</strong></th>
+<th><strong>相关题目类型</strong></th>
+<th>关键点</th>
+<th><strong>相关链接</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>225</td>
+<td>用队列实现栈（简单难度）</td>
+<td></td>
+<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/implement-stack-using-queues/">225. 用队列实现栈 - 力扣（LeetCode） (leetcode-cn.com)</a></td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">class MyStack &#123;</span><br><span class="line">public:</span><br><span class="line">    queue&lt;int&gt; que1;</span><br><span class="line">    queue&lt;int&gt; que2; // 辅助队列，用来备份</span><br><span class="line">    /** Initialize your data structure here. */</span><br><span class="line">    MyStack() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /** 将元素 x 压入栈顶。 */</span><br><span class="line">    void push(int x) &#123;</span><br><span class="line">        que1.push(x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /** 移除并返回栈顶元素。 */</span><br><span class="line">    int pop() &#123;</span><br><span class="line">        int size=que1.size();</span><br><span class="line">        size--;</span><br><span class="line">        // 把que1元素放到que2，但保留最后一个</span><br><span class="line">        while(size--)&#123;</span><br><span class="line">            int num=que1.front();</span><br><span class="line">            que1.pop();</span><br><span class="line">            que2.push(num);</span><br><span class="line">        &#125;</span><br><span class="line">        int res=que1.front();</span><br><span class="line">        que1.pop();</span><br><span class="line">        que1=que2;</span><br><span class="line">        // 清空que2</span><br><span class="line">        while(!que2.empty())&#123;</span><br><span class="line">            que2.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /** 返回栈顶元素。 */</span><br><span class="line">    int top() &#123;</span><br><span class="line">        return que1.back();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /** 如果栈是空的，返回 true ；否则，返回 false */</span><br><span class="line">    bool empty() &#123;</span><br><span class="line">        return que1.empty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Your MyStack object will be instantiated and called as such:</span><br><span class="line"> * MyStack* obj = new MyStack();</span><br><span class="line"> * obj-&gt;push(x);</span><br><span class="line"> * int param_2 = obj-&gt;pop();</span><br><span class="line"> * int param_3 = obj-&gt;top();</span><br><span class="line"> * bool param_4 = obj-&gt;empty();</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+
+
+
+<table>
+<thead>
+<tr>
+<th><strong>LeetCode题目</strong></th>
+<th><strong>相关题目类型</strong></th>
+<th>关键点</th>
+<th><strong>相关链接</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>20</td>
+<td>有效的括号（简单难度）</td>
+<td></td>
+<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/valid-parentheses/">20. 有效的括号 - 力扣（LeetCode） (leetcode-cn.com)</a></td>
+</tr>
+</tbody></table>
+<p>括号匹配是使用栈解决的经典问题。</p>
+<p>由于栈结构的特殊性，非常适合做对称匹配类的题目。</p>
+<p>首先要弄清楚，字符串里的括号不匹配有几种情况。</p>
+<p>先来分析一下 这里有三种不匹配的情况，</p>
+<ol>
+<li><p>第一种情况，字符串里左方向的括号多余了 ，所以不匹配。</p>
+<p><img src="C:\Users\WJ\AppData\Roaming\Typora\typora-user-images\image-20211028151300438.png" alt="image-20211028151300438"></p>
+<p>第一种情况：已经遍历完了字符串，但是栈不为空，说明有相应的左括号没有右括号来匹配，所以return false</p>
+</li>
+</ol>
+<p>2.第二种情况，括号没有多余，但是 括号的类型没有匹配上。</p>
+<p><img src="C:\Users\WJ\AppData\Roaming\Typora\typora-user-images\image-20211028151315983.png" alt="image-20211028151315983"></p>
+<p>​       第二种情况：遍历字符串匹配的过程中，发现栈里没有要匹配的字符。所以return false</p>
+<p>3.第三种情况，字符串里右方向的括号多余了，所以不匹配。</p>
+<p><img src="C:\Users\WJ\AppData\Roaming\Typora\typora-user-images\image-20211028151337388.png" alt="image-20211028151337388"></p>
+<p>​       第三种情况：遍历字符串匹配的过程中，栈已经为空了，没有匹配的字符了，说明右括号没有找   到对应的左括号return false</p>
+<p>我们的代码只要覆盖了这三种不匹配的情况，就不会出问题，可以看出 动手之前分析好题目的重要性。</p>
+<p>那么什么时候说明左括号和右括号全都匹配了呢，就是字符串遍历完之后，栈是空的，就说明全都匹配了。</p>
+<p>但还有一些技巧，在匹配左括号的时候，右括号先入栈，就只需要比较当前元素和栈顶相不相等就可以了，比左括号先入栈代码实现要简单的多了！</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isValid</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        stack&lt;<span class="type">int</span>&gt; st;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;s.<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">            <span class="comment">// 左括号入栈，保存对应的右括号，这样右括号来的时候，直接对比是否相等就行</span></span><br><span class="line">            <span class="keyword">if</span>(s[i]==<span class="string">&#x27;(&#x27;</span>)&#123;</span><br><span class="line">                st.<span class="built_in">push</span>(<span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(s[i]==<span class="string">&#x27;&#123;&#x27;</span>)&#123;</span><br><span class="line">                st.<span class="built_in">push</span>(<span class="string">&#x27;&#125;&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(s[i]==<span class="string">&#x27;[&#x27;</span>)&#123;</span><br><span class="line">                st.<span class="built_in">push</span>(<span class="string">&#x27;]&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 右括号出现</span></span><br><span class="line">            <span class="comment">// 右括号多余s.empty()</span></span><br><span class="line">            <span class="comment">// 左右不匹配</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(st.<span class="built_in">empty</span>()||s[i]!=st.<span class="built_in">top</span>())&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                st.<span class="built_in">pop</span>();<span class="comment">//左右括号匹配，</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 左括号多余，则s.empty()==false;</span></span><br><span class="line">        <span class="comment">//都匹配，就是true</span></span><br><span class="line">        <span class="keyword">return</span> st.<span class="built_in">empty</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<table>
+<thead>
+<tr>
+<th><strong>LeetCode题目</strong></th>
+<th><strong>相关题目类型</strong></th>
+<th>关键点</th>
+<th><strong>相关链接</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1047</td>
+<td>删除字符串中的所有相邻重复项（简单难度）</td>
+<td></td>
+<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-all-adjacent-duplicates-in-string/">1047. 删除字符串中的所有相邻重复项 - 力扣（LeetCode） (leetcode-cn.com)</a></td>
+</tr>
+</tbody></table>
+<p>题目中有字符串的基本操作：</p>
+<p>s.back();返回字符串最后一个元素</p>
+<p>s.push_back(a);字符串末尾添加一个元素</p>
+<p>s.pop_back();删除字符串末尾的元素</p>
+<p>本题要删除相邻相同元素，其实也是匹配问题，相同左元素相当于左括号，相同右元素就是相当于右括号，匹配上了就删除。</p>
+<p>那么再来看一下本题：可以把字符串顺序放到一个栈中，然后如果相同的话 栈就弹出，这样最后栈里剩下的元素都是相邻不相同的元素了。</p>
+<p>拿字符串直接作为栈，这样省去了栈还要转为字符串的操作。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string removeDuplicates(string S) &#123;</span><br><span class="line">        string res;</span><br><span class="line">        for(char s:S)&#123;</span><br><span class="line">            if(res.empty()||res.back()!=s)&#123;</span><br><span class="line">                res.push_back(s);</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                res.pop_back();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<table>
+<thead>
+<tr>
+<th><strong>LeetCode题目</strong></th>
+<th><strong>相关题目类型</strong></th>
+<th>关键点</th>
+<th><strong>相关链接</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>150</td>
+<td>逆波兰表达式求值（中等难度）</td>
+<td></td>
+<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/evaluate-reverse-polish-notation/submissions/">150. 逆波兰表达式求值 - 力扣（LeetCode） (leetcode-cn.com)</a></td>
+</tr>
+</tbody></table>
+<p>1、理解逆波兰表达式的求值方式</p>
+<p>2、解题思路</p>
+<p>遍历数组：</p>
+<p>如果是运算符，弹出栈的两个栈顶元素num1，num2，进行相应运算，把结果放到栈中</p>
+<p>如果是数字，把数字放到栈中</p>
+<p>遍历结束：结果为栈中唯一的元素，返回结果。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int evalRPN(vector&lt;string&gt;&amp; tokens) &#123;</span><br><span class="line">        stack&lt;int&gt; st;</span><br><span class="line">        for(int i=0;i&lt;tokens.size();i++)&#123;</span><br><span class="line">            if(tokens[i]==&quot;+&quot;||tokens[i]==&quot;-&quot;||tokens[i]==&quot;*&quot;||tokens[i]==&quot;/&quot;)&#123;</span><br><span class="line">                int nums1=st.top();</span><br><span class="line">                st.pop();</span><br><span class="line">                int nums2=st.top();</span><br><span class="line">                st.pop();</span><br><span class="line">                if(tokens[i]==&quot;+&quot;)st.push(nums2+nums1);</span><br><span class="line">                if(tokens[i]==&quot;-&quot;)st.push(nums2-nums1);</span><br><span class="line">                if(tokens[i]==&quot;*&quot;)st.push(nums2*nums1);</span><br><span class="line">                if(tokens[i]==&quot;/&quot;)st.push(nums2/nums1);</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                st.push(stoi(tokens[i]));//stoi()将字符串转为int型</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        int res=st.top();</span><br><span class="line">        st.pop();</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/" rel="tag"># 算法刷题</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021-10-26-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91KMP%E7%9B%B8%E5%85%B3%E9%A2%98%E7%9B%AE/" rel="prev" title="「算法刷题」KMP相关题目">
+                  <i class="fa fa-angle-left"></i> 「算法刷题」KMP相关题目
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021-10-27-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91904%E6%B0%B4%E6%9E%9C%E6%88%90%E7%AF%AE/" rel="next" title="「算法刷题」904水果成篮">
+                  「算法刷题」904水果成篮 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

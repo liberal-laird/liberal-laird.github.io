@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2426182848439341"
+     crossorigin="anonymous"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33RJLY0818"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33RJLY0818');
+</script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="​		本文讲解在Windows系统上安装和破解PyCharm专业版。该文参考自博客pycharm破解(2021年亲测)完美版(永久有效) 。 ​		PyCharm是一种功能强大的Python IDE，但是官方提供的免费版本只有PyCharm社区版，PyCharm专业版是需要付费的，只有PyCharm专业版才能使用SSH远程连接功能。 1、双击打开软件​		直接双击pycharm-professio">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「环境配置」Windows安装PyCharm专业版">
+<meta property="og:url" content="https://www.vvbuys.com/2022-04-07-%E3%80%90%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E3%80%91Windows%E5%AE%89%E8%A3%85PyCharm%E4%B8%93%E4%B8%9A%E7%89%88/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="​		本文讲解在Windows系统上安装和破解PyCharm专业版。该文参考自博客pycharm破解(2021年亲测)完美版(永久有效) 。 ​		PyCharm是一种功能强大的Python IDE，但是官方提供的免费版本只有PyCharm社区版，PyCharm专业版是需要付费的，只有PyCharm专业版才能使用SSH远程连接功能。 1、双击打开软件​		直接双击pycharm-professio">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.vvbuys.com/img-post/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/2022-04-07-Windows%E5%AE%89%E8%A3%85PyCharm%E4%B8%93%E4%B8%9A%E7%89%88/%E5%85%8D%E8%B4%B9%E8%AF%95%E7%94%A8.png">
+<meta property="og:image" content="https://www.vvbuys.com/img-post/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/2022-04-07-Windows%E5%AE%89%E8%A3%85PyCharm%E4%B8%93%E4%B8%9A%E7%89%88/%E6%8B%96%E8%BF%9B%E6%AC%A2%E8%BF%8E%E9%A1%B5%E9%9D%A2.png">
+<meta property="og:image" content="https://www.vvbuys.com/img-post/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/2022-04-07-Windows%E5%AE%89%E8%A3%85PyCharm%E4%B8%93%E4%B8%9A%E7%89%88/%E9%87%8D%E5%90%AFpycharm.png">
+<meta property="og:image" content="https://www.vvbuys.com/img-post/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/2022-04-07-Windows%E5%AE%89%E8%A3%85PyCharm%E4%B8%93%E4%B8%9A%E7%89%88/%E4%B8%BAPyCharm%E5%AE%89%E8%A3%85.png">
+<meta property="og:image" content="https://www.vvbuys.com/img-post/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/2022-04-07-Windows%E5%AE%89%E8%A3%85PyCharm%E4%B8%93%E4%B8%9A%E7%89%88/%E5%AE%89%E8%A3%85JetbrainsAgent%E5%8A%A9%E6%89%8B.png">
+<meta property="og:image" content="https://www.vvbuys.com/img-post/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/2022-04-07-Windows%E5%AE%89%E8%A3%85PyCharm%E4%B8%93%E4%B8%9A%E7%89%88/%E6%BF%80%E6%B4%BB%E5%AE%8C%E6%88%90.png">
+<meta property="article:published_time" content="2022-04-07T00:00:00.000Z">
+<meta property="article:modified_time" content="2024-02-02T01:00:55.431Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="环境配置">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.vvbuys.com/img-post/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/2022-04-07-Windows%E5%AE%89%E8%A3%85PyCharm%E4%B8%93%E4%B8%9A%E7%89%88/%E5%85%8D%E8%B4%B9%E8%AF%95%E7%94%A8.png">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/2022-04-07-%E3%80%90%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E3%80%91Windows%E5%AE%89%E8%A3%85PyCharm%E4%B8%93%E4%B8%9A%E7%89%88/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/2022-04-07-%E3%80%90%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E3%80%91Windows%E5%AE%89%E8%A3%85PyCharm%E4%B8%93%E4%B8%9A%E7%89%88/","path":"2022-04-07-【环境配置】Windows安装PyCharm专业版/","title":"「环境配置」Windows安装PyCharm专业版"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>「环境配置」Windows安装PyCharm专业版 | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E5%8F%8C%E5%87%BB%E6%89%93%E5%BC%80%E8%BD%AF%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">1、双击打开软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E5%85%8D%E8%B4%B9%E8%AF%95%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">2、免费试用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E5%BF%AB%E9%80%9F%E6%BF%80%E6%B4%BB"><span class="nav-number">3.</span> <span class="nav-text">3、快速激活</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2022-04-07-%E3%80%90%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E3%80%91Windows%E5%AE%89%E8%A3%85PyCharm%E4%B8%93%E4%B8%9A%E7%89%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="「环境配置」Windows安装PyCharm专业版 | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「环境配置」Windows安装PyCharm专业版
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-04-07 00:00:00" itemprop="dateCreated datePublished" datetime="2022-04-07T00:00:00+00:00">2022-04-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-02-02 01:00:55" itemprop="dateModified" datetime="2024-02-02T01:00:55+00:00">2024-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>​		本文讲解在Windows系统上安装和破解PyCharm专业版。该文参考自博客<a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv10386031/">pycharm破解(2021年亲测)完美版(永久有效)</a> 。</p>
+<p>​		PyCharm是一种功能强大的Python IDE，但是官方提供的免费版本只有PyCharm社区版，PyCharm专业版是需要付费的，只有PyCharm专业版才能使用SSH远程连接功能。</p>
+<h3 id="1、双击打开软件"><a href="#1、双击打开软件" class="headerlink" title="1、双击打开软件"></a>1、双击打开软件</h3><p>​		直接双击pycharm-professional-2020.1.exe，开启安装。下载链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/16DkCjj2bKJuT7gL3-ViSgg">https://pan.baidu.com/s/16DkCjj2bKJuT7gL3-ViSgg</a> 提取码：ajqe </p>
+<h3 id="2、免费试用"><a href="#2、免费试用" class="headerlink" title="2、免费试用"></a>2、免费试用</h3><p>​		安装成功后，打开pycharm，选择免费试用。</p>
+<p>![](&#x2F;img-post&#x2F;环境配置&#x2F;2022-04-07-Windows安装PyCharm专业版&#x2F;免费试用.png)</p>
+<p><img src="/../img-post/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/2022-04-07-Windows%E5%AE%89%E8%A3%85PyCharm%E4%B8%93%E4%B8%9A%E7%89%88/%E5%85%8D%E8%B4%B9%E8%AF%95%E7%94%A8.png"></p>
+<h3 id="3、快速激活"><a href="#3、快速激活" class="headerlink" title="3、快速激活"></a>3、快速激活</h3><p>​		从下载的文件夹中找到<code>jetbrains-agent-3.2.0/lib</code>中找到<code>jetbrains-agent.jar</code>,将其拖到wecome to PyCharm页面。</p>
+<p>![](&#x2F;img-post&#x2F;环境配置&#x2F;2022-04-07-Windows安装PyCharm专业版&#x2F;拖进欢迎页面.png)</p>
+<p><img src="/../img-post/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/2022-04-07-Windows%E5%AE%89%E8%A3%85PyCharm%E4%B8%93%E4%B8%9A%E7%89%88/%E6%8B%96%E8%BF%9B%E6%AC%A2%E8%BF%8E%E9%A1%B5%E9%9D%A2.png"></p>
+<p>​		然后将其重启：</p>
+<p>![](&#x2F;img-post&#x2F;环境配置&#x2F;2022-04-07-Windows安装PyCharm专业版&#x2F;重启pycharm.png)</p>
+<p><img src="/../img-post/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/2022-04-07-Windows%E5%AE%89%E8%A3%85PyCharm%E4%B8%93%E4%B8%9A%E7%89%88/%E9%87%8D%E5%90%AFpycharm.png"></p>
+<p>​		安装JetbrainsAgent助手：</p>
+<p>![](&#x2F;img-post&#x2F;环境配置&#x2F;2022-04-07-Windows安装PyCharm专业版&#x2F;为PyCharm安装.png)</p>
+<p><img src="/../img-post/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/2022-04-07-Windows%E5%AE%89%E8%A3%85PyCharm%E4%B8%93%E4%B8%9A%E7%89%88/%E4%B8%BAPyCharm%E5%AE%89%E8%A3%85.png"></p>
+<p>![](&#x2F;img-post&#x2F;环境配置&#x2F;2022-04-07-Windows安装PyCharm专业版&#x2F;安装JetbrainsAgent助手.png)</p>
+<p><img src="/../img-post/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/2022-04-07-Windows%E5%AE%89%E8%A3%85PyCharm%E4%B8%93%E4%B8%9A%E7%89%88/%E5%AE%89%E8%A3%85JetbrainsAgent%E5%8A%A9%E6%89%8B.png">		</p>
+<p>​		然后激活完成：</p>
+<p>![](&#x2F;img-post&#x2F;环境配置&#x2F;2022-04-07-Windows安装PyCharm专业版&#x2F;激活完成.png)</p>
+<p><img src="/../img-post/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/2022-04-07-Windows%E5%AE%89%E8%A3%85PyCharm%E4%B8%93%E4%B8%9A%E7%89%88/%E6%BF%80%E6%B4%BB%E5%AE%8C%E6%88%90.png"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" rel="tag"># 环境配置</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022-03-21-%E3%80%90%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB%E3%80%91%E7%94%A8%E4%BA%8E%E5%9B%BE%E5%83%8F%E5%85%89%E6%BA%90%E8%BF%81%E7%A7%BB%E7%9A%84%E5%A4%9A%E5%B0%BA%E5%BA%A6%E8%87%AA%E6%A0%A1%E5%87%86%E7%BD%91%E7%BB%9C/" rel="prev" title="「论文分享」用于图像光源迁移的多尺度自校准网络">
+                  <i class="fa fa-angle-left"></i> 「论文分享」用于图像光源迁移的多尺度自校准网络
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022-04-07-%E3%80%90%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E3%80%91PyCharm%E4%B8%93%E4%B8%9A%E7%89%88SSH%E8%BF%9C%E7%A8%8B%E6%93%8D%E4%BD%9C/" rel="next" title="「环境配置」PyCharm专业版SSH远程操作">
+                  「环境配置」PyCharm专业版SSH远程操作 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
