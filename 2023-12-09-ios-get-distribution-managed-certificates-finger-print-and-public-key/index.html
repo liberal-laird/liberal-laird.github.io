@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="获取 Distribution Managed 证书的公钥和 SHA-1 指纹。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS｜获取 Distribution Managed 证书的 SHA-1 指纹和公钥">
+<meta property="og:url" content="https://www.vvbuys.com/2023-12-09-ios-get-distribution-managed-certificates-finger-print-and-public-key/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="获取 Distribution Managed 证书的公钥和 SHA-1 指纹。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/ios/view-certificates.png">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/ios/ios-certificate-content-field.png">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/ios/public-key.jpeg">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/ios/finger-print.jpeg">
+<meta property="article:published_time" content="2024-02-02T01:06:28.216Z">
+<meta property="article:modified_time" content="2024-02-02T01:06:28.216Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="Linux hyprland Python Rust Golang javascript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.vvbuys.com/images/posts/ios/view-certificates.png">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/2023-12-09-ios-get-distribution-managed-certificates-finger-print-and-public-key/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/2023-12-09-ios-get-distribution-managed-certificates-finger-print-and-public-key/","path":"2023-12-09-ios-get-distribution-managed-certificates-finger-print-and-public-key/","title":"iOS｜获取 Distribution Managed 证书的 SHA-1 指纹和公钥"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>iOS｜获取 Distribution Managed 证书的 SHA-1 指纹和公钥 | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.</span> <span class="nav-text">参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">265</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2023-12-09-ios-get-distribution-managed-certificates-finger-print-and-public-key/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="iOS｜获取 Distribution Managed 证书的 SHA-1 指纹和公钥 | VVbugs Blog">
+      <meta itemprop="description" content="获取 Distribution Managed 证书的公钥和 SHA-1 指纹。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          iOS｜获取 Distribution Managed 证书的 SHA-1 指纹和公钥
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">获取 Distribution Managed 证书的公钥和 SHA-1 指纹。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>最近在处理 APP 备案的事情，其中 iOS 平台的资料里要求填写签名证书的 SHA-1 指纹和公钥。</p>
+<p>按照阿里云的操作指南 <a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/icp-filing/fill-in-app-feature-information">https://help.aliyun.com/zh/icp-filing/fill-in-app-feature-information</a> 进行操作时，在公钥与签名 SHA1 值获取这一步遇到了问题：我们证书的类型与指南中显示的不同，是 Distribution Managed 类型的，苹果开发者网站上不提供下载，自然也就无法直接拿到公钥和 SHA-1 指纹了。</p>
+<p>到了这个时间点，这类问题我当然不会是第一个遇到和解决的，经过一番搜索，找到了可行的参考方法：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_50340188/article/details/133023592">https://blog.csdn.net/weixin_50340188&#x2F;article&#x2F;details&#x2F;133023592</a>，这里将完整的操作步骤也做个记录。</p>
+<ol>
+<li>访问 <a target="_blank" rel="noopener" href="https://developer.apple.com/cn/">https://developer.apple.com/cn/</a>，使用 App 对应的 iOS 开发者账号登录；</li>
+<li>在计划资源中点击证书进入证书列表页面：<br> <img src="/images/posts/ios/view-certificates.png"></li>
+<li>在证书列表页面 F12 打开浏览器开发者工具，刷新页面，在网络标签中找到 certificates 这次请求，在响应内容的 data 数组里找到需要的那个证书的 attribites.certificateContent 字段，如图所求；<br> <img src="/images/posts/ios/ios-certificate-content-field.png"></li>
+<li>将 attributes.certificateContent 字段的完整内容复制保存到一个新的文本文件中，并将该文本文件后缀名改为 .cer，如 test.cer；</li>
+<li>将 test.cer 文件传送到一台 <strong>Windows 电脑</strong>，双击打开，切到详细信息标签，分别点击上面的公钥、指纹，下方显示的字段值就是我们需要的，用 Ctrl-A、Ctrl-C、Ctrl-V 将它们复制出来即可。<br> <img src="/images/posts/ios/public-key.jpeg"><br> <img src="/images/posts/ios/finger-print.jpeg"></li>
+</ol>
+<p>实测可行，已顺利通过审核。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/icp-filing/fill-in-app-feature-information">https://help.aliyun.com/zh/icp-filing/fill-in-app-feature-information</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_50340188/article/details/133023592">https://blog.csdn.net/weixin_50340188&#x2F;article&#x2F;details&#x2F;133023592</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023-12-11-idea-freemarker-hot-reload/" rel="prev" title="Java｜SpringBoot 项目开发时，让 FreeMarker 文件编辑后自动更新">
+                  <i class="fa fa-angle-left"></i> Java｜SpringBoot 项目开发时，让 FreeMarker 文件编辑后自动更新
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023-11-26-filco-keyboard-single-mode-to-three-mode/" rel="next" title="DIY｜Filco 圣手二代机械键盘单模改三模">
+                  DIY｜Filco 圣手二代机械键盘单模改三模 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

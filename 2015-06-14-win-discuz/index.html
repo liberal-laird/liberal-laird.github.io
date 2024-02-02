@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="在 Win7 下部署 Discuz! 的详细步骤。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Win7 下部署 Discuz!">
+<meta property="og:url" content="https://www.vvbuys.com/2015-06-14-win-discuz/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="在 Win7 下部署 Discuz! 的详细步骤。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/php/iis.png">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/php/fastcgi.png">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/php/mysql-1.png">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/php/mysql-2.png">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/php/mysql-3.png">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/php/mysql-4.png">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/php/mysql-5.png">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/php/mysql-6.png">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/php/mysql-7.png">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/php/mysql-8.png">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/php/mysql-9.png">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/php/add-website.png">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/php/phpinfo.png">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/php/discuz.png">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/php/nat-bind-ip.png">
+<meta property="article:published_time" content="2024-02-02T01:06:28.204Z">
+<meta property="article:modified_time" content="2024-02-02T01:06:28.204Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="Linux hyprland Python Rust Golang javascript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.vvbuys.com/images/posts/php/iis.png">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/2015-06-14-win-discuz/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/2015-06-14-win-discuz/","path":"2015-06-14-win-discuz/","title":"Win7 下部署 Discuz!"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Win7 下部署 Discuz! | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E8%BD%AF%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">使用软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.</span> <span class="nav-text">详细步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-IIS"><span class="nav-number">2.1.</span> <span class="nav-text">安装 IIS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-PHP"><span class="nav-number">2.2.</span> <span class="nav-text">配置 PHP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-MySQL"><span class="nav-number">2.3.</span> <span class="nav-text">配置 MySQL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A3%80%E6%B5%8B%E7%8E%AF%E5%A2%83%E6%98%AF%E5%90%A6%E5%87%86%E5%A4%87%E5%A5%BD"><span class="nav-number">2.4.</span> <span class="nav-text">检测环境是否准备好</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-Zend-Optimizer"><span class="nav-number">2.5.</span> <span class="nav-text">安装 Zend Optimizer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2-Discuz"><span class="nav-number">2.6.</span> <span class="nav-text">部署 Discuz!</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2-phpMyAdmin%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="nav-number">2.7.</span> <span class="nav-text">部署 phpMyAdmin（可选）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%85%A5%E5%8F%A3"><span class="nav-number">2.8.</span> <span class="nav-text">常用入口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A9-Discuz-%E5%B1%80%E5%9F%9F%E7%BD%91%E5%86%85%E5%8F%AF%E8%AE%BF%E9%97%AE"><span class="nav-number">2.9.</span> <span class="nav-text">让 Discuz! 局域网内可访问</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">265</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2015-06-14-win-discuz/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Win7 下部署 Discuz! | VVbugs Blog">
+      <meta itemprop="description" content="在 Win7 下部署 Discuz! 的详细步骤。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Win7 下部署 Discuz!
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/PHP/" itemprop="url" rel="index"><span itemprop="name">PHP</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">在 Win7 下部署 Discuz! 的详细步骤。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>需要在开发机上部署 Discuz!，结果在根据官方文档 <a target="_blank" rel="noopener" href="http://faq.comsenz.com/library/system/env/env_windows.htm">Discuz! X 系统部署</a> 操作时遇到了一些坑，有些是因为使用的组件版本不一样，有些是官方文档有谬误，所以在此将自己从零开始到部署成功的步骤记录下来，供备忘和参考。</p>
+<p><em>操作系统环境</em></p>
+<p>Win7 64 with sp1</p>
+<p><strong>目录</strong></p>
+<ul>
+<li>TOC<br>{:toc}</li>
+</ul>
+<h3 id="使用软件"><a href="#使用软件" class="headerlink" title="使用软件"></a>使用软件</h3><ol>
+<li><p>Discuz! X3.2</p>
+<p>我们要部署的目的程序。</p>
+<p>下载地址：<a target="_blank" rel="noopener" href="http://www.discuz.net/thread-3570835-1-1.html">http://www.discuz.net/thread-3570835-1-1.html</a></p>
+<p>我选的 GBK 版本。</p>
+</li>
+<li><p>IIS 7.5</p>
+<p>Web 服务器。</p>
+<p>下载地址：可直接在系统设置里安装，无需下载。</p>
+<p>如果使用 IIS 7 以下的版本，可能需要额外安装 FastCGI，下载地址 <a target="_blank" rel="noopener" href="http://www.iis.net/expand/fastcgi">http://www.iis.net/expand/fastcgi</a>。</p>
+</li>
+<li><p>PHP 5.4.42</p>
+<p>因为 PHP 5.2.10 开始已经不再提供 php5isapi.dll，也即在 IIS 上只能使用 FastCGI 而能使用 ISAPI 方式了，所以选用 Non Thread Safe 版本。关于 PHP5 的 Non Thread Safe 与 Thread Safe 的区别参见 <a target="_blank" rel="noopener" href="http://zhidao.baidu.com/question/2075132638027071628">http://zhidao.baidu.com/question/2075132638027071628</a>。</p>
+<p>下载地址：<a target="_blank" rel="noopener" href="http://windows.php.net/download/#php-5.4-nts-VC9-x86">http://windows.php.net/download/#php-5.4-nts-VC9-x86</a></p>
+</li>
+<li><p>MySQL 5.5.44</p>
+<p>数据库。我选用的 winx64 版本。</p>
+<p>下载地址：<a target="_blank" rel="noopener" href="http://dev.mysql.com/downloads/mysql/5.5.html#downloads">http://dev.mysql.com/downloads/mysql/5.5.html#downloads</a></p>
+</li>
+<li><p>Zend Optimizer</p>
+<p>用于提高 PHP 应用程序的执行速度。详见搜狗百科 <a target="_blank" rel="noopener" href="http://baike.sogou.com/v7557079.htm">http://baike.sogou.com/v7557079.htm</a>。</p>
+<p>下载地址：<a target="_blank" rel="noopener" href="http://211.162.54.70/dl.softmgr.qq.com/original/System/ZendOptimizerwindows.exe">http://211.162.54.70/dl.softmgr.qq.com/original/System/ZendOptimizerwindows.exe</a></p>
+</li>
+<li><p>phpMyAdmin 4.4.9 （可选）</p>
+<p>用于可视化管理 MySQL 数据库。</p>
+<p>下载地址：<a target="_blank" rel="noopener" href="http://www.phpmyadmin.net/home_page/downloads.php">http://www.phpmyadmin.net/home_page/downloads.php</a></p>
+</li>
+</ol>
+<h3 id="详细步骤"><a href="#详细步骤" class="headerlink" title="详细步骤"></a>详细步骤</h3><h4 id="安装-IIS"><a href="#安装-IIS" class="headerlink" title="安装 IIS"></a>安装 IIS</h4><p>打开「控制面板」–「程序」–「打开或关闭 Windows 功能」，勾选「Internet 信息服务」，<strong>确认「万维网服务」–「应用程序开发功能」–「CGI」是勾选状态</strong>，然后点「确定」安装。</p>
+<p><img src="/images/posts/php/iis.png"></p>
+<h4 id="配置-PHP"><a href="#配置-PHP" class="headerlink" title="配置 PHP"></a>配置 PHP</h4><ol>
+<li><p>解压前面下载的 PHP 的 zip 包，放在合适的地方。</p>
+<p>比如我放在 D:\discuz\PHP。</p>
+</li>
+<li><p>修改 php.ini。</p>
+<p>将 D:\discuz\PHP 文件夹内的 php.ini-development 拷贝一份为 php.ini，找到并修改下列内容如下：</p>
+<ul>
+<li><p>fastcgi.impersonate &#x3D; 1</p>
+</li>
+<li><p>cgi.fix_pathinfo &#x3D; 1</p>
+</li>
+<li><p>cgi.force_redirect &#x3D; 0</p>
+</li>
+<li><p>cgi.rfc2616_headers &#x3D; 1</p>
+</li>
+<li><p>extension_dir &#x3D; “D:\discuz\PHP\ext”</p>
+</li>
+<li><p>date.timezone &#x3D; Asia&#x2F;Shanghai</p>
+</li>
+<li><p>找到并打开以下模块的支持（删掉模块配置前的分号）</p>
+<ul>
+<li>php_gd2.dll</li>
+<li>php_mbstring.dll</li>
+<li>php_mysql.dll</li>
+<li>php_mysqli.dll</li>
+<li>php_openssl.dll</li>
+<li>php_sockets.dll</li>
+<li>php_xmlrpc.dll</li>
+</ul>
+</li>
+<li><p>disable_functions</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">disable_functions = passthru,exec,system,chroot,scandir,chgrp,chown,shell_exec,proc_open,proc_get_status,ini_alter,ini_alter,ini_restore,dl,pfsockopen,openlog,syslog,readlink,symlink,popepassthru,stream_socket_server</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>据称 IIS 7 以下需要将 php.ini 复制到 C:\Windows\php.ini。</p>
+<p>另外，官方文档上显示的需要找开的模块比上面列出的多，但是在配置文件里并没有找到。</p>
+</li>
+<li><p>添加 FastCGI 模块映射。</p>
+<p>打开「控制面板」–「系统和安全」–「管理工具」–「Internet 信息服务(IIS)管理器」–「处理程序映射」，点击右方的「添加模块映射」，填写如下并确认：</p>
+<p><img src="/images/posts/php/fastcgi.png" alt="fastcgi"></p>
+</li>
+</ol>
+<h4 id="配置-MySQL"><a href="#配置-MySQL" class="headerlink" title="配置 MySQL"></a>配置 MySQL</h4><p>如果需要安装 MySQL，首先确认有没有 MySQL 的历史残留文件，C:\ProgramData\MySQL 目录如果存在，删除之。不然 MySQL 的安装有可能总是在最后一步失败，提示 <code>error Nr. 1045</code> 和 <code>Access denied for user &#39;root&#39;@localhost&#39;(using password:No)</code> 之类的问题。</p>
+<p><strong>安装 MySQL</strong></p>
+<p>运行前面下载的 MySQL 安装程序安装到 D:\discuz\MySQL 目录下，安装过程如下（没有贴图的部分保持默认就好）：</p>
+<p>选择 Custom 自定义安装。</p>
+<p><img src="/images/posts/php/mysql-1.png" alt="custom"></p>
+<p>更改安装路径。</p>
+<p><img src="/images/posts/php/mysql-2.png" alt="install-path"></p>
+<p>选择 MySQL 运行模式：Server Machine。</p>
+<p><img src="/images/posts/php/mysql-3.png" alt="server-machine"></p>
+<p>选择 MySQL 数据库默认存储方式：Non-Trans Only (MYISAM)。</p>
+<p><img src="/images/posts/php/mysql-4.png" alt="non-trans"></p>
+<p>设定 MySQL 的最大连接数，一般设置为 128 - 512 之间的整数。</p>
+<p><img src="/images/posts/php/mysql-5.png" alt="connections"></p>
+<p>设定网络参数，注意：勾消掉「Enable Strict Mode」。而「Add firewall exception for this port」仅在需要外连 MySQL 的时候勾上。</p>
+<p><img src="/images/posts/php/mysql-6.png" alt="networking"></p>
+<p>设定默认字符集，我根据官方文档选择了 gbk。</p>
+<p><img src="/images/posts/php/mysql-7.png" alt="character set"></p>
+<p>将 Bin 目录添加到 PATH。</p>
+<p><img src="/images/posts/php/mysql-8.png" alt="path"></p>
+<p>设置 root 用户密码，推荐设置复杂一点。</p>
+<p><img src="/images/posts/php/mysql-9.png" alt="password"></p>
+<p>测试 MySQL 工作是否正常，在 CMD 运行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+
+<p>输入密码后，若能顺利进入 MySQL 控制台，表示安装正常。一定要是输入密码后，不然使用以下命令重置 root 用户的密码。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqladmin -u root -p password 新的密码</span><br></pre></td></tr></table></figure>
+
+<p><strong>更改 MySQL 数据库存放目录</strong></p>
+<p>在 CMD 运行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net stop mysql</span><br></pre></td></tr></table></figure>
+
+<p>若提示权限不足，请使用管理员权限的 CMD。将 MySQL 服务成功停止后，找到 D:\discuz\MySQL\my.ini，将 datadir 修改为你想要放置数据库文件的地方，比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">datadir=&quot;D:/discuz/Database&quot;</span><br></pre></td></tr></table></figure>
+
+<p>（当然据说最好应该是把数据库文件和程序不放在同一个地方。）</p>
+<p>将 C:\ProgramData\MySQL\MySQL Server 5.5\data 下的内容复制到 D:\discuz\Database 里，然后删掉 C:\ProgramData\MySQL。</p>
+<p>重新启动 MySQL 服务看是否正常工作。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net start mysql</span><br></pre></td></tr></table></figure>
+
+<p><strong>配置 LibMySQL</strong></p>
+<p>将 D:\Discuz\MySQL\lib\libmysql.dll 复制到 C:\Windows\System32 目录下。</p>
+<h4 id="检测环境是否准备好"><a href="#检测环境是否准备好" class="headerlink" title="检测环境是否准备好"></a>检测环境是否准备好</h4><p>在「Internet 信息服务(IIS)管理器」中右击「网站」，选「添加网站」：</p>
+<p><img src="/images/posts/php/add-website.png" alt="add-website"></p>
+<p>然后在新建的网站的「默认文档」里添加 index.php。</p>
+<p>在 D:\discuz\wwwroot 下新建 phpinfo.php 文件内容如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">phpinfo</span>();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>打开浏览器访问 <a target="_blank" rel="noopener" href="http://localhost/phpinfo.php">http://localhost/phpinfo.php</a>，如果能显示如下网页表示环境已经准备就绪。</p>
+<p><img src="/images/posts/php/phpinfo.png"></p>
+<h4 id="安装-Zend-Optimizer"><a href="#安装-Zend-Optimizer" class="headerlink" title="安装 Zend Optimizer"></a>安装 Zend Optimizer</h4><p>运行 Zend Optimizer 的安装包，安装到 D:\discuz\Zend，安装过程中需要指定你配置的 php.ini 的目标位置为 D:\discuz\PHP，指定 IIS 网站根目录位置为 D:\discuz\wwwroot。</p>
+<p>安装时会重启 IIS 服务。</p>
+<h4 id="部署-Discuz"><a href="#部署-Discuz" class="headerlink" title="部署 Discuz!"></a>部署 Discuz!</h4><p>将前面下载的 Discuz! 包解压，把 upload 文件夹里的内容复制到 D:\discuz\wwwroot下，当然你也可以新建子目录来放置。</p>
+<p>然后在浏览器里访问 <a target="_blank" rel="noopener" href="http://localhost/install">http://localhost/install</a>，按提示进行安装，除了需要填上你的 MySQL 管理员密码和设置 Discuz! 管理员密码外，其它保持默认就行了，分分钟自动给部署好。</p>
+<p>安装完成后直接访问 <a target="_blank" rel="noopener" href="http://localhost/">http://localhost</a> 就能看到熟悉的界面了：</p>
+<p><img src="/images/posts/php/discuz.png" alt="discuz"></p>
+<p><strong>配置确认</strong></p>
+<p>打开 D:\discuz\wwwroot\config\config_global.php 确认数据库密码正确：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$_config[&#x27;db&#x27;][&#x27;1&#x27;][&#x27;dbpw&#x27;] = &#x27;你的数据库密码&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p>打开 D:\discuz\wwwroot\config\config_ucenter.php 确认数据库密码正确：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">define(&#x27;UC_DBPW&#x27;, &#x27;你的数据库密码&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p>打开 D:\discuz\wwwroot\uc_server\data\config.inc.php 确认数据库密码正确：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">define(&#x27;UC_DBPW&#x27;, &#x27;你的数据库密码&#x27;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="部署-phpMyAdmin（可选）"><a href="#部署-phpMyAdmin（可选）" class="headerlink" title="部署 phpMyAdmin（可选）"></a>部署 phpMyAdmin（可选）</h4><p>将下载的 phpMyAdmin 文件解压到 D:\discuz\wwwroot\phpmyadmin 下，将 config.sample.inc.php 更名为 config.inc.php，找到 blowfish_secret 并为它设置一个值，比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$cfg[&#x27;blowfish_secret&#x27;] = &#x27;hello&#x27;;  </span><br></pre></td></tr></table></figure>
+
+<p>打开 <a target="_blank" rel="noopener" href="http://localhost/phpmyadmin">http://localhost/phpmyadmin</a> 用你的 MySQL 管理员账户密码登录就行了。</p>
+<h4 id="常用入口"><a href="#常用入口" class="headerlink" title="常用入口"></a>常用入口</h4><p>打开论坛 <a target="_blank" rel="noopener" href="http://localhost/">http://localhost</a></p>
+<p>论坛管理 <a target="_blank" rel="noopener" href="http://localhost/admin.php">http://localhost/admin.php</a></p>
+<p>查看数据库 <a target="_blank" rel="noopener" href="http://localhost/phpmyadmin">http://localhost/phpmyadmin</a></p>
+<p>打开UCenter <a target="_blank" rel="noopener" href="http://localhost/uc_server">http://localhost/uc_server</a></p>
+<h4 id="让-Discuz-局域网内可访问"><a href="#让-Discuz-局域网内可访问" class="headerlink" title="让 Discuz! 局域网内可访问"></a>让 Discuz! 局域网内可访问</h4><p>完成如上步骤后，在局域网内使用 <a href="http://ip:port">http://ip:port</a> 并不能访问我们装好的 Discuz!，完成这个需要两个步骤：</p>
+<ol>
+<li><p>在防火墙添加 80 端口入站规则</p>
+<p>打开「控制面板」–「系统和安全」–「Windows 防火墙」–「高级设置」，（若之前没有启动防火墙的请先开启）。</p>
+<p>此时实际上是打开了「高级安全 Windows 防火墙」，右键「入站规则」，选择「新建规则」，规则类型选「端口」，协议和端口选择「TCP」和「特定本地端口：80」，操作选择「允许连接」，配置文件保持默认的全部勾选，然后取个名称后保存即可。</p>
+</li>
+<li><p>为网站添加本机 IP 绑定</p>
+<p><img src="/images/posts/php/nat-bind-ip.png"></p>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2015-06-23-vim-taglist-smali/" rel="prev" title="为 Vim 添加 Smali 语法高亮和 Taglist 支持">
+                  <i class="fa fa-angle-left"></i> 为 Vim 添加 Smali 语法高亮和 Taglist 支持
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2015-06-12-wangxiaobo/" rel="next" title="去看特立独行的猪">
+                  去看特立独行的猪 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

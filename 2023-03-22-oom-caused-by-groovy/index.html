@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="生产环境出现了一次 OOM 告警，经过排查与 Groovy 有关，最终解决。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="解决 Groovy 引起的一次 OOM 告警">
+<meta property="og:url" content="https://www.vvbuys.com/2023-03-22-oom-caused-by-groovy/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="生产环境出现了一次 OOM 告警，经过排查与 Groovy 有关，最终解决。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/java/oom-killed-pod.png">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/java/oom-fullgc-pod.png">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/java/groovy-2.4.7-crashed.png">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/java/groovy-2.4.8-worked.png">
+<meta property="article:published_time" content="2024-02-02T01:06:28.212Z">
+<meta property="article:modified_time" content="2024-02-02T01:06:28.212Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="Linux hyprland Python Rust Golang javascript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.vvbuys.com/images/posts/java/oom-killed-pod.png">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/2023-03-22-oom-caused-by-groovy/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/2023-03-22-oom-caused-by-groovy/","path":"2023-03-22-oom-caused-by-groovy/","title":"解决 Groovy 引起的一次 OOM 告警"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>解决 Groovy 引起的一次 OOM 告警 | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90"><span class="nav-number">1.</span> <span class="nav-text">问题分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E9%AA%8C%E8%AF%81"><span class="nav-number">2.</span> <span class="nav-text">本地验证</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-groovy-all-2-4-7-%E7%89%88%E6%9C%AC%E8%BF%90%E8%A1%8C%E7%9A%84%E6%83%85%E5%86%B5"><span class="nav-number">2.1.</span> <span class="nav-text">使用 groovy-all 2.4.7 版本运行的情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%87%E7%BA%A7%E4%B8%BA-groovy-all-2-4-8-%E7%89%88%E6%9C%AC%E8%BF%90%E8%A1%8C%E7%9A%84%E6%83%85%E5%86%B5"><span class="nav-number">2.2.</span> <span class="nav-text">升级为 groovy-all 2.4.8 版本运行的情况</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">解决方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">265</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2023-03-22-oom-caused-by-groovy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="解决 Groovy 引起的一次 OOM 告警 | VVbugs Blog">
+      <meta itemprop="description" content="生产环境出现了一次 OOM 告警，经过排查与 Groovy 有关，最终解决。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          解决 Groovy 引起的一次 OOM 告警
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">生产环境出现了一次 OOM 告警，经过排查与 Groovy 有关，最终解决。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>线上收到告警，有个服务的一个 pod was OOM killed.</p>
+<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><p>从监控系统来看，被 kill 的节点 A 在重启前，堆内存使用随着 YoungGC 规律波动，元空间占用较高，且一直缓慢增长到了400MB以上——该应用代码量不大，按理不应该占用这么多。</p>
+<p><img src="/images/posts/java/oom-killed-pod.png" alt="oom killed pod"></p>
+<p>而与它同容器组的另一个节点 B 看起来更不正常，平均响应时间明显长于另外的节点，且在堆内存已经降下来的情况下还多次 FullGC，并且有很多 java.lang.OutOfMemoryError。晚些时候该节点触发了两次 FullGC 次数过多的告警。</p>
+<p><img src="/images/posts/java/oom-fullgc-pod.png" alt="oom fullgc pod"></p>
+<p>OutOfMemoryError 异常堆栈：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">java.lang.OutOfMemoryError : Metaspace</span><br><span class="line">    at java.lang.ClassLoader.defineClass1(Native Method)</span><br><span class="line">    at java.lang.ClassLoader.defineClass(ClassLoader.java:763)</span><br><span class="line">    at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)</span><br><span class="line">    at groovy.lang.GroovyClassLoader.access$400(GroovyClassLoader.java:62)</span><br><span class="line">    at groovy.lang.GroovyClassLoader$ClassCollector.createClass(GroovyClassLoader.java:500)</span><br><span class="line">    at groovy.lang.GroovyClassLoader$ClassCollector.onClassNode(GroovyClassLoader.java:517)</span><br><span class="line">    at groovy.lang.GroovyClassLoader$ClassCollector.call(GroovyClassLoader.java:521)</span><br><span class="line">    at org.codehaus.groovy.control.CompilationUnit$16.call(CompilationUnit.java:822)</span><br><span class="line">    at org.codehaus.groovy.control.CompilationUnit.applyToPrimaryClassNodes(CompilationUnit.java:1053)</span><br><span class="line">    at org.codehaus.groovy.control.CompilationUnit.doPhaseOperation(CompilationUnit.java:591)</span><br><span class="line">    at org.codehaus.groovy.control.CompilationUnit.processPhaseOperations(CompilationUnit.java:569)</span><br><span class="line">    at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:546)</span><br><span class="line">    at groovy.lang.GroovyClassLoader.doParseClass(GroovyClassLoader.java:298)</span><br><span class="line">    at groovy.lang.GroovyClassLoader.parseClass(GroovyClassLoader.java:268)</span><br><span class="line">    at groovy.lang.GroovyShell.parseClass(GroovyShell.java:688)</span><br><span class="line">    at groovy.lang.GroovyShell.parse(GroovyShell.java:700)</span><br><span class="line">    at groovy.lang.GroovyShell.evaluate(GroovyShell.java:584)</span><br><span class="line">    at groovy.lang.GroovyShell.evaluate(GroovyShell.java:623)</span><br><span class="line">    at groovy.lang.GroovyShell.evaluate(GroovyShell.java:594)</span><br><span class="line">    at org.springframework.scripting.groovy.GroovyScriptEvaluator.evaluate(GroovyScriptEvaluator.java:118)</span><br></pre></td></tr></table></figure>
+
+<p>结合以上异常堆栈与节点 B 的现象推测：</p>
+<ol>
+<li>执行 <code>GroovyScriptEvaluator.evaluate</code> 时，会动态生成一些 Class，导致元空间占用持续上升；</li>
+<li>FullGC 主要不是为了回收堆内存，很可能是为了回收元空间；</li>
+<li>FullGC 也无法成功回收 1 中动态生成的 Class 占用的元空间。</li>
+</ol>
+<p>根据推测，用 Groovy 和 Metaspace 作为关键字进行了一些搜索，找到如下一篇相关性比较高的文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/jinzhencs/article/details/74562973">记一次线上Groovy导致的OOM的问题解决过程</a></p>
+<p>以及它里面引用的文章： <a target="_blank" rel="noopener" href="https://my.oschina.net/chenxiaojie/blog/835934">Groovy 动态加载类踩中的那些坑</a></p>
+<p>里面提到了 Groovy 的一个 Bug： <a target="_blank" rel="noopener" href="https://issues.apache.org/jira/browse/GROOVY-7913">ClassInfo.globalClassValue lead to GroovyClassLoader can’t unload classes</a>，大意是 Groovy 动态生成的类因为被缓存和引用，导致无法 unload，从而引发元空间随着时间推移一直增长且无法释放。在 Groovy 2.4.6 引入，2.4.8 修复。</p>
+<p>检查我们项目里的 groovy-all 包版本，是 2.4.7，那很有可能命中这个 bug。</p>
+<h2 id="本地验证"><a href="#本地验证" class="headerlink" title="本地验证"></a>本地验证</h2><p>构建一个测试应用，启动后循环调用 <code>GroovyScriptEvaluator.evaluate</code>，如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">GroovyOomDemoApplication</span> <span class="keyword">implements</span> <span class="title class_">CommandLineRunner</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SpringApplication.run(GroovyOomDemoApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">(String... args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="type">GroovyScriptEvaluator</span> <span class="variable">evaluator</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">GroovyScriptEvaluator</span>();</span><br><span class="line"></span><br><span class="line">        <span class="type">ScriptSource</span> <span class="variable">scriptSource</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StaticScriptSource</span>(<span class="string">&quot;a == 3&quot;</span>);</span><br><span class="line">        Map&lt;String, Object&gt; params = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;(<span class="number">0</span>);</span><br><span class="line">        <span class="type">Random</span> <span class="variable">rand</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            <span class="type">Integer</span> <span class="variable">a</span> <span class="operator">=</span> rand.nextInt(<span class="number">10</span>);</span><br><span class="line">            params.put(<span class="string">&quot;a&quot;</span>, a);</span><br><span class="line">            <span class="type">Object</span> <span class="variable">result</span> <span class="operator">=</span> evaluator.evaluate(scriptSource, params);</span><br><span class="line">            System.out.printf(<span class="string">&quot;a = %d, result is %s%n&quot;</span>, a, result);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后在运行的 JVM 参数里添加一些参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-XX:MetaspaceSize=64m</span><br><span class="line">-XX:MaxMetaspaceSize=64m</span><br><span class="line">-verbose:class</span><br><span class="line">-verbose:gc</span><br></pre></td></tr></table></figure>
+
+<p>设置最大元空间大小、打印类的 load&#x2F;unload、以及 GC 的信息。</p>
+<p><em>测试代码发布在 <a target="_blank" rel="noopener" href="https://github.com/mzlogin/groovy-oom-demo">https://github.com/mzlogin/groovy-oom-demo</a></em></p>
+<h3 id="使用-groovy-all-2-4-7-版本运行的情况"><a href="#使用-groovy-all-2-4-7-版本运行的情况" class="headerlink" title="使用 groovy-all 2.4.7 版本运行的情况"></a>使用 groovy-all 2.4.7 版本运行的情况</h3><p>控制台打印：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">……</span><br><span class="line">[Loaded Script1 from file:/groovy/shell]</span><br><span class="line">a = 1, result is false</span><br><span class="line">[Loaded Script1 from file:/groovy/shell]</span><br><span class="line">a = 2, result is false</span><br><span class="line">[Loaded Script1 from file:/groovy/shell]</span><br><span class="line">a = 0, result is false</span><br><span class="line">[Loaded Script1 from file:/groovy/shell]</span><br><span class="line">a = 8, result is false</span><br><span class="line">[GC (Metadata GC Threshold)  838057K-&gt;253201K(1080832K), 0.1350074 secs]</span><br><span class="line">[Full GC (Metadata GC Threshold)  253201K-&gt;244956K(1232896K), 0.4860932 secs]</span><br><span class="line">[GC (Last ditch collection)  244956K-&gt;245557K(1421824K), 0.0403506 secs]</span><br><span class="line">……</span><br><span class="line">Exception: java.lang.OutOfMemoryError thrown from the UncaughtExceptionHandler in thread &quot;main&quot;</span><br><span class="line">……</span><br></pre></td></tr></table></figure>
+
+<p>Profiler：</p>
+<p><img src="/images/posts/java/groovy-2.4.7-crashed.png" alt="groovy 2.4.7 crashed"></p>
+<p>从控制台打印以及 Profiler 来看，程序先是打印了很多 <code>[Loaded Script1 from file:/groovy/shell]</code>，然后最后当 Non-Heap Memory 占用很高之后，开始因为达到 Metadata GC Threshold，疯狂 YongGC + FullGC，但 Non-Heap Memory 也降不下来，最终程序很快直接挂掉了。</p>
+<h3 id="升级为-groovy-all-2-4-8-版本运行的情况"><a href="#升级为-groovy-all-2-4-8-版本运行的情况" class="headerlink" title="升级为 groovy-all 2.4.8 版本运行的情况"></a>升级为 groovy-all 2.4.8 版本运行的情况</h3><p>控制台打印：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">……</span><br><span class="line">[Loaded Script1 from file:/groovy/shell]</span><br><span class="line">a = 9, result is false</span><br><span class="line">[Loaded Script1 from file:/groovy/shell]</span><br><span class="line">a = 3, result is true</span><br><span class="line">[Loaded Script1 from file:/groovy/shell]</span><br><span class="line">a = 7, result is false</span><br><span class="line">[Loaded Script1 from file:/groovy/shell]</span><br><span class="line">a = 7, result is false</span><br><span class="line">[GC (Metadata GC Threshold)  722452K-&gt;251702K(1090560K), 0.0483118 secs]</span><br><span class="line">[Full GC (Metadata GC Threshold)  251702K-&gt;240778K(1254912K), 0.4303570 secs]</span><br><span class="line">[GC (Last ditch collection)  240778K-&gt;241270K(1373696K), 0.0274501 secs]</span><br><span class="line">[Full GC (Last ditch collection) </span><br><span class="line">[Unloading class Script1 0x00000007c103c428]</span><br><span class="line">[Unloading class Script1 0x00000007c103bc28]</span><br><span class="line">[Unloading class Script1 0x00000007c103b428]</span><br><span class="line">[Unloading class Script1 0x00000007c103ac28]</span><br><span class="line">[Unloading class Script1 0x00000007c103a428]</span><br><span class="line">……</span><br></pre></td></tr></table></figure>
+
+<p>Profiler：</p>
+<p><img src="/images/posts/java/groovy-2.4.8-worked.png" alt="groovy 2.4.8 worked"></p>
+<p>同上面一样，程序开始也是打印了很多 <code>[Loaded Script1 from file:/groovy/shell]</code>，但不同的是达到 Metadata GC Threshold 进行 GC 之后，可以将 Non-Heap Memory 占用降下来，并且从控制台可以看到在 GC 时打印了很多 <code>[Unloading class Script1 xxx]</code>，程序持续运行很长时间也没问题。 </p>
+<p>另外有个疑问：这个应用上线很长时间了，与 Groovy 相关的逻辑很久没有动过了，为什么以前没有出现这种现象？</p>
+<p>答案：以前这个应用时不时会发一次版，重置 Metaspace，而这次有两个多月没有发版了，Metaspace 一直增长，最终达到了阈值。</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>升级 groovy-all 至 2.4.8（含）版本以上。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/jinzhencs/article/details/74562973">记一次线上Groovy导致的OOM的问题解决过程</a></li>
+<li><a target="_blank" rel="noopener" href="https://my.oschina.net/chenxiaojie/blog/835934">Groovy 动态加载类踩中的那些坑</a></li>
+<li><a target="_blank" rel="noopener" href="https://issues.apache.org/jira/browse/GROOVY-7913">ClassInfo.globalClassValue lead to GroovyClassLoader can’t unload classes</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023-04-11-after-using-threadpool/" rel="prev" title="记两个有关线程池的小问题">
+                  <i class="fa fa-angle-left"></i> 记两个有关线程池的小问题
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023-03-08-what-did-the-philosophers-do/" rel="next" title="读书：哲学家们都干了些什么">
+                  读书：哲学家们都干了些什么 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

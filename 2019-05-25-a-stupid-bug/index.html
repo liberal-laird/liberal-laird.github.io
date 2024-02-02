@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="一杯茶，一根烟，一个 Bug 一天根本改不完。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记一个折磨了我一天半的 Bug">
+<meta property="og:url" content="https://www.vvbuys.com/2019-05-25-a-stupid-bug/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="一杯茶，一根烟，一个 Bug 一天根本改不完。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/java/you-kidding-me.jpg">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/java/what-is-wrong.jpeg">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/java/this-unscientific.jpeg">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/java/a-stupid-bug-wrong-sequence.png">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/java/a-stupid-bug-normal-sequence.png">
+<meta property="article:published_time" content="2024-02-02T01:06:28.208Z">
+<meta property="article:modified_time" content="2024-02-02T01:06:28.208Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="Linux hyprland Python Rust Golang javascript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.vvbuys.com/images/posts/java/you-kidding-me.jpg">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/2019-05-25-a-stupid-bug/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/2019-05-25-a-stupid-bug/","path":"2019-05-25-a-stupid-bug/","title":"记一个折磨了我一天半的 Bug"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>记一个折磨了我一天半的 Bug | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">265</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2019-05-25-a-stupid-bug/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="记一个折磨了我一天半的 Bug | VVbugs Blog">
+      <meta itemprop="description" content="一杯茶，一根烟，一个 Bug 一天根本改不完。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          记一个折磨了我一天半的 Bug
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">一杯茶，一根烟，一个 Bug 一天根本改不完。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>最近开始学习后台开发，虽然与我以前从事的 Android 开发一样都是使用 Java 语言，但是技术栈完全不同，有太多的必备的「新」概念要去学习，而在对它们，以及别人写的代码有充分的了解之前，就可能会遇上这种一杯茶，一根烟，一个 Bug 一天根本改不完的情况。</p>
+<p>最近遇见的这个 Bug 是在修改项目遗留的问题时偶然发现的，简而言之就是这样：</p>
+<p><strong>服务 A</strong> 在从外界接收到推送的一条数据后，将数据插入到库里，然后通过 MQ 推送一条消息给 <strong>服务 B</strong>，<strong>服务 B</strong> 会根据收到的消息进行一些处理，其中包括远程调用 <strong>服务 A</strong> 的方法去查询这条数据，但是在测试环境总是报查询不到这条数据。</p>
+<p>遇到问题之后，先进行了一些排查：</p>
+<ul>
+<li><p>怀疑传参或者数据插库没有成功，于是将查询参数打印出来，手动复制参数到库里去查——有数据；</p>
+</li>
+<li><p>怀疑实际执行的 SQL 有问题，于是请同事帮忙配置 MyBatis 在日志里输出 SQL，原样复制出来去库里查——有数据；</p>
+</li>
+<li><p>在本地连接测试环境数据库，代码里下断点调试——能正常取到数据；</p>
+</li>
+</ul>
+<p><img src="/images/posts/java/you-kidding-me.jpg"></p>
+<p>纳闷了一阵以后，继续排查：</p>
+<ul>
+<li><p>怀疑测试环境程序数据库连接有问题，于是测试了一些其它查库的功能——数据正常；</p>
+</li>
+<li><p>怀疑测试环境的包有问题，于是请运维同事将 jar 包从容器里拷贝下来，核对配置——没问题；</p>
+</li>
+<li><p>怀疑测试环境远程调用失败了，于是在远程调用处加日志——没有异常；</p>
+</li>
+</ul>
+<p><img src="/images/posts/java/what-is-wrong.jpeg"></p>
+<ul>
+<li><p>怀疑测试环境注册了多余的 <strong>服务 A</strong> 的节点，于是去 Dubbo Admin 里核对节点——数量正常，网段正常；</p>
+</li>
+<li><p>怀疑测试环境的部署的 <strong>服务 A</strong> 的某个节点部署有问题，于是请运维同事一个一个 telnet 上去手动执行远程调用——能正常取到数据；</p>
+</li>
+<li><p>在一条失败 case 之后，马上向 <strong>服务 B</strong> 手动再次推送相同的消息——能取到数据；</p>
+</li>
+</ul>
+<p><img src="/images/posts/java/this-unscientific.jpeg"></p>
+<p>直到我终于留意到一个现象：从日志来看，<strong>服务 A</strong> 插库与 <strong>服务 B</strong> 远程调用 <strong>服务 A</strong> 的方法的时间只相差 1 毫秒。会不会是一切发生得太快了，库里还查不到刚刚写入的数据？抑或者查询的时候插库还根本没有生效？</p>
+<p>带着这个疑惑我终于认真去看插库并发消息那块的代码了，于是就看到这样一段代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="meta">@Transactional(...)</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">doSomething</span><span class="params">()</span> &#123;</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 插入数据</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 发送消息</span></span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>是的没错，插入数据和发送消息写在了一个事务里面。虽然我对数据库了解不多，但对事务的特性还是有所了解——发送消息的时候，数据库里确实还没有刚刚插入的数据，事务提交后才会生效，也就是说，<strong>服务 B</strong> 收到消息后远程调用回 <strong>服务 A</strong> 想查找刚刚插入的数据，能否查到全凭运气，取决于此时事务已经执行完。</p>
+<p>问题时序示意：</p>
+<p><img src="/images/posts/java/a-stupid-bug-wrong-sequence.png"></p>
+<p>要确保消息发出时数据库里已经存在数据了也很简单，将事务粒度控制一下，只包含插入数据这块逻辑即可，插入成功了再发送消息。</p>
+<p><em>PS：如果对消息投递可靠性要求高，可能需要对投递消息失败的情况做一些补偿机制。</em></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">doSomething</span><span class="params">()</span> &#123;</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 事务开始</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 插入数据</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 事务结束</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (插入数据成功) &#123;</span><br><span class="line">        <span class="comment">// 发送消息</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>正常时序示意：</p>
+<p><img src="/images/posts/java/a-stupid-bug-normal-sequence.png"></p>
+<p>总结：</p>
+<ol>
+<li><p>在理解别人写的逻辑的时候不要做预设，你认为别人不可能犯如此低级的错误而直接排除在外的情况，可能恰好是问题所在；</p>
+</li>
+<li><p>在排查可能是时序导致的问题时，少用断点调试，用日志更合适；</p>
+</li>
+<li><p>本地调试时尽量将场景模拟完整一点，从中途某一环开始则有可能越过问题触发条件而无法复现。</p>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019-09-14-gitee-and-tapd/" rel="prev" title="让 Tapd 的源码关联功能支持 Gitee 平台">
+                  <i class="fa fa-angle-left"></i> 让 Tapd 的源码关联功能支持 Gitee 平台
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019-01-20-my-2018/" rel="next" title="我的 2018 盘点">
+                  我的 2018 盘点 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

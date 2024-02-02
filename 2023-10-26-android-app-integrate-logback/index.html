@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Android APP 集成 slf4j + logback 作为日志框架，并使用 Lombok 注解生成日志对象。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android｜集成 slf4j + logback 作为日志框架">
+<meta property="og:url" content="https://www.vvbuys.com/2023-10-26-android-app-integrate-logback/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="Android APP 集成 slf4j + logback 作为日志框架，并使用 Lombok 注解生成日志对象。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-02T01:06:28.216Z">
+<meta property="article:modified_time" content="2024-02-02T01:06:28.216Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="Linux hyprland Python Rust Golang javascript">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/2023-10-26-android-app-integrate-logback/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/2023-10-26-android-app-integrate-logback/","path":"2023-10-26-android-app-integrate-logback/","title":"Android｜集成 slf4j + logback 作为日志框架"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Android｜集成 slf4j + logback 作为日志框架 | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%86%E6%88%90-slf4j-logback"><span class="nav-number">1.</span> <span class="nav-text">集成 slf4j + logback</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-Lombok-%E6%B3%A8%E8%A7%A3%E7%94%9F%E6%88%90%E6%97%A5%E5%BF%97%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.</span> <span class="nav-text">使用 Lombok 注解生成日志对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5"><span class="nav-number">4.</span> <span class="nav-text">相关链接</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">265</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2023-10-26-android-app-integrate-logback/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Android｜集成 slf4j + logback 作为日志框架 | VVbugs Blog">
+      <meta itemprop="description" content="Android APP 集成 slf4j + logback 作为日志框架，并使用 Lombok 注解生成日志对象。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android｜集成 slf4j + logback 作为日志框架
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">Android APP 集成 slf4j + logback 作为日志框架，并使用 Lombok 注解生成日志对象。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>最近在做一个 Android APP 的日志改造时，想要满足如下需求：</p>
+<ol>
+<li><p>能够很方便地使用可变参数的方式输出日志；</p>
+</li>
+<li><p>日志能够根据级别输出到控制台和文件；</p>
+</li>
+<li><p>能够按照日期和文件大小进行日志文件的切割，滚动保存指定天数的日志，自动清理旧日志。</p>
+</li>
+</ol>
+<p>基于这个需求，我搜了一下「Android 日志框架」，大多网友推荐的是 logger、timber、xLog 等等，看着也不错。不过出于几年后端开发的经验和习惯，我进一步了解，发现熟悉的 log4j 和 logback 在 Android 上也有人做过适配，所以最终决定使用 slf4j + logback，以在前后端开发中取得一致的体验。</p>
+<p>做过 Java 后端开发的同学，对于 slf4j + logback 的组合一般不陌生，而 Android 开发的同学则可能不一定听过它们。所以，本文将从零开始，记录如何在 Android APP 中集成 slf4j + logback 作为日志框架，并使用 Lombok 注解生成日志对象。</p>
+<h2 id="集成-slf4j-logback"><a href="#集成-slf4j-logback" class="headerlink" title="集成 slf4j + logback"></a>集成 slf4j + logback</h2><p>logback-android 项目地址：<a target="_blank" rel="noopener" href="https://github.com/tony19/logback-android">https://github.com/tony19/logback-android</a></p>
+<p>一、在项目&#x2F;模块的 build.gradle 文件中添加依赖：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">  implementation <span class="string">&#x27;org.slf4j:slf4j-api:2.0.7&#x27;</span></span><br><span class="line">  implementation <span class="string">&#x27;com.github.tony19:logback-android:3.0.0&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果是单模块项目，可以直接在 app&#x2F;build.gradle 文件中添加，如果是多模块项目，可以在一个公共模块的 build.gradle 文件中添加，记得将 slf4j-api 的 <code>implementation</code> 改为 <code>api</code> 才可被其它模块引用。</p>
+<p>二、创建日志配置文件 <code>app/src/main/assets/logback.xml</code>：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span> <span class="attr">debug</span>=<span class="string">&quot;false&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns</span>=<span class="string">&quot;https://tony19.github.io/logback-android/xml&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;https://tony19.github.io/logback-android/xml https://cdn.jsdelivr.net/gh/tony19/logback-android/logback.xsd&quot;</span></span></span><br><span class="line"><span class="tag">&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;LOG_DIR&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;EXT_DIR:-$&#123;DATA_DIR&#125;&#125;/test/log&quot;</span>/&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">appender</span> <span class="attr">name</span>=<span class="string">&quot;logcat&quot;</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.classic.android.LogcatAppender&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tagEncoder</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">pattern</span>&gt;</span>%logger&#123;12&#125;<span class="tag">&lt;/<span class="name">pattern</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tagEncoder</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">encoder</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">pattern</span>&gt;</span>[%-20thread] %msg<span class="tag">&lt;/<span class="name">pattern</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">encoder</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">appender</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">appender</span> <span class="attr">name</span>=<span class="string">&quot;local_file&quot;</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.core.rolling.RollingFileAppender&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">file</span>&gt;</span>$&#123;LOG_DIR&#125;/test.log<span class="tag">&lt;/<span class="name">file</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">encoder</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">pattern</span>&gt;</span>%d&#123;HH:mm:ss.SSS&#125; [%thread] %-5level %logger&#123;36&#125; - %msg%n<span class="tag">&lt;/<span class="name">pattern</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">encoder</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rollingPolicy</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.core.rolling.TimeBasedRollingPolicy&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">fileNamePattern</span>&gt;</span>$&#123;LOG_DIR&#125;/test.%d.log<span class="tag">&lt;/<span class="name">fileNamePattern</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">maxHistory</span>&gt;</span>15<span class="tag">&lt;/<span class="name">maxHistory</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">rollingPolicy</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">appender</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">root</span> <span class="attr">level</span>=<span class="string">&quot;DEBUG&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">appender-ref</span> <span class="attr">ref</span>=<span class="string">&quot;logcat&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">root</span> <span class="attr">level</span>=<span class="string">&quot;INFO&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">appender-ref</span> <span class="attr">ref</span>=<span class="string">&quot;local_file&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>以上配置表示 DEBUG 及以上级别的日志输出到控制台，INFO 及以上级别的日志输出到文件，文件按照日期切割，最多保留 15 天的日志。</p>
+<p>大家可以按需配置，比如还可以限定单个文件大小、自定义日志输出的格式等等。</p>
+<p>在项目的 Wiki 里提到有一点是 Android 开发者比较关注的，就是日志有保存路径，既可以指定绝对路径，也可以用变量，比如：</p>
+<ul>
+<li><code>$&#123;DATA_DIR&#125;</code> 表示 <code>Context.getFilesDir()</code>；</li>
+<li><code>$&#123;EXT_DIR&#125;</code> 表示 <code>Context.getExternalFilesDir(null)</code>；</li>
+<li><code>$&#123;EXT_DIR:-$&#123;DATA_DIR&#125;&#125;</code> 表示当 <code>EXT_DIR</code> 可用时使用 <code>EXT_DIR</code>，否则使用 <code>DATA_DIR</code>；</li>
+<li><code>$&#123;PACKAGE_NAME&#125;</code> 表示包名；</li>
+<li><code>$&#123;VERSION_NAME&#125;</code> 表示版本名；</li>
+<li><code>$&#123;VERSION_CODE&#125;</code> 表示版本号。</li>
+</ul>
+<p>三、可以开始使用 slf4j 的 API 进行日志打印了：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 声明 logger</span></span><br><span class="line"><span class="type">Logger</span> <span class="variable">log</span> <span class="operator">=</span> LoggerFactory.getLogger(MainActivity.class);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 打印日志</span></span><br><span class="line">log.info(<span class="string">&quot;hello world&quot;</span>);</span><br><span class="line">log.info(<span class="string">&quot;number &#123;&#125;, boolean &#123;&#125;, string &#123;&#125;, object &#123;&#125;&quot;</span>, <span class="number">1</span>, <span class="literal">true</span>, <span class="string">&quot;string&quot;</span>, <span class="keyword">new</span> <span class="title class_">Object</span>());</span><br></pre></td></tr></table></figure>
+
+<p>运行 APP，可以看到日志输出到 logcat 和对应位置的文件。</p>
+<p>当对配置有疑问，需要调试时，可以将上面配置文件里的 <code>debug=&quot;false&quot;</code> 改为 <code>debug=&quot;true&quot;</code>，这样 logback 就会输出详细的信息，方便我们定位问题。</p>
+<h2 id="使用-Lombok-注解生成日志对象"><a href="#使用-Lombok-注解生成日志对象" class="headerlink" title="使用 Lombok 注解生成日志对象"></a>使用 Lombok 注解生成日志对象</h2><p>在上一部分的第 3 步，在每一个需要使用 logger 的类里，都需要手动去声明 logger，如 <code>Logger log = LoggerFactory.getLogger(MainActivity.class);</code>，不算方便。</p>
+<p>这里我们可以使用 Lombok 注解来简化这一步骤，自动生成 logger 对象。</p>
+<p>Lombok 官方提供了 Android 平台的集成说明：<a target="_blank" rel="noopener" href="https://projectlombok.org/setup/android">https://projectlombok.org/setup/android</a></p>
+<p>基于 Android Studio 环境，要做的其实就两步。</p>
+<p>一、安装 Lombok 插件；</p>
+<p><code>Settings -&gt; Plugins -&gt; 搜索 Lombok -&gt; 安装</code></p>
+<p><em>注：Android Studio 版本 2020.3.1 - 2022.3.1，JetBrains 官方插件市场无法搜索到兼容版本的 Lombok 插件，可以参考 <a target="_blank" rel="noopener" href="https://gitee.com/sgpublic/lombok-plugin-repository">https://gitee.com/sgpublic/lombok-plugin-repository</a> 解决。</em></p>
+<p>二、在需要使用的模块的 build.gradle 文件里添加如下内容：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">	compileOnly <span class="string">&#x27;org.projectlombok:lombok:1.18.30&#x27;</span></span><br><span class="line">	annotationProcessor <span class="string">&#x27;org.projectlombok:lombok:1.18.30&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后，就可以使用 <code>@Slf4j</code> 注解来自动生成 logger 对象了，现在的使用姿势简化成了这样：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test</span><span class="params">()</span> &#123;</span><br><span class="line">        log.info(<span class="string">&quot;hello world&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>好了以上就是在 Android 里集成 slf4j + logback 的记录了，至此我「统一」了 Java 后端和 Android 客户端打印日志的用法，在避免多项目维护造成「精神分裂」的路上前进了一小步。</p>
+<p>本文所列代码示例已上传至 GitHub，地址：<a target="_blank" rel="noopener" href="https://github.com/mzlogin/AndroidPractices/tree/master/android-studio/LogbackDemo">https://github.com/mzlogin/AndroidPractices/tree/master/android-studio/LogbackDemo</a></p>
+<p>以上步骤供有类似需求的同学参考，同时强烈建议以官方文档为主。如果有更好的方案，欢迎留言讨论交流。</p>
+<h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/tony19/logback-android">https://github.com/tony19/logback-android</a></li>
+<li><a target="_blank" rel="noopener" href="https://projectlombok.org/setup/android">https://projectlombok.org/setup/android</a></li>
+<li><a target="_blank" rel="noopener" href="https://gitee.com/sgpublic/lombok-plugin-repository">https://gitee.com/sgpublic/lombok-plugin-repository</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/mzlogin/AndroidPractices/tree/master/android-studio/LogbackDemo">https://github.com/mzlogin/AndroidPractices/tree/master/android-studio/LogbackDemo</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023-11-26-filco-keyboard-single-mode-to-three-mode/" rel="prev" title="DIY｜Filco 圣手二代机械键盘单模改三模">
+                  <i class="fa fa-angle-left"></i> DIY｜Filco 圣手二代机械键盘单模改三模
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023-10-19-when-provider-authorities-duplicated/" rel="next" title="Android｜FileProvider 的 authorities 重名会怎么样？">
+                  Android｜FileProvider 的 authorities 重名会怎么样？ <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

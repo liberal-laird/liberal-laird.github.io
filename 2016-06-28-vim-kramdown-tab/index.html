@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="kramdown 的列表嵌套内容缩进不是使用 Tab，而是有更「严格」更「奇葩」的规定，这个插件就是来拯救为此苦恼的 Vimer。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简化 kramdown 列表嵌套内容缩进的 Vim 插件">
+<meta property="og:url" content="https://www.vvbuys.com/2016-06-28-vim-kramdown-tab/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="kramdown 的列表嵌套内容缩进不是使用 Tab，而是有更「严格」更「奇葩」的规定，这个插件就是来拯救为此苦恼的 Vimer。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/mzlogin/vim-kramdown-tab/master/screenshots/test.gif">
+<meta property="article:published_time" content="2024-02-02T01:06:28.204Z">
+<meta property="article:modified_time" content="2024-02-02T01:06:28.204Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="Linux hyprland Python Rust Golang javascript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/mzlogin/vim-kramdown-tab/master/screenshots/test.gif">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/2016-06-28-vim-kramdown-tab/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/2016-06-28-vim-kramdown-tab/","path":"2016-06-28-vim-kramdown-tab/","title":"简化 kramdown 列表嵌套内容缩进的 Vim 插件"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>简化 kramdown 列表嵌套内容缩进的 Vim 插件 | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80"><span class="nav-number">2.</span> <span class="nav-text">下载地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">使用方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%96%B9%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">安装方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE"><span class="nav-number">5.</span> <span class="nav-text">屏幕截图</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">265</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2016-06-28-vim-kramdown-tab/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="简化 kramdown 列表嵌套内容缩进的 Vim 插件 | VVbugs Blog">
+      <meta itemprop="description" content="kramdown 的列表嵌套内容缩进不是使用 Tab，而是有更「严格」更「奇葩」的规定，这个插件就是来拯救为此苦恼的 Vimer。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          简化 kramdown 列表嵌套内容缩进的 Vim 插件
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Vim/" itemprop="url" rel="index"><span itemprop="name">Vim</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">kramdown 的列表嵌套内容缩进不是使用 Tab，而是有更「严格」更「奇葩」的规定，这个插件就是来拯救为此苦恼的 Vimer。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>kramdown 的列表嵌套内容的缩进规则很「奇葩」，不是使用自然的 Tab 缩进。</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>kramdown 的作者对列表嵌套内容的缩进规则的 <a target="_blank" rel="noopener" href="https://github.com/gettalong/kramdown/issues/311#issuecomment-185040348">描述</a> 是：</p>
+<blockquote>
+<p>kramdown does not allow 4 space indent, ……</p>
+<p>Indentation for list items is <strong>always</strong> calculated based on the first non-space character after the list item marker.</p>
+</blockquote>
+<p>在年初 GitHub 宣布 GitHub Pages 服务将只支持 kramdown 这个 Markdown 解析引擎时，我曾经总结过从 Redcarpet 迁移到 kramdown 需要做的一些更改，<a target="_blank" rel="noopener" href="https://mazhuang.org/2016/02/04/switch-to-kramdown-from-redcarpet/">将 GitHub Pages 从 Redcarpet 切换到 kramdown</a> 里有说到，嵌套在列表项里的代码块，如果不按如上规则做缩进的话，将会解析不正常。</p>
+<p>比如：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> list item one</span><br><span class="line"></span><br><span class="line"><span class="code">    ```python</span></span><br><span class="line"><span class="code">    print &#x27;hello, world&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>list item two</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">解析后的结果是：</span><br><span class="line"></span><br><span class="line">1. list item one</span><br><span class="line"></span><br><span class="line">    ```python</span><br><span class="line">    print &#x27;hello, world&#x27;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>list item two</p>
+</li>
+</ol>
+<p>这当然不是我们想要的，我们应该如何写呢？</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> list item one</span><br><span class="line"></span><br><span class="line">   <span class="code">```python</span></span><br><span class="line"><span class="code">   print &#x27;hello, world&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>list item two</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">解析后的结果是：</span><br><span class="line"></span><br><span class="line">1. list item one</span><br><span class="line"></span><br><span class="line">   ```python</span><br><span class="line">   print &#x27;hello, world&#x27;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>list item two</p>
+</li>
+</ol>
+<p>看出来区别了吗？没错，这种情况下代码块必须缩进三个空格，因为除开列表记号后的第一个非空字符的缩进是三。</p>
+<p>那么问题来了，有时候是有序列表，序号是个位数时需要缩进三个空格，序号是两位数时需要缩进四个空格，序号是三位数时（弄这么大的列表是闹哪样？）需要缩进五个空格……有时候是无序列表，只需要缩进两个空格。</p>
+<p>当然这是最简单的一级嵌套的情况，如果是多级列表嵌套，那情况就更复杂了，每一次都去手打空格缩进吗？作为一名 Vimer，当然 say no！</p>
+<p>所以为此我做了一个简单的小 Vim 插件专门用于解决此问题。</p>
+<h2 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/mzlogin/vim-kramdown-tab">vim-kramdown-tab</a></li>
+</ul>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>安装完此插件后，在你需要对列表嵌套内容进行缩进时，不用掰着手指头去数要打多少个空格了，只用按 <kbd>Leader</kbd><kbd>Tab</kbd> 就好了。</p>
+<h2 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h2><p>推荐使用 <a target="_blank" rel="noopener" href="http://github.com/VundleVim/Vundle.Vim">Vundle</a> 来管理你的 Vim 插件，这样你就可以简单三步完成安装：</p>
+<ol>
+<li><p>在你的 vimrc 文件中添加如下内容：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Plugin &#x27;mzlogin/vim-kramdown-tab&#x27;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>:so $MYVIMRC</code></p>
+</li>
+<li><p><code>:PluginInstall</code></p>
+</li>
+</ol>
+<h2 id="屏幕截图"><a href="#屏幕截图" class="headerlink" title="屏幕截图"></a>屏幕截图</h2><p><img src="https://raw.githubusercontent.com/mzlogin/vim-kramdown-tab/master/screenshots/test.gif" alt="vim-kramdown-tab screenshot"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2013-04-18-windows-ui-notes/" rel="prev" title="Windows 界面相关小知识点">
+                  <i class="fa fa-angle-left"></i> Windows 界面相关小知识点
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2016-05-21-enable-https-for-github-pages/" rel="next" title="为绑定域名的 GitHub Pages 启用 HTTPS">
+                  为绑定域名的 GitHub Pages 启用 HTTPS <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

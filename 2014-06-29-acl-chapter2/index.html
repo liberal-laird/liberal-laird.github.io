@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="学习 ANSI Common Lisp 第二章欢迎来到 Lisp 的笔记。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ANSI Common Lisp 第二章习题解答">
+<meta property="og:url" content="https://www.vvbuys.com/2014-06-29-acl-chapter2/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="学习 ANSI Common Lisp 第二章欢迎来到 Lisp 的笔记。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-02T01:06:28.200Z">
+<meta property="article:modified_time" content="2024-02-02T01:06:28.200Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="Linux hyprland Python Rust Golang javascript">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/2014-06-29-acl-chapter2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/2014-06-29-acl-chapter2/","path":"2014-06-29-acl-chapter2/","title":"ANSI Common Lisp 第二章习题解答"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ANSI Common Lisp 第二章习题解答 | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">265</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2014-06-29-acl-chapter2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ANSI Common Lisp 第二章习题解答 | VVbugs Blog">
+      <meta itemprop="description" content="学习 ANSI Common Lisp 第二章欢迎来到 Lisp 的笔记。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ANSI Common Lisp 第二章习题解答
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Lisp/" itemprop="url" rel="index"><span itemprop="name">Lisp</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">学习 ANSI Common Lisp 第二章欢迎来到 Lisp 的笔记。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>本文是个人对<a target="_blank" rel="noopener" href="http://acl.readthedocs.org/en/latest/zhCN/ch2-cn.html">第二章：欢迎来到 Lisp——ANSI Common Lisp 中文版</a> 一文中习题的解答。</p>
+<p><strong>1. 描述下列表达式求值之后的结果：</strong></p>
+<p>(a) (+ (- 5 1) (+ 3 7))</p>
+<p><strong>答案：</strong><code>14</code></p>
+<p>(b) (list 1 (+ 2 3))</p>
+<p><strong>答案：</strong><code>(1 5)</code></p>
+<p>(c) (if (listp 1) (+ 1 2) (+ 3 4))</p>
+<p><strong>答案：</strong><code>7</code></p>
+<p>(d) (list (and (listp 3) t) (+ 1 2))</p>
+<p><strong>答案：</strong><code>(NIL 3)</code></p>
+<p><strong>2. 给出 3 种不同表示 (a b c) 的 cons 表达式 。</strong></p>
+<p><strong>答案：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(cons &#x27;a &#x27;(b c))</span><br><span class="line">(cons &#x27;a (cons &#x27;b &#x27;(c)))</span><br><span class="line">(cons &#x27;a (cons &#x27;b (cons &#x27;c nil)))</span><br></pre></td></tr></table></figure>
+
+<p><strong>3. 使用 car 与 cdr 来定义一个函数，返回一个列表的第四个元素。</strong></p>
+<p><strong>答案：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(defun get-forth(lst)</span><br><span class="line">  (car (cdr (cdr (cdr lst)))))</span><br></pre></td></tr></table></figure>
+
+<p><strong>4. 定义一个函数，接受两个实参，返回两者当中较大的那个。</strong></p>
+<p><strong>答案：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(defun get-max(x y)</span><br><span class="line">  (if (&lt; x y)</span><br><span class="line">    y</span><br><span class="line">    x))</span><br></pre></td></tr></table></figure>
+
+<p><strong>5. 这些函数做了什么？</strong></p>
+<p>(a)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(defun enigma (x)</span><br><span class="line">  (and (not (null x))</span><br><span class="line">       (or (null (car x))</span><br><span class="line">           (enigma (cdr x)))))</span><br></pre></td></tr></table></figure>
+
+<p><strong>答案：</strong>判断 x 列表中是否有 nil 元素</p>
+<p>(b)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(defun mystery (x y)</span><br><span class="line">  (if (null y)</span><br><span class="line">    nil</span><br><span class="line">    (if (eql (car y) x)</span><br><span class="line">      0</span><br><span class="line">      (let ((z (mystery x (cdr y))))</span><br><span class="line">        (and z (+ z 1))))))</span><br></pre></td></tr></table></figure>
+
+<p><strong>答案：</strong>查找 x 在列表 y 中的下标，如果没有则为 nil</p>
+<p><strong>6. 下列表达式， x 该是什么，才会得到相同的结果？</strong></p>
+<p>(a) &gt; (car (x (cdr ‘(a (b c) d))))</p>
+<pre><code>B
+</code></pre>
+<p><strong>答案：</strong><code>car</code></p>
+<p>(b) &gt; (x 13 (&#x2F; 1 0))</p>
+<pre><code>13
+</code></pre>
+<p><strong>答案：</strong><code>or</code></p>
+<p>(c) &gt; (x #’list 1 nil)</p>
+<pre><code>(1)
+</code></pre>
+<p><strong>答案：</strong><code>or &#39;(1)</code> 或 <code>apply</code></p>
+<p><strong>7. 只使用本章所介绍的操作符，定义一个函数，它接受一个列表作为实参，如果有一个元素是列表时，就返回真。</strong></p>
+<p><strong>答案：</strong></p>
+<p>非递归版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(defun has-child-list (lst)</span><br><span class="line">  (let ((x nil))</span><br><span class="line">    (dolist (obj lst)</span><br><span class="line">      (setf x (or x (listp obj))))</span><br><span class="line">    x))</span><br></pre></td></tr></table></figure>
+
+<p>递归版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(defun has-child-list-re (lst)</span><br><span class="line">  (if (null lst)</span><br><span class="line">    nil</span><br><span class="line">    (if (listp (car lst))</span><br><span class="line">      t</span><br><span class="line">      (has-child-list-re (cdr lst)))))</span><br></pre></td></tr></table></figure>
+
+<p><strong>8. 给出函数的迭代与递归版本：</strong></p>
+<p>a. 接受一个正整数，并打印出数字数量的点。</p>
+<p><strong>答案：</strong></p>
+<p>非递归版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(defun print-dots (n)</span><br><span class="line">  (do ((i 0 (+ i 1)))</span><br><span class="line">    ((= i n ) &#x27;done)</span><br><span class="line">    (format t &quot;.&quot;)))</span><br></pre></td></tr></table></figure>
+
+<p>递归版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(defun print-dots-re (n)</span><br><span class="line">  (if (= n 0)</span><br><span class="line">    &#x27;done</span><br><span class="line">    (progn</span><br><span class="line">      (format t &quot;.&quot;)</span><br><span class="line">      (print-dots-re (- n 1)))))</span><br></pre></td></tr></table></figure>
+
+<p>b. 接受一个列表，并返回 a 在列表里所出现的次数。</p>
+<p><strong>答案：</strong></p>
+<p>非递归版本：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(defun print-a-times (lst)</span><br><span class="line">   (let ((flag &#x27;a)(x 0))</span><br><span class="line">     (dolist (obj lst)</span><br><span class="line">       (setf x (+ x (if (eql obj flag) 1 0))))</span><br><span class="line">     x))</span><br></pre></td></tr></table></figure>
+
+<p>递归版本：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(defun print-a-times-re (lst)</span><br><span class="line">  (if (null lst)</span><br><span class="line">    0</span><br><span class="line">    (let ((flag &#x27;a))</span><br><span class="line">      (+ (if (eql flag (car lst)) 1 0)</span><br><span class="line">         (print-a-times-re (cdr lst))))))</span><br></pre></td></tr></table></figure>
+
+<p><strong>9. 一位朋友想写一个函数，返回列表里所有非 nil 元素的和。他写了此函数的两个版本，但两个都不能工作。请解释每一个的错误在哪里，并给出正确的版本。</strong></p>
+<p>(a)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(defun summit (lst)</span><br><span class="line">  (remove nil lst)</span><br><span class="line">  (apply #&#x27;+ lst))</span><br></pre></td></tr></table></figure>
+
+<p><strong>答案：</strong>因为 remove 并不会改变 lst 本身。正确的程序：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(defun summit (lst)</span><br><span class="line">  (let ((newlst (remove nil lst)))</span><br><span class="line">    (apply #&#x27;+ newlst)))</span><br></pre></td></tr></table></figure>
+
+<p>(b)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(defun summit (lst)</span><br><span class="line">  (let ((x (car lst)))</span><br><span class="line">    (if (null x)</span><br><span class="line">      (summit (cdr lst))</span><br><span class="line">      (+ x (summit (cdr lst))))))</span><br></pre></td></tr></table></figure>
+
+<p><strong>答案：</strong>因为递归没有边界退出分支。正确的程序：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(defun summit (lst)</span><br><span class="line">  (if (null lst)</span><br><span class="line">    0</span><br><span class="line">    (let ((x (car lst)))</span><br><span class="line">      (if (null x)</span><br><span class="line">        (summit (cdr lst))</span><br><span class="line">        (+ x (summit (cdr lst)))))))</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2014-07-13-cppinit/" rel="prev" title="C++ 类成员变量初始化">
+                  <i class="fa fa-angle-left"></i> C++ 类成员变量初始化
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2014-06-01-comsketch/" rel="next" title="COM 原理与应用学习笔记">
+                  COM 原理与应用学习笔记 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

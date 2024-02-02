@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Base64 的原理其实很简单">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一份简明的 Base64 原理解析">
+<meta property="og:url" content="https://www.vvbuys.com/2020-03-07-get-an-in-depth-understanding-of-base64/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="Base64 的原理其实很简单">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/java/base64-index.png">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/java/base64-split.png">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/java/base64-example.jpeg">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/java/base64-padding2.png">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/java/base64-padding1.png">
+<meta property="article:published_time" content="2024-02-02T01:06:28.208Z">
+<meta property="article:modified_time" content="2024-02-02T01:06:28.208Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="Linux hyprland Python Rust Golang javascript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.vvbuys.com/images/posts/java/base64-index.png">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/2020-03-07-get-an-in-depth-understanding-of-base64/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/2020-03-07-get-an-in-depth-understanding-of-base64/","path":"2020-03-07-get-an-in-depth-understanding-of-base64/","title":"一份简明的 Base64 原理解析"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>一份简明的 Base64 原理解析 | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Base64-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">1.</span> <span class="nav-text">1. Base64 是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Base64-%E7%BC%96%E7%A0%81%E5%8E%9F%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">2. Base64 编码原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84-Base64-%E7%BC%96%E7%A0%81%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">3. 实现一个简易的 Base64 编码器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%85%B6%E5%AE%83%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-number">4.</span> <span class="nav-text">4. 其它知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9C%89%E7%9A%84%E7%BC%96%E7%A0%81%E7%BB%93%E6%9E%9C%E5%B8%A6%E5%9B%9E%E8%BD%A6"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 为什么有的编码结果带回车</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-Base64-%E7%9A%84%E5%8F%98%E7%A7%8D"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 Base64 的变种</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-number">5.</span> <span class="nav-text">5. 参考链接</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">265</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2020-03-07-get-an-in-depth-understanding-of-base64/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="一份简明的 Base64 原理解析 | VVbugs Blog">
+      <meta itemprop="description" content="Base64 的原理其实很简单">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          一份简明的 Base64 原理解析
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">Base64 的原理其实很简单</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>书接上回，在 <a target="_blank" rel="noopener" href="https://mazhuang.org/2020/03/01/base64-bug/">记一个 Base64 有关的 Bug</a> 一文里，我们说到了 Base64 的编解码器有不同实现，交叉使用它们可能引发的问题等等。</p>
+<p>这一回，我们来对 Base64 这一常用编解码技术的原理一探究竟。</p>
+<h2 id="1-Base64-是什么"><a href="#1-Base64-是什么" class="headerlink" title="1. Base64 是什么"></a>1. Base64 是什么</h2><blockquote>
+<p>Base64 是一种基于 64 个可打印字符来表示二进制数据的表示方法。由于 2^6&#x3D;64，所以每 6 个比特为一个单元，对应某个可打印字符。3 个字节有 24 个比特，对应于 4 个 Base64 单元，即 3 个字节可由 4 个可打印字符来表示。</p>
+<p>——维基百科</p>
+</blockquote>
+<p>它不是一种加解密技术，是一种简单的编解码技术。</p>
+<p>Base64 常用于表示、传输、存储二进制数据，也可以用于将一些含有特殊字符的文本内容编码，以便传输。</p>
+<p>比如：</p>
+<ol>
+<li><p>在电子邮件的传输中，Base64 可以用来将 binary 的字节序列，比如附件，编码成 ASCII 字节序列；</p>
+</li>
+<li><p>将一些体积不大的图片 Base64 编码后，直接内嵌到网页源码里；</p>
+</li>
+<li><p>将要传递给 HTTP 请求的参数做简单的转换，降低肉眼可读性；</p>
+<p> <em>注：用于 URL 的 Base64 非标准 Base64，是一种变种。</em></p>
+</li>
+<li><p>网友们在论坛等公开场合习惯将邮箱地址 Base64 后再发出来，防止被爬虫抓取后发送垃圾邮件。</p>
+</li>
+</ol>
+<h2 id="2-Base64-编码原理"><a href="#2-Base64-编码原理" class="headerlink" title="2. Base64 编码原理"></a>2. Base64 编码原理</h2><p>标准 Base64 里的 64 个可打印字符是 <code>A-Za-z0-9+/</code>，分别依次对应索引值 0-63。索引表如下：</p>
+<p><img src="/images/posts/java/base64-index.png"></p>
+<p>编码时，每 3 个字节一组，共 8bit*3&#x3D;24bit，划分成 4 组，即每 6bit 代表一个编码后的索引值，划分如下图所示：</p>
+<p><img src="/images/posts/java/base64-split.png"></p>
+<p>这样可能不太直观，举个例子就容易理解了。比如我们对 <code>cat</code> 进行编码：</p>
+<p><img src="/images/posts/java/base64-example.jpeg"></p>
+<p>可以看到 <code>cat</code> 编码后变成了 <code>Y2F0</code>。</p>
+<p>如果待编码内容的字节数不是 3 的整数倍，那需要进行一些额外的处理。</p>
+<p>如果最后剩下 1 个字节，那么将补 4 个 0 位，编码成 2 个 Base64 字符，然后补两个 <code>=</code>：</p>
+<p><img src="/images/posts/java/base64-padding2.png"></p>
+<p>如果最后剩下 2 个字节，那么将补 2 个 0 位，编码成 3 个 Base64 字符，然后补一个 <code>=</code>：</p>
+<p><img src="/images/posts/java/base64-padding1.png"></p>
+<h2 id="3-实现一个简易的-Base64-编码器"><a href="#3-实现一个简易的-Base64-编码器" class="headerlink" title="3. 实现一个简易的 Base64 编码器"></a>3. 实现一个简易的 Base64 编码器</h2><p>讲完原理，我们就可以动手实现一个简易的标准 Base64 编码器了，以下是我参考 Java 8 的 java.util.Base64 乱写的一个 Java 版本，仅供参考，主要功能代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CustomBase64Encoder</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 索引表</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">char</span>[] sBase64 = &#123;</span><br><span class="line">            <span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>, <span class="string">&#x27;D&#x27;</span>, <span class="string">&#x27;E&#x27;</span>, <span class="string">&#x27;F&#x27;</span>, <span class="string">&#x27;G&#x27;</span>, <span class="string">&#x27;H&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;I&#x27;</span>, <span class="string">&#x27;J&#x27;</span>, <span class="string">&#x27;K&#x27;</span>, <span class="string">&#x27;L&#x27;</span>, <span class="string">&#x27;M&#x27;</span>, <span class="string">&#x27;N&#x27;</span>, <span class="string">&#x27;O&#x27;</span>, <span class="string">&#x27;P&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;Q&#x27;</span>, <span class="string">&#x27;R&#x27;</span>, <span class="string">&#x27;S&#x27;</span>, <span class="string">&#x27;T&#x27;</span>, <span class="string">&#x27;U&#x27;</span>, <span class="string">&#x27;V&#x27;</span>, <span class="string">&#x27;W&#x27;</span>, <span class="string">&#x27;X&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;Y&#x27;</span>, <span class="string">&#x27;Z&#x27;</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;e&#x27;</span>, <span class="string">&#x27;f&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;g&#x27;</span>, <span class="string">&#x27;h&#x27;</span>, <span class="string">&#x27;i&#x27;</span>, <span class="string">&#x27;j&#x27;</span>, <span class="string">&#x27;k&#x27;</span>, <span class="string">&#x27;l&#x27;</span>, <span class="string">&#x27;m&#x27;</span>, <span class="string">&#x27;n&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;p&#x27;</span>, <span class="string">&#x27;q&#x27;</span>, <span class="string">&#x27;r&#x27;</span>, <span class="string">&#x27;s&#x27;</span>, <span class="string">&#x27;t&#x27;</span>, <span class="string">&#x27;u&#x27;</span>, <span class="string">&#x27;v&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;w&#x27;</span>, <span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;y&#x27;</span>, <span class="string">&#x27;z&#x27;</span>, <span class="string">&#x27;0&#x27;</span>, <span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;3&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;4&#x27;</span>, <span class="string">&#x27;5&#x27;</span>, <span class="string">&#x27;6&#x27;</span>, <span class="string">&#x27;7&#x27;</span>, <span class="string">&#x27;8&#x27;</span>, <span class="string">&#x27;9&#x27;</span>, <span class="string">&#x27;+&#x27;</span>, <span class="string">&#x27;/&#x27;</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 将 byte[] 进行 Base64 编码并返回字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> src 原文</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 编码后的字符串</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">encode</span><span class="params">(<span class="type">byte</span>[] src)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (src == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">byte</span>[] dst = <span class="keyword">new</span> <span class="title class_">byte</span>[(src.length + <span class="number">2</span>) / <span class="number">3</span> * <span class="number">4</span>];</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 每次将 3 个字节编码为 4 个字节</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; (src.length / <span class="number">3</span> * <span class="number">3</span>); i += <span class="number">3</span>) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">bits</span> <span class="operator">=</span> (src[i] &amp; <span class="number">0xff</span>) &lt;&lt; <span class="number">16</span> | (src[i + <span class="number">1</span>] &amp; <span class="number">0xff</span>) &lt;&lt; <span class="number">8</span> | (src[i + <span class="number">2</span>] &amp; <span class="number">0xff</span>);</span><br><span class="line">            dst[index++] = (<span class="type">byte</span>) sBase64[(bits &gt;&gt;&gt; <span class="number">18</span>) &amp; <span class="number">0x3f</span>];</span><br><span class="line">            dst[index++] = (<span class="type">byte</span>) sBase64[(bits &gt;&gt;&gt; <span class="number">12</span>) &amp; <span class="number">0x3f</span>];</span><br><span class="line">            dst[index++] = (<span class="type">byte</span>) sBase64[(bits &gt;&gt;&gt; <span class="number">6</span>) &amp; <span class="number">0x3f</span>];</span><br><span class="line">            dst[index++] = (<span class="type">byte</span>) sBase64[bits &amp; <span class="number">0x3f</span>];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 处理剩下的 1 个或 2 个字节</span></span><br><span class="line">        <span class="keyword">if</span> (src.length % <span class="number">3</span> == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">bits</span> <span class="operator">=</span> (src[src.length - <span class="number">1</span>] &amp; <span class="number">0xff</span>) &lt;&lt; <span class="number">4</span>;</span><br><span class="line">            dst[index++] = (<span class="type">byte</span>) sBase64[(bits &gt;&gt;&gt; <span class="number">6</span>) &amp; <span class="number">0x3f</span>];</span><br><span class="line">            dst[index++] = (<span class="type">byte</span>) sBase64[bits &amp; <span class="number">0x3f</span>];</span><br><span class="line">            dst[index++] = <span class="string">&#x27;=&#x27;</span>;</span><br><span class="line">            dst[index] = <span class="string">&#x27;=&#x27;</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (src.length % <span class="number">3</span> == <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">bits</span> <span class="operator">=</span> (src[src.length - <span class="number">2</span>] &amp; <span class="number">0xff</span>) &lt;&lt; <span class="number">10</span> | (src[src.length - <span class="number">1</span>] &amp; <span class="number">0xff</span>) &lt;&lt; <span class="number">2</span>;</span><br><span class="line">            dst[index++] = (<span class="type">byte</span>) sBase64[(bits &gt;&gt;&gt; <span class="number">12</span>) &amp; <span class="number">0x3f</span>];</span><br><span class="line">            dst[index++] = (<span class="type">byte</span>) sBase64[(bits &gt;&gt;&gt; <span class="number">6</span>) &amp; <span class="number">0x3f</span>];</span><br><span class="line">            dst[index++] = (<span class="type">byte</span>) sBase64[bits &amp; <span class="number">0x3f</span>];</span><br><span class="line">            dst[index] = <span class="string">&#x27;=&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">String</span>(dst);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这部分源码我也上传到 GitHub 仓库 <a target="_blank" rel="noopener" href="https://github.com/mzlogin/spring-practices">https://github.com/mzlogin/spring-practices</a> 的 base64test 工程里了。</p>
+<h2 id="4-其它知识点"><a href="#4-其它知识点" class="headerlink" title="4. 其它知识点"></a>4. 其它知识点</h2><h3 id="4-1-为什么有的编码结果带回车"><a href="#4-1-为什么有的编码结果带回车" class="headerlink" title="4.1 为什么有的编码结果带回车"></a>4.1 为什么有的编码结果带回车</h3><p>在电子邮件中，根据 RFC 822 规定，每 76 个字符需要加上一个回车换行，所以有些编码器实现，比如 sun.misc.BASE64Encoder.encode，是带回车的，还有 java.util.Base64.Encoder.RFC2045，是带回车换行的，每行 76 个字符。</p>
+<h3 id="4-2-Base64-的变种"><a href="#4-2-Base64-的变种" class="headerlink" title="4.2 Base64 的变种"></a>4.2 Base64 的变种</h3><p>除了标准 Base64 之外，还有一些其它的 Base64 变种。</p>
+<p>比如在 URL 的应用场景中，因为标准 Base64 索引表中的 <code>/</code> 和 <code>+</code> 会被 URLEncoder 转义成 <code>%XX</code> 形式，但 <code>%</code> 是 SQL 中的通配符，直接用于数据库操作会有问题。此时可以采用 URL Safe 的编码器，索引表中的 <code>/+</code> 被换成 <code>-_</code>，比如 java.util.Base64.Encoder.RFC4648_URLSAFE 就是这样的实现。</p>
+<h2 id="5-参考链接"><a href="#5-参考链接" class="headerlink" title="5. 参考链接"></a>5. 参考链接</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-hans/Base64">https://zh.wikipedia.org/zh-hans/Base64</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/897692888725344/949441536192576">https://www.liaoxuefeng.com/wiki/897692888725344/949441536192576</a></li>
+</ul>
+<p>我的博客即将同步至腾讯云+社区，邀请大家一同入驻：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/support-plan?invite_code=guk42yjsce8s">https://cloud.tencent.com/developer/support-plan?invite_code=guk42yjsce8s</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020-05-01-cdn-for-github-pages/" rel="prev" title="使用 jsDelivr 免费加速 GitHub Pages 博客的静态资源">
+                  <i class="fa fa-angle-left"></i> 使用 jsDelivr 免费加速 GitHub Pages 博客的静态资源
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020-03-01-base64-bug/" rel="next" title="记一个 Base64 有关的 Bug">
+                  记一个 Base64 有关的 Bug <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

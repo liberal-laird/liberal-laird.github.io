@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="通过汇编和图画，深入解析函数调用及 printf 相关的机制。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一个 printf 引发的基础复习">
+<meta property="og:url" content="https://www.vvbuys.com/2015-01-19-printf/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="通过汇编和图画，深入解析函数调用及 printf 相关的机制。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-02T01:06:28.200Z">
+<meta property="article:modified_time" content="2024-02-02T01:06:28.200Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="Linux hyprland Python Rust Golang javascript">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/2015-01-19-printf/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/2015-01-19-printf/","path":"2015-01-19-printf/","title":"一个 printf 引发的基础复习"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>一个 printf 引发的基础复习 | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%9E%90"><span class="nav-number">1.</span> <span class="nav-text">分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AA-printf-%E7%BB%93%E6%9E%9C%E7%9A%84%E8%A7%A3%E9%87%8A"><span class="nav-number">1.1.</span> <span class="nav-text">第一个 printf 结果的解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AC%A1-printf-%E7%BB%93%E6%9E%9C%E7%9A%84%E8%A7%A3%E9%87%8A"><span class="nav-number">1.2.</span> <span class="nav-text">第二次 printf 结果的解释</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IEEE-754"><span class="nav-number">2.</span> <span class="nav-text">IEEE-754</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">265</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2015-01-19-printf/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="一个 printf 引发的基础复习 | VVbugs Blog">
+      <meta itemprop="description" content="通过汇编和图画，深入解析函数调用及 printf 相关的机制。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          一个 printf 引发的基础复习
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CPlusPlus/" itemprop="url" rel="index"><span itemprop="name">CPlusPlus</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">通过汇编和图画，深入解析函数调用及 printf 相关的机制。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>先看一下引发我追究一下 printf 和栈桢等相关知识的一段简单的程序：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, <span class="number">8.0</span>/<span class="number">5</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%.2f&quot;</span>, <span class="number">8</span>/<span class="number">5</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>初看时，想当然了一下觉得输出就是<code>1 1.00</code>，后来编译出来运行一下，屏幕上却赫然是<code>-1717986918 1.60</code>。</p>
+<p>在脑中干想了良久，其时的疑惑主要有两点：</p>
+<ol>
+<li><p>1.6 转换为整形怎么就变成了负数。</p>
+</li>
+<li><p>1 转换为浮点数怎么就变成了 1.60。</p>
+</li>
+</ol>
+<p>现在看来当时的理解中存在着一个很大的误区，就是觉得 printf 是将参数根据格式化字符串进行强制类型转换之后再进行输出的，即编译器会自动将程序变换成如下模样：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, (<span class="type">int</span>)(<span class="number">8.0</span>/<span class="number">5</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%.2f&quot;</span>, (<span class="type">float</span>)(<span class="number">8</span>/<span class="number">5</span>));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是第一段程序的输出已经打脸了，那么想想办法找找合理的解释。</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>面对这类问题，现象诡异程序简单，能想到的最有效的方法之一就是看汇编。</p>
+<p>使用<code>g++ -S</code>编译出第一段程序的汇编如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">	.file	&quot;demo.cpp&quot;</span><br><span class="line">	.def	___main;	.scl	2;	.type	32;	.endef</span><br><span class="line">	.section .rdata,&quot;dr&quot;</span><br><span class="line">LC1:</span><br><span class="line">	.ascii &quot;%d \0&quot;</span><br><span class="line">LC2:</span><br><span class="line">	.ascii &quot;%.2f\0&quot;</span><br><span class="line">	.text</span><br><span class="line">	.globl	_main</span><br><span class="line">	.def	_main;	.scl	2;	.type	32;	.endef</span><br><span class="line">_main:</span><br><span class="line">	pushl	%ebp</span><br><span class="line">	movl	%esp, %ebp</span><br><span class="line">	andl	$-16, %esp</span><br><span class="line">	subl	$16, %esp</span><br><span class="line">	call	___main</span><br><span class="line">	fldl	LC0</span><br><span class="line">	fstpl	4(%esp)</span><br><span class="line">	movl	$LC1, (%esp)</span><br><span class="line">	call	_printf</span><br><span class="line">	movl	$1, 4(%esp)</span><br><span class="line">	movl	$LC2, (%esp)</span><br><span class="line">	call	_printf</span><br><span class="line">	movl	$0, %eax</span><br><span class="line">	leave</span><br><span class="line">	ret</span><br><span class="line">	.section .rdata,&quot;dr&quot;</span><br><span class="line">	.align 8</span><br><span class="line">LC0:</span><br><span class="line">	.long	-1717986918</span><br><span class="line">	.long	1073322393</span><br><span class="line">	.ident	&quot;GCC: (GNU) 4.9.1&quot;</span><br><span class="line">	.def	_printf;	.scl	2;	.type	32;	.endef</span><br></pre></td></tr></table></figure>
+
+<h4 id="第一个-printf-结果的解释"><a href="#第一个-printf-结果的解释" class="headerlink" title="第一个 printf 结果的解释"></a>第一个 printf 结果的解释</h4><p>一眼望去，有没有发现一个熟悉的数？没错，我们程序的第一个输出 -1717986918 赫然在目。由此产生的猜想：</p>
+<p><strong>LC0 对应的两个。long 合起来是 double 类型的 8.0&#x2F;5，而对其低位 4 字节进行截取后对应的整数为 -1717986918。</strong></p>
+<p>来把相关的数转换成二进制验证一下（IEEE 浮点数表示法相关知识见<a href="#ieee-754">附：IEEE 754 浮点数表示法</a>）：</p>
+<p>-1717986918 转换成十六进制为 -0x66666666，对应的二进制为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1110 0110 0110 0110 0110 0110 0110</span><br></pre></td></tr></table></figure>
+
+<p>因为负数在内存中使用补码存储，故将如上二进制转换为补码才是它在内存中的样子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1001 1001 1001 1001 1001 1001 1010</span><br></pre></td></tr></table></figure>
+
+<p>1073322393 转换成十六进制为 0x3ff99999，对应的二进制为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0011 1111 1111 1001 1001 1001 1001</span><br></pre></td></tr></table></figure>
+
+<p>将这两个数合起来，1073322393 作为高位就是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0011 1111 1111 1001 1001 1001 1001 1001 1001 1001 1001 1001 1001 1001 1010</span><br></pre></td></tr></table></figure>
+
+<p>转换成浮点数恰恰就是 1.6000000000000001，可以认为与 8.0&#x2F;5 的结果相符。所以第一个 printf 输出结果的推论：</p>
+<ol>
+<li><p>给 printf 传递的是参数的原始类型，而不是根据格式化字符串进行强制转换后的类型。</p>
+<p>比如<code>printf(&quot;%d &quot;, 8.0/5);</code>就会传 double 类型的 8.0&#x2F;5，而不是根据 %d 强制转换成整型后再传参。</p>
+</li>
+<li><p>printf 在根据格式化字符串组成输出的时候，会直接在对应参数的起始地址读取一个格式指定的类型出来。</p>
+<p>比如<code>printf(&quot;%d &quot;, 8.0/5);</code>就会在 double 类型的 8.0&#x2F;5 的位置读取一个整型数出来，而小端模式下是高位高地址，低位低地址，所以这里是将 double 的低位 4 字节按 int 类型读取。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+--------------+</span><br><span class="line">|  double low  | --&gt; 把低位 4 字节当作 int 读取</span><br><span class="line">+--------------+</span><br><span class="line">|  double high |</span><br><span class="line">+--------------+</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="第二次-printf-结果的解释"><a href="#第二次-printf-结果的解释" class="headerlink" title="第二次 printf 结果的解释"></a>第二次 printf 结果的解释</h4><p>在上面的汇编代码中对第二次 printf 的调用部分如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">movl	$1, 4(%esp)</span><br><span class="line">movl	$LC2, (%esp)</span><br><span class="line">call	_printf</span><br></pre></td></tr></table></figure>
+
+<p>可以看到传参确实传的整数 1 进去的，但是输出就变成了 1.60，结合我们对第一个输出的推论，则是会在整型 1 的位置读取一个 double 类型的数，并将内存中的整型 1 作为 double 的低位部分。为什么这里偏偏这么巧会是 1.60 而不是其它的什么值呢？结合上一次调用 printf 时传的参是 8.0&#x2F;5 的情况，猜想：</p>
+<p><strong>受上一次调用后栈上残留数据的影响。</strong></p>
+<p>即：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+--------------+</span><br><span class="line">|     int      | -+----&gt; 把这 8 字节当 double 读取</span><br><span class="line">+--------------+  |</span><br><span class="line">|residual data | -+</span><br><span class="line">+--------------+</span><br></pre></td></tr></table></figure>
+
+<p>于是将第一次调用的传参修改一下将残留数据变化一下，即：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, <span class="number">9.0</span>/<span class="number">5</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%.2f&quot;</span>, <span class="number">8</span>/<span class="number">5</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>果然如预料第二个 printf 的输出变成了 1.80。这又一次印证了对第一个输出分析后的两个结论。来复习一下基础，引自《深入理解计算机系统》里的一段话：</p>
+<blockquote>
+<p>假设过程 P（调用者）调用过程 Q（被调用者），则 Q 的参数放在 P 的栈帧中。</p>
+</blockquote>
+<p>即 printf 的参数是放在 main 函数的栈帧中的，那么两次调用<code>call _printf</code>前的堆栈情况应该是这样的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">+-------------+                    +-------------+</span><br><span class="line">|             |        ...         |             |</span><br><span class="line">+-------------+                    +-------------+</span><br><span class="line">|             |                    |             |</span><br><span class="line">+-------------+                    +-------------+</span><br><span class="line">| format str1 | &lt;-- esp            | format str2 | &lt;-- esp</span><br><span class="line">+-------------+                    +-------------+</span><br><span class="line">| double low  |                    |     int     |</span><br><span class="line">+-------------+                    +-------------+</span><br><span class="line">| double high |                    | double high |</span><br><span class="line">+-------------+  main stack frame  +-------------+</span><br><span class="line">|     ...     |                    |     ...     |</span><br><span class="line">+-------------+                    +-------------+</span><br><span class="line">|             |                    |             |</span><br><span class="line">+-------------+                    +-------------+</span><br><span class="line">|   (%ebp)    | &lt;-- ebp            |   (%ebp)    | &lt;-- ebp</span><br><span class="line">+-------------+                    +-------------+</span><br></pre></td></tr></table></figure>
+
+<p>这里面补充的关键知识点：</p>
+<ul>
+<li>被调用函数的参数存放在调用函数的栈帧中。</li>
+</ul>
+<h3 id="IEEE-754"><a href="#IEEE-754" class="headerlink" title="IEEE-754"></a>IEEE-754</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">+---+-----+----------+</span><br><span class="line">| S | Exp | Mantissa |</span><br><span class="line">+---+-----+----------+</span><br></pre></td></tr></table></figure>
+
+<p>S：符号位</p>
+<p>Exp：指数偏差</p>
+<p>Mantissa：尾数</p>
+<ul>
+<li><p>单精度（32 位）</p>
+<p>S：1 位</p>
+<p>Exp：8 位，二进制科学计数法中的指数加 127（2^(8-1)-1）</p>
+<p>Mantissa：23 位，二进制科学计数法中的小数部分</p>
+</li>
+<li><p>双精度（64 位）</p>
+<p>S：1 位</p>
+<p>Exp：11 位，二进制科学计数法中的指数加 1023（2^(11-1)-1）</p>
+<p>Mantissa：52 位，二进制科学计数法中的小数部分</p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2015-02-01-some-impressions/" rel="prev" title="生活这件小事，烦请费思量">
+                  <i class="fa fa-angle-left"></i> 生活这件小事，烦请费思量
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2014-12-31-simplify-apk/" rel="next" title="如何让 HelloWorld.apk 体积最小">
+                  如何让 HelloWorld.apk 体积最小 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

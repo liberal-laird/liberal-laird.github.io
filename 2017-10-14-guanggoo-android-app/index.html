@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="光谷社区第三方 Android App。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="发布一款光谷社区第三方 Android App">
+<meta property="og:url" content="https://www.vvbuys.com/2017-10-14-guanggoo-android-app/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="光谷社区第三方 Android App。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://mazhuang.org/guanggoo-android/screenshots/topic-list.png">
+<meta property="og:image" content="https://mazhuang.org/guanggoo-android/screenshots/topic-detail.png">
+<meta property="og:image" content="https://mazhuang.org/guanggoo-android/screenshots/nodes-list.png">
+<meta property="og:image" content="https://mazhuang.org/guanggoo-android/screenshots/drawer.png">
+<meta property="og:image" content="https://mazhuang.org/guanggoo-android/qrcode.png">
+<meta property="og:image" content="https://mazhuang.org/assets/images/qrcode.jpg">
+<meta property="article:published_time" content="2024-02-02T01:06:28.208Z">
+<meta property="article:modified_time" content="2024-02-02T01:06:28.208Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="Linux hyprland Python Rust Golang javascript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mazhuang.org/guanggoo-android/screenshots/topic-list.png">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/2017-10-14-guanggoo-android-app/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/2017-10-14-guanggoo-android-app/","path":"2017-10-14-guanggoo-android-app/","title":"发布一款光谷社区第三方 Android App"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>发布一款光谷社区第三方 Android App | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%91%E5%B8%83%E8%AF%A6%E6%83%85"><span class="nav-number">2.</span> <span class="nav-text">发布详情</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E5%81%9A%E8%BF%99%E4%B8%AA"><span class="nav-number">3.</span> <span class="nav-text">为什么会做这个</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E7%BC%98%E5%90%8E%E7%BB%AD"><span class="nav-number">4.</span> <span class="nav-text">前缘后续</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">265</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2017-10-14-guanggoo-android-app/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="发布一款光谷社区第三方 Android App | VVbugs Blog">
+      <meta itemprop="description" content="光谷社区第三方 Android App。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          发布一款光谷社区第三方 Android App
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">光谷社区第三方 Android App。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>在过去的一个来月，我利用业余时间做了一款光谷社区的第三方 Android 客户端。</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>光谷社区是我在决定离开帝都回武汉的过程中，及回武汉之后关注得较多的武汉本土社区，网站 <a target="_blank" rel="noopener" href="http://guanggoo.com/">http://guanggoo.com</a> 自己的 description 是这样的：</p>
+<blockquote>
+<p>光谷社区是源自光谷的高端社交网络，这里有关于创业、创意、IT、金融等最热话题的交流，也有招聘问答、活动交友等最新资讯的发布。</p>
+</blockquote>
+<p>描述得还比较准确。我觉得身在光谷，或者心系光谷的童鞋们可以关注一下。</p>
+<h2 id="发布详情"><a href="#发布详情" class="headerlink" title="发布详情"></a>发布详情</h2><p>目前支持特性：</p>
+<ol>
+<li>登录</li>
+<li>首页主题列表（三种视图）</li>
+<li>主题详情 &#x2F; 评论列表</li>
+<li>节点列表 &#x2F; 节点主题列表</li>
+<li>评论 &#x2F; 艾特用户</li>
+<li>分享主题链接</li>
+<li>发表新主题</li>
+<li>查看用户信息</li>
+</ol>
+<p>源码放在 GitHub 上：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/mzlogin/guanggoo-android">https://github.com/mzlogin/guanggoo-android</a></p>
+<p>部分界面截图：</p>
+<p><img src="https://mazhuang.org/guanggoo-android/screenshots/topic-list.png"></p>
+<p><img src="https://mazhuang.org/guanggoo-android/screenshots/topic-detail.png"></p>
+<p><img src="https://mazhuang.org/guanggoo-android/screenshots/nodes-list.png"></p>
+<p><img src="https://mazhuang.org/guanggoo-android/screenshots/drawer.png"></p>
+<p>更多的功能开发、完善以及优化还在进行中，也希望看到的朋友们下载试用起来，多提建议多交流。</p>
+<p>好吧，啰嗦了这么多，哪里能够下载得到呢？</p>
+<p><strong>APK 下载链接</strong></p>
+<p>（如果是在微信里看到这里，建议长按后复制链接到浏览器打开）</p>
+<p><a target="_blank" rel="noopener" href="https://mazhuang.org/guanggoo-android/guanggoo-lastest.apk">https://mazhuang.org/guanggoo-android/guanggoo-lastest.apk</a></p>
+<p>百度网盘备用链接：</p>
+<p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1pL0t1Zd">https://pan.baidu.com/s/1pL0t1Zd</a></p>
+<p><strong>扫描或识别二维码下载</strong></p>
+<p>（如果使用微信识别二维码不能开始下载，还是复制上方的链接到浏览器打开下载吧）</p>
+<div align="center"><img width="192px" height="192px" src="https://mazhuang.org/guanggoo-android/qrcode.png"/></div>
+
+<h2 id="为什么会做这个"><a href="#为什么会做这个" class="headerlink" title="为什么会做这个"></a>为什么会做这个</h2><ol>
+<li><p>社区目前只有 Web 页面，做了移动端适配，体验也还不错。不过作为一个打开频率较高的应用，我还是希望能用上 App；</p>
+</li>
+<li><p>之前偶然在社区的几个帖子里也有一些用户问到是否有 App 可用，都没有了下文，可以满足一下这部分用户的需求；</p>
+</li>
+<li><p>作为一个长期维护的业余项目，更深刻地体会 App 开发的整个生命周期，也将一些想学习的技术应用到实际项目中；</p>
+</li>
+<li><p>借此机会认识一下光谷技术圈子里志趣相投的朋友。</p>
+</li>
+</ol>
+<h2 id="前缘后续"><a href="#前缘后续" class="headerlink" title="前缘后续"></a>前缘后续</h2><p>上 GitHub 搜索 guanggoo 出来的结果很少，发现有一个 <a target="_blank" rel="noopener" href="https://github.com/cauil/react-native-guanggoo">cauil&#x2F;react-native-guanggoo</a> 的项目适配了 iOS，独缺 Android 客户端，于是决定自己写一个。要不是那一阵刚好闹 Facebook 开源许可证风波，让人没有学习 React Native 的信心和欲望，也许我就学点 React Native 在这位仁兄的基础上开发了。</p>
+<p>经过几周业余时间和十一长假期间的开发，目前完成度不算特别高，但常用的功能已经基本可用了，当然还有一些功能比如注册、帖子里的外部链接打开等，我是先抛给了系统浏览器。想着只埋头自己开发也比较枯燥，决定先放出一个版本来让网友们吐吐槽，提提意见，应该能做得更好。</p>
+<p>PS: 本文非软文，也没有收取光谷社区任何好处，请光谷社区嘴炮管理员看到这里帮我开通个 VIP，我的社区 ID 是 mzlogin，:-P。</p>
+<hr>
+<p>好了，最后照例安利一下我自己的微信公众号，近期专注 Java、Android 相关的技术分享，如果你感兴趣，可以关注一下接收最新动态。</p>
+<div align="center"><img width="192px" height="192px" src="https://mazhuang.org/assets/images/qrcode.jpg"/></div>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2017-10-24-1024-poses/" rel="prev" title="程序员节的过节姿势大全">
+                  <i class="fa fa-angle-left"></i> 程序员节的过节姿势大全
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2017-10-05-rtfsc-methods-and-meaning/" rel="next" title="阅读源码的意义与方法">
+                  阅读源码的意义与方法 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

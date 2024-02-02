@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="自动一次性评论所有 CSDN 已下载资源的脚本。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSDN 已下载资源自动批量评论脚本">
+<meta property="og:url" content="https://www.vvbuys.com/2014-10-12-csdnresautocomment/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="自动一次性评论所有 CSDN 已下载资源的脚本。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/python/csdncommenter.png">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/python/csdnscore.png">
+<meta property="article:published_time" content="2024-02-02T01:06:28.200Z">
+<meta property="article:modified_time" content="2024-02-02T01:06:28.200Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="Linux hyprland Python Rust Golang javascript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.vvbuys.com/images/posts/python/csdncommenter.png">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/2014-10-12-csdnresautocomment/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/2014-10-12-csdnresautocomment/","path":"2014-10-12-csdnresautocomment/","title":"CSDN 已下载资源自动批量评论脚本"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>CSDN 已下载资源自动批量评论脚本 | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%9E%90"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BA%90%E7%A0%81"><span class="nav-number">4.</span> <span class="nav-text">源码</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">265</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2014-10-12-csdnresautocomment/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="CSDN 已下载资源自动批量评论脚本 | VVbugs Blog">
+      <meta itemprop="description" content="自动一次性评论所有 CSDN 已下载资源的脚本。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CSDN 已下载资源自动批量评论脚本
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">自动一次性评论所有 CSDN 已下载资源的脚本。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>用 Python 实现自动批量打分评论指定 CSDN 账号内所有下载过待评论的资源。</p>
+<p>GitHub 仓库地址：<a target="_blank" rel="noopener" href="https://github.com/mzlogin/csdncommenter">https://github.com/mzlogin/csdncommenter</a></p>
+<p>可通过 pip 安装运行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install csdncommenter</span><br><span class="line">csdncommenter</span><br></pre></td></tr></table></figure>
+
+<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>CSDN 账号过一段时间就会累积几十个下载过但是未评论打分的资源，虽然现在上传了一些资源供别人下载后基本不愁积分，但是为了可持续发展，还是把评论一下就能顺手拿了的这种积分不客气地收入囊中吧！不过手动一个一个去评论真的很蛋疼……特别是 CSDN 还设了两个评论间隔不能小于 60 秒、刚刚下载的资源十分钟内不能评论的限制，评论几十个就得至少花个几十分钟折腾，所以想想这种耗时、无脑的活还是交给程序来完成吧。</p>
+<p>对于这类模拟 HTTP 请求然后可能频繁用到页面解析和正则表达式之类的活，用 C++ 写还是有点蛋疼的，用我那半生不熟的 Python 练练手正合适。</p>
+<p>遂在 GitHub 上建了个仓库开工，地址在这里：<a target="_blank" rel="noopener" href="https://github.com/mzlogin/csdncommenter">https://github.com/mzlogin/csdncommenter</a>。</p>
+<blockquote>
+<p>Update 2016&#x2F;08&#x2F;10：当前 CSDN 貌似已经取消了评论返积分的规则，我看了下我的得分记录，最近一次评论得分是在 2015&#x2F;11&#x2F;15。</p>
+</blockquote>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>使用 Fiddler 把<em>登录 - 到待评论页面 - 评论</em>的完整流程抓了一下，整理程序逻辑大致如下：</p>
+<p><em>注：如下 HTTP 请求均使用同一个 SESSION。</em></p>
+<ol>
+<li><p>手动输入 CSDN 的用户名和密码。</p>
+</li>
+<li><p>用 <code>GET</code> 方法从 <a target="_blank" rel="noopener" href="https://passport.csdn.net/account/login">https://passport.csdn.net/account/login</a> 页面获取 <code>lt</code>、<code>execution</code> 和 <code>_eventId</code> 等参数。</p>
+</li>
+<li><p>将第 1 步中的用户名和密码，还有第 2 步中得到的参数 <code>POST</code> 给 <a target="_blank" rel="noopener" href="https://passport.csdn.net/account/login">https://passport.csdn.net/account/login</a> ，从 Response 中判断是否登录成功——我采用的依据是 status_code 为 200 且 Reponse 内容中有 <code>lastLoginIP</code>。</p>
+</li>
+<li><p>用 <code>GET</code> 方法从 <a target="_blank" rel="noopener" href="http://download.csdn.net/my/downloads">http://download.csdn.net/my/downloads</a> 页面获取已下载资源总页数。从最后一个 <code>pageliststy</code> 的 <code>href</code> 中得到。</p>
+</li>
+<li><p>根据第 4 步中得到的总页数，根据每个页面 num 拼得 url 为 <a target="_blank" rel="noopener" href="http://download.csdn.net/my/downloads/num">http://download.csdn.net/my/downloads/num</a> ，使用 <code>GET</code> 方法访问之拿到该页面中所有待评论资源 ID。从所有 <code>class=&quot;btn-comment&quot;</code> 的 <code>a</code> 标签的 <code>href</code> 中得到。</p>
+</li>
+<li><p>在进行第 5 步的过程中，如果 num 为 1 的页面里有 <code>&lt;span class=&quot;btn-comment&quot;&gt;</code> 存在，那说明存在 10 分钟以内下载，暂时不能评论的资源，这时循环检查最多 11 次，每次检查完如果发现还需要等待就过一分钟再检查，进到不再需要等待或者超过 11 次为止。</p>
+</li>
+<li><p>对第 5 步中得到的所有待评论资源 ID 依次进行间隔至少 60S 的打分评论，根据资源的现有评星打分，不对资源评分造成不良影响。根据打出的 1 到 5 星，对应一句英文短句评论。出乎我意料的是评论这一步竟然也是用 <code>GET</code> 就可以做，<a target="_blank" rel="noopener" href="http://download.csdn.net/index.php/comment/post_comment">http://download.csdn.net/index.php/comment/post_comment</a> 后面带上 <code>sourceid</code>、<code>content</code>（评论内容）、<code>rating</code>（打分）和 <code>t</code>（时间戳）参数就可以。评论成功会返回 <code>(&#123;&quot;succ&quot;:1&#125;)</code>，失败会返回「两次评论需要间隔 60 秒」、「您已经发表过评论」等之类的 <code>msg</code>。</p>
+<p>获取资源的现有评星的方法是从 <a target="_blank" rel="noopener" href="http://download.csdn.net/detail//">http://download.csdn.net/detail/\</a>&lt;资源所有者 ID&gt;&#x2F;&lt;资源 ID&gt; 页面获取 <code>&lt;span style=&quot;width:75px&quot; class=&quot;star-yellow&quot;&gt;&lt;/span&gt;</code> 这一段内容，其中的 <code>75px</code> 表示为五星，如果是 <code>0px</code> 表示为零星，即每加一星增加 15px。</p>
+</li>
+</ol>
+<p>最终运行截图如下：</p>
+<p><img src="/images/posts/python/csdncommenter.png" alt="CSDN 自动批量打分评论"></p>
+<p>确认这种方式能有效拿到 CSDN 的分数：</p>
+<p><img src="/images/posts/python/csdnscore.png" alt="CSDN 自动评论得分"></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
+<li>用 Python 干这种类型的活还是很有优势的，requests 和 BeautifulSoup 简直神器啊！</li>
+<li>我那点蹩脚的 Python 底子之所以能还比较顺利地把这个流程写下来，实际上也得亏 CSDN 对请求的验证相对较松，比如像我代码里那样写， <code>User-Agent</code> 是带有 <code>Python</code> 字样的，而且很显然不是浏览器在访问，但 CSDN 并未对此作限制。</li>
+</ol>
+<h3 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h3><p>没有找到从 Github Pages 引用 Github 仓库里的源码的方法<del>，所以把 py 文件放到一个 gist 里了，引用如下</del>：</p>
+<p>（Gist 前几天被伟大的墙封了，还是直接贴上代码吧。2014&#x2F;11&#x2F;5 update）</p>
+<p>（GitHub 仓库：<a target="_blank" rel="noopener" href="https://github.com/mzlogin/csdncommenter">mzlogin&#x2F;csdncommenter</a>，现在可以通过 pip 安装使用了  <code>pip install csdncommenter</code>  然后  <code>csdncommenter</code>。2015&#x2F;10&#x2F;27 update）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># File   : csdncommenter.py</span></span><br><span class="line"><span class="comment"># Author : Zhuang Ma</span></span><br><span class="line"><span class="comment"># E-mail : chumpma(at)gmail.com</span></span><br><span class="line"><span class="comment"># Website: https://mazhuang.org</span></span><br><span class="line"><span class="comment"># Date   : 2016-07-26</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> BeautifulSoup <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> getpass</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> urllib</span><br><span class="line"><span class="keyword">import</span> traceback</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CsdnCommenter</span>():</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Csdn operator&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.sess = requests.Session()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">login</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;login and keep session&quot;&quot;&quot;</span></span><br><span class="line">        username = raw_input(<span class="string">&#x27;username: &#x27;</span>)</span><br><span class="line">        password = getpass.getpass(<span class="string">&#x27;password: &#x27;</span>)</span><br><span class="line">        url = <span class="string">&#x27;https://passport.csdn.net/account/login&#x27;</span></span><br><span class="line">        html = self.getUrlContent(self.sess, url)</span><br><span class="line">        <span class="keyword">if</span> html <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        soup = BeautifulSoup(html)</span><br><span class="line"></span><br><span class="line">        lt = self.getElementValue(soup, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;lt&#x27;</span>)</span><br><span class="line">        execution = self.getElementValue(soup, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;execution&#x27;</span>)</span><br><span class="line">        _eventId = self.getElementValue(soup, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;_eventId&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        data = &#123;</span><br><span class="line">                <span class="string">&#x27;username&#x27;</span> : username,</span><br><span class="line">                <span class="string">&#x27;password&#x27;</span> : password,</span><br><span class="line">                <span class="string">&#x27;lt&#x27;</span> : lt,</span><br><span class="line">                <span class="string">&#x27;execution&#x27;</span> : execution,</span><br><span class="line">                <span class="string">&#x27;_eventId&#x27;</span> : _eventId</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">        response = <span class="literal">None</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            response = self.sess.post(url, data)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line"><span class="comment">#             traceback.print_exc()</span></span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> self.isLoginSuccess(response)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">autoComment</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;main handler&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> self.getSourceItems() <span class="keyword">is</span> <span class="literal">False</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;No source can comment!&#x27;</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;Total %d source(s) wait for comment.&#x27;</span> % <span class="built_in">len</span>(self.sourceitems))</span><br><span class="line"></span><br><span class="line">        nhandled = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> sourceid <span class="keyword">in</span> self.sourceitems.keys():</span><br><span class="line">            left = <span class="built_in">len</span>(self.sourceitems) - nhandled</span><br><span class="line"></span><br><span class="line">            sec = random.randrange(<span class="number">61</span>,<span class="number">71</span>)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;Wait %d seconds for start. %s source(s) left.&#x27;</span> % (sec, left))</span><br><span class="line">            time.sleep(sec)</span><br><span class="line"></span><br><span class="line">            self.comment(sourceid)</span><br><span class="line">            nhandled += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;Finished!&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">getSourceItems</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;get (sourceid,username) couples wait for comment&quot;&quot;&quot;</span></span><br><span class="line">        self.sourceitems = <span class="built_in">dict</span>()</span><br><span class="line">        pagecount = self.getPageCount()</span><br><span class="line">        <span class="keyword">if</span> pagecount == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;Pagecount is %d.&#x27;</span> % pagecount)</span><br><span class="line"></span><br><span class="line">        pattern = re.<span class="built_in">compile</span>(<span class="string">r&#x27;/detail/([^/]+)/(\d+)#comment&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> n <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, pagecount + <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">                self.waitUncommentableSourceIfNecessary()</span><br><span class="line">            url = <span class="string">&#x27;http://download.csdn.net/my/downloads/%d&#x27;</span> % n</span><br><span class="line">            html = self.getUrlContent(self.sess, url)</span><br><span class="line">            <span class="keyword">if</span> html <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            soup = BeautifulSoup(html)</span><br><span class="line">            sourcelist = soup.findAll(<span class="string">&#x27;a&#x27;</span>, attrs=&#123;<span class="string">&#x27;class&#x27;</span> : <span class="string">&#x27;btn-comment&#x27;</span>&#125;)</span><br><span class="line">            <span class="keyword">if</span> sourcelist <span class="keyword">is</span> <span class="literal">None</span> <span class="keyword">or</span> <span class="built_in">len</span>(sourcelist) == <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">for</span> source <span class="keyword">in</span> sourcelist:</span><br><span class="line">                href = source.get(<span class="string">&#x27;href&#x27;</span>, <span class="literal">None</span>)</span><br><span class="line">                <span class="keyword">if</span> href <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">                    rematch = pattern.<span class="keyword">match</span>(href)</span><br><span class="line">                    <span class="keyword">if</span> rematch <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">                        self.sourceitems[rematch.group(<span class="number">2</span>)] = rematch.group(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(self.sourceitems) &gt; <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">waitUncommentableSourceIfNecessary</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;souce cannot comment within 10 minutes after download&quot;&quot;&quot;</span></span><br><span class="line">        url = <span class="string">&#x27;http://download.csdn.net/my/downloads/1&#x27;</span></span><br><span class="line">        maxMinutes = <span class="number">11</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, maxMinutes):</span><br><span class="line">            html = self.getUrlContent(self.sess, url)</span><br><span class="line">            <span class="keyword">if</span> html <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            soup = BeautifulSoup(html)</span><br><span class="line">            sourcelist = soup.findAll(<span class="string">&#x27;span&#x27;</span>, attrs=&#123;<span class="string">&#x27;class&#x27;</span> : <span class="string">&#x27;btn-comment&#x27;</span>&#125;)</span><br><span class="line">            <span class="keyword">if</span> sourcelist <span class="keyword">is</span> <span class="literal">None</span> <span class="keyword">or</span> <span class="built_in">len</span>(sourcelist) == <span class="number">0</span>:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&#x27;None uncommentable source now!&#x27;</span>)</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;Waiting for uncommentable source count down %d minutes.&#x27;</span> % (maxMinutes-i))</span><br><span class="line">            time.sleep(<span class="number">60</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">getPageCount</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;get downloaded resources page count&quot;&quot;&quot;</span></span><br><span class="line">        url = <span class="string">&#x27;http://download.csdn.net/my/downloads&#x27;</span></span><br><span class="line">        html = self.getUrlContent(self.sess, url)</span><br><span class="line">        <span class="keyword">if</span> html <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;Get pagecount failed&#x27;</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        soup = BeautifulSoup(html)</span><br><span class="line"></span><br><span class="line">        pagelist = soup.findAll(<span class="string">&#x27;a&#x27;</span>, attrs=&#123;<span class="string">&#x27;class&#x27;</span> : <span class="string">&#x27;pageliststy&#x27;</span>&#125;)</span><br><span class="line">        <span class="keyword">if</span> pagelist <span class="keyword">is</span> <span class="literal">None</span> <span class="keyword">or</span> <span class="built_in">len</span>(pagelist) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        lasthref = pagelist[<span class="built_in">len</span>(pagelist) - <span class="number">1</span>].get(<span class="string">&#x27;href&#x27;</span>, <span class="literal">None</span>)</span><br><span class="line">        <span class="keyword">if</span> lasthref <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">int</span>(<span class="built_in">filter</span>(<span class="built_in">str</span>.isdigit, <span class="built_in">str</span>(lasthref)))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">comment</span>(<span class="params">self, sourceid</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;comment per source&quot;&quot;&quot;</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;sourceid %s commenting...&#x27;</span> % sourceid)</span><br><span class="line">        contents = [</span><br><span class="line">                <span class="string">&#x27;It just soso, but thank you all the same.&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;Neither good nor bad.&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;It is a nice resource, thanks for share.&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;It is useful for me, thanks.&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;I have looking this for long, thanks.&#x27;</span></span><br><span class="line">                ]</span><br><span class="line">        rating = self.getSourceRating(sourceid)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;current rating is %d.&#x27;</span> % rating)</span><br><span class="line">        <span class="keyword">if</span> rating == <span class="number">0</span>: <span class="comment"># nobody comments</span></span><br><span class="line">            rating = <span class="number">3</span></span><br><span class="line">        content = contents[rating - <span class="number">1</span>]</span><br><span class="line">        t = <span class="string">&#x27;%d&#x27;</span> % (time.time() * <span class="number">1000</span>)</span><br><span class="line"></span><br><span class="line">        paramsmap = &#123;</span><br><span class="line">                <span class="string">&#x27;sourceid&#x27;</span> : sourceid,</span><br><span class="line">                <span class="string">&#x27;content&#x27;</span> : content,</span><br><span class="line">                <span class="string">&#x27;rating&#x27;</span> : rating,</span><br><span class="line">                <span class="string">&#x27;t&#x27;</span> : t</span><br><span class="line">                &#125;</span><br><span class="line">        params = urllib.urlencode(paramsmap)</span><br><span class="line">        url = <span class="string">&#x27;http://download.csdn.net/index.php/comment/post_comment?%s&#x27;</span> % params</span><br><span class="line">        html = self.getUrlContent(self.sess, url)</span><br><span class="line">        <span class="keyword">if</span> html <span class="keyword">is</span> <span class="literal">None</span> <span class="keyword">or</span> html.find(<span class="string">&#x27;(&#123;&quot;succ&quot;:1&#125;)&#x27;</span>) == -<span class="number">1</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;sourceid %s comment failed! response is %s.&#x27;</span> % (sourceid, html))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;sourceid %s comment succeed!&#x27;</span> % sourceid)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">getSourceRating</span>(<span class="params">self, sourceid</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;get current source rating&quot;&quot;&quot;</span></span><br><span class="line">        rating = <span class="number">3</span></span><br><span class="line">        url = <span class="string">&#x27;http://download.csdn.net/detail/%s/%s&#x27;</span> % (self.sourceitems[sourceid], sourceid)</span><br><span class="line">        html = self.getUrlContent(self.sess, url)</span><br><span class="line">        <span class="keyword">if</span> html <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> rating</span><br><span class="line"></span><br><span class="line">        soup = BeautifulSoup(html)</span><br><span class="line">        ratingspan = soup.findAll(<span class="string">&#x27;span&#x27;</span>, attrs=&#123;<span class="string">&#x27;class&#x27;</span>: <span class="string">&#x27;star-yellow&#x27;</span>&#125;)</span><br><span class="line">        <span class="keyword">if</span> ratingspan <span class="keyword">is</span> <span class="literal">None</span> <span class="keyword">or</span> <span class="built_in">len</span>(ratingspan) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> rating</span><br><span class="line"></span><br><span class="line">        ratingstyle = ratingspan[<span class="number">0</span>].get(<span class="string">&#x27;style&#x27;</span>, <span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> ratingstyle <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> rating</span><br><span class="line"></span><br><span class="line">        rating = <span class="built_in">int</span>(<span class="built_in">filter</span>(<span class="built_in">str</span>.isdigit, <span class="built_in">str</span>(ratingstyle))) / <span class="number">15</span></span><br><span class="line">        <span class="keyword">return</span> rating</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">getElementValue</span>(<span class="params">soup, element_name, element_value</span>):</span><br><span class="line">        element = soup.find(attrs=&#123;element_name : element_value&#125;)</span><br><span class="line">        <span class="keyword">if</span> element <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">        <span class="keyword">return</span> element.get(<span class="string">&#x27;value&#x27;</span>, <span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isLoginSuccess</span>(<span class="params">response</span>):</span><br><span class="line">        <span class="keyword">if</span> response <span class="keyword">is</span> <span class="literal">None</span> <span class="keyword">or</span> response.status_code != <span class="number">200</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span> != response.content.find(<span class="string">&#x27;lastLoginIP&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">getUrlContent</span>(<span class="params">session, url</span>):</span><br><span class="line">        html = <span class="literal">None</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            response = session.get(url)</span><br><span class="line">            <span class="keyword">if</span> response <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">                html = response.text</span><br><span class="line">        <span class="keyword">except</span> requests.exceptions.ConnectionError <span class="keyword">as</span> e:</span><br><span class="line"><span class="comment">#             traceback.print_exc()</span></span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> html</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    csdn = CsdnCommenter()</span><br><span class="line">    <span class="keyword">while</span> csdn.login() <span class="keyword">is</span> <span class="literal">False</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;Login failed! Please try again.&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Login succeed!&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    csdn.autoComment()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2014-10-28-sevenhabits/" rel="prev" title="习惯成就高效能">
+                  <i class="fa fa-angle-left"></i> 习惯成就高效能
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2014-10-09-path-after-rename/" rel="next" title="获取运行过程中改名的文件的路径">
+                  获取运行过程中改名的文件的路径 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

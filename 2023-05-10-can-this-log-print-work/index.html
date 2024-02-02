@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="一句 GitHub Copilot 自动生成的代码让我产生了疑惑，于是探索了一番。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 自动补全的这句日志能正常打印吗？">
+<meta property="og:url" content="https://www.vvbuys.com/2023-05-10-can-this-log-print-work/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="一句 GitHub Copilot 自动生成的代码让我产生了疑惑，于是探索了一番。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/java/less-arguments-than-placeholders.png">
+<meta property="article:published_time" content="2024-02-02T01:06:28.212Z">
+<meta property="article:modified_time" content="2024-02-02T01:06:28.212Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="Linux hyprland Python Rust Golang javascript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.vvbuys.com/images/posts/java/less-arguments-than-placeholders.png">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/2023-05-10-can-this-log-print-work/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/2023-05-10-can-this-log-print-work/","path":"2023-05-10-can-this-log-print-work/","title":"AI 自动补全的这句日志能正常打印吗？"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>AI 自动补全的这句日志能正常打印吗？ | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E7%96%91%E6%83%91%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">为什么疑惑？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B6%88%E9%99%A4%E7%96%91%E6%83%91"><span class="nav-number">2.</span> <span class="nav-text">消除疑惑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="nav-number">3.</span> <span class="nav-text">结论</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">265</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2023-05-10-can-this-log-print-work/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="AI 自动补全的这句日志能正常打印吗？ | VVbugs Blog">
+      <meta itemprop="description" content="一句 GitHub Copilot 自动生成的代码让我产生了疑惑，于是探索了一番。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          AI 自动补全的这句日志能正常打印吗？
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">一句 GitHub Copilot 自动生成的代码让我产生了疑惑，于是探索了一番。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>最近用上了 GitHub Copilot，它的能力不时让我惊叹，于是越来越多地面向 tab 编程，机械键盘的损耗都小了许多:-p</p>
+<p>这天，它给我自动生成了一句像这样的日志打印代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">    log.error(<span class="string">&quot;Xxx 操作出错，订单号 &#123;&#125;，操作人 &#123;&#125;&quot;</span>, orderNumber, operatorName, e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我盯着这行熟悉又陌生的代码——没错平时我自己也会这么写，但此时竟然产生了一丝不确定，它真的能按期望的效果，先打印出这句话，然后完整打印异常堆栈吗？</p>
+<p>既然有疑惑，那就刨根问底一下。</p>
+<h2 id="为什么疑惑？"><a href="#为什么疑惑？" class="headerlink" title="为什么疑惑？"></a>为什么疑惑？</h2><p>问了自己这个问题之后，我回想了一下，可能是因为以前遇到过这个：</p>
+<p><img src="/images/posts/java/less-arguments-than-placeholders.png"></p>
+<p>如果最后一个参数不是 Throwable 类型，那 IDEA 会给出警告：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">More arguments provided (3) than placeholders specified (2)</span><br></pre></td></tr></table></figure>
+
+<p>那为什么最后多出来的那个参数是 Throwable，IDE 就认为正常了呢？这就是本文要探索的问题。</p>
+<h2 id="消除疑惑"><a href="#消除疑惑" class="headerlink" title="消除疑惑"></a>消除疑惑</h2><p>遇事不决，<kbd>command + click</kbd> 一下。可以看到方法的定义是这样的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">error</span><span class="params">(String format, Object... arguments)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>可惜想看具体实现的时候发现实现类太多，索性写一个测试用例 debug 跟一下，一路 <kbd>F7</kbd> 进去（这里用的日志框架是 log4j2）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">org.apache.logging.slf4j.Log4jLogger#error(java.lang.String, java.lang.Object...)</span><br><span class="line">org.apache.logging.log4j.spi.AbstractLogger#logIfEnabled(java.lang.String, org.apache.logging.log4j.Level, org.apache.logging.log4j.Marker, java.lang.String, java.lang.Object...)</span><br><span class="line">org.apache.logging.log4j.spi.AbstractLogger#logMessage(java.lang.String, org.apache.logging.log4j.Level, org.apache.logging.log4j.Marker, java.lang.String, java.lang.Object...)</span><br><span class="line">org.apache.logging.log4j.message.ParameterizedMessageFactory#newMessage(java.lang.String, java.lang.Object...)</span><br><span class="line">org.apache.logging.log4j.message.ParameterizedMessage#ParameterizedMessage(java.lang.String, java.lang.Object...)</span><br><span class="line">org.apache.logging.log4j.message.ParameterizedMessage#init</span><br></pre></td></tr></table></figure>
+
+<p>秘密就在这里了：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// org.apache.logging.log4j.message.ParameterizedMessage</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">(<span class="keyword">final</span> String messagePattern)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.messagePattern = messagePattern;</span><br><span class="line">    <span class="keyword">final</span> <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> Math.max(<span class="number">1</span>, messagePattern == <span class="literal">null</span> ? <span class="number">0</span> : messagePattern.length() &gt;&gt; <span class="number">1</span>); <span class="comment">// divide by 2</span></span><br><span class="line">    <span class="built_in">this</span>.indices = <span class="keyword">new</span> <span class="title class_">int</span>[len]; <span class="comment">// LOG4J2-1542 ensure non-zero array length</span></span><br><span class="line">    <span class="comment">// 计算占位符个数</span></span><br><span class="line">    <span class="keyword">final</span> <span class="type">int</span> <span class="variable">placeholders</span> <span class="operator">=</span> ParameterFormatter.countArgumentPlaceholders2(messagePattern, indices);</span><br><span class="line">    initThrowable(argArray, placeholders);</span><br><span class="line">    <span class="built_in">this</span>.usedCount = Math.min(placeholders, argArray == <span class="literal">null</span> ? <span class="number">0</span> : argArray.length);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">initThrowable</span><span class="params">(<span class="keyword">final</span> Object[] params, <span class="keyword">final</span> <span class="type">int</span> usedParams)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (params != <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="type">int</span> <span class="variable">argCount</span> <span class="operator">=</span> params.length;</span><br><span class="line">        <span class="comment">// 如果占位符个数比参数个数少，且最后一个参数是 throwable 类型，</span></span><br><span class="line">        <span class="comment">// 则将最后一个参数赋值给 Message 的成员</span></span><br><span class="line">        <span class="keyword">if</span> (usedParams &lt; argCount &amp;&amp; <span class="built_in">this</span>.throwable == <span class="literal">null</span> &amp;&amp; params[argCount - <span class="number">1</span>] <span class="keyword">instanceof</span> Throwable) &#123;</span><br><span class="line">            <span class="built_in">this</span>.throwable = (Throwable) params[argCount - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后在调用堆栈回溯几步有：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// org.apache.logging.log4j.spi.AbstractLogger</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">logMessage</span><span class="params">(<span class="keyword">final</span> String fqcn, <span class="keyword">final</span> Level level, <span class="keyword">final</span> Marker marker, <span class="keyword">final</span> String message,</span></span><br><span class="line"><span class="params">        <span class="keyword">final</span> Object... params)</span> &#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="type">Message</span> <span class="variable">msg</span> <span class="operator">=</span> messageFactory.newMessage(message, params);</span><br><span class="line">    logMessageSafely(fqcn, level, marker, msg, msg.getThrowable());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>至此基本上清晰了。</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>经过分析及实际运行验证：</p>
+<ul>
+<li>AI 生成的代码可以按期望效果打印；</li>
+<li>如果有比占位符多的非 Throwable 类型参数，会被忽略掉。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023-06-26-java-swallow-stacktrace/" rel="prev" title="解决 Java 打印日志吞异常堆栈的问题">
+                  <i class="fa fa-angle-left"></i> 解决 Java 打印日志吞异常堆栈的问题
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023-04-11-after-using-threadpool/" rel="next" title="记两个有关线程池的小问题">
+                  记两个有关线程池的小问题 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

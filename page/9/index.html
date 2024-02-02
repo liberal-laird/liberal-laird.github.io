@@ -125,9 +125,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-count">265</span>
           <span class="site-state-item-name">posts</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">categories</span>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
@@ -157,7 +161,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2021-10-28-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91c++%E4%B8%AD%E6%A0%88%E3%80%81%E9%98%9F%E5%88%97%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2015-09-02-love/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -175,7 +179,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021-10-28-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91c++%E4%B8%AD%E6%A0%88%E3%80%81%E9%98%9F%E5%88%97%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" class="post-title-link" itemprop="url">「算法刷题」c++中栈、队列和字符串的基本操作</a>
+          <a href="/2015-09-02-love/" class="post-title-link" itemprop="url">爱你就像爱生命</a>
         </h2>
 
         <div class="post-meta-container">
@@ -186,14 +190,16 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2021-10-28 00:00:00" itemprop="dateCreated datePublished" datetime="2021-10-28T00:00:00+00:00">2021-10-28</time>
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
+        <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-02-02 01:00:55" itemprop="dateModified" datetime="2024-02-02T01:00:55+00:00">2024-02-02</time>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Blog/" itemprop="url" rel="index"><span itemprop="name">Blog</span></a>
+        </span>
     </span>
 
   
@@ -206,35 +212,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="c-string的详细用法"><a href="#c-string的详细用法" class="headerlink" title="c++ string的详细用法"></a>c++ string的详细用法</h1><p>string a&#x3D;”123”;</p>
-<h2 id="1-在字符串末尾添加一个字符"><a href="#1-在字符串末尾添加一个字符" class="headerlink" title="1.在字符串末尾添加一个字符"></a>1.在字符串末尾添加一个字符</h2><p>a.push_back(‘3’); &#x2F;&#x2F;结果为 a&#x3D;”1233”;</p>
-<h2 id="2-在字符串末尾删除一个字符"><a href="#2-在字符串末尾删除一个字符" class="headerlink" title="2.在字符串末尾删除一个字符"></a>2.在字符串末尾删除一个字符</h2><p>a.pop_back(); &#x2F;&#x2F;结果为 a&#x3D;”12”;</p>
-<h2 id="3-assign"><a href="#3-assign" class="headerlink" title="3.assign()"></a>3.assign()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">//字符串变量</span><br><span class="line">string a=&quot;123&quot;;</span><br><span class="line">string b=&quot;456&quot;;</span><br><span class="line"></span><br><span class="line">1.字符串直接赋值</span><br><span class="line">a.assign(b); //等于a=b赋值，结果为 a=&quot;456&quot;</span><br><span class="line">a.assign(&quot;789&quot;);//结果为 a=&quot;789&quot;</span><br><span class="line"></span><br><span class="line">2.一个字符串的子串赋值给另一个字符串</span><br><span class="line">a.assign(b,begin,len);</span><br><span class="line">//从字符串b的第(begin)个字符开始向后数(len)个字符(包括begin)的字符串赋值给字符串a</span><br><span class="line"></span><br><span class="line">例：</span><br><span class="line">a.assign(b,0,1); //结果为 a=&quot;4&quot;</span><br><span class="line">a.assign(b,1,1); //结果为 a=&quot;5&quot;</span><br><span class="line">a.assign(b,0,2); //结果为 a=&quot;45&quot;;</span><br><span class="line">a.assign(b,1,2); //结果为 a=&quot;56&quot;;</span><br><span class="line">a.assign(&quot;123456&quot;,1,3); //结果为 a=&quot;234&quot;;</span><br><span class="line">/*说明</span><br><span class="line"> *如果第三个参数大于字符串本身的长度，则赋值到该字符串末尾</span><br><span class="line"> *如：a.assign(b,1,4); 结果为 a=&quot;56&quot;;</span><br><span class="line"> *如果第二个参数大于字符串本身长度则赋值为空</span><br><span class="line"> *如：a.assign(b,3,4); 结果为 a=&quot;&quot;;</span><br><span class="line"> *第二个参数最大不能超过字符串长度加一，否则程序会运行错误。因为string字符串后面会有一个&quot;\n&quot;符号，这个符号虽然不算在字符串长度里面，但是会占一个字符的空间。所以超过字符串长度加一后会出现std::out_of_range的错误。</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">3.从字符串的某一个字符串开始到结束赋值给另一个字符串</span><br><span class="line">a.assign(b,begin);</span><br><span class="line">//从字符串b的第begin字符串开始到字符串结束赋值给字符串a</span><br><span class="line"></span><br><span class="line">a.assign(b,0); //结果为 a=&quot;456&quot;;</span><br><span class="line">a.assign(b,1); //结果为 a=&quot;56&quot;;</span><br><span class="line">a.assign(b,4); //error 这样会运行错误（同2） vs2019</span><br><span class="line"></span><br><span class="line">4.从字符串开始到字符串的某一个字符赋值给另一个字符串</span><br><span class="line">a.assign(&quot;123456&quot;,2);//结果为 a=&quot;12&quot;</span><br><span class="line">string c=&quot;123456&quot;;</span><br><span class="line">a.assign(c,2);       //结果为 a=&quot;3456&quot;</span><br><span class="line">//根据vs2019运行情况来看，如过第一个参数是字符串常量则按从头到第n个字符赋值，如果第一个参数是字符串变量的话，则从第n个字符开始到字符串结尾赋值（不知道其他编译会是怎么样的,vs2019是调用不同的重载函数）</span><br><span class="line"></span><br><span class="line">5.用相同的n个字符给字符串赋值</span><br><span class="line">a.assign(10,&#x27;b&#x27;); //结果为 a=&quot;bbbbbbbbbb&quot;;</span><br><span class="line">a.assign(5,&#x27;c&#x27;);  //结果为 a=&quot;ccccc&quot;;</span><br><span class="line"></span><br><span class="line">6.template&lt;class inputIterator&gt; string&amp; assign(inputIterator first,inputIterator last);</span><br><span class="line">//使用这个函数需要引入#include&lt;iterator&gt;头文件 </span><br><span class="line">a.assign(istream_iterator&lt;char&gt;(cin), istream_iterator&lt;char&gt;());</span><br><span class="line">//键盘输入123abcd</span><br><span class="line">//结果为 a=&quot;123abcd&quot;;</span><br><span class="line">/*注意</span><br><span class="line"> *该函数不接收空格换行等符号，最后（windows系统）按ctrl+z结束输入</span><br><span class="line"> *如输入以下符号（既有空格也有换行）</span><br><span class="line"> 123abc    ABC  哈哈 !@#$</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> defg)(-=&lt;&gt;-+/*</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> 123654</span><br><span class="line"> 最后结果为 a=&quot;123abcABC哈哈!@#$defg)(-=&lt;&gt;-+/*123654&quot;;</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">7.使用迭代器赋值</span><br><span class="line">a.assign(b.begin()+1,b.end()); //结果为 a=&quot;67&quot;;</span><br><span class="line">a.assign(a.begin(),a.end());   //结果为 a=&quot;123&quot;;</span><br><span class="line"></span><br><span class="line">## 4.append()</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-append"><a href="#4-append" class="headerlink" title="4.append()"></a>4.append()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">string a=&quot;1234&quot;;</span><br><span class="line">string b=&quot;5678&quot;;</span><br><span class="line"></span><br><span class="line">1.把两个string字符串相连接</span><br><span class="line">a.append(b); //结果为 a=&quot;12345678&quot;;</span><br><span class="line">a.append(&quot;56789&quot;);//结果 a=&quot;123456789&quot;;</span><br><span class="line"></span><br><span class="line">2.从string字符串b的某一个字符开始到结束连接在string字符串a后面</span><br><span class="line">a.append(b,1);//结果为 a=&quot;1234678&quot;;</span><br><span class="line">a.append(b,0);//结果为 a=&quot;12345678&quot;;</span><br><span class="line">a.append(b,3);//结果为 a=&quot;12348&quot;;</span><br><span class="line">//注意第二个参数不能大于字符串b的长度加一，否则会出错，至于为什么请看我的上一篇assign函数的用法</span><br><span class="line"></span><br><span class="line">3.从字符串b的某一个字符开始到结束连接在string字符串a后面</span><br><span class="line">a.append(&quot;5678&quot;,1);//结果为 a=&quot;12345&quot;;</span><br><span class="line">a.append(&quot;5678&quot;,2);//结果为 a=&quot;123456&quot;;</span><br><span class="line">a.append(&quot;5678&quot;,0);//结果为 a=&quot;1234&quot;;</span><br><span class="line">// 注意2，3的区别</span><br><span class="line"></span><br><span class="line">4.把string的子串连接到另一个string后面</span><br><span class="line">a.append(&quot;5678&quot;,0,1);</span><br><span class="line">a.append(b,0,1); //结果为 a=&quot;12345&quot;;</span><br><span class="line">a,append(&quot;5678&quot;,1,3);</span><br><span class="line">a,append(b,1,3); //结果为 a=&quot;1234678&quot;;</span><br><span class="line"></span><br><span class="line">5.在string字符串后面添加n个字符</span><br><span class="line">a.append(10,&#x27;&gt;&#x27;); //结果为 a=&quot;1234&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&quot;;</span><br><span class="line"></span><br><span class="line">6.template&lt;class inputIterator&gt; string&amp; append(inputIterator first,inputIterator last);</span><br><span class="line">//需要引入头文件#include&lt;iterator&gt;</span><br><span class="line">a.append(istream_iterator&lt;char&gt;(cin),istream_iterator&lt;char&gt;());</span><br><span class="line">//从键盘输入abcd</span><br><span class="line">//结果为 a=&quot;1234abcd&quot;;</span><br><span class="line">/**注意</span><br><span class="line"> *该函数不接收空格换行等符号，最后（windows系统）按ctrl+z结束输入</span><br><span class="line"> *如输入以下符号（既有空格也有换行）</span><br><span class="line">  @#￥%………</span><br><span class="line"></span><br><span class="line">  按时到场  sdf   456</span><br><span class="line"></span><br><span class="line">  asd</span><br><span class="line"> 最后结果为 a=&quot;1234@#￥%……按时到场sdf456asd&quot;;</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">7.使用迭代器使string字符串相连接</span><br><span class="line">a.append(b.begin()+1,b.end());//结果为 a=&quot;1234678&quot;;</span><br><span class="line">a.append(a.begin(),a.end());  //结果为 a=&quot;12341234&quot;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="4-at"><a href="#4-at" class="headerlink" title="4.at()"></a>4.at()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">string a=&quot;abcd&quot;;</span><br><span class="line"></span><br><span class="line">1.获取string字符串某一个字符</span><br><span class="line">auto s=a.at(1); //结果为 s=&#x27;b&#x27;;</span><br><span class="line">for (unsigned int i=0;i&lt;a.size();i++)</span><br><span class="line">&#123;</span><br><span class="line">	cout &lt;&lt; a.at(i) &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line">/* 结果为</span><br><span class="line"> a</span><br><span class="line"> b</span><br><span class="line"> c</span><br><span class="line"> d</span><br><span class="line"> */ </span><br><span class="line"> //等同于a[i],但是at()会有下标检查，如果超出则抛出out_of_range</span><br><span class="line"></span><br><span class="line">2.修改string字符串某一个字符</span><br><span class="line">a.at(2)=&#x27;1&#x27;; //结果为 a=&quot;ab1d&quot;;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="5-front-与back"><a href="#5-front-与back" class="headerlink" title="5 front()与back()"></a>5 front()与back()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">string a=&quot;abcd&quot;;</span><br><span class="line"></span><br><span class="line">1.获取字符串最后一个字符</span><br><span class="line">auto b=a.back(); //结果为 b=&#x27;d&#x27;;</span><br><span class="line"></span><br><span class="line">2.修改字符串最后一个字符</span><br><span class="line">a.back()=&#x27;!&#x27;; //结果为 a=&quot;abc!&quot;;</span><br><span class="line"></span><br><span class="line">3.获取字符串第一个字符</span><br><span class="line">auto b=a.front(); //结果为 b=&#x27;a&#x27;;</span><br><span class="line"></span><br><span class="line">4.修改字符串第一个字符</span><br><span class="line">a.front()=&#x27;!&#x27;; //结果为 a=&quot;!bcd&quot;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="6-compare"><a href="#6-compare" class="headerlink" title="6.compare()"></a>6.compare()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">string a=&quot;abcd&quot;;</span><br><span class="line">string b=&quot;efgh&quot;;</span><br><span class="line">string c=&quot;1fgh&quot;;</span><br><span class="line">string d=&quot;fgh&quot;;</span><br><span class="line">string e=&quot;123efg&quot;;</span><br><span class="line"></span><br><span class="line">比较两个字符串的ASCII码，&gt;0返回1，&lt;0返回-1，相同，返回0</span><br><span class="line">ASCII码比较是字符串的字符从前往后比较，如果之前的比较完成则后面的字符无需比较</span><br><span class="line"></span><br><span class="line">1.直接比较两个字符串</span><br><span class="line">auto number = a.compare(b); //结果为 number=-1;</span><br><span class="line">auto number = b.compare(a); //结果为 number=1;</span><br><span class="line">auto number = b.compare(b); //结果为 number=0;</span><br><span class="line">auto number = a.compare(c); //结果为 number=1;</span><br><span class="line">auto number = a.compare(&quot;abc&quot;); //结果为 number=1;</span><br><span class="line"></span><br><span class="line">2.一个字符串的子串与另一个字符串比较</span><br><span class="line">auto number = b.compare(1,3,d); //结果为 number=0;</span><br><span class="line">//字符串b从下标为1的字符开始的三个字符与字符串d比较，显然都是fgh,所以相等，返回0</span><br><span class="line">auto number = b.compare(1,3,c); //结果为 number=1;</span><br><span class="line">auto number = b.compare(1,3,&quot;fgh&quot;); //结果为 number=0;</span><br><span class="line"></span><br><span class="line">3.一个字符串的子串与另一个字符串的子串比较</span><br><span class="line">auto number = b.compare(1,3,c,1,3); //结果为 number= 0;</span><br><span class="line">//字符串b从下标为1的地方开始的后3个字符是fgh，字符串c从下标为1的字符开始的后三个字符是fgh,所以相等</span><br><span class="line">auto number = b.compare(0,3,e,3,3); //结果为 number=0;</span><br><span class="line">//字符串b从下标为0的地方开始的后3个字符是efg，字符串e从下标为3的字符开始的后三个字符是efg,所以相等</span><br><span class="line">auto number = b.compare(0,4,&quot;1234efgh&quot;,4,4); //结果为 number=0;</span><br><span class="line">//字符串b从下标为0的地方开始的后四个字符是efgh，字符串&quot;1234efgh&quot;从下标为4的字符开始的后4个字符是efgh,所以相等</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="7-copy"><a href="#7-copy" class="headerlink" title="7.copy()"></a>7.copy()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">char *str = new char[64];</span><br><span class="line">string a=&quot;12345abcdefg6789&quot;;</span><br><span class="line"></span><br><span class="line">str[a.copy(str,7,5)]=&#x27;\0&#x27;;</span><br><span class="line">// 结果为 str=&quot;abcdefg&quot;;</span><br><span class="line"></span><br><span class="line">str[a.copy(str,7)]=&#x27;\0&#x27;;</span><br><span class="line">// 结果为 str=&quot;12345ab&quot;;</span><br><span class="line"></span><br><span class="line">delete[]str;</span><br><span class="line"></span><br><span class="line">/*注意</span><br><span class="line"> *copy的第2，3个参数不能大于字符串str所能容纳的最长字符串长度</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
-
-<h2 id="8-data-与c-str-copy-的区别"><a href="#8-data-与c-str-copy-的区别" class="headerlink" title="8.data()与c_str() copy()的区别"></a>8.data()与c_str() copy()的区别</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">string a=&quot;123456&quot;;</span><br><span class="line"></span><br><span class="line">1.c_str(),data()可以生成一个const char* 的指针，可以指向一个空字符终止的地址。</span><br><span class="line"></span><br><span class="line">const char* str=nullptr;</span><br><span class="line">str=a.c_str(); //结果为 str=&quot;123456&quot;;</span><br><span class="line">str=a.data(); //结果为 str=&quot;123456&quot;;</span><br><span class="line"></span><br><span class="line">但是如果改变string a的值,str的值随之改变</span><br><span class="line">a=&quot;abcedf&quot;;</span><br><span class="line">cout&lt;&lt;str&lt;&lt;endl; //结果为 str=&quot;abcdef&quot;;</span><br><span class="line"></span><br><span class="line">2.如果不想让其指针指向的值改变可以使用copy()函数(如果不知道copy()函数如何使用，请看我的上一篇copy()的使用方法)</span><br><span class="line">char* str = new char[64];</span><br><span class="line">str[a.copy(str, a.size(), 0)]=&#x27;\0&#x27;;</span><br><span class="line">cout &lt;&lt; str &lt;&lt; endl; //结果为 str=&quot;123456&quot;;</span><br><span class="line"></span><br><span class="line">//改变string a的值</span><br><span class="line">a=&quot;abcd&quot;;</span><br><span class="line">cout&lt;&lt; str &lt;&lt;endl; //结果为 str=&quot;123456&quot;;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="9、erase（）"><a href="#9、erase（）" class="headerlink" title="9、erase（）"></a>9、erase（）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">string a=&quot;123456789&quot;;</span><br><span class="line"></span><br><span class="line">1.删除所有字符</span><br><span class="line">a.erase(); //结果为 a=&quot;&quot;;</span><br><span class="line"></span><br><span class="line">2.从字符串的某一个位置开始删除</span><br><span class="line">a.erase(n) //从字符串的第n个字符开始删除</span><br><span class="line">a.erase(3); //结果为 a=&quot;123&quot;;</span><br><span class="line">a.erase(5); //结果为 a=&quot;12345&quot;;</span><br><span class="line">a.erase(0); //等同于a.erase() a=&quot;&quot;;</span><br><span class="line"></span><br><span class="line">3.从字符串的某一个位置开始，向后删除m个字符</span><br><span class="line">a.erase(n,m); //从字符的第n个字符开始删除m个字符</span><br><span class="line">a.erase(2,3); //结果为 a=&quot;126789&quot;;</span><br><span class="line">a.erase(4,1); //结果为 a=&quot;12346789&quot;;</span><br><span class="line"></span><br><span class="line">4.删除迭代器位置处的字符，并返回下一个字符的迭代器</span><br><span class="line">auot iter=a.erase(a.begin()+1); //结果为 a=&quot;13456789&quot;;</span><br><span class="line">cout&lt;&lt;*iter&lt;&lt;endl; //结果为 *iter=3</span><br><span class="line"></span><br><span class="line">5.删除迭代器所指向的区间,并返回下一个字符的迭代器</span><br><span class="line">auto iter=a.erase(a.begin()+1,a.end()-2);//结果为 a=&quot;189&quot;;</span><br><span class="line">cout&lt;&lt;*iter&lt;,endl; //结果为 *iter=8;</span><br><span class="line"></span><br><span class="line">6.删除字符时常常与find()函数配合使用(find()函数的用法会在以后写出)</span><br><span class="line">a.erase(a.find(&quot;56&quot;),2); //结果为 a=&quot;1234789&quot;;</span><br><span class="line"> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="c-栈的基本操作："><a href="#c-栈的基本操作：" class="headerlink" title="c++ 栈的基本操作："></a>c++ 栈的基本操作：</h1><p>​    一种可以实现“先进后出（后进先出）”的存储结构</p>
-<p>s.empty();         &#x2F;&#x2F;如果栈为空则返回true, 否则返回false;<br>s.size();          &#x2F;&#x2F;返回栈中元素的个数<br>s.top();           &#x2F;&#x2F;返回栈顶元素, 但不删除该元素<br>s.pop();           &#x2F;&#x2F;弹出&#x2F;删除栈顶元素, 但不返回其值<br>s.push();          &#x2F;&#x2F;将元素压入栈顶</p>
-<p> 在压栈的过程中，栈顶的位置一直在”向上“移动，而栈底是固定不变的。 </p>
-<p><img src="C:\Users\WJ\AppData\Roaming\Typora\typora-user-images\image-20211027221030901.png" alt="image-20211027221030901"></p>
-<p> 如果我们要把栈中的元素弹出来： 先入后出</p>
-<p><img src="C:\Users\WJ\AppData\Roaming\Typora\typora-user-images\image-20211027221100703.png" alt="image-20211027221100703"></p>
-<h1 id="c-queue-的基本操作"><a href="#c-queue-的基本操作" class="headerlink" title="c++ queue 的基本操作"></a>c++ queue 的基本操作</h1><p>入队，如例：q.push(x); 将x 接到队列的末端。<br>出队，如例：q.pop(); 弹出队列的第一个元素，注意，并不会返回被弹出元素的值。<br>访问队首元素，如例：q.front()，即最早被压入队列的元素。<br>访问队尾元素，如例：q.back()，即最后被压入队列的元素。<br>判断队列空，如例：q.empty()，当队列空时，返回true。<br>访问队列中的元素个数，如例：q.size() </p>
-
+          <p>关于爱情。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2015-09-02-love/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -260,7 +246,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2021-10-27-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91904%E6%B0%B4%E6%9E%9C%E6%88%90%E7%AF%AE/">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2015-10-25-mac/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -278,7 +264,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021-10-27-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91904%E6%B0%B4%E6%9E%9C%E6%88%90%E7%AF%AE/" class="post-title-link" itemprop="url">「算法刷题」904水果成篮</a>
+          <a href="/2015-10-25-mac/" class="post-title-link" itemprop="url">Mac 遇到问题集锦</a>
         </h2>
 
         <div class="post-meta-container">
@@ -289,14 +275,16 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2021-10-27 00:00:00" itemprop="dateCreated datePublished" datetime="2021-10-27T00:00:00+00:00">2021-10-27</time>
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
+        <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-02-02 01:00:55" itemprop="dateModified" datetime="2024-02-02T01:00:55+00:00">2024-02-02</time>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Mac/" itemprop="url" rel="index"><span itemprop="name">Mac</span></a>
+        </span>
     </span>
 
   
@@ -309,23 +297,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>参考链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41855420/article/details/92836075">https://blog.csdn.net/qq_41855420/article/details/92836075</a></p>
-<table>
-<thead>
-<tr>
-<th>题目</th>
-<th>链接</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>904水果成篮</td>
-<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/fruit-into-baskets/">904. 水果成篮 - 力扣（LeetCode） (leetcode-cn.com)</a></td>
-</tr>
-</tbody></table>
-<p> 构造一个虚拟的窗口[left, right)，当窗口tree[left, right)中的水果种数不多于2时，扩大右边界，此时窗口的大小就是可获取的水果种数，否则窗口中的水果种数超过2，则缩小左边界。 </p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">totalFruit</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; tree)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> treeSize = tree.<span class="built_in">size</span>(), maxRes = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, right = <span class="number">0</span>, fruitOne, fruitTwo;<span class="comment">//窗口的左、右边界，以及窗口中的两种水果</span></span><br><span class="line">        <span class="keyword">while</span> (right &lt; treeSize)&#123;</span><br><span class="line">            <span class="type">int</span> tempRes = <span class="number">1</span>;<span class="comment">//窗口的大小</span></span><br><span class="line">            fruitOne = tree[left++];<span class="comment">//第一种水果</span></span><br><span class="line">            <span class="comment">//寻找到第二种水果的第一次出现的位置（并且更新下一次的窗口的left）</span></span><br><span class="line">            <span class="keyword">while</span> (left &lt; treeSize &amp;&amp; tree[left] == fruitOne)&#123;</span><br><span class="line">                ++left;</span><br><span class="line">                tempRes += <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            right = left;</span><br><span class="line">            <span class="keyword">if</span> (right &lt; treeSize)&#123;<span class="comment">//第二种水果</span></span><br><span class="line">                fruitTwo = tree[right];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//当窗口tree[left, right)中的水果种数不多于2时，扩大右边界</span></span><br><span class="line">            <span class="keyword">while</span> (right &lt; treeSize)&#123;</span><br><span class="line">                <span class="keyword">if</span> (tree[right] == fruitOne || tree[right] == fruitTwo)&#123;</span><br><span class="line">                    ++right;</span><br><span class="line">                    tempRes += <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            maxRes = <span class="built_in">max</span>(maxRes, tempRes);<span class="comment">//更新最大的水果数</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxRes;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
+          <p>使用 MacBook Pro 的过程中遇到的一些问题，附上解决方案。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2015-10-25-mac/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -351,7 +331,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2021-10-28-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97%E7%9A%84%E7%9B%B8%E5%85%B3%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE/">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2015-10-25-without-internet/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -369,7 +349,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021-10-28-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97%E7%9A%84%E7%9B%B8%E5%85%B3%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE/" class="post-title-link" itemprop="url">「算法刷题」栈和队列的相关经典题目</a>
+          <a href="/2015-10-25-without-internet/" class="post-title-link" itemprop="url">断网之后</a>
         </h2>
 
         <div class="post-meta-container">
@@ -380,14 +360,16 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2021-10-27 00:00:00" itemprop="dateCreated datePublished" datetime="2021-10-27T00:00:00+00:00">2021-10-27</time>
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
+        <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-02-02 01:00:55" itemprop="dateModified" datetime="2024-02-02T01:00:55+00:00">2024-02-02</time>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Blog/" itemprop="url" rel="index"><span itemprop="name">Blog</span></a>
+        </span>
     </span>
 
   
@@ -400,139 +382,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <table>
-<thead>
-<tr>
-<th><strong>LeetCode题目</strong></th>
-<th><strong>相关题目类型</strong></th>
-<th><strong>相关链接</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>232</td>
-<td>用栈实现队列（简单难度）</td>
-<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/implement-queue-using-stacks/">232. 用栈实现队列 - 力扣（LeetCode） (leetcode-cn.com)</a></td>
-</tr>
-</tbody></table>
-<p>在push数据的时候，只要数据放进输入栈就好，<strong>但在pop的时候，操作就复杂一些，输出栈如果为空，就把进栈数据全部导入进来（注意是全部导入）</strong>，再从出栈弹出数据，如果输出栈不为空，则直接从输出栈弹出数据就可以了。</p>
-<p>最后如何判断队列为空呢？<strong>如果进栈和出栈都为空的话，说明模拟的队列为空了。</strong></p>
-<p>在代码实现的时候，会发现pop() 和 peek()两个函数功能类似，代码实现上也是类似的，可以思考一下如何把代码抽象一下。</p>
-<p>输入栈的元素出栈再放到输出栈中，这样输出栈的输出顺序和队列顺序一样了（手画一下）</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyQueue</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    stack&lt;<span class="type">int</span>&gt;sck1;</span><br><span class="line">    stack&lt;<span class="type">int</span>&gt;sck2;</span><br><span class="line">    <span class="built_in">MyQueue</span>() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">push</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">        sck1.<span class="built_in">push</span>(x);</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 把输入栈sck1中的元素放到输出栈sck2，清空sck1</span></span><br><span class="line">        <span class="comment">// 这样stk2的出栈顺序和输入的元素入stk1的顺序是一样的了</span></span><br><span class="line">        <span class="keyword">while</span>(!sck1.<span class="built_in">empty</span>())&#123;</span><br><span class="line">            <span class="type">int</span> num=sck1.<span class="built_in">top</span>();<span class="comment">// 获取栈顶元素，但不删除</span></span><br><span class="line">            sck1.<span class="built_in">pop</span>();<span class="comment">// 删除栈顶元素，但不返回</span></span><br><span class="line">            sck2.<span class="built_in">push</span>(num); <span class="comment">// 将元素压入栈顶</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> val=sck2.<span class="built_in">top</span>();<span class="comment">// 返回栈顶元素</span></span><br><span class="line">        sck2.<span class="built_in">pop</span>();<span class="comment">// 删除栈顶元素</span></span><br><span class="line">        <span class="comment">// 清空输出栈sck2</span></span><br><span class="line">        <span class="keyword">while</span>(!sck2.<span class="built_in">empty</span>())&#123;</span><br><span class="line">            sck1.<span class="built_in">push</span>(sck2.<span class="built_in">top</span>());</span><br><span class="line">            sck2.<span class="built_in">pop</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> val;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 返回队列开头的元素</span></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">peek</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 清空sck1，元素放入到sck2</span></span><br><span class="line">        <span class="keyword">while</span>(!sck1.<span class="built_in">empty</span>())&#123;</span><br><span class="line">            sck2.<span class="built_in">push</span>(sck1.<span class="built_in">top</span>());</span><br><span class="line">            sck1.<span class="built_in">pop</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//得到“队列”开头的元素</span></span><br><span class="line">        <span class="type">int</span> val=sck2.<span class="built_in">top</span>();</span><br><span class="line">        <span class="comment">// 清空sck2，元素放入到sck1</span></span><br><span class="line">        <span class="keyword">while</span>(!sck2.<span class="built_in">empty</span>())&#123;</span><br><span class="line">            sck1.<span class="built_in">push</span>(sck2.<span class="built_in">top</span>());</span><br><span class="line">            sck2.<span class="built_in">pop</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> val;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">empty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(sck1.<span class="built_in">empty</span>())&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MyQueue object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * MyQueue* obj = new MyQueue();</span></span><br><span class="line"><span class="comment"> * obj-&gt;push(x);</span></span><br><span class="line"><span class="comment"> * int param_2 = obj-&gt;pop();</span></span><br><span class="line"><span class="comment"> * int param_3 = obj-&gt;peek();</span></span><br><span class="line"><span class="comment"> * bool param_4 = obj-&gt;empty();</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id=""><a href="#" class="headerlink" title=""></a></h1><table>
-<thead>
-<tr>
-<th><strong>LeetCode题目</strong></th>
-<th><strong>相关题目类型</strong></th>
-<th>关键点</th>
-<th><strong>相关链接</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>225</td>
-<td>用队列实现栈（简单难度）</td>
-<td></td>
-<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/implement-stack-using-queues/">225. 用队列实现栈 - 力扣（LeetCode） (leetcode-cn.com)</a></td>
-</tr>
-</tbody></table>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">class MyStack &#123;</span><br><span class="line">public:</span><br><span class="line">    queue&lt;int&gt; que1;</span><br><span class="line">    queue&lt;int&gt; que2; // 辅助队列，用来备份</span><br><span class="line">    /** Initialize your data structure here. */</span><br><span class="line">    MyStack() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /** 将元素 x 压入栈顶。 */</span><br><span class="line">    void push(int x) &#123;</span><br><span class="line">        que1.push(x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /** 移除并返回栈顶元素。 */</span><br><span class="line">    int pop() &#123;</span><br><span class="line">        int size=que1.size();</span><br><span class="line">        size--;</span><br><span class="line">        // 把que1元素放到que2，但保留最后一个</span><br><span class="line">        while(size--)&#123;</span><br><span class="line">            int num=que1.front();</span><br><span class="line">            que1.pop();</span><br><span class="line">            que2.push(num);</span><br><span class="line">        &#125;</span><br><span class="line">        int res=que1.front();</span><br><span class="line">        que1.pop();</span><br><span class="line">        que1=que2;</span><br><span class="line">        // 清空que2</span><br><span class="line">        while(!que2.empty())&#123;</span><br><span class="line">            que2.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /** 返回栈顶元素。 */</span><br><span class="line">    int top() &#123;</span><br><span class="line">        return que1.back();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /** 如果栈是空的，返回 true ；否则，返回 false */</span><br><span class="line">    bool empty() &#123;</span><br><span class="line">        return que1.empty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Your MyStack object will be instantiated and called as such:</span><br><span class="line"> * MyStack* obj = new MyStack();</span><br><span class="line"> * obj-&gt;push(x);</span><br><span class="line"> * int param_2 = obj-&gt;pop();</span><br><span class="line"> * int param_3 = obj-&gt;top();</span><br><span class="line"> * bool param_4 = obj-&gt;empty();</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
-
-
-
-<table>
-<thead>
-<tr>
-<th><strong>LeetCode题目</strong></th>
-<th><strong>相关题目类型</strong></th>
-<th>关键点</th>
-<th><strong>相关链接</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>20</td>
-<td>有效的括号（简单难度）</td>
-<td></td>
-<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/valid-parentheses/">20. 有效的括号 - 力扣（LeetCode） (leetcode-cn.com)</a></td>
-</tr>
-</tbody></table>
-<p>括号匹配是使用栈解决的经典问题。</p>
-<p>由于栈结构的特殊性，非常适合做对称匹配类的题目。</p>
-<p>首先要弄清楚，字符串里的括号不匹配有几种情况。</p>
-<p>先来分析一下 这里有三种不匹配的情况，</p>
-<ol>
-<li><p>第一种情况，字符串里左方向的括号多余了 ，所以不匹配。</p>
-<p><img src="C:\Users\WJ\AppData\Roaming\Typora\typora-user-images\image-20211028151300438.png" alt="image-20211028151300438"></p>
-<p>第一种情况：已经遍历完了字符串，但是栈不为空，说明有相应的左括号没有右括号来匹配，所以return false</p>
-</li>
-</ol>
-<p>2.第二种情况，括号没有多余，但是 括号的类型没有匹配上。</p>
-<p><img src="C:\Users\WJ\AppData\Roaming\Typora\typora-user-images\image-20211028151315983.png" alt="image-20211028151315983"></p>
-<p>​       第二种情况：遍历字符串匹配的过程中，发现栈里没有要匹配的字符。所以return false</p>
-<p>3.第三种情况，字符串里右方向的括号多余了，所以不匹配。</p>
-<p><img src="C:\Users\WJ\AppData\Roaming\Typora\typora-user-images\image-20211028151337388.png" alt="image-20211028151337388"></p>
-<p>​       第三种情况：遍历字符串匹配的过程中，栈已经为空了，没有匹配的字符了，说明右括号没有找   到对应的左括号return false</p>
-<p>我们的代码只要覆盖了这三种不匹配的情况，就不会出问题，可以看出 动手之前分析好题目的重要性。</p>
-<p>那么什么时候说明左括号和右括号全都匹配了呢，就是字符串遍历完之后，栈是空的，就说明全都匹配了。</p>
-<p>但还有一些技巧，在匹配左括号的时候，右括号先入栈，就只需要比较当前元素和栈顶相不相等就可以了，比左括号先入栈代码实现要简单的多了！</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isValid</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        stack&lt;<span class="type">int</span>&gt; st;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;s.<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">            <span class="comment">// 左括号入栈，保存对应的右括号，这样右括号来的时候，直接对比是否相等就行</span></span><br><span class="line">            <span class="keyword">if</span>(s[i]==<span class="string">&#x27;(&#x27;</span>)&#123;</span><br><span class="line">                st.<span class="built_in">push</span>(<span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(s[i]==<span class="string">&#x27;&#123;&#x27;</span>)&#123;</span><br><span class="line">                st.<span class="built_in">push</span>(<span class="string">&#x27;&#125;&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(s[i]==<span class="string">&#x27;[&#x27;</span>)&#123;</span><br><span class="line">                st.<span class="built_in">push</span>(<span class="string">&#x27;]&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 右括号出现</span></span><br><span class="line">            <span class="comment">// 右括号多余s.empty()</span></span><br><span class="line">            <span class="comment">// 左右不匹配</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(st.<span class="built_in">empty</span>()||s[i]!=st.<span class="built_in">top</span>())&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                st.<span class="built_in">pop</span>();<span class="comment">//左右括号匹配，</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 左括号多余，则s.empty()==false;</span></span><br><span class="line">        <span class="comment">//都匹配，就是true</span></span><br><span class="line">        <span class="keyword">return</span> st.<span class="built_in">empty</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-<table>
-<thead>
-<tr>
-<th><strong>LeetCode题目</strong></th>
-<th><strong>相关题目类型</strong></th>
-<th>关键点</th>
-<th><strong>相关链接</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1047</td>
-<td>删除字符串中的所有相邻重复项（简单难度）</td>
-<td></td>
-<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-all-adjacent-duplicates-in-string/">1047. 删除字符串中的所有相邻重复项 - 力扣（LeetCode） (leetcode-cn.com)</a></td>
-</tr>
-</tbody></table>
-<p>题目中有字符串的基本操作：</p>
-<p>s.back();返回字符串最后一个元素</p>
-<p>s.push_back(a);字符串末尾添加一个元素</p>
-<p>s.pop_back();删除字符串末尾的元素</p>
-<p>本题要删除相邻相同元素，其实也是匹配问题，相同左元素相当于左括号，相同右元素就是相当于右括号，匹配上了就删除。</p>
-<p>那么再来看一下本题：可以把字符串顺序放到一个栈中，然后如果相同的话 栈就弹出，这样最后栈里剩下的元素都是相邻不相同的元素了。</p>
-<p>拿字符串直接作为栈，这样省去了栈还要转为字符串的操作。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string removeDuplicates(string S) &#123;</span><br><span class="line">        string res;</span><br><span class="line">        for(char s:S)&#123;</span><br><span class="line">            if(res.empty()||res.back()!=s)&#123;</span><br><span class="line">                res.push_back(s);</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                res.pop_back();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-<table>
-<thead>
-<tr>
-<th><strong>LeetCode题目</strong></th>
-<th><strong>相关题目类型</strong></th>
-<th>关键点</th>
-<th><strong>相关链接</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>150</td>
-<td>逆波兰表达式求值（中等难度）</td>
-<td></td>
-<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/evaluate-reverse-polish-notation/submissions/">150. 逆波兰表达式求值 - 力扣（LeetCode） (leetcode-cn.com)</a></td>
-</tr>
-</tbody></table>
-<p>1、理解逆波兰表达式的求值方式</p>
-<p>2、解题思路</p>
-<p>遍历数组：</p>
-<p>如果是运算符，弹出栈的两个栈顶元素num1，num2，进行相应运算，把结果放到栈中</p>
-<p>如果是数字，把数字放到栈中</p>
-<p>遍历结束：结果为栈中唯一的元素，返回结果。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int evalRPN(vector&lt;string&gt;&amp; tokens) &#123;</span><br><span class="line">        stack&lt;int&gt; st;</span><br><span class="line">        for(int i=0;i&lt;tokens.size();i++)&#123;</span><br><span class="line">            if(tokens[i]==&quot;+&quot;||tokens[i]==&quot;-&quot;||tokens[i]==&quot;*&quot;||tokens[i]==&quot;/&quot;)&#123;</span><br><span class="line">                int nums1=st.top();</span><br><span class="line">                st.pop();</span><br><span class="line">                int nums2=st.top();</span><br><span class="line">                st.pop();</span><br><span class="line">                if(tokens[i]==&quot;+&quot;)st.push(nums2+nums1);</span><br><span class="line">                if(tokens[i]==&quot;-&quot;)st.push(nums2-nums1);</span><br><span class="line">                if(tokens[i]==&quot;*&quot;)st.push(nums2*nums1);</span><br><span class="line">                if(tokens[i]==&quot;/&quot;)st.push(nums2/nums1);</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                st.push(stoi(tokens[i]));//stoi()将字符串转为int型</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        int res=st.top();</span><br><span class="line">        st.pop();</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
+          <p>Internet 极大地方便了我们的生活，也极大地吞噬了我们的生活。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2015-10-25-without-internet/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -558,7 +416,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2021-10-26-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91KMP%E7%9B%B8%E5%85%B3%E9%A2%98%E7%9B%AE/">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2015-10-31-pits-in-vimscript/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -576,7 +434,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021-10-26-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91KMP%E7%9B%B8%E5%85%B3%E9%A2%98%E7%9B%AE/" class="post-title-link" itemprop="url">「算法刷题」KMP相关题目</a>
+          <a href="/2015-10-31-pits-in-vimscript/" class="post-title-link" itemprop="url">Vimscript 中的坑</a>
         </h2>
 
         <div class="post-meta-container">
@@ -587,14 +445,16 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2021-10-26 00:00:00" itemprop="dateCreated datePublished" datetime="2021-10-26T00:00:00+00:00">2021-10-26</time>
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
+        <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-02-02 01:00:55" itemprop="dateModified" datetime="2024-02-02T01:00:55+00:00">2024-02-02</time>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Vim/" itemprop="url" rel="index"><span itemprop="name">Vim</span></a>
+        </span>
     </span>
 
   
@@ -607,48 +467,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <table>
-<thead>
-<tr>
-<th><strong>LeetCode题目</strong></th>
-<th><strong>相关题目类型</strong></th>
-<th><strong>相关链接</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td></td>
-<td>t替换空格（简单难度）</td>
-<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/ti-huan-kong-ge-lcof/">剑指 Offer 05. 替换空格</a></td>
-</tr>
-</tbody></table>
-<p>题解链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/ti-huan-kong-ge-lcof/solution/mian-shi-ti-05-ti-huan-kong-ge-ji-jian-qing-xi-tu-/">https://leetcode-cn.com/problems/ti-huan-kong-ge-lcof/solution/mian-shi-ti-05-ti-huan-kong-ge-ji-jian-qing-xi-tu-/</a><br>来源：力扣（LeetCode）</p>
-<p><strong>题解上有视频</strong></p>
-<p>1、初始化：空格数量 count ，字符串 s 的长度 len ；</p>
-<p>2、统计空格数量：遍历 s ，遇空格则 count++ ；<br>3、修改 s 长度：添加完 “%20” 后的字符串长度应为 len + 2 * count ；</p>
-<p>4、倒序遍历修改：i 指向原字符串尾部元素， j 指向新字符串尾部元素；当 i &#x3D; j 时跳出（代表左方已没有空格，无需继续遍历）；<br>当 s[i] 不为空格时：执行 s[j] &#x3D; s[i] ；<br>当 s[i] 为空格时：将字符串闭区间 [j-2, j] 的元素修改为 “%20” ；由于修改了 3 个元素，因此需要 j -&#x3D; 2 ；<br>5、返回值：已修改的字符串 s ；</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">replaceSpace</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> count = <span class="number">0</span>, len = s.<span class="built_in">size</span>();</span><br><span class="line">        <span class="comment">// 统计空格数量</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c : s) &#123;</span><br><span class="line">            <span class="keyword">if</span> (c == <span class="string">&#x27; &#x27;</span>) count++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 修改 s 长度</span></span><br><span class="line">        s.<span class="built_in">resize</span>(len + <span class="number">2</span> * count);<span class="comment">//多加两个空格数，因为字符串本身有一个，再加两个（才能放下%20）</span></span><br><span class="line">        <span class="comment">// 倒序遍历修改</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = len - <span class="number">1</span>, j = s.<span class="built_in">size</span>() - <span class="number">1</span>; i &lt; j; i--, j--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (s[i] != <span class="string">&#x27; &#x27;</span>)</span><br><span class="line">                s[j] = s[i];</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                s[j - <span class="number">2</span>] = <span class="string">&#x27;%&#x27;</span>;</span><br><span class="line">                s[j - <span class="number">1</span>] = <span class="string">&#x27;2&#x27;</span>;</span><br><span class="line">                s[j] = <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">                j -= <span class="number">2</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<table>
-<thead>
-<tr>
-<th><strong>LeetCode题目</strong></th>
-<th><strong>相关题目类型</strong></th>
-<th><strong>相关链接</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td></td>
-<td>剑指offer左旋转字符串（简单难度）</td>
-<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/zuo-xuan-zhuan-zi-fu-chuan-lcof/">剑指 Offer 58 - II. 左旋转字符串 - 力扣（LeetCode） (leetcode-cn.com)</a></td>
-</tr>
-</tbody></table>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">reverseLeftWords</span><span class="params">(string s, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">        string str1;</span><br><span class="line">        str1 =s.<span class="built_in">substr</span>(<span class="number">0</span>,n);</span><br><span class="line">        s.<span class="built_in">erase</span>(<span class="number">0</span>,n);<span class="comment">//即从给定起始位置0处开始删除, 要删除字符的长度为n, 返回值修改后的string对象引用</span></span><br><span class="line">        <span class="keyword">return</span> s+str1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">reverseLeftWords</span><span class="params">(string s, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">        string str=<span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=n;i&lt;s.<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">            str+=s[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            str+=s[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> str;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
+          <p>Vimscript 的语法有些地方还是挺奇葩的，把一些容易写错的点记录下来备忘。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2015-10-31-pits-in-vimscript/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -674,7 +501,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2021-10-26-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3%E9%A2%98%E7%9B%AE1/">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2015-12-02-excel-sift/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -692,7 +519,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021-10-26-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3%E9%A2%98%E7%9B%AE1/" class="post-title-link" itemprop="url">「算法刷题」字符串相关题目1</a>
+          <a href="/2015-12-02-excel-sift/" class="post-title-link" itemprop="url">Excel 保留行号的去重</a>
         </h2>
 
         <div class="post-meta-container">
@@ -703,14 +530,16 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2021-10-26 00:00:00" itemprop="dateCreated datePublished" datetime="2021-10-26T00:00:00+00:00">2021-10-26</time>
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
+        <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-02-02 01:00:55" itemprop="dateModified" datetime="2024-02-02T01:00:55+00:00">2024-02-02</time>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Excel/" itemprop="url" rel="index"><span itemprop="name">Excel</span></a>
+        </span>
     </span>
 
   
@@ -723,70 +552,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <table>
-<thead>
-<tr>
-<th><strong>LeetCode题目</strong></th>
-<th><strong>相关题目类型</strong></th>
-<th><strong>相关链接</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td></td>
-<td>t替换空格（简单难度）</td>
-<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/ti-huan-kong-ge-lcof/">剑指 Offer 05. 替换空格</a></td>
-</tr>
-</tbody></table>
-<p>题解链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/ti-huan-kong-ge-lcof/solution/mian-shi-ti-05-ti-huan-kong-ge-ji-jian-qing-xi-tu-/">https://leetcode-cn.com/problems/ti-huan-kong-ge-lcof/solution/mian-shi-ti-05-ti-huan-kong-ge-ji-jian-qing-xi-tu-/</a><br>来源：力扣（LeetCode）</p>
-<p><strong>题解上有视频</strong></p>
-<p>1、初始化：空格数量 count ，字符串 s 的长度 len ；</p>
-<p>2、统计空格数量：遍历 s ，遇空格则 count++ ；<br>3、修改 s 长度：添加完 “%20” 后的字符串长度应为 len + 2 * count ；</p>
-<p>4、倒序遍历修改：i 指向原字符串尾部元素， j 指向新字符串尾部元素；当 i &#x3D; j 时跳出（代表左方已没有空格，无需继续遍历）；<br>当 s[i] 不为空格时：执行 s[j] &#x3D; s[i] ；<br>当 s[i] 为空格时：将字符串闭区间 [j-2, j] 的元素修改为 “%20” ；由于修改了 3 个元素，因此需要 j -&#x3D; 2 ；<br>5、返回值：已修改的字符串 s ；</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">replaceSpace</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> count = <span class="number">0</span>, len = s.<span class="built_in">size</span>();</span><br><span class="line">        <span class="comment">// 统计空格数量</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c : s) &#123;</span><br><span class="line">            <span class="keyword">if</span> (c == <span class="string">&#x27; &#x27;</span>) count++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 修改 s 长度</span></span><br><span class="line">        s.<span class="built_in">resize</span>(len + <span class="number">2</span> * count);<span class="comment">//多加两个空格数，因为字符串本身有一个，再加两个（才能放下%20）</span></span><br><span class="line">        <span class="comment">// 倒序遍历修改</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = len - <span class="number">1</span>, j = s.<span class="built_in">size</span>() - <span class="number">1</span>; i &lt; j; i--, j--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (s[i] != <span class="string">&#x27; &#x27;</span>)</span><br><span class="line">                s[j] = s[i];</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                s[j - <span class="number">2</span>] = <span class="string">&#x27;%&#x27;</span>;</span><br><span class="line">                s[j - <span class="number">1</span>] = <span class="string">&#x27;2&#x27;</span>;</span><br><span class="line">                s[j] = <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">                j -= <span class="number">2</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<table>
-<thead>
-<tr>
-<th><strong>LeetCode题目</strong></th>
-<th><strong>相关题目类型</strong></th>
-<th><strong>相关链接</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td></td>
-<td>剑指offer左旋转字符串（简单难度）</td>
-<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/zuo-xuan-zhuan-zi-fu-chuan-lcof/">剑指 Offer 58 - II. 左旋转字符串 - 力扣（LeetCode） (leetcode-cn.com)</a></td>
-</tr>
-</tbody></table>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">reverseLeftWords</span><span class="params">(string s, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">        string str1;</span><br><span class="line">        str1 =s.<span class="built_in">substr</span>(<span class="number">0</span>,n);</span><br><span class="line">        s.<span class="built_in">erase</span>(<span class="number">0</span>,n);<span class="comment">//即从给定起始位置0处开始删除, 要删除字符的长度为n, 返回值修改后的string对象引用</span></span><br><span class="line">        <span class="keyword">return</span> s+str1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">reverseLeftWords</span><span class="params">(string s, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">        string str=<span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=n;i&lt;s.<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">            str+=s[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            str+=s[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> str;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-<table>
-<thead>
-<tr>
-<th><strong>LeetCode题目</strong></th>
-<th><strong>相关题目类型</strong></th>
-<th><strong>相关链接</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>151</td>
-<td>反转字符串里的单词（中等难度）</td>
-<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/reverse-words-in-a-string/">151. 翻转字符串里的单词 - 力扣（LeetCode） (leetcode-cn.com)</a></td>
-</tr>
-</tbody></table>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 反转字符串</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">reverse</span><span class="params">(string &amp;s,<span class="type">int</span> start,<span class="type">int</span> end)</span></span>&#123;</span><br><span class="line">        <span class="type">int</span> i=start;</span><br><span class="line">        <span class="type">int</span> j=end;</span><br><span class="line">        <span class="keyword">for</span>(;i&lt;j;i++,j--)&#123;</span><br><span class="line">            <span class="built_in">swap</span>(s[i],s[j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 移除冗余空格</span></span><br><span class="line">    <span class="comment">// 考虑字符串s前中后空格的位置和fast的大小是否符合循环要求</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">removeExtraStr</span><span class="params">(string &amp;s)</span></span>&#123;</span><br><span class="line">        <span class="type">int</span> fast=<span class="number">0</span>,slow=<span class="number">0</span>;</span><br><span class="line">        <span class="comment">//移除字符串前面多余的空格</span></span><br><span class="line">        <span class="keyword">while</span>(s[fast]==<span class="string">&#x27; &#x27;</span><span class="comment">//表示字符串前有空格</span></span><br><span class="line">        &amp;&amp;s.<span class="built_in">size</span>()&gt;<span class="number">0</span><span class="comment">//字符串s不为空</span></span><br><span class="line">        &amp;&amp;fast&lt;s.<span class="built_in">size</span>())<span class="comment">//fast不能指到s外</span></span><br><span class="line">        &#123;</span><br><span class="line">            fast++;<span class="comment">//结束循环后，fast指向第一个不是空格的字符</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//移除字符串中间多余的空格</span></span><br><span class="line">        <span class="keyword">for</span>(;fast&lt;s.<span class="built_in">size</span>();fast++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(fast<span class="number">-1</span>&gt;<span class="number">0</span>&amp;&amp;</span><br><span class="line">            s[fast]==<span class="string">&#x27; &#x27;</span>&amp;&amp;</span><br><span class="line">            s[fast<span class="number">-1</span>]==<span class="string">&#x27; &#x27;</span>)&#123;<span class="comment">//连续两个空格不做操作</span></span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;<span class="comment">//直到fast指向一个字符，前一个是空格，把fast指向的字符赋值给slow指向的位置</span></span><br><span class="line">                s[slow]=s[fast];</span><br><span class="line">                slow++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//移除字符串后面多余的空格</span></span><br><span class="line">        <span class="keyword">if</span>(s[slow<span class="number">-1</span>]==<span class="string">&#x27; &#x27;</span>)&#123;<span class="comment">//fast指向空格，fast-1指向字符，这时候也执行了s[slow]=s[fast];所以多加了一个空格，如果指向反转字符串的操作，该空格在最前面</span></span><br><span class="line">            s.<span class="built_in">resize</span>(slow<span class="number">-1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            s.<span class="built_in">resize</span>(slow);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">string <span class="title">reverseWords</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 移除多余空格</span></span><br><span class="line">        <span class="built_in">removeExtraStr</span>(s);</span><br><span class="line">        <span class="comment">// 反转字符串</span></span><br><span class="line">        <span class="built_in">reverse</span>(s,<span class="number">0</span>,s.<span class="built_in">size</span>()<span class="number">-1</span>);</span><br><span class="line">        <span class="comment">//反转单个单词</span></span><br><span class="line">        <span class="type">int</span> start=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;s.<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s[i]==<span class="string">&#x27; &#x27;</span>&amp;&amp;s[i<span class="number">-1</span>]!=<span class="string">&#x27; &#x27;</span>)&#123;</span><br><span class="line">                <span class="built_in">reverse</span>(s,start,i<span class="number">-1</span>);</span><br><span class="line">                start=i+<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 最后一个单词后没有空格的情况</span></span><br><span class="line">            <span class="keyword">if</span>((i == (s.<span class="built_in">size</span>() - <span class="number">1</span>) )&amp;&amp; s[i] != <span class="string">&#x27; &#x27;</span>)&#123;</span><br><span class="line">                <span class="built_in">reverse</span>(s,start,i);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
+          <p>使用简单的公式对 Excel 里的排序数据进行保留行号的去重。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2015-12-02-excel-sift/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -812,7 +586,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2021-10-26-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2015-12-05-diff-between-gfm-and-redcarpet/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -830,7 +604,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021-10-26-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/" class="post-title-link" itemprop="url">「算法刷题」螺旋矩阵</a>
+          <a href="/2015-12-05-diff-between-gfm-and-redcarpet/" class="post-title-link" itemprop="url">GFM 与 Redcarpet 的不同点</a>
         </h2>
 
         <div class="post-meta-container">
@@ -841,14 +615,16 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2021-10-26 00:00:00" itemprop="dateCreated datePublished" datetime="2021-10-26T00:00:00+00:00">2021-10-26</time>
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
+        <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-02-02 01:00:55" itemprop="dateModified" datetime="2024-02-02T01:00:55+00:00">2024-02-02</time>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Markdown/" itemprop="url" rel="index"><span itemprop="name">Markdown</span></a>
+        </span>
     </span>
 
   
@@ -861,44 +637,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="一、螺旋矩阵"><a href="#一、螺旋矩阵" class="headerlink" title="一、螺旋矩阵"></a>一、螺旋矩阵</h1><table>
-<thead>
-<tr>
-<th><strong>LeetCode题目</strong></th>
-<th><strong>相关题目类型</strong></th>
-<th><strong>相关链接</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>54</td>
-<td>螺旋矩阵（中等难度）</td>
-<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/design-linked-list/">https://leetcode-cn.com/problems/design-linked-list/</a></td>
-</tr>
-</tbody></table>
-<p>题解链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/spiral-matrix/solution/cxiang-xi-ti-jie-by-youlookdeliciousc-3/">https://leetcode-cn.com/problems/spiral-matrix/solution/cxiang-xi-ti-jie-by-youlookdeliciousc-3/</a></p>
-<p>这里的方法不需要记录已经走过的路径，所以执行用时和内存消耗都相对较小</p>
-<p>1、首先设定上下左右边界。</p>
-<p>2、其次向右移动到最右，此时第一行因为已经使用过了，可以将其从图中删去，体现在代码中就是重新定义上边界。<br>3、判断若重新定义后，上下边界交错，表明螺旋矩阵遍历结束，跳出循环，返回答案。</p>
-<p>4、若上下边界不交错，则遍历还未结束，接着向下向左向上移动，操作过程与第一，二步同理<br>不断循环以上步骤，直到某两条边界交错，跳出循环，返回答案</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">spiralOrder</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 定义结果数组</span></span><br><span class="line">        vector &lt;<span class="type">int</span>&gt; ans;</span><br><span class="line">        <span class="keyword">if</span>(matrix.<span class="built_in">empty</span>()) <span class="keyword">return</span> ans; <span class="comment">//若数组为空，直接返回答案</span></span><br><span class="line">        <span class="comment">//赋值上下左右边界</span></span><br><span class="line">        <span class="type">int</span> u = <span class="number">0</span>; </span><br><span class="line">        <span class="type">int</span> d = matrix.<span class="built_in">size</span>() - <span class="number">1</span>;<span class="comment">// 行的数目-1</span></span><br><span class="line">        <span class="type">int</span> l = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> r = matrix[<span class="number">0</span>].<span class="built_in">size</span>() - <span class="number">1</span>;<span class="comment">// 列的数目-1</span></span><br><span class="line">        <span class="comment">// 右下左上 。。</span></span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i = l; i &lt;= r; ++i) ans.<span class="built_in">push_back</span>(matrix[u][i]); <span class="comment">//向右移动直到最右</span></span><br><span class="line">            <span class="keyword">if</span>(++ u &gt; d) <span class="keyword">break</span>; <span class="comment">//重新设定上边界，若上边界大于下边界，则遍历遍历完成，下同</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i = u; i &lt;= d; ++i) ans.<span class="built_in">push_back</span>(matrix[i][r]); <span class="comment">//向下</span></span><br><span class="line">            <span class="keyword">if</span>(-- r &lt; l) <span class="keyword">break</span>; <span class="comment">//重新设定有边界</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i = r; i &gt;= l; --i) ans.<span class="built_in">push_back</span>(matrix[d][i]); <span class="comment">//向左</span></span><br><span class="line">            <span class="keyword">if</span>(-- d &lt; u) <span class="keyword">break</span>; <span class="comment">//重新设定下边界</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i = d; i &gt;= u; --i) ans.<span class="built_in">push_back</span>(matrix[i][l]); <span class="comment">//向上</span></span><br><span class="line">            <span class="keyword">if</span>(++ l &gt; r) <span class="keyword">break</span>; <span class="comment">//重新设定左边界</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="螺旋矩阵2"><a href="#螺旋矩阵2" class="headerlink" title="螺旋矩阵2"></a>螺旋矩阵2</h1><h1 id=""><a href="#" class="headerlink" title=""></a></h1><table>
-<thead>
-<tr>
-<th><strong>LeetCode题目</strong></th>
-<th><strong>相关题目类型</strong></th>
-<th><strong>相关链接</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>5459</td>
-<td>螺旋矩阵2（中等难度）</td>
-<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/spiral-matrix-ii/">59. 螺旋矩阵 II - 力扣（LeetCode） (leetcode-cn.com)</a></td>
-</tr>
-</tbody></table>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">generateMatrix</span>(<span class="type">int</span> n) &#123;</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">res</span>(n,<span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(n,<span class="number">0</span>));<span class="comment">// 定义一个二位数组</span></span><br><span class="line">        </span><br><span class="line">        <span class="type">int</span> startx = <span class="number">0</span>, starty = <span class="number">0</span>; <span class="comment">// 定义每循环一个圈的起始位置</span></span><br><span class="line">        <span class="type">int</span> loop=n/<span class="number">2</span>;<span class="comment">//每个圈循环几次，例如n为奇数3，那么loop = 1 只是循环一圈，矩阵中间的值需要单独处理</span></span><br><span class="line">        <span class="type">int</span> mid=n/<span class="number">2</span>;<span class="comment">// 矩阵中间的位置，例如：n为3， 中间的位置就是(1，1)，n为5，中间位置为(2, 2)</span></span><br><span class="line">        <span class="type">int</span> count = <span class="number">1</span>; <span class="comment">// 用来给矩阵中每一个空格赋值</span></span><br><span class="line">        <span class="type">int</span> offset = <span class="number">1</span>; <span class="comment">// 每一圈循环，需要控制每一条边遍历的长度</span></span><br><span class="line">        <span class="type">int</span> i,j;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(loop--)&#123;</span><br><span class="line">            i= startx;</span><br><span class="line">            j= starty;</span><br><span class="line">            <span class="comment">// 下面开始的四个for就是模拟转了一圈</span></span><br><span class="line">            <span class="comment">// 模拟填充上行从左到右(左闭右开)</span></span><br><span class="line">            <span class="keyword">for</span> (j = starty; j &lt; starty + n - offset; j++) &#123;</span><br><span class="line">                res[startx][j] = count++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 模拟填充右列从上到下(左闭右开)</span></span><br><span class="line">            <span class="keyword">for</span> (i = startx; i &lt; startx + n - offset; i++) &#123;</span><br><span class="line">                res[i][j] = count++;</span><br><span class="line">            &#125;</span><br><span class="line">             <span class="comment">// 模拟填充下行从右到左(左闭右开)</span></span><br><span class="line">            <span class="keyword">for</span> (; j &gt; starty; j--) &#123;</span><br><span class="line">                res[i][j] = count++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 模拟填充左列从下到上(左闭右开)</span></span><br><span class="line">            <span class="keyword">for</span> (; i &gt; startx; i--) &#123;</span><br><span class="line">                res[i][j] = count++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 第二圈开始的时候，起始位置要各自加1， 例如：第一圈起始位置是(0, 0)，第二圈起始位置是(1, 1)</span></span><br><span class="line">            startx++;</span><br><span class="line">            starty++;</span><br><span class="line">            <span class="comment">// offset 控制每一圈里每一条边遍历的长度</span></span><br><span class="line">            offset += <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 如果n为奇数的话，需要单独给矩阵最中间的位置赋值</span></span><br><span class="line">        <span class="comment">//,n为偶数不用</span></span><br><span class="line">        <span class="keyword">if</span>(n%<span class="number">2</span>)&#123;</span><br><span class="line">            res[mid][mid]=count;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
+          <p>GFM 与 Redcarpet 有些许不同，在 GitHub Repository 与 GitHub Pages 里写作时应该注意这些区别，避免解析出来不是自己想要的效果。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2015-12-05-diff-between-gfm-and-redcarpet/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -924,7 +671,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2021-10-25-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE/">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2015-12-15-java-object-finalize/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -942,7 +689,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021-10-25-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE/" class="post-title-link" itemprop="url">「算法刷题」链表相关经典题目</a>
+          <a href="/2015-12-15-java-object-finalize/" class="post-title-link" itemprop="url">Java 对象释放与 finalize 方法</a>
         </h2>
 
         <div class="post-meta-container">
@@ -953,14 +700,16 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2021-10-25 00:00:00" itemprop="dateCreated datePublished" datetime="2021-10-25T00:00:00+00:00">2021-10-25</time>
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
+        <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-02-02 01:00:55" itemprop="dateModified" datetime="2024-02-02T01:00:55+00:00">2024-02-02</time>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
     </span>
 
   
@@ -973,132 +722,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="一、"><a href="#一、" class="headerlink" title="一、"></a>一、</h1><p>顺序结构：这里主要指的是数组或字符串。</p>
-<h1 id="一、链表的基本操作"><a href="#一、链表的基本操作" class="headerlink" title="一、链表的基本操作"></a>一、链表的基本操作</h1><table>
-<thead>
-<tr>
-<th><strong>LeetCode题目</strong></th>
-<th><strong>相关题目类型</strong></th>
-<th><strong>相关链接</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>707</td>
-<td>设计链表（中等难度）</td>
-<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/design-linked-list/">https://leetcode-cn.com/problems/design-linked-list/</a></td>
-</tr>
-</tbody></table>
-<h2 id="在链表中添加或删除元素时，记得修改链表长度；"><a href="#在链表中添加或删除元素时，记得修改链表长度；" class="headerlink" title="在链表中添加或删除元素时，记得修改链表长度；"></a>在链表中添加或删除元素时，记得修改链表长度；</h2><p>代码：csdn博客：力扣 707. 设计链表 链表</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyLinkedList</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">/** 初始化数据结构 */</span></span><br><span class="line">    <span class="built_in">MyLinkedList</span>():<span class="built_in">head</span>(<span class="keyword">new</span> <span class="built_in">node</span>()),<span class="built_in">tail</span>(head),<span class="built_in">size</span>(<span class="number">0</span>) &#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** 得到链表中第index个结点的值，index小于0或大于链表长度（链表的index从0开始），返回-1 */</span></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">get</span><span class="params">(<span class="type">int</span> index)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(index&gt;=size||index&lt;<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(index==size<span class="number">-1</span>)</span><br><span class="line">            <span class="keyword">return</span> tail-&gt;val;</span><br><span class="line">        </span><br><span class="line">        node *cur=head-&gt;next;</span><br><span class="line">        <span class="keyword">while</span>(index--)</span><br><span class="line">            cur=cur-&gt;next;</span><br><span class="line">        <span class="keyword">return</span> cur-&gt;val;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** 添加新的头节点 */</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">addAtHead</span><span class="params">(<span class="type">int</span> val)</span> </span>&#123;</span><br><span class="line">        ++size;</span><br><span class="line">        node *tmp=<span class="keyword">new</span> <span class="built_in">node</span>(val);</span><br><span class="line">        tmp-&gt;next=head-&gt;next;</span><br><span class="line">        head-&gt;next=tmp;</span><br><span class="line">        <span class="comment">//注意更新尾节点</span></span><br><span class="line">        <span class="keyword">if</span>(size==<span class="number">1</span>)</span><br><span class="line">            tail=tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** 在链表最后添加一个结点. */</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">addAtTail</span><span class="params">(<span class="type">int</span> val)</span> </span>&#123;</span><br><span class="line">        ++size;</span><br><span class="line">        node *tmp=<span class="keyword">new</span> <span class="built_in">node</span>(val);</span><br><span class="line">        tail-&gt;next=tmp;</span><br><span class="line">        tail=tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** 在链表第index个结点前添加结点，</span></span><br><span class="line"><span class="comment">    如果index等于链表长度，则将结点添加到链表末尾。</span></span><br><span class="line"><span class="comment">    如果index大于链表长度，则不会插入结点</span></span><br><span class="line"><span class="comment">    如果index小于0，则在头部插入结点。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">addAtIndex</span><span class="params">(<span class="type">int</span> index, <span class="type">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(index&lt;=<span class="number">0</span>)</span><br><span class="line">            <span class="built_in">addAtHead</span>(val);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(index==size)</span><br><span class="line">            <span class="built_in">addAtTail</span>(val);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(index&lt;size)&#123;</span><br><span class="line">            node *cur=head;</span><br><span class="line">            <span class="keyword">while</span>(index--)</span><br><span class="line">                cur=cur-&gt;next;</span><br><span class="line">            <span class="comment">// node *nxt=cur-&gt;next;</span></span><br><span class="line">            <span class="comment">// node *tmp=new node(val);</span></span><br><span class="line">            <span class="comment">// cur-&gt;next=tmp;</span></span><br><span class="line">            <span class="comment">// tmp-&gt;next=nxt;</span></span><br><span class="line">            node *tmp=<span class="keyword">new</span> <span class="built_in">node</span>(val);</span><br><span class="line">            <span class="comment">// cur指向第index个结点的前一个</span></span><br><span class="line">            tmp-&gt;next=cur-&gt;next;</span><br><span class="line">            cur-&gt;next=tmp;</span><br><span class="line">            ++size;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** 索引有效，则删除链表的第index个结点*/</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">deleteAtIndex</span><span class="params">(<span class="type">int</span> index)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(index&gt;=size||index&lt;<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> ;</span><br><span class="line">        node *cur=head;</span><br><span class="line">        <span class="keyword">while</span>(index--)</span><br><span class="line">            cur=cur-&gt;next;</span><br><span class="line">        node *tmp=cur-&gt;next;</span><br><span class="line">        cur-&gt;next=tmp-&gt;next;</span><br><span class="line">        <span class="comment">//tmp指向最后一个结点时，注意更新尾节点，</span></span><br><span class="line">        <span class="keyword">if</span>(!tmp-&gt;next)</span><br><span class="line">            tail=cur;<span class="comment">// cur指向第index个的前一个结点</span></span><br><span class="line">        <span class="built_in">delete</span>(tmp);</span><br><span class="line">        --size;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">node</span>&#123;</span><br><span class="line">        <span class="type">int</span> val;</span><br><span class="line">        node *next;</span><br><span class="line">        <span class="built_in">node</span>():<span class="built_in">val</span>(<span class="number">0</span>),<span class="built_in">next</span>(<span class="literal">nullptr</span>)&#123;&#125;</span><br><span class="line">        <span class="built_in">node</span>(<span class="type">int</span> v):<span class="built_in">val</span>(v),<span class="built_in">next</span>(<span class="literal">nullptr</span>)&#123;&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    node *head=<span class="literal">nullptr</span>;</span><br><span class="line">    node *tail=<span class="literal">nullptr</span>;</span><br><span class="line">    <span class="type">int</span> size=<span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MyLinkedList object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * MyLinkedList* obj = new MyLinkedList();</span></span><br><span class="line"><span class="comment"> * int param_1 = obj-&gt;get(index);</span></span><br><span class="line"><span class="comment"> * obj-&gt;addAtHead(val);</span></span><br><span class="line"><span class="comment"> * obj-&gt;addAtTail(val);</span></span><br><span class="line"><span class="comment"> * obj-&gt;addAtIndex(index,val);</span></span><br><span class="line"><span class="comment"> * obj-&gt;deleteAtIndex(index);</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="二、链表的相交"><a href="#二、链表的相交" class="headerlink" title="二、链表的相交"></a>二、链表的相交</h1><table>
-<thead>
-<tr>
-<th><strong>LeetCode题目</strong></th>
-<th><strong>相关题目类型</strong></th>
-<th>关键点</th>
-<th><strong>相关链接</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>面试题02.07.</td>
-<td>链表相交（简单难度）</td>
-<td>长链表的遍历节点先多走和短链表的长度差个节点，然后同时遍历两个节点比较是否存在相同节点</td>
-<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/intersection-of-two-linked-lists-lcci/">https://leetcode-cn.com/problems/intersection-of-two-linked-lists-lcci/</a></td>
-</tr>
-</tbody></table>
-<p>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/intersection-of-two-linked-lists-lcci/solution/dai-ma-sui-xiang-lu-dai-ni-gao-ding-lian-5ykc/">https://leetcode-cn.com/problems/intersection-of-two-linked-lists-lcci/solution/dai-ma-sui-xiang-lu-dai-ni-gao-ding-lian-5ykc/</a><br>来源：力扣（LeetCode）</p>
-<p>交点不是数值相等，而是指针相等。</p>
-<p> 看如下两个链表，目前curA指向链表A的头结点，curB指向链表B的头结点： </p>
-<p>![](&#x2F;img-post&#x2F;算法刷题&#x2F;2021-10-25-【算法刷题】链表相关经典题目&#x2F;示例图1.png)</p>
-<p><img src="/../img-post/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/2021-10-25-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE/%E7%A4%BA%E4%BE%8B%E5%9B%BE1.png"></p>
-<p> 我们求出两个链表的长度，并求出两个链表长度的差值，然后让curA移动到，和curB 末尾对齐的位置，如图： </p>
-<p>![](&#x2F;img-post&#x2F;算法刷题&#x2F;2021-10-25-【算法刷题】链表相关经典题目&#x2F;示例图2.png)</p>
-<p><img src="/../img-post/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/2021-10-25-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE/%E7%A4%BA%E4%BE%8B%E5%9B%BE2.png"></p>
-<p>此时我们就可以比较curA和curB是否相同，如果不相同，同时向后移动curA和curB，如果遇到curA &#x3D;&#x3D; curB，则找到焦点。</p>
-<p>否则循环退出返回空指针。</p>
-<p>作者：carlsun-2<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/intersection-of-two-linked-lists-lcci/solution/dai-ma-sui-xiang-lu-dai-ni-gao-ding-lian-5ykc/">https://leetcode-cn.com/problems/intersection-of-two-linked-lists-lcci/solution/dai-ma-sui-xiang-lu-dai-ni-gao-ding-lian-5ykc/</a><br>来源：力扣（LeetCode）</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode *<span class="title">getIntersectionNode</span><span class="params">(ListNode *headA, ListNode *headB)</span> </span>&#123;</span><br><span class="line">        ListNode *curA=headA;</span><br><span class="line">        ListNode *curB=headB;</span><br><span class="line">        <span class="type">int</span> lenA=<span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> lenB=<span class="number">0</span>;</span><br><span class="line">        <span class="comment">//计算A长度</span></span><br><span class="line">        <span class="keyword">while</span>(curA)&#123;</span><br><span class="line">            lenA++;</span><br><span class="line">            curA=curA-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//计算B长度</span></span><br><span class="line">        <span class="keyword">while</span>(curB)&#123;</span><br><span class="line">            lenB++;</span><br><span class="line">            curB=curB-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        curA=headA;</span><br><span class="line">        curB=headB;</span><br><span class="line">        <span class="comment">// 让curA指向长的链表,lenA为其长度。</span></span><br><span class="line">        <span class="keyword">if</span>(lenB&gt;lenA)&#123;</span><br><span class="line">            <span class="built_in">swap</span>(lenA,lenB);</span><br><span class="line">            <span class="built_in">swap</span>(curA,curB);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 计算两个链表的长度差；</span></span><br><span class="line">        <span class="type">int</span> gap=lenA-lenB;</span><br><span class="line">        <span class="comment">// curA指向链表的一个结点，使两个链表的末尾对齐</span></span><br><span class="line">        <span class="keyword">while</span>(gap--)&#123;</span><br><span class="line">            curA=curA-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 同时遍历，相等则返回结点</span></span><br><span class="line">        <span class="keyword">while</span>(curA)&#123;</span><br><span class="line">            <span class="keyword">if</span>(curA==curB)&#123;</span><br><span class="line">                <span class="keyword">return</span> curA;</span><br><span class="line">            &#125;</span><br><span class="line">            curA=curA-&gt;next;</span><br><span class="line">            curB=curB-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//不等，返回空。</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id=""><a href="#" class="headerlink" title=""></a></h1><table>
-<thead>
-<tr>
-<th><strong>LeetCode题目</strong></th>
-<th><strong>相关题目类型</strong></th>
-<th>关键点</th>
-<th><strong>相关链接</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>92</td>
-<td>反转链表2（中等难度）</td>
-<td>长链表的遍历节点先多走和短链表的长度差个节点，然后同时遍历两个节点比较是否存在相同节点</td>
-<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/reverse-linked-list-ii/">92. 反转链表 II - 力扣（LeetCode） (leetcode-cn.com)</a></td>
-</tr>
-</tbody></table>
-<p>解题思路：<br>1、我们定义两个指针，分别称之为 g(guard 守卫) 和 p(point)。<br>我们首先根据方法的参数 m 确定 g 和 p 的位置。将 g 移动到第一个要反转的节点的前面，将 p 移动到第一个要反转的节点的位置上。我们以 m&#x3D;2，n&#x3D;4为例。<br>2、将 p 后面的元素删除，然后添加到 g 的后面。也即头插法。<br>3、根据 m 和 n 重复步骤（2）<br>4、返回 dummyHead.next<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/reverse-linked-list-ii/solution/java-shuang-zhi-zhen-tou-cha-fa-by-mu-yi-cheng-zho/">https://leetcode-cn.com/problems/reverse-linked-list-ii/solution/java-shuang-zhi-zhen-tou-cha-fa-by-mu-yi-cheng-zho/</a></p>
-<p>![](&#x2F;img-post&#x2F;算法刷题&#x2F;2021-10-25-【算法刷题】链表相关经典题目&#x2F;示例图3.png)</p>
-<p><img src="/../img-post/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/2021-10-25-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE/%E7%A4%BA%E4%BE%8B%E5%9B%BE3.png"></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseBetween</span><span class="params">(ListNode head, <span class="type">int</span> m, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 定义一个虚拟头结点， 方便处理</span></span><br><span class="line">        ListNode dummyHead = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">0</span>);</span><br><span class="line">        dummyHead.next = head;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 初始化指针</span></span><br><span class="line">        ListNode g = dummyHead;</span><br><span class="line">        ListNode p = dummyHead.next;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将指针移到相应的位置</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> step = <span class="number">0</span>; step &lt; m - <span class="number">1</span>; step++) &#123;</span><br><span class="line">            g = g.next; p = p.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 头插法插入节点</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n - m; i++) &#123;</span><br><span class="line">            ListNode removed = p.next;</span><br><span class="line">            p.next = p.next.next;</span><br><span class="line"></span><br><span class="line">            removed.next = g.next;</span><br><span class="line">            g.next = removed;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> dummyHead.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<table>
-<thead>
-<tr>
-<th><strong>LeetCode题目</strong></th>
-<th><strong>相关题目类型</strong></th>
-<th>关键点</th>
-<th><strong>相关链接</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>142</td>
-<td>环形链表2（中等难度）</td>
-<td></td>
-<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/linked-list-cycle-ii/">142. 环形链表 II - 力扣（LeetCode） (leetcode-cn.com)</a></td>
-</tr>
-</tbody></table>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>主要考察两知识点：</p>
-<ul>
-<li><p>判断链表是否环</p>
-</li>
-<li><p>如果有环，如何找到这个环的入口</p>
-</li>
-<li><h3 id="判断链表是否有环"><a href="#判断链表是否有环" class="headerlink" title="判断链表是否有环"></a>判断链表是否有环</h3><p>可以使用快慢指针法，  分别定义 fast 和 slow指针，从头结点出发，fast指针每次移动两个节点，slow指针每次移动一个节点，如果 fast 和 slow指针在途中相遇 ，说明这个链表有环。</p>
-<p>为什么fast 走两个节点，slow走一个节点，有环的话，一定会在环内相遇呢，而不是永远的错开呢</p>
-</li>
-</ul>
-<p>首先第一点： <strong>fast指针一定先进入环中，如果fast 指针和slow指针相遇的话，一定是在环中相遇，这是毋庸置疑的。</strong></p>
-<p>那么来看一下，<strong>为什么fast指针和slow指针一定会相遇呢？</strong></p>
-<p>可以画一个环，然后让 fast指针在任意一个节点开始追赶slow指针。</p>
-<p>会发现最终都是这种情况， 如下图：</p>
-<p><img src="C:\Users\WJ\AppData\Roaming\Typora\typora-user-images\image-20211031165431940.png" alt="image-20211031165431940"></p>
-<p>ast和slow各自再走一步， fast和slow就相遇了</p>
-<p>这是因为fast是走两步，slow是走一步，<strong>其实相对于slow来说，fast是一个节点一个节点的靠近slow的</strong>，所以fast一定可以和slow重合。</p>
-<h3 id="如果有环，如何找到这个环的入口"><a href="#如果有环，如何找到这个环的入口" class="headerlink" title="如果有环，如何找到这个环的入口"></a>如果有环，如何找到这个环的入口</h3><p><strong>此时已经可以判断链表是否有环了，那么接下来要找这个环的入口了。</strong></p>
-<p>假设从头结点到环形入口节点 的节点数为x。<br>环形入口节点到 fast指针与slow指针相遇节点 节点数为y。<br>从相遇节点  再到环形入口节点节点数为 z。 如图所示：</p>
-<p><img src="C:\Users\WJ\AppData\Roaming\Typora\typora-user-images\image-20211031165706230.png" alt="image-20211031165706230"></p>
-<p>那么相遇时：<br>slow指针走过的节点数为: <code>x + y</code>，<br>fast指针走过的节点数：<code> x + y + n (y + z)</code>，n为fast指针在环内走了n圈才遇到slow指针， （y+z）为 一圈内节点的个数A。</p>
-<p>因为fast指针是一步走两个节点，slow指针一步走一个节点， 所以 fast指针走过的节点数 &#x3D; slow指针走过的节点数 * 2：</p>
-<p><code>(x + y) * 2 = x + y + n (y + z)</code></p>
-<p>两边消掉一个（x+y）: <code>x + y  = n (y + z) </code></p>
-<p>因为要找环形的入口，那么要求的是x，因为x表示 头结点到 环形入口节点的的距离。</p>
-<p>以要求x ，将x单独放在左面：<code>x = n (y + z) - y</code> ,</p>
-<p>再从n(y+z)中提出一个 （y+z）来，整理公式之后为如下公式：<code>x = (n - 1) (y + z) + z  </code> 注意这里n一定是大于等于1的，因为 fast指针至少要多走一圈才能相遇slow指针。</p>
-<p>这个公式说明什么呢？</p>
-<p>先拿n为1的情况来举例，意味着fast指针在环形里转了一圈之后，就遇到了 slow指针了。</p>
-<p>当 n为1的时候，公式就化解为 <code>x = z</code>，</p>
-<p>这就意味着，<strong>从头结点出发一个指针，从相遇节点 也出发一个指针，这两个指针每次只走一个节点， 那么当这两个指针相遇的时候就是 环形入口的节点</strong>。</p>
-<p>也就是在相遇节点处，定义一个指针index1，在头结点处定一个指针index2。</p>
-<p>让index1和index2同时移动，每次移动一个节点， 那么他们相遇的地方就是 环形入口的节点。</p>
-<p>那么 n如果大于1是什么情况呢，就是fast指针在环形转n圈之后才遇到 slow指针。</p>
-<p>其实这种情况和n为1的时候 效果是一样的，一样可以通过这个方法找到 环形的入口节点，只不过，index1 指针在环里 多转了(n-1)圈，然后再遇到index2，相遇点依然是环形的入口节点。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode *next;</span><br><span class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode *detectCycle(ListNode *head) &#123;</span><br><span class="line">        ListNode* fast = head;</span><br><span class="line">        ListNode* slow = head;</span><br><span class="line">        while(fast != NULL &amp;&amp; fast-&gt;next != NULL) &#123;</span><br><span class="line">            slow = slow-&gt;next;</span><br><span class="line">            fast = fast-&gt;next-&gt;next;</span><br><span class="line">            // 快慢指针相遇，此时从head 和 相遇点，同时查找直至相遇</span><br><span class="line">            if (slow == fast) &#123;</span><br><span class="line">                ListNode* index1 = fast;</span><br><span class="line">                ListNode* index2 = head;</span><br><span class="line">                while (index1 != index2) &#123;</span><br><span class="line">                    index1 = index1-&gt;next;</span><br><span class="line">                    index2 = index2-&gt;next;</span><br><span class="line">                &#125;</span><br><span class="line">                return index2; // 返回环的入口</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return NULL;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
+          <p>关于 Java 对象释放的疑惑解答，以及 finalize 方法的相关知识。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2015-12-15-java-object-finalize/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1124,7 +756,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2021-10-19-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91%E7%A6%BB%E6%95%A3%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2/">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2015-12-19-vim-markdown-toc/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1142,7 +774,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021-10-19-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91%E7%A6%BB%E6%95%A3%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2/" class="post-title-link" itemprop="url">「科研笔记」离散小波变换</a>
+          <a href="/2015-12-19-vim-markdown-toc/" class="post-title-link" itemprop="url">为 Markdown 生成 TOC 的 Vim 插件</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1153,14 +785,16 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2021-10-19 00:00:00" itemprop="dateCreated datePublished" datetime="2021-10-19T00:00:00+00:00">2021-10-19</time>
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
+        <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-02-02 01:00:55" itemprop="dateModified" datetime="2024-02-02T01:00:55+00:00">2024-02-02</time>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Vim/" itemprop="url" rel="index"><span itemprop="name">Vim</span></a>
+        </span>
     </span>
 
   
@@ -1173,68 +807,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><strong>参考链接：</strong></p>
-<p> <a target="_blank" rel="noopener" href="http://www.360doc.com/content/13/0925/12/10724725_316957631.shtml">哈尔小波变换的原理及其实现(Haar) (360doc.com)</a> </p>
-<p>csdn博客：Python 离散小波变换（DWT） pywt库</p>
-<p><strong>基础概念：</strong></p>
-<p> <strong>变换</strong>：不管是压缩、滤波还是图像处理，本质都是变换，就是基。例如傅里叶变换就是将信号用该空间的基的线性组合进行表示 • </p>
-<p><strong>正交：</strong> 如果两个向量的内积为0，它们就是正交的；如果一个向量序列相互对偶正交，并且长度为1，它们就是正交归一化的。 </p>
-<p>哈尔小波变换是，小波变换中最简单的一种变换，也是最早提出的小波变换。</p>
-<h2 id="一维哈尔小波变换"><a href="#一维哈尔小波变换" class="headerlink" title="一维哈尔小波变换"></a>一维哈尔小波变换</h2><table>
-<thead>
-<tr>
-<th>例：求只有4个像素[9 7 3 5]的图像的小波变换系数。 计算步骤如下：</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1、<strong>求均值</strong>(averaging)。计算相邻像素对的平均值，得到一幅分辨率比较低的新图像，新的图像的分辨率是原来的1&#x2F;2，相应的像素值为：[8 4]</td>
-</tr>
-<tr>
-<td>2、<strong>求差值</strong>(differencing)。上面的均值存储了图像的整体信息，但很多细节被丢掉了。所以要记录图像的细节信息，这样在重构时能够恢复图像的全部信息。方法是使用这个像素对的差值除以2，结果为[8 4 1 -1]<br/>以上两步形成第一次分解的结果[8 4 1 -1]，包含了图像的整体信息和细节信息。</td>
-</tr>
-<tr>
-<td>接下来重复1、2步，将整体信息再次分解，得到二级分解结果[6,2,1,-1]</td>
-</tr>
-</tbody></table>
-<p>![](&#x2F;img-post&#x2F;科研笔记&#x2F;2021-10-19-【科研笔记】离散小波变换&#x2F;table1.png)</p>
-<p><img src="/../img-post/%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0/2021-10-19-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91%E7%A6%BB%E6%95%A3%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2/table1.png"></p>
-<p>从这个例子中我们可以看到：<br>① 对这个给定的变换，我们可以从所记录的数据中重构出各种分辨率的图像。例如，在分辨率为1的图像基础上重构出分辨率为2的图像，在分辨率为2的图像基础上重构出分辨率为4的图像。<br>②变换过程中没有丢失信息，因为能够从所记录的数据中重构出原始图像。<br>③ 通过变换之后产生的细节系数的幅度值比较小，这就为图像压缩提供了一种途径，例如去掉一些微不足道的细节系数并不影响对重构图像的理解。</p>
-<p>这个过程就叫做哈尔小波变换，也称哈尔小波分解，这个概念可以推广到使用其他小波基的变换。</p>
-<h2 id="二维哈尔小波变换"><a href="#二维哈尔小波变换" class="headerlink" title="二维哈尔小波变换"></a>二维哈尔小波变换</h2><p>​        对于二维小波变换，通常一次分解形成了整体图像，水平细节，垂直细节，对角细节。首先我们按照一维小波分解的原理，按照行顺序对行进行处理，然后按照列顺序对行处理结果进行同样的处理。</p>
-<p> 经过小波变换后图像会生成低频信息和高频信息。低频信息对应于求均值，高频信息对应于求差值。<br><code>均值是局部的平均值，变化缓慢，属于低频信息，存储图片的轮廓信息，近似信息</code><br><code>差值是局部的波动值，变化较快，属于高频信息，存储图片的细节信息，局部信息，另外含有噪音</code> </p>
-<p>假设有一幅灰度图像，其中的一个图像块用矩阵A 表示：</p>
-<p>![](&#x2F;img-post&#x2F;科研笔记&#x2F;2021-10-19-【科研笔记】离散小波变换&#x2F;matrix1.png)</p>
-<p><img src="/../img-post/%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0/2021-10-19-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91%E7%A6%BB%E6%95%A3%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2/matrix1.png"></p>
-<p>​       一个图像块是一个二维矩阵，进行小波变换时可以对矩阵的每一行进行变换，然后对行变换后的每一列进行变换，最后对经过变换之后的图像矩阵进行编码。</p>
-<p>第一步：在第一行上取每一对像素的平均值，并将结果放到第一行的前四个位置，其余4个数是第一行每一对像素的第一个数和对应的平均值之差（也可以是 这个像素对的差值除以2 ，计算结果是一样的。）将结果放到第一行的最后四个位置。</p>
-<p>第二步：对第一行的前四个数使用与第一步相同的方法，得到两个平均值和两个差（系数），并依次放在第一行的前四个位置，其余四个细节系数位置不动。</p>
-<p>第三步：用与第一步和第二步相同的方法，对剩下的一对平均值求均值和差值。</p>
-<p>用求均值和差值的方法，对矩阵每一行进行计算，得到矩阵A‘。</p>
-<p>![](&#x2F;img-post&#x2F;科研笔记&#x2F;2021-10-19-【科研笔记】离散小波变换&#x2F;matrix2.png)</p>
-<p><img src="/../img-post/%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0/2021-10-19-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91%E7%A6%BB%E6%95%A3%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2/matrix2.png"></p>
-<p>每行的第一个元素是该行像素值的平均值，其余是这行的细节系数。用同样的方法，对A’的每一列进行计算，得到A’’</p>
-<p>![](&#x2F;img-post&#x2F;科研笔记&#x2F;2021-10-19-【科研笔记】离散小波变换&#x2F;matrix3.png)</p>
-<p><img src="/../img-post/%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0/2021-10-19-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91%E7%A6%BB%E6%95%A3%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2/matrix3.png"></p>
-<p>左上角的元素是整个图像块的像素值的平均值，其余是该图像块的细节系数，根据这个事实，如果从矩阵中去掉图像的某些细节系数，事实证明重构的图像质量仍然可以接受。</p>
-<p>具体做法是设置一个阈值D，应该是像素值小于等于5的细节系数就把它当做0看待。这样变换后的矩阵为A‘’‘</p>
-<p>![](&#x2F;img-post&#x2F;科研笔记&#x2F;2021-10-19-【科研笔记】离散小波变换&#x2F;matrix4.png)</p>
-<p><img src="/../img-post/%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0/2021-10-19-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91%E7%A6%BB%E6%95%A3%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2/matrix4.png"></p>
-<p>’0‘的数目增加了18个，也就是去掉了18个细节系数，这样可以提高编码的效率。</p>
-<h3 id="上面解释的图示："><a href="#上面解释的图示：" class="headerlink" title="上面解释的图示："></a>上面解释的图示：</h3><p>（来自csdn博客：）</p>
-<p> <strong>经过小波变换后图像会生成低频信息和高频信息。</strong>低频信息对应于求均值，高频信息对应于求差值。<br><code>均值是局部的平均值，变化缓慢，属于低频信息，存储图片的轮廓信息，近似信息</code><br><code>差值是局部的波动值，变化较快，属于高频信息，存储图片的细节信息，局部信息，另外含有噪音</code> </p>
-<p> 水平和竖直两个方向进行低通和高通滤波（水平和竖直先后不影响），用图像表述如下图所示： </p>
-<p>![](&#x2F;img-post&#x2F;科研笔记&#x2F;2021-10-19-【科研笔记】离散小波变换&#x2F;image1.png)</p>
-<p><img src="/../img-post/%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0/2021-10-19-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91%E7%A6%BB%E6%95%A3%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2/image1.png"></p>
-<p>其中：</p>
-<ul>
-<li>b: 原图信息</li>
-<li>h1 :水平方向的细节（高频信息），</li>
-<li>v1 表示竖直方向的细节（高频信息），</li>
-<li>c1表示对角线方向的细节（高频信息）</li>
-</ul>
-<p>![](&#x2F;img-post&#x2F;科研笔记&#x2F;2021-10-19-【科研笔记】离散小波变换&#x2F;image2.png)</p>
-<p><img src="/../img-post/%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0/2021-10-19-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91%E7%A6%BB%E6%95%A3%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2/image2.png"></p>
-
+          <p>为 Markdown 自动生成 Table of Contents 的 Vim 插件</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2015-12-19-vim-markdown-toc/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1260,7 +841,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2021-10-09-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91%E5%8F%8C%E6%8C%87%E9%92%88%E6%B3%95%EF%BC%88%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88%E6%B3%95%EF%BC%89/">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2016-01-12-use-ubuntu-notes/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1278,7 +859,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021-10-09-%E3%80%90%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E3%80%91%E5%8F%8C%E6%8C%87%E9%92%88%E6%B3%95%EF%BC%88%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88%E6%B3%95%EF%BC%89/" class="post-title-link" itemprop="url">「算法刷题」双指针法（快慢指针法）</a>
+          <a href="/2016-01-12-use-ubuntu-notes/" class="post-title-link" itemprop="url">Ubuntu 使用笔记</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1289,14 +870,16 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2021-10-09 00:00:00" itemprop="dateCreated datePublished" datetime="2021-10-09T00:00:00+00:00">2021-10-09</time>
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
+        <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-02-02 01:00:55" itemprop="dateModified" datetime="2024-02-02T01:00:55+00:00">2024-02-02</time>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+        </span>
     </span>
 
   
@@ -1309,162 +892,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="一、顺序结构中的双指针法"><a href="#一、顺序结构中的双指针法" class="headerlink" title="一、顺序结构中的双指针法"></a>一、顺序结构中的双指针法</h1><p>顺序结构：这里主要指的是数组或字符串。</p>
-<h3 id="（1）普通数组"><a href="#（1）普通数组" class="headerlink" title="（1）普通数组"></a>（1）普通数组</h3><p>slow指向   当前所需元素数组的下一个空位。返回值为slow时，slow就代表目标数组的长度。</p>
-<table>
-<thead>
-<tr>
-<th><strong>题目简述</strong></th>
-<th><strong>关键点</strong></th>
-<th><strong>解题思路</strong></th>
-<th><strong>力扣题目</strong></th>
-<th align="center"><strong>相关链接</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>删除数组中的某类元素</td>
-<td>同向移动，快慢指针同时出发；</td>
-<td>slow：指向当前所需元素数组的下一个空位。fast：遍历数组。     如果快指针遇到目标值则快指针直接跳过它一步，慢指针不动，<strong>如果快指针没有遇到目标值则将自己手中的数交给慢指针</strong>，然后各自前进一步。</td>
-<td>27 移除元素（简单难度）</td>
-<td align="center"><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-element/">https://leetcode-cn.com/problems/remove-element/</a></td>
-</tr>
-<tr>
-<td>移动数组中的某类元素到开头或者末尾</td>
-<td>同向移动，快慢指针同时出发；</td>
-<td>如果快指针遇到目标值则快指针直接跳过它一步，慢指针不动，如果快指针没有遇到目标值则将自己手中的数和慢指针交换，然后各自前进一步。</td>
-<td>283 移动零（简单难度）</td>
-<td align="center"><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/move-zeroes/">https://leetcode-cn.com/problems/move-zeroes/</a></td>
-</tr>
-</tbody></table>
-<h3 id="（2）有序数组"><a href="#（2）有序数组" class="headerlink" title="（2）有序数组"></a>（2）有序数组</h3><p>无序数组可以直接使用sort()函数排序后变成有序数组。sort(nums.begin(),nums.end())</p>
-<table>
-<thead>
-<tr>
-<th><strong>题目简述</strong></th>
-<th><strong>关键点</strong></th>
-<th><strong>解题思路</strong></th>
-<th><strong>力扣题目</strong></th>
-<th><strong>相关链接</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>删除<strong>有序数组</strong>中的重复元素</td>
-<td>同向移动，快指针先行一步，每次不断比较两个指针上的数是否相同。</td>
-<td><strong>一个指针（fast）从头到尾遍历，另一个（slow）始终指示当前没有重复的元素数组的下一个空位置；</strong>相同则快指针直接跳过去多行一步，不相同则快指针将手中的数交给慢指针，然后快慢指针同时前进一步；（这时慢指针指的是当前没有重复元素的最后一个*：注意返回值是slow+1。）</td>
-<td>26 删除排序数组中的重复项（简单难度）</td>
-<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/">https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/</a></td>
-</tr>
-<tr>
-<td>求有序数组中的众数（可能不止一个）</td>
-<td>同向移动，快指针先行一步，每次不断比较两个指针上的数是否相同。</td>
-<td>相同则频率计时器+1，不相同则频率计时器设为0；每次检查频率计时器是否超过最大计数，超过则记录当前快指针上的数为众数。vector数组排序：sort(nums.begin(),nums.end())</td>
-<td><strong>169 多数元素（中等难度）</strong></td>
-<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/majority-element/">https://leetcode-cn.com/problems/majority-element/</a></td>
-</tr>
-<tr>
-<td>将有序数组中每个元素平方后再排序</td>
-<td>反向移动，左指针和右指针同时出发，每次比较左指针和右指针手上的数的平方；</td>
-<td>如果左指针手中数的平方更大则移动起始指针，如果末尾指针手中的数更大则移动末尾指针；当起始指针大于末尾指针时循环结束。（有序数组平方数组平方的最大值就在数组的两端，所以排序需要不断比较数组两端的数）</td>
-<td>977 有序数组的平方（简单难度）</td>
-<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/squares-of-a-sorted-array/">https://leetcode-cn.com/problems/squares-of-a-sorted-array/</a></td>
-</tr>
-</tbody></table>
-<h4 id="169-多数元素（中等难度）"><a href="#169-多数元素（中等难度）" class="headerlink" title="169 多数元素（中等难度）"></a>169 多数元素（中等难度）</h4><h4 id="1、排序法"><a href="#1、排序法" class="headerlink" title="1、排序法"></a>1、排序法</h4><p>​       <strong>众数是指在数组中出现次数大于<code>⌊ n/2 ⌋</code> 的元素</strong>。 先将nums排序， ，然后返回中间元素的值即可（众数的个数大于一半，排好序的<code>nums</code>中间元素一定是众数） 。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">majorityElement</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">sort</span>(nums.<span class="built_in">begin</span>(),nums.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">return</span> nums[nums.<span class="built_in">size</span>()/<span class="number">2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h4 id="2、摩尔投票法思路"><a href="#2、摩尔投票法思路" class="headerlink" title="2、摩尔投票法思路"></a>2、摩尔投票法思路</h4><p>候选人(cand_num)初始化为nums[0]，票数count初始化为1。<br>当遇到与cand_num相同的数，则票数count &#x3D; count + 1，否则票数count &#x3D; count - 1。<br>当票数count为0时，更换候选人，并将票数count重置为1。<br>遍历完数组后，cand_num即为最终答案。</p>
-<p>为何这行得通呢？<br>投票法是遇到相同的则票数 + 1，遇到不同的则票数 - 1。<br>且“多数元素”的个数&gt; ⌊ n&#x2F;2 ⌋，其余元素的个数总和&lt;&#x3D; ⌊ n&#x2F;2 ⌋。<br>因此“多数元素”的个数 - 其余元素的个数总和 的结果 肯定 &gt;&#x3D; 1。<br>这就相当于每个“多数元素”和其他元素 两两相互抵消，抵消到最后肯定还剩余至少1个“多数元素”。</p>
-<p>无论数组是1 2 1 2 1，亦或是1 2 2 1 1，总能得到正确的候选人。</p>
-<p>作者：gfu<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/majority-element/solution/3chong-fang-fa-by-gfu-2/">https://leetcode-cn.com/problems/majority-element/solution/3chong-fang-fa-by-gfu-2/</a><br>来源：力扣（LeetCode）</p>
-<p>代码如下：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">majorityElement</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> cand=nums[<span class="number">0</span>],count=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;nums.<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(cand==nums[i])&#123;</span><br><span class="line">                count++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(--count==<span class="number">0</span>)&#123;</span><br><span class="line">                cand=nums[i];</span><br><span class="line">                count=<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cand;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h1 id="二、非顺序结构中的双指针法"><a href="#二、非顺序结构中的双指针法" class="headerlink" title="二、非顺序结构中的双指针法"></a>二、非顺序结构中的双指针法</h1><p>这里的非顺序结构主要指的是：链表或二叉树。</p>
-<h2 id="1、链表"><a href="#1、链表" class="headerlink" title="1、链表"></a>1、链表</h2><p>链表删除某个元素的模板：</p>
-<p>1、创建头结点和当前结点</p>
-<p>2、删除结点</p>
-<p>3、还原真实头结点，返回。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">ListNode* removeElements(ListNode* head, int val) &#123;</span><br><span class="line">        //新建虚拟头结点</span><br><span class="line">        ListNode * myHead = new ListNode(0);</span><br><span class="line">        myHead-&gt;next=head;</span><br><span class="line">        //循环检查链表的当前节点的下一节点</span><br><span class="line">        ListNode* cur=myHead;//当前节点（一定不为空）</span><br><span class="line">        while (cur-&gt;next != NULL) &#123;</span><br><span class="line">            if(cur-&gt;next-&gt;val == val) &#123;</span><br><span class="line">                cur-&gt;next = cur-&gt;next-&gt;next;//删除下一节点</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                cur = cur-&gt;next;//更新当前节点为下一节点</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //还原真实头结点</span><br><span class="line">        head = myHead-&gt;next;</span><br><span class="line">        return head;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="（1）链表的删除操作"><a href="#（1）链表的删除操作" class="headerlink" title="（1）链表的删除操作"></a>（1）链表的删除操作</h3><p>有序链表中删除一个节点cur需要其<strong>前一个节点</strong>pre-&gt;next&#x3D;cur-&gt;next; 所以其天生需要节点的先后关系。</p>
-<p>所以在执行删除操作时，一般就需要(头结点)</p>
-<table>
-<thead>
-<tr>
-<th><strong>题目简述</strong></th>
-<th><strong>关键点</strong></th>
-<th><strong>解题思路</strong></th>
-<th><strong>力扣题目</strong></th>
-<th><strong>相关链接</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>删除链表中的某类元素（简单难度）</td>
-<td>虚拟头结点；链表的循环操作和节点的删除操作</td>
-<td>同向移动，快指针从头结点先行一步，每次判断快指针是否符合删除条件，若符合则删除快指针并且重新为快指针赋值；否则则快指针和慢指针都前进一步。</td>
-<td>203 移除链表元素（简单难度）</td>
-<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-linked-list-elements/">https://leetcode-cn.com/problems/remove-linked-list-elements/</a></td>
-</tr>
-<tr>
-<td>删除链表的倒数第N个节点（中等难度）</td>
-<td>快指针先走N步之后进行判断</td>
-<td>同向出发，快指针从头结点先行N步，如果此时快指针不存在则直接返回，若存在则快指针和慢指针（从头结点）同时出发，当快指针不存在时删除慢指针之后的一个节点。</td>
-<td>19 删除链表的倒数第N个节点（中等难度）</td>
-<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/">https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/</a></td>
-</tr>
-</tbody></table>
-<h4 id="19-删除链表的倒数第n个结点"><a href="#19-删除链表的倒数第n个结点" class="headerlink" title="19.删除链表的倒数第n个结点"></a>19.删除链表的倒数第n个结点</h4><p>（1）假设链表长度为m+n。</p>
-<p>fast、slow开始指向虚拟头结点。</p>
-<p>1、fast先走n步</p>
-<p>2、fast和slow同时走，直到fast指向链表的最后一个。</p>
-<p>​     则slow走了m步。</p>
-<p>（2）链表的删除操作，需要得到目标结点的前一个结点。</p>
-<p>所以</p>
-<p>1、fast先走n+1步。</p>
-<p>2、fast和slow同时走，直到fast指向链表的最后一个的下一个位置：NULL。</p>
-<p>​     则slow走了m-1步，在倒数第n个结点前。</p>
-<h3 id="（2）链表的反转操作"><a href="#（2）链表的反转操作" class="headerlink" title="（2）链表的反转操作"></a>（2）链表的反转操作</h3><h3 id=""><a href="#" class="headerlink" title=""></a></h3><table>
-<thead>
-<tr>
-<th><strong>题目简述</strong></th>
-<th><strong>关键点</strong></th>
-<th><strong>解题思路</strong></th>
-<th><strong>力扣题目</strong></th>
-<th><strong>相关链接</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>将一个链表全部反转过来</td>
-<td>相邻节点之间的反转操作</td>
-<td>同向移动，快指针从头结点先行一步；每次移动快节点和慢节点都进行一次反向</td>
-<td>206 反转链表（简单难度）</td>
-<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/reverse-linked-list/">https://leetcode-cn.com/problems/reverse-linked-list/</a></td>
-</tr>
-<tr>
-<td>将一个链表中的[left,right]区域反转过来</td>
-<td></td>
-<td>慢指针从虚拟头结点出发找到第left个节点，然后快指针从慢指针的后一个节点出发，共同前进找到第right个节点</td>
-<td>92 反转链表II（中等难度）</td>
-<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/reverse-linked-list-ii/">https://leetcode-cn.com/problems/reverse-linked-list-ii/</a></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>根据快慢指针找到中点；反转后半段；比较前后两端节点值</td>
-<td>234 回文链表（简单难度）</td>
-<td><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/palindrome-linked-list/">https://leetcode-cn.com/problems/palindrome-linked-list/</a></td>
-</tr>
-</tbody></table>
-<h3 id="-1"><a href="#-1" class="headerlink" title=""></a></h3><h3 id="206、反转链表"><a href="#206、反转链表" class="headerlink" title="206、反转链表"></a>206、反转链表</h3><p>1、保存后面链表</p>
-<p>2、断开指针</p>
-<p>3、重新规划pre、cur</p>
-<h3 id="234、回文链表"><a href="#234、回文链表" class="headerlink" title="234、回文链表"></a>234、回文链表</h3><p>1、慢指针走一步，快指针走两步</p>
-<p>2、pre记录慢指针的前一个，用来分割链表，如果链表长度为奇数，则后半部分多一个结点。</p>
-<p>3、将后半部分反转，得cur2，前半部分为cur1.</p>
-<p>4、按照cur1的长度，比较cur1和cur2的节点数值。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isPalindrome</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        ListNode* slow=head;</span><br><span class="line">        ListNode* fast=head;</span><br><span class="line">        ListNode* pre=head;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//慢指针走一步，快指针走两步</span></span><br><span class="line">        <span class="keyword">while</span>(fast &amp;&amp; fast-&gt;next)&#123;</span><br><span class="line">            pre=slow;</span><br><span class="line">            slow=slow-&gt;next;</span><br><span class="line">            fast=fast-&gt;next-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//pre断开链表</span></span><br><span class="line">        pre-&gt;next=<span class="literal">NULL</span>;</span><br><span class="line">        ListNode* cur1=head;</span><br><span class="line">        <span class="comment">//反转cur2</span></span><br><span class="line">        ListNode* cur2=<span class="built_in">reverselist</span>(slow);</span><br><span class="line">        <span class="comment">//按照cur1的长度，比较cur1，cur2</span></span><br><span class="line">        <span class="keyword">while</span>(cur1)&#123;</span><br><span class="line">            <span class="keyword">if</span>(cur1-&gt;val!=cur2-&gt;val)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            cur1=cur1-&gt;next;</span><br><span class="line">            cur2=cur2-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverselist</span><span class="params">(ListNode* head)</span></span>&#123;</span><br><span class="line">        ListNode* cur=head;</span><br><span class="line">        ListNode* temp=head;</span><br><span class="line">        ListNode* pre=<span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">while</span>(cur)&#123;</span><br><span class="line">            <span class="comment">//保存后面链表</span></span><br><span class="line">            temp=cur-&gt;next;</span><br><span class="line">            <span class="comment">//断开原链表</span></span><br><span class="line">            cur-&gt;next=pre;</span><br><span class="line">            <span class="comment">//重新规划pre，cur</span></span><br><span class="line">            pre=cur;</span><br><span class="line">            cur=temp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> pre;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
+          <p>使用 Ubuntu 遇到一些问题，笔记在此备忘。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2016-01-12-use-ubuntu-notes/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1490,7 +926,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2021-09-27-%E3%80%90%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0%E3%80%91%E5%B0%81%E8%A3%85%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%AD%E5%AD%A6%E4%B9%A0%E7%8E%87%E7%9A%84%E8%B0%83%E6%95%B4/">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2016-01-14-android-system-cache/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1508,7 +944,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021-09-27-%E3%80%90%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0%E3%80%91%E5%B0%81%E8%A3%85%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%AD%E5%AD%A6%E4%B9%A0%E7%8E%87%E7%9A%84%E8%B0%83%E6%95%B4/" class="post-title-link" itemprop="url">「技术笔记」封装深度学习中的学习率的调整工具</a>
+          <a href="/2016-01-14-android-system-cache/" class="post-title-link" itemprop="url">Android 系统缓存扫描与清理方法分析</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1519,14 +955,16 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2021-09-27 00:00:00" itemprop="dateCreated datePublished" datetime="2021-09-27T00:00:00+00:00">2021-09-27</time>
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
+        <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-02-02 01:00:55" itemprop="dateModified" datetime="2024-02-02T01:00:55+00:00">2024-02-02</time>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
     </span>
 
   
@@ -1539,38 +977,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>学习率调度器（Scheduler）负责根据训练回合（epoch）来调整优化器的学习率（learning rate），该策略可以让模型更高效地收敛。</p>
-<p>可以看出，学习率调度器Scheduler和参数优化器optimizer的使用紧密结合。</p>
-<h1 id="一、优化器optimizer的定义"><a href="#一、优化器optimizer的定义" class="headerlink" title="一、优化器optimizer的定义"></a>一、优化器optimizer的定义</h1><p>我们以最常见的Adam优化器为例进行介绍（所有optimizers都继承自torch.optim.Optimizer类）：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line">net = model()</span><br><span class="line">initial_lr = <span class="number">0.1</span></span><br><span class="line">optimizer = torch.optim.Adam(params=net.parameters(),<span class="comment"># 需要优化的可迭代的网络参数，可以是多个网络的参数</span></span><br><span class="line">                             lr=initial_lr,<span class="comment"># 初始学习率</span></span><br><span class="line">                             )</span><br></pre></td></tr></table></figure>
-
-<h1 id="二、学习率调度器scheduler的定义"><a href="#二、学习率调度器scheduler的定义" class="headerlink" title="二、学习率调度器scheduler的定义"></a>二、学习率调度器scheduler的定义</h1><p><strong>torch.optim.lr_scheduler</strong>模块提供了一些根据epoch训练次数来调整学习率（learning rate）的方法。</p>
-<p>下面列举常见的学习率调整策略有几种：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch.optim.lr_scheduler <span class="keyword">as</span> lr_scheduler</span><br><span class="line"><span class="comment"># 将每个参数组的学习率设置为初始lr与给定函数的乘积</span></span><br><span class="line">scheduler = lr_scheduler.LambdaLR(optimizer,</span><br><span class="line">                                  lr_lambda=<span class="keyword">lambda</span> epoch:<span class="number">0.95</span>**epoch, <span class="comment"># 根据epoch计算衰减因子的函数，也可是函数列表</span></span><br><span class="line">                                 )</span><br><span class="line"><span class="comment"># 每过step_size个epoch，做一次学习率更新：</span></span><br><span class="line">scheduler = lr_scheduler.StepLR(optimizer,</span><br><span class="line">                                step_size=<span class="number">30</span>, <span class="comment"># 每训练step_size个回合更新一次学习率</span></span><br><span class="line">                                gamma=<span class="number">0.1</span>,<span class="comment"># 衰减因子，学习率的乘法因子</span></span><br><span class="line">                                )</span><br><span class="line"><span class="comment"># 该策略能够读取模型的性能指标，当该指标停止改善时，持续关系几个epochs之后，自动减小学习率。</span></span><br><span class="line">scheduler = lr_scheduler.ReduceLROnPlateau(optimizer,</span><br><span class="line">                                           mode=<span class="string">&#x27;min&#x27;</span>, <span class="comment"># 指示指标不再减小/增大时降低学习率，可取min/max</span></span><br><span class="line">                                           factor=<span class="number">0.1</span>,<span class="comment"># 衰减因子，默认为0.1</span></span><br><span class="line">                                           patience= <span class="number">10</span>,<span class="comment"># 默认为10，patience个回合之后降低学习率</span></span><br><span class="line">                                           min_lr= self.min_lr<span class="comment"># 默认为0，最小学习率</span></span><br><span class="line">                                          )</span><br></pre></td></tr></table></figure>
-
-<p>当然我们也可以继承lr_scheduler或其子类来自定义学习率的变化：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">LinearDecay</span>(lr_scheduler._LRScheduler):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;This class implements LinearDecay&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, optimizer, num_epochs, start_epoch=<span class="number">0</span>, min_lr=<span class="number">0</span>, last_epoch=-<span class="number">1</span></span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;implements LinearDecay</span></span><br><span class="line"><span class="string">        Parameters:</span></span><br><span class="line"><span class="string">        ----------</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="built_in">super</span>().__init__(optimizer, last_epoch)</span><br><span class="line">        self.num_epochs = num_epochs  <span class="comment"># 训练的总回合</span></span><br><span class="line">        self.start_epoch = start_epoch <span class="comment"># 起始回合</span></span><br><span class="line">        self.min_lr = min_lr <span class="comment"># 最小学习率</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get_lr</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># 如果没有到指定回合则直接返回</span></span><br><span class="line">        <span class="keyword">if</span> self.last_epoch &lt; self.start_epoch:</span><br><span class="line">            <span class="keyword">return</span> self.base_lrs</span><br><span class="line">        lr = [base_lr - ((base_lr - self.min_lr) / self.num_epochs) * (self.last_epoch - self.start_epoch) <span class="keyword">for</span> base_lr <span class="keyword">in</span> self.base_lrs]</span><br><span class="line">        <span class="keyword">return</span> lr</span><br></pre></td></tr></table></figure>
-
-<h1 id="三、学习率预热机制-Warmup"><a href="#三、学习率预热机制-Warmup" class="headerlink" title="三、学习率预热机制-Warmup"></a>三、学习率预热机制-Warmup</h1><h3 id="1、什么是Warmup"><a href="#1、什么是Warmup" class="headerlink" title="1、什么是Warmup?"></a>1、什么是Warmup?</h3><p>Warmup是在ResNet论文中提到的一种学习率预热的方法,即先用最初的小学习率训练，然后每个step增大一点点，直到达到最初设置的比较大的学习率时（注：此时预热学习率完成），采用最初设置的学习率进行训练（注：预热学习率完成后的训练过程，学习率是衰减的），有助于使模型收敛速度变快，效果更佳。</p>
-<h3 id="2、为什么使用Warmup"><a href="#2、为什么使用Warmup" class="headerlink" title="2、为什么使用Warmup?"></a>2、为什么使用Warmup?</h3><p>由于刚开始训练时,模型的权重(weights)是随机初始化的，此时若选择一个较大的学习率,可能带来模型的不稳定(振荡)，选择Warmup预热学习率的方式，可以使得开始训练的几个epoches或者一些steps内学习率较小,在预热的小学习率下，模型可以慢慢趋于稳定,等模型相对稳定后再选择预先设置的学习率进行训练,使得模型收敛速度变得更快，模型效果更佳。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">WarmRestart</span>(lr_scheduler.CosineAnnealingLR):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;This class implements Stochastic Gradient Descent with Warm Restarts(SGDR): https://arxiv.org/abs/1608.03983.</span></span><br><span class="line"><span class="string">    Set the learning rate of each parameter group using a cosine annealing schedule, When last_epoch=-1, sets initial lr as lr.</span></span><br><span class="line"><span class="string">    This can&#x27;t support scheduler.step(epoch). please keep epoch=None.</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, optimizer, T_max=<span class="number">30</span>, T_mult=<span class="number">1</span>, eta_min=<span class="number">0</span>, last_epoch=-<span class="number">1</span></span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;implements SGDR</span></span><br><span class="line"><span class="string">        Parameters:</span></span><br><span class="line"><span class="string">        ----------</span></span><br><span class="line"><span class="string">        T_max : int</span></span><br><span class="line"><span class="string">            Maximum number of epochs.</span></span><br><span class="line"><span class="string">        T_mult : int</span></span><br><span class="line"><span class="string">            Multiplicative factor of T_max.</span></span><br><span class="line"><span class="string">        eta_min : int</span></span><br><span class="line"><span class="string">            Minimum learning rate. Default: 0.</span></span><br><span class="line"><span class="string">        last_epoch : int</span></span><br><span class="line"><span class="string">            The index of last epoch. Default: -1.</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        self.T_mult = T_mult</span><br><span class="line">        <span class="built_in">super</span>().__init__(optimizer, T_max, eta_min, last_epoch)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get_lr</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">import</span> math</span><br><span class="line">        <span class="keyword">if</span> self.last_epoch == self.T_max:</span><br><span class="line">            self.last_epoch = <span class="number">0</span></span><br><span class="line">            self.T_max *= self.T_mult</span><br><span class="line">        <span class="keyword">return</span> [self.eta_min + (base_lr - self.eta_min) * (<span class="number">1</span> + math.cos(math.pi * self.last_epoch / self.T_max)) / <span class="number">2</span> <span class="keyword">for</span></span><br><span class="line">                base_lr <span class="keyword">in</span> self.base_lrs]</span><br></pre></td></tr></table></figure>
-
-<h1 id="四、封装的学习率调整器"><a href="#四、封装的学习率调整器" class="headerlink" title="四、封装的学习率调整器"></a>四、封装的学习率调整器</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch.optim.lr_scheduler <span class="keyword">as</span> lr_scheduler</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Scheduler</span>():</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,name</span>):</span><br><span class="line">        self.name = name</span><br><span class="line">        self.min_lr = <span class="number">0.0000001</span> <span class="comment"># 衰减的最低学习率</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get_scheduler</span>(<span class="params">self, optimizer</span>):</span><br><span class="line">        <span class="keyword">if</span> self.name == <span class="string">&#x27;lambdaLR&#x27;</span>:</span><br><span class="line">            <span class="comment"># 将每个参数组的学习率设置为初始lr与给定函数的乘积</span></span><br><span class="line">            scheduler = lr_scheduler.LambdaLR(optimizer,</span><br><span class="line">                                              lr_lambda=<span class="keyword">lambda</span> epoch:<span class="number">0.95</span>**epoch, <span class="comment"># 根据epoch计算衰减因子的函数，也可以是函数列表</span></span><br><span class="line">                                              )</span><br><span class="line">        <span class="keyword">elif</span> self.name == <span class="string">&#x27;stepLR&#x27;</span>:</span><br><span class="line">            <span class="comment"># 每过step_size个epoch，做一次学习率更新：</span></span><br><span class="line">            scheduler = lr_scheduler.StepLR(optimizer,</span><br><span class="line">                                                  step_size=<span class="number">30</span>, <span class="comment"># 每训练step_size个回合更新一次学习率</span></span><br><span class="line">                                                  gamma=<span class="number">0.1</span>,<span class="comment"># 衰减因子，学习率的乘法因子</span></span><br><span class="line">                                                    )</span><br><span class="line">        <span class="keyword">elif</span> self.name == <span class="string">&#x27;plateau&#x27;</span>:</span><br><span class="line">            <span class="comment"># 该策略能够读取模型的性能指标，当该指标停止改善时，持续关系几个epochs之后，自动减小学习率。</span></span><br><span class="line">            scheduler = lr_scheduler.ReduceLROnPlateau(optimizer,</span><br><span class="line">                                                             mode=<span class="string">&#x27;min&#x27;</span>, <span class="comment"># 指示指标不再减小/增大时降低学习率，可取min/max</span></span><br><span class="line">                                                             factor=<span class="number">0.1</span>,<span class="comment"># 衰减因子，默认为0.1</span></span><br><span class="line">                                                             patience= <span class="number">10</span>,<span class="comment"># 默认为10，patience个回合之后降低学习率</span></span><br><span class="line">                                                             min_lr= self.min_lr)<span class="comment"># 默认为0，最小学习率</span></span><br><span class="line">        <span class="keyword">elif</span> self.name == <span class="string">&#x27;sgdr&#x27;</span>:</span><br><span class="line">            <span class="comment"># 学习率的预热机制</span></span><br><span class="line">            scheduler = WarmRestart(optimizer)</span><br><span class="line">        <span class="keyword">elif</span> self.name == <span class="string">&#x27;linear&#x27;</span>:</span><br><span class="line">            <span class="comment"># 从start_epoch开始进行学习率的线性衰减：</span></span><br><span class="line">            scheduler = LinearDecay(optimizer,</span><br><span class="line">                                    min_lr=self.min_lr, <span class="comment"># 最小学习率</span></span><br><span class="line">                                    num_epochs=<span class="number">10</span>, <span class="comment"># 训练的总回合数</span></span><br><span class="line">                                    start_epoch=<span class="number">5</span>) <span class="comment"># 开始衰减的回合数</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">raise</span> ValueError(<span class="string">&quot;Scheduler [%s] 无法初始化.&quot;</span> % self.config[<span class="string">&#x27;scheduler&#x27;</span>][<span class="string">&#x27;name&#x27;</span>])</span><br><span class="line">        <span class="keyword">return</span> scheduler</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_test_optimizer</span>():</span><br><span class="line">    <span class="keyword">import</span> torch</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">model</span>(torch.nn.Module):</span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">            <span class="built_in">super</span>().__init__()</span><br><span class="line">            self.conv1 = torch.nn.Conv2d(in_channels=<span class="number">3</span>, out_channels=<span class="number">3</span>, kernel_size=<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">    net = model()</span><br><span class="line">    initial_lr = <span class="number">0.1</span></span><br><span class="line">    optimizer = torch.optim.Adam(params=net.parameters(),<span class="comment"># 需要优化的可迭代的网络参数，也可以是多个网络的参数</span></span><br><span class="line">                                 lr=initial_lr,<span class="comment"># 初始学习率</span></span><br><span class="line">                                 )</span><br><span class="line">    <span class="keyword">return</span> optimizer</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    optimizer = get_test_optimizer()</span><br><span class="line">    <span class="comment">#scheduler = Scheduler(&#x27;lambdaLR&#x27;).get_scheduler(optimizer)</span></span><br><span class="line">    scheduler = Scheduler(<span class="string">&#x27;linear&#x27;</span>).get_scheduler(optimizer)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;初始化的学习率：&quot;</span>, optimizer.defaults[<span class="string">&#x27;lr&#x27;</span>])</span><br><span class="line">    <span class="keyword">for</span> epoch <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">11</span>):</span><br><span class="line">        optimizer.zero_grad()</span><br><span class="line">        optimizer.step()</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;第%d个epoch的学习率：%f&quot;</span> % (epoch, optimizer.param_groups[<span class="number">0</span>][<span class="string">&#x27;lr&#x27;</span>]))</span><br><span class="line">        scheduler.step()</span><br></pre></td></tr></table></figure>
-
-<p>测试输出结果：</p>
-<p>初始化的学习率： 0.1</p>
-<p>第1个epoch的学习率：0.100000</p>
-<p>第2个epoch的学习率：0.100000</p>
-<p>第3个epoch的学习率：0.100000</p>
-<p>第4个epoch的学习率：0.100000</p>
-<p>第5个epoch的学习率：0.100000</p>
-<p>第6个epoch的学习率：0.100000</p>
-<p>第7个epoch的学习率：0.090000</p>
-<p>第8个epoch的学习率：0.080000</p>
-<p>第9个epoch的学习率：0.070000</p>
-<p>第10个epoch的学习率：0.060000</p>
-<p>进程已结束，退出代码 0</p>
-
+          <p>Android 系统缓存从原理探索到实现。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2016-01-14-android-system-cache/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1589,7 +1004,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="Previous page" aria-label="Previous page" href="/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" title="Next page" aria-label="Next page" href="/page/10/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" title="Previous page" aria-label="Previous page" href="/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/">27</a><a class="extend next" rel="next" title="Next page" aria-label="Next page" href="/page/10/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>

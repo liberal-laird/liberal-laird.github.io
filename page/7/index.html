@@ -125,9 +125,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-count">265</span>
           <span class="site-state-item-name">posts</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">categories</span>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
@@ -157,7 +161,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2022-03-21-%E3%80%90%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB%E3%80%91%E7%94%A8%E4%BA%8E%E5%9B%BE%E5%83%8F%E5%85%89%E6%BA%90%E8%BF%81%E7%A7%BB%E7%9A%84%E5%A4%9A%E5%B0%BA%E5%BA%A6%E8%87%AA%E6%A0%A1%E5%87%86%E7%BD%91%E7%BB%9C/">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2019-01-20-my-2018/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -175,7 +179,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022-03-21-%E3%80%90%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB%E3%80%91%E7%94%A8%E4%BA%8E%E5%9B%BE%E5%83%8F%E5%85%89%E6%BA%90%E8%BF%81%E7%A7%BB%E7%9A%84%E5%A4%9A%E5%B0%BA%E5%BA%A6%E8%87%AA%E6%A0%A1%E5%87%86%E7%BD%91%E7%BB%9C/" class="post-title-link" itemprop="url">「论文分享」用于图像光源迁移的多尺度自校准网络</a>
+          <a href="/2019-01-20-my-2018/" class="post-title-link" itemprop="url">我的 2018 盘点</a>
         </h2>
 
         <div class="post-meta-container">
@@ -186,14 +190,16 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2022-03-21 00:00:00" itemprop="dateCreated datePublished" datetime="2022-03-21T00:00:00+00:00">2022-03-21</time>
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
+        <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-02-02 01:00:55" itemprop="dateModified" datetime="2024-02-02T01:00:55+00:00">2024-02-02</time>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Blog/" itemprop="url" rel="index"><span itemprop="name">Blog</span></a>
+        </span>
     </span>
 
   
@@ -206,31 +212,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>​		本文介绍CVPR Workshop 2021年的《Multi-scale Self-calibrated Network for Image Light Source Transfer》，相关代码已经发布在 <a target="_blank" rel="noopener" href="https://github.com/mdswyz/MCN-light-source-transfer%E3%80%82">https://github.com/mdswyz/MCN-light-source-transfer。</a> 该文的方法和DRN非常相似，甚至行文思路都非常相似，本文就不详细介绍，重点研究两者不同的地方。</p>
-<h1 id="主要贡献"><a href="#主要贡献" class="headerlink" title="主要贡献"></a>主要贡献</h1><p>​			在最新的研究（DRN）中，LLST被分解为场景恢复、阴影估计和图像重新渲染三个子任务，为图像重新照明提供了新的范式。 该文认为场景重建和阴影估计任务存在许多问题，包括未校准的特征信息和较差的语义信息，仍未解决，从而导致特征表示不足。 该文的主要贡献：</p>
-<p>（1）提出了新的<strong>下采样特征自校准块<em>down-sampling feature self-calibrated block</em>（DFSB）</strong>和**上采样特征自校准块 <em>up-sampling feature self-calibrated block</em>（UFSB）**作为特征编码器和解码器的基本块，以提高特征表示能力。</p>
-<p>（2） 将<strong>多尺度特征融合方法</strong>设计到<strong>场景重建任务</strong>的<strong>特征解码器结构</strong>中，为图像重新渲染任务提供更准确的主要场景结构。</p>
-<h1 id="该文方法"><a href="#该文方法" class="headerlink" title="该文方法"></a>该文方法</h1><p>​		该文提出的多尺度重照明网络的架构（MCN）如下图所示：</p>
-<p>![](&#x2F;img-post&#x2F;论文分享&#x2F;2022-03-21-用于图像光源迁移的多尺度自校准网络&#x2F;MCN的网络架构.png)</p>
-<p><img src="/../img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2022-03-21-%E7%94%A8%E4%BA%8E%E5%9B%BE%E5%83%8F%E5%85%89%E6%BA%90%E8%BF%81%E7%A7%BB%E7%9A%84%E5%A4%9A%E5%B0%BA%E5%BA%A6%E8%87%AA%E6%A0%A1%E5%87%86%E7%BD%91%E7%BB%9C/MCN%E7%9A%84%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84.png"></p>
-<p>​		MCN和DRN一样，都由三部分组成：场景重建、阴影先验估计和重新渲染器。  图像重新渲染子网络和DRN提出的重新渲染器组件一样。其中MCN的改进在于：</p>
-<p>（1）场景重建子网和阴影估计子网都使用该文所提出的 DFSB 和 UFSB 作为特征编码和解码的基本块。</p>
-<p>（2） 该文在场景重建子网络的特征解码部分融合了多尺度特征，以丰富输出特征的语义信息。</p>
-<p>![](&#x2F;img-post&#x2F;论文分享&#x2F;2022-03-21-用于图像光源迁移的多尺度自校准网络&#x2F;带shape的UFSB.png)</p>
-<p><img src="/../img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2022-03-21-%E7%94%A8%E4%BA%8E%E5%9B%BE%E5%83%8F%E5%85%89%E6%BA%90%E8%BF%81%E7%A7%BB%E7%9A%84%E5%A4%9A%E5%B0%BA%E5%BA%A6%E8%87%AA%E6%A0%A1%E5%87%86%E7%BD%91%E7%BB%9C/%E5%B8%A6shape%E7%9A%84UFSB.png"></p>
-<h2 id="1、DFSB和UFSB"><a href="#1、DFSB和UFSB" class="headerlink" title="1、DFSB和UFSB"></a>1、DFSB和UFSB</h2><p>DFSB</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 上采样块UFSB</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UpBlock</span>(torch.nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, input_size</span>):</span><br><span class="line">        <span class="built_in">super</span>(UpBlock, self).__init__()</span><br><span class="line">        output_size = input_size//<span class="number">2</span></span><br><span class="line">        self.conv1 = DeconvBlock(input_size, output_size, kernel_size=<span class="number">4</span>, stride=<span class="number">2</span>, padding=<span class="number">1</span>, bias=<span class="literal">True</span>)</span><br><span class="line">        self.conv2 = ConvBlock(output_size, output_size, kernel_size=<span class="number">3</span>, stride=<span class="number">2</span>, padding=<span class="number">1</span>, bias=<span class="literal">True</span>)</span><br><span class="line">        self.conv3 = DeconvBlock(output_size, output_size, kernel_size=<span class="number">4</span>, stride=<span class="number">2</span>, padding=<span class="number">1</span>, bias=<span class="literal">True</span>)</span><br><span class="line">        self.local_weight1 = ConvBlock(input_size, output_size, kernel_size=<span class="number">1</span>, stride=<span class="number">1</span>, padding=<span class="number">0</span>, bias=<span class="literal">True</span>)</span><br><span class="line">        self.local_weight2 = ConvBlock(output_size, output_size, kernel_size=<span class="number">1</span>, stride=<span class="number">1</span>, padding=<span class="number">0</span>, bias=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        hr = self.conv1(x)</span><br><span class="line">        lr = self.conv2(hr)</span><br><span class="line">        lr_calibration = torch.mul(torch.sigmoid(self.local_weight1(x)), lr)<span class="comment"># residue = self.local_weight1(x) - lr</span></span><br><span class="line">        hr_calibration = self.conv3(lr_calibration)</span><br><span class="line">        hr_weight = self.local_weight2(hr)</span><br><span class="line">        <span class="keyword">return</span> hr_weight + hr_calibration</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>UFSB</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下采样块DFSB</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">DownBlock</span>(torch.nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, input_size</span>):</span><br><span class="line">        <span class="built_in">super</span>(DownBlock, self).__init__()</span><br><span class="line">        output_size = input_size*<span class="number">2</span></span><br><span class="line">        self.conv1 = ConvBlock(input_size, output_size, kernel_size=<span class="number">3</span>, stride=<span class="number">2</span>, padding=<span class="number">1</span>, bias=<span class="literal">True</span>)</span><br><span class="line">        self.conv2 = DeconvBlock(output_size, output_size, kernel_size=<span class="number">4</span>, stride=<span class="number">2</span>, padding=<span class="number">1</span>, bias=<span class="literal">True</span>)</span><br><span class="line">        self.conv3 = ConvBlock(output_size, output_size, kernel_size=<span class="number">3</span>, stride=<span class="number">2</span>, padding=<span class="number">1</span>, bias=<span class="literal">True</span>)</span><br><span class="line">        self.local_weight1 = ConvBlock(input_size, output_size, kernel_size=<span class="number">1</span>, stride=<span class="number">1</span>, padding=<span class="number">0</span>, bias=<span class="literal">True</span>)</span><br><span class="line">        self.local_weight2 = ConvBlock(output_size, output_size, kernel_size=<span class="number">1</span>, stride=<span class="number">1</span>, padding=<span class="number">0</span>, bias=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        lr = self.conv1(x)</span><br><span class="line">        hr = self.conv2(lr)</span><br><span class="line">        hr_calibration = torch.mul(torch.sigmoid(self.local_weight1(x)), hr)<span class="comment"># residue = self.local_weight1(x) - hr</span></span><br><span class="line">        lr_calibration = self.conv3(hr_calibration)</span><br><span class="line">        lr_weight = self.local_weight2(lr)</span><br><span class="line">        <span class="keyword">return</span> lr_weight + lr_calibration</span><br></pre></td></tr></table></figure>
-
-<h2 id="2、场景重建网络"><a href="#2、场景重建网络" class="headerlink" title="2、场景重建网络"></a>2、场景重建网络</h2><p>（1）定义模块</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 编码器</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Encoder = []</span></span><br><span class="line"><span class="string">for i in range(n_downsampling):</span></span><br><span class="line"><span class="string">    mult = 2 ** i</span></span><br><span class="line"><span class="string">    Encoder += [DownBlock(ngf * mult)]</span></span><br><span class="line"><span class="string">self.encoder = nn.Sequential(*Encoder)</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">self.encoder1 = DownBlock(ngf*(<span class="number">2</span>**<span class="number">0</span>))</span><br><span class="line">self.encoder2 = DownBlock(ngf*(<span class="number">2</span>**<span class="number">1</span>))</span><br><span class="line">self.encoder3 = DownBlock(ngf*(<span class="number">2</span>**<span class="number">2</span>))</span><br><span class="line">self.encoder4 = DownBlock(ngf*(<span class="number">2</span>**<span class="number">3</span>))</span><br><span class="line"><span class="comment"># 解码器</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        Decoder = []</span></span><br><span class="line"><span class="string">        for i in range(n_downsampling):</span></span><br><span class="line"><span class="string">            mult = 2 ** (n_downsampling - i)</span></span><br><span class="line"><span class="string">            Decoder += [UpBlock(ngf * mult)]</span></span><br><span class="line"><span class="string">        self.decoder = nn.Sequential(*Decoder)</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        self.decoder1 = UpBlock(ngf*(<span class="number">2</span>**(<span class="number">4</span>-<span class="number">0</span>)))</span><br><span class="line">        self.decoder2 = UpBlock(ngf*(<span class="number">2</span>**(<span class="number">4</span>-<span class="number">1</span>)))</span><br><span class="line">        self.decoder3 = UpBlock(ngf*(<span class="number">2</span>**(<span class="number">4</span>-<span class="number">2</span>)))</span><br><span class="line">        self.decoder4 = UpBlock(ngf*(<span class="number">2</span>**(<span class="number">4</span>-<span class="number">3</span>)))</span><br><span class="line"></span><br><span class="line">        self.multi_scale_1 = nn.ConvTranspose2d(ngf * (<span class="number">2</span> ** (<span class="number">4</span> - <span class="number">1</span>)), ngf * (<span class="number">2</span> ** (<span class="number">4</span> - <span class="number">4</span>)), kernel_size=<span class="number">8</span>, stride=<span class="number">8</span>, bias=<span class="literal">True</span>)</span><br><span class="line">        self.multi_scale_2 = nn.ConvTranspose2d(ngf * (<span class="number">2</span> ** (<span class="number">4</span> - <span class="number">2</span>)), ngf * (<span class="number">2</span> ** (<span class="number">4</span> - <span class="number">4</span>)), kernel_size=<span class="number">4</span>, stride=<span class="number">4</span>, padding=<span class="number">0</span>, bias=<span class="literal">True</span>)</span><br><span class="line">        self.multi_scale_3 = nn.ConvTranspose2d(ngf * (<span class="number">2</span> ** (<span class="number">4</span> - <span class="number">3</span>)), ngf * (<span class="number">2</span> ** (<span class="number">4</span> - <span class="number">4</span>)), kernel_size=<span class="number">4</span>, stride=<span class="number">2</span>, padding=<span class="number">1</span>, bias=<span class="literal">True</span>)</span><br><span class="line">        <span class="comment">#self.multi_scale_4 = nn.ConvTranspose2d(ngf * (2 ** (4 - 3)), ngf * (2 ** (4 - 3)), kernel_size=4, stride=, padding=1, bias=True)</span></span><br><span class="line">        self.cat = nn.Conv2d(ngf * (<span class="number">2</span> ** (<span class="number">4</span> - <span class="number">4</span>))*<span class="number">4</span>, ngf * (<span class="number">2</span> ** (<span class="number">4</span> - <span class="number">4</span>)), kernel_size=<span class="number">3</span>, padding=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-
-<p>（2）前向传播</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, <span class="built_in">input</span></span>):</span><br><span class="line">        <span class="comment"># 输入块</span></span><br><span class="line">        m_in = self.inlayer(<span class="built_in">input</span>) <span class="comment"># 处理后的tensor，shape=(1,32,512,512)</span></span><br><span class="line">        <span class="comment"># 编码器</span></span><br><span class="line">        <span class="comment">#m = self.encoder(m_in) # 处理后的tensor，shape=(1,512,32,32)</span></span><br><span class="line">        feature_d1 = self.encoder1(m_in)</span><br><span class="line">        feature_d2 = self.encoder2(feature_d1)</span><br><span class="line">        feature_d3 = self.encoder3(feature_d2)</span><br><span class="line">        feature_d4 = self.encoder4(feature_d3)</span><br><span class="line">        <span class="comment"># 残差块</span></span><br><span class="line">        m = self.manipulate(feature_d4) <span class="comment"># 处理后的tensor，shape=(1,512,32,32)</span></span><br><span class="line">        <span class="comment"># 解码器</span></span><br><span class="line">        <span class="comment">#m = self.decoder(m) # 处理后的tensor，shape=(1,32,512,512)</span></span><br><span class="line">        feature_u1 = self.decoder1(m)</span><br><span class="line">        feature_u2 = self.decoder2(feature_u1)</span><br><span class="line">        feature_u3 = self.decoder3(feature_u2)</span><br><span class="line">        feature_u4 = self.decoder4(feature_u3)</span><br><span class="line">        scale1 = self.multi_scale_1(feature_u1)</span><br><span class="line">        scale2 = self.multi_scale_2(feature_u2)</span><br><span class="line">        scale3 = self.multi_scale_3(feature_u3)</span><br><span class="line">        feature_u4 = torch.cat([scale1,scale2,scale3,feature_u4],dim=<span class="number">1</span>)</span><br><span class="line">        feature_u4 = self.cat(feature_u4)</span><br><span class="line">        <span class="comment"># 跳跃链接</span></span><br><span class="line">        m = torch.cat([m_in, feature_u4], dim=<span class="number">1</span>) <span class="comment"># 处理后的tensor，shape=(1,64,512,512)</span></span><br><span class="line">        <span class="comment"># 卷积操作</span></span><br><span class="line">        m = self.shortconect(m) <span class="comment"># 处理后的tensor，shape=(1,32,512,512)</span></span><br><span class="line">        <span class="comment"># out = self.out(m)</span></span><br><span class="line">        <span class="keyword">return</span> m</span><br></pre></td></tr></table></figure>
-
-
+          <p>我的 2018 年全年盘点</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019-01-20-my-2018/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -256,7 +246,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2022-03-18-%E3%80%90%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB%E3%80%91%E7%94%A8%E4%BA%8E%E5%9B%BE%E5%83%8F%E5%85%89%E6%BA%90%E6%93%8D%E4%BD%9C%E7%9A%84%E6%B7%B1%E5%BA%A6%E9%87%8D%E5%85%89%E7%85%A7%E7%BD%91%E7%BB%9C/">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2019-05-25-a-stupid-bug/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -274,7 +264,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022-03-18-%E3%80%90%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB%E3%80%91%E7%94%A8%E4%BA%8E%E5%9B%BE%E5%83%8F%E5%85%89%E6%BA%90%E6%93%8D%E4%BD%9C%E7%9A%84%E6%B7%B1%E5%BA%A6%E9%87%8D%E5%85%89%E7%85%A7%E7%BD%91%E7%BB%9C/" class="post-title-link" itemprop="url">「论文分享」用于图像光源操作的深度重光照网络</a>
+          <a href="/2019-05-25-a-stupid-bug/" class="post-title-link" itemprop="url">记一个折磨了我一天半的 Bug</a>
         </h2>
 
         <div class="post-meta-container">
@@ -285,14 +275,16 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2022-03-18 00:00:00" itemprop="dateCreated datePublished" datetime="2022-03-18T00:00:00+00:00">2022-03-18</time>
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
+        <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-02-02 01:00:55" itemprop="dateModified" datetime="2024-02-02T01:00:55+00:00">2024-02-02</time>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
     </span>
 
   
@@ -305,86 +297,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>​		本文介绍ECCV Workshop 2020年的《Deep Relighting Networks for Image Light Source Manipulation》，作者主要是来自香港理工大学，相关代码已经发布在 <a target="_blank" rel="noopener" href="https://github.com/WangLiwen1994/DeepRelight%E3%80%82%E8%AF%A5%E6%96%87%E7%AB%A0%E7%9A%84%E6%96%B9%E6%B3%95%E5%8F%82%E5%8A%A0%E4%BA%86%E2%80%9CAIM">https://github.com/WangLiwen1994/DeepRelight。该文章的方法参加了“AIM</a> Image Relighting Challenge - Track 1: any to one”，任务目标是在给定任何类型照明下的图像，估计在给出特定光源（色温为 4500k，光方向为东）下的重照明图像。 </p>
-<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>​			操纵给定图像的光源是一项有趣的任务，在各种应用中都很有用，包括摄影和电影摄影。现有的方法通常需要额外的信息，如场景的几何结构，这可能不适用于大多数图像<strong>。在本文中，我们用公式表示单图像重照明任务，并提出了一种新的深度重照明网络（DRN）</strong>，该网络由三部分组成：</p>
-<p>​			1）场景重建，其目的是通过深度自动编码网络显示主要场景结构。</p>
-<p>​			2）阴影先验估计，通过对抗性学习，从新的灯光方向预先确定灯光效果。</p>
-<p>​			3）重新渲染，将主要结构与重建的阴影视图结合起来，形成目标光源下所需的估计图像。</p>
-<p>​			实验结果表明，该方法在定性和定量上都优于其他方法。具体而言，本文提出的DRN在2020年ECCV大会的“AIM2020-任何对一重新照明挑战”中实现了最佳峰值信噪比（PSNR）。</p>
-<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p>​		该文提出的深度重照明网络（DRN）如下图所示：</p>
-<p>![](&#x2F;img-post&#x2F;论文分享&#x2F;2022-03-18-用于图像光源操作的深度重光照网络&#x2F;DRN的架构.png)</p>
-<p><img src="/../img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2022-03-18-%E7%94%A8%E4%BA%8E%E5%9B%BE%E5%83%8F%E5%85%89%E6%BA%90%E6%93%8D%E4%BD%9C%E7%9A%84%E6%B7%B1%E5%BA%A6%E9%87%8D%E5%85%89%E7%85%A7%E7%BD%91%E7%BB%9C/DRN%E7%9A%84%E6%9E%B6%E6%9E%84.png"></p>
-<p>​		DRN由三部分组成：场景重建、阴影先验估计和重新渲染器。 首先，输入图像在场景重建网络中处理以去除照明的影响，这从输入图像中提取固有结构。 同时，另一个分支侧重于光照效果的变化，根据目标光源重新投射阴影。 接下来，重新渲染器部分感知光照效果并在结构信息的支持下重新绘制图像。 场景重建和阴影先验估计网络都具有类似的深度自动编码器结构，这是一种Pix2Pix网络增强的变体。</p>
-<h2 id="1、重光照估计（Assumption-of-Relighting）"><a href="#1、重光照估计（Assumption-of-Relighting）" class="headerlink" title="1、重光照估计（Assumption of Relighting）"></a>1、重光照估计（Assumption of Relighting）</h2><p>​		该文章讨论Any-To-One的单图像重光照任务。假设输入图片为$\mathbf{X} \in \mathbb{R}^{\mathrm{H} \times \mathrm{W} \times 3}$，其可能是处于任意光源$\Phi$下的照明效果，该任务旨在给定目标光源$\Psi$重新渲染出新的图像。根据 2004年的《Retinex processing for automatic image enhancement》和2018年的《Deep retinex decomposition for lowlight enhancement》的Retinex 理论 ， 输入图像可以写成：<br>$$<br>\mathbf{X}&#x3D;L_{\Phi}(\mathbf{S})<br>$$<br>​		其中$\mathbf{S}$是在不同光照条件下不可改变的固有场景信息， $L_{\Phi}()$是定义的一个照明操作 ，它用以提供在光源$\Phi$下的全局照明和场景 $\mathbf{S}$产生的阴影效果。</p>
-<p>​		图像重光照的公式表达如下：<br>$$<br>\mathbf{Y}&#x3D;L_{\Psi}\left(L_{\Phi}^{-1}(\mathbf{X})\right)<br>$$<br>​		其整体可以分为以下两步操作：</p>
-<p>​		（1）场景重建操作：$L_{\Phi}^{-1}()$。该步是从输入图像$\mathbf{X}$中恢复结构信息$\mathbf{S}$，目的是去除原有的光照效果，该步骤的关键是去除阴影</p>
-<p>​		（2）重光照操作：$L_{\Psi}()$。该步是用目标光源$\Psi$重新进行照明操作$L_{\Psi}()$，从而得到新的图像$\mathbf{Y}$，该步骤的关键是增加阴影。</p>
-<p>​			由于单图像重光照没有额外的几何信息输入，所以重光照操作的难度更大。该文称其所提出的方法不是直接找到某个重光照操作$L_{\Psi}()$，而是寻找一个将光照效果（主要是阴影）从输入图像迁移到目标图像的转移操作$L_{(\Phi \rightarrow \Psi)}(\mathbf{X})$，这显著降低了重新绘制阴影的难度，最后使用一个重渲染过程$P\left( ·\right)$来结合场景信息和光照效果。整个过程可以表示为：<br>$$<br>\hat{\mathbf{Y}}&#x3D;P\left(L_{\Phi}^{-1}(\mathbf{X}), L_{(\Phi \rightarrow \Psi)}(\mathbf{X})\right)<br>$$</p>
-<h2 id="2、场景重建（Scene-Reconversion）"><a href="#2、场景重建（Scene-Reconversion）" class="headerlink" title="2、场景重建（Scene Reconversion）"></a>2、场景重建（Scene Reconversion）</h2><p>​		场景重建的目的是从图像$\mathbf{X}$中提取固有的结构信息$\mathbf{S}$，从而去除光照效果。 该网络采用带有跳跃连接的自动编码器结构 [22] 来提取浅层特征，具备一个与 Pix2Pix 方法（ 2017年《Image-to-image translation with conditional adversarial networks》 ）类似的自动编码器结构，其中 9 个残差块（2016年的《Deep residual learning for image recognition》）图中的“ResBlocks”）用于消除光照效果。</p>
-<p>​		![](&#x2F;img-post&#x2F;论文分享&#x2F;2022-03-18-用于图像光源操作的深度重光照网络&#x2F;DRN的场景重建.png)</p>
-<p><img src="/../img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2022-03-18-%E7%94%A8%E4%BA%8E%E5%9B%BE%E5%83%8F%E5%85%89%E6%BA%90%E6%93%8D%E4%BD%9C%E7%9A%84%E6%B7%B1%E5%BA%A6%E9%87%8D%E5%85%89%E7%85%A7%E7%BD%91%E7%BB%9C/DRN%E7%9A%84%E5%9C%BA%E6%99%AF%E9%87%8D%E5%BB%BA.png"></p>
-<p>​		【下采样】首先， 输入图像$Input$被进行4次下采样操作（图中的“DBP”）来找到场景的判别特征（编码）。 每次下采样过程后，通道都会加倍，以尽可能多地保留信息。 这些特征具有大的感受野，其中包含许多有益于光照估计和操纵的全局信息。</p>
-<p>​		【上采样】然后，经过上采样的特征图经过4次上采样操作（图中的“UBP”）映射回原始图片大小，然后通过跳跃连接的浅层特征丰富它。 特征图与由卷积层作用的特征选择过程进一步聚合，将通道从 64 减少到 32（“Conv.”（灰色矩形））， 最后输入重新渲染器流程。</p>
-<h3 id="（1）反向投影块（Back-Projection-Block）"><a href="#（1）反向投影块（Back-Projection-Block）" class="headerlink" title="（1）反向投影块（Back-Projection Block）"></a>（1）反向投影块（<strong>Back-Projection Block</strong>）</h3><p>​		该文没有通过常规的池化或步幅卷积过程来对特征进行下采样或者上采样，而是采用反向投影块，通过残差来弥补丢失的信息。</p>
-<p>​	![](&#x2F;img-post&#x2F;论文分享&#x2F;2022-03-18-用于图像光源操作的深度重光照网络&#x2F;反向投影块的图示.png)</p>
-<p><img src="/../img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2022-03-18-%E7%94%A8%E4%BA%8E%E5%9B%BE%E5%83%8F%E5%85%89%E6%BA%90%E6%93%8D%E4%BD%9C%E7%9A%84%E6%B7%B1%E5%BA%A6%E9%87%8D%E5%85%89%E7%85%A7%E7%BD%91%E7%BB%9C/%E5%8F%8D%E5%90%91%E6%8A%95%E5%BD%B1%E5%9D%97%E7%9A%84%E5%9B%BE%E7%A4%BA.png"></p>
-<p>​		 如上图所示，下采样反投影 (DBP) 和上采样反投影 (UBP) 块由在输入空间和潜在空间之间映射信息的编码和解码操作组成。 以 DBP 块为例，它首先将输入（X）映射到潜在的空间 (Z) 通过编码过程（E1，由步长卷积层作用，过滤器大小为 3 × 3，步长为 2，填充为 1）。 然后，解码器（D2，由滤波器大小为 4 × 4，步长为 2，填充为 1 的反卷积层）将其映射回输入空间（ ˆX）以计算差异（残差，RX &#x3D; X − ˆX  ）。 残差被编码（E2，由滤波器大小为 3×3，步幅为 2，填充为 1 的步幅卷积层作用）到潜在空间 RZ 以修复潜在代码（ˆZ &#x3D; Z+RZ）。 </p>
-<p>​		数学上，DBP 和 UBP可以写成：</p>
-<p>​		![](&#x2F;img-post&#x2F;论文分享&#x2F;2022-03-18-用于图像光源操作的深度重光照网络&#x2F;反向投影块的公式.png)</p>
-<p><img src="/../img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2022-03-18-%E7%94%A8%E4%BA%8E%E5%9B%BE%E5%83%8F%E5%85%89%E6%BA%90%E6%93%8D%E4%BD%9C%E7%9A%84%E6%B7%B1%E5%BA%A6%E9%87%8D%E5%85%89%E7%85%A7%E7%BD%91%E7%BB%9C/%E5%8F%8D%E5%90%91%E6%8A%95%E5%BD%B1%E5%9D%97%E7%9A%84%E5%85%AC%E5%BC%8F.png"></p>
-<p>​	</p>
-<h3 id="（2）半监督重建（Semi-supervised-reconversion）"><a href="#（2）半监督重建（Semi-supervised-reconversion）" class="headerlink" title="（2）半监督重建（Semi-supervised reconversion）"></a>（2）半监督重建（<strong>Semi-supervised reconversion</strong>）</h3><p>​		<strong>完全监督学习和半监督学习的区别？</strong>完全监督学习使用明确定义的标签来训练网络，半监督学习无法得到明确定义的真实标签，只能使用接近真实的参考标签来训练网络。		</p>
-<p>​		从单张图像中提取的场景信息很难定义，所以我们无法通过明确定义的真实图像来完全监督网络，只能通过人工观察到的图像来半监督网络。该文方法使用的场景重建网络使用单张图片中相应的无阴影图像作为半监督的真实图片来训练网络，这种无阴影图像可能包含来自固有场景结构的冗余信息。</p>
-<p>​		该文采用曝光融合方法来获取场景的无阴影图片，该方法曾被广泛用于改善在不均匀光照条件下捕获的图像的动态范围。曝光融合方法将多张曝光不同的图像合并为一个可见度更好的图像。 （《Recovering high dynamic range radiance maps from photographs》、《Exposure fusion: A simple and practical alternative to high dynamic range photography》）</p>
-<p>​		该文采用的虚拟图像数据集 (VIDIT)  （《Vidit: Virtual image dataset for illumination transfer》）中 包含来自 390 个场景的图像，每个场景都使用八个不同的光方向和五个色温捕获 40 次，不同的光线方向会在不同的位置投射阴影，这使得通过选择非阴影像素来构建无阴影图像成为可能。</p>
-<p>​		 该文采用和《Exposure fusion: A simple and practical alternative to high dynamic range photography》相同的策略来构建由 OpenCV 包 （《 The OpenCV Library. Dr. Dobb’s Journal of Software Tools》）实现的无阴影图像：</p>
-<p>（1）太暗（曝光不足）或太亮（曝光过度）的像素被赋予较小的权重。 </p>
-<p>（2）具有高饱和度（RGB 通道的标准偏差）的像素通常处于良好的光照下，被赋予较大的权重。  </p>
-<p>（3）边缘和纹理通常包含更多信息，被认为更重要。 </p>
-<p>​		下图是一个曝光融合的例子。图中的图像是在不同的光方向和色温下捕获的。 很明显，这些图像包含由点光源引起的阴影。 使用曝光融合方法后，得到一张场景结构明显的无阴影图像。</p>
-<p>​	![](&#x2F;img-post&#x2F;论文分享&#x2F;2022-03-18-用于图像光源操作的深度重光照网络&#x2F;曝光融合方法.png)</p>
-<p><img src="/../img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2022-03-18-%E7%94%A8%E4%BA%8E%E5%9B%BE%E5%83%8F%E5%85%89%E6%BA%90%E6%93%8D%E4%BD%9C%E7%9A%84%E6%B7%B1%E5%BA%A6%E9%87%8D%E5%85%89%E7%85%A7%E7%BD%91%E7%BB%9C/%E6%9B%9D%E5%85%89%E8%9E%8D%E5%90%88%E6%96%B9%E6%B3%95.png"></p>
-<h3 id="（3）对抗学习（Adversarial-Learning）"><a href="#（3）对抗学习（Adversarial-Learning）" class="headerlink" title="（3）对抗学习（Adversarial Learning）"></a>（3）对抗学习（<strong>Adversarial Learning</strong>）</h3><p>​		为了训练场景重建网络，通过卷积层（图中“Conv.”）形成无阴影图像。它将潜在结构传输回图像空间。 但是，阴影会导致输入图像中出现空洞。 为了填补具有良好感知一致性的漏洞，该文附加了一个鉴别器来辅助场景重建网络的训练，该文采用与 《Image-to-image translation with conditional adversarial networks》相同的鉴别器结构，该结构堆叠四个跨度卷积层，分层提取全局表示。 在训练过程中，判别器被分配来区分（场景重建网络的）估计与真实无阴影图像。 一开始，估计缺乏结构信息。 鉴别器注意到弱点并基于它进行分类。同时，场景重建网络被分配来欺骗鉴别器，预测与目标无阴影图像相似的结构相关性的估计图像。 在数学上，对抗性学习是：<br>$$<br>\mathcal{L}<em>{c G A N}(G, D)&#x3D;\mathbb{E}</em>{\left(\mathbf{X}, \mathbf{Y}<em>{s f}\right)}\left[\log D\left(\mathbf{X}, \mathbf{Y}</em>{s f}\right)\right]+\mathbb{E}_{\mathbf{X}}[\log (1-D(\mathbf{X}, G(\mathbf{X})))]<br>$$</p>
-<p>​		其中生成器G 旨在最小化$\mathcal{L}<em>{c G A N}(G, D)$ 的损失，即 G* &#x3D; arg minG maxD LcGAN (G, D)。 鉴别器 D 试图最大化损失$\mathcal{L}</em>{c G A N}(G, D)$ 。 术语 $c G A N$ 表示鉴别器将输入图像 X 作为先验信息，是一种条件 GAN 结构。 考虑到估计的场景结构应该接近真实的无阴影目标 $\mathbf{Y}<em>{s f}$，使用传统的 L1 范数损失来衡量估计的每像素误差。 场景重建网络的目标定义为：<br>$$<br>G^{*}&#x3D;\lambda \mathbb{E}</em>{\left(\mathbf{X}, \mathbf{Y}<em>{s f}\right)}\left[\left|\mathbf{Y}</em>{s f}-G(\mathbf{X})\right|\right]+\arg \min _{G} \max <em>{D} \mathcal{L}</em>{c G A N}(G, D)<br>$$<br>其中术语$\lambda$ 平衡了 L1 范数和对抗性损失。</p>
-<h2 id="3、阴影先验估计（Shadow-Prior-Estimation）"><a href="#3、阴影先验估计（Shadow-Prior-Estimation）" class="headerlink" title="3、阴影先验估计（Shadow Prior Estimation）"></a>3、阴影先验估计（Shadow Prior Estimation）</h2><p>​		不同的光源会产生不同的光效，例如产生不同的阴影和色温。 为了产生目标光源的光效，该文使用了与场景重建类似的网络结构来设计一个阴影先验估计网络，其架构如下图所示。</p>
-<p>​	![](&#x2F;img-post&#x2F;论文分享&#x2F;2022-03-18-用于图像光源操作的深度重光照网络&#x2F;阴影先验估计网络.png)</p>
-<p><img src="/../img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2022-03-18-%E7%94%A8%E4%BA%8E%E5%9B%BE%E5%83%8F%E5%85%89%E6%BA%90%E6%93%8D%E4%BD%9C%E7%9A%84%E6%B7%B1%E5%BA%A6%E9%87%8D%E5%85%89%E7%85%A7%E7%BD%91%E7%BB%9C/%E9%98%B4%E5%BD%B1%E5%85%88%E9%AA%8C%E4%BC%B0%E8%AE%A1%E7%BD%91%E7%BB%9C.png"></p>
-<p>​		该网络与场景重建网络的不同点主要有三个：</p>
-<p>1）该网络丢弃了跳跃连接，因为该网络希望更加关注全局光效应，跳跃连接直接将局部特征带到输出中，这使网络不容易学习全局变化。</p>
-<p>2）该网络使用经过修改的阴影区域鉴别器，以专注于阴影区域的识别。该鉴别器采用与（ 2017年《Image-to-image translation with conditional adversarial networks》 ）相同的结构，堆叠四个步幅卷积层，逐渐提取全局特征表示。 </p>
-<p>​		为了关注阴影区域，首先校正估计以通过 z &#x3D; min(α; x) 关注低强度区域（暗，通常是阴影），其中符号 x 表示估计的像素强度。符号z表示将输入到鉴别器的修正值。术语 α 是阴影敏感度的预定义阈值（根据经验，它设置为 0.059 &#x3D; 15&#x2F;255）</p>
-<p>  3）在数学上，阴影先验估计网络的目标可以描述如下：</p>
-<p>$$<br>\begin{array}{r}<br>G^{*}&#x3D;\lambda \mathbb{E}_{\mathbf{X}, \mathbf{Y}}[|\mathbf{Y}-G(\mathbf{X})|]+\arg \min <em>{G} \max <em>{D} \mathcal{L}</em>{c G A N}(G, D) \<br>+\arg \min <em>{G} \max <em>{D</em>{s h a d}} \mathcal{L}</em>{c G A N}\left(G, D</em>{s h a d}\right)<br>\end{array}<br>$$<br>​		其中 ground-truth目标是目标光源下的图像。 Dshad 表示阴影区域鉴别器（细节将在下面说明）， Y 表示目标光源下的图像。</p>
-<h2 id="4、重渲染模块"><a href="#4、重渲染模块" class="headerlink" title="4、重渲染模块"></a>4、重渲染模块</h2><pre><code>     经过场景重建网络和阴影先验估计网络的处理后，估计的场景结构和光照效果将融合在一起以产生重光照后的输出，如下图所示。
-</code></pre>
-<p>​	![](&#x2F;img-post&#x2F;论文分享&#x2F;2022-03-18-用于图像光源操作的深度重光照网络&#x2F;重渲染模块.png)</p>
-<p><img src="/../img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2022-03-18-%E7%94%A8%E4%BA%8E%E5%9B%BE%E5%83%8F%E5%85%89%E6%BA%90%E6%93%8D%E4%BD%9C%E7%9A%84%E6%B7%B1%E5%BA%A6%E9%87%8D%E5%85%89%E7%85%A7%E7%BD%91%E7%BB%9C/%E9%87%8D%E6%B8%B2%E6%9F%93%E6%A8%A1%E5%9D%97.png"></p>
-<p>​		重新渲染器由三部分组成：多尺度感知、通道重新校准和绘制过程。 </p>
-<p><strong>（1）多尺度感知块</strong>。重新渲染器使用一种新的多尺度感知块，不同尺度的感知块有利于获取场景的全局和局部信息，这是十分必要的，全局信息有利于阴影和光照的一致性，而局部信息增强了光照效果的纹理细节。该文使用的多尺度感知块具有不同感知大小的过滤器（例如，过滤器大小为 3 × 3、5 × 5，…）。</p>
-<p>（2）<strong>通道重新校准。</strong>该过程用于学习不同通道的权重，从而为以下绘制过程选择关键特征。经过多尺度感知块处理后，具有不同空间感知的特征被合并成一个单一的特征图，其中每个通道存储一种类型的空间模式。 但是，不同的模式对于重新渲染过程可能具有不同的重要性。 </p>
-<p>（3）<strong>绘制块。</strong>绘制块是一个卷积层（滤波器大小为 7 × 7，填充为 3，步幅为 1 和 tanh 激活函数），用于将预测特征从特征空间绘制到图像空间。</p>
-<p>​		<strong>损失函数</strong>：重渲染器的损失函数由每像素重建误差和感知误差组成。 重建误差是通过广泛使用的 L1 范数损失来衡量的。感知相似度（2016年的《Perceptual losses for real-time style transfer and super-resolution》）基于从 VGG-19 网络中提取的特征计算。 VGG-19网络使用 ImageNet 数据集进行了预训练，用于图像分类。 提取的特征对视觉比较具有判别力，因此可以用来衡量感知相似度。 损失函数定义为：<br>$$<br>\mathcal{L}(\mathbf{Y}, \hat{\mathbf{Y}})&#x3D;|\mathbf{Y}-\hat{\mathbf{Y}}|+\lambda|f \operatorname{eat}(\mathbf{Y})-\operatorname{feat}(\hat{\mathbf{Y}})|<br>$$<br>​		其中平衡系统设置为0.01。</p>
-<h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1><h2 id="1、数据集"><a href="#1、数据集" class="headerlink" title="1、数据集"></a>1、数据集</h2><p>​        Virtual Image Dataset for Illumination Transfer (VIDIT) 数据集包含 390 个不同场景内容（例如金属、木材等）的虚拟场景，其中有 300 个用于训练的场景、45 个用于验证的场景和 45 个用于单独测试场景 。 所有场景由强大的游戏引擎（虚幻引擎 4 ）渲染以获得高分辨率图像。  VIDIT 数据集的目标是照明操作。 每个场景用八个光方向和五个色温进行渲染，从而产生分辨率为 1024*1024 的 40 张图像。该文使用 300 个训练场景中的所有可能对来训练网络，并使用提供的验证数据集（45 个场景）进行评估。</p>
-<h2 id="2、训练策略"><a href="#2、训练策略" class="headerlink" title="2、训练策略"></a>2、训练策略</h2><p>​		受 GPU 内存和计算能力的限制，该文对三个子网络（场景重建、阴影先验估计和重新渲染器）进行分别训练。 首先，作者通过设计的损失函数使用成对的输入图像和无阴影目标图像来训练场景重建网络。 接着，使用成对的输入图像和目标图像来训练阴影先验估计网络。 最后，在固定场景重建网络和阴影先验估计网络并移除了它们的最后一个卷积层和鉴别器（图 5 中的绿色圆圈和图 6 中的粉红色圆圈）的情况下，使用设计的损失函数训练重新渲染器网络。</p>
-<h2 id="3、训练设置"><a href="#3、训练设置" class="headerlink" title="3、训练设置"></a>3、训练设置</h2><p>​		所有训练图像的大小从 <code>1024*1024</code> 调整为 <code>512*512</code>，并且 mini-batch 大小设置为 6。 使用Adam优化方法，动量为0.5，学习率为0.0001。 网络随机初始化为[33]。 正如前文提到的，场景重建网络和阴影先验估计网络首先独立训练，其中每个网络训练 20 个epoch。 然后，将两个网络固定，重新渲染器网络也训练了 20 个 epoch。 所有实验都是通过 PyTorch （2019年的《Pytorch: An imperative style, high-performance deep learning library》）在带有两个 NVIDIA GTX2080Ti GPU 的 PC 上进行的。</p>
-<h2 id="4、评价方法"><a href="#4、评价方法" class="headerlink" title="4、评价方法"></a>4、评价方法</h2><p>​		本文使用峰值信噪比（PSNR）和结构相似性（SSIM）（2004年的《Image quality assessment: from error visibility to structural similarity》）来衡量预测图像与真实图像之间的相似性，其中较大的值意味着更好的性能。 为了衡量感知质量，本文使用了学习感知图像块相似度（LPIPS）（2020年的《Bisenet v2: Bilateral network with guided aggregation for real-time semantic segmentation》），其中较小的值意味着更多的感知相似度。</p>
-<h2 id="5、消融实验"><a href="#5、消融实验" class="headerlink" title="5、消融实验"></a>5、消融实验</h2><p>​		由于基于深度学习的重光照是一项新话题，因此可用于比较的方法很少。重光照问题可以看作是将光源转换为目标设置的图像到图像转换任务，因此，该文章采用了Pix2Pix[14]  作为基线模型。 Pix2pix 是一种通过对抗策略训练的有条件 GAN 结构，在图像到图像的转换任务中取得了巨大的成功，如背景去除、姿势转移等。Pix2Pix 方法基于自动编码器结构，其中输入图像首先被下采样四次（比例缩小到 1&#x2F;16），然后由九个残差块处理。 最后，一组反卷积层用于将图像上采样回原始大小并形成估计。 </p>
-<p>​	![](&#x2F;img-post&#x2F;论文分享&#x2F;2022-03-18-用于图像光源操作的深度重光照网络&#x2F;不同结构的比较.png)</p>
-<p><img src="/../img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2022-03-18-%E7%94%A8%E4%BA%8E%E5%9B%BE%E5%83%8F%E5%85%89%E6%BA%90%E6%93%8D%E4%BD%9C%E7%9A%84%E6%B7%B1%E5%BA%A6%E9%87%8D%E5%85%89%E7%85%A7%E7%BD%91%E7%BB%9C/%E4%B8%8D%E5%90%8C%E7%BB%93%E6%9E%84%E7%9A%84%E6%AF%94%E8%BE%83.png"></p>
-<p>​		表 1 给出了不同结构之间的比较，其中 ShadAdv 和 BPAE 是 Pxi2Pix 网络的两种变体。 基线方法 (Pix2Pix) 在 PSNR 中达到 16.28 dB，在 SSIM 中达到 0.553，在 LPIPS 中达到 0.482。</p>
-<h4 id="（A）Pix2Pix和ShadAdv的比较"><a href="#（A）Pix2Pix和ShadAdv的比较" class="headerlink" title="（A）Pix2Pix和ShadAdv的比较"></a>（A）Pix2Pix和ShadAdv的比较</h4><p>​		ShadAdv和 Pix2Pix的区别就是ShadAdv添加了提出的阴影区域鉴别器来增强基线 Pix2Pix。 表中PSNR 提高了 0.84(&#x3D; 17.12 − 16.28) dB，感知质量在 LPIPS 方面提高了 0.042 (&#x3D; 0.482 − 0.440)。可以得出结论，与原始的 Pix2Pix 方法相比，“ShadAdv”更加注重阴影区域的外观。 换句话说，阴影鉴别器可以为重新投射目标光源的阴影提供更好的指导。</p>
-<h4 id="（B）反投影模块的效果"><a href="#（B）反投影模块的效果" class="headerlink" title="（B）反投影模块的效果"></a>（B）反投影模块的效果</h4><p>​		“Pix2Pix”和“ShadAdv”方法基于自动编码器结构。 正如我们所提到的，它通过堆叠的卷积和反卷积层对图像进行下采样和上采样。  “BPAE”方法是自动编码器的增强版本，其中下采样和上采样过程由 DBP 和 UBP 块完成（如图 4 所示）。  BP 块基于反投影理论，它弥补了下采样和上采样过程中丢失的信息。 与自动编码器结构（在“ShadAdv”中使用）相比，“BPAE”方法提取了更多信息特征，丰富了估计的结构，将 SSIM 从 0.569 增加到 0.573。</p>
-<h4 id="（C）重光照假设的影响"><a href="#（C）重光照假设的影响" class="headerlink" title="（C）重光照假设的影响"></a>（C）重光照假设的影响</h4><p>​		Pix2Pix、ShadAdv和BPAE方法都直接学习输入图像到真实图像的映射，本文所提出的方法DRN则使用了两阶段假设，以最高的 PSNR (17.59 dB) 和 SSIM (0.596) 分数以及可比较的视觉相似性（LPIPS 的 0.440）实现了最佳重建。</p>
-<p>​		该文将AnyToOne重照明任务视为两个阶段问题，其中第一阶段找到来自输入图像 X的场景结构 L−1 Φ (X) 和光效 L(Φ→Ψ)(X) 。第二阶段在目标光源下绘制 P(·) 估计 ˆY。   “DRN”是基于我们的重照明假设提出的方法。 </p>
-<h2 id="6、对比实验"><a href="#6、对比实验" class="headerlink" title="6、对比实验"></a>6、对比实验</h2><p>​		除了与Pix2Pix进行对比，该文还与其他代表性方法进行了比较。 该文在 VIDIT训练数据集上用原方法的设置重新训练，并使用 VIDIT 验证数据集进行了比较。</p>
-<p>​		 U-Net [22] 是一个流行的 CNN 结构，最初设计用于生物医学图像分割。 它由下采样（编码器）和上采样（解码器）路径组成，形成一个自动编码器结构，其中几个短接将信息从编码器直接传输到解码器部分。	</p>
-<p>​		Retinex-Net [35] 旨在启发基于 Retinex 理论的低光图像， 它首先将低光图像分解为反射率和照明元素，然后调整子网络细化照明以照亮输入图像。 </p>
-<p>​	![](&#x2F;img-post&#x2F;论文分享&#x2F;2022-03-18-用于图像光源操作的深度重光照网络&#x2F;定量对比结果.png)</p>
-<p><img src="/../img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2022-03-18-%E7%94%A8%E4%BA%8E%E5%9B%BE%E5%83%8F%E5%85%89%E6%BA%90%E6%93%8D%E4%BD%9C%E7%9A%84%E6%B7%B1%E5%BA%A6%E9%87%8D%E5%85%89%E7%85%A7%E7%BD%91%E7%BB%9C/%E5%AE%9A%E9%87%8F%E5%AF%B9%E6%AF%94%E7%BB%93%E6%9E%9C.png"></p>
-<p>​		接下来的定性对比实验结果：</p>
-<p>![](&#x2F;img-post&#x2F;论文分享&#x2F;2022-03-18-用于图像光源操作的深度重光照网络&#x2F;定性对比结果.png)</p>
-<p><img src="/../img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2022-03-18-%E7%94%A8%E4%BA%8E%E5%9B%BE%E5%83%8F%E5%85%89%E6%BA%90%E6%93%8D%E4%BD%9C%E7%9A%84%E6%B7%B1%E5%BA%A6%E9%87%8D%E5%85%89%E7%85%A7%E7%BD%91%E7%BB%9C/%E5%AE%9A%E6%80%A7%E5%AF%B9%E6%AF%94%E7%BB%93%E6%9E%9C.png"></p>
-
+          <p>一杯茶，一根烟，一个 Bug 一天根本改不完。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019-05-25-a-stupid-bug/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -410,7 +331,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2021-11-26-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91GPU%E5%92%8CCPU%E7%9A%84%E5%88%A9%E7%94%A8%E7%8E%87/">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2019-09-14-gitee-and-tapd/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -428,7 +349,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021-11-26-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91GPU%E5%92%8CCPU%E7%9A%84%E5%88%A9%E7%94%A8%E7%8E%87/" class="post-title-link" itemprop="url">「科研笔记」GPU和CPU的利用率</a>
+          <a href="/2019-09-14-gitee-and-tapd/" class="post-title-link" itemprop="url">让 Tapd 的源码关联功能支持 Gitee 平台</a>
         </h2>
 
         <div class="post-meta-container">
@@ -439,14 +360,16 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2021-11-26 00:00:00" itemprop="dateCreated datePublished" datetime="2021-11-26T00:00:00+00:00">2021-11-26</time>
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
+        <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-02-02 01:00:55" itemprop="dateModified" datetime="2024-02-02T01:00:55+00:00">2024-02-02</time>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Tools/" itemprop="url" rel="index"><span itemprop="name">Tools</span></a>
+        </span>
     </span>
 
   
@@ -459,55 +382,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>​		本博客是记录作者部署优化本地<code>深度学习项目</code>的经验。在深度学习项目中，我们最常见的提速方式是使用GPU，但是GPU使用了后可能会发现<code>GPU利用率</code>和<code>CPU利用率</code>很低，这很可能是我们项目中<code>batch size</code>和<code>num_workers</code>的参数设置没有充分发挥<code>GPU</code>和<code>CPU</code>的性能。（直接上更好硬件的方式不在此笔记考虑范围）</p>
-<h2 id="一、CPU和GPU做什么？"><a href="#一、CPU和GPU做什么？" class="headerlink" title="一、CPU和GPU做什么？"></a>一、CPU和GPU做什么？</h2><p>​	CPU是计算机的<code>中央处理器</code>，这一点相信不必多言。在深度学习项目中，CPU主要负责从磁盘中读取数据集数据、显示或者保存实验数据到磁盘。</p>
-<p>​	GPU是计算机的<code>图形处理器</code>，平常主要负责<code>图形渲染</code>。在深度学习项目中，GPU主要负责深度学习框架中的张量（tensor）计算，主要工作基本是前向传播和反向传播部分。</p>
-<h2 id="二、记录项目指标"><a href="#二、记录项目指标" class="headerlink" title="二、记录项目指标"></a>二、记录项目指标</h2><p>为了方便我们了解此时影响深度学习项目的主要因素，我们可以在训练中统计以下三个阶段的用时：</p>
-<table>
-<thead>
-<tr>
-<th>阶段</th>
-<th>主要操作</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>数据加载</td>
-<td>获取输入数据和目标数据，并且转换为GPU类型</td>
-</tr>
-<tr>
-<td>前向传播</td>
-<td>model.forward()</td>
-</tr>
-<tr>
-<td>反向传播</td>
-<td>计算loss，loss.backward()，优化器的step()</td>
-</tr>
-</tbody></table>
-<h2 id="三、优化项目参数"><a href="#三、优化项目参数" class="headerlink" title="三、优化项目参数"></a>三、优化项目参数</h2><p>本次我们主要调节batch_size和num_workers两个参数，使用Pytorch平台(tensorflow平台类似)，相关API如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">torch.utils.data.DataLoader(image_datasets[x],</span><br><span class="line">                            batch_size=batch_size, </span><br><span class="line">                            shuffle=<span class="literal">True</span>,</span><br><span class="line">                            num_workers=<span class="number">8</span>,</span><br><span class="line">                            pin_memory=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-
-<p>注意：pin_memory参数根据你的机器CPU内存情况，选择是否打开。</p>
-<p>pin_memory参数为False时，数据从CPU传入到缓存RAM里面，再给传输到GPU上；</p>
-<p>pin_memory参数为True时，数据从CPU直接映射到GPU的相关内存块上。</p>
-<p>如果调节batch size和num_workers后，CPU内存依旧剩余较多，可以设置其为True来省掉一点数据传输时间。</p>
-<h3 id="1、优化batch-size"><a href="#1、优化batch-size" class="headerlink" title="1、优化batch_size"></a>1、优化batch_size</h3><p>​		batch_size一般要设置为2的整数倍，最好是4的整数倍，如4，8，12，16，32，128、256</p>
-<p>当然如果GPU内存特别小，那可能只能设为1。</p>
-<p>​		在GPU训练时，影响batch_size的优化的主要因素是GPU内存占用率（Memory-Usage）。</p>
-<p>​		在命令行输入nvidia-smi或者打开任务管理器的性能页面，可以查看到GPU内存占用率情况，当模型的结构固定时，这个值一般也是一个相对平稳的值：</p>
-<p>![](&#x2F;img-post&#x2F;科研笔记&#x2F;2021-11-26-【科研笔记】GPU和CPU的利用率&#x2F;GPU内存占用率.png)</p>
-<p><img src="/../img-post/%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0/2021-11-26-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91GPU%E5%92%8CCPU%E7%9A%84%E5%88%A9%E7%94%A8%E7%8E%87/GPU%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8%E7%8E%87.png"></p>
-<p>​		我们要尽可能地提升batch_size大小，确保GPU内存占用率达到90%以上。</p>
-<h3 id="2、GPU利用率"><a href="#2、GPU利用率" class="headerlink" title="2、GPU利用率"></a>2、GPU利用率</h3><p>​		上面我们调整完batch_size，GPU内存占用率达到90%以上后，但是GPU利用率（Volatile GPU-Util）依旧非常低，这个参数一般是反复跳动的，突然升高然后降低。</p>
-<p>![](&#x2F;img-post&#x2F;科研笔记&#x2F;2021-11-26-【科研笔记】GPU和CPU的利用率&#x2F;GPU利用率.png)</p>
-<p><img src="/../img-post/%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0/2021-11-26-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91GPU%E5%92%8CCPU%E7%9A%84%E5%88%A9%E7%94%A8%E7%8E%87/GPU%E5%88%A9%E7%94%A8%E7%8E%87.png"></p>
-<p>​		这个时候说明我们的主要瓶颈在CPU的数据吞吐量，即GPU会非常快计算完CPU传输进去的数据，主要时间花在CPU的处理数据和传输数据上。</p>
-<p>​		这个时候我们就要利用CPU的多线程来提高CPU的效率</p>
-<h3 id="3、优化num-workers"><a href="#3、优化num-workers" class="headerlink" title="3、优化num_workers"></a>3、优化num_workers</h3><p>​		除了换更好的内存条或者CPU外，我们基本只能调节num_workers参数。注意，这个参数不一定是越大越好，首先我们要查看CPU的线程数，这规定了num_workers的最大值。</p>
-<p>![](&#x2F;img-post&#x2F;科研笔记&#x2F;2021-11-26-【科研笔记】GPU和CPU的利用率&#x2F;CPU利用率.png)</p>
-<p><img src="/../img-post/%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0/2021-11-26-%E3%80%90%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0%E3%80%91GPU%E5%92%8CCPU%E7%9A%84%E5%88%A9%E7%94%A8%E7%8E%87/CPU%E5%88%A9%E7%94%A8%E7%8E%87.png"></p>
-<p>​		num_workers一般是8、12等，具体要结合机器的硬件性能。我们不断调高num_workers的数量，然后查看CPU占用率和数据加载时间，尽可能使用最少的CPU占用率来减少更多的数据加载时间。</p>
-<p>​		假如我们在8-12之间数据加载时间变化不大，但是CPU占用率提高很大，则建议选用8，这由于提升机器的整体性能。</p>
-
+          <p>让 Tapd 的源码关联功能支持 Gitee 平台</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019-09-14-gitee-and-tapd/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -533,7 +416,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2021-11-22-%E3%80%90%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB%E3%80%91Res2Net%EF%BC%9A%E4%B8%80%E7%A7%8D%E6%96%B0%E7%9A%84%E5%A4%9A%E5%B0%BA%E5%BA%A6%E9%AA%A8%E5%B9%B2%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84/">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2020-02-21-namebase-airdrop/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -551,7 +434,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021-11-22-%E3%80%90%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB%E3%80%91Res2Net%EF%BC%9A%E4%B8%80%E7%A7%8D%E6%96%B0%E7%9A%84%E5%A4%9A%E5%B0%BA%E5%BA%A6%E9%AA%A8%E5%B9%B2%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84/" class="post-title-link" itemprop="url">「论文分享」Res2Net：一种新的多尺度骨干网络结构</a>
+          <a href="/2020-02-21-namebase-airdrop/" class="post-title-link" itemprop="url">GitHub 用户专属福利，实际到账 3K+，Namebase Airdrop</a>
         </h2>
 
         <div class="post-meta-container">
@@ -562,14 +445,16 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2021-11-22 00:00:00" itemprop="dateCreated datePublished" datetime="2021-11-22T00:00:00+00:00">2021-11-22</time>
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
+        <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-02-02 01:00:55" itemprop="dateModified" datetime="2024-02-02T01:00:55+00:00">2024-02-02</time>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/GitHub/" itemprop="url" rel="index"><span itemprop="name">GitHub</span></a>
+        </span>
     </span>
 
   
@@ -582,44 +467,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>​		本博客是论文《Res2Net: A New Multi-scale Backbone Architecture》的中文翻译。</p>
-<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>​       多个尺度的表示特征对于许多视觉任务是非常重要的。骨干卷积神经网络(CNNs)的最新进展不断显示出更强的多尺度表示能力，在广泛的应用中获得一致的性能增益。然而，现有的方法用分层的方式来表示多尺度特征。在本文中，我们提出了一种新的cnn构建块，即Res2Net，它通过在一个残差块内构造分层的像残差一样的连接。Res2Net代表了颗粒级的多尺度特征，并增加了每个网络层的感受野范围。提出的Res2Net块可以插入到最先进的骨干CNN模型，如ResNet, ResNeXt和DLA。我们在所有这些模型上评估了Res2Net块，并在广泛使用的数据集(如CIFAR-100和ImageNet)上证明了与基线模型相比，获得了一致的性能提高。对具有代表性的计算机视觉任务，即目标检测、类别激活映射和显著目标检测，做了进一步消融研究和实验结果，进一步验证了Res2Net相对于最先进的基线方法的优越性。源代码和经过训练的模型可在<a target="_blank" rel="noopener" href="https://mmcheng.net/res2net/%E4%B8%8A%E8%8E%B7%E5%BE%97%E3%80%82">https://mmcheng.net/res2net/上获得。</a></p>
-<h1 id="1、简介"><a href="#1、简介" class="headerlink" title="1、简介"></a>1、简介</h1><p>​         在自然场景中，视觉模式以多尺度出现如图1所示。首先，对象可能以不同的形式出现在一个单一的图像，例如，沙发和杯子的大小是不同的大小。第二，一个对象的基本上下文信息可能会占据比物体本身更大的面积。为实例，我们需要依赖大表作为上下文更好辨别放在它上面的黑色小斑点是杯子还是笔夹。第三，在细粒度分类和语义分割等任务中，感知不同尺度的信息对于理解部分和对象至关重要。因此，为视觉认知任务设计良好的图像分类[33]、目标检测[53]、注意预测等多尺度刺激特征至关重要[55],目标跟踪[76]，动作识别[56]，语义分割[6]，显著目标检测[2]，[29]，目标建议[12]，[53]，骨架提取[80]，立体匹配[52]，边缘检测[45]，[69]。</p>
-<p>​       毫无疑问，多尺度特征在传统特征设计[1]、[48]和深度学习中都得到了广泛应用[10],[61]。在视觉任务中获取多尺度表征需要特征提取器使用大范围的感受野来描述不同尺度的物体&#x2F;部件&#x2F;上下文。卷积神经网络(cnn)通过一堆卷积算子自然地学习粗到细的多尺度特征。cnn固有的多尺度特征提取能力为解决众多视觉任务提供了有效的表征。如何设计一个更高效的网络架构是进一步提高cnn性能的关键。</p>
-<p>![](\img-post\论文分享\2021-11-22-Res2Net 一种新的多尺度骨干网络结构&#x2F;图1.png)</p>
-<p>![](..&#x2F;&#x2F;img-post&#x2F;论文分享&#x2F;2021-11-22-Res2Net 一种新的多尺度骨干网络结构&#x2F;图1.png)</p>
-<p>图1所示。多尺度表示对于各种视觉任务，如感知目标对象的边界、区域和语义类别，是必不可少的。即使是最简单的识别任务，不同的尺度感知信息对于理解部件、物体(例如，沙发、桌子和杯子)以及它们周围的环境(例如，“在桌子上”的环境有助于识别黑色斑点)是必不可少的。</p>
-<p>​       在过去的几年里，几个骨干网络，如[10]，[15]，[27]，[30]，[31]，[33]，[57]，[61]，[68]，[72]，在许多视觉任务中取得了显著进展，性能达到了先进水平。早期的架构，如AlexNet[33]和VGGNet[57]堆叠卷积算子，使多尺度特征的数据驱动学习成为可能。随后，通过使用不同内核大小的卷积(例如，InceptionNets [60]， [61]，[62])、残差模块(如ResNet[27]2016.《Deep residual learning for image recognition》)、shortcut连接(如DenseNet[31]2017《Densely connected convolutional networks》)、分层聚合(例如,DLA[72]2018.《Deep layer aggregation》)。骨干CNN体系结构的发展表明了一种更有效和高效的多尺度表示的趋势。</p>
-<p>​          在这项工作中，我们提出了一种简单而有效的多尺度处理方法。不同于现有的增强CNN的分层多尺度表示强度的方法我们在更细粒度的水平上改进了cnn的多尺度表示能力。不同于一些并行工作[5]，[9]，[11]，通过利用不同分辨率的特征提高多尺度能力，我们所提出的多尺度是指在更细粒度水平上的多个可用感受野。为了实现这一目标，我们将n个通道的3×3过卷积核替换为一组更小的卷积核，每个卷积核组都有w个通道(without loss of generality，我们使用n &#x3D; s × w)。如图2所示，这些较小的卷积核组以一种分层的残差风格连接，以增加输出特征所代表的尺度数量。具体地说，我们将输入特征图分成几组。一组卷积核首先从一组输入特征映射中提取特征。然后，前一组的输出特征与另一组输入特征映射一起被发送到下一组卷积核。这个过程重复几次，直到所有的输入特征图都被处理完。最后，将所有组的特征映射连接起来，发送给另一组1 × 1的卷积核，共同融合信息。随着输入特征转换为输出特征的任何可能路径，当它通过3 × 3卷积核时，相同的感受野增加，由于组合效应得到许多相同的特征尺度。</p>
-<p>​         Res2Net策略公开了一个新的维度，即规模scale(Res2Net块中的特征组的数量)，作为现有的维度：深度[57]、宽度，基[68]之外的一个基本因素。我们在第4.4节中指出，增加scale比增加其他维度更有效。</p>
-<p>​       注意，提出的方法在更细粒度的级别上利用多尺度的潜力，这与利用分层操作的现有方法是正交的。因此，所提出的构建块，即Res2Net模块，可以很容易地插入到许多现有的CNN架构中。因此，所提出的构建块，即Res2Net模块，可以很容易地插入到许多现有的CNN架构中。大量的实验结果表明，Res2Net模块可以进一步改进最先进的cnn的性能，如ResNet [27]2016.《Deep residual learning for image recognition》，ResNeXt [68]2017.《Aggregated residual  transformations for deep neural networks》， DLA[72]2018.《Deep layer aggregation》。</p>
-<p>（1. 卷积算子和卷积核可以互换使用。2. 宽度是指层中通道的数量，如[74]所示。）</p>
-<h1 id="2、相关工作"><a href="#2、相关工作" class="headerlink" title="2、相关工作"></a>2、相关工作</h1><h2 id="2-1-主干网络"><a href="#2-1-主干网络" class="headerlink" title="2.1 主干网络"></a>2.1 主干网络</h2><p>​          近年来出现了无数的骨干网[15]，[27]，[31]，[33]，[57]，[61]，[68]，[72]，在各种视觉任务中达到最先进的表现，具有更强的多尺度表征。根据设计，cnn具有基本的多尺度特征表示能力，因为输入信息遵循细到粗的方式。AlexNet[33]2012《Imagenet classifification with deep convolutional neural networks》按顺序堆叠过滤器，与传统的视觉识别方法相比获得了显著的性能增益。然而，由于网络深度和卷积核核大小的限制，AlexNet只有一个相对较小的感受野。VGGNet[57]2014.《Very deep convolutional networks for large-scale image recognition》增加了网络深度，使用了更小的内核大小的过滤器。更深层次的结构可以扩展感受野，这有助于从更大的尺度 提取特征。通过叠加更多的层来扩大感受野比使用大的核更有效。因此,VGGNet提供了比AlexNet更强的多尺度表示模型，且参数更少。然而，AlexNet和VGGNet都是直接堆叠卷积核的，这意味着每个特征层都有一个相对固定的感受野。</p>
-<p>​        Network in Network(NIN)[38]将多层感知器作为微网络插入到大网络中，以增强模型对于感受野内局部块的鉴别力。NIN中引入的1 × 1卷积是一种常用的特征融合模块。GoogLeNet[61]利用不同核大小的并行卷积核增强多尺度表示能力。然而，由于参数效率有限，这种能力往往受到计算约束的限制。Inception Nets[60]，[62]在GoogLeNet的并行路径的每个路径上堆叠更多的卷积核，以进一步扩展感受野。另一方面ResNet[27]引入了神经网络的短连接，从而在获得更深层网络结构的同时，缓解了梯度消失问题。在特征提取过程中，短连接允许不同的卷积算子组合，导致大量的等价特征尺度。类似地，DenseNet[31]中的紧密连接层使网络能够处理范围非常广的对象。DPN[10]将ResNet和DenseNet结合起来，实现了ResNet的特征重用能力和DenseNet的特征探索能力。最近提出的DLA[72]方法在树结构中结合了层。层次树结构使网络具有更强的分层多尺度表示能力。</p>
-<h2 id="2-2视觉任务的多尺度表示"><a href="#2-2视觉任务的多尺度表示" class="headerlink" title="2.2视觉任务的多尺度表示"></a>2.2视觉任务的多尺度表示</h2><p>​          cnn的多尺度特征表示在目标检测[53]、人脸分析[4]、[51]、边缘检测[45]、语义分割[6]、显著目标检测[42][78]、骨架检测[80]等视觉任务中具有重要意义，提高了这些领域的模型性能。</p>
-<h3 id="2-2-1对象检测。Object-detection"><a href="#2-2-1对象检测。Object-detection" class="headerlink" title="2.2.1对象检测。Object detection."></a>2.2.1对象检测。Object detection.</h3><p>​          有效的CNN模型需要定位场景中不同比例的物体。早期的R-CNN[22]等工作主要依赖于骨干网络，即VGGNet[57]，提取多个尺度的特征。He等人提出了SPP-Net方法[26]，利用骨干网络后的空间金字塔池化增强多尺度能力。Faster R-CNN方法[53]进一步提出了区域建议网络来生成不同尺度的bounding boxes。FPN[39]方法在Faster RCNN的基础上，引入特征金字塔，从单幅图像中提取不同尺度的特征。SSD方法[44]利用不同阶段的特征图对不同尺度的视觉信息进行处理。</p>
-<h3 id="2-2-2语义分割。Semantic-segmentation"><a href="#2-2-2语义分割。Semantic-segmentation" class="headerlink" title="2.2.2语义分割。Semantic segmentation."></a>2.2.2语义分割。Semantic segmentation.</h3><p>​         提取目标对象的重要的上下文信息 需要利用CNN模型处理不同尺度的特征，实现有效的语义分割。Long等人[47]提出了一种最早的方法，使全卷积网络(FCN)用于语义分割任务的多尺度表示。在DeepLab中，Chen等人[6]，[7]引入了级联atrous卷积模块，在保持空间分辨率的同时进一步扩展感受野。最近，通过PSPNet中的金字塔池方案，从基于区域的特征聚合全局上下文信息[77]。</p>
-<h3 id="2-2-3显著目标检测。Salient-object-detection"><a href="#2-2-3显著目标检测。Salient-object-detection" class="headerlink" title="2.2.3显著目标检测。Salient object detection"></a>2.2.3显著目标检测。Salient object detection</h3><p>​       精确定位图像中显著目标区域需要理解大尺度背景信息来确定目标显著性，也需要理解小尺度特征来精确定位目标边界[79]。早期的方法[3]利用全局对比度[13]或多尺度区域特征的手工表示[64]。Li等人[34]提出了一种最早的方法，使多尺度深度特征用于显著目标检测。随后，提出了多上下文深度学习[81]和多层次卷积特征[75]来改进显著目标检测。最近，侯等人。[29]在各阶段之间引入密集的短连接，在每一层提供丰富的多尺度特征图，用于显著的目标检测。</p>
-<h2 id="2-3并行工作"><a href="#2-3并行工作" class="headerlink" title="2.3并行工作"></a>2.3并行工作</h2><p>​       目前，有一些并行的工作，旨在利用多尺度特征[5]，[9],[11],[59]。Big-Little Net[5]是由不同计算复杂度的分支组成的多分支网络。Octave Conv[9]将标准卷积分解为两种分辨率，以处理不同频率的特征。MSNet[11]利用高分辨率网络学习高频残差，利用低分辨率网络学习的上采样低分辨率特征。除了当前工作中的低分辨率表示，HRNet [58]，[59]在网络中引入高分辨率表示，并反复进行多尺度融合以增强高分辨率表示。在[5]， [9]，[11]，[58]，[59]中的常见操作，是它们都使用池化或上采样将feature map的大小调整为原始规模的2的n次方倍，以节省计算预算，同时保持甚至提高性能。而在Res2Net块中，单个残块模块内的分层残差类连接使接受域在更细粒度的水平上的变化能够捕获细节和全局特征。实验结果表明，Res2Net模块可以与这些新型网络设计相结合，进一步提高性能。而在Res2Net块中，单个残块模块内的分层像残差一样的连接使感受野在更细粒度的水平上的变化能够捕获细节和全局特征。实验结果表明，Res2Net模块可以与这些新型网络设计相结合，进一步提高性能。</p>
-<h1 id="3-RES2NET"><a href="#3-RES2NET" class="headerlink" title="3 RES2NET"></a>3 RES2NET</h1><h2 id="3-1-Res2Net-Module"><a href="#3-1-Res2Net-Module" class="headerlink" title="3.1 Res2Net Module"></a>3.1 Res2Net Module</h2><p>​           图2(a)所示的瓶颈结构是许多现代骨干CNNs架构中的基本构建块，如ResNet [27]2016.《Deep residual learning for image recognition》，ResNeXt [68]2017.《Aggregated residual  transformations for deep neural networks》， DLA[72]2018.《Deep layer aggregation》。与瓶颈块中使用一组3 × 3卷积核提取特征不同，我们寻求具有更强多尺度特征提取能力的替代架构，同时保持相似的计算负载。具体来说，我们替换了一组3 × 3个卷积核和更小的卷积核组，同时以分层的残差风格连接不同的卷积核组。由于我们提出的神经网络模块涉及单个残差块中的<strong>res</strong>idual-like连接，我们将其命名为Res2Net。</p>
-<p>![](\img-post\论文分享\2021-11-22-Res2Net 一种新的多尺度骨干网络结构&#x2F;图2.png)</p>
-<p>![](..&#x2F;&#x2F;img-post&#x2F;论文分享&#x2F;2021-11-22-Res2Net 一种新的多尺度骨干网络结构&#x2F;图2.png)</p>
-<p>​          图2显示了瓶颈块与提出的Res2Net模块的区别。在1×1卷积后，我们均匀地将特征图划分为s个特征图子集，用xi表示，其中i∈{1,2，…,s}。与输入特征图相比，每个特征子集xi的空间大小相同，但通道数为1&#x2F;s。除x1外，每个xi都有对应的3 × 3卷积，用Ki()表示。我们用yi表示Ki()的输出。特征子集xi加上Ki−1()的输出，然后输入到Ki()。减少参数的同时增加s，我们省略了x1的3 × 3卷积。因此，“yi”可以写成:</p>
-<p>![](\img-post\论文分享\2021-11-22-Res2Net 一种新的多尺度骨干网络结构&#x2F;公式1.png)</p>
-<p>![](..&#x2F;&#x2F;img-post&#x2F;论文分享&#x2F;2021-11-22-Res2Net 一种新的多尺度骨干网络结构&#x2F;公式1.png)</p>
-<p>​          注意，每个3 × 3卷积算子Ki()都可能从所有特征分割中接收特征信息{xj, j≤i}。每次一个特征分割xj经过一个3 × 3卷积算子时，输出结果的感受野可能比xj大。由于组合爆炸效应，Res2Net模块的输出包含不同数量和不同感受野大小&#x2F;规模的不同组合。</p>
-<p>​          在Res2Net模块中，分割以多尺度的方式进行处理，这有利于提取全局和局部信息。为了更好地融合不同尺度的信息，我们将所有的分割拼接起来，并将它们通过1 × 1卷积。拆分和连接策略可以强制卷积更有效地处理特征。为了减少参数的数量，我们省略了第一次拆分的卷积，这也可以看作是特征重用的一种形式。</p>
-<p>​          在这项工作中，我们使用s作为尺度尺寸的控制参数。更大的s可能允许具有更丰富的感受野大小的特征被学习，而连接引入的计算&#x2F;内存开销可以忽略不计。</p>
-<h2 id="3-2与现代模块的集成"><a href="#3-2与现代模块的集成" class="headerlink" title="3.2与现代模块的集成"></a>3.2与现代模块的集成</h2><p>​       近年来，人们提出了许多神经网络模块，包括Xie等人[68]提出的基数维数，以及Hu等人提出的挤压和激励(SE)块。本文提出的Res2Net模块引入与这些改进正交的比例维度。如图3所示，我们可以很容易地将基数维度[68]和SE块[30]2018.《Squeeze-and-excitation networks》与提出的Res2Net模块整合在一起。</p>
-<p>![](\img-post\论文分享\2021-11-22-Res2Net 一种新的多尺度骨干网络结构&#x2F;图3.png)</p>
-<p>![](..&#x2F;&#x2F;img-post&#x2F;论文分享&#x2F;2021-11-22-Res2Net 一种新的多尺度骨干网络结构&#x2F;图3.png)</p>
-<p>图3所示。Res2Net模块可以与维度基数<a href="%E5%B0%86conv%E6%9B%BF%E6%8D%A2%E4%B8%BA%E7%BB%84conv">68</a>和SE[30]块集成。</p>
-<h3 id="3-2-1维度基数（Dimension-cardinality）"><a href="#3-2-1维度基数（Dimension-cardinality）" class="headerlink" title="3.2.1维度基数（Dimension cardinality）"></a>3.2.1维度基数（Dimension cardinality）</h3><p>​         维度基数表示卷积核内的组数[68]2017.《Aggregated residual  transformations for deep neural networks》。该维度将卷积核从单分支变为多分支，提高了CNN模型的表示能力。在我们的设计中，我们可以将3 × 3卷积替换为3 × 3组卷积，其中c表示组数。规模维数和基数之间的实验比较在第4.2节和第4.4节。</p>
-<h3 id="3-2-2-SE块-（SE-block）"><a href="#3-2-2-SE块-（SE-block）" class="headerlink" title="3.2.2 SE块 （SE block）."></a>3.2.2 SE块 （SE block）.</h3><p>​       SE块通过显式建模通道之间的相互依赖关系[30]2018.《Squeeze-and-excitation networks》，自适应地重新校准通道特征响应。与[30]类似，我们在Res2Net模块的残差连接之前添加SE块。我们的Res2Net模块可以受益于SE块的合并，我们已经在第4.2节和第4.3节中进行了实验演示。</p>
-<h2 id="3-3-Integrated-Models"><a href="#3-3-Integrated-Models" class="headerlink" title="3.3 Integrated Models"></a>3.3 Integrated Models</h2><p>​       自提出Res2Net模块没有特定需求的整体网络结构和多尺度表示的能力Res2Net模块正交于cnn的layer-wise功能聚合模型,我们提出Res2Net模块可以很容易地集成到state-ofthe-art模型,如ResNet [27],ResNeXt [68]， DLA[72]和Big-Little Net[5]2019.《Big-Little Net: An Effificient Multi-Scale Feature Representation for Visual and Speech Recognition》。对应的模型分别为Res2Net、Res2NeXt、Res2Net- dla和bLRes2Net-50。</p>
-<p>​       提出的规模scale维度正交于基数[68]维度和先前工作的宽度[27]维度。因此，在设置规模scale之后，我们调整基数和宽度的值，以保持与对应的模型的整体复杂性相似。我们不关注缩小模型尺寸在这项工作中，因为它需要更细致的设计，如深度可分离卷积[49]，模型剪枝[23]和模型压缩[14]。</p>
-<p>​         在ImageNet[54]数据集上的实验，我们主要使用ResNet-50[27]、ResNeXt-50[68]、DLA-60[72]和bLResNet-50[5]作为我们的基线模型。提出模型的复杂度与基线模型大致相当，对于50层网络，224 × 224像素的图像，其参数个数约为25M，FLOPS数约为4.2G。对于在CIFAR[32]数据集上的实验，我们使用ResNeXt-29, 8c×64w[68]作为我们的基线模型。关于提出的模型复杂性的经验评价和讨论将在第4.4节中介绍。</p>
-
+          <p>使用 GitHub 一年以上的用户可以关注一下。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020-02-21-namebase-airdrop/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -645,7 +501,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2021-11-21-%E3%80%90%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB%E3%80%91%E5%AF%B9%E4%BA%8E%E9%9D%9E%E5%9D%87%E5%8C%80%E5%8E%BB%E6%A8%A1%E7%B3%8A%E7%9A%84%E7%9F%A5%E8%AF%86%E8%BF%81%E7%A7%BB%E5%8E%BB%E6%A8%A1%E7%B3%8A%E7%BD%91%E7%BB%9C/">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2020-03-01-base64-bug/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -663,7 +519,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021-11-21-%E3%80%90%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB%E3%80%91%E5%AF%B9%E4%BA%8E%E9%9D%9E%E5%9D%87%E5%8C%80%E5%8E%BB%E6%A8%A1%E7%B3%8A%E7%9A%84%E7%9F%A5%E8%AF%86%E8%BF%81%E7%A7%BB%E5%8E%BB%E6%A8%A1%E7%B3%8A%E7%BD%91%E7%BB%9C/" class="post-title-link" itemprop="url">「论文分享」对于非均匀去模糊的知识迁移去模糊网络</a>
+          <a href="/2020-03-01-base64-bug/" class="post-title-link" itemprop="url">记一个 Base64 有关的 Bug</a>
         </h2>
 
         <div class="post-meta-container">
@@ -674,14 +530,16 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2021-11-21 00:00:00" itemprop="dateCreated datePublished" datetime="2021-11-21T00:00:00+00:00">2021-11-21</time>
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
+        <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-02-02 01:00:55" itemprop="dateModified" datetime="2024-02-02T01:00:55+00:00">2024-02-02</time>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
     </span>
 
   
@@ -694,59 +552,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>​		本博客是论文《Knowledge Transfer Dehazing Network for NonHomogeneous Dehazing》的中文翻译。</p>
-<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>​        单幅图像去模糊是最近引起重要关注的问题。 这是一项具有挑战性的图像处理任务，尤其是在非均匀场景中。然而，由于现实世界的模糊（haze）分布未知，现有的去模糊方法通常用于处理在实践中容易违反（violated）的均匀模糊。 在本文中，我们提出了一种知识迁移方法，该方法利用大量的清晰图像来训练教师网络，以提供强大而稳健的图像先验。派生的架构被称为知识转换去模糊网络（KTDN），它由具有相同架构的教师网络和去模糊网络组成。 通过中间特征之间的监督，鼓励去模糊网络模仿教师网络。 此外，我们使用注意力机制将通道注意力与像素注意力相结合以捕获有效信息，并采用增强模块来细化细节纹理。 在合成和真实场景数据集上的大量实验结果表明，所提出的方法在定量和定性评估方面均优于最先进的方法。  KTDN 在 NTIRE-2020 NonHomogeneous Dehazing Challenge [4, 5] 中排名第二。</p>
-<h1 id="1、简介"><a href="#1、简介" class="headerlink" title="1、简介"></a>1、简介</h1><p>​        单幅图像去模糊是近年来备受关注的一个问题。在通常以颜色和纹理失真为特征的朦胧场景中，数字图像将会退化。<br>​       为了解决这一问题，提高模糊图像的可见性，已经提出了许多去模糊方法[12.2010《Single image haze removal using dark channel prior》,</p>
-<ol start="9">
-<li>2016.《Dehazenet: An end-to-end system for single image haze removal》</li>
-</ol>
-<p>,14. 2017.《Aod-net: All-in-one dehazing network》</p>
-<p>,22. 2018. 《Densely connected pyramid dehazing network》</p>
-<p>,10 .2019.《 Gated  context aggregation network for image dehazing and deraining》</p>
-<p>,19.  2019. 《Enhanced pix2pix dehazing network》</p>
-<p>]。一些成功的去模糊方法是基于物理散射模型[17. 1957.《Vision through the atmosphere》]，用公式表示为：</p>
-<p><img src="D:/个人文件夹/123wangju123.github.io/_posts//img-post/论文分享/2021-11-21-对于非均匀去模糊的知识迁移去模糊网络/公式1.png"></p>
-<p><img src="/../img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-11-21-%E5%AF%B9%E4%BA%8E%E9%9D%9E%E5%9D%87%E5%8C%80%E5%8E%BB%E6%A8%A1%E7%B3%8A%E7%9A%84%E7%9F%A5%E8%AF%86%E8%BF%81%E7%A7%BB%E5%8E%BB%E6%A8%A1%E7%B3%8A%E7%BD%91%E7%BB%9C/%E5%85%AC%E5%BC%8F1.png"></p>
-<p>​        其中I为输入的模糊图像，J为恢复后的图像，t和A分别为透射图和全球大气光。然而，由于透射图和全球大气光难以估计，结果的可视性不佳，而且对透射图和全球大气光估计不准确可能会造成累积误差。虽然已经提出了一些端到端的方法[19,10,18. 2019《 Ffa-net: Feature fusion attention network for single image dehazing》]，但由于模糊分布的复杂性，以往的大部分工作都假设模糊是均匀的，在实践中容易违反（容易处理？）（violated）此外，在训练模型时，大量的信息丢失，会预测效果不好的去模糊结果。模糊图像和无模糊对应场景包含相同的视觉内容，大多数方法充分利用输入信息(模糊图像)。然而，成对的训练图像的采集比较困难。</p>
-<p>​       幸运的是，它更容易收集清晰的图像。能否挖掘出清晰的图像信息作为先验知识，帮助训练去模糊模型?为了解决这一问题，我们提出了一种知识迁移的方法，利用丰富的清晰图像来训练教师网络，学习强鲁棒的先验知识。我们对中间特征进行监督，利用特征相似性鼓励去模糊网络模仿教师网络。先验知识通过中间特征图转移到去模糊网络。</p>
-<p>​        受知识蒸馏[13. 2015. 《 Distilling the knowledge in a neural network》] 的启发，将知识从教师网络迁移到学生网络，我们设计了一个由教师网络和去模糊网络组成的双重网络。 我们训练教师网络图像来提供先验知识，来协助训练去模糊网络。 具体来说，我们使用无模糊图像来训练教师网络，然后通过特征级损失，并通过中间特征图，将教师网络的知识迁移到去模糊网络。 网络的架构是相同的，都基于编码器-解码器结构。 此外，我们使用预训练的 Res2Net [11.  2019.《Res2net: A new multi-scale backbone architecture》] 作为编码器来提取模糊图像的细节信息，并添加跳跃连接以保留信息。 此外，为了处理非均匀去模糊任务，我们使用了将通道注意力与像素注意力相结合的注意力机制，让网络更加关注纹理、颜色和厚模糊区域等有效信息。 最后，我们采用增强模块来改进结果。 根据保真度（PSNR、SSIM）和感知（LPIPS [23. 2018.《The unreasonable effectiveness of deep features as a perceptual metric》]、PI [7. (ECCV)<em>《The 2018 pirm challenge on perceptual image super-resolution》]、MOS）质量结果，KTDN 在 NTIRE-2020 NonHomogenous Dehazing Challenge [4. <em>IEEE CVPR, NTIRE Workshop</em>, 2020.《Ntire 2020 challenge on nonhomogeneous dehazing》, 5.  (CVPR) Workshops</em>, June 2020. 《Ntire 2020 challenge on nonhomogeneous dehazing》] 中排名第 2 。</p>
-<p>综上所述，我们工作的贡献如下:</p>
-<ol>
-<li><p>提出了一种双网络图像去模糊的知识迁移方法。教师网络通过图像重建任务学习清晰图像的分布，能够提供良好的先验知识，帮助去模糊网络从模糊图像中恢复出清晰图像。</p>
-</li>
-<li><p>我们使用特征注意力模块(FAM)。特征权重自适应地从FAM学习，因此重要的特征被赋予更多的权重。它在处理非均匀模糊时提供了额外的灵活性。</p>
-<p>3.我们采用多尺度增强模块融合全局上下文信息来细化结果，扩展网络的表征能力。</p>
-</li>
-</ol>
-<h1 id="2-相关工作"><a href="#2-相关工作" class="headerlink" title="2. 相关工作"></a>2. 相关工作</h1><p>​          本节简要回顾了单幅图像去模糊的相关方法，并介绍了知识蒸馏（the knowledge  distillation）的方法。</p>
-<p>​        <strong>Prior-based dehazing</strong>。基于先验的方法解决了基于统计先验的去模糊问题，这需要手工设计自然图像的特征。有一些简单但强大的先验，如暗通道先验[12]，颜色衰减先验[26]和非局部先验[6]。暗信道先验[12]提出了传输图的估计。颜色衰减先验[26]模型的模糊图像的场景深度通过一个线性模型来估计深度。非局部先验[6]假设无膜厚图像的颜色由几百种不同的颜色很好地近似，在RGB空间形成紧密的簇。虽然这些先验性得到了广泛的应用，但由于现实世界的模糊分布往往是复杂的，并且受到其他因素的影响，在实践中可能会违反先验性。</p>
-<p>​    <strong>基于学习的dehazing</strong>。鉴于深度学习的成功，越来越多的基于学习的方法被提出。DehazeNet[9]是基于CNN的去模糊模型。输入有模糊图像，输出透射图，通过大气散射模型（atmospheric scattering model.）恢复无模糊图像。AOD-Net[14]共同估计透射率和大气光，然后直接生成干净图像。GFN[20]采用基于融合的策略，从原始模糊图像中提取三个输入，并使用多尺度结构对结果进行细化。DCPDN[22]是一种边缘保持密集连接的编码器-解码器结构，具有多层金字塔池模块，用于估计传输映射。EPDN[19]将去模糊任务看作是图像到图像的转换任务，由生成对抗网络嵌入，增强器跟随生成对抗网络。GCANet[10]采用最新的平滑膨胀技术，帮助消除广泛使用的膨胀卷积造成的网格伪影。这些方法取得了一系列的成功，但高度依赖于数据集，并不能处理所有的情况。此外，以往的作品大多假设模糊是均匀的，而现实世界的模糊分布复杂，在实践中容易被违背，因此在模糊密集场景和非均匀场景中的表现会大幅下降。</p>
-<p>​       <strong>知识蒸馏（<strong><strong>Knowledge distillation</strong></strong>）</strong>。知识蒸馏[13 .2015. 《 Distilling the knowledge in a neural network》]将知识从一个深度学习模型(教师)迁移到另一个模型(学生)。它已被应用于图像分类、图像分割、目标检测等任务。[13]在不丧失太多泛化能力的情况下，将大而笨重的模型转化为更小、更快的模型的思想。而现在的知识蒸馏是在两个深度模型之间的知识迁移，我们的工作受到它的启发，但以不同的方式应用它，我们让老师和学生网络处理不同的任务。</p>
-<h1 id="3、方法"><a href="#3、方法" class="headerlink" title="3、方法"></a>3、方法</h1><h2 id="3-1、网络结构"><a href="#3-1、网络结构" class="headerlink" title="3.1、网络结构"></a>3.1、网络结构</h2><p>​       在本节中，我们概述了体系结构，并详细阐述了三个关键组件:知识迁移、注意力模块和增强模块。</p>
-<p>​        <strong>知识迁移（****Knowledge Transfer）。</strong>我们提出了一个双网络，其中包括教师网络和去模糊网络，如图1所示。清晰图像训练的教师网络用于图像重建，帮助训练去模糊网络。如果教师网络能够准确地恢复图像，我们认为它学习了清晰图像的分布，并且能够提供良好的先验知识，帮助去模糊网络从模糊图像中恢复清晰图像。网络的结构是相同的，基于编解码器的结构，但处理不同的任务。教师网络的输入是清晰的图像(真实图片)，而去模糊网络的输入是模糊的图像。为了提高编码器的性能，我们使用Res2Net[11*, 2019.《Res2net: A new multi-scale backbone architecture》]作为编码器，它最初是为图像分类而训练的。注意，我们使用的Res2Net删除了完整的连接层，只有16次向下采样，并使用[11]的预训练参数初始化。编码器的输出是一个特征图，包含代表特征。通过L1损失，在中间特征图，将教师网络的知识迁移到去模糊网络中。解码器由上采样模块、注意模块和增强模块组成。upsample模块是PixelShuffle[21. 2016. 《Real-time single image and video super-resolution using an effificient sub-pixel convolutional neural network》]层，它可以减轻网格伪影。而注意模块和增强模块的具体细节如下所示。更重要的是，为了保留更多的细节信息，我们还增加了编码器和解码器之间的跳过连接在8x, 4x层。</p>
-<p><img src="D:/个人文件夹/123wangju123.github.io/_posts//img-post/论文分享/2021-11-21-对于非均匀去模糊的知识迁移去模糊网络/图1.png"></p>
-<p><img src="/../img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-11-21-%E5%AF%B9%E4%BA%8E%E9%9D%9E%E5%9D%87%E5%8C%80%E5%8E%BB%E6%A8%A1%E7%B3%8A%E7%9A%84%E7%9F%A5%E8%AF%86%E8%BF%81%E7%A7%BB%E5%8E%BB%E6%A8%A1%E7%B3%8A%E7%BD%91%E7%BB%9C/%E5%9B%BE1.png"></p>
-<p>​       <strong>attention module注意力模块</strong>。在非均匀模糊场景中，模糊在不同像素上的分布是不均匀的。受[18.  2019.《 Ffa-net: Feature fusion attention network for single image dehazing》]的启发，我们添加了feature attention module (FAM)，它包含两个具有跳跃链接的注意力模块来进行残差学习。如图2所示，FAM由通道注意块(channel attention block :CA)和像素注意块(pixel attention block:PA)组成。特征图首先通过CA，然后传给PA。该通道注意力模块由一个平均池化层、两个卷积、一个ReLU激活以及随后的一个sigmoid函数组成，该函数通过线性变换分别输出每个通道的权值。权值将用于按元素乘积的特征映射。类似地，像素注意力模块有两个卷积、一个ReLU激活和一个sigmoid函数，但没有平均池化层。最后，我们添加了跳过连接，以保留更多的细节信息，并将其传递到深层。自适应地从FAM中学习特征权值，赋予重要特征更大的权值，使网络更加关注纹理、颜色、厚模糊区域等有效信息，为处理非均匀模糊提供了额外的灵活性。</p>
-<p><img src="D:/个人文件夹/123wangju123.github.io/_posts//img-post/论文分享/2021-11-21-对于非均匀去模糊的知识迁移去模糊网络/图2.png"></p>
-<p><img src="/../img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-11-21-%E5%AF%B9%E4%BA%8E%E9%9D%9E%E5%9D%87%E5%8C%80%E5%8E%BB%E6%A8%A1%E7%B3%8A%E7%9A%84%E7%9F%A5%E8%AF%86%E8%BF%81%E7%A7%BB%E5%8E%BB%E6%A8%A1%E7%B3%8A%E7%BD%91%E7%BB%9C/%E5%9B%BE2.png"></p>
-<p>​      **Enhancing module(增强模块)**。为了扩展网络的表示能力，我们引入了一个增强模块(EM)在最后一层卷积之前。如图3所示、首先利用两个卷积提取特征图，然后利用金字塔池化[25.2017.《 Pyramid scene parsing network》]融合多尺度层的特征细节，通过对不同感受野的学习获得全局上下文信息。其中有两个3x3的卷积层，并有一个平均池化层对卷积层的输出进行4倍，8倍，16倍，32倍的因子下采样，构建一个四级的金字塔。1x1卷积跟随每个尺度层，然后我们向上采样四个输出。然后，我们将金字塔池化前后的特征图连接起来。最后，我们添加一个3x3的卷积来对齐特征图。与[19. 2019.《 Enhanced pix2pix dehazing network 》]不同的是，我们只使用一个EM，然后卷积，然后Tanh激活。我们的网络可以根据不同的感受野（receptive fifileds）学习更多的上下文信息，从而改进结果。</p>
-<p><img src="D:/个人文件夹/123wangju123.github.io/_posts//img-post/论文分享/2021-11-21-对于非均匀去模糊的知识迁移去模糊网络/图3.png"></p>
-<p><img src="/../img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-11-21-%E5%AF%B9%E4%BA%8E%E9%9D%9E%E5%9D%87%E5%8C%80%E5%8E%BB%E6%A8%A1%E7%B3%8A%E7%9A%84%E7%9F%A5%E8%AF%86%E8%BF%81%E7%A7%BB%E5%8E%BB%E6%A8%A1%E7%B3%8A%E7%BD%91%E7%BB%9C/%E5%9B%BE3.png"></p>
-<h2 id="3-2-Loss-function"><a href="#3-2-Loss-function" class="headerlink" title="3.2. Loss function"></a>3.2. Loss function</h2><p>我们利用三个损失函数，分别是重构损失Lrec、拉普拉斯损失Llap和知识迁移损失Lkt，如Eq.(2)。</p>
-<p><img src="D:/个人文件夹/123wangju123.github.io/_posts//img-post/论文分享/2021-11-21-对于非均匀去模糊的知识迁移去模糊网络/公式2.png"></p>
-<p><img src="/../img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-11-21-%E5%AF%B9%E4%BA%8E%E9%9D%9E%E5%9D%87%E5%8C%80%E5%8E%BB%E6%A8%A1%E7%B3%8A%E7%9A%84%E7%9F%A5%E8%AF%86%E8%BF%81%E7%A7%BB%E5%8E%BB%E6%A8%A1%E7%B3%8A%E7%BD%91%E7%BB%9C/%E5%85%AC%E5%BC%8F2.png"></p>
-<p>重建损失。我们使用L1损失来训练网络，[24. 2016.《 Loss functions for image restoration with neural networks》]证明了，按照图像重建中常用的PSNR和SSIM指标，有L1损失的训练在性能上比L2损失的训练更好。</p>
-<p><img src="D:/个人文件夹/123wangju123.github.io/_posts//img-post/论文分享/2021-11-21-对于非均匀去模糊的知识迁移去模糊网络/公式3.png"></p>
-<p><img src="/../img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-11-21-%E5%AF%B9%E4%BA%8E%E9%9D%9E%E5%9D%87%E5%8C%80%E5%8E%BB%E6%A8%A1%E7%B3%8A%E7%9A%84%E7%9F%A5%E8%AF%86%E8%BF%81%E7%A7%BB%E5%8E%BB%E6%A8%A1%E7%B3%8A%E7%BD%91%E7%BB%9C/%E5%85%AC%E5%BC%8F3.png"></p>
-<p>Igt为真实图像 Ihaze为输入图像，D(·)为去模糊网络。</p>
-<p>​         Laplace loss。为了保留颜色信息等低频内容，我们使用拉普拉斯金字塔Lap1 loss [8.  2017.《Optimizing the latent space of generative networks》]:</p>
-<p><img src="D:/个人文件夹/123wangju123.github.io/_posts//img-post/论文分享/2021-11-21-对于非均匀去模糊的知识迁移去模糊网络/公式4.png"></p>
-<p><img src="/../img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-11-21-%E5%AF%B9%E4%BA%8E%E9%9D%9E%E5%9D%87%E5%8C%80%E5%8E%BB%E6%A8%A1%E7%B3%8A%E7%9A%84%E7%9F%A5%E8%AF%86%E8%BF%81%E7%A7%BB%E5%8E%BB%E6%A8%A1%E7%B3%8A%E7%BD%91%E7%BB%9C/%E5%85%AC%E5%BC%8F4.png"></p>
-<p>​        其中Lj (x)是x的拉普拉斯金字塔表示的第j层[16. CVPR, 2006.《 Diffusion distance for histogram comparison》]。Llap在精细尺度的细节上加的权重更大，从而避免了自然图像的模糊重建。</p>
-<p>​    <strong>知识迁移的损失（<strong><strong>Knowledge transfer loss</strong></strong>）</strong>。教师网络通过对包含丰富的重建知识的清晰图像进行训练，提取出清晰图像(ground truth)的中间特征。因此，迁移这一知识可能有助于训练去模糊网络。对于知识迁移损失，我们定义如下特征匹配目标函数:</p>
-<p><img src="D:/个人文件夹/123wangju123.github.io/_posts//img-post/论文分享/2021-11-21-对于非均匀去模糊的知识迁移去模糊网络/公式5.png"></p>
-<p><img src="/../img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-11-21-%E5%AF%B9%E4%BA%8E%E9%9D%9E%E5%9D%87%E5%8C%80%E5%8E%BB%E6%A8%A1%E7%B3%8A%E7%9A%84%E7%9F%A5%E8%AF%86%E8%BF%81%E7%A7%BB%E5%8E%BB%E6%A8%A1%E7%B3%8A%E7%BD%91%E7%BB%9C/%E5%85%AC%E5%BC%8F5.png"></p>
-
+          <p>编码与解码使用 Base64 的不同实现有可能导致问题。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020-03-01-base64-bug/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -772,7 +586,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2021-11-17-%E3%80%90%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%8E%B0%E3%80%91S3net%E7%9A%84%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E8%AE%B0%E5%BD%95/">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2020-03-07-get-an-in-depth-understanding-of-base64/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -790,7 +604,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021-11-17-%E3%80%90%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%8E%B0%E3%80%91S3net%E7%9A%84%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E8%AE%B0%E5%BD%95/" class="post-title-link" itemprop="url">「项目复现」S3net的环境部署记录</a>
+          <a href="/2020-03-07-get-an-in-depth-understanding-of-base64/" class="post-title-link" itemprop="url">一份简明的 Base64 原理解析</a>
         </h2>
 
         <div class="post-meta-container">
@@ -801,14 +615,16 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2021-11-17 00:00:00" itemprop="dateCreated datePublished" datetime="2021-11-17T00:00:00+00:00">2021-11-17</time>
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
+        <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-02-02 01:00:55" itemprop="dateModified" datetime="2024-02-02T01:00:55+00:00">2024-02-02</time>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
     </span>
 
   
@@ -821,18 +637,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>​		本博客是作者复现《S3Net: A Single Stream Structure for Depth Guided Image Relighting》时安装代码环境时的笔记。</p>
-<p>1、windows服务器的cuda版本为11.1</p>
-<p>安装对应版本的pytorch</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install pytorch==1.8.0 torchvision==0.9.0 torchaudio==0.8.0 cudatoolkit=11.1 -c pytorch -c conda-forge</span><br></pre></td></tr></table></figure>
-
-<p>2、安装W_SSIM损失函数所需的pywt库</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install pywt</span><br></pre></td></tr></table></figure>
-
-<p>3、安装skimage</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install skicit-image</span><br></pre></td></tr></table></figure>
-
-
+          <p>Base64 的原理其实很简单</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020-03-07-get-an-in-depth-understanding-of-base64/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -858,7 +671,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2021-11-17-%E3%80%90%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%8E%B0%E3%80%91S3net%E7%9A%84%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E5%AE%9E%E7%8E%B0/">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2020-05-01-cdn-for-github-pages/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -876,7 +689,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021-11-17-%E3%80%90%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%8E%B0%E3%80%91S3net%E7%9A%84%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E5%AE%9E%E7%8E%B0/" class="post-title-link" itemprop="url">「项目复现」S3net的网络结构实现</a>
+          <a href="/2020-05-01-cdn-for-github-pages/" class="post-title-link" itemprop="url">使用 jsDelivr 免费加速 GitHub Pages 博客的静态资源</a>
         </h2>
 
         <div class="post-meta-container">
@@ -887,14 +700,16 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2021-11-16 00:00:00" itemprop="dateCreated datePublished" datetime="2021-11-16T00:00:00+00:00">2021-11-16</time>
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
+        <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-02-02 01:00:55" itemprop="dateModified" datetime="2024-02-02T01:00:55+00:00">2024-02-02</time>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/GitHub/" itemprop="url" rel="index"><span itemprop="name">GitHub</span></a>
+        </span>
     </span>
 
   
@@ -907,23 +722,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>​		本博客是作者复现《S3Net: A Single Stream Structure for Depth Guided Image Relighting》的网络结构时的学习笔记。</p>
-<h2 id="1、网络模型"><a href="#1、网络模型" class="headerlink" title="1、网络模型"></a>1、网络模型</h2><p>​			该文的整个网络模型的输入是原始RGB图（1024x1024x3）、原始深度图（1024x1024x1）、引导RGB图（1024x1024x3）和引导深度图（1024x1024x1）连接在一起形成的8通道张量（1024x1024x8），输出的是3通道的预测RGB图（1024x1024x3）。</p>
-<p>​			本文提出的 S3Net 的架构如下图所示。该网络基于<em><strong>《Knowledge transfer dehazing network for nonhomogeneous dehazing》</strong></em>，包含编码器和解码器部分。 </p>
-<p>![](\img-post\论文分享\2021-11-04-s3net：深度引导图像重照明的单流结构\S3net整体架构.png)</p>
-<p><img src="/../img-post/%E8%AE%BA%E6%96%87%E5%88%86%E4%BA%AB/2021-11-04-s3net%EF%BC%9A%E6%B7%B1%E5%BA%A6%E5%BC%95%E5%AF%BC%E5%9B%BE%E5%83%8F%E9%87%8D%E7%85%A7%E6%98%8E%E7%9A%84%E5%8D%95%E6%B5%81%E7%BB%93%E6%9E%84/S3net%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84.png"></p>
-<p>​		【编码器】该文使用<em><strong>《Res2net: A new multi-scale backbone architecture》</strong></em>提出的Res2Net101网络主干作为编码器，因为Res2Net 可以在粒度级别表示多尺度特征，并增加每个网络层的感受野范围，输入通过主干后可以实现多尺度特征提取。该文的工作在Res2Net做了如下修改：</p>
-<ul>
-<li>修改第一个卷积使网络可以使用8 通道张量作为输入；</li>
-<li>丢弃网络最后的全连接层，使最终输出的特征图的大小为 16分之一 ；</li>
-<li>编码器的初始权重是用 ImageNet 训练的预训练参数，底部特征使用跳跃连接连接到解码器。</li>
-</ul>
-<p>​       【解码器】解码器由卷积堆栈组成，以细化特征图。</p>
-<p>​		 利用注意力模块（Attention，P）来细化中间特征。 注意模块由残差层 （residual layer）<em><strong>《Deep residual learning for image recognition》</strong></em>、空间注意力模块（SAM）<em><strong>《Recurrent models of visual attention》</strong></em> 和通道注意力模块（CAM）<em><strong>《Squeeze-and-excitation networks》</strong></em> 组成。</p>
-<p>​		 利用像素混洗（Pixel shuffle，P）<em><strong>《Real-time single image and video super-resolution using an efficient subpixel convolutional neural network》</strong></em>和转置卷积（Transposed convolution，T）<em><strong>《Pixel transposed convolutional networks》</strong></em>来放大特征图。</p>
-<p>​		此外，受<em><strong>《Enhanced pix2pix dehazing network》</strong></em>的启发，该文章在 S3Net 中添加了增强模块。 增强模块利用不同步幅的平均池化来改变特征图和感受野的大小，这对于提取多尺度特征是有效的。 最后，应用上采样来恢复减少的特征图，并将所有特征图拼接起来。 </p>
-<p>​		【跳跃连接】众所周知，类 U-Net 结构在许多任务中是有益的，例如图像去雾（《PMS-net: Robust haze removal based on patch map for single images》，《PMHLD: patch map-based hybrid learning dehazenet for single image haze removal》） 和语义分割 （<em><strong>《U-net: Convolutional networks for biomedical image segmentation》</strong></em>）。 它的跳跃连接鼓励特征重用。 因此S3Net 中也采用跳跃连接将来自主干的最后三个特征图合并到它们对应的特征图。</p>
-
+          <p>使用 jsdelivr CDN 加速 GitHub Pages 博客的静态资源。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020-05-01-cdn-for-github-pages/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -949,7 +756,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2021-11-15-%E3%80%90%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E3%80%91%E4%BD%BF%E7%94%A8VS%20Code%E7%BC%96%E8%AF%91C++/">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2015-04-06-dp-sp-px/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -967,7 +774,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021-11-15-%E3%80%90%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E3%80%91%E4%BD%BF%E7%94%A8VS%20Code%E7%BC%96%E8%AF%91C++/" class="post-title-link" itemprop="url">「环境配置」使用VSCode编译C++</a>
+          <a href="/2015-04-06-dp-sp-px/" class="post-title-link" itemprop="url">Android UI 开发里的尺寸单位理解</a>
         </h2>
 
         <div class="post-meta-container">
@@ -978,14 +785,16 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2021-11-15 00:00:00" itemprop="dateCreated datePublished" datetime="2021-11-15T00:00:00+00:00">2021-11-15</time>
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
+        <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-02-02 01:00:55" itemprop="dateModified" datetime="2024-02-02T01:00:55+00:00">2024-02-02</time>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
     </span>
 
   
@@ -998,59 +807,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>VS Code是一款微软出的轻量级文本编辑器，支持各大主流操作系统和非常多的主题和图标，它本身只是一款文本编辑器，所有的功能都以插件扩展的形式存在，想用什么功能就安装对应的扩展即可，非常方便。</p>
-<h1 id="一、安装MinGW编译器"><a href="#一、安装MinGW编译器" class="headerlink" title="一、安装MinGW编译器"></a>一、安装MinGW编译器</h1><p>MinGW 的全称是：Minimalist GNU on Windows 。它实际上是将经典的开源 C语言 编译器 GCC 移植到了 Windows 平台下，并且包含了 Win32API 。可以认为MinGW 就是 GCC 的 Windows 版本 。</p>
-<h2 id="1、下载安装包"><a href="#1、下载安装包" class="headerlink" title="1、下载安装包"></a>1、下载安装包</h2><p>MinGW-w64 的代码和可执行文件被托管存储在 SourceForge 上。MinGW-w64 为了适应各种操作系统，其组件会存在各种不同的版本。我们直接下载 MinGW-w64 的安装程序，它会按照我们的需要，自动下载适合的组件。</p>
-<p>到<a target="_blank" rel="noopener" href="https://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/">MinGW-w64 </a>直接联网下载，通过链接获取mingw-w64-install.exe:</p>
-<p>![](&#x2F;img-post&#x2F;环境配置&#x2F;2021-10-11-使用VS Code编译C++&#x2F;下载安装包.png)</p>
-<p>![](..&#x2F;&#x2F;img-post&#x2F;环境配置&#x2F;2021-10-11-使用VS Code编译C++&#x2F;下载安装包.png)</p>
-<h2 id="2、安装安装包"><a href="#2、安装安装包" class="headerlink" title="2、安装安装包"></a>2、安装安装包</h2><p>运行mingw-w64-install.exe，根据提示继续，进入设置页面，如下：</p>
-<p>![](&#x2F;img-post&#x2F;环境配置&#x2F;2021-10-11-使用VS Code编译C++&#x2F;设置页面.png)</p>
-<p>![](..&#x2F;&#x2F;img-post&#x2F;环境配置&#x2F;2021-10-11-使用VS Code编译C++&#x2F;设置页面.png)</p>
-<blockquote>
-<p>Version 指的是 gcc 的版本，如果没有特殊的需求，一般选择最高的版本号即可。</p>
-<p>Architecture 是指电脑系统是 32位 还是 64位，根据你的电脑系统做出对应选择，64位选择x86_64，32位选择 i686即可。</p>
-<p>Threads是选择操作系统接口协议类型，如果你只需要开发 Windows 程序，选择 win32 ，而开发 Linux、Unix、Mac OS 等其他操作系统下的程序，则需要选择 posix 。</p>
-<p>Exception是指异常处理模型，seh 性能比较好，但不支持 32位。 sjlj 稳定性好，支持 32位。</p>
-<p>Build revision选择默认即可。</p>
-</blockquote>
-<p>接下来就是选择安装路径，可以自定义，注意不要路径中不要有任何中文字符和空格：</p>
-<p>![](&#x2F;img-post&#x2F;环境配置&#x2F;2021-10-11-使用VS Code编译C++&#x2F;设置路径.png)</p>
-<p>![](..&#x2F;&#x2F;img-post&#x2F;环境配置&#x2F;2021-10-11-使用VS Code编译C++&#x2F;设置路径.png)</p>
-<h2 id="3、配置系统变量"><a href="#3、配置系统变量" class="headerlink" title="3、配置系统变量"></a>3、配置系统变量</h2><p>安装完成后找到安装文件中gcc.exe程序：</p>
-<p>![](&#x2F;img-post&#x2F;环境配置&#x2F;2021-10-11-使用VS Code编译C++&#x2F;配置变量.png)</p>
-<p>![](..&#x2F;&#x2F;img-post&#x2F;环境配置&#x2F;2021-10-11-使用VS Code编译C++&#x2F;配置变量.png)</p>
-<p>最后打开系统变量设置页面加入该路径即可：</p>
-<p>操作：右键点击“此电脑”，在弹出的菜单中点击红框中的“属性”项；点击“高级系统设置”链接，将打开“系统属性”窗口；点击“环境变量”按钮，打开“环境变量”窗口。</p>
-<h2 id="4、测试gcc"><a href="#4、测试gcc" class="headerlink" title="4、测试gcc"></a>4、测试gcc</h2><p>打开命令提示符窗口，输入“gcc -v” 并按回车键（Enter），如果成功显示 MinGW-w64 的组件列表说明前面的系统变量设置成功：</p>
-<p>![](&#x2F;img-post&#x2F;环境配置&#x2F;2021-10-11-使用VS Code编译C++&#x2F;验证gcc.png)</p>
-<p>![](..&#x2F;&#x2F;img-post&#x2F;环境配置&#x2F;2021-10-11-使用VS Code编译C++&#x2F;验证gcc.png)</p>
-<h1 id="二、配置VS-Code的编译环境"><a href="#二、配置VS-Code的编译环境" class="headerlink" title="二、配置VS Code的编译环境"></a>二、配置VS Code的编译环境</h1><h2 id="1、安装软件VS-Code"><a href="#1、安装软件VS-Code" class="headerlink" title="1、安装软件VS Code"></a>1、安装软件VS Code</h2><p>首先，需要安装 <code>Visual Studio Code</code> 软件。下载网址：<a href="https://link.zhihu.com/?target=https://code.visualstudio.com/">Visual Studio Code</a>。</p>
-<p>按照安装文件的要求，完成安装即可。</p>
-<h2 id="2、安装插件C-C"><a href="#2、安装插件C-C" class="headerlink" title="2、安装插件C&#x2F;C++"></a>2、安装插件C&#x2F;C++</h2><p>打开 <code>VS Code</code>，选择左侧栏的<code>扩展选项</code>，搜索插件<code>C/C++</code>，点击安装即可。</p>
-<p>![](&#x2F;img-post&#x2F;环境配置&#x2F;2021-10-11-使用VS Code编译C++&#x2F;插件C++.png)</p>
-<p>![](..&#x2F;&#x2F;img-post&#x2F;环境配置&#x2F;2021-10-11-使用VS Code编译C++&#x2F;插件C++.png)</p>
-<h2 id="3、配置编译工具"><a href="#3、配置编译工具" class="headerlink" title="3、配置编译工具"></a>3、配置编译工具</h2><p>经历上述步骤，已经可以正常编写<code>LaTeX</code>了。然而，为了更加适合我们的中文环境，可以修改<code> VS Code</code> 对应的配置文件。</p>
-<p>点击<code>help/show all commands</code>（Ctrl+Shift+P），输入 <code>C/C++</code>，选择“Edit Configurations(UI)”进入配置：</p>
-<p>![](&#x2F;img-post&#x2F;环境配置&#x2F;2021-10-11-使用VS Code编译C++&#x2F;配置编译器.png)</p>
-<p>![](..&#x2F;&#x2F;img-post&#x2F;环境配置&#x2F;2021-10-11-使用VS Code编译C++&#x2F;配置编译器.png)</p>
-<p>如果是编译c++程序则使用g++.exe,如果是编译c程序则使用gcc.exe：</p>
-<p>![](&#x2F;img-post&#x2F;环境配置&#x2F;2021-10-11-使用VS Code编译C++&#x2F;修改编译器.png)</p>
-<p>![](..&#x2F;&#x2F;img-post&#x2F;环境配置&#x2F;2021-10-11-使用VS Code编译C++&#x2F;修改编译器.png)</p>
-<p>最后生成<code> c_cpp_properties.json</code>。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;configurations&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Win32&quot;</span>,</span><br><span class="line">            <span class="string">&quot;includePath&quot;</span>: [</span><br><span class="line">                <span class="string">&quot;$&#123;workspaceFolder&#125;/**&quot;</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="string">&quot;defines&quot;</span>: [</span><br><span class="line">                <span class="string">&quot;_DEBUG&quot;</span>,</span><br><span class="line">                <span class="string">&quot;UNICODE&quot;</span>,</span><br><span class="line">                <span class="string">&quot;_UNICODE&quot;</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="string">&quot;windowsSdkVersion&quot;</span>: <span class="string">&quot;10.0.17763.0&quot;</span>,</span><br><span class="line">            <span class="string">&quot;compilerPath&quot;</span>: <span class="string">&quot;D:\\mingw-64\\mingw64\\bin\\g++.exe&quot;</span>,</span><br><span class="line">            <span class="string">&quot;cStandard&quot;</span>: <span class="string">&quot;c17&quot;</span>,</span><br><span class="line">            <span class="string">&quot;cppStandard&quot;</span>: <span class="string">&quot;c++17&quot;</span>,</span><br><span class="line">            <span class="string">&quot;intelliSenseMode&quot;</span>: <span class="string">&quot;gcc-x64&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;version&quot;</span>: <span class="number">4</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>继续生成tasks.json：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="comment">// See https://go.microsoft.com/fwlink/?LinkId=733558 </span></span><br><span class="line">    <span class="comment">// for the documentation about the tasks.json format</span></span><br><span class="line">    <span class="string">&quot;version&quot;</span>: <span class="string">&quot;2.0.0&quot;</span>,</span><br><span class="line">    <span class="string">&quot;tasks&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">&quot;type&quot;</span>: <span class="string">&quot;shell&quot;</span>,</span><br><span class="line">            <span class="string">&quot;label&quot;</span>: <span class="string">&quot;g++.exe build active file&quot;</span>,<span class="comment">//任务的名字，就是刚才在命令面板中选择的时候所看到的，可以自己设置</span></span><br><span class="line">            <span class="string">&quot;command&quot;</span>: <span class="string">&quot;D:/mingw-64/mingw64/bin/g++.exe&quot;</span>,</span><br><span class="line">            <span class="string">&quot;args&quot;</span>: [<span class="comment">//编译时候的参数</span></span><br><span class="line">                <span class="string">&quot;-g&quot;</span>,<span class="comment">//添加gdb调试选项</span></span><br><span class="line">                <span class="string">&quot;$&#123;file&#125;&quot;</span>,</span><br><span class="line">                <span class="string">&quot;-o&quot;</span>,<span class="comment">//指定生成可执行文件的名称</span></span><br><span class="line">                <span class="string">&quot;$&#123;fileDirname&#125;\\$&#123;fileBasenameNoExtension&#125;.exe&quot;</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="string">&quot;options&quot;</span>: &#123;</span><br><span class="line">                <span class="string">&quot;cwd&quot;</span>: <span class="string">&quot;D:/mingw-64/mingw64/bin&quot;</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="string">&quot;problemMatcher&quot;</span>: [</span><br><span class="line">                <span class="string">&quot;$gcc&quot;</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="string">&quot;group&quot;</span>: &#123;</span><br><span class="line">                <span class="string">&quot;kind&quot;</span>: <span class="string">&quot;build&quot;</span>,</span><br><span class="line">                <span class="string">&quot;isDefault&quot;</span>: <span class="literal">true</span><span class="comment">//表示快捷键Ctrl+Shift+B可以运行该任务</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="string">&quot;presentation&quot;</span>: &#123; </span><br><span class="line">                <span class="string">&quot;panel&quot;</span>: <span class="string">&quot;new&quot;</span> <span class="comment">//默认为“shared“表示共享，改成new之后每个进程创建新的端口</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>继续生成launch.json：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 使用 IntelliSense 了解相关属性。 </span></span><br><span class="line">    <span class="comment">// 悬停以查看现有属性的描述。</span></span><br><span class="line">    <span class="comment">// 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387</span></span><br><span class="line">    <span class="string">&quot;version&quot;</span>: <span class="string">&quot;0.2.0&quot;</span>,</span><br><span class="line">    <span class="string">&quot;configurations&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">&quot;name&quot;</span>: <span class="string">&quot;(gdb) Launch&quot;</span>,</span><br><span class="line">            <span class="string">&quot;preLaunchTask&quot;</span>: <span class="string">&quot;g++.exe build active file&quot;</span>,<span class="comment">//调试前执行的任务，就是之前配置的tasks.json中的label字段</span></span><br><span class="line">            <span class="string">&quot;type&quot;</span>: <span class="string">&quot;cppdbg&quot;</span>,<span class="comment">//配置类型，只能为cppdbg</span></span><br><span class="line">            <span class="string">&quot;request&quot;</span>: <span class="string">&quot;launch&quot;</span>,<span class="comment">//请求配置类型，可以为launch（启动）或attach（附加）</span></span><br><span class="line">            <span class="string">&quot;program&quot;</span>: <span class="string">&quot;$&#123;fileDirname&#125;\\$&#123;fileBasenameNoExtension&#125;.exe&quot;</span>,<span class="comment">//调试程序的路径名称</span></span><br><span class="line">            <span class="string">&quot;args&quot;</span>: [],<span class="comment">//调试传递参数</span></span><br><span class="line">            <span class="string">&quot;stopAtEntry&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="string">&quot;cwd&quot;</span>: <span class="string">&quot;$&#123;workspaceFolder&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;environment&quot;</span>: [],</span><br><span class="line">            <span class="string">&quot;externalConsole&quot;</span>: <span class="literal">true</span>,<span class="comment">//true显示外置的控制台窗口，false显示内置终端</span></span><br><span class="line">            <span class="string">&quot;MIMode&quot;</span>: <span class="string">&quot;gdb&quot;</span>,</span><br><span class="line">            <span class="string">&quot;miDebuggerPath&quot;</span>: <span class="string">&quot;D:\\mingw-64\\mingw64\\bin\\gdb.exe&quot;</span>,</span><br><span class="line">            <span class="string">&quot;setupCommands&quot;</span>: [</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Enable pretty-printing for gdb&quot;</span>,</span><br><span class="line">                    <span class="string">&quot;text&quot;</span>: <span class="string">&quot;-enable-pretty-printing&quot;</span>,</span><br><span class="line">                    <span class="string">&quot;ignoreFailures&quot;</span>: <span class="literal">true</span></span><br><span class="line">                &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="4、编译程序"><a href="#4、编译程序" class="headerlink" title="4、编译程序"></a>4、编译程序</h2><p>按F5调试程序并且生成.exe程序，如果exe文件出现闪退（在Windows系统中比较常见），可以在代码中添加暂停语句：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;hello world!&quot;</span>&lt;&lt;endl;</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在终端继续输入执行exe程序即可。</p>
-
+          <p>在 Android UI 开发中常用概念比如分辨率、屏幕密度和 dp、sp 等的理解。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2015-04-06-dp-sp-px/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1076,7 +841,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2021-11-15-%E3%80%90%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E3%80%91%E5%9C%A8VS%20Code%E4%B8%AD%E9%85%8D%E7%BD%AELeetCode/">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2015-05-06-android-studio/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1094,7 +859,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021-11-15-%E3%80%90%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E3%80%91%E5%9C%A8VS%20Code%E4%B8%AD%E9%85%8D%E7%BD%AELeetCode/" class="post-title-link" itemprop="url">「环境配置」在VS Code中配置LeetCode</a>
+          <a href="/2015-05-06-android-studio/" class="post-title-link" itemprop="url">Android Studio 遇到问题集锦</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1105,14 +870,16 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2021-11-15 00:00:00" itemprop="dateCreated datePublished" datetime="2021-11-15T00:00:00+00:00">2021-11-15</time>
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
+        <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-02-02 01:00:55" itemprop="dateModified" datetime="2024-02-02T01:00:55+00:00">2024-02-02</time>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
     </span>
 
   
@@ -1125,49 +892,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>本博客记录在VS code中配置LeetCode的过程，在VS Code中可以方便我们调试代码。</p>
-<h1 id="一、配置环境"><a href="#一、配置环境" class="headerlink" title="一、配置环境"></a>一、配置环境</h1><h2 id="1、安装VSCode并配置环境"><a href="#1、安装VSCode并配置环境" class="headerlink" title="1、安装VSCode并配置环境"></a>1、安装<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?from=pc_blog_highlight&q=VSCode">VSCode</a>并配置环境</h2><p>Leetcode插件本身是不需要配置编程语言环境的，因为它使用的是LeetCode官方编译器进行调试。</p>
-<p>所以正常只需要安装VSCode即可，这一步比较简单。</p>
-<h2 id="2、-安装LeetCode插件"><a href="#2、-安装LeetCode插件" class="headerlink" title="2、 安装LeetCode插件"></a>2、 安装LeetCode插件</h2><p>在插件扩展中搜索LeetCode插件，安装热度最高的那个即可。</p>
-<p>![](&#x2F;img-post&#x2F;环境配置&#x2F;2021-11-15-在VS Code中配置LeetCode&#x2F;安装LeetCode.png)</p>
-<p>![](..&#x2F;&#x2F;img-post&#x2F;环境配置&#x2F;2021-11-15-在VS Code中配置LeetCode&#x2F;安装LeetCode.png)</p>
-<h2 id="3、-安装Node-js"><a href="#3、-安装Node-js" class="headerlink" title="3、 安装Node.js"></a>3、 安装Node.js</h2><p>在安装完LeetCode插件之后，点击LeetCode插件的选项页，会提示你安装Node.js，按照安装程序的提示安装即可。</p>
-<p>Node.js在安装完成之后会自动配置环境变量，但需要记住安装位置，后边配置LeetCode会使用到。</p>
-<h2 id="4、登录LeetCode账户"><a href="#4、登录LeetCode账户" class="headerlink" title="4、登录LeetCode账户"></a>4、登录LeetCode账户</h2><p>完成上述操作后，建议重启一次VS Code。</p>
-<h3 id="（1）修改站点"><a href="#（1）修改站点" class="headerlink" title="（1）修改站点"></a>（1）修改站点</h3><p>![](&#x2F;img-post&#x2F;环境配置&#x2F;2021-11-15-在VS Code中配置LeetCode&#x2F;修改站点为中国LeetCode.png)</p>
-<p>![](..&#x2F;&#x2F;img-post&#x2F;环境配置&#x2F;2021-11-15-在VS Code中配置LeetCode&#x2F;修改站点为中国LeetCode.png)</p>
-<h3 id="（2）登录账户"><a href="#（2）登录账户" class="headerlink" title="（2）登录账户"></a>（2）登录账户</h3><p>登录账户前请登录网页版LeetCode确认自己的账户名（非昵称）和密码（很可能没有设置）。</p>
-<p>然后点击LeetCode插件按钮，点击Sign in LeetCode，然后输入自己的账号和密码，即可登录。</p>
-<p>![](&#x2F;img-post&#x2F;环境配置&#x2F;2021-11-15-在VS Code中配置LeetCode&#x2F;登录LeetCode.png)</p>
-<p>![](..&#x2F;&#x2F;img-post&#x2F;环境配置&#x2F;2021-11-15-在VS Code中配置LeetCode&#x2F;登录LeetCode.png)</p>
-<h2 id="5、-配置Node-js路径"><a href="#5、-配置Node-js路径" class="headerlink" title="5、 配置Node.js路径"></a>5、 配置Node.js路径</h2><p>点击扩展按钮，选中LeetCode插件，鼠标右键选择扩展设置<br>找到Node Path，选择相应路径。</p>
-<p>![](&#x2F;img-post&#x2F;环境配置&#x2F;2021-11-15-在VS Code中配置LeetCode&#x2F;配置nodejs路径.png)</p>
-<p>![](..&#x2F;&#x2F;img-post&#x2F;环境配置&#x2F;2021-11-15-在VS Code中配置LeetCode&#x2F;配置nodejs路径.png)</p>
-<h2 id="6、-配置文件路径"><a href="#6、-配置文件路径" class="headerlink" title="6、 配置文件路径"></a>6、 配置文件路径</h2><p>编程的代码文件都会保存到本地，默认路径为“$HOME.leetcode”。</p>
-<p>我们可以自行设置其保存到我们的项目路径<br>点击扩展按钮，选中LeetCode插件，鼠标右键选择扩展设置<br>找到Workspace Folder，输入绝对路径。</p>
-<p>![](&#x2F;img-post&#x2F;环境配置&#x2F;2021-11-15-在VS Code中配置LeetCode&#x2F;答案文件路径.png)</p>
-<p>![](..&#x2F;&#x2F;img-post&#x2F;环境配置&#x2F;2021-11-15-在VS Code中配置LeetCode&#x2F;答案文件路径.png)</p>
-<p>这样我们就可以在当前路径中找到我们写过的每一个问题的代码：</p>
-<p>![](&#x2F;img-post&#x2F;环境配置&#x2F;2021-11-15-在VS Code中配置LeetCode&#x2F;问题代码展示.png)</p>
-<p>![](..&#x2F;&#x2F;img-post&#x2F;环境配置&#x2F;2021-11-15-在VS Code中配置LeetCode&#x2F;问题代码展示.png)</p>
-<h1 id="二、使用操作"><a href="#二、使用操作" class="headerlink" title="二、使用操作"></a>二、使用操作</h1><h2 id="1、选择题目"><a href="#1、选择题目" class="headerlink" title="1、选择题目"></a>1、选择题目</h2><p>LeetCode插件提供类似网页版的题目筛选功能，可以按照题目序号、难度、标签等筛选。</p>
-<p>![](&#x2F;img-post&#x2F;环境配置&#x2F;2021-11-15-在VS Code中配置LeetCode&#x2F;选择题目.png)</p>
-<p>![](..&#x2F;&#x2F;img-post&#x2F;环境配置&#x2F;2021-11-15-在VS Code中配置LeetCode&#x2F;选择题目.png)</p>
-<h2 id="2、编辑题目代码"><a href="#2、编辑题目代码" class="headerlink" title="2、编辑题目代码"></a>2、编辑题目代码</h2><p>选择一个题目，双击就能出现具体的题目描述。</p>
-<p>左侧显示编程窗口，右侧显示题目描述。</p>
-<p>![](&#x2F;img-post&#x2F;环境配置&#x2F;2021-11-15-在VS Code中配置LeetCode&#x2F;题目描述.png)</p>
-<p>![](..&#x2F;&#x2F;img-post&#x2F;环境配置&#x2F;2021-11-15-在VS Code中配置LeetCode&#x2F;题目描述.png)</p>
-<p>如果代码中出现STL报错，这是因为默认模板中并没有增加STL头文件，</p>
-<p>为了方便编程过程中提示，我们可以主动增加头文件。</p>
-<p>点击上图中的<strong>Submit</strong>按钮就可以提交结果，</p>
-<h2 id="3、使用测试用例"><a href="#3、使用测试用例" class="headerlink" title="3、使用测试用例"></a>3、使用测试用例</h2><p>点击<strong>Test</strong>，会有三个选项供你选择。</p>
-<p>![](&#x2F;img-post&#x2F;环境配置&#x2F;2021-11-15-在VS Code中配置LeetCode&#x2F;测试用例.png)</p>
-<p>![](..&#x2F;&#x2F;img-post&#x2F;环境配置&#x2F;2021-11-15-在VS Code中配置LeetCode&#x2F;测试用例.png)</p>
-<p>需要注意的是：在使用第二个自行输入用例时，可能有的用例会有多个输入，需要用到换行符，由于LeetCode插件默认“Enter”键为输入结束，所以输入用例时不能使用“Enter”表示换行，需要我们手动输入<strong>“\n“</strong>代替换行符。</p>
-<h2 id="4、打印输出信息"><a href="#4、打印输出信息" class="headerlink" title="4、打印输出信息"></a>4、打印输出信息</h2><p>在代码中添加输出信息，然后使用Test可以输出信息。</p>
-<p>![](&#x2F;img-post&#x2F;环境配置&#x2F;2021-11-15-在VS Code中配置LeetCode&#x2F;使用测试案例输出信息.png)</p>
-<p>![](..&#x2F;&#x2F;img-post&#x2F;环境配置&#x2F;2021-11-15-在VS Code中配置LeetCode&#x2F;使用测试案例输出信息.png)</p>
-
+          <p>Android Studio 使用过程中遇到的一些问题和解决方案集合。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2015-05-06-android-studio/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1193,7 +926,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2021-11-15-%E3%80%90%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%8E%B0%E3%80%91S3net%E7%9A%84%E8%AE%AD%E7%BB%83%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2015-05-09-no-need-to-tangle/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1211,7 +944,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021-11-15-%E3%80%90%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%8E%B0%E3%80%91S3net%E7%9A%84%E8%AE%AD%E7%BB%83%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" class="post-title-link" itemprop="url">「项目复现」S3net的训练代码实现</a>
+          <a href="/2015-05-09-no-need-to-tangle/" class="post-title-link" itemprop="url">一些不必纠结的事情</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1222,14 +955,16 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2021-11-15 00:00:00" itemprop="dateCreated datePublished" datetime="2021-11-15T00:00:00+00:00">2021-11-15</time>
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
+        <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-02-02 01:00:55" itemprop="dateModified" datetime="2024-02-02T01:00:55+00:00">2024-02-02</time>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Blog/" itemprop="url" rel="index"><span itemprop="name">Blog</span></a>
+        </span>
     </span>
 
   
@@ -1242,56 +977,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>​		本博客是作者复现《S3Net: A Single Stream Structure for Depth Guided Image Relighting》的训练代码的笔记。</p>
-<h1 id="S3net项目的程序结构"><a href="#S3net项目的程序结构" class="headerlink" title="S3net项目的程序结构"></a>S3net项目的程序结构</h1><blockquote>
-<h3 id="一、搭建网络模型"><a href="#一、搭建网络模型" class="headerlink" title="一、搭建网络模型"></a>一、搭建网络模型</h3><h3 id="二、训练网络模型"><a href="#二、训练网络模型" class="headerlink" title="二、训练网络模型"></a>二、训练网络模型</h3><p>1、<strong>获取数据集dataloader</strong>、<strong>获取模型model</strong>、<strong>获取优化器optimizer</strong>、<strong>获取学习率调整器scheduler</strong></p>
-<p>2、使用数据集跑n个epoch</p>
-<p>​		（1）跑1个eopch	（遍历一遍数据集）</p>
-<p>​				获取x，y</p>
-<p>​				正向传播得到y’（model.forward）</p>
-<p>​				<strong>计算损失</strong>（get_loss）</p>
-<p>​				反向传播（optimizer.zero_grad，loss.backward,optimizer.step）</p>
-<p>​		（2）动态调整学习率（scheduler.step）</p>
-<p>​		（3）定期保存模型（torch.load,model.load_state_dict）</p>
-<p>​		（4）打印日志到控制台（tqdn进度条技术）</p>
-<p>3、保存实验数据到磁盘（MetricRecorder类）</p>
-<p>​	（1）<strong>保存损失、PSNR、SSIM等到.csv文件</strong></p>
-<p>​	（2）<strong>保存输入图片、预测图片、目标图片为.png</strong></p>
-<h3 id="三、测试网络模型"><a href="#三、测试网络模型" class="headerlink" title="三、测试网络模型"></a>三、测试网络模型</h3></blockquote>
-<h2 id="1、如何加载模型和保存模型"><a href="#1、如何加载模型和保存模型" class="headerlink" title="1、如何加载模型和保存模型"></a>1、如何加载模型和保存模型</h2><p><strong>函数：保存模型：</strong></p>
-<p>torch.save({‘state_dict’:network.state_dict()}, save_path)是下述代码中最重要的API</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 保存模型</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">save_model</span>(<span class="params">self, save_dir, network, epoch</span>):</span><br><span class="line">    <span class="comment"># 获取保存文件路径</span></span><br><span class="line">    save_filename = <span class="string">&#x27;%s_net.pth&#x27;</span> % (epoch)//模型文件名</span><br><span class="line">    save_path = os.path.join(save_dir, save_filename)</span><br><span class="line">    <span class="comment"># 保存网络模型</span></span><br><span class="line">    torch.save(&#123;<span class="string">&#x27;state_dict&#x27;</span>:network.state_dict()&#125;, save_path)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>用以上save_model函数定期保存模型：</strong></p>
-<p>技巧：在每个epoch保存模型时，同时保存latest模型，万一中断训练，方便加载模型、继续训练。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 定期保存模型</span><br><span class="line"># if self.metric_recorder.update_best_model(&#x27;PSNR&#x27;):</span><br><span class="line">#     self.model.save(self.option.model_path, &#x27;best&#x27;)</span><br><span class="line">if epoch % self.option.save_freq == 0 and epoch != 0:</span><br><span class="line">    self.save_model(self.option.model_path,self.model, &#x27;latest&#x27;)</span><br><span class="line">    self.save_model(self.option.model_path,self.model, epoch)</span><br><span class="line">    np.savetxt(self.iter_path, (epoch, self.n_total_iter), delimiter=&#x27;,&#x27;, fmt=&#x27;%d&#x27;)</span><br><span class="line">    print(&#x27;成功保存模型：epoch %d, iters %d&#x27; % (epoch, self.n_total_iter))</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>函数：加载模型：</strong></p>
-<p>torch.load(save_path)和model.load_state_dict(checkpoint[‘state_dict’])是下述代码中最重要的API</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入网络模型</span></span><br><span class="line"><span class="keyword">from</span> network.res2net2 <span class="keyword">import</span> Dehaze3</span><br><span class="line"><span class="comment"># 获取模型</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_model</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="comment"># 加载网络模型</span></span><br><span class="line">    model = Dehaze3().to(self.option.device)</span><br><span class="line">    <span class="comment"># 是否加载预训练好的模型</span></span><br><span class="line">    <span class="keyword">if</span> self.option.is_pretrain_model:</span><br><span class="line">        <span class="comment"># 得到保存模型的路径</span></span><br><span class="line">        save_path = os.path.join(self.option.model_path, <span class="string">&#x27;latest_net.pth&#x27;</span>)</span><br><span class="line">        <span class="comment"># 加载之前保存好的模型</span></span><br><span class="line">        checkpoint = torch.load(save_path)</span><br><span class="line">        self.start_epoch, self.n_total_iter = np.loadtxt(self.iter_path, delimiter=<span class="string">&#x27;,&#x27;</span>, dtype=<span class="built_in">int</span>)//<span class="built_in">iter</span>.txt保存之前训练保存的最后的模型的epoch和<span class="built_in">iter</span></span><br><span class="line">        model.load_state_dict(checkpoint[<span class="string">&#x27;state_dict&#x27;</span>])</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;成功预加载网络模型！&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        self.start_epoch = <span class="number">0</span></span><br><span class="line">        self.n_total_iter = <span class="number">0</span>  <span class="comment"># 训练的总迭代次数</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;成功创建网络模型！&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> model</span><br></pre></td></tr></table></figure>
-
-<h2 id="2、如何输出实验数据到-csv"><a href="#2、如何输出实验数据到-csv" class="headerlink" title="2、如何输出实验数据到.csv"></a>2、如何输出实验数据到.csv</h2><p>MetricRecorder类：用于记录数据</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MetricRecorder</span>():</span><br><span class="line">    <span class="comment"># 把实验数据添加到scalarDict字典中</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">add_current_scalar</span>(<span class="params">self, log_dict:<span class="built_in">dict</span></span>):</span><br><span class="line">        <span class="keyword">for</span> tag, value <span class="keyword">in</span> log_dict.items():</span><br><span class="line">            self.scalarDict[tag].append(value)</span><br><span class="line">    <span class="comment">#把scalarDict字典中的每条实验数据添加到csv文件中</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_write_to_csv</span>(<span class="params">self,epoch_num,validation</span>):</span><br><span class="line">        <span class="keyword">if</span> self.save_to_csv:</span><br><span class="line">            csv_name = <span class="string">&#x27;val_result.csv&#x27;</span> <span class="keyword">if</span> validation <span class="keyword">else</span> <span class="string">&#x27;train_result.csv&#x27;</span>//得到csv文件的名字</span><br><span class="line">            self.csv_helper.save_one_epoch(epoch_num, log_dict=self.scalarDict,csv_name=csv_name)</span><br><span class="line">    <span class="comment">#  self.save_to_csv为True，则调用 self._write_to_csv()把实验数据添加到csv中</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">write_one_epoch</span>(<span class="params">self, epoch_num, validation=<span class="literal">False</span></span>):</span><br><span class="line">        <span class="keyword">if</span> self.use_tb_log:</span><br><span class="line">            self._write_to_tensorboard(epoch_num,validation)</span><br><span class="line">        <span class="keyword">if</span> self.save_to_csv:</span><br><span class="line">            self._write_to_csv(epoch_num,validation)</span><br><span class="line">        <span class="keyword">if</span> self.save_to_png:</span><br><span class="line">            self._write_to_png(epoch_num)</span><br></pre></td></tr></table></figure>
-
-<p><strong>使用MetricRecorder类得到数据，并保存数据：</strong></p>
-<p>初始化MetricRecorder类</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># save_to_csv=True,  # 是否保存到.csv确认把实验数据保存到csv文件中</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Trainer</span>():</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,option:argparse.Namespace</span>):</span><br><span class="line">        <span class="comment"># 初始化数据记录器</span></span><br><span class="line">        self.metric_recorder = MetricRecorder(self.option.output_path,</span><br><span class="line">                                              use_tb_log=<span class="literal">False</span>,  <span class="comment"># 是否使用tb日志</span></span><br><span class="line">                                              save_to_csv=<span class="literal">True</span>,  <span class="comment"># 是否保存到.csv</span></span><br><span class="line">                                              save_to_png=<span class="literal">True</span>,  <span class="comment"># 是否保存到.png</span></span><br><span class="line">                                              csv_name=<span class="literal">None</span>,</span><br><span class="line">                                                         write_header=self.option.is_pretrain_model</span><br><span class="line">                                              )  <span class="comment"># 实验描述</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>得到数据字典logDict，用self.metric_recorder.add_current_scalar函数获取到数据字典logDict，使MetricRecorder类里的函数_write_to_csv能使用logDict数据。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">logDict = &#123;<span class="string">&#x27;loss&#x27;</span>: losses[<span class="string">&#x27;loss&#x27;</span>].item(), <span class="string">&quot;loss_chaL1&quot;</span>: losses[<span class="string">&#x27;loss_chaL1&#x27;</span>].item(),</span><br><span class="line">                       <span class="string">&quot;loss_wssim&quot;</span>: losses[<span class="string">&#x27;loss_wssim&#x27;</span>].item(),<span class="string">&quot;loss_pre&quot;</span>: losses[<span class="string">&#x27;loss_pre&#x27;</span>].item(),</span><br><span class="line">                       <span class="string">&quot;PSNR&quot;</span>: curr_psnr, <span class="string">&quot;SSIM&quot;</span>: curr_ssim&#125;</span><br><span class="line">self.metric_recorder.add_current_scalar(logDict)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>调用metric_recorder.write_one_epoch，保存每个回合的数据：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 保存该回合的数据</span><br><span class="line">        self.metric_recorder.write_one_epoch(epoch, validation=False)</span><br></pre></td></tr></table></figure>
-
-<h2 id="3、如何保存预测图片"><a href="#3、如何保存预测图片" class="headerlink" title="3、如何保存预测图片"></a>3、如何保存预测图片</h2><p>调用metric_recorder.add_current_imgs获取图片名称和图片的字典，使metric_recorder里的_write_to_png函数能使用图片，并保存</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 输出图片</span><br><span class="line">if i == epoch_size-1:# 当i是最后一个批次时保存图片</span><br><span class="line">   # 添加本回合的生成的图片</span><br><span class="line">   imgDict = &#123;&#x27;ori_image&#x27;: ori_image, &#x27;guide_image&#x27;: guide_image, &#x27;pre_image&#x27;: pre_image,&#x27;truth_img&#x27;: truth_img&#125;</span><br><span class="line">   self.metric_recorder.add_current_imgs(imgDict)  # 记录图片</span><br></pre></td></tr></table></figure>
-
-<p>调用metric_recorder.write_one_epoch，保存每个回合的数据：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 保存该回合的数据</span><br><span class="line">        self.metric_recorder.write_one_epoch(epoch, validation=False)</span><br></pre></td></tr></table></figure>
-
-<h2 id="4、如何使用进度条功能"><a href="#4、如何使用进度条功能" class="headerlink" title="4、如何使用进度条功能"></a>4、如何使用进度条功能</h2>
+          <p>有一些事不需要纠结，但是还是偶尔会在脑中萦绕不去，记下来提醒自己。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2015-05-09-no-need-to-tangle/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1310,7 +1004,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="Previous page" aria-label="Previous page" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" title="Next page" aria-label="Next page" href="/page/8/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" title="Previous page" aria-label="Previous page" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/">27</a><a class="extend next" rel="next" title="Next page" aria-label="Next page" href="/page/8/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>

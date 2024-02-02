@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="从 Redcarpet 切换到 kramdown 会遇到一些问题，这里记录了它们的解决办法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="将 GitHub Pages 从 Redcarpet 切换到 kramdown">
+<meta property="og:url" content="https://www.vvbuys.com/2016-02-04-switch-to-kramdown-from-redcarpet/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="从 Redcarpet 切换到 kramdown 会遇到一些问题，这里记录了它们的解决办法。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-02T01:06:28.204Z">
+<meta property="article:modified_time" content="2024-02-02T01:06:28.204Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="Linux hyprland Python Rust Golang javascript">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/2016-02-04-switch-to-kramdown-from-redcarpet/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/2016-02-04-switch-to-kramdown-from-redcarpet/","path":"2016-02-04-switch-to-kramdown-from-redcarpet/","title":"将 GitHub Pages 从 Redcarpet 切换到 kramdown"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>将 GitHub Pages 从 Redcarpet 切换到 kramdown | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%97%E8%A1%A8%E9%A1%B9%E9%87%8C%E5%B5%8C%E5%A5%97%E7%9A%84%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="nav-number">1.</span> <span class="nav-text">列表项里嵌套的代码块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E7%BA%BF"><span class="nav-number">2.</span> <span class="nav-text">删除线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A8%E6%A0%BC"><span class="nav-number">3.</span> <span class="nav-text">表格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AB%98%E4%BA%AE%E7%9A%84%E8%AF%AD%E8%A8%80%E5%90%8D%E7%A7%B0"><span class="nav-number">4.</span> <span class="nav-text">高亮的语言名称</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE%E7%89%87%E4%B8%8A%E9%9D%A2%E7%A9%BA%E8%A1%8C"><span class="nav-number">5.</span> <span class="nav-text">图片上面空行</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">265</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2016-02-04-switch-to-kramdown-from-redcarpet/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="将 GitHub Pages 从 Redcarpet 切换到 kramdown | VVbugs Blog">
+      <meta itemprop="description" content="从 Redcarpet 切换到 kramdown 会遇到一些问题，这里记录了它们的解决办法。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          将 GitHub Pages 从 Redcarpet 切换到 kramdown
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Markdown/" itemprop="url" rel="index"><span itemprop="name">Markdown</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">从 Redcarpet 切换到 kramdown 会遇到一些问题，这里记录了它们的解决办法。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>GitHub 前不久发布了 New Features 公告，<a target="_blank" rel="noopener" href="https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0">GitHub Pages now faster and simpler with Jekyll 3.0</a>，宣布从 2016 年 5 月 1 日起，GitHub Pages 将只支持 kramdown 作为唯一的 Markdown 引擎。</p>
+<p>这其实也算得一件好事，之前支持 Rediscount、Redcarpet 和 kramdown 等多种引擎，而它们相互之间和与标准 Markdown 之间又有一些细微却也无法忽视的差异，这让需要在多个平台使用 Markdown 的我头疼不已，早就希望 GitHub Pages 能与 GitHub 的 Issues 和 comments 等地方统一语法，本次更新虽然做不到这一点，但也算是迈出了不小的一步。</p>
+<p>我在此前是使用 Redcarpet，配置如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">markdown:</span> <span class="string">redcarpet</span></span><br><span class="line"><span class="attr">redcarpet:</span> </span><br><span class="line">    <span class="attr">extensions:</span> </span><br><span class="line">        <span class="bullet">-</span> <span class="string">no_intra_emphasis</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">fenced_code_blocks</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">autolink</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">tables</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">with_toc_data</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">strikethrough</span></span><br><span class="line"></span><br><span class="line"><span class="attr">pygments:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>切换到 kramdown 之后的配置如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">markdown:</span> <span class="string">kramdown</span></span><br><span class="line"><span class="attr">kramdown:</span></span><br><span class="line">    <span class="attr">input:</span> <span class="string">GFM</span></span><br><span class="line"><span class="attr">highlighter:</span> <span class="string">rouge</span></span><br></pre></td></tr></table></figure>
+
+<p>切换过程中有若干需要处理的差异问题，现将它们及解决方法记录如下。</p>
+<h2 id="列表项里嵌套的代码块"><a href="#列表项里嵌套的代码块" class="headerlink" title="列表项里嵌套的代码块"></a>列表项里嵌套的代码块</h2><p>嵌套在列表项中的代码块在 Redcarpet 中使用 Tab 进行缩进即可，而在 kramdown 中需要根据列表项的内容开始位置决定缩进的字符数。</p>
+<p>关于此问题的讨论见 <a target="_blank" rel="noopener" href="https://github.com/gettalong/kramdown/issues/209">Embedding codeblocks in lists</a>。</p>
+<p>in Redcarpet:</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> list item one</span><br><span class="line"></span><br><span class="line"><span class="code">    ```python</span></span><br><span class="line"><span class="code">    print &#x27;hello, world&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>list item two</li>
+</ol>
+<ul>
+<li><p>unordered list item one</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span> <span class="string">&#x27;hello, world&#x27;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>unordered list item two</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">in kramdown:</span><br><span class="line"></span><br><span class="line">```markdown</span><br><span class="line">1. list item one</span><br><span class="line"></span><br><span class="line">   ```python</span><br><span class="line">   print &#x27;hello, world&#x27;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="2">
+<li>list item two</li>
+</ol>
+<ul>
+<li><p>unordered list item one</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span> <span class="string">&#x27;hello, world&#x27;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>unordered list item two</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 遍历 Collections</span><br><span class="line"></span><br><span class="line">我在本博客做了一个 wiki collection，在 Redcarpet 中用 `for doc in site.documents` 可遍历所有 wiki。</span><br><span class="line"></span><br><span class="line">而切换到 kramdown 后这样的写法将遍历所有的 wiki 和 posts，需要使用 `for wiki in site.wiki` 来遍历 wiki。</span><br><span class="line"></span><br><span class="line">不过这点其实严格说起来应该是我在使用 Redcarpet 时的写法没有遵循 Jekyll 的文档，参考 [Collections][3]。</span><br><span class="line"></span><br><span class="line">## TOC 链接</span><br><span class="line"></span><br><span class="line">在我之前的一篇文章 [GFM 与 Redcarpet 的不同点][4] 中，描述了 Redcarpet 与 GFM 自动生成的 TOC 链接的区别，而 kramdown 即使启用了 `input: GFM` 生成的链接与 GFM 也还是不同，处理 GFM 与 Redcarpet 生成的 TOC 链接的区别已经让我心累了，不想再多记一种。</span><br><span class="line"></span><br><span class="line">不过谢天谢地，kramdown 支持自动生成 TOC，只需在想放置 TOC 的地方放置如下内容即可，非常方便。</span><br><span class="line"></span><br><span class="line">```markdown</span><br><span class="line">* TOC</span><br><span class="line">&#123;:toc&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h2><p>在 Redcarpet 中使用如下语法能自动为文字加上删除线：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~~hello world~~</span><br></pre></td></tr></table></figure>
+
+<p>但切换到 kramdown 后这种写法失效了，浏览了一下文档之后并没有找到 kramdown 对应的语法，这个用得也少，遂直接用 HTML 元素解决问题：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">del</span>&gt;</span></span>hello world<span class="language-xml"><span class="tag">&lt;/<span class="name">del</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p><del>hello world</del></p>
+<p><strong>update 2016&#x2F;03&#x2F;02:</strong> kramdown 主分支已经解决了这个问题，见 <a target="_blank" rel="noopener" href="https://github.com/gettalong/kramdown/issues/304">gettalong&#x2F;kramdown#304</a>，坐等 Release 后 GitHub Pages 更新就能用了。</p>
+<p><strong>update 2016&#x2F;03&#x2F;29:</strong> <a target="_blank" rel="noopener" href="https://github.com/github/pages-gem">pages-gem</a> 当前使用的 1.10.0 版本的 kramdown 已经包含了主分支对此的修复，已经可以愉快地使用 <code>~~hello world~~</code> 来表示 <del>hello world</del> 了。</p>
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><p>在 Redcarpet 中如下写法能直接显示你写的内容：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">READ|WRITE|SHARE</span><br></pre></td></tr></table></figure>
+
+<p>但在 kramdown 中会解析成表格：</p>
+<p>READ|WRITE|SHARE</p>
+<p>所以需要将 <code>|</code> 转义。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">READ\|WRITE\|SHARE</span><br></pre></td></tr></table></figure>
+
+<p>相关讨论见：<a target="_blank" rel="noopener" href="https://github.com/gettalong/kramdown/issues/151">gettalong&#x2F;kramdown#151</a></p>
+<h2 id="高亮的语言名称"><a href="#高亮的语言名称" class="headerlink" title="高亮的语言名称"></a>高亮的语言名称</h2><p>使用 Redcarpet + pygments 的组合时，<code>cpp</code>、<code>C++</code> 和 <code>c++</code> 都能对 C++ 代码片断进行语法高亮。</p>
+<p>而改为 kramdown + rouge 的组合后，只能使用 <code>cpp</code>。</p>
+<p>rouge 支持的语言列表可以参考如下链接：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/jneen/rouge/wiki/List-of-supported-languages-and-lexers">List of supported languages and lexers</a></li>
+</ul>
+<h2 id="图片上面空行"><a href="#图片上面空行" class="headerlink" title="图片上面空行"></a>图片上面空行</h2><p>在 Redcarpet 中，如下写法的图片和文字之间会换行：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Hello, world!</span><br><span class="line">![](<span class="link">/img.png</span>)</span><br></pre></td></tr></table></figure>
+
+<p>而 kramdown 中这种写法图片会直接接在文字后面显示，不换行。如果需要换行则应在图片上面空一行：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Hello, world!</span><br><span class="line"></span><br><span class="line">![](<span class="link">/img.png</span>)</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2016-02-10-am-start-user-parameter/" rel="prev" title="从 am start 的 --user 参数说到 Android 多用户">
+                  <i class="fa fa-angle-left"></i> 从 am start 的 --user 参数说到 Android 多用户
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2016-01-16-build-zeal-for-mac-osx/" rel="next" title="Build Zeal for Mac OS X">
+                  Build Zeal for Mac OS X <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

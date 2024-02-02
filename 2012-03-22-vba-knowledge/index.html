@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="使用 VBA 操作 Excel 表格的一些常用用法的笔记。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VBA 在 Excel 中的常用操作">
+<meta property="og:url" content="https://www.vvbuys.com/2012-03-22-vba-knowledge/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="使用 VBA 操作 Excel 表格的一些常用用法的笔记。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-02T01:06:28.196Z">
+<meta property="article:modified_time" content="2024-02-02T01:06:28.196Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="Linux hyprland Python Rust Golang javascript">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/2012-03-22-vba-knowledge/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/2012-03-22-vba-knowledge/","path":"2012-03-22-vba-knowledge/","title":"VBA 在 Excel 中的常用操作"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>VBA 在 Excel 中的常用操作 | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">文件操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E6%89%93%E5%BC%80%E7%9A%84%E5%B7%A5%E4%BD%9C%E7%B0%BF"><span class="nav-number">1.1.</span> <span class="nav-text">引用打开的工作簿</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA-EXCEL-%E5%B7%A5%E4%BD%9C%E7%B0%BF%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.2.</span> <span class="nav-text">创建一个 EXCEL 工作簿对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%93%E5%BC%80-%E4%BF%9D%E5%AD%98-%E5%85%B3%E9%97%AD%E5%B7%A5%E4%BD%9C%E7%B0%BF"><span class="nav-number">1.3.</span> <span class="nav-text">打开&#x2F;保存&#x2F;关闭工作簿</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%B7%E8%B4%9D%E6%96%87%E4%BB%B6"><span class="nav-number">1.4.</span> <span class="nav-text">拷贝文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E7%9A%84%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6"><span class="nav-number">1.5.</span> <span class="nav-text">删除文件夹下的所有文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="nav-number">1.6.</span> <span class="nav-text">创建文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E6%96%87%E4%BB%B6%E5%A4%B9%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8"><span class="nav-number">1.7.</span> <span class="nav-text">判断文件夹是否存在</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8"><span class="nav-number">1.8.</span> <span class="nav-text">判断文件是否存在</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F%E6%93%8D%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">格式操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E8%BE%B9%E6%A1%86%E4%B8%8E%E8%87%AA%E5%8A%A8%E7%AD%9B%E9%80%89"><span class="nav-number">2.1.</span> <span class="nav-text">设置边框与自动筛选</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E6%88%96%E8%80%85%E8%AE%BE%E7%BD%AE%E5%8D%95%E5%85%83%E6%A0%BC%E8%83%8C%E6%99%AF%E8%89%B2"><span class="nav-number">2.2.</span> <span class="nav-text">获取或者设置单元格背景色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A9%E6%9F%90%E8%A1%A8%E6%A0%BC%E9%80%89%E4%B8%AD%E7%9A%84%E5%8D%95%E5%85%83%E6%A0%BC%E5%8F%98%E6%88%90%E6%8C%87%E5%AE%9A%E9%A2%9C%E8%89%B2"><span class="nav-number">2.3.</span> <span class="nav-text">让某表格选中的单元格变成指定颜色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E5%8D%95%E5%85%83%E6%A0%BC%E9%87%8C%E5%9B%9E%E8%BD%A6-%E6%8D%A2%E8%A1%8C"><span class="nav-number">2.4.</span> <span class="nav-text">在单元格里回车 &#x2F; 换行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%90%E8%97%8F%E8%A1%8C"><span class="nav-number">2.5.</span> <span class="nav-text">隐藏行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E5%85%83%E6%A0%BC%E5%86%85%E5%AE%B9%E4%B8%BA%E7%BA%AF%E6%96%87%E6%9C%AC"><span class="nav-number">2.6.</span> <span class="nav-text">单元格内容为纯文本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%89%E6%8B%A9"><span class="nav-number">3.</span> <span class="nav-text">选择</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E5%8D%95%E5%85%83%E6%A0%BC-%E5%8C%BA%E5%9F%9F"><span class="nav-number">3.1.</span> <span class="nav-text">引用单元格 &#x2F; 区域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E4%B8%AD%E5%8D%95%E5%85%83%E6%A0%BC-%E5%8C%BA%E5%9F%9F"><span class="nav-number">3.2.</span> <span class="nav-text">选中单元格 &#x2F; 区域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E9%80%89%E4%B8%AD%E5%8C%BA%E5%9F%9F"><span class="nav-number">3.3.</span> <span class="nav-text">获取当前选中区域</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">4.</span> <span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Dictionary"><span class="nav-number">4.1.</span> <span class="nav-text">Dictionary</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80"><span class="nav-number">5.</span> <span class="nav-text">语言基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#String-to-Integer%E3%80%81Double"><span class="nav-number">5.1.</span> <span class="nav-text">String to Integer、Double</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%86%E5%89%B2-%E8%8E%B7%E5%8F%96%E6%95%B0%E7%BB%84%E9%95%BF%E5%BA%A6"><span class="nav-number">5.2.</span> <span class="nav-text">字符串分割&#x2F;获取数组长度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E5%8D%95%E5%85%83%E6%A0%BC%E6%98%AF%E5%90%A6%E4%B8%BA%E7%A9%BA"><span class="nav-number">5.3.</span> <span class="nav-text">判断单元格是否为空</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%80%E5%87%BA"><span class="nav-number">5.4.</span> <span class="nav-text">退出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">265</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2012-03-22-vba-knowledge/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="VBA 在 Excel 中的常用操作 | VVbugs Blog">
+      <meta itemprop="description" content="使用 VBA 操作 Excel 表格的一些常用用法的笔记。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          VBA 在 Excel 中的常用操作
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Excel/" itemprop="url" rel="index"><span itemprop="name">Excel</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">使用 VBA 操作 Excel 表格的一些常用用法的笔记。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><h3 id="引用打开的工作簿"><a href="#引用打开的工作簿" class="headerlink" title="引用打开的工作簿"></a>引用打开的工作簿</h3><p>使用索引号（从 1 开始）</p>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Workbooks(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<p>使用工作簿名称</p>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Workbooks(<span class="string">&quot;1.xlsx&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建一个-EXCEL-工作簿对象"><a href="#创建一个-EXCEL-工作簿对象" class="headerlink" title="创建一个 EXCEL 工作簿对象"></a>创建一个 EXCEL 工作簿对象</h3><figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Dim</span> wd <span class="keyword">As</span> Excel.Application</span><br><span class="line"><span class="keyword">Dim</span> wb <span class="keyword">As</span> Workbook</span><br><span class="line"></span><br><span class="line"><span class="keyword">Set</span> wd = CreateObject(<span class="string">&quot;excel.application&quot;</span>)</span><br><span class="line">wd.Visible = <span class="literal">True</span></span><br><span class="line"><span class="keyword">Set</span> wb = wd.Workbooks.Open(ThisWorkbook.Path &amp; <span class="string">&quot;/test.xls&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">&#x27; ...</span></span><br><span class="line"></span><br><span class="line">wb.Close</span><br><span class="line">wd.Quit</span><br></pre></td></tr></table></figure>
+
+<h3 id="打开-保存-关闭工作簿"><a href="#打开-保存-关闭工作簿" class="headerlink" title="打开&#x2F;保存&#x2F;关闭工作簿"></a>打开&#x2F;保存&#x2F;关闭工作簿</h3><figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Dim</span> wb <span class="keyword">As</span> Workbook</span><br><span class="line"></span><br><span class="line">wb = Workbooks.Open(ThisWorkbook.Path &amp; <span class="string">&quot;/test.xls&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">&#x27; ...</span></span><br><span class="line"></span><br><span class="line">wb.Save</span><br><span class="line">wb.Close</span><br></pre></td></tr></table></figure>
+
+<p>关闭所有工作簿</p>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Workbooks.close</span><br></pre></td></tr></table></figure>
+
+<p>另存为（自动打开新文件关闭源文件）</p>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ThisWorkbook.SaveAs FileName:=<span class="string">&quot;D:\1.xls&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>另存为（保留源文件不打开新文件）</p>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ThisWorkbook.SaveCopyAs FileName:=<span class="string">&quot;D:\1.xls&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="拷贝文件"><a href="#拷贝文件" class="headerlink" title="拷贝文件"></a>拷贝文件</h3><figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">oldfile = ThisWorkBook.Path &amp; <span class="string">&quot;/old.xlsx&quot;</span></span><br><span class="line">newfile = ThisWorkBook.Path &amp; <span class="string">&quot;/new.xlsx&quot;</span></span><br><span class="line">FileCopy oldfile, newfile</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除文件夹下的所有文件"><a href="#删除文件夹下的所有文件" class="headerlink" title="删除文件夹下的所有文件"></a>删除文件夹下的所有文件</h3><figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">base = ThisWorkBook.Path &amp; <span class="string">&quot;/文件夹/&quot;</span></span><br><span class="line">pattern = base &amp; <span class="string">&quot;*.*&quot;</span></span><br><span class="line">file = Dir(pattern, vbReadOnly)</span><br><span class="line"><span class="keyword">While</span> file &lt;&gt; <span class="string">&quot;&quot;</span></span><br><span class="line">    Kill base &amp; file</span><br><span class="line">    file = Dir</span><br><span class="line">Wend</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建文件夹"><a href="#创建文件夹" class="headerlink" title="创建文件夹"></a>创建文件夹</h3><figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MkDir(directory)</span><br></pre></td></tr></table></figure>
+
+<h3 id="判断文件夹是否存在"><a href="#判断文件夹是否存在" class="headerlink" title="判断文件夹是否存在"></a>判断文件夹是否存在</h3><p>以下为不存在即创建</p>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">If</span> Dir(outputDir, <span class="number">16</span>) = Empty <span class="keyword">Then</span></span><br><span class="line">    MkDir (outputDir)</span><br><span class="line"><span class="keyword">End</span> <span class="keyword">If</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="判断文件是否存在"><a href="#判断文件是否存在" class="headerlink" title="判断文件是否存在"></a>判断文件是否存在</h3><p>方法 1：</p>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Dim</span> fileSystemObject <span class="keyword">As</span> <span class="type">Object</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">Set</span> fileSystemObject = CreateObject(<span class="string">&quot;Scripting.FileSystemObject&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">If</span> fileSystemObject.FileExists(&lt;filepath&gt;) = <span class="literal">True</span> <span class="keyword">Then</span></span><br><span class="line">    MsgBox <span class="string">&quot;文件存在&quot;</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">If</span></span><br></pre></td></tr></table></figure>
+
+<p>方法 2：</p>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Dim</span> file <span class="keyword">As</span> <span class="type">String</span></span><br><span class="line"></span><br><span class="line">file = Dir(<span class="string">&quot;E:\MyPictures\Pic\logo.gif&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">If</span> file &lt;&gt; <span class="string">&quot;&quot;</span> <span class="keyword">Then</span></span><br><span class="line">    MsgBox  <span class="string">&quot;文件存在&quot;</span></span><br><span class="line">Endif</span><br></pre></td></tr></table></figure>
+
+<h2 id="格式操作"><a href="#格式操作" class="headerlink" title="格式操作"></a>格式操作</h2><h3 id="设置边框与自动筛选"><a href="#设置边框与自动筛选" class="headerlink" title="设置边框与自动筛选"></a>设置边框与自动筛选</h3><figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Set</span> Rng = MyWorkSheet.UsedRange</span><br><span class="line"><span class="keyword">With</span> Rng</span><br><span class="line">    .Borders.LineStyle = xlContinuous</span><br><span class="line">    .Borders.Weight = xlThin</span><br><span class="line">    .AutoFilter</span><br><span class="line"><span class="keyword">End</span> <span class="keyword">With</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="获取或者设置单元格背景色"><a href="#获取或者设置单元格背景色" class="headerlink" title="获取或者设置单元格背景色"></a>获取或者设置单元格背景色</h3><figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MyWorkSheet.Cells(i, j).Interior.ColorIndex</span><br></pre></td></tr></table></figure>
+
+<h3 id="让某表格选中的单元格变成指定颜色"><a href="#让某表格选中的单元格变成指定颜色" class="headerlink" title="让某表格选中的单元格变成指定颜色"></a>让某表格选中的单元格变成指定颜色</h3><p>在 thisworkbook 中添加如下代码段：</p>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Private</span> <span class="keyword">Sub</span> Workbook_SheetSelectionChange(<span class="keyword">ByVal</span> Sh <span class="keyword">As</span> <span class="type">Object</span>, <span class="keyword">ByVal</span> Target <span class="keyword">As</span> Range)</span><br><span class="line">    <span class="keyword">If</span> ActiveSheet.Name = <span class="string">&quot;yoursheet&quot;</span> <span class="keyword">Then</span></span><br><span class="line">        ActiveSheet.UsedRange.Interior.ColorIndex = <span class="number">0</span></span><br><span class="line">        Target.Interior.ColorIndex = <span class="number">6</span></span><br><span class="line">    <span class="keyword">End</span> <span class="keyword">If</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="在单元格里回车-换行"><a href="#在单元格里回车-换行" class="headerlink" title="在单元格里回车 &#x2F; 换行"></a>在单元格里回车 &#x2F; 换行</h3><p>设置单元格 Value 里使用 <code>Chr(10)</code> 和 <code>Chr(13)</code>，分别表示回车、换行。</p>
+<h3 id="隐藏行"><a href="#隐藏行" class="headerlink" title="隐藏行"></a>隐藏行</h3><figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MyWorkSheet.Rows(i).Hidden = <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="单元格内容为纯文本"><a href="#单元格内容为纯文本" class="headerlink" title="单元格内容为纯文本"></a>单元格内容为纯文本</h3><figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sheet.Cells(m, n).NumberFormatLocal = <span class="string">&quot;@&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h2><h3 id="引用单元格-区域"><a href="#引用单元格-区域" class="headerlink" title="引用单元格 &#x2F; 区域"></a>引用单元格 &#x2F; 区域</h3><figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Range(<span class="string">&quot;A1&quot;</span>) <span class="comment">&#x27;表示 A1 单元格</span></span><br><span class="line">Range(<span class="string">&quot;A2:D1&quot;</span>) <span class="comment">&#x27;表示 A2 到 D1 区域</span></span><br><span class="line">Range(<span class="string">&quot;A2:D1&quot;</span>)(<span class="number">3</span>) <span class="comment">&#x27;表示该区域里的第三个单元格</span></span><br><span class="line">Range(<span class="string">&quot;D&quot;</span> &amp; i) <span class="comment">&#x27;i 为变量</span></span><br><span class="line">Range(<span class="string">&quot;D3:F4,G10&quot;</span>) <span class="comment">&#x27;引用多个区域</span></span><br><span class="line">Range(<span class="string">&quot;2:2&quot;</span>) <span class="comment">&#x27;引用第二行</span></span><br><span class="line">Range(<span class="string">&quot;2:12&quot;</span>) <span class="comment">&#x27;引用第二行到第十二行</span></span><br><span class="line">Range(<span class="string">&quot;D:A&quot;</span>) <span class="comment">&#x27;引用第 A 到 D 列</span></span><br><span class="line">Rows(<span class="number">2</span>) <span class="comment">&#x27;引用第二行</span></span><br><span class="line">Rows(<span class="string">&quot;2:4&quot;</span>) <span class="comment">&#x27;引用第二到四行</span></span><br><span class="line">Columns(<span class="string">&quot;B&quot;</span>)</span><br><span class="line">Columns(<span class="string">&quot;B:D&quot;</span>)</span><br><span class="line">Range(Clee1, Cell2) <span class="comment">&#x27;左上与右下</span></span><br><span class="line">Range(Range1, Range2) <span class="comment">&#x27;取最大范围</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="选中单元格-区域"><a href="#选中单元格-区域" class="headerlink" title="选中单元格 &#x2F; 区域"></a>选中单元格 &#x2F; 区域</h3><figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Range(<span class="string">&quot;1:1&quot;</span>).<span class="keyword">Select</span> <span class="comment">&#x27;选中第一行</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="获取当前选中区域"><a href="#获取当前选中区域" class="headerlink" title="获取当前选中区域"></a>获取当前选中区域</h3><figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MyWorkSheet.Application.Selection</span><br></pre></td></tr></table></figure>
+
+<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h3 id="Dictionary"><a href="#Dictionary" class="headerlink" title="Dictionary"></a>Dictionary</h3><figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Dim</span> dict</span><br><span class="line"><span class="keyword">Set</span> dict = CreateObject(<span class="string">&quot;Scripting.Dictionary&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">&#x27; 新增，各种类型都可以，包括 Dictionary</span></span><br><span class="line">dict.Add <span class="string">&quot;hello&quot;</span>, <span class="string">&quot;world&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&#x27; 数量</span></span><br><span class="line">dict.Count</span><br><span class="line"></span><br><span class="line"><span class="comment">&#x27; 删除</span></span><br><span class="line">dict.Remove(<span class="string">&quot;hello&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">&#x27; 判断是否存在</span></span><br><span class="line">dict.exists(<span class="string">&quot;hello&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">&#x27; 取值，需要先判断存在再取</span></span><br><span class="line">dict.Item(<span class="string">&quot;hello&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">&#x27; 修改、新增</span></span><br><span class="line">dict.Item(<span class="string">&quot;hello&quot;</span>) = <span class="string">&quot;world&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&#x27; 循环</span></span><br><span class="line">k = dict.Keys</span><br><span class="line">v = dict.Items</span><br><span class="line"><span class="keyword">For</span> i = <span class="number">0</span> <span class="keyword">to</span> dict.count - <span class="number">1</span></span><br><span class="line">    <span class="keyword">key</span> = k(i)</span><br><span class="line">    value = v(i)</span><br><span class="line"><span class="keyword">Next</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&#x27; 清空</span></span><br><span class="line">dict.RemoveAll</span><br></pre></td></tr></table></figure>
+
+<p>参考：<a target="_blank" rel="noopener" href="http://www.cnblogs.com/zhjh256/p/6428333.html">Excel vba map&#x2F;dictionary</a></p>
+<h2 id="语言基础"><a href="#语言基础" class="headerlink" title="语言基础"></a>语言基础</h2><h3 id="String-to-Integer、Double"><a href="#String-to-Integer、Double" class="headerlink" title="String to Integer、Double"></a>String to Integer、Double</h3><figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">CInt</span>(MyWorkSheet.Cells(<span class="number">1</span>,<span class="number">7</span>))</span><br><span class="line"></span><br><span class="line"><span class="built_in">CDbl</span>(MyWorkSheet.Cells(<span class="number">1</span>,<span class="number">7</span>))</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串分割-获取数组长度"><a href="#字符串分割-获取数组长度" class="headerlink" title="字符串分割&#x2F;获取数组长度"></a>字符串分割&#x2F;获取数组长度</h3><figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Dim</span> arr() <span class="keyword">As</span> <span class="type">String</span></span><br><span class="line">arr() = Split(ws.Cells(a, b).Value, <span class="string">&quot;-&quot;</span>)</span><br><span class="line">alen = UBound(arr) - LBound(arr) + <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="判断单元格是否为空"><a href="#判断单元格是否为空" class="headerlink" title="判断单元格是否为空"></a>判断单元格是否为空</h3><p>判断单元格的 value 是否为 “”。</p>
+<h3 id="退出"><a href="#退出" class="headerlink" title="退出"></a>退出</h3><p>主要使用 Exit 表达式。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Exit &#123; Do | For | Function | Property | Select | Sub | Try | While &#125;</span><br></pre></td></tr></table></figure>
+
+<p>参见 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/dotnet/visual-basic/language-reference/statements/exit-statement">Exit Statement (Visual Basic)</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="http://software-solutions-online.com/converting-data-types/">VBA Converting Data Types</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.sina.com.cn/s/blog_6d5dcf100101bkhz.html##1">excel vba判断文件是否存在</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2012-04-05-learn-python-practise/" rel="prev" title="Python 核心编程中文第二版课后练习 2.21 答案">
+                  <i class="fa fa-angle-left"></i> Python 核心编程中文第二版课后练习 2.21 答案
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2012-03-15-gecko-plugin/" rel="next" title="Firefox 和内嵌 Gecko 程序的 Plugins">
+                  Firefox 和内嵌 Gecko 程序的 Plugins <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

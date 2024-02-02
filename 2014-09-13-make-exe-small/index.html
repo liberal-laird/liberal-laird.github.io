@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="为了节省大量用户下载占用的带宽，又不便使用 P2P 技术，需要做一个尽量小的独立 EXE，这里是对如何让一个简单的 EXE 体积尽量小的部分方法与每一步的实际效果。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何让你的 EXE&#x2F;DLL 足够小">
+<meta property="og:url" content="https://www.vvbuys.com/2014-09-13-make-exe-small/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="为了节省大量用户下载占用的带宽，又不便使用 P2P 技术，需要做一个尽量小的独立 EXE，这里是对如何让一个简单的 EXE 体积尽量小的部分方法与每一步的实际效果。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-02T01:06:28.200Z">
+<meta property="article:modified_time" content="2024-02-02T01:06:28.200Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="Linux hyprland Python Rust Golang javascript">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/2014-09-13-make-exe-small/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/2014-09-13-make-exe-small/","path":"2014-09-13-make-exe-small/","title":"如何让你的 EXE/DLL 足够小"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>如何让你的 EXE/DLL 足够小 | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B-DEMO"><span class="nav-number">1.</span> <span class="nav-text">初始 DEMO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%93%E5%BC%80%E6%9C%80%E5%B0%8F%E4%BD%93%E7%A7%AF%E4%BC%98%E5%8C%96%E5%BC%80%E5%85%B3"><span class="nav-number">2.</span> <span class="nav-text">打开最小体积优化开关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E7%94%9F%E6%88%90%E8%B0%83%E8%AF%95%E4%BF%A1%E6%81%AF"><span class="nav-number">3.</span> <span class="nav-text">不生成调试信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%BB%E6%8E%89-CRT-%E4%BE%9D%E8%B5%96"><span class="nav-number">4.</span> <span class="nav-text">去掉 CRT 依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E5%A3%B3%E5%8E%8B%E7%BC%A9"><span class="nav-number">5.</span> <span class="nav-text">加壳压缩</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">265</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2014-09-13-make-exe-small/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="如何让你的 EXE/DLL 足够小 | VVbugs Blog">
+      <meta itemprop="description" content="为了节省大量用户下载占用的带宽，又不便使用 P2P 技术，需要做一个尽量小的独立 EXE，这里是对如何让一个简单的 EXE 体积尽量小的部分方法与每一步的实际效果。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          如何让你的 EXE/DLL 足够小
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Windows/" itemprop="url" rel="index"><span itemprop="name">Windows</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">为了节省大量用户下载占用的带宽，又不便使用 P2P 技术，需要做一个尽量小的独立 EXE，这里是对如何让一个简单的 EXE 体积尽量小的部分方法与每一步的实际效果。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>为了节省大量用户下载占用的带宽，又不便使用 P2P 技术，需要做一个尽量小的独立 EXE，这里是对如何让一个简单的 EXE 体积尽量小的部分方法与每一步的实际效果。</p>
+<h3 id="初始-DEMO"><a href="#初始-DEMO" class="headerlink" title="初始 DEMO"></a>初始 DEMO</h3><p>用 VC++ 生成一个最简单的 Win32 Console Application，调用少量简单的 CRT 函数，因为要独立 EXE，所以使用 &#x2F;MT，示例代码部分如下，然后 Release 编译看看体积。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdafx.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> _tmain(<span class="type">int</span> argc, _TCHAR* argv[])</span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">const</span> <span class="type">char</span>* pStr = <span class="string">&quot;hello, world&quot;</span>;</span><br><span class="line">	<span class="type">char</span> szArray[<span class="number">64</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="built_in">strcpy</span>(szArray, pStr);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>现在大小是 40960 字节。</strong></p>
+<h3 id="打开最小体积优化开关"><a href="#打开最小体积优化开关" class="headerlink" title="打开最小体积优化开关"></a>打开最小体积优化开关</h3><p>Project - Property - C&#x2F;C++ - Optimization 将 Optimization 改为 Minimize Size (&#x2F;O1)，重新编译。</p>
+<p><strong>现在大小是 40960 字节。</strong></p>
+<p>可能是示例程序过于简单，所以此开关并没有产生实际的影响，但是在其它有需求的情况下是可以考虑使用它的，在复杂程序中开优化减小体积还是比较明显的，当然也要提防优化带来的问题。</p>
+<h3 id="不生成调试信息"><a href="#不生成调试信息" class="headerlink" title="不生成调试信息"></a>不生成调试信息</h3><p>Project - Property - Linker - Debugging 关闭 Generate Debug Info 开关。</p>
+<p><strong>现在大小是 40960 字节。</strong></p>
+<p>我们可以看到程序大小也未产生变化。这个开关对 Release 文件体积影响较小，在文件较大时也只能压缩几 KB 的大小，而且要承担没有 PDB 后期调试困难的结果，不太建议使用。</p>
+<h3 id="去掉-CRT-依赖"><a href="#去掉-CRT-依赖" class="headerlink" title="去掉 CRT 依赖"></a>去掉 CRT 依赖</h3><p>这至少需要处理如下几点：</p>
+<ol>
+<li>自己指定程序入口点<br>Project - Property - Linker - Anvanced 在 Entry Point 那里填写你的新入口点函数，比如我写的是<code>NewEntry</code>，然后将 main 函数改成这个名字，比如<code>void NewEntry()</code>。</li>
+<li>自己实现用到的 CRT 函数<br>上面的程序里用到了<code>strcpy</code>，那么我们就自己来实现它，当然你用跟它相同的名字和声明实现一个函数是通不过编译的，VC 会报错<code>error C2169: &#39;strcpy&#39; : intrinsic function, cannot be defined</code>，要解决这个问题需要关掉一个开关：<br>Project - Property - C&#x2F;C++ - Optimization 将 Enable Intrinsic Functions 设为 No。</li>
+</ol>
+<p>这样修改后的代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdafx.h&quot;</span></span></span><br><span class="line"><span class="comment">//#include &lt;string.h&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">&quot;C&quot;</span> <span class="function"><span class="type">char</span> * __cdecl <span class="title">strcpy</span><span class="params">(<span class="type">char</span> * dst, <span class="type">const</span> <span class="type">char</span> * src)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">char</span> * cp = dst;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span>( *cp++ = *src++ )</span><br><span class="line">		;               <span class="comment">/* Copy src over dst */</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span>( dst );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">NewEntry</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">const</span> <span class="type">char</span>* pStr = <span class="string">&quot;hello, world&quot;</span>;</span><br><span class="line">	<span class="type">char</span> szArray[<span class="number">64</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="built_in">strcpy</span>(szArray, pStr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>现在大小是 3584 字节。</strong></p>
+<p>这是效果最明显，也是实现起来相对最难的一步，需要我们尽量调用 Windows API 而不是 CRT 函数去做一些事情，如果实在需要 CRT 函数的功能，那就自己写一份吧。这些在代码量大的情况下可能会是一个比较繁琐的过程。</p>
+<h3 id="加壳压缩"><a href="#加壳压缩" class="headerlink" title="加壳压缩"></a>加壳压缩</h3><p>使用比如 UPX，ASPack 等加壳工具对可执行程序进行压缩。</p>
+<p>但是实际发现，在 EXE 文件特别小时，比如像上面已经精简到 3584 字节后，再使用 ASPack 工具压缩会反而令 EXE 文件更大。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2014-09-27-myself/" rel="prev" title="眼中的自己">
+                  <i class="fa fa-angle-left"></i> 眼中的自己
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2014-08-30-aboutlife/" rel="next" title="我所理解的生活">
+                  我所理解的生活 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

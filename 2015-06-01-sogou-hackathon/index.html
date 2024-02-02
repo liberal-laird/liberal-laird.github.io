@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="和同事组队参加了搜狗首届黑客马拉松，一些个人总结。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="黑客马拉松参赛总结">
+<meta property="og:url" content="https://www.vvbuys.com/2015-06-01-sogou-hackathon/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="和同事组队参加了搜狗首届黑客马拉松，一些个人总结。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.vvbuys.com/images/blog/hackathon.jpg">
+<meta property="article:published_time" content="2024-02-02T01:06:28.204Z">
+<meta property="article:modified_time" content="2024-02-02T01:06:28.204Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="Linux hyprland Python Rust Golang javascript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.vvbuys.com/images/blog/hackathon.jpg">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/2015-06-01-sogou-hackathon/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/2015-06-01-sogou-hackathon/","path":"2015-06-01-sogou-hackathon/","title":"黑客马拉松参赛总结"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>黑客马拉松参赛总结 | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">265</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2015-06-01-sogou-hackathon/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="黑客马拉松参赛总结 | VVbugs Blog">
+      <meta itemprop="description" content="和同事组队参加了搜狗首届黑客马拉松，一些个人总结。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          黑客马拉松参赛总结
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Blog/" itemprop="url" rel="index"><span itemprop="name">Blog</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">和同事组队参加了搜狗首届黑客马拉松，一些个人总结。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="/images/blog/hackathon.jpg" alt="首届黑客马拉松"></p>
+<p>五月的最后一个周末，和同事一起组队参加了我司举办的首届黑客马拉松大赛，经过几十个小时的奋战，我和队友们一起完成度较高地准备好了演示 Demo、ppt 等，在大家一致看好、觉得在首轮评审表现出色的情况下止步首轮，说不遗憾肯定是假的，想想和小伙伴们为了完成 Demo 的通宵达旦，四个人短时间内提交的上万行代码，三十多个小时不曾睡觉的情况下，听到评审结果宣判的那一刻，倦意趁我的一丝失落情绪铺天盖地地袭来。</p>
+<p>时间仍然欢快地往前流淌，我在沉睡十多个小时后也满血复活，过去的就让它过去吧，收拾收拾心情，总结总结经验教训，继续前行。</p>
+<p>比赛中有幸被小伙伴们推举为我们小组的 CTO，作为需要在技术方面掌控全局的角色，回想一下自己的表现，算是中规中矩，有亮点，也暴露了很多问题。</p>
+<p><strong>先臭屁一下自己的优点：</strong></p>
+<ol>
+<li>担负起了技术选择、模块划分、任务分配和接口制定等方面的工作。</li>
+<li>认真负责，尽自己的努力试图去掌控开发进度、完成我们的 Demo。</li>
+<li>在态度上应该算无可挑剔，对可能影响进度和体验的 Bug 从不轻易放过。</li>
+<li>花了一些时间封装了一些使用到的基础类库，让小伙伴们用得舒心，写得放心。</li>
+</ol>
+<p><strong>然后说说自己暴露的问题：</strong></p>
+<ol>
+<li><p>模块划分与 UML 表达。</p>
+<p>平时工作过程中较多地画一些小流程与逻辑的流程图，但是对整个 APP 的模块划分未涉足过，临时抱了一下佛脚之后做了一个类 MVC 的分层设计，自己感觉并不专业，用于指导开发也并不科学。</p>
+<p>对此我倒没什么好找借口的，就是对此的理论基础太薄弱，后续需要大量的充电补全，自己平时做一些东西的过程中也最好将前期的总体设计工作重视起来，多实践。</p>
+</li>
+<li><p>任务分配。</p>
+<p>这一点是否做好取决于上一点，模块划分不合理将会直接导致任务分配出现问题。比如本次的任务安排，早期版本出现了这样的情况：</p>
+<table>
+<thead>
+<tr>
+<th align="left">人员</th>
+<th align="left">任务1</th>
+<th align="left">任务2</th>
+<th align="left">任务3</th>
+<th align="left">任务4</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">成员1</td>
+<td align="left">第一阶段 UI</td>
+<td align="left">第二阶段 UI</td>
+<td align="left">第三阶段 UI</td>
+<td align="left">第三阶段 逻辑</td>
+</tr>
+<tr>
+<td align="left">成员2</td>
+<td align="left">空闲</td>
+<td align="left">第一阶段 逻辑</td>
+<td align="left">继续</td>
+<td align="left">继续</td>
+</tr>
+<tr>
+<td align="left">成员3</td>
+<td align="left">空闲</td>
+<td align="left">空闲</td>
+<td align="left">第二阶段逻辑</td>
+<td align="left">继续</td>
+</tr>
+</tbody></table>
+<p>因为对 UI 的工作量评估不足，觉得由一个人来快速完成就行，但是实际上 UI 开发后来成为了明显的瓶颈，持续了整个开发周期。其它两个人有较长的时间处于等待 UI 出来之后才能开始往工程里接入逻辑的状态，浪费了大量的劳动力。</p>
+<p>后来对此进行了一番思考，觉得相对来说这样可能会更好一点：</p>
+<ul>
+<li>各人负责一段逻辑流程或者功能模块，顺带简单把对应的界面先搭起来，后来如果需要美化，可以仍然分工给各人，或者由一个相对工作量不那么紧的人统一来调整和美化。</li>
+<li>前期做工作分配时需要有意识地提炼出不严格需要前置条件的任务，松耦合的任务，合理分配。比如可以先将任务做成粗细两种粒度的列表，然后理清它们的前置依赖关系，找出适合打包分给同一个人的集合。</li>
+<li>对工期的评估结合我的评估和对应的负责人的评估来做。</li>
+</ul>
+<p>当然这里头显然大有学问，后续还是要针对性地学习一些相关的知识，有理论支撑做起来才更科学更有底气。</p>
+</li>
+<li><p>量化的缺失。</p>
+<p>在试图掌控进度的过程中，有较长的时间里对剩下多少活只能有个模糊印象，而不能明确地评估剩下百分之多少的工作量，究其原因，就是对工作任务的细分量化不够，若能做到以下两点想必会更好：</p>
+<ul>
+<li>将模块细分为可以明确评估工作量的子任务。</li>
+<li>定期沟通了解小伙伴的进展，更新任务完成情况列表。</li>
+</ul>
+</li>
+</ol>
+<p>总之，离 CTO 的水平还很遥远啊~骚年需努力！</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2015-06-12-wangxiaobo/" rel="prev" title="去看特立独行的猪">
+                  <i class="fa fa-angle-left"></i> 去看特立独行的猪
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2015-05-28-leader-art/" rel="next" title="领导与员工的艺术">
+                  领导与员工的艺术 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

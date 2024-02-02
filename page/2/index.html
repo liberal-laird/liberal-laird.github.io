@@ -125,9 +125,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-count">265</span>
           <span class="site-state-item-name">posts</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">categories</span>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
@@ -157,7 +161,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/read_sf_plf/2019-03-13-sf-plf-13-references/">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2020-10-07-cdn-for-github-pages-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -175,7 +179,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/read_sf_plf/2019-03-13-sf-plf-13-references/" class="post-title-link" itemprop="url">「SF-PLF」13 References</a>
+          <a href="/2020-10-07-cdn-for-github-pages-2/" class="post-title-link" itemprop="url">使用 jsDelivr 免费加速 GitHub Pages 博客的静态资源（二）</a>
         </h2>
 
         <div class="post-meta-container">
@@ -186,7 +190,16 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2024-02-02 01:05:07" itemprop="dateCreated datePublished" datetime="2024-02-02T01:05:07+00:00">2024-02-02</time>
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/GitHub/" itemprop="url" rel="index"><span itemprop="name">GitHub</span></a>
+        </span>
     </span>
 
   
@@ -199,123 +212,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>Hux: this chapter is very similar to TAPL - ch13 References<br>But under a “formal verification” concept, it’s more interesting and practical and push you to think about it!</p>
-</blockquote>
-<p><em>computational effects</em> - “side effects” of computation - <em>impure</em> features</p>
-<ul>
-<li>assign to mutable variables (reference cells, arrays, mutable record fields, etc.)</li>
-<li>perform input and output to files, displays, or network connections; </li>
-<li>make non-local transfers of control via exceptions, jumps, or continuations; </li>
-<li>engage in inter-process synchronization and communication</li>
-</ul>
-<blockquote>
-<p>The main extension will be dealing explicitly with a </p>
-<ul>
-<li><em>store</em> (or <em>heap</em>) and </li>
-<li><em>pointers</em> (or <em>reference</em>) that name <em>store locations</em>, or <em>address</em>…</li>
-</ul>
-</blockquote>
-<p>interesting refinement: type preservation</p>
-<h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p>forms of assignments:</p>
-<ul>
-<li>rare : Gallina   - No </li>
-<li>some : ML family - Explicit <em>reference</em> and <em>dereference</em></li>
-<li>most : C  family - Implicit …</li>
-</ul>
-<p>For formal study, use ML’s model.</p>
-<h2 id="Syntax"><a href="#Syntax" class="headerlink" title="Syntax"></a>Syntax</h2><h3 id="Types-Terms"><a href="#Types-Terms" class="headerlink" title="Types &amp; Terms"></a>Types &amp; Terms</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">T ::= </span><br><span class="line">    | <span class="type">Nat</span></span><br><span class="line">    | <span class="type">Unit</span></span><br><span class="line">    | <span class="type">T</span> → T</span><br><span class="line">    | <span class="type">Ref</span> T</span><br><span class="line"></span><br><span class="line">t ::= </span><br><span class="line">    | <span class="type">...                Terms</span></span><br><span class="line">    | <span class="type">ref</span> t              allocation</span><br><span class="line">    | <span class="type">!t</span>                 dereference</span><br><span class="line">    | <span class="type">t</span> := t             assignment</span><br><span class="line">    | <span class="type">l</span>                  location</span><br></pre></td></tr></table></figure>
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> ty : <span class="keyword">Type</span> :=</span><br><span class="line">  | <span class="type">Nat</span> : ty</span><br><span class="line">  | <span class="type">Unit</span> : ty</span><br><span class="line">  | <span class="type">Arrow</span> : ty → ty → ty</span><br><span class="line">  | <span class="type">Ref</span> : ty → ty.</span><br><span class="line"></span><br><span class="line"><span class="keyword">Inductive</span> tm : <span class="keyword">Type</span> :=</span><br><span class="line">  <span class="comment">(* STLC with numbers: *)</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="comment">(* New terms: *)</span></span><br><span class="line">  | <span class="type">unit</span> : tm</span><br><span class="line">  | <span class="type">ref</span> : tm → tm</span><br><span class="line">  | <span class="type">deref</span> : tm → tm</span><br><span class="line">  | <span class="type">assign</span> : tm → tm → tm</span><br><span class="line">  | <span class="type">loc</span> : nat → tm.         <span class="comment">(** 这里表示 l 的方式是 wrap 一个 nat as loc **)</span></span><br></pre></td></tr></table></figure>
-
-
-<h3 id="Typing"><a href="#Typing" class="headerlink" title="Typing"></a>Typing</h3><pre><code>                       Gamma |- t1 : T1
-                   ------------------------                         (T_Ref)
-                   Gamma |- ref t1 : Ref T1
-
-                    Gamma |- t1 : Ref T11
-                    ---------------------                         (T_Deref)
-                      Gamma |- !t1 : T11
-
-                    Gamma |- t1 : Ref T11
-                      Gamma |- t2 : T11
-                   ------------------------                      (T_Assign)
-                   Gamma |- t1 := t2 : Unit
-</code></pre>
-<h3 id="Values-and-Substitution"><a href="#Values-and-Substitution" class="headerlink" title="Values and Substitution"></a>Values and Substitution</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> value : tm → <span class="keyword">Prop</span> :=</span><br><span class="line">  ...</span><br><span class="line">  | <span class="type">v_unit</span> :     value unit</span><br><span class="line">  | <span class="type">v_loc</span>  : ∀l, value (loc l).  <span class="comment">(* &lt;-- 注意这里是一个 Π (l:nat) . value (loc l) *)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Fixpoint</span> <span class="built_in">subst</span> (x:string) (s:tm) (t:tm) : tm :=</span><br><span class="line">  <span class="keyword">match</span> t <span class="built_in">with</span></span><br><span class="line">  ...</span><br><span class="line">  | <span class="type">unit</span>         ⇒ t</span><br><span class="line">  | <span class="type">ref</span> t1       ⇒ ref (<span class="built_in">subst</span> x s t1)</span><br><span class="line">  | <span class="type">deref</span> t1     ⇒ deref (<span class="built_in">subst</span> x s t1)</span><br><span class="line">  | <span class="type">assign</span> t1 t2 ⇒ assign (<span class="built_in">subst</span> x s t1) (<span class="built_in">subst</span> x s t2)</span><br><span class="line">  | <span class="type">loc</span> <span class="keyword">_</span>        ⇒ t</span><br><span class="line">  <span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
-
-
-
-
-<h2 id="Pragmatics"><a href="#Pragmatics" class="headerlink" title="Pragmatics"></a>Pragmatics</h2><h3 id="Side-Effects-and-Sequencing"><a href="#Side-Effects-and-Sequencing" class="headerlink" title="Side Effects and Sequencing"></a>Side Effects and Sequencing</h3><pre><code>r:=succ(!r); !r
-</code></pre>
-<p>can be desugar to</p>
-<pre><code>(\x:Unit. !r) (r:=succ(!r)).
-</code></pre>
-<p>then we can write some “imperative programming”</p>
-<pre><code>r:=succ(!r); 
-r:=succ(!r); 
-r:=succ(!r); 
-!r
-</code></pre>
-<h3 id="References-and-Aliasing"><a href="#References-and-Aliasing" class="headerlink" title="References and Aliasing"></a>References and Aliasing</h3><p><em>shared reference</em> brings _<em>shared state</em></p>
-<pre><code>let r = ref 5 in
-let s = r in
-s := 82;
-(!r)+1
-</code></pre>
-<h3 id="Shared-State"><a href="#Shared-State" class="headerlink" title="Shared State"></a>Shared State</h3><p><em>thunks</em> as <em>methods</em> </p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="title">let</span> c = ref <span class="number">0</span> <span class="keyword">in</span></span><br><span class="line"><span class="title">let</span> incc = \_:<span class="type">Unit</span>. (c := succ (!c); !c) <span class="keyword">in</span></span><br><span class="line"><span class="title">let</span> decc = \_:<span class="type">Unit</span>. (c := pred (!c); !c) <span class="keyword">in</span> (</span><br><span class="line">  incc unit; </span><br><span class="line">  incc unit;          <span class="comment">-- in real PL: the concrete syntax is `incc()`</span></span><br><span class="line">  decc unit</span><br><span class="line">)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<h3 id="Objects"><a href="#Objects" class="headerlink" title="Objects"></a>Objects</h3><p><em>constructor</em> and <em>encapsulation</em>!</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="title">newcounter</span> =</span><br><span class="line">  \_:<span class="type">Unit</span>.            <span class="comment">-- add `(self, init_val)` would make it more &quot;real&quot;</span></span><br><span class="line">    <span class="keyword">let</span> c = ref <span class="number">0</span> <span class="keyword">in</span>  <span class="comment">-- private and only accessible via closure (特权方法)</span></span><br><span class="line">    <span class="keyword">let</span> incc = \_:<span class="type">Unit</span>. (c := succ (!c); !c) <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">let</span> decc = \_:<span class="type">Unit</span>. (c := pred (!c); !c) <span class="keyword">in</span></span><br><span class="line">    &#123; i=incc, </span><br><span class="line">      d=decc  &#125;       <span class="comment">-- return a &quot;record&quot;, or &quot;struct&quot;, or &quot;object&quot;!</span></span><br><span class="line">      </span><br></pre></td></tr></table></figure>
-
-
-<h3 id="References-to-Compound-Types-e-g-Function-Type"><a href="#References-to-Compound-Types-e-g-Function-Type" class="headerlink" title="References to Compound Types (e.g. Function Type)"></a>References to Compound Types (e.g. Function Type)</h3><p>Previously, we use <em>closure</em> to represent <em>map</em>, with <em>functional update</em><br>这里的”数组” （这个到底算不算数组估计都有争议，虽然的确提供了 index 但是这个显然是 O(n) 都不知道算不算 random access…<br>并不是 in-place update 里面的数据的，仅仅是一个 <code>ref</code> 包住的 map 而已 （仅仅是多了可以 shared</p>
-<p>其实或许 <code>list (ref nat)</code> 也可以表达数组？ 反正都是 O(n) 每次都 linear search 也一样……</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="title">newarray</span> = \_:<span class="type">Unit</span>. ref (\n:<span class="type">Nat</span>.<span class="number">0</span>)</span><br><span class="line"><span class="title">lookup</span> = \a:<span class="type">NatArray</span>. \n:<span class="type">Nat</span>. (!a) n   </span><br><span class="line"><span class="title">update</span> = \a:<span class="type">NatArray</span>. \m:<span class="type">Nat</span>. \v:<span class="type">Nat</span>.</span><br><span class="line">           <span class="keyword">let</span> oldf = !a <span class="keyword">in</span></span><br><span class="line">           a := (\n:<span class="type">Nat</span>. <span class="keyword">if</span> equal m n <span class="keyword">then</span> v <span class="keyword">else</span> oldf n);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<h3 id="Null-References"><a href="#Null-References" class="headerlink" title="Null References"></a>Null References</h3><p><em>nullptr</em>!</p>
-<p>Deref a nullptr:</p>
-<ul>
-<li>exception in Java&#x2F;C#</li>
-<li>insecure in C&#x2F;C++     &lt;– violate memory safety!!</li>
-</ul>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">type</span> <span class="type">Option</span> <span class="type">T</span>   = <span class="type">Unit</span> + <span class="type">T</span></span></span><br><span class="line"><span class="class"><span class="keyword">type</span> <span class="type">Nullable</span> <span class="type">T</span> = <span class="type">Option</span> (<span class="type">Ref</span> <span class="type">T</span>)</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<p>Why is <code>Option</code> outside?<br>think about C, <code>nullptr</code> is A special <em>const</em> location, like <code>Unit</code> (<code>None</code> in terms of datacon) here.</p>
-<h3 id="Garbage-Collection"><a href="#Garbage-Collection" class="headerlink" title="Garbage Collection"></a>Garbage Collection</h3><p>last issue: store <em>de-allocation</em> </p>
-<blockquote>
-<p>w&#x2F;o GC, extremely difficult to achieve type safety…if a primitive for “explicit deallocation” provided<br>one can easily create <em>dangling reference</em> i.e. references -&gt; deleted</p>
-</blockquote>
-<p>One type-unsafe example: (pseudo code)</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="title">a</span> : <span class="type">Ref</span> <span class="type">Nat</span> = ref <span class="number">1</span>;       <span class="comment">-- alloc loc 0</span></span><br><span class="line"><span class="title">free</span>(a);                   <span class="comment">-- free  loc 0</span></span><br><span class="line"><span class="title">b</span> : <span class="type">Ref</span> <span class="type">Bool</span> = ref <span class="type">True</span>;   <span class="comment">-- alloc loc 0</span></span><br><span class="line"></span><br><span class="line"><span class="title">a</span> := !a + <span class="number">1</span>                <span class="comment">-- BOOM!</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h2 id="Operational-Semantics"><a href="#Operational-Semantics" class="headerlink" title="Operational Semantics"></a>Operational Semantics</h2><h3 id="Locations"><a href="#Locations" class="headerlink" title="Locations"></a>Locations</h3><blockquote>
-<p>what should be the <em>values</em> of type <code>Ref T</code>? </p>
-</blockquote>
-<p><code>ref</code> allocate some memory&#x2F;storage!</p>
-<blockquote>
-<p>run-time store is essentially big array of bytes.<br>different datatype need to allocate different size of space (region)</p>
-</blockquote>
-<blockquote>
-<p>we think store as <em>array of values</em>, <em>abstracting away different size of different values</em><br>we use the word <em>location</em> here to prevent from modeling <em>pointer arithmetic</em>, which is un-trackable by most type system</p>
-</blockquote>
-<p>location <code>n</code> is <code>float</code> doesn’t tell you anything about location <code>n+4</code>…</p>
-<h3 id="Stores"><a href="#Stores" class="headerlink" title="Stores"></a>Stores</h3><p>we defined <code>replace</code> as <code>Fixpoint</code> since it’s computational and easier. The consequence is it has to be total.</p>
-<h3 id="Reduction"><a href="#Reduction" class="headerlink" title="Reduction"></a>Reduction</h3><h2 id="Typing-1"><a href="#Typing-1" class="headerlink" title="Typing"></a>Typing</h2><p>typing context:</p>
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> context := partial_map ty.</span><br></pre></td></tr></table></figure>
-
-<h3 id="Store-typings"><a href="#Store-typings" class="headerlink" title="Store typings"></a>Store typings</h3><p>why not just make a <em>context</em> a map of pair?<br>we don’t want to complicate the dynamics of language,<br>and this store typing is only for type check.</p>
-<h3 id="The-Typing-Relation"><a href="#The-Typing-Relation" class="headerlink" title="The Typing Relation"></a>The Typing Relation</h3><h2 id="Properties"><a href="#Properties" class="headerlink" title="Properties"></a>Properties</h2><h3 id="Well-Typed-Stores"><a href="#Well-Typed-Stores" class="headerlink" title="Well-Typed Stores"></a>Well-Typed Stores</h3><h3 id="Extending-Store-Typings"><a href="#Extending-Store-Typings" class="headerlink" title="Extending Store Typings"></a>Extending Store Typings</h3><h3 id="Preservation-Finally"><a href="#Preservation-Finally" class="headerlink" title="Preservation, Finally"></a>Preservation, Finally</h3><h3 id="Substitution-Lemma"><a href="#Substitution-Lemma" class="headerlink" title="Substitution Lemma"></a>Substitution Lemma</h3><h3 id="Assignment-Preserves-Store-Typing"><a href="#Assignment-Preserves-Store-Typing" class="headerlink" title="Assignment Preserves Store Typing"></a>Assignment Preserves Store Typing</h3><h3 id="Weakening-for-Stores"><a href="#Weakening-for-Stores" class="headerlink" title="Weakening for Stores"></a>Weakening for Stores</h3><h3 id="Preservation"><a href="#Preservation" class="headerlink" title="Preservation!"></a>Preservation!</h3><h3 id="Progress"><a href="#Progress" class="headerlink" title="Progress"></a>Progress</h3><h2 id="References-and-Nontermination"><a href="#References-and-Nontermination" class="headerlink" title="References and Nontermination"></a>References and Nontermination</h2>
+          <p>使用 jsDelivr 加速 GitHub Pages 博客的图片资源、站内搜索引用的 JSON 资源。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020-10-07-cdn-for-github-pages-2/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -341,7 +246,7 @@ s := 82;
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/read_sf_plf/2019-03-14-sf-plf-14-record-sub/">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2020-10-28-add-vscode-to-right-click/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -359,7 +264,7 @@ s := 82;
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/read_sf_plf/2019-03-14-sf-plf-14-record-sub/" class="post-title-link" itemprop="url">「SF-PLF」14 RecordSub</a>
+          <a href="/2020-10-28-add-vscode-to-right-click/" class="post-title-link" itemprop="url">给 Mac 添加右键菜单「使用 VSCode 打开」</a>
         </h2>
 
         <div class="post-meta-container">
@@ -370,7 +275,16 @@ s := 82;
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2024-02-02 01:05:07" itemprop="dateCreated datePublished" datetime="2024-02-02T01:05:07+00:00">2024-02-02</time>
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/VSCode/" itemprop="url" rel="index"><span itemprop="name">VSCode</span></a>
+        </span>
     </span>
 
   
@@ -383,26 +297,15 @@ s := 82;
     
     
     <div class="post-body" itemprop="articleBody">
-          <figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> ty : <span class="keyword">Type</span> :=</span><br><span class="line">  <span class="comment">(* record types *)</span></span><br><span class="line">  | <span class="type">RNil</span> : ty</span><br><span class="line">  | <span class="type">RCons</span> : string → ty → ty → ty.</span><br></pre></td></tr></table></figure>
-
-<p>we need typecon to identify record…</p>
-<pre><code class="coq">Inductive tm : Type :=
-  | rproj ...?  isn&#39;t it as well?
-  (* record terms *)
-  | rnil : tm
-  | rcons : string → tm → tm → tm.
-``
-
-as a list...
-
-
-for Record, can compiler reorder the fields? (SML and OCaml)
-
-
-
-
-</code></pre>
-
+          <p>如何在 Mac 下右键文件或文件夹，直接通过菜单项「用 VSCode 打开」。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020-10-28-add-vscode-to-right-click/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -428,7 +331,7 @@ for Record, can compiler reorder the fields? (SML and OCaml)
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/read_sf_plf/2019-03-17-sf-plf-17-use-tactics/">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2021-03-13-talk-about-threadsafe-with-arraylist/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -446,7 +349,7 @@ for Record, can compiler reorder the fields? (SML and OCaml)
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/read_sf_plf/2019-03-17-sf-plf-17-use-tactics/" class="post-title-link" itemprop="url">「SF-PLF」17 UseTactics</a>
+          <a href="/2021-03-13-talk-about-threadsafe-with-arraylist/" class="post-title-link" itemprop="url">代码审查：从 ArrayList 说线程安全</a>
         </h2>
 
         <div class="post-meta-container">
@@ -457,7 +360,16 @@ for Record, can compiler reorder the fields? (SML and OCaml)
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2024-02-02 01:05:07" itemprop="dateCreated datePublished" datetime="2024-02-02T01:05:07+00:00">2024-02-02</time>
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
     </span>
 
   
@@ -470,49 +382,15 @@ for Record, can compiler reorder the fields? (SML and OCaml)
     
     
     <div class="post-body" itemprop="articleBody">
-          <figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">From</span> PLF <span class="keyword">Require</span> <span class="keyword">Import</span> LibTactics.</span><br></pre></td></tr></table></figure>
-
-<p><code>LibTactics</code>  vs. <code>SSReflect</code> (another tactics package)</p>
-<ul>
-<li>for PL      vs. for math</li>
-<li>traditional vs. rethinks..so harder</li>
-</ul>
-<h2 id="Tactics-for-Naming-and-Performing-Inversion"><a href="#Tactics-for-Naming-and-Performing-Inversion" class="headerlink" title="Tactics for Naming and Performing Inversion"></a>Tactics for Naming and Performing Inversion</h2><h3 id="introv"><a href="#introv" class="headerlink" title="introv"></a><code>introv</code></h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> ceval_deterministic: ∀c st st1 st2,</span><br><span class="line">  st =[ c ]⇒ st1 →</span><br><span class="line">  st =[ c ]⇒ st2 →</span><br><span class="line">  st1 = st2.</span><br><span class="line"><span class="built_in">intros</span> c st st1 st2 E1 E2. <span class="comment">(* 以往如果想给 Hypo 命名必须说全 *)</span></span><br><span class="line">introv E1 E2.              <span class="comment">(* 现在可以忽略 forall 的部分 *)</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="inverts"><a href="#inverts" class="headerlink" title="inverts"></a><code>inverts</code></h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">(* was... 需要 subst, clear *)</span></span><br><span class="line">- <span class="built_in">inversion</span> H. <span class="built_in">subst</span>. <span class="built_in">inversion</span> H2. <span class="built_in">subst</span>. </span><br><span class="line"><span class="comment">(* now... *)</span></span><br><span class="line">- inverts H. inverts H2. </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">(* 可以把 invert 出来的东西放在 goal 的位置让你自己用 intro 命名！*)</span></span><br><span class="line">inverts E2 <span class="built_in">as</span>.</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-<h2 id="Tactics-for-N-ary-Connectives"><a href="#Tactics-for-N-ary-Connectives" class="headerlink" title="Tactics for N-ary Connectives"></a>Tactics for N-ary Connectives</h2><blockquote>
-<p>Because Coq encodes conjunctions and disjunctions using binary constructors ∧ and ∨…<br>to work with a <code>N</code>-ary logical connectives…</p>
-</blockquote>
-<h3 id="splits"><a href="#splits" class="headerlink" title="splits"></a><code>splits</code></h3><blockquote>
-<p>n-ary conjunction</p>
-</blockquote>
-<p>n-ary <code>split</code></p>
-<h3 id="branch"><a href="#branch" class="headerlink" title="branch"></a><code>branch</code></h3><blockquote>
-<p>n-ary disjunction</p>
-</blockquote>
-<p>faster <code>destruct</code>?</p>
-<h2 id="Tactics-for-Working-with-Equality"><a href="#Tactics-for-Working-with-Equality" class="headerlink" title="Tactics for Working with Equality"></a>Tactics for Working with Equality</h2><h3 id="asserts-rewrite-and-cuts-rewrite"><a href="#asserts-rewrite-and-cuts-rewrite" class="headerlink" title="asserts_rewrite and cuts_rewrite"></a><code>asserts_rewrite</code> and <code>cuts_rewrite</code></h3><h3 id="substs"><a href="#substs" class="headerlink" title="substs"></a><code>substs</code></h3><p>better <code>subst</code> - not fail on circular eq</p>
-<h3 id="fequals"><a href="#fequals" class="headerlink" title="fequals"></a><code>fequals</code></h3><p>vs <code>f_equal</code>?</p>
-<h3 id="applys-eq"><a href="#applys-eq" class="headerlink" title="applys_eq"></a><code>applys_eq</code></h3><p>variant of <code>eapply</code> </p>
-<h2 id="Some-Convenient-Shorthands"><a href="#Some-Convenient-Shorthands" class="headerlink" title="Some Convenient Shorthands"></a>Some Convenient Shorthands</h2><h3 id="unfolds"><a href="#unfolds" class="headerlink" title="unfolds"></a><code>unfolds</code></h3><p>better <code>unfold</code></p>
-<h3 id="false-and-tryfalse"><a href="#false-and-tryfalse" class="headerlink" title="false and tryfalse"></a><code>false</code> and <code>tryfalse</code></h3><p>better <code>exfalso</code></p>
-<h3 id="gen"><a href="#gen" class="headerlink" title="gen"></a><code>gen</code></h3><p>shorthand for <code>generalize dependent</code>, multiple arg.</p>
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">(* old *)</span></span><br><span class="line"><span class="built_in">intros</span> Gamma x U v t S Htypt Htypv.</span><br><span class="line"><span class="built_in">generalize</span> <span class="built_in">dependent</span> S. <span class="built_in">generalize</span> <span class="built_in">dependent</span> Gamma.</span><br><span class="line"> </span><br><span class="line"><span class="comment">(* new...so nice!!! *)</span></span><br><span class="line">introv Htypt Htypv. gen S Gamma.</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="admits-admit-rewrite-and-admit-goal"><a href="#admits-admit-rewrite-and-admit-goal" class="headerlink" title="admits, admit_rewrite and admit_goal"></a><code>admits</code>, <code>admit_rewrite</code> and <code>admit_goal</code></h3><p>wrappers around <code>admit</code></p>
-<h3 id="sort"><a href="#sort" class="headerlink" title="sort"></a><code>sort</code></h3><blockquote>
-<p>proof context more readable </p>
-</blockquote>
-<p>vars       -&gt; top<br>hypotheses -&gt; bottom</p>
-<h2 id="Tactics-for-Advanced-Lemma-Instantiation"><a href="#Tactics-for-Advanced-Lemma-Instantiation" class="headerlink" title="Tactics for Advanced Lemma Instantiation"></a>Tactics for Advanced Lemma Instantiation</h2><h3 id="Working-on-lets"><a href="#Working-on-lets" class="headerlink" title="Working on lets"></a>Working on <code>lets</code></h3><h3 id="Working-on-applys-forwards-and-specializes"><a href="#Working-on-applys-forwards-and-specializes" class="headerlink" title="Working on applys, forwards and specializes"></a>Working on <code>applys</code>, <code>forwards</code> and <code>specializes</code></h3>
+          <p>从一个代码 Review 中发现的 ArrayList 线程不安全的真实案例，顺便深入理解一下线程安全。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021-03-13-talk-about-threadsafe-with-arraylist/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -538,7 +416,7 @@ for Record, can compiler reorder the fields? (SML and OCaml)
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/read_sf_plf/2019-03-18-sf-plf-18-use-auto/">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2021-03-27-intellij-idea-unsupported-java-version/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -556,7 +434,7 @@ for Record, can compiler reorder the fields? (SML and OCaml)
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/read_sf_plf/2019-03-18-sf-plf-18-use-auto/" class="post-title-link" itemprop="url">「SF-PLF」18 UseAuto</a>
+          <a href="/2021-03-27-intellij-idea-unsupported-java-version/" class="post-title-link" itemprop="url">解决 IntelliJ IDEA 启动报 Unsupported Java Version 的问题</a>
         </h2>
 
         <div class="post-meta-container">
@@ -567,7 +445,16 @@ for Record, can compiler reorder the fields? (SML and OCaml)
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2024-02-02 01:05:07" itemprop="dateCreated datePublished" datetime="2024-02-02T01:05:07+00:00">2024-02-02</time>
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
     </span>
 
   
@@ -580,14 +467,15 @@ for Record, can compiler reorder the fields? (SML and OCaml)
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="Basic-Features-of-Proof-Search"><a href="#Basic-Features-of-Proof-Search" class="headerlink" title="Basic Features of Proof Search"></a>Basic Features of Proof Search</h2><h3 id="Strength-of-Proof-Search"><a href="#Strength-of-Proof-Search" class="headerlink" title="Strength of Proof Search"></a>Strength of Proof Search</h3><blockquote>
-<p>four proof-search tactics: <code>auto</code>, <code>eauto</code>, <code>iauto</code> and <code>jauto</code>.</p>
-</blockquote>
-<hr>
-<h2 id="How-Proof-Search-Works"><a href="#How-Proof-Search-Works" class="headerlink" title="How Proof Search Works"></a>How Proof Search Works</h2><h3 id="Search-Depth"><a href="#Search-Depth" class="headerlink" title="Search Depth"></a>Search Depth</h3><h3 id="Backtracking"><a href="#Backtracking" class="headerlink" title="Backtracking"></a>Backtracking</h3><h3 id="Adding-Hints"><a href="#Adding-Hints" class="headerlink" title="Adding Hints"></a>Adding Hints</h3><h3 id="Integration-of-Automation-in-Tactics"><a href="#Integration-of-Automation-in-Tactics" class="headerlink" title="Integration of Automation in Tactics"></a>Integration of Automation in Tactics</h3><hr>
-<h2 id="Example-Proofs"><a href="#Example-Proofs" class="headerlink" title="Example Proofs"></a>Example Proofs</h2><hr>
-<h2 id="Advanced-Topics-in-Proof-Search"><a href="#Advanced-Topics-in-Proof-Search" class="headerlink" title="Advanced Topics in Proof Search"></a>Advanced Topics in Proof Search</h2><h3 id=""><a href="#" class="headerlink" title=""></a></h3><hr>
-<h2 id="Decision-Procedures"><a href="#Decision-Procedures" class="headerlink" title="Decision Procedures"></a>Decision Procedures</h2><h3 id="Omega"><a href="#Omega" class="headerlink" title="Omega"></a>Omega</h3><h3 id="Ring"><a href="#Ring" class="headerlink" title="Ring"></a>Ring</h3><h3 id="Congurence"><a href="#Congurence" class="headerlink" title="Congurence"></a>Congurence</h3>
+          <p>解决 IntelliJ IDEA 启动报 Unsupported Java Version 的问题</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021-03-27-intellij-idea-unsupported-java-version/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -613,7 +501,7 @@ for Record, can compiler reorder the fields? (SML and OCaml)
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/data_rep/2020-06-19-data-rep-int/">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2021-06-19-xxl-job-sharding/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -631,7 +519,7 @@ for Record, can compiler reorder the fields? (SML and OCaml)
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/data_rep/2020-06-19-data-rep-int/" class="post-title-link" itemprop="url">Data Representation - Integer</a>
+          <a href="/2021-06-19-xxl-job-sharding/" class="post-title-link" itemprop="url">利用 XXL-JOB 实现灵活控制的分片处理</a>
         </h2>
 
         <div class="post-meta-container">
@@ -642,7 +530,16 @@ for Record, can compiler reorder the fields? (SML and OCaml)
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2024-02-02 01:05:07" itemprop="dateCreated datePublished" datetime="2024-02-02T01:05:07+00:00">2024-02-02</time>
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
     </span>
 
   
@@ -655,137 +552,15 @@ for Record, can compiler reorder the fields? (SML and OCaml)
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>Integers, or <em>whole number</em> from elemental mathematics, are the most common and<br>fundamental numbers used in the computers. It’s represented as<br><em>fixed-point numbers</em>, contrast to <em>floating-point numbers</em> in the machine.<br>Today we are going to learn a whole bunch of way to encode it.</p>
-<p>There are mainly two properties to make a integer representation different:</p>
-<ol>
-<li><p><strong>Size, of the number of bits used</strong>.<br>usually the power of 2. e.g. 8-bit, 16-bit, 32-bit, 64-bit.</p>
-</li>
-<li><p><strong>Signed or unsigned</strong>.<br>there are also multiple schemas to encode a signed integers.</p>
-</li>
-</ol>
-<p>We are also gonna use the below terminologies throughout the post:</p>
-<ul>
-<li><em>MSB</em>: Most Significant Bit</li>
-<li><em>LSB</em>: Least Significant Bit</li>
-</ul>
-<h2 id="Prerequisite-printf-Recap"><a href="#Prerequisite-printf-Recap" class="headerlink" title="Prerequisite - printf Recap"></a>Prerequisite - <code>printf</code> Recap</h2><p>We will quickly recap the integers subset of usages of <code>printf</code>.<br>Basically, we used <em>format specifier</em> to interpolate values into strings:</p>
-<h3 id="Format-Specifier"><a href="#Format-Specifier" class="headerlink" title="Format Specifier"></a><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/cstdio/printf/">Format Specifier</a></h3><blockquote>
-<p><code>%[flags][width][.precision][length]specifier</code></p>
-</blockquote>
-<ul>
-<li><code>specifier</code><ul>
-<li><code>d</code>, <code>i</code> : signed decimal</li>
-<li><code>u</code> : unsigned decimal</li>
-<li><code>c</code> : char</li>
-<li><code>p</code>: pointer addr</li>
-<li><code>x</code> &#x2F; <code>X</code> : lower&#x2F;upper unsigned hex</li>
-</ul>
-</li>
-<li><code>length</code><ul>
-<li><code>l</code> : long (at least 32)</li>
-<li><code>ll</code> : long long (at least 64)</li>
-<li><code>h</code> : short (usually 16)</li>
-<li><code>hh</code> : short short (usually 8)</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span>  </span>&#123;</span><br><span class="line">  cout &lt;&lt; <span class="string">&quot;Size of int = &quot;</span>&lt;&lt; <span class="built_in">sizeof</span>(<span class="type">int</span>) &lt;&lt; endl;</span><br><span class="line">  cout &lt;&lt; <span class="string">&quot;Size of long = &quot;</span> &lt;&lt; <span class="built_in">sizeof</span>(<span class="type">long</span>) &lt;&lt; endl;</span><br><span class="line">  cout &lt;&lt; <span class="string">&quot;Size of long long = &quot;</span> &lt;&lt; <span class="built_in">sizeof</span>(<span class="type">long</span> <span class="type">long</span>);</span><br><span class="line">&#125;</span><br><span class="line">Output in <span class="number">32</span> bit gcc compiler: <span class="number">4</span> <span class="number">4</span> <span class="number">8</span></span><br><span class="line">Output in <span class="number">64</span> bit gcc compiler: <span class="number">4</span> <span class="number">8</span> <span class="number">8</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="inttypes-h-from-C99"><a href="#inttypes-h-from-C99" class="headerlink" title="inttypes.h from C99"></a><a target="_blank" rel="noopener" href="http://www.qnx.com/developers/docs/6.5.0/index.jsp?topic=/com.qnx.doc.dinkum_en_c99/inttypes.html"><code>inttypes.h</code> from C99</a></h3><p>Also in <a target="_blank" rel="noopener" href="https://en.cppreference.com/w/c/types/integer">cppreference.com</a></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// signed int (d or i)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PRId8     <span class="string">&quot;hhd&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PRId16    <span class="string">&quot;hd&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PRId32    <span class="string">&quot;ld&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PRId64    <span class="string">&quot;lld&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// unsigned int (u)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PRIu8     <span class="string">&quot;hhd&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PRIu16    <span class="string">&quot;hd&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PRIu32    <span class="string">&quot;ld&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PRIu64    <span class="string">&quot;lld&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// unsigned hex</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PRIx8     <span class="string">&quot;hhu&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PRIx16    <span class="string">&quot;hu&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PRIx32    <span class="string">&quot;lu&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PRIx64    <span class="string">&quot;llu&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// uintptr_t (64 bit machine word len)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PRIxPTR   <span class="string">&quot;llx&quot;</span></span></span><br></pre></td></tr></table></figure>
-
-
-<h2 id="Unsigned-Integers"><a href="#Unsigned-Integers" class="headerlink" title="Unsigned Integers"></a>Unsigned Integers</h2><p>The conversion between unsigned integers and binaries are trivial.<br>Here, we can represent 8 bits (i.e. a <em>byte</em>) as a <em>hex pair</em>, e.g.<br><code>255 == 0xff == 0b11111111</code>.</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdint.h&gt;</span>    <span class="comment">// uintN_t</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;inttypes.h&gt;</span>  <span class="comment">// PRI macros</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">uint8_t</span> u8 = <span class="number">255</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;0x%02&quot;</span> PRIx8 <span class="string">&quot;\n&quot;</span>, u8); <span class="comment">// 0xff</span></span><br><span class="line"><span class="built_in">printf</span>(  <span class="string">&quot;%&quot;</span>   PRId8 <span class="string">&quot;\n&quot;</span>, u8); <span class="comment">// 255</span></span><br></pre></td></tr></table></figure>
-
-
-<h2 id="Signed-Integers"><a href="#Signed-Integers" class="headerlink" title="Signed Integers"></a>Signed Integers</h2><p>Signed integers are more complicated. We need to cut those bits to halves<br>to represent both positive and negative integers somehow.</p>
-<p>There are four well-known schemas to encode it, according to<br><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Signed_number_representations">signed number representation of wikipedia</a>.</p>
-<h3 id="Sign-magnitude-原码"><a href="#Sign-magnitude-原码" class="headerlink" title="Sign magnitude 原码"></a>Sign magnitude 原码</h3><p>It’s also called <em>“sign and magnitude”</em>. From the name we can see how straightforward it is:<br>it’s basically put one bit (often the <em>MSB</em>) as the <em>sign bit</em> to represent <em>sign</em> and the remaining bits indicating<br>the magnitude (or absolute value), e.g.</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  binary   | sign-magn |  <span class="type">unsigned</span></span><br><span class="line">-----------|-----------|------------</span><br><span class="line"><span class="number">0</span> <span class="number">000</span> <span class="number">0000</span> |    +<span class="number">0</span>     |     <span class="number">0</span></span><br><span class="line"><span class="number">0</span> <span class="number">111</span> <span class="number">1111</span> |    <span class="number">127</span>    |    <span class="number">127</span></span><br><span class="line">...</span><br><span class="line"><span class="number">1</span> <span class="number">000</span> <span class="number">0000</span> |    <span class="number">-0</span>     |    <span class="number">128</span></span><br><span class="line"><span class="number">1</span> <span class="number">111</span> <span class="number">1111</span> |   <span class="number">-127</span>    |    <span class="number">255</span></span><br></pre></td></tr></table></figure>
-
-<p>It was used in early computer (IBM 7090) and now mainly used in the<br><em>significand</em> part in floating-point number</p>
-<p>Pros:</p>
-<ul>
-<li>simple and nature for human</li>
-</ul>
-<p>Cons:</p>
-<ul>
-<li>2 way to represent zeros (<code>+0</code> and <code>-0</code>)</li>
-<li>not as good for machine<ul>
-<li>add&#x2F;sub&#x2F;cmp require knowing the sign<ul>
-<li>complicate CPU ALU design; potentially more cycles</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="Ones’-complement-反码"><a href="#Ones’-complement-反码" class="headerlink" title="Ones’ complement 反码"></a><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Ones%27_complement">Ones’ complement</a> 反码</h3><p>It form a negative integers by applying a <em>bitwise NOT</em><br>i.e. <em>complement</em> of its positive counterparts.</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">  binary   |  <span class="number">1</span>s comp  |  <span class="type">unsigned</span></span><br><span class="line">-----------|-----------|------------</span><br><span class="line"><span class="number">0000</span> <span class="number">0000</span>  |     <span class="number">0</span>     |     <span class="number">0</span></span><br><span class="line"><span class="number">0000</span> <span class="number">0001</span>  |     <span class="number">1</span>     |     <span class="number">1</span></span><br><span class="line">...</span><br><span class="line"><span class="number">0111</span> <span class="number">1111</span>  |    <span class="number">127</span>    |    <span class="number">127</span></span><br><span class="line"><span class="number">1000</span> <span class="number">0000</span>  |   <span class="number">-127</span>    |    <span class="number">128</span></span><br><span class="line">...</span><br><span class="line"><span class="number">1111</span> <span class="number">1110</span>  |    <span class="number">-1</span>     |    <span class="number">254</span></span><br><span class="line"><span class="number">1111</span> <span class="number">1111</span>  |    <span class="number">-0</span>     |    <span class="number">255</span></span><br></pre></td></tr></table></figure>
-
-<p>N.B. <em>MSB</em> can still be signified by MSB.</p>
-<p>It’s referred to as <em>ones’</em> complement because the negative can be formed<br>by subtracting the positive <strong>from</strong> <em>ones</em>: <code>1111 1111 (-0)</code></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  <span class="number">1111</span> <span class="number">1111</span>       <span class="number">-0</span></span><br><span class="line">- <span class="number">0111</span> <span class="number">1111</span>       <span class="number">127</span></span><br><span class="line">---------------------</span><br><span class="line">  <span class="number">1000</span> <span class="number">0000</span>      <span class="number">-127</span></span><br></pre></td></tr></table></figure>
-
-<p>The benefits of the complement nature is that adding becomes simple,<br>except we need to do an <em>end-around carry</em> to add resulting carry<br>back to get the correct result.</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  <span class="number">0111</span> <span class="number">1111</span>       <span class="number">127</span></span><br><span class="line">+ <span class="number">1000</span> <span class="number">0001</span>      <span class="number">-126</span></span><br><span class="line">---------------------</span><br><span class="line"><span class="number">1</span> <span class="number">0000</span> <span class="number">0000</span>        <span class="number">0</span></span><br><span class="line">          <span class="number">1</span>       +<span class="number">1</span>     &lt;- add carry <span class="string">&quot;1&quot;</span> back</span><br><span class="line">---------------------</span><br><span class="line">  <span class="number">0000</span> <span class="number">0001</span>        <span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-<p>Pros:</p>
-<ul>
-<li>Arithmetics on machien are fast.</li>
-</ul>
-<p>Cons:</p>
-<ul>
-<li>still 2 zeros!</li>
-</ul>
-<h3 id="Twos’-complement-补码"><a href="#Twos’-complement-补码" class="headerlink" title="Twos’ complement 补码"></a><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Two%27s_complement">Twos’ complement</a> 补码</h3><p>Most of the current architecture adopted this, including x86, MIPS, ARM, etc.<br>It differed with one’s complement by one.</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  binary   |  <span class="number">2</span>s comp  |  <span class="type">unsigned</span></span><br><span class="line">-----------|-----------|------------</span><br><span class="line"><span class="number">0000</span> <span class="number">0000</span>  |     <span class="number">0</span>     |     <span class="number">0</span></span><br><span class="line"><span class="number">0000</span> <span class="number">0001</span>  |     <span class="number">1</span>     |     <span class="number">1</span></span><br><span class="line">...</span><br><span class="line"><span class="number">0111</span> <span class="number">1111</span>  |    <span class="number">127</span>    |    <span class="number">127</span></span><br><span class="line"><span class="number">1000</span> <span class="number">0000</span>  |   <span class="number">-128</span>    |    <span class="number">128</span></span><br><span class="line"><span class="number">1000</span> <span class="number">0001</span>  |   <span class="number">-127</span>    |    <span class="number">129</span></span><br><span class="line">...</span><br><span class="line"><span class="number">1111</span> <span class="number">1110</span>  |    <span class="number">-2</span>     |    <span class="number">254</span></span><br><span class="line"><span class="number">1111</span> <span class="number">1111</span>  |    <span class="number">-1</span>     |    <span class="number">255</span></span><br></pre></td></tr></table></figure>
-
-<p>N.B. <em>MSB</em> can still be signified by MSB.</p>
-<p>It’s referred to as <em>twos’</em> complement because the negative can be formed<br>by subtracting the positive <strong>from</strong> <code>2 ** N</code> (congruent to <code>0000 0000 (+0)</code>),<br>where <code>N</code> is the number of bits.</p>
-<p>E.g., for a <code>uint8_t</code>, the <em>sum</em> of any number and it’s twos’ complement would<br>be <code>256 (1 0000 0000)</code>:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> <span class="number">0000</span> <span class="number">0000</span>       <span class="number">256</span>  = <span class="number">2</span> ** <span class="number">8</span></span><br><span class="line">- <span class="number">0111</span> <span class="number">1111</span>       <span class="number">127</span></span><br><span class="line">---------------------</span><br><span class="line">  <span class="number">1000</span> <span class="number">0001</span>      <span class="number">-127</span></span><br></pre></td></tr></table></figure>
-
-<p>Becuase of this, arithmetics becomes really easier, for any number <code>x</code> e.g. <code>127</code><br>we can get its twos’ complement by:</p>
-<ol>
-<li><code>~x =&gt; 1000 0000</code> bitwise NOT (like ones’ complement)</li>
-<li><code>+1 =&gt; 1000 0001</code> add 1 (the one differed from ones’ complement)</li>
-</ol>
-<p>Cons:</p>
-<ul>
-<li>bad named?</li>
-</ul>
-<p>Pros:</p>
-<ul>
-<li>fast machine arithmatics.</li>
-<li>only 1 zeros!</li>
-<li>the minimal negative is <code>-128</code></li>
-</ul>
-<h3 id="Offset-binary-移码"><a href="#Offset-binary-移码" class="headerlink" title="Offset binary 移码"></a><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Offset_binary">Offset binary</a> 移码</h3><p>It’s also called <em>excess-K</em> (偏移 K) or <em>biased representation</em>, where <code>K</code> is<br>the <em>biasing value</em> (the new <code>0</code>), e.g. in <em>excess-128</em>:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">  binary   |  K = <span class="number">128</span>  |  <span class="type">unsigned</span></span><br><span class="line">-----------|-----------|------------</span><br><span class="line"><span class="number">0000</span> <span class="number">0000</span>  |   <span class="number">-128</span>(-K)|     <span class="number">0</span></span><br><span class="line"><span class="number">0000</span> <span class="number">0001</span>  |   <span class="number">-127</span>    |     <span class="number">1</span></span><br><span class="line">...</span><br><span class="line"><span class="number">0111</span> <span class="number">1111</span>  |    <span class="number">-1</span>     |    <span class="number">127</span></span><br><span class="line"><span class="number">1000</span> <span class="number">0000</span>  |     <span class="number">0</span>     |    <span class="number">128</span>  (K)</span><br><span class="line"><span class="number">1000</span> <span class="number">0001</span>  |     <span class="number">1</span>     |    <span class="number">129</span></span><br><span class="line">...</span><br><span class="line"><span class="number">1111</span> <span class="number">1111</span>  |    <span class="number">127</span>    |    <span class="number">255</span></span><br></pre></td></tr></table></figure>
-
-<p>It’s now mainly used for the <em>exponent</em> part of floating-point number.</p>
-<h2 id="Type-Conversion-Printf"><a href="#Type-Conversion-Printf" class="headerlink" title="Type Conversion &amp; Printf"></a>Type Conversion &amp; <code>Printf</code></h2><p>This might be a little bit off topic, but I want to note down what I observed<br>from experimenting. Basically, <code>printf</code> would not perform an implicit type<br>conversion but merely <em>interpret</em> the bits arrangement of your arguments as you<br>told it.</p>
-<ul>
-<li><em>UB!</em> stands for <em>undefined behaviors</em></li>
-</ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">uint8_t</span> u8 = <span class="number">0b10000000</span>; <span class="comment">// 128</span></span><br><span class="line"> <span class="type">int8_t</span> s8 = <span class="number">0b10000000</span>; <span class="comment">// -128</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%&quot;</span>PRIu8 <span class="string">&quot;\n&quot;</span>, u8);          <span class="comment">// 128</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%&quot;</span>PRId8 <span class="string">&quot;\n&quot;</span>, u8);          <span class="comment">// 128 (UB! but somehow it&#x27;s got right)</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%&quot;</span>PRId8 <span class="string">&quot;\n&quot;</span>, (<span class="type">int8_t</span>)u8);  <span class="comment">// -128</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%&quot;</span>PRId8 <span class="string">&quot;\n&quot;</span>, s8);          <span class="comment">// -128</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%&quot;</span>PRIu8 <span class="string">&quot;\n&quot;</span>, s8);          <span class="comment">// 4294967168 (UB!)</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%&quot;</span>PRId8 <span class="string">&quot;\n&quot;</span>, (<span class="type">uint8_t</span>)s8); <span class="comment">// 128</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%&quot;</span>PRIxPTR <span class="string">&quot;\n&quot;</span>, s8);             <span class="comment">// ffffff80</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%&quot;</span>PRIxPTR <span class="string">&quot;\n&quot;</span>, (<span class="type">uintptr_t</span>)s8);  <span class="comment">// ffffffffffffff80</span></span><br></pre></td></tr></table></figure>
-
-
-<h2 id="Char-ASCII"><a href="#Char-ASCII" class="headerlink" title="Char &amp; ASCII"></a>Char &amp; <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/ASCII">ASCII</a></h2><p>Traditionally, <code>char</code> is represented in the computer as 8 bits as well. And<br>really, ASCII is only defined between <code>0</code> and <code>127</code> and require 7 bits.<br>(8-bit Extended ASCII is not quite well popularized and supported.)</p>
-<p>It’s more complicated in extension such as <em>Unicode</em> nowadays, but we’ll ignore<br>it for future posts dedicated for char and string representation.</p>
-<p>So how is a <code>char</code> different with a <em>byte</em>?</p>
-<p>Well, the answer is whether a <code>char</code> is a <code>signed char</code> (backed by <code>int8_t</code>)<br>or a <code>unsigned char</code> (backed by <code>uint8_t</code>) is… <em>implementaton-defined</em>.<br>And most systems made it <em>signed</em> since most types (e.g. <code>int</code>) were signed<br>by default.</p>
-<p>N.B. <code>int</code> is standard-defined to be equivalent to <code>signed int</code>. This is<br>not the case of <code>char</code>.</p>
-<p>That’s why you often see such <code>typedef</code> such as:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">unsigned</span> <span class="type">char</span> Byte_t;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">uint8_t</span> <span class="type">byte_t</span>;</span><br></pre></td></tr></table></figure>
-
-<p>to emphysize the nature of byte should be just plain, unsigned, bits.</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Integer_(computer_science)">https://en.wikipedia.org/wiki/Integer_(computer_science)</a></li>
-<li><a target="_blank" rel="noopener" href="https://www3.ntu.edu.sg/home/ehchua/programming/java/datarepresentation.html">https://www3.ntu.edu.sg/home/ehchua/programming/java/datarepresentation.html</a></li>
-</ul>
-
+          <p>通过 XXL-JOB 的分片广播机制，实现灵活控制的并发数控制。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021-06-19-xxl-job-sharding/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -811,7 +586,7 @@ for Record, can compiler reorder the fields? (SML and OCaml)
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/data_rep/2020-06-21-data-rep-float/">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2021-10-25-the-wisdom-of-life/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -829,7 +604,7 @@ for Record, can compiler reorder the fields? (SML and OCaml)
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/data_rep/2020-06-21-data-rep-float/" class="post-title-link" itemprop="url">Data Representation - Floating Point Numbers</a>
+          <a href="/2021-10-25-the-wisdom-of-life/" class="post-title-link" itemprop="url">读叔本华《人生的智慧》</a>
         </h2>
 
         <div class="post-meta-container">
@@ -840,7 +615,16 @@ for Record, can compiler reorder the fields? (SML and OCaml)
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2024-02-02 01:05:07" itemprop="dateCreated datePublished" datetime="2024-02-02T01:05:07+00:00">2024-02-02</time>
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Blog/" itemprop="url" rel="index"><span itemprop="name">Blog</span></a>
+        </span>
     </span>
 
   
@@ -853,113 +637,15 @@ for Record, can compiler reorder the fields? (SML and OCaml)
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>In the last episode we talked about the data representation of integer, a kind<br>of fixed-point numbers. Today we’re going to learn about floating-point numbers.</p>
-<p>Floating-point numbers are used to <em>approximate</em> real numbers. Because of the<br>fact that all the stuffs in computers are, eventually, just a limited sequence<br>of bits. The representation of floating-point number had to made trade-offs<br>between <em>ranges</em> and <em>precision</em>.</p>
-<p>Due to its computational complexities, CPU also have a dedicated set of<br>instructions to accelerate on floating-point arithmetics.</p>
-<h2 id="Terminologies"><a href="#Terminologies" class="headerlink" title="Terminologies"></a>Terminologies</h2><p>The terminologies of floating-point number is coming from the<br><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Scientific_notation"><em>scientific notation</em></a>,<br>where a real number can be represented as such:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.2345 = 12345 × 10 ** -4</span><br><span class="line">         -----   --    --</span><br><span class="line">  significand^   ^base  ^exponent</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><em>significand</em>, or <em>mantissa</em>, 有效数字, 尾数</li>
-<li><em>base</em>, or <em>radix</em> 底数</li>
-<li><em>exponent</em>, 幂</li>
-</ul>
-<p>So where is the <em>floating point</em>? It’s the <code>.</code> of <code>1.2345</code>. Imaging the dot<br>can be float to the left by one to make the representation <code>.12345</code>.</p>
-<p>The dot is called <em>radix point</em>, because to us it’s seem to be a <em>decimal point</em>,<br>but it’s really a <em>binary point</em> in the computers.</p>
-<p>Now it becomes clear that, to represent a floating-point number in computers,<br>we will simply assign some bits for <em>significand</em> and some for <em>exponent</em>, and<br>potentially a bit for <em>sign</em> and that’s it.</p>
-<h2 id="IEEE-754-32-bits-Single-Precision-Floats-单精度浮点数"><a href="#IEEE-754-32-bits-Single-Precision-Floats-单精度浮点数" class="headerlink" title="IEEE-754 32-bits Single-Precision Floats 单精度浮点数"></a>IEEE-754 32-bits Single-Precision Floats 单精度浮点数</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Single-precision_floating-point_format">https://en.wikipedia.org/wiki/Single-precision_floating-point_format</a></li>
-</ul>
-<p>It was called <strong>single</strong> back to IEEE-754-1985 and now <strong>binary32</strong> in the<br>relatively new IEEE-754-2008 standard.</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">       (<span class="number">8</span> bits)             (<span class="number">23</span> bits)</span><br><span class="line">sign   exponent             fraction</span><br><span class="line">  <span class="number">0</span>   <span class="number">011</span> <span class="number">1111</span> <span class="number">1</span>    <span class="number">000</span> <span class="number">0000</span> <span class="number">0000</span> <span class="number">0000</span> <span class="number">0000</span> <span class="number">0000</span></span><br><span class="line"></span><br><span class="line"> <span class="number">31</span>   <span class="number">30</span> .... <span class="number">23</span>    <span class="number">22</span> ....................... <span class="number">0</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>The <em>sign</em> part took 1 bit to indicate the sign of the floats. (<code>0</code> for <code>+</code><br>and <code>1</code> for <code>-</code>. This is the same treatment as the <a href="2020-06-19-data-rep-int.md##sign-magnitude-%E5%8E%9F%E7%A0%81">sign magnitute</a>.</li>
-<li>The <em>exponent</em> part took 8 bits and used <a href="2020-06-19-data-rep-int.md#offset-binary-%E7%A7%BB%E7%A0%81"><em>offset-binary (biased) form</em></a> to represent a signed integer.<br>It’s a variant form since it took out the <code>-127</code> (all 0s) for zero and <code>+128</code><br>(all 1s) for non-numbers, thus it ranges only <code>[-126, 127]</code> instead of<br><code>[-127, 128]</code>. Then, it choose the zero offset of <code>127</code> in these 254 bits (like<br>using <code>128</code> in <em>excess-128</em>), a.k.a the <em>exponent bias</em> in the standard.</li>
-<li>The <em>fraction</em> part took 23 bits with an <em>implicit leading bit</em> <code>1</code> and<br>represent the actual <em>significand</em> in total precision of 24-bits.</li>
-</ul>
-<p>Don’t be confused by why it’s called <em>fraction</em> instead of <em>significand</em>!<br>It’s all because that the 23 bits in the representation is indeed, representing<br>the fraction part of the real significand in the scientific notation.</p>
-<p>The floating-point version of “scientific notation” is more like:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(leading <span class="number">1</span>)</span><br><span class="line">   <span class="number">1.</span> fraction  ×  <span class="number">2</span> ^ exponent   ×  <span class="built_in">sign</span></span><br><span class="line">      (base<span class="number">-2</span>)           (base<span class="number">-2</span>)</span><br></pre></td></tr></table></figure>
-
-<p>So what number does the above bits represent?</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">S     F   ×  E  =  R</span><br><span class="line">+  <span class="number">1.</span>(<span class="number">0</span>)  ×  <span class="number">0</span>  =  <span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-<p>Aha! It’s the real number <code>1</code>!<br>Recall that the <code>E = 0b0111 1111 = 0</code> because it used a biased representation!</p>
-<p>We will add more non-trivial examples later.</p>
-<h2 id="Demoing-Floats-in-C-C"><a href="#Demoing-Floats-in-C-C" class="headerlink" title="Demoing Floats in C&#x2F;C++"></a>Demoing Floats in C&#x2F;C++</h2><p>Writing sample code converting between binaries (in hex) and floats are not<br>as straightforward as it for integers. Luckily, there are still some hacks to<br>perform it:</p>
-<h3 id="C-Unsafe-Cast"><a href="#C-Unsafe-Cast" class="headerlink" title="C - Unsafe Cast"></a>C - Unsafe Cast</h3><p>We unsafely cast a pointer to enable reinterpretation of the same binaries.</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">float</span> f1 = <span class="number">0x3f800000</span>; <span class="comment">// C doesn&#x27;t have a floating literal taking hex.</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%f \n&quot;</span>, f1);   <span class="comment">// 1065353216.000000 (???)</span></span><br><span class="line"></span><br><span class="line"><span class="type">uint32_t</span> u2 = <span class="number">0x3f800000</span>;</span><br><span class="line"><span class="type">float</span>* f2 = (<span class="type">float</span>*)&amp;u2;   <span class="comment">// unsafe cast</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%f \n&quot;</span>, *f2);      <span class="comment">// 1.000000</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="C-Union-Trick"><a href="#C-Union-Trick" class="headerlink" title="C - Union Trick"></a>C - Union Trick</h3><p>Oh I really enjoyed this one…Union in C is not only untagged union, but also<br>share the exact same chunk of memory. So we are doing the same reinterpretation,<br>but in a more structural and technically fancier way.</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdint.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;inttypes.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;math.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">float</span> pi = (<span class="type">float</span>)M_PI;</span><br><span class="line"><span class="keyword">union</span> &#123;</span><br><span class="line">    <span class="type">float</span> f;</span><br><span class="line">    <span class="type">uint32_t</span> u;</span><br><span class="line">&#125; f2u = &#123; .f = pi &#125;;  <span class="comment">// we took the data as float</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span> (<span class="string">&quot;pi : %f\n   : 0x%&quot;</span> PRIx32 <span class="string">&quot;\n&quot;</span>, pi, f2u.u);  <span class="comment">// but interpret as uint32_t</span></span><br><span class="line">pi : <span class="number">3.141593</span></span><br><span class="line">   : <span class="number">0x40490fdb</span></span><br></pre></td></tr></table></figure>
-
-<p>N.B. this trick is well-known as <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Type_punning">type punning</a>:</p>
-<blockquote>
-<p>In computer science, type punning is a common term for any programming technique that subverts or circumvents the type system of a programming language in order to achieve an effect that would be difficult or impossible to achieve within the bounds of the formal language.</p>
-</blockquote>
-<h3 id="C-reinterpret-cast"><a href="#C-reinterpret-cast" class="headerlink" title="C++ - reinterpret_cast"></a>C++ - <code>reinterpret_cast</code></h3><p>C++ does provide such type punning to the standard language:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">uint32_t</span> u = <span class="number">0x40490fdb</span>;</span><br><span class="line"><span class="type">float</span> a = *<span class="built_in">reinterpret_cast</span>&lt;<span class="type">float</span>*&gt;(&amp;u);</span><br><span class="line">std::cout &lt;&lt; a;  <span class="comment">// 3.14159</span></span><br></pre></td></tr></table></figure>
-
-<p>N.B. it still need to be a conversion between pointers,<br>see <a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/language/reinterpret_cast">https://en.cppreference.com/w/cpp/language/reinterpret_cast</a>.</p>
-<p>Besides, C++ 17 does add a floating point literal that can take hex, but it<br>works in a different way, using an explicit radix point in the hex:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">float</span> f = <span class="number">0x1</span><span class="number">.2</span>p3;  <span class="comment">// 1.2 by 2^3</span></span><br><span class="line">std::cout &lt;&lt; f;     <span class="comment">// 9</span></span><br></pre></td></tr></table></figure>
-
-<p>That’s try with another direction:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdint.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;inttypes.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="type">double</span> qNan = std::numeric_limits&lt;<span class="type">double</span>&gt;::<span class="built_in">quiet_NaN</span>();</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;0x%&quot;</span> PRIx64 <span class="string">&quot;\n&quot;</span>, *<span class="built_in">reinterpret_cast</span>&lt;<span class="type">uint64_t</span>*&gt;(&amp;qNan));</span><br><span class="line">  <span class="comment">// 0x7ff8000000000000, the canonical qNaN!</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="Representation-of-Non-Numbers"><a href="#Representation-of-Non-Numbers" class="headerlink" title="Representation of Non-Numbers"></a>Representation of Non-Numbers</h2><p>There are more in the IEEE-754!</p>
-<p>Real numbers doesn’t satisfy <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Closure_(mathematics)">closure property</a><br>as integers does. Notably, the set of real numbers is NOT closed under the<br>division! It could produce non-number results such as <strong>infinity</strong> (e.g. <code>1/0</code>)<br>and <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/NaN"><strong>NaN (Not-a-Number)</strong></a> (e.g. taking<br>a square root of a negative number).</p>
-<p>It would be algebraically ideal if the set of floating-point numbers can be<br>closed under all floating-point arithmetics. That would made many people’s life<br>easier. So the IEEE made it so! Non-numeber values are squeezed in.</p>
-<p>We will also include the two zeros (<code>+0</code>&#x2F;<code>-0</code>) into the comparison here,<br>since they are also special by being the only two demanding an <code>0x00</code> exponent:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">             binary                |    hex    |</span><br><span class="line">--------------------------------------------------------</span><br><span class="line"><span class="number">0</span> <span class="number">00000000</span> <span class="number">00000000000000000000000</span> = <span class="number">0000</span> <span class="number">0000</span> = +<span class="number">0</span></span><br><span class="line"><span class="number">1</span> <span class="number">00000000</span> <span class="number">00000000000000000000000</span> = <span class="number">8000</span> <span class="number">0000</span> = −<span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="number">0</span> <span class="number">11111111</span> <span class="number">00000000000000000000000</span> = <span class="number">7f</span>80 <span class="number">0000</span> = +infinity</span><br><span class="line"><span class="number">1</span> <span class="number">11111111</span> <span class="number">00000000000000000000000</span> = ff80 <span class="number">0000</span> = −infinity</span><br><span class="line"></span><br><span class="line">_ <span class="number">11111111</span> <span class="number">10000000000000000000000</span> = _fc0 <span class="number">0000</span> = <span class="built_in">qNaN</span> (canonical)</span><br><span class="line">_ <span class="number">11111111</span> <span class="number">00000000000000000000001</span> = _f80 <span class="number">0001</span> = <span class="built_in">sNaN</span> (one of them)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">      (<span class="number">8</span> bits)  (<span class="number">23</span> bits)</span><br><span class="line">sign  exponent  fraction</span><br><span class="line">  <span class="number">0</span>      <span class="number">00</span>     <span class="number">0</span> ..<span class="number">.0</span> <span class="number">0</span>  = +<span class="number">0</span></span><br><span class="line">  <span class="number">1</span>      <span class="number">00</span>     <span class="number">0</span> ..<span class="number">.0</span> <span class="number">0</span>  = <span class="number">-0</span></span><br><span class="line">  <span class="number">0</span>      FF     <span class="number">0</span> ..<span class="number">.0</span> <span class="number">0</span>  = +infinity</span><br><span class="line">  <span class="number">1</span>      FF     <span class="number">0</span> ..<span class="number">.0</span> <span class="number">0</span>  = -infinity</span><br><span class="line">  _      FF     <span class="number">1</span> ..<span class="number">.0</span> <span class="number">0</span>  = <span class="built_in">qNaN</span> (canonical)</span><br><span class="line">  _      FF     <span class="number">0</span> ..<span class="number">.0</span> <span class="number">1</span>  = <span class="built_in">sNaN</span> (one of them)</span><br></pre></td></tr></table></figure>
-
-<p>Encodings of qNaN and sNaN are not specified in IEEE 754 and implemented<br>differently on different processors. Luckily, both x86 and ARM family use the<br>“most significant bit of fraction” to indicate whether it’s quite.</p>
-<h3 id="More-on-NaN"><a href="#More-on-NaN" class="headerlink" title="More on NaN"></a>More on NaN</h3><p>If we look carefully into the IEEE 754-2008 spec, in the <em>page35, 6.2.1</em>, it<br>actually defined anything with exponent <code>FF</code> and not a infinity (i.e. with<br>all the fraction bits being <code>0</code>), a NaN!</p>
-<blockquote>
-<p>All binary NaN bit strings have all the bits of the biased exponent field E set to 1 (see 3.4). A quiet NaN bit string should be encoded with the first bit (d1) of the trailing significand field T being 1. A signaling NaN bit string should be encoded with the first bit of the trailing significand field being 0.</p>
-</blockquote>
-<p>That implies, we actually had <code>2 ** 24 - 2</code> of NaNs in a 32-bits float!<br>The <code>24</code> came from the <code>1</code> sign bit plus <code>23</code> fractions and the <code>2</code> excluded<br>were the <code>+/- inf</code>.</p>
-<p>The continuous 22 bits inside the fraction looks quite a waste, and there<br>would be even 51 bits of them in the <code>double</code>! We will see how to made them useful<br>in later episodes (spoiler: they are known as <em>NaN payload</em>).</p>
-<p>It’s also worth noting that it’s weird that the IEEE choose to use the MSB<br>instead of the sign bit for NaN quiteness&#x2F;signalness:</p>
-<blockquote>
-<p>It seems strange to me that the bit which signifies whether or not the NaN is signaling is the top bit of the mantissa rather than the sign bit; perhaps something about how floating point pipelines are implemented makes it less natural to use the sign bit to decide whether or not to raise a signal.<br>– <a target="_blank" rel="noopener" href="https://anniecherkaev.com/the-secret-life-of-nan">https://anniecherkaev.com/the-secret-life-of-nan</a></p>
-</blockquote>
-<p>I guess it might be something related to the CPU pipeline? I don’t know yet.</p>
-<h3 id="Equality-of-NaNs-and-Zeros"><a href="#Equality-of-NaNs-and-Zeros" class="headerlink" title="Equality of NaNs and Zeros."></a>Equality of NaNs and Zeros.</h3><p>The spec defined a comparison with NaNs to return an <strong>unordered result</strong>, that<br>means any comparison operation except <code>!=</code>, i.e. <code>&gt;=, &lt;=, &gt;, &lt;, =</code> between a<br>NaN and any other floating-point number would return <code>false</code>.</p>
-<p>No surprised that most (if not every) language implemented such behaviours, e.g.<br>in JavaScript:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">NaN</span> !== <span class="title class_">NaN</span>   <span class="comment">// true</span></span><br><span class="line"><span class="title class_">NaN</span> === <span class="title class_">NaN</span>   <span class="comment">// false</span></span><br><span class="line"><span class="title class_">NaN</span> &gt;  <span class="number">1</span>      <span class="comment">// false</span></span><br><span class="line"><span class="title class_">NaN</span> &lt;  <span class="number">1</span>      <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
-
-<p>Position and negative zeros, however, are defined to be equal!</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+<span class="number">0</span> === -<span class="number">0</span>  <span class="comment">// true, using the traditional JS equality</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">is</span>(+<span class="number">0</span>, -<span class="number">0</span>)  <span class="comment">// false, using the &quot;SameValue&quot; equality</span></span><br></pre></td></tr></table></figure>
-
-<p>In Cpp, we can tell them apart by looking at its sign bit:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span>   <span class="comment">// signbit</span></span></span><br><span class="line"></span><br><span class="line">cout &lt;&lt; (+<span class="number">0.0f</span> == <span class="number">-0.0f</span>);     <span class="comment">// 1</span></span><br><span class="line">cout &lt;&lt; std::<span class="built_in">signbit</span>(<span class="number">-0.0f</span>);  <span class="comment">// 1</span></span><br><span class="line">cout &lt;&lt; std::<span class="built_in">signbit</span>(+<span class="number">0.0f</span>);  <span class="comment">// 0</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<h2 id="IEEE-754-64-bits-Double-Precision-Floats"><a href="#IEEE-754-64-bits-Double-Precision-Floats" class="headerlink" title="IEEE-754 64-bits Double-Precision Floats"></a>IEEE-754 64-bits Double-Precision Floats</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format">https://en.wikipedia.org/wiki/Double-precision_floating-point_format</a></li>
-</ul>
-<p>Now, the 64-bit versions floating-point number, known as <code>double</code>, is just a<br>matter of scale:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">       (<span class="number">11</span> bits)            (<span class="number">52</span> bits)</span><br><span class="line">sign   exponent             fraction</span><br><span class="line">  <span class="number">0</span></span><br><span class="line"></span><br><span class="line"> <span class="number">63</span>   <span class="number">62</span> .... <span class="number">52</span>    <span class="number">51</span> ....................... <span class="number">0</span></span><br></pre></td></tr></table></figure>
-
-
-<h2 id="IEEE-754-2008-16-bits-Short-Floats"><a href="#IEEE-754-2008-16-bits-Short-Floats" class="headerlink" title="IEEE-754-2008 16-bits Short Floats"></a>IEEE-754-2008 16-bits Short Floats</h2><p>The 2008 edition of IEEE-754 also standardize the <code>short float</code>, which is<br>neither in C or C++ standard. Though compiler extension might include it.</p>
-<p>It looks like:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> sign bit | <span class="number">5</span> exponent bits | <span class="number">10</span> fraction bits</span><br><span class="line">S            E E E E E         M M M M M M M M M M</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Floating-point_arithmetic">https://en.wikipedia.org/wiki/Floating-point_arithmetic</a></li>
-<li><a target="_blank" rel="noopener" href="https://www3.ntu.edu.sg/home/ehchua/programming/java/datarepresentation.html">https://www3.ntu.edu.sg/home/ehchua/programming/java/datarepresentation.html</a></li>
-</ul>
-
+          <p>主要是一些摘录。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021-10-25-the-wisdom-of-life/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -985,7 +671,7 @@ for Record, can compiler reorder the fields? (SML and OCaml)
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/hidden/2020-05-05-pl-chart/">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2021-12-26-spring-security/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1003,7 +689,7 @@ for Record, can compiler reorder the fields? (SML and OCaml)
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/hidden/2020-05-05-pl-chart/" class="post-title-link" itemprop="url">My Programming Languages Spectrum</a>
+          <a href="/2021-12-26-spring-security/" class="post-title-link" itemprop="url">如何让 Spring Security 「少管闲事」</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1014,7 +700,16 @@ for Record, can compiler reorder the fields? (SML and OCaml)
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2024-02-02 01:05:07" itemprop="dateCreated datePublished" datetime="2024-02-02T01:05:07+00:00">2024-02-02</time>
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
     </span>
 
   
@@ -1027,14 +722,15 @@ for Record, can compiler reorder the fields? (SML and OCaml)
     
     
     <div class="post-body" itemprop="articleBody">
-          <iframe 
-  id="chart"
-  src="https://huangxuan.me/PL-chart/"
-  frameborder="0" 
-  scrolling="no" 
-  style="width: 100%">
-</iframe>
-
+          <p>记两种让 Spring Security「少干点活」的方法。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021-12-26-spring-security/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1060,7 +756,7 @@ for Record, can compiler reorder the fields? (SML and OCaml)
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/read_sf_lf/2019-01-01-sf-lf-01-basics/">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2022-01-01-my-2021/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1078,7 +774,7 @@ for Record, can compiler reorder the fields? (SML and OCaml)
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/read_sf_lf/2019-01-01-sf-lf-01-basics/" class="post-title-link" itemprop="url">「SF-LC」1 Basics</a>
+          <a href="/2022-01-01-my-2021/" class="post-title-link" itemprop="url">我的 2021 盘点</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1089,7 +785,16 @@ for Record, can compiler reorder the fields? (SML and OCaml)
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2024-02-02 01:05:07" itemprop="dateCreated datePublished" datetime="2024-02-02T01:05:07+00:00">2024-02-02</time>
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Blog/" itemprop="url" rel="index"><span itemprop="name">Blog</span></a>
+        </span>
     </span>
 
   
@@ -1102,80 +807,15 @@ for Record, can compiler reorder the fields? (SML and OCaml)
     
     
     <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>These series of notes combined </p>
-<ul>
-<li>My notes on reading <em>Software Foundation</em> and (if any) watching on <em>Coq intensive</em>.</li>
-<li>Gotchas from my independent studies and discussion within <em>Prof.Fluet</em>‘s class.</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>The <code>.v</code> code is a gorgeous example of <em>literal programming</em> and the compiled <code>.html</code> website is full-fledged.<br>So this note is intended to be NOT self-contained and only focus on things I found essential or interesting.</p>
-</blockquote>
-<blockquote>
-<p>This note is intended to be very personal and potentially mix English with Chinese (You can Lol)<br>So yeah. Don’t expect it to be well organized and well written.<br>I posted it on blog mainly for my own references purpose.</p>
-</blockquote>
-<blockquote>
-<p>The quotes could either come from the book or saying from someone (even including me). </p>
-</blockquote>
-<h2 id="Data-and-Functions"><a href="#Data-and-Functions" class="headerlink" title="Data and Functions"></a>Data and Functions</h2><h3 id="Custom-Notation"><a href="#Custom-Notation" class="headerlink" title="Custom Notation"></a>Custom Notation</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;x &amp;&amp; y&quot;</span> := (andb x y).</span><br><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;x || y&quot;</span> := (orb x y).</span><br></pre></td></tr></table></figure>
-
-<p>can go pretty far with unicode char…</p>
-<p>making things <em>infix</em></p>
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;x + y&quot;</span> := (plus x y)</span><br><span class="line">                      (<span class="built_in">at</span> level <span class="number">50</span>, <span class="built_in">left</span> associativity)</span><br><span class="line">                      : nat_scope.</span><br><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;x - y&quot;</span> := (minus x y)</span><br><span class="line">                      (<span class="built_in">at</span> level <span class="number">50</span>, <span class="built_in">left</span> associativity)</span><br><span class="line">                      : nat_scope.</span><br><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;x * y&quot;</span> := (mult x y)</span><br><span class="line">                      (<span class="built_in">at</span> level <span class="number">40</span>, <span class="built_in">left</span> associativity)</span><br><span class="line">                      : nat_scope.</span><br></pre></td></tr></table></figure>
-
-<p>why <code>40</code> <code>50</code>? Making sure there are still <em>rooms</em> for priority in between…</p>
-<blockquote>
-<p>no known PL using real number for priority though</p>
-</blockquote>
-<h3 id="Data-Constructor-with-arguments"><a href="#Data-Constructor-with-arguments" class="headerlink" title="Data Constructor with arguments"></a>Data Constructor with arguments</h3><p>there are 2 ways to define them:</p>
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> color : <span class="keyword">Type</span> :=</span><br><span class="line">  | <span class="type">black</span></span><br><span class="line">  | <span class="type">white</span></span><br><span class="line">  | <span class="type">primary</span> (p : rgb).      <span class="comment">(* ADT, need to name arg, useful in proof *)</span></span><br><span class="line">  | <span class="type">primary</span> : rgb -&gt; color. <span class="comment">(* GADT style, dependent type *)</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="Syntax-for-arguments-having-the-same-type"><a href="#Syntax-for-arguments-having-the-same-type" class="headerlink" title="Syntax for arguments having the same type"></a>Syntax for arguments having the same type</h3><blockquote>
-<p>As a notational convenience, if two or more arguments have the same type, they can be written together</p>
-</blockquote>
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> nybble : <span class="keyword">Type</span> :=</span><br><span class="line">  | <span class="type">bits</span> (b0 b1 b2 b3 : bit).</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Fixpoint</span> mult (n m : nat)         : nat := </span><br><span class="line"><span class="keyword">Fixpoint</span> plus (n : nat) (m : nat) : nat := </span><br></pre></td></tr></table></figure>
-
-
-<h2 id="Fixpoint-and-Structrual-Recursion"><a href="#Fixpoint-and-Structrual-Recursion" class="headerlink" title="Fixpoint and Structrual Recursion"></a><code>Fixpoint</code> and Structrual Recursion</h2><blockquote>
-<p>This requirement is a fundamental feature of Coq’s design: In particular, it guarantees that every function that can be defined in Coq will terminate on all inputs.</p>
-</blockquote>
-<p>However, Coq’s “decreasing analysis” is not very sophisticated. E.g.</p>
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Fixpoint</span> evenb (n:nat) : bool :=</span><br><span class="line">  <span class="keyword">match</span> n <span class="built_in">with</span></span><br><span class="line">  | <span class="type">O</span>        =&gt; true</span><br><span class="line">  | <span class="type">S</span> O      =&gt; false</span><br><span class="line">  | <span class="type">n</span>        =&gt; evenb (pred (pred n))</span><br><span class="line">  <span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
-
-<p>will result in a error that basically complains <em>“this structure is not shrinking”</em>.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Error:</span><br><span class="line">Recursive definition of evenb is ill-formed.</span><br><span class="line"></span><br><span class="line">evenb : nat -&gt; bool</span><br><span class="line">n : nat</span><br><span class="line">n0 : nat</span><br><span class="line">n1 : nat</span><br><span class="line"></span><br><span class="line">Recursive call to evenb has principal argument equal to</span><br><span class="line">&quot;Nat.pred (Nat.pred n)&quot; instead of one of the following variables: &quot;n0&quot; &quot;n1&quot;.</span><br><span class="line"></span><br><span class="line">Recursive definition is:</span><br><span class="line">&quot;fun n : nat =&gt;</span><br><span class="line"> match n with</span><br><span class="line"> | 0 =&gt; true</span><br><span class="line"> | 1 =&gt; false</span><br><span class="line"> | S (S _) =&gt; evenb (Nat.pred (Nat.pred n))</span><br><span class="line"> end&quot;.</span><br></pre></td></tr></table></figure>
-
-<p>N.B. the <code>n0</code> and <code>n1</code> are sub-terms of <code>n</code> where <code>n = S (S _)</code>.</p>
-<p>So we have to make the sub-structure explicit to indicate the structure is obviously shrinking:</p>
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Fixpoint</span> evenb (n:nat) : bool :=</span><br><span class="line">  <span class="keyword">match</span> n <span class="built_in">with</span></span><br><span class="line">  | <span class="type">O</span>        =&gt; true</span><br><span class="line">  | <span class="type">S</span> O      =&gt; false</span><br><span class="line">  | <span class="type">S</span> (S n&#x27;) =&gt; evenb n&#x27;</span><br><span class="line">  <span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
-
-<p>Now Coq will know this <code>Fixpoint</code> is performing a structural recursion over the 1st recursion and it guarantees to be terminated since the structure is decreasing:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">evenb is defined</span><br><span class="line">evenb is recursively defined (decreasing on 1st argument)</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="Proof-by-Case-Analysis"><a href="#Proof-by-Case-Analysis" class="headerlink" title="Proof by Case Analysis"></a>Proof by Case Analysis</h2><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> plus_1_neq_0_firsttry : ∀n : nat,</span><br><span class="line">  (n + <span class="number">1</span>) =? <span class="number">0</span> = false.</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span> n.</span><br><span class="line">  <span class="built_in">simpl</span>. <span class="comment">(* does nothing! *)</span></span><br><span class="line"><span class="keyword">Abort</span>.</span><br></pre></td></tr></table></figure>
-
-<p><code>simpl.</code> does nothing since both <code>+</code> and <code>=?</code> have 2 cases.</p>
-<p>so we have to <code>destruct</code> <code>n</code> as 2 cases: nullary <code>O</code> and unary <code>S n&#39;</code>.</p>
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">intros</span> n. <span class="built_in">destruct</span> n <span class="built_in">as</span> [ <span class="comment">(* O *)</span> | <span class="type">(* S</span> *) n&#x27;] eqn:E.</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>the <em>intro pattern</em> <code>as [ |n&#39;]</code> name new bindings.</li>
-<li><code>eqn:E</code> annonate the destructed <code>eqn</code> (equation?) as <code>E</code> in the premises of proofs. It could be elided if not explicitly used, but useful to keep for the sake of documentation as well.</li>
-</ul>
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">subgoal <span class="number">1</span></span><br><span class="line"></span><br><span class="line">  n : nat</span><br><span class="line">  E : n = <span class="number">0</span>                          <span class="comment">(* case 1, n is [O] a.k.a. [0] *)</span></span><br><span class="line">  ============================</span><br><span class="line">  (<span class="number">0</span> + <span class="number">1</span> =? <span class="number">0</span>) = false</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">subgoal <span class="number">2</span></span><br><span class="line"></span><br><span class="line">  n, n&#x27; : nat</span><br><span class="line">  E : n = S n&#x27;                       <span class="comment">(* case 2, n is [S n&#x27;] *)</span></span><br><span class="line">  ============================</span><br><span class="line">  (S n&#x27; + <span class="number">1</span> =? <span class="number">0</span>) = false</span><br></pre></td></tr></table></figure>
-
-<p>If there is no need to specify any names, we could omit <code>as</code> clause or simply write <code>as [|]</code> or <code>as []</code>.<br>In fact. Any <code>as</code> clause could be ommited and Coq will fill in random var name auto-magically.</p>
-<h3 id="A-small-caveat-on-intro"><a href="#A-small-caveat-on-intro" class="headerlink" title="A small caveat on intro"></a>A small caveat on <code>intro</code></h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">intros</span> x y. <span class="built_in">destruct</span> y <span class="built_in">as</span> [ | <span class="type">y</span> ] eqn:E.</span><br></pre></td></tr></table></figure>
-
-<p>By doing this, name <code>y</code> is shadowed. It’d usually better to use, say <code>y&#39;</code> for this purpose.</p>
-<h2 id="Qed"><a href="#Qed" class="headerlink" title="Qed"></a><code>Qed</code></h2><p>standing for Latin words <em>“Quod Erat Demonstrandum”</em>…meaning “that which was to be demonstrated”.</p>
-
+          <p>我的 2021 全年盘点</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022-01-01-my-2021/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1201,7 +841,7 @@ for Record, can compiler reorder the fields? (SML and OCaml)
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/read_sf_lf/2019-01-02-sf-lf-02-induction/">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2022-02-12-zsh-completion/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1219,7 +859,7 @@ for Record, can compiler reorder the fields? (SML and OCaml)
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/read_sf_lf/2019-01-02-sf-lf-02-induction/" class="post-title-link" itemprop="url">「SF-LC」2 Induction</a>
+          <a href="/2022-02-12-zsh-completion/" class="post-title-link" itemprop="url">给 zsh 自定义命令添加参数自动补全</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1230,7 +870,16 @@ for Record, can compiler reorder the fields? (SML and OCaml)
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2024-02-02 01:05:07" itemprop="dateCreated datePublished" datetime="2024-02-02T01:05:07+00:00">2024-02-02</time>
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Shell/" itemprop="url" rel="index"><span itemprop="name">Shell</span></a>
+        </span>
     </span>
 
   
@@ -1243,42 +892,15 @@ for Record, can compiler reorder the fields? (SML and OCaml)
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="Review-only-in-slide"><a href="#Review-only-in-slide" class="headerlink" title="Review (only in slide)"></a>Review (only in slide)</h2><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> review2: ∀b, (orb true b) = true.</span><br><span class="line"><span class="keyword">Theorem</span> review3: ∀b, (orb b true) = true.</span><br></pre></td></tr></table></figure>
-
-<p>Whether or not it can be just <code>simpl.</code> depending on the definition of <code>orb</code>.</p>
-<p>In <em>Proof Engineering</em>, we probably won’t need to include <code>review2</code> but need to include <code>review3</code> in library.</p>
-<blockquote>
-<p>Why we have <code>simpl.</code> but not <code>refl.</code> ?</p>
-</blockquote>
-<h2 id="Proving-0-is-a-“neutral-element”-for-additive-identity"><a href="#Proving-0-is-a-“neutral-element”-for-additive-identity" class="headerlink" title="Proving 0 is a “neutral element” for + (additive identity)"></a>Proving <code>0</code> is a “neutral element” for <code>+</code> (additive identity)</h2><h3 id="Proving-0-n-n"><a href="#Proving-0-n-n" class="headerlink" title="Proving 0 + n = n"></a>Proving <code>0 + n = n</code></h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> plus_O_n : <span class="keyword">forall</span> n : nat, <span class="number">0</span> + n = n.</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span> n. <span class="built_in">simpl</span>. <span class="built_in">reflexivity</span>. <span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
-
-<p>This can be simply proved by <em>simplication</em> bcuz the definition of <code>+</code> is defined by pattern matching against 1st operand:</p>
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Fixpoint</span> plus (n : nat) (m : nat) : nat :=</span><br><span class="line">  <span class="keyword">match</span> n <span class="built_in">with</span></span><br><span class="line">    | <span class="type">O</span> ⇒ m</span><br><span class="line">    | <span class="type">S</span> n&#x27; ⇒ S (plus n&#x27; m)</span><br><span class="line">  <span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
-
-<p>We can observe that if <code>n</code> is <code>0</code>(<code>O</code>), no matter <code>m</code> is, it returns <code>m</code> as is.</p>
-<h3 id="Proving-n-0-n"><a href="#Proving-n-0-n" class="headerlink" title="Proving n + 0 = n"></a>Proving <code>n + 0 = n</code></h3><h4 id="1st-try-Simplication"><a href="#1st-try-Simplication" class="headerlink" title="1st try: Simplication"></a>1st try: Simplication</h4><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> plus_O_n_1 : <span class="keyword">forall</span> n : nat,  n + <span class="number">0</span> = n.</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span> n.</span><br><span class="line">  <span class="built_in">simpl</span>. <span class="comment">(* Does nothing! *)</span></span><br><span class="line"><span class="keyword">Abort</span>.</span><br></pre></td></tr></table></figure>
-
-<p>This cannot be proved by <em>simplication</em> bcuz <code>n</code> is unknown so <em>unfold</em> the definition <code>+</code> won’t be able to simplify anything.</p>
-<h4 id="2nd-try-Case-Analysis"><a href="#2nd-try-Case-Analysis" class="headerlink" title="2nd try: Case Analysis"></a>2nd try: Case Analysis</h4><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> plus_n_O_2 : ∀n:nat,</span><br><span class="line">  n = n + <span class="number">0.</span></span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span> n. <span class="built_in">destruct</span> n <span class="built_in">as</span> [| <span class="type">n</span>&#x27;] eqn:E.</span><br><span class="line">  - <span class="comment">(* n = 0 *)</span></span><br><span class="line">    <span class="built_in">reflexivity</span>. <span class="comment">(* so far so good... *)</span></span><br><span class="line">  - <span class="comment">(* n = S n&#x27; *)</span></span><br><span class="line">    <span class="built_in">simpl</span>. <span class="comment">(* ...but here we are stuck again *)</span></span><br><span class="line"><span class="keyword">Abort</span>.</span><br></pre></td></tr></table></figure>
-
-<p>Our 2nd try is to use <em>case analysis</em> (<code>destruct</code>), but the proof stucks in <em>inductive case</em> since <code>n</code> can be infinitely large (destructed)</p>
-<h4 id="Induction-to-the-resucue"><a href="#Induction-to-the-resucue" class="headerlink" title="Induction to the resucue"></a>Induction to the resucue</h4><blockquote>
-<p>To prove interesting facts about numbers, lists, and other inductively defined sets, we usually need a more powerful reasoning principle: induction.</p>
-</blockquote>
-<p>Princeple of induction over natural numbers (i.e. <em>mathematical induction</em>)</p>
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">P(<span class="number">0</span>); ∀n&#x27; P(n&#x27;) → P(S n&#x27;)  ====&gt;  P(n)</span><br></pre></td></tr></table></figure>
-
-<p>In Coq, like <code>destruct</code>, <code>induction</code> break <code>P(n)</code> into 2 subgoals:</p>
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> plus_n_O : ∀n:nat, n = n + <span class="number">0.</span></span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span> n. <span class="built_in">induction</span> n <span class="built_in">as</span> [| <span class="type">n</span>&#x27; IHn&#x27;].</span><br><span class="line">  - <span class="comment">(* n = 0 *)</span> <span class="built_in">reflexivity</span>.</span><br><span class="line">  - <span class="comment">(* n = S n&#x27; *)</span> <span class="built_in">simpl</span>. <span class="built_in">rewrite</span> &lt;- IHn&#x27;. <span class="built_in">reflexivity</span>. <span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="Proving-n-n-0"><a href="#Proving-n-n-0" class="headerlink" title="Proving n - n = 0"></a>Proving <code>n - n = 0</code></h2><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> minus_diag : ∀n,</span><br><span class="line">  minus n n = <span class="number">0.</span></span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="comment">(* WORKED IN CLASS *)</span></span><br><span class="line">  <span class="built_in">intros</span> n. <span class="built_in">induction</span> n <span class="built_in">as</span> [| <span class="type">n</span>&#x27; IHn&#x27;].</span><br><span class="line">  - <span class="comment">(* n = 0 *)</span></span><br><span class="line">    <span class="built_in">simpl</span>. <span class="built_in">reflexivity</span>.</span><br><span class="line">  - <span class="comment">(* n = S n&#x27; *)</span></span><br><span class="line">    <span class="built_in">simpl</span>. <span class="built_in">rewrite</span> → IHn&#x27;. <span class="built_in">reflexivity</span>. <span class="keyword">Qed</span></span><br></pre></td></tr></table></figure>
-
-<p>Noticed that the definition of <code>minus</code>:</p>
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Fixpoint</span> minus (n m:nat) : nat :=</span><br><span class="line">  <span class="keyword">match</span> n, m <span class="built_in">with</span></span><br><span class="line">  | <span class="type">O</span>   , <span class="keyword">_</span>    =&gt; O</span><br><span class="line">  | <span class="type">S</span> <span class="keyword">_</span> , O    =&gt; n</span><br><span class="line">  | <span class="type">S</span> n&#x27;, S m&#x27; =&gt; minus n&#x27; m&#x27;</span><br><span class="line">  <span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
-
-<h2 id="rewrite"><a href="#rewrite" class="headerlink" title="rewrite"></a><code>rewrite</code></h2><p><code>rewrite</code> would do a (DFS) preorder traversal in the syntax tree.</p>
-
+          <p>给 zsh 自定义命令添加参数自动补全</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022-02-12-zsh-completion/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1304,7 +926,7 @@ for Record, can compiler reorder the fields? (SML and OCaml)
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/read_sf_lf/2019-01-03-sf-lf-03-list/">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2022-02-19-compile-chaosblade-on-mac/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1322,7 +944,7 @@ for Record, can compiler reorder the fields? (SML and OCaml)
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/read_sf_lf/2019-01-03-sf-lf-03-list/" class="post-title-link" itemprop="url">「SF-LC」3 List</a>
+          <a href="/2022-02-19-compile-chaosblade-on-mac/" class="post-title-link" itemprop="url">在 Mac 下编译 chaosblade</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1333,7 +955,16 @@ for Record, can compiler reorder the fields? (SML and OCaml)
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2024-02-02 01:05:07" itemprop="dateCreated datePublished" datetime="2024-02-02T01:05:07+00:00">2024-02-02</time>
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%B7%B7%E6%B2%8C%E5%B7%A5%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">混沌工程</span></a>
+        </span>
     </span>
 
   
@@ -1346,87 +977,15 @@ for Record, can compiler reorder the fields? (SML and OCaml)
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="Pair-of-Numbers"><a href="#Pair-of-Numbers" class="headerlink" title="Pair of Numbers"></a>Pair of Numbers</h2><p>Q: Why name <code>inductive</code>?<br>A: Inductive means <em>building things bottom-up</em>, it doesn’t have to self-referencial (recursive)<br>(see below <code>induction on lists</code> as well.)</p>
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> natprod : <span class="keyword">Type</span> :=</span><br><span class="line">  | <span class="type">pair</span> (n1 n2 : nat).</span><br><span class="line"></span><br><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;( x , y )&quot;</span> := (pair x y).</span><br></pre></td></tr></table></figure>
-
-<p>Proof on pair cannot simply <code>simpl.</code></p>
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> surjective_pairing_stuck : ∀(p : natprod),</span><br><span class="line">  p = (fst p, snd p).</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">simpl</span>. <span class="comment">(* Doesn&#x27;t reduce anything! *)</span></span><br><span class="line"><span class="keyword">Abort</span>.</span><br></pre></td></tr></table></figure>
-
-<p>We have to <em>expose the structure</em>:</p>
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Theorem</span> surjective_pairing : ∀(p : natprod),</span><br><span class="line">  p = (fst p, snd p).</span><br><span class="line"><span class="keyword">Proof</span>.</span><br><span class="line">  <span class="built_in">intros</span> p. <span class="built_in">destruct</span> p <span class="built_in">as</span> [n m**. <span class="built_in">simpl</span>. <span class="built_in">reflexivity</span>. <span class="keyword">Qed</span>.</span><br></pre></td></tr></table></figure>
-
-<p>It only generate <strong>one subgoal</strong>, becasue</p>
-<blockquote>
-<p>That’s because natprods can only be constructed in one way.</p>
-</blockquote>
-<h3 id="My-take-on-destruct"><a href="#My-take-on-destruct" class="headerlink" title="My take on destruct"></a>My take on <code>destruct</code></h3><p><code>destruct</code> </p>
-<ul>
-<li>destruct <code>bool</code> to <code>true</code> and <code>false</code></li>
-<li>destruct <code>nat</code>  to <code>O</code> and <code>S n&#39;</code> (inductively defined)</li>
-<li>destruct <code>pair</code> to <code>(n, m)</code></li>
-</ul>
-<p>The <strong>prove by case analysis (exhaustive)</strong> is just an application of the idea of <em>destruction</em>! </p>
-<p>the idea simply <em>destruct</em> the data type into its data constructors (representing ways of constructing this data)</p>
-<ul>
-<li>Java class has only 1 way to construct (via its constructor)</li>
-<li>Scala case class then have multiple way to construct</li>
-</ul>
-<h2 id="Lists-of-Numbers"><a href="#Lists-of-Numbers" class="headerlink" title="Lists of Numbers"></a>Lists of Numbers</h2><blockquote>
-<p>Generalizing the definition of pairs</p>
-</blockquote>
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Inductive</span> natlist : <span class="keyword">Type</span> :=</span><br><span class="line">  | <span class="type">nil</span></span><br><span class="line">  | <span class="type">cons</span> (n : nat) (l : natlist).</span><br></pre></td></tr></table></figure>
-
-<p>The ability of quosiquotation using <code>Notation</code> is awesome:</p>
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;x :: l&quot;</span> := (cons x l) (<span class="built_in">at</span> level <span class="number">60</span>, <span class="built_in">right</span> associativity).</span><br><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;[ ]&quot;</span> := nil.</span><br><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;[ x ; .. ; y ]&quot;</span> := (cons x .. (cons y nil) ..).</span><br></pre></td></tr></table></figure>
-
-<p>It’s exactly like OCaml, even for <code>;</code>, <code>at level 60</code> means it’s tightly than <code>+ at level 50</code> .</p>
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Notation</span> <span class="string">&quot;x ++ y&quot;</span> := (app x y) (<span class="built_in">right</span> associativity, <span class="built_in">at</span> level <span class="number">60</span>).</span><br></pre></td></tr></table></figure>
-<p>Instead of SML&#x2F;OCaml’s <code>@</code>, Coq chooses Haskell’s <code>++</code>.</p>
-<h3 id="hd-with-default"><a href="#hd-with-default" class="headerlink" title="hd with default"></a><code>hd</code> with default</h3><p>Coq function (for some reason) has to be <strong>total</strong>, so <code>hd</code> require a <code>default</code> value as 1st argument:</p>
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Definition</span> hd (default:nat) (l:natlist) : nat :=</span><br><span class="line">  <span class="keyword">match</span> l <span class="built_in">with</span></span><br><span class="line">  | <span class="type">nil</span> ⇒ default</span><br><span class="line">  | <span class="type">h</span> :: t ⇒ h</span><br><span class="line">  <span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="Induction-on-Lists"><a href="#Induction-on-Lists" class="headerlink" title="Induction on Lists."></a>Induction on Lists.</h2><p>The definition of <em>inductive defined set</em></p>
-<blockquote>
-<p>Each Inductive declaration defines a set of data values that can be <strong>built up</strong> using the declared constructors:</p>
-<ul>
-<li>a boolean can be either true or false;</li>
-<li>a number can be either O or S applied to another number; </li>
-<li>a list can be either nil or cons applied to a number and a list.</li>
-</ul>
-</blockquote>
-<p>The reverse: reasoning <em>inductive defined sets</em></p>
-<blockquote>
-<p>Moreover, applications of the declared constructors to one another are the<br><strong>only</strong> possible shapes that elements of an inductively defined set can have,<br>and this fact directly gives rise to a way of reasoning about inductively defined sets: </p>
-<ul>
-<li>a number is either O or else it is S applied to some smaller number; </li>
-<li>a list is either nil or else it is cons applied to some number and some smaller list;</li>
-</ul>
-</blockquote>
-<p>Reasoning lists</p>
-<blockquote>
-<p>if we have in mind some proposition <code>P</code> that mentions a list <code>l</code> and we want to argue that <code>P</code> holds for <em>all</em> lists,<br>we can reason as follows</p>
-<ol>
-<li>First, show that <code>P</code> is <code>true</code> of <code>l</code> when <code>l</code> is <code>nil</code>.</li>
-<li>Then show that <code>P</code> is true of <code>l</code> when <code>l</code> is <code>cons n l&#39;</code> for some number <code>n</code> and some smaller list <code>l&#39;</code>, assuming that <code>P</code> is <code>true</code> for <code>l&#39;</code>.</li>
-</ol>
-</blockquote>
-<h2 id="Search"><a href="#Search" class="headerlink" title="Search"></a>Search</h2><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Search</span> rev  <span class="comment">(* list all theorems of [rev] *)</span></span><br></pre></td></tr></table></figure>
-
-
-<h2 id="Coq-Conditionals-if-then-else"><a href="#Coq-Conditionals-if-then-else" class="headerlink" title="Coq Conditionals (if then else)"></a>Coq Conditionals (<code>if then else</code>)</h2><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Fixpoint</span> nth_error&#x27; (l:natlist) (n:nat) : natoption :=</span><br><span class="line">  <span class="keyword">match</span> l <span class="built_in">with</span></span><br><span class="line">  | <span class="type">nil</span> ⇒ None</span><br><span class="line">  | <span class="type">a</span> :: l&#x27; ⇒ <span class="keyword">if</span> n =? O <span class="keyword">then</span> Some a</span><br><span class="line">                        <span class="keyword">else</span> nth_error&#x27; l&#x27; (pred n)</span><br><span class="line">  <span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
-
-<p>One small generalization: since the boolean type in Coq is not built-in. Coq actually supports conditional expr <strong>over any</strong> <em>inductive defined typewith two constructors</em>. First constructor is considered true and false for second.</p>
-<h2 id="Stuck-in-Proof"><a href="#Stuck-in-Proof" class="headerlink" title="Stuck in Proof"></a>Stuck in Proof</h2><p>could be many cases</p>
-<ul>
-<li>wrong tactics</li>
-<li>wrong theroem!! (might derive to counterexample)</li>
-<li>wrong step (most hard to figure out)<ul>
-<li>induction on wrong things</li>
-</ul>
-</li>
-</ul>
-
+          <p>在 Mac 下编译 chaosblade，从开始到放弃。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022-02-19-compile-chaosblade-on-mac/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1445,7 +1004,7 @@ for Record, can compiler reorder the fields? (SML and OCaml)
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="Previous page" aria-label="Previous page" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" title="Next page" aria-label="Next page" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" title="Previous page" aria-label="Previous page" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/">27</a><a class="extend next" rel="next" title="Next page" aria-label="Next page" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>

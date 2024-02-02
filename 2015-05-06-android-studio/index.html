@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Android Studio 使用过程中遇到的一些问题和解决方案集合。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Studio 遇到问题集锦">
+<meta property="og:url" content="https://www.vvbuys.com/2015-05-06-android-studio/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="Android Studio 使用过程中遇到的一些问题和解决方案集合。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/android/android-studio-check-sdk.png">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/android/android-support-repository.png">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/android/android-studio-javadoc.png">
+<meta property="article:published_time" content="2024-02-02T01:06:28.204Z">
+<meta property="article:modified_time" content="2024-02-02T01:06:28.204Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="Linux hyprland Python Rust Golang javascript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.vvbuys.com/images/posts/android/android-studio-check-sdk.png">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/2015-05-06-android-studio/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/2015-05-06-android-studio/","path":"2015-05-06-android-studio/","title":"Android Studio 遇到问题集锦"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Android Studio 遇到问题集锦 | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%93%E5%BC%80-Android-Studio-%E5%8D%A1%E5%9C%A8%E3%80%8CFetching-Android-SDK-component-information%E3%80%8D%E7%95%8C%E9%9D%A2%E3%80%82"><span class="nav-number">1.</span> <span class="nav-text">打开 Android Studio 卡在「Fetching Android SDK component information」界面。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E5%B7%A5%E7%A8%8B%E5%90%8E%E6%9E%84%E5%BB%BA%E6%97%B6%E6%8F%90%E7%A4%BA%E6%89%BE%E4%B8%8D%E5%88%B0-appcompat-v7"><span class="nav-number">2.</span> <span class="nav-text">新建工程后构建时提示找不到 appcompat-v7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#aidl-%E6%96%87%E4%BB%B6%E7%9A%84%E6%94%BE%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">aidl 文件的放置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8-Android-Studio-%E9%87%8C%E7%BC%96%E8%AF%91%E9%80%9A%E8%BF%87%E4%B9%8B%E5%90%8E%EF%BC%8C%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%BD%BF%E7%94%A8-gradlew-build-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%98%E6%98%AF%E4%BC%9A%E9%87%8D%E6%96%B0%E4%B8%8B%E8%BD%BD-Gradle%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">在 Android Studio 里编译通过之后，命令行使用 gradlew build 为什么还是会重新下载 Gradle？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9F%E5%99%A8%E5%90%AF%E5%8A%A8%E5%A4%B1%E8%B4%A5"><span class="nav-number">5.</span> <span class="nav-text">模拟器启动失败</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#debug-keystore-%E7%9A%84%E5%AD%98%E6%94%BE%E4%BD%8D%E7%BD%AE"><span class="nav-number">6.</span> <span class="nav-text">debug.keystore 的存放位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E7%9B%B4%E6%8F%90%E7%A4%BA-Please-configure-Android-SDK"><span class="nav-number">7.</span> <span class="nav-text">一直提示 Please configure Android SDK</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#More-than-one-file-was-found-with-OS-independent-path"><span class="nav-number">8.</span> <span class="nav-text">More than one file was found with OS independent path</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%93%E5%BC%80-uiautomatorviewer-%E6%8A%A5%E9%94%99"><span class="nav-number">9.</span> <span class="nav-text">打开 uiautomatorviewer 报错</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#is-not-translated-in-%E2%80%9Czh%E2%80%9D"><span class="nav-number">10.</span> <span class="nav-text">is not translated in “zh”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E7%9B%B4%E5%8D%A1%E5%9C%A8-Gradle-Resolve-dependencies%E2%80%99app-debugCompile%E2%80%99"><span class="nav-number">11.</span> <span class="nav-text">一直卡在 Gradle:Resolve dependencies’app:debugCompile’</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E5%88%B0-Android-Studio-3-0-%E5%90%8E%E6%8A%A5%E9%94%99"><span class="nav-number">12.</span> <span class="nav-text">更新到 Android Studio 3.0 后报错</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E6%A8%A1%E6%8B%9F%E5%99%A8%E6%8F%90%E7%A4%BA-Intel-HAXM-is-required-to-run-this-AVD-your-CPU-does-not-support-VT-x"><span class="nav-number">13.</span> <span class="nav-text">启动模拟器提示 Intel HAXM is required to run this AVD your CPU does not support VT-x</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-Studio-%E9%87%8C%E5%AF%B9%E6%89%80%E6%9C%89-Activity-%E6%98%BE%E7%A4%BA%E8%AD%A6%E5%91%8A"><span class="nav-number">14.</span> <span class="nav-text">Android Studio 里对所有 Activity 显示警告</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Plugin-with-id-%E2%80%98com-android-application%E2%80%99-not-found"><span class="nav-number">15.</span> <span class="nav-text">Plugin with id ‘com.android.application’ not found</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%87%E7%BA%A7%E5%90%8E-Gradle-sync-%E5%87%BA%E9%94%99"><span class="nav-number">16.</span> <span class="nav-text">升级后 Gradle sync 出错</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Generate-JavaDoc-%E6%8F%90%E7%A4%BA%E2%80%9C%E9%94%99%E8%AF%AF-%E7%BC%96%E7%A0%81GBK%E7%9A%84%E4%B8%8D%E5%8F%AF%E6%98%A0%E5%B0%84%E5%AD%97%E7%AC%A6%E2%80%9D"><span class="nav-number">17.</span> <span class="nav-text">Generate JavaDoc 提示“错误: 编码GBK的不可映射字符”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%87%E7%BA%A7-Gradle-Plugin-%E7%89%88%E6%9C%AC%E5%90%8E%E6%8A%A5%E9%94%99"><span class="nav-number">18.</span> <span class="nav-text">升级 Gradle Plugin 版本后报错</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E6%8A%A5%E9%94%99-Error-Execution-failed-for-task-%E2%80%98-app-transformClassesWithDexForRelease%E2%80%99"><span class="nav-number">19.</span> <span class="nav-text">编译报错 Error:Execution failed for task ‘:app:transformClassesWithDexForRelease’</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%87%E7%BA%A7%E5%88%B0-3-1-%E5%90%8E%E7%BC%96%E8%BE%91-Gradle-%E6%96%87%E4%BB%B6%E5%8D%A1%E9%A1%BF"><span class="nav-number">20.</span> <span class="nav-text">升级到 3.1 后编辑 Gradle 文件卡顿</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E6%8A%A5%E9%94%99-You-should-manually-set-the-same-version-via-DependencyResolution"><span class="nav-number">21.</span> <span class="nav-text">编译报错 You should manually set the same version via DependencyResolution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E6%8A%A5%E9%94%99-Please-use-JDK-8-or-newer"><span class="nav-number">22.</span> <span class="nav-text">编译报错 Please use JDK 8 or newer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E6%8A%A5%E9%94%99-Caused-by-java-io-IOException-Cannot-run-program"><span class="nav-number">23.</span> <span class="nav-text">编译报错 Caused by: java.io.IOException: Cannot run program</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%A5%E9%94%99-NDK-not-configured"><span class="nav-number">24.</span> <span class="nav-text">报错 NDK not configured</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">265</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2015-05-06-android-studio/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Android Studio 遇到问题集锦 | VVbugs Blog">
+      <meta itemprop="description" content="Android Studio 使用过程中遇到的一些问题和解决方案集合。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android Studio 遇到问题集锦
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">Android Studio 使用过程中遇到的一些问题和解决方案集合。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="打开-Android-Studio-卡在「Fetching-Android-SDK-component-information」界面。"><a href="#打开-Android-Studio-卡在「Fetching-Android-SDK-component-information」界面。" class="headerlink" title="打开 Android Studio 卡在「Fetching Android SDK component information」界面。"></a>打开 Android Studio 卡在「Fetching Android SDK component information」界面。</h2><p>如图：</p>
+<p><img src="/images/posts/android/android-studio-check-sdk.png"></p>
+<p>Android Studio First Run 检测 Android SDK 及更新，由于众所周知的原因，我们会「Unable to access Android SDK add-on list」，而且大家一般也已经提前配置好了 Android SDK，真正需要更新的时候手动去 SDK Manager 更新就好了。</p>
+<p>解决方案：</p>
+<p>在 Android Studio 安装目录 bin&#x2F;idea.properties 文件最后追加一句</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">disable.android.first.run=true</span><br></pre></td></tr></table></figure>
+
+<p>参考： <a target="_blank" rel="noopener" href="http://ask.android-studio.org/?/article/14">http://ask.android-studio.org/?/article/14</a></p>
+<h2 id="新建工程后构建时提示找不到-appcompat-v7"><a href="#新建工程后构建时提示找不到-appcompat-v7" class="headerlink" title="新建工程后构建时提示找不到 appcompat-v7"></a>新建工程后构建时提示找不到 appcompat-v7</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error:Failed to find: com.android.support:appcompat-v7:22.+</span><br></pre></td></tr></table></figure>
+
+<p>解决方案：</p>
+<ol>
+<li><p>打开 SDK Manager，然后安装 Extras 下的 Android Support Repository：</p>
+<p><img src="/images/posts/android/android-support-repository.png"></p>
+</li>
+<li><p>Rebuild 工程。</p>
+</li>
+</ol>
+<h2 id="aidl-文件的放置"><a href="#aidl-文件的放置" class="headerlink" title="aidl 文件的放置"></a>aidl 文件的放置</h2><p>按以前 Eclipse 的方式，将 aidl 及其包目录层级放置在与自己的顶级包同级的目录下，即如下的 android&#x2F;content&#x2F;pm：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">app/src/main</span><br><span class="line">├─assets</span><br><span class="line">├─java</span><br><span class="line">│  ├─android</span><br><span class="line">│  │  └─content</span><br><span class="line">│  │      └─pm</span><br><span class="line">│  └─org</span><br><span class="line">│      └─mazhuang</span><br><span class="line">│          └─easycleaner</span><br><span class="line">└─res</span><br><span class="line">   ├─drawable</span><br><span class="line">   ├─layout</span><br><span class="line">   ├─menu</span><br><span class="line">   ...</span><br></pre></td></tr></table></figure>
+
+<p>然而这样在调用处一直报错：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cannot resolve symbol &#x27;IPackageStatsObserver&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>解决方案：</p>
+<p>将 aidl 文件放置在与 app&#x2F;src&#x2F;main&#x2F;java 目录同级的 app&#x2F;src&#x2F;main&#x2F;aidl 文件夹下。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">app/src/main</span><br><span class="line">├─aidl</span><br><span class="line">│  └─android</span><br><span class="line">│      └─content</span><br><span class="line">│          └─pm</span><br><span class="line">├─assets</span><br><span class="line">├─java</span><br><span class="line">│  └─org</span><br><span class="line">│      └─mazhuang</span><br><span class="line">│          └─easycleaner</span><br><span class="line">└─res</span><br><span class="line">   ├─drawable</span><br><span class="line">   ├─layout</span><br><span class="line">   ├─menu</span><br><span class="line">   ...</span><br></pre></td></tr></table></figure>
+
+<h2 id="在-Android-Studio-里编译通过之后，命令行使用-gradlew-build-为什么还是会重新下载-Gradle？"><a href="#在-Android-Studio-里编译通过之后，命令行使用-gradlew-build-为什么还是会重新下载-Gradle？" class="headerlink" title="在 Android Studio 里编译通过之后，命令行使用 gradlew build 为什么还是会重新下载 Gradle？"></a>在 Android Studio 里编译通过之后，命令行使用 gradlew build 为什么还是会重新下载 Gradle？</h2><p>Gradle 的版本在 Android Studio 工程里有三处：</p>
+<p>一、gradle&#x2F;wrapper&#x2F;gradle-wrapper.properties 文件的 distributionUrl 字段里指定的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#Wed Oct 21 11:34:03 PDT 2015</span><br><span class="line">distributionBase=GRADLE_USER_HOME</span><br><span class="line">distributionPath=wrapper/dists</span><br><span class="line">zipStoreBase=GRADLE_USER_HOME</span><br><span class="line">zipStorePath=wrapper/dists</span><br><span class="line">distributionUrl=https\://services.gradle.org/distributions/gradle-2.8-all.zip</span><br></pre></td></tr></table></figure>
+
+<p>比如这里指定的是 2.8 版本。</p>
+<p>二、Android Studio 的 File &gt; Project Structure &gt; Project 里显示的。</p>
+<p>这个实际上就是显示的「一」里的版本。</p>
+<p>三、Android Studio 的 File &gt; Settings &gt; Build, Execution, Deployment &gt; Build Tools &gt; Gradle 里选择的是「Use default gradle wrapper (recommended)」还是「Use local gradle distribution」。</p>
+<p>出现题目里的问题一般是由于「三」中选择的是「Use local gradle distribution」，这个选项下的「Gradle home」路径一般是指向 Android Studio 安装目录下的 Gradle 目录，比如 C:&#x2F;Program Files&#x2F;Android&#x2F;Android Studio&#x2F;gradle&#x2F;gradle-2.8，而 gradlew 脚本是独立于 Android Studio 的，所以并不受其配置的影响，它是使用「一」里指定的版本，会到 ~&#x2F;.gradle&#x2F;wrapper&#x2F;dists 目录下去寻找对应版本的 Gradle 是否已经存在，如果没有话就会去重新下载。</p>
+<h2 id="模拟器启动失败"><a href="#模拟器启动失败" class="headerlink" title="模拟器启动失败"></a>模拟器启动失败</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PANIC: ANDROID_SDK_HOME is defined but could not find Nexus_5_API_23.ini file in $ANDROID_SDK_HOME/.android/avd</span><br><span class="line">(Note: avd is searched in the order of $ANDROID_AVD_HOME,$ANDROID_SDK_HOME/.android/avd and $HOME/.android/avd)</span><br></pre></td></tr></table></figure>
+
+<p>实际上文件存在于 $HOME&#x2F;.android&#x2F;avd 目录下，但看样子如果设置了 $ANDROID_SDK_HOME 环境变量，Android Studio 在 $ANDROID_SDK_HOME&#x2F;.android&#x2F;avd 下找不到模拟器文件将直接报错，而不会再去找 $HOME 目录下的文件。</p>
+<p><strong>解决方案：</strong></p>
+<p>添加 $ANDROID_AVD_HOME 环境变量，值为 $HOME&#x2F;.android&#x2F;avd 的展开全路径。</p>
+<h2 id="debug-keystore-的存放位置"><a href="#debug-keystore-的存放位置" class="headerlink" title="debug.keystore 的存放位置"></a>debug.keystore 的存放位置</h2><p>在使用高德地图 SDK 时，需要 key 与 keystore 文件的 sha1 校验通过，而我将 debug.keystore 拷贝到 $HOME&#x2F;.android 目录下后发现一直提示 key 校验失败，也就是没有使用我拷贝到 $HOME&#x2F;.android 目录下的 debug.keystore 来做 debug 签名。</p>
+<p>原因是 debug.keystore 的默认存储路径是 $HOME&#x2F;.android，但是如果配置了 $ANDROID_SDK_HOME，则会将 debug.keystore $ANDROID_SDK_HOME&#x2F;.android 目录下。</p>
+<p><strong>解决方案：</strong></p>
+<p>将 debug.keystore 文件拷贝到 $ANDROID_SDK_HOME&#x2F;.android 目录下。</p>
+<p>BTW:</p>
+<p>关于给 App 签名的手动、自动方法参考 <a target="_blank" rel="noopener" href="http://developer.android.com/tools/publishing/app-signing.html">Signing Your Applications</a>。</p>
+<p>Android Studio 自动生成的 debug.keystore 的信息：</p>
+<ul>
+<li>Keystore password: android</li>
+<li>Key alias: androiddebugkey</li>
+<li>Key password: android</li>
+</ul>
+<h2 id="一直提示-Please-configure-Android-SDK"><a href="#一直提示-Please-configure-Android-SDK" class="headerlink" title="一直提示 Please configure Android SDK"></a>一直提示 Please configure Android SDK</h2><p>这是在一次电脑断电后出现的，试了一些方法，更新 Android Studio，将 SDK Platforms 删除了重新下，都不行，后来发现 Build Tools 可以更新，更新完后就好了。</p>
+<h2 id="More-than-one-file-was-found-with-OS-independent-path"><a href="#More-than-one-file-was-found-with-OS-independent-path" class="headerlink" title="More than one file was found with OS independent path"></a>More than one file was found with OS independent path</h2><p>比如，在 netty-buffer-4.1.5.Final.jar 与 netty-common-4.1.5.Final.jar 中都有 META-INF&#x2F;io.netty.version.properties，所以编译时报错：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">More than one file was found with OS independent path &#x27;META-INF/io.netty.versions.properties&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><strong>解决方案：</strong></p>
+<p>在 app&#x2F;build.gradle 里添加如下内容：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">    packagingOptions &#123;</span><br><span class="line">        pickFirst <span class="string">&#x27;META-INF/*&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>表示只保留一份该文件。</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/27977396/android-studio-duplicate-files-copied-in-apk-meta-inf-dependencies-when-compile">Android Studio: Duplicate files copied in APK META-INF&#x2F;DEPENDENCIES when compile</a></p>
+<h2 id="打开-uiautomatorviewer-报错"><a href="#打开-uiautomatorviewer-报错" class="headerlink" title="打开 uiautomatorviewer 报错"></a>打开 uiautomatorviewer 报错</h2><p>打开 uiautomatorviewer 报错，提示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Unable to connect to adb. Check if adb is installed correctly.</span><br></pre></td></tr></table></figure>
+
+<p>实际 adb 命令是可正常使用的。</p>
+<p>解决方法：</p>
+<p>打开 uiautomatorviewer.bat 文件（Windows 下，其它系统可能是 .sh），找到下面这行（一般是最后一行）：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">call <span class="string">&quot;%java_exe%&quot;</span> <span class="string">&quot;-Djava.ext.dirs=%javaextdirs%&quot;</span> <span class="string">&quot;-Dcom.android.uiautomator.bindir=%prog_dir%&quot;</span> -jar %jarpath% %*</span><br></pre></td></tr></table></figure>
+
+<p>将其中的 <code>%prog_dir%</code> 改为 Android SDK 的 tools 目录路径，比如：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">call <span class="string">&quot;%java_exe%&quot;</span> <span class="string">&quot;-Djava.ext.dirs=%javaextdirs%&quot;</span> <span class="string">&quot;-Dcom.android.uiautomator.bindir=D:\Android\sdk\tools&quot;</span> -jar %jarpath% %*</span><br></pre></td></tr></table></figure>
+
+<p>参考：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/42696158/in-ui-automator-viewer-error-obtaining-device-screenshot-reason-error-unable">In UI automator viewer Error Obtaining Device screenshot, Reason : Error Unable to connect to adb. Check if adb is installed correctly</a></p>
+<h2 id="is-not-translated-in-“zh”"><a href="#is-not-translated-in-“zh”" class="headerlink" title="is not translated in “zh”"></a>is not translated in “zh”</h2><p>报错信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error: &quot;app_name&quot; is not translated in &quot;zh&quot; (Chinese) [MissingTranslation]</span><br></pre></td></tr></table></figure>
+
+<p>在引用了 Umeng 的 SDK 后编译报错，疑是 Umeng 包里的 values-zh 导致。</p>
+<p>解决方案 1：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">resources</span></span></span><br><span class="line"><span class="tag">  <span class="attr">xmlns:tools</span>=<span class="string">&quot;http://schemas.android.com/tools&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">tools:ignore</span>=<span class="string">&quot;MissingTranslation&quot;</span> &gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>解决方案 2：</p>
+<p>在主项目的 build.gradle 里添加如下代码：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">    lintOptions &#123;</span><br><span class="line">        checkReleaseBuilds <span class="literal">false</span></span><br><span class="line">        abortOnError <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>参考：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/cxc19890214/article/details/39120415">http://blog.csdn.net/cxc19890214/article/details/39120415</a></li>
+<li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000000599530">https://segmentfault.com/a/1190000000599530</a></li>
+</ul>
+<h2 id="一直卡在-Gradle-Resolve-dependencies’app-debugCompile’"><a href="#一直卡在-Gradle-Resolve-dependencies’app-debugCompile’" class="headerlink" title="一直卡在 Gradle:Resolve dependencies’app:debugCompile’"></a>一直卡在 Gradle:Resolve dependencies’app:debugCompile’</h2><p>这种情况一般是 Gradle 去拉取某个 dependencies 的时候连不上导致。</p>
+<p>一种方法是如果本地有能编译通过的其它工程，修改 compileSdkVersion 和 buildToolsVersion 及 dependencies 里的版本为能编译通过的工程的版本；另一种方法是将对应的依赖包 jar 下载到本地放到 libs 里面；还有一种思路是修改 jcenter() 为其它可用的源。</p>
+<h2 id="更新到-Android-Studio-3-0-后报错"><a href="#更新到-Android-Studio-3-0-后报错" class="headerlink" title="更新到 Android Studio 3.0 后报错"></a>更新到 Android Studio 3.0 后报错</h2><p>提示信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">Unable to resolve dependency for &#x27;:internal@packagingOptions/compileClasspath&#x27;: Could not resolve project :commonlib.</span><br><span class="line"></span><br><span class="line">Could not resolve project :commonlib.</span><br><span class="line">Required by:</span><br><span class="line">    project :internal</span><br><span class="line"> &gt; Unable to find a matching configuration of project :commonlib:</span><br><span class="line">     - Configuration &#x27;debugApiElements&#x27;:</span><br><span class="line">         - Required com.android.build.api.attributes.BuildTypeAttr &#x27;packagingOptions&#x27; and found incompatible value &#x27;debug&#x27;.</span><br><span class="line">         - Required com.android.build.gradle.internal.dependency.AndroidTypeAttr &#x27;Aar&#x27; and found compatible value &#x27;Aar&#x27;.</span><br><span class="line">         - Found com.android.build.gradle.internal.dependency.VariantAttr &#x27;debug&#x27; but wasn&#x27;t required.</span><br><span class="line">         - Required org.gradle.api.attributes.Usage &#x27;java-api&#x27; and found compatible value &#x27;java-api&#x27;.</span><br><span class="line">     - Configuration &#x27;debugRuntimeElements&#x27;:</span><br><span class="line">         - Required com.android.build.api.attributes.BuildTypeAttr &#x27;packagingOptions&#x27; and found incompatible value &#x27;debug&#x27;.</span><br><span class="line">         - Required com.android.build.gradle.internal.dependency.AndroidTypeAttr &#x27;Aar&#x27; and found compatible value &#x27;Aar&#x27;.</span><br><span class="line">         - Found com.android.build.gradle.internal.dependency.VariantAttr &#x27;debug&#x27; but wasn&#x27;t required.</span><br><span class="line">         - Required org.gradle.api.attributes.Usage &#x27;java-api&#x27; and found incompatible value &#x27;java-runtime&#x27;.</span><br><span class="line">     - Configuration &#x27;releaseApiElements&#x27;:</span><br><span class="line">         - Required com.android.build.api.attributes.BuildTypeAttr &#x27;packagingOptions&#x27; and found incompatible value &#x27;release&#x27;.</span><br><span class="line">         - Required com.android.build.gradle.internal.dependency.AndroidTypeAttr &#x27;Aar&#x27; and found compatible value &#x27;Aar&#x27;.</span><br><span class="line">         - Found com.android.build.gradle.internal.dependency.VariantAttr &#x27;release&#x27; but wasn&#x27;t required.</span><br><span class="line">         - Required org.gradle.api.attributes.Usage &#x27;java-api&#x27; and found compatible value &#x27;java-api&#x27;.</span><br><span class="line">     - Configuration &#x27;releaseRuntimeElements&#x27;:</span><br><span class="line">         - Required com.android.build.api.attributes.BuildTypeAttr &#x27;packagingOptions&#x27; and found incompatible value &#x27;release&#x27;.</span><br><span class="line">         - Required com.android.build.gradle.internal.dependency.AndroidTypeAttr &#x27;Aar&#x27; and found compatible value &#x27;Aar&#x27;.</span><br><span class="line">         - Found com.android.build.gradle.internal.dependency.VariantAttr &#x27;release&#x27; but wasn&#x27;t required.</span><br><span class="line">         - Required org.gradle.api.attributes.Usage &#x27;java-api&#x27; and found incompatible value &#x27;java-runtime&#x27;.</span><br></pre></td></tr></table></figure>
+
+<p>情况是有一个叫 internal 的 project 依赖一个叫 commonlib 的 module，最后查到原因如下：</p>
+<p>internal project 的 build.gradle 文件里写了这么一段：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">    ...</span><br><span class="line">    buildTypes &#123;</span><br><span class="line">        debug &#123;</span><br><span class="line">            signingConfig signingConfigs.release</span><br><span class="line">        &#125;</span><br><span class="line">        release &#123;</span><br><span class="line">            minifyEnabled <span class="literal">false</span></span><br><span class="line">            proguardFiles getDefaultProguardFile(<span class="string">&#x27;proguard-android.txt&#x27;</span>), <span class="string">&#x27;proguard-rules.pro&#x27;</span></span><br><span class="line">            signingConfig signingConfigs.release</span><br><span class="line">        &#125;</span><br><span class="line">        packagingOptions &#123;</span><br><span class="line">            exclude <span class="string">&#x27;META-INF/INDEX.LIST&#x27;</span></span><br><span class="line">            exclude <span class="string">&#x27;log4j.xml&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实际 packagingOptions 应该放到 buildTypes 之外，改成这样就 OK 了：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">    ...</span><br><span class="line">    packagingOptions &#123;</span><br><span class="line">        exclude <span class="string">&#x27;META-INF/INDEX.LIST&#x27;</span></span><br><span class="line">        exclude <span class="string">&#x27;log4j.xml&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    buildTypes &#123;</span><br><span class="line">        debug &#123;</span><br><span class="line">            signingConfig signingConfigs.release</span><br><span class="line">        &#125;</span><br><span class="line">        release &#123;</span><br><span class="line">            minifyEnabled <span class="literal">false</span></span><br><span class="line">            proguardFiles getDefaultProguardFile(<span class="string">&#x27;proguard-android.txt&#x27;</span>), <span class="string">&#x27;proguard-rules.pro&#x27;</span></span><br><span class="line">            signingConfig signingConfigs.release</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以前曾经通过这样修改临时掩盖了问题，让编译能过：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    ...</span><br><span class="line">    implementation project(<span class="attr">path:</span> <span class="string">&#x27;:commonlib&#x27;</span>, <span class="attr">configuration:</span> <span class="string">&#x27;default&#x27;</span>) <span class="comment">// 临时方案</span></span><br><span class="line">    <span class="comment">// implementation project(&#x27;:commonlib&#x27;)  // 原来的样子</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样修改编译能通过，但是会有个问题，就是在 internal project 工程里调用 commonlib 的方法的地方，Ctrl + 鼠标左键，或者右键 Go To Declaration 时会跳到 ~&#x2F;.gradle&#x2F;caches&#x2F;transforms-1&#x2F;files-1.1&#x2F;commonlib-release.aar 目录里的 .class 文件，而非 .java 源文件。</p>
+<p>回答在 <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/46949622/android-studio-3-0-unable-to-resolve-dependency-for-appdexoptions-compilecla#answer-47426050">StackOverflow 的一个问题</a> 下。</p>
+<h2 id="启动模拟器提示-Intel-HAXM-is-required-to-run-this-AVD-your-CPU-does-not-support-VT-x"><a href="#启动模拟器提示-Intel-HAXM-is-required-to-run-this-AVD-your-CPU-does-not-support-VT-x" class="headerlink" title="启动模拟器提示 Intel HAXM is required to run this AVD your CPU does not support VT-x"></a>启动模拟器提示 Intel HAXM is required to run this AVD your CPU does not support VT-x</h2><p>我使用 Win10 系统，换主板之后遇到的，之前模拟器是能正常运行的。</p>
+<p>我遇到的原因是 Hyper-V 的影响，导致无法安装 HAXM，虽然在 msconfig 里查看我的 Hyper-V 服务都已经停止，我在 BIOS 里也已经 Enable 了 Virtualization Technology 相关的选项，仍然报相同的错误。</p>
+<p>解决步骤参考 <a target="_blank" rel="noopener" href="http://blog.csdn.net/WangZuoChuan/article/details/54620016">http://blog.csdn.net/WangZuoChuan/article/details/54620016</a>：</p>
+<ol>
+<li><p>打开管理员权限的 CMD</p>
+</li>
+<li><p>运行 <code>bcdedit /copy &#123;current&#125; /d “Windows10 no Hyper-V</code></p>
+<p> 这时会输出一个 UUID</p>
+</li>
+<li><p>执行 <code>bcdedit /set &#123;XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX&#125; hypervisorlaunchtype OFF</code></p>
+<p> 将 XXX 部分换成步骤 2 里输出的 UUID</p>
+</li>
+<li><p>在 msconfig 的「引导」里将 <code>Windows 10 no Hyper-V</code> 设为默认</p>
+</li>
+<li><p>重启</p>
+</li>
+</ol>
+<h2 id="Android-Studio-里对所有-Activity-显示警告"><a href="#Android-Studio-里对所有-Activity-显示警告" class="headerlink" title="Android Studio 里对所有 Activity 显示警告"></a>Android Studio 里对所有 Activity 显示警告</h2><p>警告信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">methods findViewById(int) from android.app.Activity and findViewById(int) from android.support.v7.app.AppCompatActivity are inherited with the same signature</span><br></pre></td></tr></table></figure>
+
+<p>解决方案：</p>
+<p>项目里有几个模块，有的 compileSdkVersion 和 targetSdkVersion 是 25，有的是 26，全部改成 26 并把 appcompat-v7 等 dependencies 也改成 26 对应版本后问题消失。（但诡异的是我后来改回 25 想复现一下，问题却不再出现了）</p>
+<h2 id="Plugin-with-id-‘com-android-application’-not-found"><a href="#Plugin-with-id-‘com-android-application’-not-found" class="headerlink" title="Plugin with id ‘com.android.application’ not found"></a>Plugin with id ‘com.android.application’ not found</h2><p>导入一个别人做的工程的时候遇到报错：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error:(1, 0) Plugin with id &#x27;com.android.application&#x27; not found</span><br></pre></td></tr></table></figure>
+
+<p>怀疑是使用比较老的版本的 Android Studio 创建，该工程只有一个 build.gradle 文件——我们平时创建的工程应该是有两个，一个 Project 级别的，一个 Module 级别的。</p>
+<p>它是只有一个 Project 级别的 gradle 文件，但是内容却是 Module 级别 gradle 文件的内容。</p>
+<p>后来在 StackOverflow 上找到 <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/24795079/error1-0-plugin-with-id-com-android-application-not-found">解决方案</a>：</p>
+<p>在 build.gradle 文件顶部添加如下代码（注意 Gradle 版本与 Gradle Plugin 的版本对应）：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        jcenter()</span><br><span class="line">        google()</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath <span class="string">&#x27;com.android.tools.build:gradle:3.0.0&#x27;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// <span class="doctag">NOTE:</span> Do not place your application dependencies here; they belong</span></span><br><span class="line">        <span class="comment">// in the individual module build.gradle files</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">allprojects &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        jcenter()</span><br><span class="line">        google()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="升级后-Gradle-sync-出错"><a href="#升级后-Gradle-sync-出错" class="headerlink" title="升级后 Gradle sync 出错"></a>升级后 Gradle sync 出错</h2><p>从 Android Studio 3.0.1 升级到 3.1 的时候，<code>Check for Updates...</code> 提示超时，于是挂了代理升级。但是升级完成之后，打开以前能顺利构建的工程，提示 <code>Cause: jcenter.bintray.com:443 failed to respond</code>，怀疑是代理的原因，于是在 Settings 里将 HTTP Proxy 选项改为以前的 <code>no proxy</code>，报错变成 <code>Connection refused: connect</code>，搜索了一番之后找到 <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/36330895/gradle-sync-failed-connection-refused">这个</a>，依提示打开 ~&#x2F;.gradle&#x2F;gradle.properties，发现里面果然还存在代理的设置信息，删除之后重启 Android Studio，问题解决。</p>
+<h2 id="Generate-JavaDoc-提示“错误-编码GBK的不可映射字符”"><a href="#Generate-JavaDoc-提示“错误-编码GBK的不可映射字符”" class="headerlink" title="Generate JavaDoc 提示“错误: 编码GBK的不可映射字符”"></a>Generate JavaDoc 提示“错误: 编码GBK的不可映射字符”</h2><p>所有相关文件的编码都是 UTF-8，在 Android Studio 里没有找到设置 JavaDoc 相关的编码设置项，于是在 <code>Generate JavaDoc</code> 时弹出的 <code>Specify Generate JavaDoc Scope</code> 对话框的 <code>Other command line arguments</code> 一项里填入 <code>-encoding utf-8 -charset utf-8</code>，问题解决。</p>
+<p><img src="/images/posts/android/android-studio-javadoc.png" alt="android-studio-javadoc"></p>
+<h2 id="升级-Gradle-Plugin-版本后报错"><a href="#升级-Gradle-Plugin-版本后报错" class="headerlink" title="升级 Gradle Plugin 版本后报错"></a>升级 Gradle Plugin 版本后报错</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The SourceSet &#x27;instrumentTest&#x27; is not recognized by the Android Gradle Plugin. Perhaps you misspelled something?</span><br></pre></td></tr></table></figure>
+
+<p>将 <code>android &#123; sourceSets &#123; &#125; &#125;</code> 里的 <code>instrumentTest.setRoot(...)</code> 改为 <code>androidTest.setRoot(...)</code> 后问题解决。</p>
+<h2 id="编译报错-Error-Execution-failed-for-task-‘-app-transformClassesWithDexForRelease’"><a href="#编译报错-Error-Execution-failed-for-task-‘-app-transformClassesWithDexForRelease’" class="headerlink" title="编译报错 Error:Execution failed for task ‘:app:transformClassesWithDexForRelease’"></a>编译报错 Error:Execution failed for task ‘:app:transformClassesWithDexForRelease’</h2><p>我这里的原因是一个 APP 依赖一个 Module，这两个使用了相同的包名，将 APP 的包名改了之后问题解决。</p>
+<h2 id="升级到-3-1-后编辑-Gradle-文件卡顿"><a href="#升级到-3-1-后编辑-Gradle-文件卡顿" class="headerlink" title="升级到 3.1 后编辑 Gradle 文件卡顿"></a>升级到 3.1 后编辑 Gradle 文件卡顿</h2><p>不止是卡顿……基本上就是整个 Android Studio 卡住几十秒没办法动的那种。在网上搜索之后发现遇到这种问题的网友还挺多，果然是垃圾软件毁我青春 :-P。</p>
+<p>参考 <a target="_blank" rel="noopener" href="https://blog.csdn.net/wangluotianxi/article/details/79757558">https://blog.csdn.net/wangluotianxi/article/details/79757558</a>，卡顿原因是编辑 Gradle 文件过程中一直在请求下面两个接口：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http://search.maven.org/solrsearch/select?q=g:%22com.google.android.support%22+AND+a:%22wearable%22&amp;core=gav&amp;rows=1&amp;wt=json</span><br><span class="line">http://search.maven.org/solrsearch/select?q=g:%22com.google.android.gms%22+AND+a:%22play-services%22&amp;core=gav&amp;rows=1&amp;wt=json</span><br></pre></td></tr></table></figure>
+
+<p>而且，结果返回之前会卡住界面，而我们的网络访问这俩网址基本只能等到超时返回了，所以，临时解决方案是在 hosts 文件里添加如下内容，让这俩请求快速失败返回：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1 search.maven.org</span><br></pre></td></tr></table></figure>
+
+<p>暂未发现对正常功能有影响。</p>
+<h2 id="编译报错-You-should-manually-set-the-same-version-via-DependencyResolution"><a href="#编译报错-You-should-manually-set-the-same-version-via-DependencyResolution" class="headerlink" title="编译报错 You should manually set the same version via DependencyResolution"></a>编译报错 You should manually set the same version via DependencyResolution</h2><blockquote>
+<p>Android dependency ‘org.mazhuang:commonlib’ has different version for the compile (0.0.4) and runtime (0.0.5) classpath. You should manually set the same version via DependencyResolution</p>
+</blockquote>
+<p>Project A 使用了 Module B，A 依赖 commonlib(0.0.4)，而 Module B 里引用了 commonlib(0.0.5)，将 A 也改为依赖 commonlib(0.0.5) 即可。</p>
+<h2 id="编译报错-Please-use-JDK-8-or-newer"><a href="#编译报错-Please-use-JDK-8-or-newer" class="headerlink" title="编译报错 Please use JDK 8 or newer"></a>编译报错 Please use JDK 8 or newer</h2><p>Gradle Sync 的时候无法成功，报错</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Gradle sync failed: Please use JDK 8 or newer</span><br></pre></td></tr></table></figure>
+
+<p>尝试 Rebuild 报错</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Supplied javaHome is not a valid folder.</span><br></pre></td></tr></table></figure>
+
+<p>原因是我在 Project Settings 的 SDK Location 里手动指定了 JDK 的版本，但是后来升级了 JDK，所以原有路径失效了。</p>
+<p>解决方法是将 Project Settings 的 SDK Location 里 JDK 的路径改为正确路径，或者省事起见可以直接勾选 Use embedded JDK 即可。</p>
+<h2 id="编译报错-Caused-by-java-io-IOException-Cannot-run-program"><a href="#编译报错-Caused-by-java-io-IOException-Cannot-run-program" class="headerlink" title="编译报错 Caused by: java.io.IOException: Cannot run program"></a>编译报错 Caused by: java.io.IOException: Cannot run program</h2><p>提示找不到 NDK 工具链里的 <code>mips64el-linux-android-strip</code>，导致 <code>Caused by: java.io.IOException: error=2</code>。</p>
+<p>原因是 NDK r17 移除了对 ARMv5(armeabi)、MIPS 和 MIPS64 的支持，所以对应的工具链也没有了。</p>
+<p>解决办法有几种：</p>
+<ol>
+<li><p>检查 Gradle Plugin 的版本，即 project 级别的 build.gralde 文件里</p>
+ <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    classpath <span class="string">&#x27;com.android.tools.build:gradle:3.1.3&#x27;</span></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> <code>com.android.tools.build:gradle</code> 的版本改为 3.1  以上。</p>
+</li>
+<li><p>将 NDK 版本退回 16b，或将 16b 以下的对应 mips 工具链的文件夹拷贝到 r17 的对应目录下。</p>
+</li>
+</ol>
+<h2 id="报错-NDK-not-configured"><a href="#报错-NDK-not-configured" class="headerlink" title="报错 NDK not configured"></a>报错 NDK not configured</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Caused by: org.gradle.api.InvalidUserDataException: NDK not configured.</span><br></pre></td></tr></table></figure>
+
+<p>经检查发现是 local.properties 里配置的 NDK 路径不存在，修改为正确的就好了。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2015-05-09-no-need-to-tangle/" rel="prev" title="一些不必纠结的事情">
+                  <i class="fa fa-angle-left"></i> 一些不必纠结的事情
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2015-04-06-dp-sp-px/" rel="next" title="Android UI 开发里的尺寸单位理解">
+                  Android UI 开发里的尺寸单位理解 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

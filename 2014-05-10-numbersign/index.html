@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="宏的常用用法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++ 中的#，##，和&quot;">
+<meta property="og:url" content="https://www.vvbuys.com/2014-05-10-numbersign/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="宏的常用用法。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/cplusplus/staticstring_helloworld.png">
+<meta property="article:published_time" content="2024-02-02T01:06:28.200Z">
+<meta property="article:modified_time" content="2024-02-02T01:06:28.200Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="Linux hyprland Python Rust Golang javascript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.vvbuys.com/images/posts/cplusplus/staticstring_helloworld.png">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/2014-05-10-numbersign/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/2014-05-10-numbersign/","path":"2014-05-10-numbersign/","title":"C++ 中的#，##，和\""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>C++ 中的#，##，和" | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%9C"><span class="nav-number">1.</span> <span class="nav-text">“</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%96%E6%93%8D%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">字符串化操作 (#)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E8%AE%B0%E8%BF%9E%E6%8E%A5%E6%93%8D%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">标记连接操作 (##)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83-MSDN"><span class="nav-number">4.</span> <span class="nav-text">参考 MSDN</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">265</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2014-05-10-numbersign/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="C++ 中的#，##，和" | VVbugs Blog">
+      <meta itemprop="description" content="宏的常用用法。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C++ 中的#，##，和"
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CPlusPlus/" itemprop="url" rel="index"><span itemprop="name">CPlusPlus</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">宏的常用用法。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>想要灵活应用宏，离不开<code>#</code>和<code>##</code>。</p>
+<h3 id="“"><a href="#“" class="headerlink" title="“"></a>“</h3><p>在学习<code>#</code>和<code>##</code>之前，先来看一个关于<code>&quot;</code>的例子：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">const</span> <span class="type">char</span>* p1 = <span class="string">&quot;Hello,&quot;</span> <span class="string">&quot;World!&quot;</span>;     <span class="comment">// 一个空格</span></span><br><span class="line">    <span class="type">const</span> <span class="type">char</span>* p2 = <span class="string">&quot;Hello,&quot;</span>    <span class="string">&quot;World!&quot;</span>;  <span class="comment">// 多个空格</span></span><br><span class="line">    <span class="type">const</span> <span class="type">char</span>* p3 = <span class="string">&quot;Hello,&quot;</span><span class="string">&quot;World!&quot;</span>;      <span class="comment">// 没有空格</span></span><br><span class="line">    <span class="type">const</span> <span class="type">char</span>* p4 = <span class="string">&quot;Hello,World!&quot;</span>;        <span class="comment">// 一个整串</span></span><br><span class="line">    <span class="type">const</span> <span class="type">char</span>* p5 = <span class="string">&quot;Nihao,&quot;</span><span class="string">&quot;Shijie!&quot;</span>;  <span class="comment">// 一个不同的串</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;p1 = %s, strlen(p1) = %d\n&quot;</span>, p1, <span class="built_in">strlen</span>(p1));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;p2 = %s, strlen(p2) = %d\n&quot;</span>, p2, <span class="built_in">strlen</span>(p2));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;p3 = %s, strlen(p3) = %d\n&quot;</span>, p3, <span class="built_in">strlen</span>(p3));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;p4 = %s, strlen(p4) = %d\n&quot;</span>, p4, <span class="built_in">strlen</span>(p4));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;p5 = %s, strlen(p5) = %d\n&quot;</span>, p5, <span class="built_in">strlen</span>(p5));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">p1 = Hello,World!, strlen(p1) = 12</span><br><span class="line">p2 = Hello,World!, strlen(p2) = 12</span><br><span class="line">p3 = Hello,World!, strlen(p3) = 12</span><br><span class="line">p4 = Hello,World!, strlen(p4) = 12</span><br><span class="line">p5 = Nihao,Shijie!, strlen(p5) = 13</span><br></pre></td></tr></table></figure>
+
+<p>查看 PE 文件的常量字符串段，发现经过编译器优化后只存在一个<code>Hello,World!</code>串。</p>
+<p><img src="/images/posts/cplusplus/staticstring_helloworld.png" alt="img"></p>
+<p>即 p1，p2，p3，p4 这四种写法是等价的，这一点作为之后解释<code>#</code>用法的前提。</p>
+<h3 id="字符串化操作"><a href="#字符串化操作" class="headerlink" title="字符串化操作 (#)"></a>字符串化操作 (#)</h3><p>当用作字符串化操作时，<code>#</code>的主要作用是将宏参数不经扩展地转换成字符串常量。<br><strong>要点：</strong></p>
+<ul>
+<li>宏定义参数的左右两边的空格会被忽略，参数的各个 Token 之间的多个空格会被转换成一个空格。</li>
+<li>宏定义参数中含有需要特殊含义字符如<code>&quot;</code>或<code>\</code>时，它们前面会自动被加上转义字符<code>\</code>。</li>
+</ul>
+<p>还是通过 MSDN 上的例子来看看容易懂：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> F abc</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> B def</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FB(arg) #arg</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FB1(arg) FB(arg)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">FB</span>(F B)</span><br><span class="line"><span class="built_in">FB1</span>(F B)</span><br></pre></td></tr></table></figure>
+
+<p>初看到时推测这两行预编译出来后效果是一样的，但是看了使用 gcc -E 编译出来代码，这才理解了 MSDN 上对「不经扩展」有了更深刻的理解，实际的预编译后代码为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;F B&quot;;</span><br><span class="line">&quot;abc def&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>推测变换过程应该如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">FB(F B) --&gt; #F B --&gt;&quot;F B&quot;</span><br><span class="line">FB1(F B) --&gt; FB1(abc def) --&gt; FB(abc def) --&gt; #abc def --&gt; &quot;abc def&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="标记连接操作"><a href="#标记连接操作" class="headerlink" title="标记连接操作 (##)"></a>标记连接操作 (##)</h3><p>将多个 Token 连接成一个 Token。<br><strong>要点：</strong></p>
+<ul>
+<li>它不能是宏定义中的第一个或最后一个 Token。</li>
+<li>前后的空格可有可无。</li>
+</ul>
+<p>来理解一下 MSDN 上举的例子：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> paster( n ) printf_s( <span class="string">&quot;token&quot;</span> #n <span class="string">&quot; = %d&quot;</span>, token##n )</span></span><br><span class="line"><span class="type">int</span> token9 = <span class="number">9</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="built_in">paster</span>(<span class="number">9</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>paster(9);</code>的预处理步骤应该如下：</p>
+<ul>
+<li><code>paster(9);</code></li>
+<li><code>printf_s( &quot;token&quot; #9 &quot; = %d&quot;, token##9 );</code></li>
+<li><code>printf_s( &quot;token&quot; &quot;9&quot; &quot; = %d&quot;, token9 );</code></li>
+<li><code>printf_s( &quot;token9 = %d&quot;, token9 );</code></li>
+</ul>
+<p>这样应该就很好理解了。</p>
+<h3 id="参考-MSDN"><a href="#参考-MSDN" class="headerlink" title="参考 MSDN"></a>参考 MSDN</h3><ul>
+<li>Stringizing Operator(#) : <a target="_blank" rel="noopener" href="http://msdn.microsoft.com/EN-US/library/7e3a913x(v=VS.110,d=hv.2).aspx">http://msdn.microsoft.com/EN-US/library/7e3a913x(v=VS.110,d=hv.2).aspx</a></li>
+<li>Token-Pasting Operator(##) : <a target="_blank" rel="noopener" href="http://msdn.microsoft.com/EN-US/library/09dwwt6y(v=VS.110,d=hv.2).aspx">http://msdn.microsoft.com/EN-US/library/09dwwt6y(v=VS.110,d=hv.2).aspx</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2014-05-24-virtualfunctions/" rel="prev" title="对象内存结构及虚函数表分析">
+                  <i class="fa fa-angle-left"></i> 对象内存结构及虚函数表分析
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2014-03-07-pits-in-windows/" rel="next" title="Windows API 中的坑">
+                  Windows API 中的坑 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

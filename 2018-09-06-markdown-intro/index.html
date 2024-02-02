@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="一份简明的 Markdown 笔记与教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一份简明的 Markdown 笔记与教程">
+<meta property="og:url" content="https://www.vvbuys.com/2018-09-06-markdown-intro/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="一份简明的 Markdown 笔记与教程">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://mazhuang.org/favicon.ico">
+<meta property="og:image" content="https://raw.githubusercontent.com/mzlogin/markdown-intro/master/assets/task-list-1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mzlogin/markdown-intro/master/assets/task-list-2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mzlogin/markdown-intro/master/assets/tapd-markdown-flowchart.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mzlogin/markdown-intro/master/assets/tapd-markdown-seq.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mzlogin/markdown-intro/master/assets/tapd-markdown-math.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mzlogin/markdown-intro/master/assets/wechat-markdown.png">
+<meta property="og:image" content="https://mazhuang.org/assets/images/qrcode.jpg">
+<meta property="article:published_time" content="2024-02-02T01:06:28.208Z">
+<meta property="article:modified_time" content="2024-02-02T01:06:28.208Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="Linux hyprland Python Rust Golang javascript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mazhuang.org/favicon.ico">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/2018-09-06-markdown-intro/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/2018-09-06-markdown-intro/","path":"2018-09-06-markdown-intro/","title":"一份简明的 Markdown 笔记与教程"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>一份简明的 Markdown 笔记与教程 | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E7%82%B9"><span class="nav-number">1.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.2.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E8%BE%91%E5%B7%A5%E5%85%B7"><span class="nav-number">1.3.</span> <span class="nav-text">编辑工具</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E9%A2%98"><span class="nav-number">2.1.</span> <span class="nav-text">标题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#atx-style-%E4%B8%80%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="nav-number"></span> <span class="nav-text">atx-style 一级标题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">二级标题</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%85%AD%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="nav-number">1.0.0.0.1.</span> <span class="nav-text">六级标题</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Setext-style-%E4%B8%80%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="nav-number"></span> <span class="nav-text">Setext-style 一级标题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E7%BA%A7%E6%A0%87%E9%A2%98-1"><span class="nav-number">1.</span> <span class="nav-text">二级标题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AE%B5%E8%90%BD"><span class="nav-number">1.1.</span> <span class="nav-text">段落</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%8C%E5%86%85%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.2.</span> <span class="nav-text">行内格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E5%9D%97"><span class="nav-number">1.3.</span> <span class="nav-text">引用块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E5%9D%97%E5%86%85%E7%9A%84%E6%A0%87%E9%A2%98"><span class="nav-number">1.4.</span> <span class="nav-text">引用块内的标题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B6%85%E9%93%BE%E6%8E%A5"><span class="nav-number">1.5.</span> <span class="nav-text">超链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E7%89%87"><span class="nav-number">1.6.</span> <span class="nav-text">图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%97%E8%A1%A8"><span class="nav-number">1.7.</span> <span class="nav-text">列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="nav-number">1.8.</span> <span class="nav-text">代码块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B0%B4%E5%B9%B3%E5%88%86%E5%89%B2%E7%BA%BF"><span class="nav-number">1.9.</span> <span class="nav-text">水平分割线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B5%8C%E5%85%A5-HTML"><span class="nav-number">1.10.</span> <span class="nav-text">嵌入 HTML</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A9%E5%B1%95%E8%AF%AD%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">扩展语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A8%E6%A0%BC"><span class="nav-number">2.1.</span> <span class="nav-text">表格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%BB%E5%8A%A1%E5%88%97%E8%A1%A8"><span class="nav-number">2.2.</span> <span class="nav-text">任务列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E7%BA%BF"><span class="nav-number">2.3.</span> <span class="nav-text">删除线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E9%93%BE%E6%8E%A5"><span class="nav-number">2.4.</span> <span class="nav-text">自动链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#emoji"><span class="nav-number">2.5.</span> <span class="nav-text">emoji</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A5%87%E6%8A%80%E6%B7%AB%E5%B7%A7"><span class="nav-number">3.</span> <span class="nav-text">奇技淫巧</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%BB%E6%B5%81%E7%A8%8B%E5%9B%BE%E5%92%8C%E6%97%B6%E5%BA%8F%E5%9B%BE"><span class="nav-number">3.1.</span> <span class="nav-text">画流程图和时序图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F"><span class="nav-number">3.2.</span> <span class="nav-text">插入数学公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8-Markdown-%E5%81%9A-PPT"><span class="nav-number">3.3.</span> <span class="nav-text">用 Markdown 做 PPT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8-Markdown-%E5%86%99%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7"><span class="nav-number">3.4.</span> <span class="nav-text">用 Markdown 写微信公众号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E5%A4%9A"><span class="nav-number">3.5.</span> <span class="nav-text">更多</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">265</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2018-09-06-markdown-intro/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="一份简明的 Markdown 笔记与教程 | VVbugs Blog">
+      <meta itemprop="description" content="一份简明的 Markdown 笔记与教程">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          一份简明的 Markdown 笔记与教程
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Markdown/" itemprop="url" rel="index"><span itemprop="name">Markdown</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">一份简明的 Markdown 笔记与教程</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>为部门内知识分享准备的素材，记录了 Markdown 的优点、应用场景和编辑工具，介绍了标准语法与扩展语法，以及一些应用 Markdown 的奇技淫巧。个人使用 Markdown 的经验持续补充中，最新完整版请参见</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/mzlogin/markdown-intro">https://github.com/mzlogin/markdown-intro</a></p>
+<hr>
+<p>自从 2014 年左右接触到 Markdown 以来，对它的使用就一发而不可收拾。从最开始使用它在 GitHub Pages 里写博客，到用它编辑项目的 README 文件，再到撰写开发文档，编辑微信公众号文章和邮件内容等等，这期间也见证了它在各类平台和网站上的普及和被原生支持，可以说，Markdown 如今已经渗透了我在技术和网络活动的方方面面，成为了我撰写文本文档的首选。</p>
+<p>那么首先我们一起来看一下它的「定义」：</p>
+<blockquote>
+<p>Markdown 是一种轻量级标记语言，创始人为 John Gruber。它允许人们「使用易读易写的纯文本格式编写文档，然后转换成有效的 XHTML（或者 HTML）文档」。——维基百科</p>
+</blockquote>
+<p>本文档的目的不在于面面俱到地介绍 Markdown，只是作为我对其理解的笔记整理，希望能同时帮助一些对 Markdown 感兴趣的人快速上手，或是作为一个工具，供对其已经有所了解的人在需要时参考。</p>
+<p>接下来请随我一起深入了解这门并不神秘的实用标记语言。</p>
+<p><strong>目录</strong></p>
+<!-- vim-markdown-toc GFM -->
+
+<ul>
+<li><a href="#%E8%83%8C%E6%99%AF">背景</a><ul>
+<li><a href="#%E4%BC%98%E7%82%B9">优点</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF">使用场景</a></li>
+<li><a href="#%E7%BC%96%E8%BE%91%E5%B7%A5%E5%85%B7">编辑工具</a></li>
+</ul>
+</li>
+<li><a href="#%E8%AF%AD%E6%B3%95">语法</a><ul>
+<li><a href="#%E6%A0%87%E9%A2%98">标题</a></li>
+<li><a href="#%E6%AE%B5%E8%90%BD">段落</a></li>
+<li><a href="#%E8%A1%8C%E5%86%85%E6%A0%BC%E5%BC%8F">行内格式</a></li>
+<li><a href="#%E5%BC%95%E7%94%A8%E5%9D%97">引用块</a></li>
+<li><a href="#%E8%B6%85%E9%93%BE%E6%8E%A5">超链接</a></li>
+<li><a href="#%E5%9B%BE%E7%89%87">图片</a></li>
+<li><a href="#%E5%88%97%E8%A1%A8">列表</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81%E5%9D%97">代码块</a></li>
+<li><a href="#%E6%B0%B4%E5%B9%B3%E5%88%86%E5%89%B2%E7%BA%BF">水平分割线</a></li>
+<li><a href="#%E5%B5%8C%E5%85%A5-html">嵌入 HTML</a></li>
+</ul>
+</li>
+<li><a href="#%E6%89%A9%E5%B1%95%E8%AF%AD%E6%B3%95">扩展语法</a><ul>
+<li><a href="#%E8%A1%A8%E6%A0%BC">表格</a></li>
+<li><a href="#%E4%BB%BB%E5%8A%A1%E5%88%97%E8%A1%A8">任务列表</a></li>
+<li><a href="#%E5%88%A0%E9%99%A4%E7%BA%BF">删除线</a></li>
+<li><a href="#%E8%87%AA%E5%8A%A8%E9%93%BE%E6%8E%A5">自动链接</a></li>
+<li><a href="#emoji">emoji</a></li>
+</ul>
+</li>
+<li><a href="#%E5%A5%87%E6%8A%80%E6%B7%AB%E5%B7%A7">奇技淫巧</a><ul>
+<li><a href="#%E7%94%BB%E6%B5%81%E7%A8%8B%E5%9B%BE%E5%92%8C%E6%97%B6%E5%BA%8F%E5%9B%BE">画流程图和时序图</a></li>
+<li><a href="#%E6%8F%92%E5%85%A5%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F">插入数学公式</a></li>
+<li><a href="#%E7%94%A8-markdown-%E5%81%9A-ppt">用 Markdown 做 PPT</a></li>
+<li><a href="#%E7%94%A8-markdown-%E5%86%99%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7">用 Markdown 写微信公众号</a></li>
+<li><a href="#%E6%9B%B4%E5%A4%9A">更多</a></li>
+</ul>
+</li>
+<li><a href="#%E5%8F%82%E8%80%83">参考</a></li>
+</ul>
+<!-- vim-markdown-toc -->
+
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li><p>专注于文字内容；</p>
+</li>
+<li><p>纯文本，易读易写，可以方便地纳入版本控制；</p>
+</li>
+<li><p>语法简单，没有什么学习成本，能轻松在码字的同时做出美观大方的排版。</p>
+</li>
+</ol>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><ul>
+<li><p>各类代码托管平台</p>
+<p>  主流的代码托管平台，如 GitHub、GitLab、BitBucket、Coding、Gitee 等等，都支持 Markdown 语法，很多开源项目的 README、开发文档、帮助文档、Wiki 等都用 Markdown 写作。</p>
+</li>
+<li><p>技术社区和写作平台</p>
+<p>  StackOverflow、CSDN、掘金、简书、GitBook、有道云笔记</p>
+</li>
+<li><p>论坛</p>
+<p>  V2EX、光谷社区</p>
+</li>
+</ul>
+<p>个人感觉比较遗憾的一点是各平台可能采用不同语言实现的 Markdown 解析引擎，或采用同一解析引擎的不同版本，而且可能有不同程度的定制与扩展，这导致在不同平台上使用 Markdown 写作时体验并不完全一致。不过幸好对于大家公认的一些标准语法，各家都是支持的。</p>
+<h3 id="编辑工具"><a href="#编辑工具" class="headerlink" title="编辑工具"></a>编辑工具</h3><p>理论上任何一款文本编辑器都能用于编辑 Markdown 文档，它们分别提供了不同程度的语法高亮、预览等功能，以下只是列举其中一部分，选择自己称手的即可。</p>
+<ul>
+<li><p>现代编辑器</p>
+<p>  VSCode &#x2F; Atom</p>
+</li>
+<li><p>传统编辑器</p>
+<p>  Vim &#x2F; Emacs &#x2F; Sublime Text &#x2F; Notepad++</p>
+</li>
+<li><p>IDE 自带编辑器</p>
+<p>  IntelliJ IDEA &#x2F; Android Studio &#x2F; WebStorm</p>
+</li>
+<li><p>专用编辑器</p>
+<p>  Ulysses &#x2F; Mou &#x2F; Typora &#x2F; Markpad</p>
+</li>
+<li><p>在线编辑器</p>
+<p>  各种支持 Markdown 的网站都提供了在线编辑器</p>
+</li>
+</ul>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><p><strong>Markdown：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># atx-style 一级标题</span><br><span class="line"></span><br><span class="line">## 二级标题</span><br><span class="line"></span><br><span class="line">###### 六级标题</span><br><span class="line"></span><br><span class="line">Setext-style 一级标题</span><br><span class="line">===</span><br><span class="line"></span><br><span class="line">二级标题</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p><strong>预览效果：</strong></p>
+<blockquote>
+<h1 id="atx-style-一级标题"><a href="#atx-style-一级标题" class="headerlink" title="atx-style 一级标题"></a>atx-style 一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><h1 id="Setext-style-一级标题"><a href="#Setext-style-一级标题" class="headerlink" title="Setext-style 一级标题"></a>Setext-style 一级标题</h1><h2 id="二级标题-1"><a href="#二级标题-1" class="headerlink" title="二级标题"></a>二级标题</h2></blockquote>
+<p><strong>对应 HTML：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>atx-style 一级标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>二级标题<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h6</span>&gt;</span>六级标题<span class="tag">&lt;/<span class="name">h6</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Setext-style 一级标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>二级标题<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="段落"><a href="#段落" class="headerlink" title="段落"></a>段落</h3><p>中间没有空行的连续不断的几行文字被视为一个段落。</p>
+<p><strong>Markdown：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">白日依山尽，</span><br><span class="line"></span><br><span class="line">黄河入海流。</span><br><span class="line">（句号后面没空格）</span><br><span class="line"></span><br><span class="line">欲穷千里目，</span><br><span class="line"></span><br><span class="line">更上一层楼。  </span><br><span class="line">（句号后面有俩空格）</span><br></pre></td></tr></table></figure>
+
+<p><strong>预览效果：</strong></p>
+<p>白日依山尽，</p>
+<p>黄河入海流。<br>（句号后面没空格）</p>
+<p>欲穷千里目，</p>
+<p>更上一层楼。<br>（句号后面有俩空格）</p>
+<p><strong>对应 HTML：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>白日依山尽，<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>黄河入海流。</span><br><span class="line">（句号后面没有空格）<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>欲穷千里目，<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">  更上一层楼。</span><br><span class="line">  <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  （句号后面有俩空格）</span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="行内格式"><a href="#行内格式" class="headerlink" title="行内格式"></a>行内格式</h3><p>对段落或者部分文本的强调效果。</p>
+<p><strong>Markdown：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">后面俩字**加黑**</span><br><span class="line"></span><br><span class="line">后面俩字*斜体*</span><br></pre></td></tr></table></figure>
+
+<p><strong>预览效果：</strong></p>
+<p>后面俩字<strong>加黑</strong></p>
+<p>后面俩字<em>斜体</em></p>
+<p><strong>对应 HTML：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">  后面俩字</span><br><span class="line">  <span class="tag">&lt;<span class="name">strong</span>&gt;</span>加黑<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">  后面俩字</span><br><span class="line">  <span class="tag">&lt;<span class="name">em</span>&gt;</span>斜体<span class="tag">&lt;/<span class="name">em</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="引用块"><a href="#引用块" class="headerlink" title="引用块"></a>引用块</h3><p><strong>Markdown：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; 引用块段落一。</span><br><span class="line">&gt;</span><br><span class="line">&gt; 引用块段落二。</span><br><span class="line">&gt;&gt; 内嵌引用块段落一。</span><br><span class="line">&gt;</span><br><span class="line">&gt; ### 引用块内的标题</span><br></pre></td></tr></table></figure>
+
+<p><strong>预览效果：</strong></p>
+<blockquote>
+<p>引用块段落一。</p>
+<p>引用块段落二。</p>
+<blockquote>
+<p>内嵌引用块段落一。</p>
+</blockquote>
+<h3 id="引用块内的标题"><a href="#引用块内的标题" class="headerlink" title="引用块内的标题"></a>引用块内的标题</h3></blockquote>
+<p><strong>对应 HTML：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">blockquote</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>引用块段落一。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>引用块段落二。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">blockquote</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>内嵌引用块段落一。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">blockquote</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h3</span> <span class="attr">id</span>=<span class="string">&quot;引用块内的标题&quot;</span>&gt;</span>引用块内的标题<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">blockquote</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h3><p>Markdown 支持行内式链接和引用式链接。</p>
+<p><strong>Markdown：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">行内式 [博客](https://mazhuang.org &quot;我的个人博客&quot;) 链接，带 title。</span><br><span class="line"></span><br><span class="line">行内式 [GitHub](https://github.com/mzlogin) 链接。</span><br><span class="line"></span><br><span class="line">引用式 [博客][1] 链接。</span><br><span class="line"></span><br><span class="line">引用式 [GitHub][2] 链接，带 title。</span><br><span class="line"></span><br><span class="line">[1]: https://mazhuang.org</span><br><span class="line">[2]: https://github.com/mzlogin &quot;我的 GitHub 主页&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>预览效果：</strong></p>
+<p>行内式 <a target="_blank" rel="noopener" href="https://mazhuang.org/" title="我的个人博客">博客</a> 链接，带 title。</p>
+<p>行内式 <a target="_blank" rel="noopener" href="https://github.com/mzlogin">GitHub</a> 链接。</p>
+<p>引用式 <a target="_blank" rel="noopener" href="https://mazhuang.org/">博客</a> 链接。</p>
+<p>引用式 <a target="_blank" rel="noopener" href="https://github.com/mzlogin" title="我的 GitHub 主页">GitHub</a> 链接，带 title。</p>
+<p><strong>对应 HTML：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>行内式 <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://mazhuang.org&quot;</span> <span class="attr">title</span>=<span class="string">&quot;我的个人博客&quot;</span>&gt;</span>博客<span class="tag">&lt;/<span class="name">a</span>&gt;</span> 链接，带 title。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>行内式 <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://github.com/mzlogin&quot;</span>&gt;</span>GitHub<span class="tag">&lt;/<span class="name">a</span>&gt;</span> 链接。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>引用式 <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://mazhuang.org&quot;</span>&gt;</span>博客<span class="tag">&lt;/<span class="name">a</span>&gt;</span> 链接。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>引用式 <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://github.com/mzlogin&quot;</span> <span class="attr">title</span>=<span class="string">&quot;我的 GitHub 主页&quot;</span>&gt;</span>GitHub<span class="tag">&lt;/<span class="name">a</span>&gt;</span> 链接，带 title。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><p>在超链接的写法前加一个 <code>!</code>，就是引用图片的方法。</p>
+<p><strong>Markdown：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![Alt text](https://mazhuang.org/favicon.ico &quot;favicon&quot;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>预览效果：</strong></p>
+<p><img src="https://mazhuang.org/favicon.ico" alt="Alt text" title="favicon"></p>
+<p><strong>对应 HTML：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://mazhuang.org/favicon.ico&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;Alt text&quot;</span> <span class="attr">title</span>=<span class="string">&quot;favicon&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>包括有序列表和无序列表。</p>
+<p><strong>Markdown：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- 苹果</span><br><span class="line">- 葡萄</span><br><span class="line">- 榴莲</span><br><span class="line"></span><br><span class="line">1. 苹果</span><br><span class="line">2. 葡萄</span><br><span class="line">3. 榴莲</span><br></pre></td></tr></table></figure>
+
+<p><strong>预览效果：</strong></p>
+<ul>
+<li>苹果</li>
+<li>葡萄</li>
+<li>榴莲</li>
+</ul>
+<ol>
+<li>苹果</li>
+<li>葡萄</li>
+<li>榴莲</li>
+</ol>
+<p><strong>对应 HTML：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>苹果<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>葡萄<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>榴莲<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>苹果<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>葡萄<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>榴莲<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>其中无序列表的标记可以使用 <code>+</code>、<code>-</code> 或 <code>*</code>，有序列表前的数字可以是乱序的。</p>
+<h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><p>支持行内代码和代码块。</p>
+<p><strong>Markdown：</strong></p>
+<pre><code>Android 里使用 `TextUtils` 类的 `isEmpty` 方法来判断字符串是否为空。
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (TextUtils.isEmpty(text)) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+<p><strong>预览效果：</strong></p>
+<p>Android 里使用 <code>TextUtils</code> 类的 <code>isEmpty</code> 方法来判断字符串是否为空。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (TextUtils.isEmpty(text)) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>对应 HTML：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Android 里使用 <span class="tag">&lt;<span class="name">code</span>&gt;</span>TextUtils<span class="tag">&lt;/<span class="name">code</span>&gt;</span> 类的 <span class="tag">&lt;<span class="name">code</span>&gt;</span>isEmpty<span class="tag">&lt;/<span class="name">code</span>&gt;</span> 方法来判断字符串是否为空。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;highlight highlight-source-java&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">pre</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;pl-k&quot;</span>&gt;</span>if<span class="tag">&lt;/<span class="name">span</span>&gt;</span> (<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;pl-smi&quot;</span>&gt;</span>TextUtils<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;pl-k&quot;</span>&gt;</span>.<span class="tag">&lt;/<span class="name">span</span>&gt;</span>isEmpty(text)) &#123;</span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;pl-k&quot;</span>&gt;</span>return<span class="tag">&lt;/<span class="name">span</span>&gt;</span> <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;pl-c1&quot;</span>&gt;</span>null<span class="tag">&lt;/<span class="name">span</span>&gt;</span>;</span><br><span class="line">&#125;<span class="tag">&lt;/<span class="name">pre</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>上例中的语言标记 <code>java</code> 可选填，可用于在编辑器和渲染后的效果里添加语法高亮。</p>
+<p>块式代码也可以对整个代码段缩进四个空格，或一个 Tab 来实现。</p>
+<h3 id="水平分割线"><a href="#水平分割线" class="headerlink" title="水平分割线"></a>水平分割线</h3><p>使用一个单独行里的三个或以上 <code>*</code>、<code>-</code> 来生产一条水平分割线，它们之间可以有空格。</p>
+<p><strong>Markdown：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">***</span><br><span class="line"></span><br><span class="line">-----</span><br><span class="line"></span><br><span class="line">- - -</span><br></pre></td></tr></table></figure>
+
+<p><strong>预览效果：</strong></p>
+<hr>
+<hr>
+<hr>
+<p><strong>对应 HTML：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;hr /&gt;</span><br><span class="line"></span><br><span class="line">&lt;hr /&gt;</span><br><span class="line"></span><br><span class="line">&lt;hr /&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="嵌入-HTML"><a href="#嵌入-HTML" class="headerlink" title="嵌入 HTML"></a>嵌入 HTML</h3><p>Markdown 标记语言的目的不是替代 HTML，也不是发明一种更便捷的插入 HTML 标签的方式。它对应的只是 HTML 标签的一个很小的子集。</p>
+<p>对于那些没有办法用 Markdown 语法来对应的 HTML 标签，直接使用 HTML 来写就好了。</p>
+<h2 id="扩展语法"><a href="#扩展语法" class="headerlink" title="扩展语法"></a>扩展语法</h2><p>本节的内容是介绍一些受到广泛支持的 Markdown 扩展语法。</p>
+<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><p><strong>Markdown：</strong></p>
+<pre><code>| 编号  | 姓名（左） | 年龄（右） | 性别（中） |
+| ----- | :--------  | ---------: | :------:   |
+| 0     | 张三       | 28         | 男         |
+| 1     | 李四       | 29         | 男         |
+</code></pre>
+<p><strong>预览效果：</strong></p>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th align="left">姓名（左）</th>
+<th align="right">年龄（右）</th>
+<th align="center">性别（中）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td align="left">张三</td>
+<td align="right">28</td>
+<td align="center">男</td>
+</tr>
+<tr>
+<td>1</td>
+<td align="left">李四</td>
+<td align="right">29</td>
+<td align="center">男</td>
+</tr>
+</tbody></table>
+<p><strong>对应 HTML：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">thead</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">th</span>&gt;</span>编号<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">th</span> <span class="attr">align</span>=<span class="string">&quot;left&quot;</span>&gt;</span>姓名（左）<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">th</span> <span class="attr">align</span>=<span class="string">&quot;right&quot;</span>&gt;</span>年龄（右）<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">th</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span>&gt;</span>性别（中）<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>0<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">&quot;left&quot;</span>&gt;</span>张三<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">&quot;right&quot;</span>&gt;</span>28<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span>&gt;</span>男<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">&quot;left&quot;</span>&gt;</span>李四<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">&quot;right&quot;</span>&gt;</span>29<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span>&gt;</span>男<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="任务列表"><a href="#任务列表" class="headerlink" title="任务列表"></a>任务列表</h3><p>在 GitHub &#x2F; GitLab 里有较好的支持。</p>
+<p><strong>Markdown：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- [x] 洗碗</span><br><span class="line">- [ ] 清洗油烟机</span><br><span class="line">- [ ] 拖地</span><br></pre></td></tr></table></figure>
+
+<p><strong>预览效果：</strong></p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 洗碗</li>
+<li><input disabled="" type="checkbox"> 清洗油烟机</li>
+<li><input disabled="" type="checkbox"> 拖地</li>
+</ul>
+<p><strong>对应 HTML：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;contains-task-list&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;task-list-item&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> <span class="attr">id</span>=<span class="string">&quot;&quot;</span> <span class="attr">disabled</span>=<span class="string">&quot;&quot;</span> <span class="attr">class</span>=<span class="string">&quot;task-list-item-checkbox&quot;</span> <span class="attr">checked</span>=<span class="string">&quot;&quot;</span>&gt;</span> 洗碗<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;task-list-item&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> <span class="attr">id</span>=<span class="string">&quot;&quot;</span> <span class="attr">disabled</span>=<span class="string">&quot;&quot;</span> <span class="attr">class</span>=<span class="string">&quot;task-list-item-checkbox&quot;</span>&gt;</span> 清洗油烟机<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;task-list-item&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> <span class="attr">id</span>=<span class="string">&quot;&quot;</span> <span class="attr">disabled</span>=<span class="string">&quot;&quot;</span> <span class="attr">class</span>=<span class="string">&quot;task-list-item-checkbox&quot;</span>&gt;</span> 拖地<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果是在 GitHub &#x2F; GitLab 的 Issue 里，会附赠任务完成比例提示效果：</p>
+<p><img src="https://raw.githubusercontent.com/mzlogin/markdown-intro/master/assets/task-list-1.png" alt="task list 1"></p>
+<p>还可以直接在网页上拖动调整顺序，勾选和取消勾选。</p>
+<p><img src="https://raw.githubusercontent.com/mzlogin/markdown-intro/master/assets/task-list-2.png" alt="task list 2"></p>
+<h3 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h3><p><strong>Markdown：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">后面三个字打上~~删除线~~。</span><br></pre></td></tr></table></figure>
+
+<p><strong>预览效果：</strong></p>
+<p>后面三个字打上<del>删除线</del>。</p>
+<p><strong>对应 HTML：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>后面三个字打上<span class="tag">&lt;<span class="name">del</span>&gt;</span>删除线<span class="tag">&lt;/<span class="name">del</span>&gt;</span>。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="自动链接"><a href="#自动链接" class="headerlink" title="自动链接"></a>自动链接</h3><p>自动链接扩展，即：当识别到 URL，或用 <code>&lt;</code>、<code>&gt;</code> 包括的 URL 时，会自动为其生成 <code>a</code> 标签。</p>
+<p><strong>Markdown：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">https://github.com</span><br><span class="line"></span><br><span class="line">&lt;example@gmail.com&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>预览效果：</strong></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/">https://github.com</a></p>
+<p><a href="mailto:&#101;&#120;&#97;&#x6d;&#112;&#x6c;&#x65;&#64;&#x67;&#x6d;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#109;">&#101;&#120;&#97;&#x6d;&#112;&#x6c;&#x65;&#64;&#x67;&#x6d;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#109;</a></p>
+<p><strong>对应 HTML：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://github.com&quot;</span>&gt;</span>https://github.com<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;mailto:example@gmail.com&quot;</span>&gt;</span>example@gmail.com<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="emoji"><a href="#emoji" class="headerlink" title="emoji"></a>emoji</h3><p>以 GitHub Pages 为例。</p>
+<p><strong>Markdown：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:camel: :blush: :smile:</span><br></pre></td></tr></table></figure>
+
+<p><strong>预览效果：</strong></p>
+<p>:camel: :blush: :smile:</p>
+<p><strong>对应 HTML：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">&quot;emoji&quot;</span> <span class="attr">title</span>=<span class="string">&quot;:camel:&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;:camel:&quot;</span> <span class="attr">src</span>=<span class="string">&quot;https://assets-cdn.github.com/images/icons/emoji/unicode/1f42b.png&quot;</span> <span class="attr">height</span>=<span class="string">&quot;20&quot;</span> <span class="attr">width</span>=<span class="string">&quot;20&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">&quot;emoji&quot;</span> <span class="attr">title</span>=<span class="string">&quot;:blush:&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;:blush:&quot;</span> <span class="attr">src</span>=<span class="string">&quot;https://assets-cdn.github.com/images/icons/emoji/unicode/1f60a.png&quot;</span> <span class="attr">height</span>=<span class="string">&quot;20&quot;</span> <span class="attr">width</span>=<span class="string">&quot;20&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">&quot;emoji&quot;</span> <span class="attr">title</span>=<span class="string">&quot;:smile:&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;:smile:&quot;</span> <span class="attr">src</span>=<span class="string">&quot;https://assets-cdn.github.com/images/icons/emoji/unicode/1f604.png&quot;</span> <span class="attr">height</span>=<span class="string">&quot;20&quot;</span> <span class="attr">width</span>=<span class="string">&quot;20&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="奇技淫巧"><a href="#奇技淫巧" class="headerlink" title="奇技淫巧"></a>奇技淫巧</h2><p>脑洞清奇的工程师们还发掘了很多使用 Markdown 的方法，大部分都是引入第三方 JavaScript 插件来实现。对这部分我只做简述，对其中的部分功能比如作图等，还是推荐用专门的可视化工具去做。</p>
+<h3 id="画流程图和时序图"><a href="#画流程图和时序图" class="headerlink" title="画流程图和时序图"></a>画流程图和时序图</h3><p>有部分网站和编辑器实现了对 Markdown 里流程图和时序图的支持，比如我们使用的项目管理工具 TAPD 的在线编辑器，还有 VSCode + 插件 Markdown Preview Enhanced 等。</p>
+<p>以我们使用的项目管理工具 TAPD 的在线编辑器为例：</p>
+<p><img src="https://raw.githubusercontent.com/mzlogin/markdown-intro/master/assets/tapd-markdown-flowchart.png" alt="流程图"></p>
+<p><img src="https://raw.githubusercontent.com/mzlogin/markdown-intro/master/assets/tapd-markdown-seq.png" alt="时序图"></p>
+<h3 id="插入数学公式"><a href="#插入数学公式" class="headerlink" title="插入数学公式"></a>插入数学公式</h3><p>仍然以 TAPD 为例：</p>
+<p><img src="https://raw.githubusercontent.com/mzlogin/markdown-intro/master/assets/tapd-markdown-math.png" alt="数学公式"></p>
+<p>应该是利用 JavaScript 支持了 LaTeX 公式语法。</p>
+<h3 id="用-Markdown-做-PPT"><a href="#用-Markdown-做-PPT" class="headerlink" title="用 Markdown 做 PPT"></a>用 Markdown 做 PPT</h3><p>有专门的工具 <a target="_blank" rel="noopener" href="https://github.com/yhatt/marp">Marp</a>，另外使用 VSCode + 插件 Markdown Preview Enhanced 也可以实现。</p>
+<h3 id="用-Markdown-写微信公众号"><a href="#用-Markdown-写微信公众号" class="headerlink" title="用 Markdown 写微信公众号"></a>用 Markdown 写微信公众号</h3><p>可以将公众号素材用 Markdown 编辑好后，贴到在线排版工具以后，复制到公众号编辑器里即可。有多种页面主题和代码主题可选择。</p>
+<p>我维护的工具地址：<a target="_blank" rel="noopener" href="https://md.mazhuang.org/">https://md.mazhuang.org</a></p>
+<p><img src="https://raw.githubusercontent.com/mzlogin/markdown-intro/master/assets/wechat-markdown.png" alt="微信公众号"></p>
+<h3 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h3><p>想象力丰富的工程师们还扩展了很多基于 Markdown 的玩法，包括但不限于：</p>
+<ul>
+<li>自动生成 &#x2F; 更新 Table of Contents</li>
+<li>流程图 &#x2F; 时序图</li>
+<li>制作幻灯片</li>
+<li>集成 PlantUML &#x2F; GraphViz 的能力</li>
+<li>导出 HTML &#x2F; PDF &#x2F; 电子书</li>
+<li>…</li>
+</ul>
+<p>以上功能基本都可以用 VSCode + 插件 Markdown Preview Enhanced 实现。</p>
+<p>另外可以参考我以前的一篇博客 <a target="_blank" rel="noopener" href="https://mazhuang.org/2017/09/01/markdown-odd-skills/">关于 Markdown 的一些奇技淫巧</a>。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://daringfireball.net/projects/markdown/syntax">Markdown: Syntax - DARING FIREBALL</a></li>
+<li><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Markdown">Markdown - 维基百科</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.github.com/gfm/">GitHub Flavored Markdown Spec</a></li>
+<li><a target="_blank" rel="noopener" href="https://mazhuang.org/2017/09/01/markdown-odd-skills/">关于 Markdown 的一些奇技淫巧</a></li>
+</ul>
+<hr>
+<p>欢迎关注我的微信公众号，接收 markdown-intro 最新动态。</p>
+<div align="center"><img width="192px" height="192px" src="https://mazhuang.org/assets/images/qrcode.jpg"/></div>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019-01-20-my-2018/" rel="prev" title="我的 2018 盘点">
+                  <i class="fa fa-angle-left"></i> 我的 2018 盘点
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018-06-11-handler-looper-massagequeue/" rel="next" title="Android 源码分析 —— Handler、Looper 和 MessageQueue">
+                  Android 源码分析 —— Handler、Looper 和 MessageQueue <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

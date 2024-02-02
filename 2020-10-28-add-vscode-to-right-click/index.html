@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="baidu-site-verification" content="codeva-6wmKWl5hmx" />
+<meta name="bytedance-verification-code" content="GcOf/MpQ8shZ5Hh/2hvr" />
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.vvbuys.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="如何在 Mac 下右键文件或文件夹，直接通过菜单项「用 VSCode 打开」。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="给 Mac 添加右键菜单「使用 VSCode 打开」">
+<meta property="og:url" content="https://www.vvbuys.com/2020-10-28-add-vscode-to-right-click/index.html">
+<meta property="og:site_name" content="VVbugs Blog">
+<meta property="og:description" content="如何在 Mac 下右键文件或文件夹，直接通过菜单项「用 VSCode 打开」。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/mac/open-with-vscode.png">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/mac/auto-operate.png">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/mac/quick-operate.png">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/mac/open-with-vscode-steps.png">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/mac/open-with-vscode-rename.png">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/mac/open-with-vscode-file.png">
+<meta property="og:image" content="https://www.vvbuys.com/images/posts/mac/open-with-vscode-open.png">
+<meta property="article:published_time" content="2024-02-02T01:06:28.212Z">
+<meta property="article:modified_time" content="2024-02-02T01:06:28.212Z">
+<meta property="article:author" content="vvbuys">
+<meta property="article:tag" content="Linux hyprland Python Rust Golang javascript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.vvbuys.com/images/posts/mac/open-with-vscode.png">
+
+
+<link rel="canonical" href="https://www.vvbuys.com/2020-10-28-add-vscode-to-right-click/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.vvbuys.com/2020-10-28-add-vscode-to-right-click/","path":"2020-10-28-add-vscode-to-right-click/","title":"给 Mac 添加右键菜单「使用 VSCode 打开」"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>给 Mac 添加右键菜单「使用 VSCode 打开」 | VVbugs Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">VVbugs Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">standalone Linux lover</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.</span> <span class="nav-text">实现步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%BE%91"><span class="nav-number">2.</span> <span class="nav-text">编辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vvbuys</p>
+  <div class="site-description" itemprop="description">Share some post and some issue for linux program</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">265</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2020-10-28-add-vscode-to-right-click/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="给 Mac 添加右键菜单「使用 VSCode 打开」 | VVbugs Blog">
+      <meta itemprop="description" content="如何在 Mac 下右键文件或文件夹，直接通过菜单项「用 VSCode 打开」。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          给 Mac 添加右键菜单「使用 VSCode 打开」
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/VSCode/" itemprop="url" rel="index"><span itemprop="name">VSCode</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">如何在 Mac 下右键文件或文件夹，直接通过菜单项「用 VSCode 打开」。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>最终的实现效果是在文件 &#x2F; 文件夹上右击时，会出现菜单项「用 VSCode 打开」，点击后会启动 Visual Studio Code 打开对应的文件 &#x2F; 文件夹。</p>
+<p><img src="/images/posts/mac/open-with-vscode.png"></p>
+<h2 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h2><ol>
+<li><p>打开「自动操作.app」，就是小机器人图标那个；</p>
+<p> <img src="/images/posts/mac/auto-operate.png"></p>
+</li>
+<li><p><kbd>command + n</kbd> 新建文稿，在「选取文稿类型」里选择「快速操作」；</p>
+<p> <img src="/images/posts/mac/quick-operate.png"></p>
+</li>
+<li><p>按以下步骤操作：</p>
+<p> 第五步贴入代码</p>
+ <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> f <span class="keyword">in</span> <span class="string">&quot;<span class="variable">$@</span>&quot;</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    open -a <span class="string">&quot;Visual Studio Code&quot;</span> <span class="string">&quot;<span class="variable">$f</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+
+<p> <img src="/images/posts/mac/open-with-vscode-steps.png"></p>
+<p> 以上代码片段的大概意思是对于传入的一个或多个参数，都使用 Visual Studio Code 这个 APP 打开（将以下步骤配置完成后，可以分别选中一个、多个文件 &#x2F; 文件夹，然后右键用 VSCode 打开看看效果）。</p>
+</li>
+<li><p><kbd>command + s</kbd> 保存为 「用 VSCode 打开」：</p>
+<p> <img src="/images/posts/mac/open-with-vscode-rename.png"></p>
+</li>
+<li><p>好了，现在试试在 Finder 里右键一个文件，就可以直接看到「用 VSCode 打开」菜单，右键一个文件夹，就可以看到「服务」-「用 VSCode 打开」菜单了。</p>
+<p> <img src="/images/posts/mac/open-with-vscode-file.png"></p>
+</li>
+</ol>
+<p>愉快地使用 Visual Studio Code 和各种文件、文件夹玩耍吧。</p>
+<h2 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h2><p>以后如果想修改上面这个快速操作，有两种方法：</p>
+<ol>
+<li><p>可以打开「自动操作.app」，然后「文件」-「打开最近使用」 -「用 VSCode 打开.workflow」；</p>
+</li>
+<li><p>如果找不到这个操作，可以「文件」-「打开」-个人目录 &#x2F; 资源库 &#x2F; Services &#x2F; 用 VSCode 打开.workflow</p>
+<p> <img src="/images/posts/mac/open-with-vscode-open.png"></p>
+<p> 如果个人目录下不显示「资源库」，按 <kbd>Command + Shift + .</kbd>。</p>
+</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/u013069892/article/details/83147239">https://blog.csdn.net/u013069892/article/details/83147239</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021-03-13-talk-about-threadsafe-with-arraylist/" rel="prev" title="代码审查：从 ArrayList 说线程安全">
+                  <i class="fa fa-angle-left"></i> 代码审查：从 ArrayList 说线程安全
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020-10-07-cdn-for-github-pages-2/" rel="next" title="使用 jsDelivr 免费加速 GitHub Pages 博客的静态资源（二）">
+                  使用 jsDelivr 免费加速 GitHub Pages 博客的静态资源（二） <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">vvbuys</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

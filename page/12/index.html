@@ -125,9 +125,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-count">265</span>
           <span class="site-state-item-name">posts</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">categories</span>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
@@ -157,7 +161,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2014-10-01-why-alibaba-ux-sucks/">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2014-05-31-HFDP-Note4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -175,7 +179,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2014-10-01-why-alibaba-ux-sucks/" class="post-title-link" itemprop="url">为什么阿里系软件体验都不好？</a>
+          <a href="/2014-05-31-HFDP-Note4/" class="post-title-link" itemprop="url">设计模式学习之单件模式</a>
         </h2>
 
         <div class="post-meta-container">
@@ -186,14 +190,16 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2014-10-01 12:00:00" itemprop="dateCreated datePublished" datetime="2014-10-01T12:00:00+00:00">2014-10-01</time>
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
+        <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-02-02 01:05:07" itemprop="dateModified" datetime="2024-02-02T01:05:07+00:00">2024-02-02</time>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DesignPattern/" itemprop="url" rel="index"><span itemprop="name">DesignPattern</span></a>
+        </span>
     </span>
 
   
@@ -206,62 +212,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>这篇文章转载自<a target="_blank" rel="noopener" href="http://www.zhihu.com/question/25657351/answer/31278511">我在知乎上的回答</a></p>
-</blockquote>
-<div >
-    <br>
-    <br><b>一言以蔽之，优先级。</b>
-    <br>这个优先级并不是由谁或者哪个Boss定的，而是<b>长期的市场竞争和业务需求下的结果</b>
-    <br>
-    <br>
-    <ul>
-        <li><b>为什么企鹅家的App用户体验较好？</b>
-        </li>
-    </ul>
-    企鹅家的主力产品，QQ、微信、QQ音乐、QQ空间 等，多是IM（即时通讯）、SNS（社交网络）、数字娱乐 等形态的产品。
-    <br>
-    <br><b>这类产品往往必须「直接依靠优秀的产品服务与用户体验」来赢得用户。</b>
-    <br>
-    <br>如果这点做不好，产品就无法在竞争中脱颖而出。这也使得在企鹅内部，<b>围绕这部分的要求，需求，反馈 </b><b>都一定最多，使得企鹅不得不把这部分做好</b>。
-    <br>
-    <br>
-    <ul>
-        <li><b>那为什么阿里系的App用户体验较差？</b>
-        </li>
-    </ul>
-    阿里系的主力产品，从1688、淘宝、再到支付宝、天猫、淘宝旅行、淘点点、一淘、旺旺，要么是电商类产品，要么就是电商类的延伸产品。
-    <br>
-    <br>而这类产品的核心竞争力（或者说要做好的难处），往往在<b>「如何与实体经济，甚至政府 打交道」、</b><b>「如何做好运营」，</b>而非优秀的用户体验。
-    <br>
-    <br>应该说，阿里从来都不是不重视用户体验，这两年更是愈发重视。但是因为身处这样的市场环境，<b>阿里必须先完成这些优先级更高的需求（海量的业务，运营需求）以抢占市场，</b>
-    <br>这才导致阿里内部无法有太多精力focus到客户端体验上。
-    <br>
-    <br>
-    <br>
-    <br>上面就算基本回答了题主的问题，
-    <br>不过，知乎惯例，多说几句：
-    <br>
-    <br><b>其实，上面的答案，也可以说这都是说辞。</b>
-    <br>
-    <br>在我刚刚加入阿里的时候，我也一度纳闷甚至郁闷这个事。直到我开始接触更多的项目，我才能逐渐理解「为什么会这样」。
-    <br>
-    <br><b>但是，这并不足以成为借口。</b>
-    <br><b>该不该改？ 当然该改。</b>
-    <br>
-    <br>我相信几乎所有阿里人，尤其UED，肯定都不希望这样。
-    <br>只能说，这需要阿里投入更多的人、更多的时间、更多的努力来做好
-    <br>
-    <br>
-    <br>
-    <br>以上。
-    <br>
-    <br>利益相关：
-    <br>阿里员工
-    <br>
-    <br>
-</div>
-
+          <p>学习《Head First 设计模式》第五部分《单件模式》的笔记。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2014-05-31-HFDP-Note4/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -287,7 +246,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2014-09-04-is-pure-android-better/">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2014-06-01-comsketch/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -305,7 +264,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2014-09-04-is-pure-android-better/" class="post-title-link" itemprop="url">对中国用户而言，Pure Android 是否比 MIUI 或 Flyme 体验更好？</a>
+          <a href="/2014-06-01-comsketch/" class="post-title-link" itemprop="url">COM 原理与应用学习笔记</a>
         </h2>
 
         <div class="post-meta-container">
@@ -316,14 +275,16 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2014-09-04 12:00:00" itemprop="dateCreated datePublished" datetime="2014-09-04T12:00:00+00:00">2014-09-04</time>
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
+        <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-02-02 01:05:07" itemprop="dateModified" datetime="2024-02-02T01:05:07+00:00">2024-02-02</time>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/COM/" itemprop="url" rel="index"><span itemprop="name">COM</span></a>
+        </span>
     </span>
 
   
@@ -336,130 +297,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>这篇文章转载自<a target="_blank" rel="noopener" href="http://www.zhihu.com/question/25104721/answer/30108886">我在知乎上的回答</a></p>
-</blockquote>
-<p>哎呀～不要站队嘛。其实这是一个很有意思的题目，让我们一点点来看
-    <br>
-    <br>哦对，谢妖～。本人是Nexus 5用户，系统当然是Pure Android KitKat啦（臭谷粉！点Down！喂喂喂我还没给结论呢）
-    <br><b>毕竟是回答问题嘛，先给一个明确的答案</b>：
-    <br>
-    <br><b>否。（</b><b>对中国用户而言，Pure Android 并不比 MIUI 或 Flyme 体验更好。</b><b>）</b>
-
-<pre><code>&lt;p&gt;从下面「 居然比关注数还多」的回答中，就可以看出大家都是急于站队的样子：&lt;/p&gt;
-
-&lt;ul&gt;
-    &lt;li&gt;Google Service！翻墙很轻松好吗！Geek站过来，有品味绝逼原生阿。&lt;/li&gt;
-    &lt;li&gt;没用过Pure，国内Google能用！？本地化多重要，易用果断MIUI/Flyme 啊！（咦 米粉和魅粉居然在一致对外上达成了共识）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;br&gt;从答案我们也可以看出，中国用户的确是一个过于复杂的群体，那这个问题怎么办？
-&lt;br&gt;
-&lt;br&gt;&lt;b&gt;数学老师教过哒，分类讨论啊！&lt;/b&gt;
-&lt;br&gt;（来，开始认真了。注意，我只分两类，数量非常小的Geek用户，和其余都算在内的非Geek用户）
-&lt;br&gt;
-&lt;br&gt;
-
-&lt;p&gt;先说好理解的：&lt;/p&gt;
-
-&lt;ul&gt;
-    &lt;li&gt;&lt;b&gt;为什么 Geek 用户 都爱使用Pure Android？：&lt;/b&gt;
-    &lt;/li&gt;
-&lt;/ul&gt;在国内，使用Pure Android其实是有很多障碍的：众所周知Google基本被墙死，去年还能上上的G+，Gmail 最近基本报废，回国后Google Now不开VPN永远都是Sign error或者No internet connection……那干嘛还用？
-&lt;br&gt;
-&lt;br&gt;&lt;b&gt;因为这群人是Geek呀！&lt;/b&gt;这群谷粉、安卓粉、IT科技粉、设计师、工程师们，这群充满技术情节的人儿们，为了我们的品味（逼格），挂着VPN，连着美版的Play Store，用着Android/Material Design 的 GMS，Chrome Beta，FB，Twitter，WhatsApp……就这么一路高歌的走下去了。
-&lt;br&gt;
-&lt;br&gt;你看！Action Bar ＋ Navigation Drawer 多好用！
-&lt;br&gt;你看！Fixed Tabs 可以滑的好吗！
-&lt;br&gt;你看！流畅不！ART开起来妥妥的流畅度爆iOS！
-&lt;br&gt;你看！原生Android 哪里会越用用卡！？你升4.4.4了吗 ？
-&lt;br&gt;
-&lt;br&gt;&lt;b&gt;哪里要担心这群人啊。&lt;/b&gt;国内买不到的Nexus，用不了GMS，这都不叫事。
-&lt;br&gt;
-&lt;br&gt;
-
-&lt;p&gt;那么，&lt;/p&gt;
-
-&lt;ul&gt;
-    &lt;li&gt;&lt;b&gt;为什么 非Geek 用户 不适合使用Pure Android？：&lt;/b&gt;
-    &lt;/li&gt;
-&lt;/ul&gt;GMS的问题就不多说了，妥妥是用不了，在VPN之间切换也是麻烦。
-&lt;br&gt;也不说Pure Android不那么好刷到的问题（当然你可以刷CM），
-&lt;br&gt;我们就直接来看最核心的问题：
-&lt;br&gt;
-&lt;br&gt;&lt;b&gt;「 Pure Android 的交互设计真的比 MIUI / Flyme 好吗？」&lt;br&gt;&lt;/b&gt;
-&lt;br&gt;&lt;b&gt;不见得。&lt;/b&gt;
-&lt;br&gt;&lt;b&gt;所谓设计，第一个要考虑的就是目标用户。&lt;/b&gt;
-&lt;br&gt;
-&lt;br&gt;为什么Pure Android的交互设计让Geek觉得用户体验好？
-&lt;br&gt;
-&lt;ul&gt;
-    &lt;li&gt;国外规范的 Android Design 生态环境打造统一的 Pure Android 体验&lt;/li&gt;
-    &lt;li&gt;更高级的手势/App运用带来了很多便利（典型的例子SwipePad）&lt;/li&gt;
-    &lt;li&gt;有着工程师思想的他们可以轻易理解Android的复杂逻辑&lt;/li&gt;
-    &lt;li&gt;有着工程师思想的他们总能自己轻松躲开一些设计问题&lt;/li&gt;
-&lt;/ul&gt;
-&lt;br&gt;而 Pure Android 之于 普通用户 呢？
-&lt;br&gt;&lt;b&gt;「 这些优势基本荡然无存」&lt;/b&gt;，反而，混乱的国内生态环境带来大部分中国用户对Android Design的陌生，相比iOS复杂许多的Android逻辑带来较高的学习成本……
-&lt;br&gt;
-&lt;br&gt;而MIUI/Flyme在设计方面上的本地化，主要就是出来解决这个问题的。
-&lt;br&gt;我们可以看到，其实MIUI/Flyme做得大部分工作，除了视觉外，就是&lt;b&gt;简化信息层级，降低交互学习成本，遮住Android系统过于复杂的部分，在易用性上向iOS靠拢&lt;/b&gt;。
-&lt;br&gt;
-&lt;br&gt;如果说在这里MIUI/Flyme还只能和Pure Android 打个平手的话……
-&lt;br&gt;
-&lt;br&gt;&lt;b&gt;MIUI 和 Flyme 的本地化还远没有完：&lt;/b&gt;
-&lt;br&gt;
-&lt;br&gt;你在国内总要用国内的互联网服务吧？
-&lt;br&gt;&lt;b&gt;集成，&lt;/b&gt;我全给你全整合进来，打造一条龙服务
-&lt;br&gt;
-&lt;ul&gt;
-    &lt;li&gt;应用商店
-        &lt;br&gt;
-    &lt;/li&gt;
-    &lt;li&gt;云存储/云服务（自己提供或合作）
-        &lt;br&gt;
-    &lt;/li&gt;
-    &lt;li&gt;数字娱乐消费（音乐/游戏/阅读/视频/主题/壁纸/铃声……）
-        &lt;br&gt;
-    &lt;/li&gt;
-    &lt;li&gt;安全（小白最爱用的系统清理，陌生号码拦截……）
-        &lt;br&gt;
-    &lt;/li&gt;
-    &lt;li&gt;生活服务（支付，地图，快递，订餐，打车，旅游……）
-        &lt;br&gt;
-    &lt;/li&gt;
-    &lt;li&gt;社交（美图，快速分享……）
-        &lt;br&gt;
-    &lt;/li&gt;
-    &lt;li&gt;太多了。总之就是你想要什么有什么，自己没有就跟大家合作呗。
-        &lt;br&gt;
-    &lt;/li&gt;
-&lt;/ul&gt;&lt;b&gt;不够酷？&lt;/b&gt;对大部分用户来说够酷了
-&lt;br&gt;
-&lt;ul&gt;
-    &lt;li&gt;小米，平板，盒子，电视，路由……MIUI的多屏体验&lt;/li&gt;
-    &lt;li&gt;魅族，联合智能硬件，手表飞机插座……Connect to Meizu&lt;/li&gt;
-&lt;/ul&gt;&lt;b&gt;渠道成本低（不是指价格）&lt;/b&gt;。这个其实也相当重要
-&lt;br&gt;
-&lt;ul&gt;
-    &lt;li&gt;容易刷到，适配机子广，稳定。&lt;/li&gt;
-    &lt;li&gt;国内买得到，线下甚至有体验店，可以教你用呀什么的。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;br&gt;更何况，对于大部分非Geek用户，手机虽不再只是当年的通讯工具那么简单，但充其量也就是一个智能电子设备而已。&lt;b&gt;能方便快速的享受到国内主流的互联网应用与服务，完成日常的需求就足以&lt;/b&gt;。
-&lt;br&gt;
-&lt;br&gt;&lt;b&gt;MIUI/Flyme 在这方面上的成绩，是Pure Android远不能比的。&lt;/b&gt;
-&lt;br&gt;
-&lt;br&gt;所以我的结论是：
-&lt;br&gt;
-&lt;br&gt;&lt;b&gt;对中国用户而言，Pure Android 并不比 MIUI 或 Flyme 体验更好。&lt;/b&gt;
-&lt;br&gt;&lt;b&gt;对大部分中国用户而言，MIUI 或 Flyme 比 &lt;/b&gt;&lt;b&gt;Pure Android 的&lt;/b&gt;&lt;b&gt;体验更好。&lt;/b&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;没啥利益相关，我又不是云OS的
-</code></pre>
-</p>
-
+          <p>略读了一遍《COM 原理与应用》后的摘要笔记。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2014-06-01-comsketch/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -485,7 +331,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2014-08-16-miui6/">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2014-06-29-acl-chapter2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -503,7 +349,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2014-08-16-miui6/" class="post-title-link" itemprop="url">如何评价 MIUI 6？</a>
+          <a href="/2014-06-29-acl-chapter2/" class="post-title-link" itemprop="url">ANSI Common Lisp 第二章习题解答</a>
         </h2>
 
         <div class="post-meta-container">
@@ -514,14 +360,16 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2014-08-16 12:00:00" itemprop="dateCreated datePublished" datetime="2014-08-16T12:00:00+00:00">2014-08-16</time>
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
+        <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-02-02 01:05:07" itemprop="dateModified" datetime="2024-02-02T01:05:07+00:00">2024-02-02</time>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Lisp/" itemprop="url" rel="index"><span itemprop="name">Lisp</span></a>
+        </span>
     </span>
 
   
@@ -534,55 +382,610 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>这篇文章转载自<a target="_blank" rel="noopener" href="http://www.zhihu.com/question/24783844/answer/29286896">我在知乎上的回答</a></p>
-</blockquote>
-<div>
-    <blockquote>MIUI 6，充满了“借鉴”，iOS 7 版的 Android……
-        <br>米 4，碉堡了，不服跑个分，简直就是 iPhone 4……</blockquote>你们说得这些我一点都不反对。
-    <br>
-    <br><b>可是，你们对小米的要求太高了</b>。
-    <br>
-    <br>其实小米说到底也不过是一个才初创4年的公司而已，
-    <br><b>你是指望小米能引领一套新的设计风格？</b>
-    <br><b>还是指望它能在国际上体现一下我国的自主创新能力？</b>
-    <br>
-    <br>你想太多了。
-    <br>
-    <br>更何况，<b>MIUI也不是没有设计</b>，它比很多国内，国际大厂的ROM好看好用太多了。
-    <br>它只是没有多少新设计而已， iOS 7 的视觉，混着大部分 Android ＋ WP 的交互。也不知道是因为确实欣赏 Android 的一些交互，还是因为毕竟是基于 Android 懒得改了。
-    <br>
-    <br><b>因为没有一个背后的设计思想在支撑，于是它就把所有自己觉得好，觉得会被认可的东西抄过来了而已。</b>
-    <br>
-    <br><b>这思路一点问题都没有，</b><b>大部分用户一定会觉得更好看了</b>，国际范儿又有设计感。最多是少数圈内人士（包括我），那群也不真正买它手机用的人，在那愤愤不平而已。
-    <br>
-    <br><b>自立门派风险太大了。</b>
-    <br><b>MI 4 的配置 + MIUI 6，在这个价位几乎是无敌的，这就够了。</b>
-    <br>
-    <br>至于官方说的什么“糖果式”设计，那简直就是笑话。跟 Ive 的 iOS 7 或是 Material Design，Metro 所设计之设计，完全不在一个高度上。
-    <br>
-    <br>
-    <br>其实有的时候觉得小米很像腾讯（尤其是更早些年的腾讯）。
-    <br><b>其实本来也就不是什么创新者的角色，那就做借鉴和整合呗。</b>
-    <br>
-    <br>用户喜欢什么，
-    <br>公司需要什么，
-    <br>大众流行什么，
-    <br>那我们就做呗。
-    <br>
-    <br><b>拿下市场才是第一位的，不出错才是第一位的</b>。
-    <br><b>先做大了才有可能去做更大的事啊</b>。
-    <br>
-    <br>老罗再有情怀，锤子要是死了，那也就这么死了。
-    <br>
-    <br>你指责小米没有多少创新，或是腾讯老是山寨 start up ，我同意，我陪你愤愤不平，可是又有什么意思呢。
-    <br>
-    <br>它们这么做，对现有公司发展来说，
-    <br><b>简直是一点错都没有。</b>
-    <br>
-    <br>
+          <p>学习 ANSI Common Lisp 第二章欢迎来到 Lisp 的笔记。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2014-06-29-acl-chapter2/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
 </div>
 
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2014-07-13-cppinit/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2014-07-13-cppinit/" class="post-title-link" itemprop="url">C++ 类成员变量初始化</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CPlusPlus/" itemprop="url" rel="index"><span itemprop="name">CPlusPlus</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>学习《Effective C++》的 Item 4 的笔记。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2014-07-13-cppinit/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2014-07-13-dllsearch/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2014-07-13-dllsearch/" class="post-title-link" itemprop="url">默认的 DLL 搜索路径优先级</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Windows/" itemprop="url" rel="index"><span itemprop="name">Windows</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>Windows 上 EXE 加载 DLL 时的搜索路径与顺序。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2014-07-13-dllsearch/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2014-07-19-fiddlerwithwinhttp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2014-07-19-fiddlerwithwinhttp/" class="post-title-link" itemprop="url">定制 Fiddler 之抓获 WinHTTP 请求</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Fiddler/" itemprop="url" rel="index"><span itemprop="name">Fiddler</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>Fiddler 默认只接管 WinINET 代理设置，如何让它截获 WinHTTP 请求。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2014-07-19-fiddlerwithwinhttp/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2014-07-20-fiddlercontextmenu/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2014-07-20-fiddlercontextmenu/" class="post-title-link" itemprop="url">定制 Fiddler 之将请求发往另一服务器</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Fiddler/" itemprop="url" rel="index"><span itemprop="name">Fiddler</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>利用 Fiddler 和 Composer 功能将某个特定的 SESSION 手动发往另一个服务器。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2014-07-20-fiddlercontextmenu/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2014-08-01-deadlock/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2014-08-01-deadlock/" class="post-title-link" itemprop="url">TaobaoProtectSE.dll 注入引起的死锁分析</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/WinDbg/" itemprop="url" rel="index"><span itemprop="name">WinDbg</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>安装了淘宝网站上的一些插件后运行很多程序会被注入 TaobaoProtectSE.dll，在有些程序里会引导死锁。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2014-08-01-deadlock/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2014-08-26-takephotos/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2014-08-26-takephotos/" class="post-title-link" itemprop="url">摄影教训总结</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Blog/" itemprop="url" rel="index"><span itemprop="name">Blog</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>历次出游摄影的一些失败的点。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2014-08-26-takephotos/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.vvbuys.com/2014-08-30-aboutlife/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vvbuys">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VVbugs Blog">
+      <meta itemprop="description" content="Share some post and some issue for linux program">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | VVbugs Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2014-08-30-aboutlife/" class="post-title-link" itemprop="url">我所理解的生活</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-02-02 01:06:28" itemprop="dateCreated datePublished" datetime="2024-02-02T01:06:28+00:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Blog/" itemprop="url" rel="index"><span itemprop="name">Blog</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>我自己对生活的理解，认识上有改变就更新在这里。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2014-08-30-aboutlife/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -601,7 +1004,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="Previous page" aria-label="Previous page" href="/page/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span>
+    <a class="extend prev" rel="prev" title="Previous page" aria-label="Previous page" href="/page/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/">27</a><a class="extend next" rel="next" title="Next page" aria-label="Next page" href="/page/13/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
