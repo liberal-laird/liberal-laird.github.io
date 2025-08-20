@@ -2,18 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Health for you life</title>
-    <link>http://localhost:1313/posts/</link>
+    <link>https://www.a8king.com/posts/</link>
     <description>Recent content in Posts on Health for you life</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 20 Aug 2025 14:37:45 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 20 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://www.a8king.com/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Hello World</title>
-      <link>http://localhost:1313/hell_world.html</link>
-      <pubDate>Wed, 20 Aug 2025 14:37:45 +0800</pubDate>
-      <guid>http://localhost:1313/hell_world.html</guid>
-      <description>&lt;h3 id=&#34;hello-my-life&#34;&gt;Hello my life&lt;/h3&gt;&#xA;&lt;p&gt;In your life will happend more things&lt;/p&gt;</description>
+      <title>Vitamin_B2</title>
+      <link>https://www.a8king.com/Vitamin_B2.html</link>
+      <pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://www.a8king.com/Vitamin_B2.html</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Vitamin B₂ (Riboflavin): Comprehensive Review of Its Biological Roles, Clinical Significance, and Symptomatology&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;1-introduction&#34;&gt;1. Introduction&lt;/h3&gt;&#xA;&lt;p&gt;Riboflavin, known scientifically as vitamin B₂, is a water‑soluble member of the B‑vitamin family that participates in critical metabolic pathways. Since its discovery in the early twentieth century, riboflavin has been recognized for its essentiality in cellular energy production, antioxidant defense, and the maintenance of healthy mucous membranes. This review synthesizes current evidence regarding the biochemical functions of vitamin B₂, outlines clinical conditions associated with both deficiency and excess, and discusses practical implications for nutrition and public health.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Vitamin_B1</title>
+      <link>https://www.a8king.com/vitamin_b1.html</link>
+      <pubDate>Sun, 10 Aug 2025 15:47:39 +0800</pubDate>
+      <guid>https://www.a8king.com/vitamin_b1.html</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Vitamin B₁ (Thiamine): Clinical Significance, Physiological Roles, and Clinical Manifestations&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;1-introduction&#34;&gt;1. Introduction&lt;/h3&gt;&#xA;&lt;p&gt;Thiamine (vitamin B₁) is a water‑soluble micronutrient that plays a pivotal role in cellular energy metabolism and neural function. Because it functions as an essential cofactor for several key enzymes involved in carbohydrate oxidation, its deficiency can precipitate a spectrum of clinical syndromes ranging from subtle neurocognitive disturbances to life‑threatening organ failure. This review synthesizes current evidence on the biochemical mechanisms underlying thiamine’s actions, delineates the hallmark symptoms associated with deficiency, and highlights practical considerations for prevention and management.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

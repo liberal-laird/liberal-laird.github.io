@@ -2,19 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2025-08-20T14:37:45+08:00</lastmod>
+    <loc>https://www.a8king.com/</loc>
+    <lastmod>2025-08-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/hell_world.html</loc>
-    <lastmod>2025-08-20T14:37:45+08:00</lastmod>
+    <loc>https://www.a8king.com/posts/</loc>
+    <lastmod>2025-08-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2025-08-20T14:37:45+08:00</lastmod>
+    <loc>https://www.a8king.com/Vitamin_B2.html</loc>
+    <lastmod>2025-08-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>https://www.a8king.com/vitamin_b1.html</loc>
+    <lastmod>2025-08-10T15:47:39+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://www.a8king.com/about/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://www.a8king.com/categories/</loc>
+  </url><url>
+    <loc>https://www.a8king.com/tags/</loc>
   </url>
 </urlset>
