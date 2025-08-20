@@ -4,6 +4,8 @@ draft = false
 title = 'Vitamin_B6'
 url = "post/Vitamin_B6.html"
 tags = "vitamin"
+keyword = "Vitamin_B6"
+categories = "Nutrients"
 +++
 **Vitamin B₆ (Pyridoxine): Biological Significance, Clinical Benefits, and Deficiency Manifestations**
 
