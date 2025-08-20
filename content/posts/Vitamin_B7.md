@@ -1,8 +1,8 @@
 +++
 date = '2025-08-20'
 draft = false
-title = 'VitaminB7'
-url = "post/VitaminB7.html"
+title = 'Vitamin_B7'
+url = "post/Vitamin_B7.html"
 categories = "Nutrients"
 tags = 'vitamin'
 +++
