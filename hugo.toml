@@ -2,3 +2,12 @@ baseURL = 'https://www.a8king.com/'
 languageCode = 'en-us'
 title = 'Health for you life'
 theme = 'ananke'
+sectionPagesMenu = 'main'
+
+[menu]
+[[menu.main]]
+    name = 'Home'
+    pageRef = '/'
+    weight = 10
+
+
