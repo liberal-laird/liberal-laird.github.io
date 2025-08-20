@@ -2,9 +2,10 @@
 date = '2025-08-20'
 draft = false
 title = 'VitaminC'
-url = "VitaminC.html"
+url = "post/VitaminC.html"
 keyword = "VitaminC"
 tags = "vitamin"
+categories = "Nutrients"
 +++
 **Vitamin C – Biological Functions, Clinical Benefits, and Safety Considerations**
 

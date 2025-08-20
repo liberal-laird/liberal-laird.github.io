@@ -2,7 +2,8 @@
 date = '2025-08-20'
 draft = false
 title = 'Vitamin_B2'
-url = "Vitamin_B2.html"
+url = "post/Vitamin_B2.html"
+tags = "vitamin"
 +++
 **Vitamin B₂ (Riboflavin): Comprehensive Review of Its Biological Roles, Clinical Significance, and Symptomatology**
 

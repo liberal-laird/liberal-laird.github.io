@@ -1,27 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Vitamin on Health for you life</title>
-    <link>https://a8king.com/tags/vitamin/</link>
-    <description>Recent content in Vitamin on Health for you life</description>
+    <title>Nutrients on Health for you life</title>
+    <link>https://a8king.com/categories/nutrients/</link>
+    <description>Recent content in Nutrients on Health for you life</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 20 Aug 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://a8king.com/tags/vitamin/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Vitamin_B2</title>
-      <link>https://a8king.com/post/Vitamin_B2.html</link>
-      <pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://a8king.com/post/Vitamin_B2.html</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Vitamin B₂ (Riboflavin): Comprehensive Review of Its Biological Roles, Clinical Significance, and Symptomatology&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;1-introduction&#34;&gt;1. Introduction&lt;/h3&gt;&#xA;&lt;p&gt;Riboflavin, known scientifically as vitamin B₂, is a water‑soluble member of the B‑vitamin family that participates in critical metabolic pathways. Since its discovery in the early twentieth century, riboflavin has been recognized for its essentiality in cellular energy production, antioxidant defense, and the maintenance of healthy mucous membranes. This review synthesizes current evidence regarding the biochemical functions of vitamin B₂, outlines clinical conditions associated with both deficiency and excess, and discusses practical implications for nutrition and public health.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Vitamin_B6</title>
-      <link>https://a8king.com/post/Vitamin_B6.html</link>
-      <pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://a8king.com/post/Vitamin_B6.html</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Vitamin B₆ (Pyridoxine): Biological Significance, Clinical Benefits, and Deficiency Manifestations&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;1-introduction&#34;&gt;1. Introduction&lt;/h3&gt;&#xA;&lt;p&gt;Vitamin B₆ is a water‑soluble member of the B‑vitamin complex that exists in three interchangeable forms—pyridoxal, pyridoxamine, and pyridoxine—collectively referred to as pyridoxals. In vivo, these vitamers are converted into the active coenzyme pyridoxal‑5′‑phosphate (PLP), which serves as a catalytic prosthetic group for over 140 enzymatic reactions in human metabolism. Because of its central role in amino acid catabolism, neurotransmitter synthesis, hemoglobin formation, and immune modulation, vitamin B₆ is often termed “the master coenzyme.”&lt;/p&gt;</description>
-    </item>
+    <atom:link href="https://a8king.com/categories/nutrients/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>VitaminC</title>
       <link>https://a8king.com/post/VitaminC.html</link>

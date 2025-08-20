@@ -2,7 +2,8 @@
 date = '2025-08-20'
 draft = false
 title = 'Vitamin_B6'
-url = "Vitamin_B6.html"
+url = "post/Vitamin_B6.html"
+tags = "vitamin"
 +++
 **Vitamin B₆ (Pyridoxine): Biological Significance, Clinical Benefits, and Deficiency Manifestations**
 

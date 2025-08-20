@@ -2,7 +2,9 @@
 date = '2025-08-10T15:47:39+08:00'
 draft = false
 title = 'Vitamin_B1'
-url = "vitamin_b1.html"
+url = "post/vitamin_b1.html"
+tags = "vitamin"
+categories = "Nutrients"
 +++
 **Vitamin B₁ (Thiamine): Clinical Significance, Physiological Roles, and Clinical Manifestations**
 
