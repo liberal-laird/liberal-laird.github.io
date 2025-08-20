@@ -1,0 +1,4 @@
+baseURL = 'https://www.a8king.com/'
+languageCode = 'en-us'
+title = 'Health'
+theme = 'ananke'
