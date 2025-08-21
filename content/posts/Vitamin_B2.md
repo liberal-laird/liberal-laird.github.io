@@ -4,7 +4,6 @@ draft = false
 title = 'Vitamin_B2'
 url = "post/Vitamin_B2.html"
 tags = "vitamin"
-keyword = "Vitamin_B2"
 categories = "Nutrients"
 +++
 **Vitamin B₂ (Riboflavin): Comprehensive Review of Its Biological Roles, Clinical Significance, and Symptomatology**
