@@ -10,4 +10,17 @@ sectionPagesMenu = 'main'
     pageRef = '/'
     weight = 10
 
+[params]
+  # AdSense 配置
+  [params.adsense]
+  publisher_id = "pub-4522670236044605"
+  enable_ads = false
+  article_ads_only = true            # 只在文章页显示广告
+  
+  # 文章页广告单元ID配置
+  [params.adsense.slots]
+    article_top = "1234567890"        # 文章顶部广告单元ID
+    article_middle = "2345678901"     # 文章中间广告单元ID
+    article_bottom = "3456789012"     # 文章底部广告单元ID
+
 

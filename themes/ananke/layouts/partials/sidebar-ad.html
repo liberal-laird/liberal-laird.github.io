@@ -1,0 +1,14 @@
+{{ if false }}
+<div class="sidebar-ad-container mb4 pa3 bg-light-gray">
+  <div class="ad-label f6 ttu tracked mb2 mid-gray">推荐</div>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-{{ .Site.Params.adsense.publisher_id }}"
+       data-ad-slot="{{ .Site.Params.adsense.slots.sidebar_top }}"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+{{ end }}

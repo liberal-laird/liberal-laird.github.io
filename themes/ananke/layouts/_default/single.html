@@ -50,8 +50,16 @@
         <span class="f6 mv4 dib tracked"> - {{ lang.Translate "wordCount" .WordCount }} </span>
       {{ end }}
     </header>
+    
+    {{/* 文章顶部广告 */}}
+    {{- partials.Include "article-top-ad.html" . -}}
+    
     <div class="nested-copy-line-height lh-copy {{ $.Param "post_content_classes"  | compare.Default "serif"}} f4 nested-links {{ $.Param "text_color" | compare.Default "mid-gray" }} {{ compare.Conditional (compare.Eq $.Site.Language.LanguageDirection "rtl") "pl4-l" "pr4-l" }} w-70-l">
       {{- .Content -}}
+      
+      {{/* 文章中间插入广告 */}}
+      {{- partials.Include "article-ads.html" . -}}
+      
       {{- partials.Include "tags.html" . -}}
       <div class="mt6 instapaper_ignoref">
       {{ if .Site.Config.Services.Disqus.Shortname }}
