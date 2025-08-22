@@ -1,7 +1,7 @@
 +++
 date = '2025-08-21'
 draft = false
-title = 'Vitamin K2: Benefits, Symptoms & Food Sources'
+title = 'Vitamin K2'
 url = "post/Vitamin_K2.html"
 categories = "Nutrients"
 tags = 'vitamin'

@@ -2,123 +2,123 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Health for you life</title>
-    <link>https://a8king.com/posts/</link>
+    <link>http://localhost:1313/posts/</link>
     <description>Recent content in Posts on Health for you life</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 21 Aug 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://a8king.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 22 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Vitamin D₃: Essential Benefits, Common Symptoms &amp; Best Food Sources</title>
-      <link>https://a8king.com/post/Vitamin_D3.html</link>
+      <title>Nattokinase</title>
+      <link>http://localhost:1313/post/Nattokinase.html</link>
+      <pubDate>Fri, 22 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/Nattokinase.html</guid>
+      <description>&lt;h1 id=&#34;nattokinase-mechanisms-clinical-benefits-and-dietary-sources&#34;&gt;Nattokinase: Mechanisms, Clinical Benefits, and Dietary Sources&lt;/h1&gt;&#xA;&lt;h2 id=&#34;abstract&#34;&gt;Abstract&lt;/h2&gt;&#xA;&lt;p&gt;Nattokinase is a serine protease extracted from the Japanese fermented soybean product &lt;em&gt;natto&lt;/em&gt;. Over the past two decades, pre‑clinical and clinical investigations have suggested that nattokinase exerts potent fibrinolytic activity, improves endothelial function, and may confer protective effects against cardiovascular disease. This review synthesizes current evidence on the biochemical mechanisms underlying these actions, summarizes key therapeutic benefits observed in human studies, discusses potential adverse events and contraindications, and highlights practical dietary sources for achieving effective plasma concentrations.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Vitamin D₃</title>
+      <link>http://localhost:1313/post/Vitamin_D3.html</link>
       <pubDate>Thu, 21 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://a8king.com/post/Vitamin_D3.html</guid>
+      <guid>http://localhost:1313/post/Vitamin_D3.html</guid>
       <description>&lt;p&gt;&lt;strong&gt;Vitamin D₃: Clinical Significance, Symptomatology, and Dietary Sources&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;1-introduction&#34;&gt;1. Introduction&lt;/h3&gt;&#xA;&lt;p&gt;Vitamin D is a fat‑soluble secosteroid that functions as a hormone regulating calcium–phosphate homeostasis and modulating immune responses. Vitamin D exists in two major forms: vitamin D₂ (ergocalciferol) from plant sources and vitamin D₃ (cholecalciferol) synthesized endogenously in the skin upon ultraviolet‑B irradiation of 7‑dehydrocholesterol, as well as obtained from animal‑based foods. Vitamin D₃ has higher bioavailability and a longer half‑life than D₂, making it the preferred form for supplementation and fortification.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Vitamin K2: Benefits, Symptoms &amp; Food Sources</title>
-      <link>https://a8king.com/post/Vitamin_K2.html</link>
+      <title>Vitamin K2</title>
+      <link>http://localhost:1313/post/Vitamin_K2.html</link>
       <pubDate>Thu, 21 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://a8king.com/post/Vitamin_K2.html</guid>
+      <guid>http://localhost:1313/post/Vitamin_K2.html</guid>
       <description>&lt;p&gt;&lt;strong&gt;Vitamin K₂: Clinical Significance, Symptomatology, and Dietary Sources&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;1-introduction&#34;&gt;1. Introduction&lt;/h3&gt;&#xA;&lt;p&gt;Vitamin K is a fat‑soluble micronutrient traditionally recognized for its indispensable role in haemostasis through the γ‑carboxylation of clotting factors II, VII, IX, and X. Within this family, two distinct chemical forms—vitamin K₁ (phylloquinone) and vitamin K₂ (menaquinones)—exhibit divergent metabolic pathways, tissue distribution, and physiological actions. While K₁ is predominantly derived from green leafy vegetables and primarily supports coagulation, K₂ is synthesized by intestinal microbiota and present in fermented foods; it exerts broader systemic effects, notably on bone metabolism, vascular health, and cellular signaling.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Vitamin_B12</title>
-      <link>https://a8king.com/post/Vitamin_B12.html</link>
+      <link>http://localhost:1313/post/Vitamin_B12.html</link>
       <pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://a8king.com/post/Vitamin_B12.html</guid>
+      <guid>http://localhost:1313/post/Vitamin_B12.html</guid>
       <description>&lt;p&gt;&lt;strong&gt;Vitamin B12: Clinical Significance, Therapeutic Potential, and Manifestations of Deficiency&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;1-introduction&#34;&gt;1. Introduction&lt;/h3&gt;&#xA;&lt;p&gt;Vitamin B12 (cobalamin) is a water‑soluble micronutrient essential for numerous biochemical pathways that underpin human health. Its unique cobalt‑containing core allows it to act as a cofactor for two critical enzymes: methylmalonyl‑CoA mutase and methionine synthase. These reactions are pivotal for energy metabolism, DNA synthesis, and nervous system integrity. Because of its central role in cellular physiology, vitamin B12 deficiency has been linked with a spectrum of clinical conditions ranging from hematologic disorders to neuropsychiatric manifestations.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Vitamin_B2</title>
-      <link>https://a8king.com/post/Vitamin_B2.html</link>
+      <link>http://localhost:1313/post/Vitamin_B2.html</link>
       <pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://a8king.com/post/Vitamin_B2.html</guid>
+      <guid>http://localhost:1313/post/Vitamin_B2.html</guid>
       <description>&lt;p&gt;&lt;strong&gt;Vitamin B₂ (Riboflavin): Comprehensive Review of Its Biological Roles, Clinical Significance, and Symptomatology&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;1-introduction&#34;&gt;1. Introduction&lt;/h3&gt;&#xA;&lt;p&gt;Riboflavin, known scientifically as vitamin B₂, is a water‑soluble member of the B‑vitamin family that participates in critical metabolic pathways. Since its discovery in the early twentieth century, riboflavin has been recognized for its essentiality in cellular energy production, antioxidant defense, and the maintenance of healthy mucous membranes. This review synthesizes current evidence regarding the biochemical functions of vitamin B₂, outlines clinical conditions associated with both deficiency and excess, and discusses practical implications for nutrition and public health.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Vitamin_B3</title>
-      <link>https://a8king.com/post/Vitamin_B3.html</link>
+      <link>http://localhost:1313/post/Vitamin_B3.html</link>
       <pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://a8king.com/post/Vitamin_B3.html</guid>
+      <guid>http://localhost:1313/post/Vitamin_B3.html</guid>
       <description>&lt;p&gt;&lt;strong&gt;Vitamin B₃ (Niacin): Clinical Significance, Therapeutic Indications, and Adverse Effects&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;1-introduction&#34;&gt;1. Introduction&lt;/h3&gt;&#xA;&lt;p&gt;Vitamin B₃, also known as niacin (nicotinic acid) or nicotinamide, is an essential water‑soluble nutrient that participates in more than 400 enzymatic reactions involving cellular energy metabolism, DNA repair, and neurotransmitter synthesis. Unlike most vitamins, it can be synthesized de novo from the amino acid tryptophan; however, dietary intake remains a critical source, especially for populations with restricted protein consumption or malabsorption disorders.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Vitamin_B5</title>
-      <link>https://a8king.com/post/Vitamin_B5.html</link>
+      <link>http://localhost:1313/post/Vitamin_B5.html</link>
       <pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://a8king.com/post/Vitamin_B5.html</guid>
+      <guid>http://localhost:1313/post/Vitamin_B5.html</guid>
       <description>&lt;p&gt;&lt;strong&gt;Vitamin B₅ (Pantothenic Acid): Clinical Significance, Therapeutic Potential, and Symptomatology&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;1-introduction&#34;&gt;1. Introduction&lt;/h3&gt;&#xA;&lt;p&gt;Pantothenic acid—commonly referred to as vitamin B₅—is a water‑soluble member of the B‑vitamin complex that plays an indispensable role in cellular metabolism. Unlike most other vitamins, it is ubiquitously present in both plant and animal tissues; consequently, deficiencies are rare in well‑balanced diets. Nevertheless, emerging evidence indicates that subclinical insufficiency may contribute to a spectrum of metabolic, neuropsychiatric, and dermatological disorders. This review synthesizes current knowledge on the biochemical functions of vitamin B₅, delineates its therapeutic benefits across diverse clinical conditions, and outlines characteristic symptoms associated with deficiency.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Vitamin_B9</title>
-      <link>https://a8king.com/post/Vitamin_B9.html</link>
+      <link>http://localhost:1313/post/Vitamin_B9.html</link>
       <pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://a8king.com/post/Vitamin_B9.html</guid>
+      <guid>http://localhost:1313/post/Vitamin_B9.html</guid>
       <description>&lt;h1 id=&#34;the-role-of-folic-acid-vitaminb9-in-human-health-a-comprehensive-review&#34;&gt;The Role of Folic Acid (Vitamin B9) in Human Health: A Comprehensive Review&lt;/h1&gt;&#xA;&lt;h2 id=&#34;abstract&#34;&gt;Abstract&lt;/h2&gt;&#xA;&lt;p&gt;Folic acid—also called vitamin B9—is a water‑soluble B‑vitamin essential for nucleic acid synthesis, amino‑acid metabolism, and methylation reactions. Although often perceived merely as an “antioxidant,” its biochemical functions are diverse and pivotal to numerous physiological systems. This review synthesizes current evidence on the health benefits of folate, delineates clinical manifestations of deficiency, and discusses therapeutic strategies for supplementation in various populations.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Vitamin_C</title>
-      <link>https://a8king.com/post/Vitamin_C.html</link>
+      <link>http://localhost:1313/post/Vitamin_C.html</link>
       <pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://a8king.com/post/Vitamin_C.html</guid>
+      <guid>http://localhost:1313/post/Vitamin_C.html</guid>
       <description>&lt;p&gt;&lt;strong&gt;Vitamin C – Biological Functions, Clinical Benefits, and Safety Considerations&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;1-introduction&#34;&gt;1. Introduction&lt;/h3&gt;&#xA;&lt;p&gt;Ascorbic acid (commonly known as vitamin C) is a water‑soluble micronutrient essential for human health. Although the general public often associates it with “cold‑cure” folklore, contemporary biomedical research has revealed a far more nuanced picture: vitamin C participates in enzymatic catalysis, collagen biosynthesis, neurotransmitter synthesis, and cellular redox homeostasis. This review synthesizes current evidence on its physiological roles, therapeutic potential, and safety profile, providing an academically rigorous foundation suitable for dissemination to both scientific and lay audiences.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Vitamin_D</title>
-      <link>https://a8king.com/post/Vitamin_D.html</link>
+      <link>http://localhost:1313/post/Vitamin_D.html</link>
       <pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://a8king.com/post/Vitamin_D.html</guid>
+      <guid>http://localhost:1313/post/Vitamin_D.html</guid>
       <description>&lt;p&gt;&lt;strong&gt;Vitamin D: Clinical Significance, Therapeutic Potential, and Deficiency Manifestations&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;1-introduction&#34;&gt;1. Introduction&lt;/h3&gt;&#xA;&lt;p&gt;Vitamin D is a fat‑soluble secosteroid hormone that has long been recognized for its pivotal role in calcium–phosphate homeostasis and bone metabolism. In recent decades, an expanding body of evidence has illuminated its pleiotropic effects on the immune system, cardiovascular health, metabolic regulation, and even neuropsychiatric function. Consequently, vitamin D deficiency has become a global public‑health concern, with prevalence estimates ranging from 20 % to over 80 % in certain populations. This review synthesizes current knowledge regarding the therapeutic benefits of adequate vitamin D status, delineates the clinical spectrum of deficiency, and highlights gaps that warrant further investigation.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Vitamin_E</title>
-      <link>https://a8king.com/post/Vitamin_E.html</link>
+      <link>http://localhost:1313/post/Vitamin_E.html</link>
       <pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://a8king.com/post/Vitamin_E.html</guid>
+      <guid>http://localhost:1313/post/Vitamin_E.html</guid>
       <description>&lt;p&gt;&lt;strong&gt;Vitamin E: Clinical Significance, Therapeutic Potential, and Associated Adverse Manifestations&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;1-introduction&#34;&gt;1. Introduction&lt;/h3&gt;&#xA;&lt;p&gt;Vitamin E refers to a family of eight fat‑soluble compounds (α-, β-, γ-, δ-tocopherols and tocotrienols) that share a chromanol ring and a hydrophobic side chain. Among them, α‑tocopherol is the most biologically active form in humans, largely due to its preferential retention by hepatic α‑Tocopherol Transfer Protein (α‑TTP). The antioxidant, anti‑inflammatory, and membrane‑stabilizing properties of vitamin E have prompted extensive research into its role in chronic disease prevention and treatment. This review synthesizes current evidence on the clinical benefits of vitamin E, delineates the mechanisms underlying these effects, and discusses documented adverse events associated with both deficiency and supraphysiologic supplementation.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Vitamin_K</title>
-      <link>https://a8king.com/post/Vitamin_K.html</link>
+      <link>http://localhost:1313/post/Vitamin_K.html</link>
       <pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://a8king.com/post/Vitamin_K.html</guid>
+      <guid>http://localhost:1313/post/Vitamin_K.html</guid>
       <description>&lt;p&gt;&lt;strong&gt;Vitamin K: Biological Functions, Clinical Significance, and Common Deficiency Manifestations&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;1-introduction&#34;&gt;1. Introduction&lt;/h3&gt;&#xA;&lt;p&gt;Vitamin K is a fat‑soluble group of compounds that plays an indispensable role in haemostasis, bone metabolism, vascular health, and cellular signalling. The two principal naturally occurring forms are &lt;strong&gt;phylloquinone (vitamin K₁)&lt;/strong&gt;, obtained mainly from green leafy vegetables, and &lt;strong&gt;menaquinones (vitamins K₂)&lt;/strong&gt;, produced by intestinal microbiota and present in fermented foods such as natto and cheese. Although historically recognised for its coagulation function, contemporary research has expanded the scope of vitamin K to include bone integrity, arterial calcification inhibition, and modulation of inflammatory pathways.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Vitamin_A</title>
-      <link>https://a8king.com/post/Vitamin_A.html</link>
+      <link>http://localhost:1313/post/Vitamin_A.html</link>
       <pubDate>Mon, 18 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://a8king.com/post/Vitamin_A.html</guid>
+      <guid>http://localhost:1313/post/Vitamin_A.html</guid>
       <description>&lt;p&gt;&lt;strong&gt;Vitamin A: Biological Significance, Clinical Benefits, and Deficiency Manifestations&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;1-introduction&#34;&gt;1. Introduction&lt;/h3&gt;&#xA;&lt;p&gt;Vitamin A is a fat‑soluble micronutrient belonging to the retinoid family. Its biological activities stem from its ability to act as a ligand for nuclear receptors (retinoic acid receptors, RARs; retinoid X receptors, RXRs) and as a precursor of retinaldehyde, which participates in visual phototransduction. Because of these diverse roles, vitamin A is essential for embryonic development, maintenance of epithelial integrity, immune modulation, and cellular differentiation.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Vitamin_B6</title>
-      <link>https://a8king.com/post/Vitamin_B6.html</link>
+      <link>http://localhost:1313/post/Vitamin_B6.html</link>
       <pubDate>Wed, 13 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://a8king.com/post/Vitamin_B6.html</guid>
+      <guid>http://localhost:1313/post/Vitamin_B6.html</guid>
       <description>&lt;p&gt;&lt;strong&gt;Vitamin B₆ (Pyridoxine): Biological Significance, Clinical Benefits, and Deficiency Manifestations&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;1-introduction&#34;&gt;1. Introduction&lt;/h3&gt;&#xA;&lt;p&gt;Vitamin B₆ is a water‑soluble member of the B‑vitamin complex that exists in three interchangeable forms—pyridoxal, pyridoxamine, and pyridoxine—collectively referred to as pyridoxals. In vivo, these vitamers are converted into the active coenzyme pyridoxal‑5′‑phosphate (PLP), which serves as a catalytic prosthetic group for over 140 enzymatic reactions in human metabolism. Because of its central role in amino acid catabolism, neurotransmitter synthesis, hemoglobin formation, and immune modulation, vitamin B₆ is often termed “the master coenzyme.”&lt;/p&gt;</description>
     </item>
     <item>
       <title>Vitamin_B1</title>
-      <link>https://a8king.com/post/vitamin_b1.html</link>
+      <link>http://localhost:1313/post/vitamin_b1.html</link>
       <pubDate>Sun, 10 Aug 2025 15:47:39 +0800</pubDate>
-      <guid>https://a8king.com/post/vitamin_b1.html</guid>
+      <guid>http://localhost:1313/post/vitamin_b1.html</guid>
       <description>&lt;p&gt;&lt;strong&gt;Vitamin B₁ (Thiamine): Clinical Significance, Physiological Roles, and Clinical Manifestations&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;1-introduction&#34;&gt;1. Introduction&lt;/h3&gt;&#xA;&lt;p&gt;Thiamine (vitamin B₁) is a water‑soluble micronutrient that plays a pivotal role in cellular energy metabolism and neural function. Because it functions as an essential cofactor for several key enzymes involved in carbohydrate oxidation, its deficiency can precipitate a spectrum of clinical syndromes ranging from subtle neurocognitive disturbances to life‑threatening organ failure. This review synthesizes current evidence on the biochemical mechanisms underlying thiamine’s actions, delineates the hallmark symptoms associated with deficiency, and highlights practical considerations for prevention and management.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Vitamin_B7</title>
-      <link>https://a8king.com/post/Vitamin_B7.html</link>
+      <link>http://localhost:1313/post/Vitamin_B7.html</link>
       <pubDate>Sun, 10 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://a8king.com/post/Vitamin_B7.html</guid>
+      <guid>http://localhost:1313/post/Vitamin_B7.html</guid>
       <description>&lt;p&gt;&lt;strong&gt;Vitamin B7 (Biotin): Clinical Benefits, Deficiency Manifestations, and Practical Considerations&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;1-introduction&#34;&gt;1. Introduction&lt;/h3&gt;&#xA;&lt;p&gt;Biotin, also known as vitamin B7 or holo‑thioate, is a water‑soluble member of the B‑vitamin complex that functions as an essential coenzyme for several carboxylase enzymes. Since its discovery in the early twentieth century, biotin has attracted considerable scientific interest owing to its ubiquitous presence in all living cells and its central role in energy metabolism, fatty‑acid synthesis, gluconeogenesis, and amino‑acid catabolism.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>AdSense 广告功能演示</title>
-      <link>https://a8king.com/posts/adsense-demo/</link>
-      <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>https://a8king.com/posts/adsense-demo/</guid>
-      <description>&lt;h1 id=&#34;adsense-广告功能演示&#34;&gt;AdSense 广告功能演示&lt;/h1&gt;&#xA;&lt;p&gt;这篇文章演示了如何在 Hugo 网站中集成 Google AdSense 广告。&lt;/p&gt;&#xA;&lt;h2 id=&#34;自动插入的广告&#34;&gt;自动插入的广告&lt;/h2&gt;&#xA;&lt;p&gt;在文章内容下方会自动插入一个广告区块。&lt;/p&gt;&#xA;&lt;h2 id=&#34;手动插入广告&#34;&gt;手动插入广告&lt;/h2&gt;&#xA;&lt;p&gt;您也可以在文章内容中使用 shortcode 手动插入广告：&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;div class=&#34;content-ad-container my4 pa3 bg-light-gray br2&#34;&gt;&#xA;  &lt;div class=&#34;ad-label f6 ttu tracked mb2 mid-gray&#34;&gt;广告&lt;/div&gt;&#xA;  &lt;ins class=&#34;adsbygoogle&#34;&#xA;       style=&#34;display:block&#34;&#xA;       data-ad-client=&#34;ca-pub-4522670236044605&#34;&#xA;       data-ad-slot=&#34;2345678901&#34;&#xA;       data-ad-format=&#34;auto&#34;&#xA;       data-full-width-responsive=&#34;true&#34;&gt;&lt;/ins&gt;&#xA;  &lt;script&gt;&#xA;     (adsbygoogle = window.adsbygoogle || []).push({});&#xA;  &lt;/script&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;或者使用特定的广告单元：&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;div class=&#34;content-ad-container my4 pa3 bg-light-gray br2&#34;&gt;&#xA;  &lt;div class=&#34;ad-label f6 ttu tracked mb2 mid-gray&#34;&gt;广告&lt;/div&gt;&#xA;  &lt;ins class=&#34;adsbygoogle&#34;&#xA;       style=&#34;display:block&#34;&#xA;       data-ad-client=&#34;ca-pub-4522670236044605&#34;&#xA;       data-ad-slot=&#34;2345678901&#34;&#xA;       data-ad-format=&#34;auto&#34;&#xA;       data-full-width-responsive=&#34;true&#34;&gt;&lt;/ins&gt;&#xA;  &lt;script&gt;&#xA;     (adsbygoogle = window.adsbygoogle || []).push({});&#xA;  &lt;/script&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;div class=&#34;content-ad-container my4 pa3 bg-light-gray br2&#34;&gt;&#xA;  &lt;div class=&#34;ad-label f6 ttu tracked mb2 mid-gray&#34;&gt;广告&lt;/div&gt;&#xA;  &lt;ins class=&#34;adsbygoogle&#34;&#xA;       style=&#34;display:block&#34;&#xA;       data-ad-client=&#34;ca-pub-4522670236044605&#34;&#xA;       data-ad-slot=&#34;1234567890&#34;&#xA;       data-ad-format=&#34;auto&#34;&#xA;       data-full-width-responsive=&#34;true&#34;&gt;&lt;/ins&gt;&#xA;  &lt;script&gt;&#xA;     (adsbygoogle = window.adsbygoogle || []).push({});&#xA;  &lt;/script&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;content-ad-container my4 pa3 bg-light-gray br2&#34;&gt;&#xA;  &lt;div class=&#34;ad-label f6 ttu tracked mb2 mid-gray&#34;&gt;广告&lt;/div&gt;&#xA;  &lt;ins class=&#34;adsbygoogle&#34;&#xA;       style=&#34;display:block&#34;&#xA;       data-ad-client=&#34;ca-pub-4522670236044605&#34;&#xA;       data-ad-slot=&#34;2345678901&#34;&#xA;       data-ad-format=&#34;auto&#34;&#xA;       data-full-width-responsive=&#34;true&#34;&gt;&lt;/ins&gt;&#xA;  &lt;script&gt;&#xA;     (adsbygoogle = window.adsbygoogle || []).push({});&#xA;  &lt;/script&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&#xA;&lt;h2 id=&#34;配置说明&#34;&gt;配置说明&lt;/h2&gt;&#xA;&lt;p&gt;在 &lt;code&gt;hugo.toml&lt;/code&gt; 中配置了以下参数：&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

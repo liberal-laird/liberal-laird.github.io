@@ -1,7 +1,7 @@
 +++
 date = '2025-08-21'
 draft = false
-title = 'Vitamin D₃: Essential Benefits, Common Symptoms & Best Food Sources'
+title = 'Vitamin D₃'
 url = "post/Vitamin_D3.html"
 categories = "Nutrients"
 tags = 'vitamin'

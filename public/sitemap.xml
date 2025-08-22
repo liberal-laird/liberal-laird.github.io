@@ -2,84 +2,72 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://a8king.com/categories/</loc>
+    <loc>http://localhost:1313/categories/</loc>
+    <lastmod>2025-08-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2025-08-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/Nattokinase.html</loc>
+    <lastmod>2025-08-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/nutrients/</loc>
+    <lastmod>2025-08-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2025-08-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2025-08-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/vitamin/</loc>
+    <lastmod>2025-08-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/Vitamin_D3.html</loc>
     <lastmod>2025-08-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://a8king.com/</loc>
+    <loc>http://localhost:1313/post/Vitamin_K2.html</loc>
     <lastmod>2025-08-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://a8king.com/categories/nutrients/</loc>
-    <lastmod>2025-08-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://a8king.com/posts/</loc>
-    <lastmod>2025-08-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://a8king.com/tags/</loc>
-    <lastmod>2025-08-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://a8king.com/tags/vitamin/</loc>
-    <lastmod>2025-08-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://a8king.com/post/Vitamin_D3.html</loc>
-    <lastmod>2025-08-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://a8king.com/post/Vitamin_K2.html</loc>
-    <lastmod>2025-08-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://a8king.com/post/Vitamin_B12.html</loc>
+    <loc>http://localhost:1313/post/Vitamin_B12.html</loc>
     <lastmod>2025-08-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://a8king.com/post/Vitamin_B2.html</loc>
+    <loc>http://localhost:1313/post/Vitamin_B2.html</loc>
     <lastmod>2025-08-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://a8king.com/post/Vitamin_B3.html</loc>
+    <loc>http://localhost:1313/post/Vitamin_B3.html</loc>
     <lastmod>2025-08-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://a8king.com/post/Vitamin_B5.html</loc>
+    <loc>http://localhost:1313/post/Vitamin_B5.html</loc>
     <lastmod>2025-08-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://a8king.com/post/Vitamin_B9.html</loc>
+    <loc>http://localhost:1313/post/Vitamin_B9.html</loc>
     <lastmod>2025-08-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://a8king.com/post/Vitamin_C.html</loc>
+    <loc>http://localhost:1313/post/Vitamin_C.html</loc>
     <lastmod>2025-08-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://a8king.com/post/Vitamin_D.html</loc>
+    <loc>http://localhost:1313/post/Vitamin_D.html</loc>
     <lastmod>2025-08-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://a8king.com/post/Vitamin_E.html</loc>
+    <loc>http://localhost:1313/post/Vitamin_E.html</loc>
     <lastmod>2025-08-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://a8king.com/post/Vitamin_K.html</loc>
+    <loc>http://localhost:1313/post/Vitamin_K.html</loc>
     <lastmod>2025-08-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://a8king.com/post/Vitamin_A.html</loc>
+    <loc>http://localhost:1313/post/Vitamin_A.html</loc>
     <lastmod>2025-08-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://a8king.com/post/Vitamin_B6.html</loc>
+    <loc>http://localhost:1313/post/Vitamin_B6.html</loc>
     <lastmod>2025-08-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://a8king.com/post/vitamin_b1.html</loc>
+    <loc>http://localhost:1313/post/vitamin_b1.html</loc>
     <lastmod>2025-08-10T15:47:39+08:00</lastmod>
   </url><url>
-    <loc>https://a8king.com/post/Vitamin_B7.html</loc>
+    <loc>http://localhost:1313/post/Vitamin_B7.html</loc>
     <lastmod>2025-08-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://a8king.com/tags/adsense/</loc>
-    <lastmod>2024-01-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://a8king.com/posts/adsense-demo/</loc>
-    <lastmod>2024-01-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://a8king.com/tags/hugo/</loc>
-    <lastmod>2024-01-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://a8king.com/tags/%E5%B9%BF%E5%91%8A/</loc>
-    <lastmod>2024-01-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://a8king.com/categories/%E6%8A%80%E6%9C%AF/</loc>
-    <lastmod>2024-01-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://a8king.com/about/</loc>
+    <loc>http://localhost:1313/about/</loc>
   </url>
 </urlset>
