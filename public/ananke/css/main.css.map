@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "main.css",
-	"sourceRoot": "/Users/lau/worksapce/program/golang/src/a8king.ai",
+	"sourceRoot": "/Users/lau/worksapce/program/golang/src/health-hugo",
 	"sources": [
 		"ananke/css/main.css"
 	],
