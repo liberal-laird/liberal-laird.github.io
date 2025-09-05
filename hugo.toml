@@ -19,7 +19,7 @@ sectionPagesMenu = 'main'
   
   # 文章页广告单元ID配置
   [params.adsense.slots]
-    article_title = "9910955433"      # 文章标题下广告单元ID - 需要替换为真实ID
+    article_title = "7397784842"      # 文章标题下广告单元ID - 需要替换为真实ID
     article_middle = "4484459277"     # 文章中间广告单元ID
     article_bottom = "2089847106"     # 文章底部广告单元ID
 
