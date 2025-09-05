@@ -24,6 +24,10 @@ sectionPagesMenu = 'main'
     article_bottom = "2089847106"     # 文章底部广告单元ID
 
 
+googleAnalytics = 'G-RLJ7MJ39WG'
+
 [services]
   [services.googleAnalytics]
     id = 'G-RLJ7MJ39WG'
+    respectDoNotTrack = true
+    anonymizeIP = true
