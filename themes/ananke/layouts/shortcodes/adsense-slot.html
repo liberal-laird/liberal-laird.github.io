@@ -2,7 +2,7 @@
 {{- $slot := .Get 0 | default "article_middle" -}}
 {{- $slotId := index .Site.Params.adsense.slots $slot -}}
 <div class="content-ad-container my4 pa3 bg-light-gray br2">
-  <div class="ad-label f6 ttu tracked mb2 mid-gray">广告</div>
+  <div class="ad-label f6 ttu tracked mb2 mid-gray"></div>
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-{{ .Site.Params.adsense.publisher_id }}"
