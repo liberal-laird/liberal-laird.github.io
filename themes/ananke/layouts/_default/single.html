@@ -19,6 +19,10 @@
       <h1 class="f1 athelas mt3 mb1">
         {{- .Title -}}
       </h1>
+      
+      {{/* 文章标题下广告 */}}
+      {{- partials.Include "article-title-ad.html" . -}}
+      
       {{ with .Params.author | compare.Default .Site.Params.author }}
       <p class="tracked">
         {{- if compare.Eq $page.Language "de" "en" "es" "fr" "it" "no" "pt" -}}
