@@ -20,7 +20,7 @@ sectionPagesMenu = 'main'
   # 文章页广告单元ID配置
   [params.adsense.slots]
     article_top = "1234567890"        # 文章顶部广告单元ID
-    article_middle = "2345678901"     # 文章中间广告单元ID
+    article_middle = ""     # 文章中间广告单元ID
     article_bottom = "3456789012"     # 文章底部广告单元ID
 
 
