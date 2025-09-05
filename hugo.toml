@@ -14,7 +14,7 @@ sectionPagesMenu = 'main'
   # AdSense 配置
   [params.adsense]
   publisher_id = "pub-4522670236044605"
-  enable_ads = false
+  enable_ads = true
   article_ads_only = true            # 只在文章页显示广告
   
   # 文章页广告单元ID配置
