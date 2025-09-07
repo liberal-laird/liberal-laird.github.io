@@ -3,6 +3,8 @@ languageCode = 'en-us'
 title = 'Health for you life'
 theme = 'ananke'
 sectionPagesMenu = 'main'
+defaultContentLanguage = 'en'
+copyright = 'Health Anythings'
 
 [menu]
 [[menu.main]]
@@ -31,3 +33,27 @@ googleAnalytics = 'G-RLJ7MJ39WG'
     id = 'G-RLJ7MJ39WG'
     respectDoNotTrack = true
     anonymizeIP = true
+
+
+
+[languages]
+  [languages.en]
+    contentDir = 'content/english'
+    languageName = 'English'
+    weight = 10
+  [languages.fr]
+    contentDir = 'content/french'
+    languageName = 'Français'
+    weight = 15
+  [languages.sp]
+    contentDir = 'content/spanish'
+    languageName = 'Spanish'
+    weight = 15
+  [languages.cn]
+    contentDir = 'content/chinese'
+    languageName = 'Chinese'
+    weight = 15
+  [languages.jp]
+    contentDir = 'content/japanese'
+    languageName = 'Japanese'
+    weight = 15

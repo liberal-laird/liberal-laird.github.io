@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nutritientes on Health for you life</title>
+    <link>http://localhost:1313/sp/categories/nutritientes/</link>
+    <description>Recent content in Nutritientes on Health for you life</description>
+    <generator>Hugo</generator>
+    <language>sp</language>
+    <copyright>Health Anythings</copyright>
+    <lastBuildDate>Fri, 22 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/sp/categories/nutritientes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>N‑acetilcisteína</title>
+      <link>http://localhost:1313/sp/post/N%E2%80%91Acetylcysteine.html</link>
+      <pubDate>Fri, 22 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/sp/post/N%E2%80%91Acetylcysteine.html</guid>
+      <description>&lt;p&gt;&lt;strong&gt;N‑Acetilcisteína (NAC): Razonamiento Clínico, Espectro Terapéutico, Síntomas y Fuentes Nutricionales&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;1-introducción&#34;&gt;1. Introducción&lt;/h3&gt;&#xA;&lt;p&gt;La N-acetilcisteína (NAC) es un derivado semisintético del aminoácido L‑cisteína. Su estructura química única—un grupo amina acetilado ligado a la cadena lateral tiol—concede tanto propiedades antioxidantes como la capacidad de reponer los depósitos intracelulares de glutatión. En las últimas décadas, NAC ha evolucionado de un simple agente mucolítico a un adyuvante farmacológico versátil para diversas condiciones clínicas, que van desde la insuficiencia hepática aguda hasta trastornos psiquiátricos. Esta revisión detalla la base mecanicista de los efectos terapéuticos de NAC, resume sus beneficios específicos por síntoma y identifica fuentes dietéticas que contribuyen a la disponibilidad endógena de cisteína.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Vitamina_C</title>
+      <link>http://localhost:1313/sp/post/Vitamin_C.html</link>
+      <pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/sp/post/Vitamin_C.html</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Vitamina C – Funciones Biológicas, Beneficios Clínicos y Consideraciones de Seguridad&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;1-introducción&#34;&gt;1. Introducción&lt;/h3&gt;&#xA;&lt;p&gt;El ácido ascórbico (conocido comúnmente como vitamina C) es un micronutriente soluble en agua esencial para la salud humana. Aunque el público general suele asociarlo con el folklore del “remedio contra el resfriado”, la investigación biomédica contemporánea ha revelado una imagen mucho más matizada: la vitamina C participa en la catálisis enzimática, la biosíntesis de colágeno, la síntesis de neurotransmisores y el mantenimiento de la homeostasis redox celular. Esta revisión sintetiza la evidencia actual sobre sus roles fisiológicos, su potencial terapéutico y su perfil de seguridad, proporcionando una base académicamente rigurosa adecuada para su difusión tanto a audiencias científicas como al público general.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
