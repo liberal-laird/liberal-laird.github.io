@@ -27,8 +27,8 @@ TRANSLATION_CONFIG = {
     "chunk_delay": 1,          # 块间延迟（秒）
 }
 
-# 针对GPT-OSS-20B优化的翻译提示词
-TRANSLATION_PROMPT = """You are a professional medical and nutritional translation expert. Please translate the following English content to Chinese with these requirements:
+# 针对GPT-OSS-20B优化的翻译提示词模板
+TRANSLATION_PROMPT_TEMPLATE = """You are a professional medical and nutritional translation expert. Please translate the following English content to {target_language} with these requirements:
 
 1. Keep all Markdown formatting exactly the same (including headers, tables, lists, links, etc.)
 2. Keep the frontmatter YAML structure unchanged, only translate text content
@@ -37,10 +37,14 @@ TRANSLATION_PROMPT = """You are a professional medical and nutritional translati
 5. Do not add any explanations or comments
 6. For tables, keep the table structure and only translate the content
 7. Keep numbers, dates, and citation formats unchanged
-8. Use proper Chinese medical terminology and maintain academic rigor
+8. Use proper {target_language} medical terminology and maintain academic rigor
 9. Ensure consistency in medical terminology throughout the document
+10. For {target_language}, use appropriate cultural and linguistic conventions
 
 Please output only the translation result without any prefix or suffix explanations."""
+
+# 默认中文翻译提示词（向后兼容）
+TRANSLATION_PROMPT = TRANSLATION_PROMPT_TEMPLATE.format(target_language="中文")
 
 # 需要翻译的frontmatter字段
 FRONTMATTER_FIELDS_TO_TRANSLATE = [
@@ -117,4 +121,62 @@ PERFORMANCE_CONFIG = {
     "enable_batch_processing": True,  # 启用批处理
     "max_concurrent_requests": 1,     # 最大并发请求数（建议为1以避免内存问题）
     "timeout_seconds": 120,           # 请求超时时间
+}
+
+# 语言特定配置
+LANGUAGE_CONFIGS = {
+    "chinese": {
+        "name": "中文",
+        "chunk_size": 3000,
+        "temperature": 0.2,
+        "special_instructions": "使用简体中文，保持医学术语的准确性"
+    },
+    "french": {
+        "name": "法语",
+        "chunk_size": 2800,
+        "temperature": 0.3,
+        "special_instructions": "使用标准法语，注意法语语法和医学术语"
+    },
+    "japanese": {
+        "name": "日语",
+        "chunk_size": 2500,
+        "temperature": 0.2,
+        "special_instructions": "使用敬语形式，保持日语的礼貌表达"
+    },
+    "spanish": {
+        "name": "西班牙语",
+        "chunk_size": 3000,
+        "temperature": 0.3,
+        "special_instructions": "使用标准西班牙语，注意语法和医学术语"
+    },
+    "german": {
+        "name": "德语",
+        "chunk_size": 2800,
+        "temperature": 0.2,
+        "special_instructions": "使用标准德语，注意复合词和医学术语"
+    },
+    "korean": {
+        "name": "韩语",
+        "chunk_size": 2500,
+        "temperature": 0.2,
+        "special_instructions": "使用标准韩语，保持敬语形式"
+    },
+    "italian": {
+        "name": "意大利语",
+        "chunk_size": 2800,
+        "temperature": 0.3,
+        "special_instructions": "使用标准意大利语，注意语法和医学术语"
+    },
+    "portuguese": {
+        "name": "葡萄牙语",
+        "chunk_size": 3000,
+        "temperature": 0.3,
+        "special_instructions": "使用标准葡萄牙语，注意语法和医学术语"
+    },
+    "russian": {
+        "name": "俄语",
+        "chunk_size": 2800,
+        "temperature": 0.2,
+        "special_instructions": "使用标准俄语，注意语法和医学术语"
+    }
 }
