@@ -724,6 +724,33 @@
                 href="https://a8king.com/fr/post/Vitamin_B7.html"
                 />
   </url><url>
+    <loc>https://a8king.com/fr/zinc/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://a8king.com/post/Zinc.html"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="sp"
+                href="https://a8king.com/sp/post/Zinc.html"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="jp"
+                href="https://a8king.com/jp/post/Zinc.html"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="cn"
+                href="https://a8king.com/cn/post/Zinc.html"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://a8king.com/fr/zinc/"
+                />
+  </url><url>
     <loc>https://a8king.com/fr/about/</loc>
     <xhtml:link
                 rel="alternate"

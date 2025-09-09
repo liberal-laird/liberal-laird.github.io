@@ -3,19 +3,14 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://a8king.com/cn/categories/%23-%E8%90%A5%E5%85%BB%E7%B4%A0/</loc>
-    <lastmod>2025-09-05T00:00:00+00:00</lastmod>
+    <lastmod>2025-09-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://a8king.com/cn/categories/</loc>
-    <lastmod>2025-09-05T00:00:00+00:00</lastmod>
+    <lastmod>2025-09-09T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
                 href="https://a8king.com/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://a8king.com/fr/categories/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -29,21 +24,21 @@
                 />
     <xhtml:link
                 rel="alternate"
+                hreflang="fr"
+                href="https://a8king.com/fr/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
                 hreflang="cn"
                 href="https://a8king.com/cn/categories/"
                 />
   </url><url>
     <loc>https://a8king.com/cn/</loc>
-    <lastmod>2025-09-05T00:00:00+00:00</lastmod>
+    <lastmod>2025-09-09T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
                 href="https://a8king.com/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://a8king.com/fr/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -57,21 +52,21 @@
                 />
     <xhtml:link
                 rel="alternate"
+                hreflang="fr"
+                href="https://a8king.com/fr/"
+                />
+    <xhtml:link
+                rel="alternate"
                 hreflang="cn"
                 href="https://a8king.com/cn/"
                 />
   </url><url>
     <loc>https://a8king.com/cn/tags/</loc>
-    <lastmod>2025-09-05T00:00:00+00:00</lastmod>
+    <lastmod>2025-09-09T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
                 href="https://a8king.com/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://a8king.com/fr/tags/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -85,12 +80,45 @@
                 />
     <xhtml:link
                 rel="alternate"
+                hreflang="fr"
+                href="https://a8king.com/fr/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
                 hreflang="cn"
                 href="https://a8king.com/cn/tags/"
                 />
   </url><url>
     <loc>https://a8king.com/cn/tags/%E7%BB%B4%E7%94%9F%E7%B4%A0/</loc>
-    <lastmod>2025-09-05T00:00:00+00:00</lastmod>
+    <lastmod>2025-09-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://a8king.com/cn/post/Zinc.html</loc>
+    <lastmod>2025-09-09T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://a8king.com/post/Zinc.html"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="sp"
+                href="https://a8king.com/sp/post/Zinc.html"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="jp"
+                href="https://a8king.com/jp/post/Zinc.html"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://a8king.com/fr/zinc/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="cn"
+                href="https://a8king.com/cn/post/Zinc.html"
+                />
   </url><url>
     <loc>https://a8king.com/cn/post/Artemisinin_Cancer.html</loc>
     <lastmod>2025-09-05T00:00:00+00:00</lastmod>

@@ -5,119 +5,119 @@ title = "锌"
 url = "post/Zinc.html"
 categories = "# 营养素"
 tags = "维生素"
-description= "Zinc 是一种重要的微量矿物质，对人类健康至关重要，发挥免疫功能、DNA 合成和细胞分裂等关键作用。它是 300 多种酶的催化辅因子，促进蛋白质代谢、创伤愈合和味觉感知等过程。充足的锌摄入支持儿童和青少年的健康生长，有助于调节激素水平——包括睾酮，并有利于正常神经功能。该矿物质具有抗氧化特性，可降低氧化应激；其在胶原蛋白形成中的作用促进皮肤完整性与修复。膳食来源包括红肉、禽类、海鲜（尤其是牡蛎）、豆类、坚果、种子、全谷物、乳制品和强化麦片。锌吸收可能受植酸盐和钙的影响；因此均衡营养至关重要。缺乏时可表现为生长迟缓、创伤愈合延迟、脱发、味觉障碍以及感染易感性增加。相反，过量摄入锌会导致恶心、铜缺乏和免疫抑制。通过多样化饮食或在专业指导下补充维持最佳锌水平，可确保各个生命阶段的健康稳固。"
-keywords= ["锌", "锌补充剂", "锌缺乏", "# 锌的益处", "锌剂量", "锌螯合物", "氯化锌", "氧化锌", "葡萄糖酸锌", "锌吸收", "锌与免疫", "# 锌与头发", "锌对皮肤", "锌与生长", "锌的副作用", "# 富含锌的食物", "锌含片", "锌治疗", "# 锌在饮食中的作用"]
+description= "Zinc 是一种至关重要的微量矿物质，对人类健康必不可少，发挥着免疫功能、DNA 合成和细胞分裂等关键作用。它是 300 多种酶的催化辅因子，促进蛋白质代谢、伤口愈合以及味觉感知等过程。充足的锌摄入支持儿童与青少年的健康生长，帮助调节激素水平——包括睾酮，并有助于正常神经功能。该矿物质具有抗氧化特性，可降低氧化应激；其在胶原蛋白形成中的作用促进皮肤完整性和修复。膳食来源包括红肉、家禽、海鲜（尤其是牡蛎）、豆类、坚果、种子、全谷物、乳制品以及强化谷物。锌的吸收可能受到植酸盐和钙的影响；因此均衡营养至关重要。缺乏锌可表现为生长迟缓、伤口愈合延迟、脱发、味觉受损及感染易感性增加。相反，过量摄入锌会导致恶心、铜缺乏和免疫抑制。通过多样化饮食或在专业指导下补充维持最佳锌水平，可确保各个生命阶段的健康稳固。"
+keywords= ["锌", "锌补充剂", "锌缺乏", "锌的益处", "锌剂量", "锌螯合物", "氯化锌", "氧化锌", "葡萄糖酸锌", "锌吸收", "锌与免疫", "锌与头发", "锌对皮肤", "锌促进生长", "锌的副作用", "富含锌的食物", "锌含片", "锌治疗", "饮食中的锌"]
 +++
 
-# The Multifaceted Role of Zinc in Human Health  
-*A comprehensive review for a science‑and‑technology audience*
+# 人体健康中锌的多面角色  
+*针对科学与技术受众的综合综述*
 
 ---
 
-## 1. Introduction  
+## 1. 引言  
 
-Zinc (Zn) is an essential trace element that participates in more than 300 enzymatic reactions and plays pivotal roles in cellular proliferation, signal transduction, gene expression, and immune competence. Although required only in minute amounts—approximately 8 mg/day for adult women and 11 mg/day for adult men—the importance of maintaining adequate zinc status cannot be overstated. This review synthesises current evidence on the physiological functions of zinc, its health benefits, clinical manifestations of deficiency, and dietary strategies to optimise intake.
+锌（Zn）是一种必需微量元素，参与超过300种酶促反应，在细胞增殖、信号转导、基因表达和免疫功能中发挥关键作用。尽管仅需要极少量——成人女性约8 mg/天，男性约11 mg/天——但维持足够锌状态的重要性不容低估。本综述综合了当前关于锌的生理功能、健康益处、缺乏临床表现以及优化摄入的膳食策略的证据。
 
 ---
 
-## 2. Biochemical Functions of Zinc  
+## 2. 锌的生化功能  
 
-| System | Key Roles |
+| 系统 | 关键作用 |
 |--------|-----------|
-| **Enzymology** | Cofactor for alkaline phosphatase, carbonic anhydrase, DNA‑polymerases, and superoxide dismutase (SOD). |
-| **Protein Synthesis** | Stabilises ribosomal structure; essential for translation fidelity. |
-| **Signal Transduction** | Modulates tyrosine kinase activity and MAPK pathways. |
-| **Gene Expression** | Zinc‑finger transcription factors (e.g., SP1, GATA) require zinc to maintain structural integrity. |
-| **Immune Function** | Influences innate immunity via neutrophil chemotaxis and adaptive immunity through T‑cell maturation. |
+| **酶学** | 作为碱性磷酸酶、碳酸酐酶、DNA聚合酶和超氧化物歧化酶（SOD）的辅因子。 |
+| **蛋白质合成** | 稳定核糖体结构；对翻译准确性至关重要。 |
+| **信号转导** | 调节酪氨酸激酶活性和MAPK通路。 |
+| **基因表达** | 锌指转录因子（如SP1、GATA）需要锌维持结构完整性。 |
+| **免疫功能** | 通过中性粒细胞趋化作用影响先天免疫，并通过T细胞成熟调节适应性免疫。 |
 
-The diversity of zinc’s roles explains why even modest deficiencies can perturb multiple physiological systems.
-
----
-
-## 3. Health Benefits of Adequate Zinc Intake  
-
-### 3.1 Immune Modulation  
-- **Innate Immunity**: Zinc deficiency impairs neutrophil function, reduces natural killer (NK) cell activity, and weakens barrier defenses in mucosal tissues.  
-- **Adaptive Immunity**: T‑cell proliferation is zinc‑dependent; low levels skew the Th1/Th2 balance toward a pro‑inflammatory profile.
-
-### 3.2 Antioxidant Protection  
-Zinc’s participation in Cu/Zn‑SOD confers protection against reactive oxygen species (ROS). Studies demonstrate that zinc supplementation lowers oxidative markers in patients with metabolic syndrome and chronic inflammatory diseases.
-
-### 3.3 Neurocognitive Function  
-Neurotransmitter synthesis, particularly dopamine and glutamate, requires zinc. Lower plasma zinc correlates with impaired working memory and increased risk of age‑related cognitive decline.
-
-### 3.4 Wound Healing & Dermatology  
-Zinc promotes keratinocyte proliferation and collagen cross‑linking. Clinical trials report accelerated wound closure in patients receiving topical or oral zinc supplementation.
-
-### 3.5 Reproductive Health  
-- **Male Fertility**: Zinc stabilises sperm chromatin and protects against oxidative DNA damage.  
-- **Female Hormonal Balance**: Adequate zinc is necessary for follicular development; deficiency may contribute to menstrual irregularities.
+锌的多样角色解释了为何即使轻度缺乏也能扰乱多个生理系统。
 
 ---
 
-## 4. Clinical Manifestations of Zinc Deficiency
+## 3. 足量摄入锌的健康益处  
+
+### 3.1 免疫调节  
+- **先天免疫**：锌缺乏会损害中性粒细胞功能，降低自然杀伤（NK）细胞活性，并削弱黏膜组织的屏障防御。  
+- **适应性免疫**：T细胞增殖依赖锌；低水平倾向于将Th1/Th2平衡偏向促炎状态。
+
+### 3.2 抗氧化保护  
+锌在Cu/Zn‑SOD中的作用为机体提供对活性氧（ROS）的防护。研究表明，锌补充可降低代谢综合征和慢性炎症疾病患者的氧化标志物。
+
+### 3.3 神经认知功能  
+神经递质合成，尤其是多巴胺和谷氨酸，需要锌。血浆锌水平下降与工作记忆受损及年龄相关认知衰退风险增加相关。
+
+### 3.4 创伤愈合与皮肤科  
+锌促进角质细胞增殖和胶原交联。临床试验报告，接受局部或口服锌补充的患者创面闭合速度加快。
+
+### 3.5 生殖健康  
+- **男性生育**：锌稳定精子染色质并防止氧化DNA损伤。  
+- **女性激素平衡**：足量锌对卵泡发育必不可少；缺乏可能导致月经不调。
+
+---
+
+## 4. 锌缺乏的临床表现
 
 | System | Symptoms & Signs |
 |--------|------------------|
-| **Dermatologic** | Acrodermatitis enteropathica (eczema‑like lesions), alopecia, delayed wound healing. |
-| **Gastrointestinal** | Diarrhea, anorexia, impaired taste (hypogeusia). |
-| **Neurologic** | Peripheral neuropathy, irritability, decreased cognition. |
-| **Immunologic** | Increased frequency of upper respiratory infections, higher susceptibility to viral pathogens such as influenza and SARS‑CoV‑2. |
-| **Reproductive** | Reduced libido, infertility (male), menstrual disturbances (female). |
+| **皮肤科** | 肠性皮炎（类似湿疹的病变）、脱发、伤口愈合延迟。 |
+| **胃肠道** | 腹泻、厌食、味觉减退（嗅味低）。 |
+| **神经系统** | 周围神经病变、易怒、认知下降。 |
+| **免疫学** | 上呼吸道感染频率增加，对流感和SARS‑CoV‑2等病毒性病原体的易感性升高。 |
+| **生殖系统** | 性欲减退，男性不育；女性月经紊乱。 |
 
-The hallmark of deficiency is a combination of dermatological lesions and impaired growth in children, but subtle symptoms can arise even at marginally low levels.
+缺乏的标志是儿童皮肤病变与生长受限的组合，但即使在略低水平也可能出现细微症状。
 
 ---
 
-## 5. Dietary Sources of Zinc  
+## 5. 锌的膳食来源  
 
-### 5.1 Animal‑Based Foods  
-| Food | Approximate Zn per 100 g |
+### 5.1 动物性食品  
+| 食品 | 每100 g大约含锌量 |
 |------|------------------------|
-| Beef (lean) | 4.9 mg |
-| Pork (tenderloin) | 2.7 mg |
-| Oysters | 56 mg |
-| Chicken breast | 1.0 mg |
-| Lamb | 3.0 mg |
+| 牛肉（瘦） | 4.9 mg |
+| 猪里脊 | 2.7 mg |
+| 生蚝 | 56 mg |
+| 鸡胸肉 | 1.0 mg |
+| 羊肉 | 3.0 mg |
 
-Animal proteins contain highly bioavailable zinc, largely due to low phytate content.
+动物蛋白含有高度生物利用的锌，主要由于其低植酸含量。
 
-### 5.2 Plant‑Based Foods  
-| Food | Approximate Zn per 100 g |
+### 5.2 植物性食品  
+| 食品 | 每100 g大约含锌量 |
 |------|------------------------|
-| Pumpkin seeds | 7.8 mg |
-| Cashews | 5.6 mg |
-| Chickpeas (cooked) | 1.0 mg |
-| Whole‑grain bread | 2.4 mg |
-| Oats | 3.3 mg |
+| 南瓜籽 | 7.8 mg |
+| 腰果 | 5.6 mg |
+| 鹰嘴豆（熟） | 1.0 mg |
+| 全麦面包 | 2.4 mg |
+| 燕麦 | 3.3 mg |
 
-Plant sources often contain phytates, which bind zinc and reduce absorption; however, soaking, sprouting, or fermenting can mitigate this effect.
+植物来源往往含有植酸，植酸会与锌结合并降低吸收；但浸泡、发芽或发酵可减轻此效应。
 
-### 5.3 Fortified Products  
-- **Breakfast cereals**: Many are fortified with 2–4 mg Zn per serving.  
-- **Protein powders**: Whey‑protein isolates often contain added zinc.
-
----
-
-## 6. Strategies to Optimize Zinc Status  
-
-1. **Balanced Diet** – Combine animal and plant proteins; include legumes, nuts, and seeds in regular meals.  
-2. **Food Processing Techniques** – Soaking, sprouting, or fermenting legumes and grains improves bioavailability.  
-3. **Avoid Excessive Calcium & Iron** – High intakes can competitively inhibit zinc absorption.  
-4. **Consider Supplements Only When Needed** – In high‑risk groups (pregnant women, elderly, vegans), a 15–30 mg/day supplement may be warranted under medical supervision.  
+### 5.3 加强化产品  
+- **早餐谷物**：许多每份添加2–4 mg锌。  
+- **蛋白粉**：乳清蛋白分离物常含有额外的锌。
 
 ---
 
-## 7. Conclusion  
+## 6. 优化锌状态的策略  
 
-Zinc’s integral role across cellular and systemic pathways underscores its importance for maintaining health. Adequate intake mitigates infection risk, supports cognitive function, accelerates tissue repair, and preserves reproductive capacity. Recognising the subtle signs of deficiency and adopting dietary practices that enhance zinc bioavailability can substantially improve public health outcomes.
+1. **均衡饮食** – 同时摄入动物与植物蛋白；在日常餐点中加入豆类、坚果和种子。  
+2. **食品加工技术** – 浸泡、发芽或发酵豆类和谷物可提升生物利用度。  
+3. **避免过量钙与铁** – 高摄入量会竞争性抑制锌吸收。  
+4. **仅在必要时考虑补充剂** – 对高危人群（孕妇、老年人、纯素者）而言，在医师监督下每日15–30 mg的补充可能是合适的。
 
 ---
 
-## 8. References (selected)  
+## 7. 结论  
+
+锌在细胞与系统途径中的核心作用凸显其维持健康的重要性。足量摄入可降低感染风险，支持认知功能，加速组织修复，并保持生殖能力。识别缺乏的细微迹象并采用提升锌生物利用度的饮食做法，可显著改善公共卫生结果。
+
+---
+
+## 8. 参考文献（精选）  
 
 1. Prasad AS. “Zinc: An Essential Micronutrient for Humans.” *J Trace Elem Med Biol* 2013;27(2):139‑147.  
 2. Hall JE, et al. “The Role of Zinc in Human Health and Disease.” *Nutrients* 2020;12(4):1075.  
 3. Rink L, et al. “Zinc Supplementation for the Prevention of Influenza A Virus Infection.” *Clin Nutr* 2017;36(1):112‑119.
 
-(完整参考文献列表可按要求提供。)
+(完整参考列表可按需提供。)
