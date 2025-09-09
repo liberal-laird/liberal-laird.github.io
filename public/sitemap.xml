@@ -2,35 +2,35 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <sitemap>
-    <loc>http://localhost:1313/en/sitemap.xml</loc>
+    <loc>https://a8king.com/en/sitemap.xml</loc>
     
       <lastmod>2025-09-05T00:00:00+00:00</lastmod>
     
   </sitemap>
   
   <sitemap>
-    <loc>http://localhost:1313/cn/sitemap.xml</loc>
+    <loc>https://a8king.com/cn/sitemap.xml</loc>
     
       <lastmod>2025-09-05T00:00:00+00:00</lastmod>
     
   </sitemap>
   
   <sitemap>
-    <loc>http://localhost:1313/fr/sitemap.xml</loc>
+    <loc>https://a8king.com/fr/sitemap.xml</loc>
     
       <lastmod>2025-09-05T00:00:00+00:00</lastmod>
     
   </sitemap>
   
   <sitemap>
-    <loc>http://localhost:1313/jp/sitemap.xml</loc>
+    <loc>https://a8king.com/jp/sitemap.xml</loc>
     
       <lastmod>2025-09-05T00:00:00+00:00</lastmod>
     
   </sitemap>
   
   <sitemap>
-    <loc>http://localhost:1313/sp/sitemap.xml</loc>
+    <loc>https://a8king.com/sp/sitemap.xml</loc>
     
       <lastmod>2025-09-05T00:00:00+00:00</lastmod>
     

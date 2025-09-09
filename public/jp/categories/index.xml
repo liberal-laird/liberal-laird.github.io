@@ -2,25 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Health for you life</title>
-    <link>http://localhost:1313/jp/categories/</link>
+    <link>https://a8king.com/jp/categories/</link>
     <description>Recent content in Categories on Health for you life</description>
     <generator>Hugo</generator>
     <language>jp</language>
     <copyright>Health Anythings</copyright>
     <lastBuildDate>Fri, 05 Sep 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/jp/categories/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://a8king.com/jp/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>栄養素</title>
-      <link>http://localhost:1313/jp/categories/%E6%A0%84%E9%A4%8A%E7%B4%A0/</link>
+      <link>https://a8king.com/jp/categories/%E6%A0%84%E9%A4%8A%E7%B4%A0/</link>
       <pubDate>Fri, 05 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/jp/categories/%E6%A0%84%E9%A4%8A%E7%B4%A0/</guid>
+      <guid>https://a8king.com/jp/categories/%E6%A0%84%E9%A4%8A%E7%B4%A0/</guid>
       <description></description>
     </item>
     <item>
       <title># 栄養素</title>
-      <link>http://localhost:1313/jp/categories/%23-%E6%A0%84%E9%A4%8A%E7%B4%A0/</link>
+      <link>https://a8king.com/jp/categories/%23-%E6%A0%84%E9%A4%8A%E7%B4%A0/</link>
       <pubDate>Fri, 22 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/jp/categories/%23-%E6%A0%84%E9%A4%8A%E7%B4%A0/</guid>
+      <guid>https://a8king.com/jp/categories/%23-%E6%A0%84%E9%A4%8A%E7%B4%A0/</guid>
       <description></description>
     </item>
   </channel>
