@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://a8king.com/jp/categories/</loc>
-    <lastmod>2025-09-09T00:00:00+00:00</lastmod>
+    <lastmod>2025-09-12T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -16,13 +16,13 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="sp"
-                href="https://a8king.com/sp/categories/"
+                hreflang="fr"
+                href="https://a8king.com/fr/categories/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="fr"
-                href="https://a8king.com/fr/categories/"
+                hreflang="sp"
+                href="https://a8king.com/sp/categories/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -31,7 +31,7 @@
                 />
   </url><url>
     <loc>https://a8king.com/jp/</loc>
-    <lastmod>2025-09-09T00:00:00+00:00</lastmod>
+    <lastmod>2025-09-12T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -44,13 +44,13 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="sp"
-                href="https://a8king.com/sp/"
+                hreflang="fr"
+                href="https://a8king.com/fr/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="fr"
-                href="https://a8king.com/fr/"
+                hreflang="sp"
+                href="https://a8king.com/sp/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -59,7 +59,7 @@
                 />
   </url><url>
     <loc>https://a8king.com/jp/tags/</loc>
-    <lastmod>2025-09-09T00:00:00+00:00</lastmod>
+    <lastmod>2025-09-12T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -72,13 +72,13 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="sp"
-                href="https://a8king.com/sp/tags/"
+                hreflang="fr"
+                href="https://a8king.com/fr/tags/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="fr"
-                href="https://a8king.com/fr/tags/"
+                hreflang="sp"
+                href="https://a8king.com/sp/tags/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -86,8 +86,39 @@
                 href="https://a8king.com/jp/tags/"
                 />
   </url><url>
+    <loc>https://a8king.com/jp/post/Cholesterol.html</loc>
+    <lastmod>2025-09-12T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://a8king.com/post/Cholesterol.html"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://a8king.com/fr/post/Cholesterol.html"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="sp"
+                href="https://a8king.com/sp/post/Cholesterol.html"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="cn"
+                href="https://a8king.com/cn/post/Cholesterol.html"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="jp"
+                href="https://a8king.com/jp/post/Cholesterol.html"
+                />
+  </url><url>
     <loc>https://a8king.com/jp/tags/%E3%83%93%E3%82%BF%E3%83%9F%E3%83%B3/</loc>
-    <lastmod>2025-09-09T00:00:00+00:00</lastmod>
+    <lastmod>2025-09-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://a8king.com/jp/categories/%E6%A0%84%E9%A4%8A%E7%B4%A0/</loc>
+    <lastmod>2025-09-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://a8king.com/jp/post/Zinc.html</loc>
     <lastmod>2025-09-09T00:00:00+00:00</lastmod>
@@ -116,9 +147,6 @@
                 hreflang="jp"
                 href="https://a8king.com/jp/post/Zinc.html"
                 />
-  </url><url>
-    <loc>https://a8king.com/jp/categories/%E6%A0%84%E9%A4%8A%E7%B4%A0/</loc>
-    <lastmod>2025-09-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://a8king.com/jp/post/Artemisinin_Cancer.html</loc>
     <lastmod>2025-09-05T00:00:00+00:00</lastmod>
