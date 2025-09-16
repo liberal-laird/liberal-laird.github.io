@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://a8king.com/sp/categories/</loc>
-    <lastmod>2025-09-12T00:00:00+00:00</lastmod>
+    <lastmod>2025-09-16T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -29,6 +29,96 @@
                 hreflang="sp"
                 href="https://a8king.com/sp/categories/"
                 />
+  </url><url>
+    <loc>https://a8king.com/sp/</loc>
+    <lastmod>2025-09-16T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://a8king.com/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="cn"
+                href="https://a8king.com/cn/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://a8king.com/fr/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="jp"
+                href="https://a8king.com/jp/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="sp"
+                href="https://a8king.com/sp/"
+                />
+  </url><url>
+    <loc>https://a8king.com/sp/post/Ketogenic_diet.html</loc>
+    <lastmod>2025-09-16T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://a8king.com/post/Ketogenic_diet.html"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://a8king.com/fr/post/Ketogenic_diet.html"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="jp"
+                href="https://a8king.com/jp/post/Ketogenic_diet.html"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="cn"
+                href="https://a8king.com/cn/post/Ketogenic_diet.html"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="sp"
+                href="https://a8king.com/sp/post/Ketogenic_diet.html"
+                />
+  </url><url>
+    <loc>https://a8king.com/sp/categories/nutrientes/</loc>
+    <lastmod>2025-09-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://a8king.com/sp/tags/</loc>
+    <lastmod>2025-09-16T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://a8king.com/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="cn"
+                href="https://a8king.com/cn/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://a8king.com/fr/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="jp"
+                href="https://a8king.com/jp/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="sp"
+                href="https://a8king.com/sp/tags/"
+                />
+  </url><url>
+    <loc>https://a8king.com/sp/tags/vitamina/</loc>
+    <lastmod>2025-09-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://a8king.com/sp/post/Cholesterol.html</loc>
     <lastmod>2025-09-12T00:00:00+00:00</lastmod>
@@ -58,34 +148,6 @@
                 href="https://a8king.com/sp/post/Cholesterol.html"
                 />
   </url><url>
-    <loc>https://a8king.com/sp/</loc>
-    <lastmod>2025-09-12T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://a8king.com/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="cn"
-                href="https://a8king.com/cn/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://a8king.com/fr/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="jp"
-                href="https://a8king.com/jp/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="sp"
-                href="https://a8king.com/sp/"
-                />
-  </url><url>
     <loc>https://a8king.com/sp/categories/nutrients/</loc>
     <lastmod>2025-09-12T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -98,37 +160,6 @@
                 hreflang="sp"
                 href="https://a8king.com/sp/categories/nutrients/"
                 />
-  </url><url>
-    <loc>https://a8king.com/sp/tags/</loc>
-    <lastmod>2025-09-12T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://a8king.com/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="cn"
-                href="https://a8king.com/cn/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://a8king.com/fr/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="jp"
-                href="https://a8king.com/jp/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="sp"
-                href="https://a8king.com/sp/tags/"
-                />
-  </url><url>
-    <loc>https://a8king.com/sp/tags/vitamina/</loc>
-    <lastmod>2025-09-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://a8king.com/sp/post/Zinc.html</loc>
     <lastmod>2025-09-09T00:00:00+00:00</lastmod>
@@ -157,9 +188,6 @@
                 hreflang="sp"
                 href="https://a8king.com/sp/post/Zinc.html"
                 />
-  </url><url>
-    <loc>https://a8king.com/sp/categories/nutrientes/</loc>
-    <lastmod>2025-09-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://a8king.com/sp/categories/%23-nutrientes/</loc>
     <lastmod>2025-09-05T00:00:00+00:00</lastmod>
