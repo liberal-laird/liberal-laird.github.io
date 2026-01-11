@@ -11,6 +11,11 @@
                 />
     <xhtml:link
                 rel="alternate"
+                hreflang="cn"
+                href="http://localhost:1313/cn/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
                 hreflang="jp"
                 href="http://localhost:1313/jp/categories/"
                 />
@@ -18,11 +23,6 @@
                 rel="alternate"
                 hreflang="sp"
                 href="http://localhost:1313/sp/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="cn"
-                href="http://localhost:1313/cn/categories/"
                 />
     <xhtml:link
                 rel="alternate"

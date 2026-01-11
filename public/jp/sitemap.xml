@@ -39,6 +39,11 @@
                 />
     <xhtml:link
                 rel="alternate"
+                hreflang="sp"
+                href="http://localhost:1313/sp/"
+                />
+    <xhtml:link
+                rel="alternate"
                 hreflang="cn"
                 href="http://localhost:1313/cn/"
                 />
@@ -46,11 +51,6 @@
                 rel="alternate"
                 hreflang="fr"
                 href="http://localhost:1313/fr/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="sp"
-                href="http://localhost:1313/sp/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -67,11 +67,6 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="sp"
-                href="http://localhost:1313/sp/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
                 hreflang="cn"
                 href="http://localhost:1313/cn/tags/"
                 />
@@ -79,6 +74,11 @@
                 rel="alternate"
                 hreflang="fr"
                 href="http://localhost:1313/fr/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="sp"
+                href="http://localhost:1313/sp/tags/"
                 />
     <xhtml:link
                 rel="alternate"
